@@ -1,0 +1,1751 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+{% block head %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+background-image:url({% static 'bas.jpg'%});
+ background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+border: 2px solid #615632;
+border-radius:10px;
+position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+color:white;
+}
+
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+
+    } 
+    .thpunchedbd{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:13px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:#A0A0A0;
+    padding:16px;
+    text-align:center;
+    }
+    .tdpunchedbd{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:13px;
+    color:#A0A0A0;
+    padding:10px;
+      text-align: center;
+    }
+        .tdpunchedspecial{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    
+    
+    }
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.navbarbutton {
+    position:absolute;
+    left:1%;
+    top:2%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:100px;
+    position:absolute;
+    left:650px;
+    top:0px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:830px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+
+
+
+/* Style the tab */
+.tab {
+  padding-left:38%;
+  position:absolute;
+  width:1900px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:230px;
+  width:1893px;
+  height:auto;
+  background-color:#2d2c29;
+
+}
+
+/* TABLE */
+.tablecontainer{
+position:relative;
+overflow:auto;
+ width:1850px;
+  height:615px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+      height:auto;
+          margin-left:auto
+    margin-right:auto;
+    position:relative;
+  }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+
+
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99.5%;
+height:99.2%;
+z-index:-1;
+}
+@media screen and (min-width: 801px) and (max-width: 960px) {
+
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+border: 2px solid #615632;
+border-radius:10px;
+position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:#A0A0A0;
+    text-align:center;
+    
+    
+    } 
+    .thpunchedbd{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:13px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+    } 
+    .tdpunched{
+        text-align:center;
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:#A0A0A0;
+    
+    
+    }
+    .tdpunchedbd{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:13px;
+    color:#A0A0A0;
+    padding:10px;
+      text-align: center;
+    }
+        .tdpunchedspecial{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    
+    
+    }
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:350px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:390px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:300px;
+  width:930px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:150px;
+  height:auto;
+  width:920px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+position:relative;
+overflow:auto;
+ width:890px;
+  height:300px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+      height:auto;
+    margin-left:auto
+    margin-right:auto;
+        position:relative;
+  }
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+@media screen and (max-width: 800px) and (min-width: 361px){
+
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+border: 2px solid #615632;
+border-radius:10px;
+position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:#A0A0A0;
+    text-align:center;
+    
+    
+    } 
+        .thpunchedbd{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:13px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+    } 
+    .tdpunched{
+        text-align:center;
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:#A0A0A0;
+    
+    
+    }
+    .tdpunchedbd{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:13px;
+    color:#A0A0A0;
+    padding:10px;
+      text-align: center;
+    }
+        .tdpunchedspecial{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    
+    
+    }
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:300px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:250px;
+  width:535px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:auto;
+  width:760px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:760px;
+  height:150px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+      height:auto;
+    margin-left:auto
+    margin-right:auto;
+        position:relative;
+  }
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+@media screen and (max-width: 360px){
+
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+  border-radius:10px;
+  position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+}
+
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:300px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:250px;
+  width:755px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:auto;
+  width:760px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:730px;
+  height:1400px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+  position:relative;
+  overflow:auto;
+  width:730px;
+  height:auto;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-left:auto
+    margin-right:auto;
+
+  }
+
+
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+</style>
+</head>
+
+
+  <h8 class="punchedtexttitle">Sales Today</h8>
+<div class="tab" >
+  <button class="tablinks prodbut" onclick="openCity(event, 'List')">List</button>
+  <button class="tablinks prodbut" onclick="openCity(event, 'Breakdown')">Breakdown</button>
+
+</div>
+
+<div id="List" class="tabcontent" style="display:block;">
+  <h8 class="punchedtext">List</h8>
+  <div class="tablecontainer">
+  <table style="border:transparent;">
+  <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th class="thpunched">Customer</th>
+    <th class="thpunched">Time</th>
+    <th class="thpunched">Product Name</th>
+    <th class="thpunched">Qty</th>
+    <th class="thpunched">Size</th>
+    <th class="thpunched">Category</th>
+    <th class="thpunched">Subtotal</th>
+  </tr>
+
+  <tbody id="listtbody"></tbody>
+
+</table>
+</div>
+
+</div>
+
+<div id="Breakdown" class="tabcontent">
+  <h8 class="punchedtext">Breakdown</h8>
+        <div class="monthlydiv">
+        <!--Milktea-->
+                        <div class="card" id="milkteacard">
+                            <div class="h3div"><h3>Milktea</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Small</th>
+                                <th class="thpunchedbd">Reg</th>
+                                <th class="thpunchedbd">Full</th>
+                              </tr>
+                              <tbody id="milkteabreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Frappe-->
+                        <div class="card" id="frappecard">
+                            <div class="h3div"><h3>Frappe</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Reg</th>
+                                <th class="thpunchedbd">Full</th>
+                              </tr>
+                              <tbody id="frappebreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Pizza-->
+                        <div class="card" id="pizzacard">
+                            <div class="h3div"><h3>Pizza</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Barkada</th>
+                                <th class="thpunchedbd">Pamilya</th>
+                              </tr>
+                              <tbody id="pizzabreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Freeze-->
+                        <div class="card" id="freezecard">
+                            <div class="h3div"><h3>Freeze</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Cups</th>
+
+                              </tr>
+                              <tbody id="freezebreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Cookies-->
+                        <div class="card" id="cookiescard">
+                            <div class="h3div"><h3>Cookies</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Box</th>
+
+                              </tr>
+                              <tbody id="cookiesbreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Shawarma-->
+                        <div class="card" id="shawarmacard">
+                            <div class="h3div"><h3>Shawarma</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Pcs</th>
+
+                              </tr>
+                              <tbody id="shawarmabreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Fries-->
+                        <div class="card" id="friescard">
+                            <div class="h3div"><h3>Fries</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Box</th>
+
+                              </tr>
+                              <tbody id="friesbreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Bubble Waffle-->
+                        <div class="card" id="bubwafcard">
+                            <div class="h3div"><h3>Bubble Waffle</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Cone</th>
+
+                              </tr>
+                              <tbody id="bubwafbreakdowntbody"></tbody>
+                            </table>
+                        </div>
+        <!--Add-ons-->
+                        <div class="card" id="aocard">
+                            <div class="h3div"><h3>Add-ons</h3></div>
+                              <table style="border:transparent;font-size:15px;">
+                              <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+                                <th class="thpunchedbd">Product Name</th>
+                                <th class="thpunchedbd">Scoops</th>
+
+                              </tr>
+                              <tbody id="aobreakdowntbody"></tbody>
+                            </table>
+                        </div>
+
+        </div>
+</div>
+
+
+
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+
+
+$(document).ready(function(){
+
+        $.ajax({
+        type:'POST',
+        url:"{% url 'saletoday.html' %}",
+        data:{
+        "list":"list", 
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function(data){
+            var listtbody = document.getElementById("listtbody");
+            var dataHtml='';
+            
+            var saletodaylists = JSON.parse(data.saletodaylist);
+            $('#listtbody').empty();
+            var gtotal=0;
+            for(let punched of saletodaylists){
+            if(punched["fields"].Subcategory){
+            var category=punched["fields"].Subcategory;
+            
+            }else{
+            var category=punched["fields"].Category;
+            }
+            var datetimehrsiii=punched["fields"].DateTime.substr(11, 2);
+            var datetimeminutei=punched["fields"].DateTime.substr(14, 2);
+            var datetimehrsii=parseInt(datetimehrsiii)
+
+            var datetimehrsi = 8+datetimehrsii;
+
+            var datetimeminute = parseInt(datetimeminutei)
+            if(datetimehrsii == 16 && datetimeminute == 0){
+            var pmoram = 'mn';
+            var datetimehrs = datetimehrsii-16;
+            }else if(datetimehrsii == 16 && datetimeminute > 0){
+            var pmoram = 'am';
+            var datetimehrs = datetimehrsii-16;
+            }else if(datetimehrsii > 16 || datetimehrsii < 4 ){
+            var pmoram = 'am';
+                if(datetimehrsii < 4 ){
+                var datetimehrs = datetimehrsii+8;
+                }else{
+                var datetimehrs = datetimehrsii-16;
+                }
+            }else if(datetimehrsii == 4 && datetimeminute == 0){
+            var pmoram = 'nn';
+            var datetimehrs = datetimehrsii+8;
+            }else if(datetimehrsii == 4 && datetimeminute > 0){
+            var pmoram = 'pm';
+            var datetimehrs = datetimehrsii+8;
+            }else if(datetimehrsii < 16 || datetimehrsii > 4 ){
+            var pmoram = 'pm';
+            var datetimehrs = datetimehrsii-4;
+            }
+
+            var dateTimefinal = datetimehrs.toString()+':'+datetimeminutei+pmoram;
+            if(punched["fields"].Size == 'null' || !punched["fields"].Size || punched["fields"].Size == ''){
+            var size = '';
+            }else{
+            var size = punched["fields"].Size;
+            }
+            if(punched["fields"].PSize == 'null' || !punched["fields"].PSize || punched["fields"].PSize == ''){
+            var psize = '';
+            }else{
+            var psize = punched["fields"].PSize;
+            }
+            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched["fields"].CusName+'</td><td class="tdpunched">'+dateTimefinal+'</td><td class="tdpunched">'+punched["fields"].productname+'</td><td class="tdpunched">'+punched["fields"].Qty+'</td><td class="tdpunched">'+size+psize+'</td><td class="tdpunched">'+category+'</td><td class="tdpunched">₱'+punched["fields"].Subtotal+'.00</td></tr>';
+            gtotal = gtotal+punched["fields"].Subtotal;
+            };
+            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Grandtotal: </td><td class="tdpunchedspecial">₱'+gtotal+'.00</td></tr>';
+            listtbody.innerHTML = dataHtml;
+        
+//breakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreak
+            var milkteabreakdowntbody = document.getElementById("milkteabreakdowntbody");
+            var dataHtmlbd='';
+            
+            var saletodayMilkteaBD = JSON.parse(data.MilkteaFinalBD);
+            var MilkteaSMALL= saletodayMilkteaBD.milkteaSmallbd;
+            var MilkteaREG= saletodayMilkteaBD.milkteaRegbd;
+            var MilkteaFULL= saletodayMilkteaBD.milkteaFullbd;
+            var MilkteaPRODNAME= saletodayMilkteaBD.milkteaSmallproductnames;
+            if(MilkteaPRODNAME.length == 0){
+            var milkteacard = document.getElementById("milkteacard");
+            milkteacard.style.display = "none";
+            }
+            $('#milkteabreakdowntbody').empty();
+            for (i = 0; i < MilkteaPRODNAME.length; i++) {
+            dataHtmlbd = dataHtmlbd + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+MilkteaPRODNAME[i]+'</td><td class="tdpunchedbd">'+MilkteaSMALL[MilkteaPRODNAME[i]]+'</td><td class="tdpunchedbd" >'+MilkteaREG[MilkteaPRODNAME[i]]+'</td><td class="tdpunchedbd" >'+MilkteaFULL[MilkteaPRODNAME[i]]+'</td></tr>';
+            }
+            milkteabreakdowntbody.innerHTML=dataHtmlbd
+
+//FrappeFrappeFrappeFrappeFrappeFrappeFrappeFrappeFrappeFrappe
+
+
+            var frappebreakdowntbody = document.getElementById("frappebreakdowntbody");
+            var dataHtmlbdfr='';
+            
+            var saletodayFrappeBD = JSON.parse(data.FrappeFinalBD);
+            var FrappeREG= saletodayFrappeBD.frappeRegbd;
+            var FrappeFULL= saletodayFrappeBD.frappeFullbd;
+            var FrappePRODNAME= saletodayFrappeBD.frappeFullproductnames;
+            if(FrappePRODNAME.length == 0){
+            var frappecard = document.getElementById("frappecard");
+            frappecard.style.display = "none";
+            }
+            $('#frappebreakdowntbody').empty();
+            for (i = 0; i < FrappePRODNAME.length; i++) {
+            dataHtmlbdfr = dataHtmlbdfr + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+FrappePRODNAME[i]+'</td><td class="tdpunchedbd" >'+FrappeREG[FrappePRODNAME[i]]+'</td><td class="tdpunchedbd" >'+FrappeFULL[FrappePRODNAME[i]]+'</td></tr>';
+            }
+            frappebreakdowntbody.innerHTML=dataHtmlbdfr
+
+
+//PizzaPizzaPizzaPizzaPizzaPizzaPizzaPizzaPizzaPizza
+
+            var pizzabreakdowntbody = document.getElementById("pizzabreakdowntbody");
+            var dataHtmlbdpizza='';
+            
+            var saletodayPizzaBD = JSON.parse(data.PizzaFinalBD);
+            var PizzaBarkada= saletodayPizzaBD.pizzaBarkadabd;
+            var PizzaPamilya= saletodayPizzaBD.pizzaPamilyabd;
+            var PizzaPRODNAME= saletodayPizzaBD.pizzaPamilyaproductnames;
+            if(PizzaPRODNAME.length == 0){
+            var pizzacard = document.getElementById("pizzacard");
+            pizzacard.style.display = "none";
+            }
+            $('#pizzabreakdowntbody').empty();
+            for (i = 0; i < PizzaPRODNAME.length; i++) {
+            dataHtmlbdpizza = dataHtmlbdpizza + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+PizzaPRODNAME[i]+'</td><td class="tdpunchedbd" >'+PizzaBarkada[PizzaPRODNAME[i]]+'</td><td class="tdpunchedbd" >'+PizzaPamilya[PizzaPRODNAME[i]]+'</td></tr>';
+            }
+            pizzabreakdowntbody.innerHTML=dataHtmlbdpizza
+
+
+
+
+//FreezeFreezeFreezeFreezeFreezeFreezeFreezeFreezeFreeze
+
+            var freezebreakdowntbody = document.getElementById("freezebreakdowntbody");
+            var dataHtmlbdfrz='';
+            
+            var saletodayFreezeBD = JSON.parse(data.FreezeFinalBD);
+            var Freeze= saletodayFreezeBD.frzbd;
+            var FreezePRODNAME= saletodayFreezeBD.frzproductnames;
+            if(FreezePRODNAME.length == 0){
+            var freezecard = document.getElementById("freezecard");
+            freezecard.style.display = "none";
+            }
+            $('#freezebreakdowntbody').empty();
+            for (i = 0; i < FreezePRODNAME.length; i++) {
+            dataHtmlbdfrz = dataHtmlbdfrz + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+FreezePRODNAME[i]+'</td><td class="tdpunchedbd" >'+Freeze[FreezePRODNAME[i]]+'</td></tr>';
+            }
+            freezebreakdowntbody.innerHTML=dataHtmlbdfrz
+
+//CookiesCookiesCookiesCookiesCookiesCookiesCookiesCookiesCookiesCookiesCookies
+
+            var cookiesbreakdowntbody = document.getElementById("cookiesbreakdowntbody");
+            var dataHtmlbdcookies='';
+            
+            var saletodayCookiesBD = JSON.parse(data.CookiesFinalBD);
+            var Cookies= saletodayCookiesBD.cookiesbd;
+            var CookiesPRODNAME = saletodayCookiesBD.cookiesproductnames;
+            if(CookiesPRODNAME.length == 0){
+            var cookiescard = document.getElementById("cookiescard");
+            cookiescard.style.display = "none";
+            }
+            $('#cookiesbreakdowntbody').empty();
+            for (i = 0; i < CookiesPRODNAME.length; i++) {
+            dataHtmlbdcookies = dataHtmlbdcookies + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+CookiesPRODNAME[i]+'</td><td class="tdpunchedbd" >'+Cookies[CookiesPRODNAME[i]]+'</td></tr>';
+            }
+            cookiesbreakdowntbody.innerHTML=dataHtmlbdcookies
+
+
+
+//ShawarmaShawarmaShawarmaShawarmaShawarmaShawarmaShawarmaShawarmaShawarmaShawarma
+
+            var shawarmabreakdowntbody = document.getElementById("shawarmabreakdowntbody");
+            var dataHtmlbdshawarma='';
+            
+            var saletodayShawarmaBD = JSON.parse(data.ShawarmaFinalBD);
+            var Shawarma= saletodayShawarmaBD.shawarmabd;
+            var ShawarmaPRODNAME= saletodayShawarmaBD.shawarmaproductnames;
+            if(ShawarmaPRODNAME.length == 0){
+            var shawarmacard = document.getElementById("shawarmacard");
+            shawarmacard.style.display = "none";
+            }
+            $('#shawarmabreakdowntbody').empty();
+            for (i = 0; i < ShawarmaPRODNAME.length; i++) {
+            dataHtmlbdshawarma = dataHtmlbdshawarma + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+ShawarmaPRODNAME[i]+'</td><td class="tdpunchedbd" >'+Shawarma[ShawarmaPRODNAME[i]]+'</td></tr>';
+            }
+            shawarmabreakdowntbody.innerHTML=dataHtmlbdshawarma
+
+
+//FriesFriesFriesFriesFriesFriesFriesFriesFriesFriesFriesFriesFries
+
+            var friesbreakdowntbody = document.getElementById("friesbreakdowntbody");
+            var dataHtmlbdfries='';
+            
+            var saletodayFriesBD = JSON.parse(data.FriesFinalBD);
+            var Fries= saletodayFriesBD.friesbd;
+            var FriesPRODNAME= saletodayFriesBD.friesproductnames;
+            if(FriesPRODNAME.length == 0){
+            var friescard = document.getElementById("friescard");
+            friescard.style.display = "none";
+            }
+            $('#friesbreakdowntbody').empty();
+            for (i = 0; i < FriesPRODNAME.length; i++) {
+            dataHtmlbdfries = dataHtmlbdfries + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+FriesPRODNAME[i]+'</td><td class="tdpunchedbd" >'+Fries[FriesPRODNAME[i]]+'</td></tr>';
+            }
+            friesbreakdowntbody.innerHTML=dataHtmlbdfries
+
+
+//BubwafBubwafBubwafBubwafBubwafBubwafBubwafBubwafBubwaf
+
+            var bubwafbreakdowntbody = document.getElementById("bubwafbreakdowntbody");
+            var dataHtmlbdbubwaf='';
+            
+            var saletodayBubwafBD = JSON.parse(data.BubwafFinalBD);
+            var Bubwaf= saletodayBubwafBD.bubwafbd;
+            var BubwafPRODNAME= saletodayBubwafBD.bubwafproductnames;
+            if(BubwafPRODNAME.length == 0){
+            var bubwafcard = document.getElementById("bubwafcard");
+            bubwafcard.style.display = "none";
+            }
+            $('#bubwafbreakdowntbody').empty();
+            for (i = 0; i < BubwafPRODNAME.length; i++) {
+            dataHtmlbdbubwaf = dataHtmlbdbubwaf + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+BubwafPRODNAME[i]+'</td><td class="tdpunchedbd" >'+Bubwaf[BubwafPRODNAME[i]]+'</td></tr>';
+            }
+            bubwafbreakdowntbody.innerHTML=dataHtmlbdbubwaf
+
+
+//Add-onsAdd-onsAdd-onsAdd-onsAdd-onsAdd-onsAdd-ons
+
+            var aobreakdowntbody = document.getElementById("aobreakdowntbody");
+            var dataHtmlbdao='';
+            
+            var saletodayAoBD = JSON.parse(data.AoFinalBD);
+            var Ao= saletodayAoBD.aobd;
+            var AoPRODNAME= saletodayAoBD.aoproductnames;
+            if(AoPRODNAME.length == 0){
+            var aocard = document.getElementById("aocard");
+            aocard.style.display = "none";
+            }
+            $('#aobreakdowntbody').empty();
+            for (i = 0; i < AoPRODNAME.length; i++) {
+            dataHtmlbdao = dataHtmlbdao + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+AoPRODNAME[i]+'</td><td class="tdpunchedbd" >'+Ao[AoPRODNAME[i]]+'</td></tr>';
+            }
+            aobreakdowntbody.innerHTML=dataHtmlbdao
+
+
+
+
+
+
+
+        },
+        error: function(){
+
+        alert('Error')
+
+        
+        }
+    });
+
+});
+
+
+</script>
+   
+</body>
+	
+{% endblock head %}
+</html> 

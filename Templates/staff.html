@@ -1,0 +1,2264 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+{% block head %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+background-image:url({% static 'bas.jpg'%});
+ background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+.logintiminbg{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+z-index:10;
+}
+
+
+.logindiv{
+position:relative;
+background-color:white;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:30px;
+width:320px;
+height:auto;
+padding-left:30px;
+padding-top:30px;
+padding-bottom:30px;
+padding-right:30px;
+border: 1px solid rgba(192,192,192, 0.5);
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+border-radius:10px;
+animation: fadeonly 0.5s ease-in;
+}
+.loginhead{
+position:relative;
+border-bottom: 2px solid rgba(192,192,192, 1);
+margin-bottom:10px;
+text-align:center;
+}
+.loginhead h4{
+position:relative;
+left:0px;
+}
+.stafftimeincloseclass {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:fixed;
+    top:5px;
+  right:20px;
+}
+
+.stafftimeincloseclass:hover,
+.stafftimeincloseclass:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.loginbody {
+position:relative;
+width:100%;
+height:400px;
+padding-left:20px;
+padding-top:0px;
+padding-right:20px;
+
+}
+.loginbody input[type="text"]{
+width:100%;
+height:40px;
+padding-left:3px;
+padding-right:3px;
+padding-top:3px;
+font-color:#ccd0d5;
+margin-bottom:10px;
+border: 1px solid #dddfe2;
+}
+
+.loginbody input[type="password"]{
+width:100%;
+height:40px;
+padding-left:3px;
+padding-right:3px;
+padding-top:3px;
+padding-bottom:3px;
+
+font-color:#ccd0d5;
+border: 1px solid #dddfe2;
+}
+#iexclamusername{
+animation: animation-layer-2 5000ms infinite; 
+
+}
+#iexclampassword{
+animation: animation-layer-2 5000ms infinite; 
+
+}
+.loginbody button[id="loginbuttonid"]{
+    position: relative;
+    border: 0px solid #FFBF00;
+    border-radius: 60px;
+    outline: 0;
+    color: black;
+    background-color: #FFBF00;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    margin-top:30px;
+margin-left:auto;
+margin-right:auto;
+}
+.loginbody button[id="loginbuttonid"]:hover{
+
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+.loginfoot{
+display:none;
+position:relative;
+bottom:-20px;
+width:100%;
+height:130px;
+  margin-bottom: 0px;
+  background-color: ;
+  color: white;
+  border-top:0px solid rgba(192,192,192, 0.5);
+  border-bottom:0px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+
+.adminpermissionbg{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+z-index:10;
+}
+.permissiondiv{
+position:relative;
+background-color:white;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:30px;
+width:320px;
+height:auto;
+padding-left:30px;
+padding-top:30px;
+padding-bottom:30px;
+padding-right:30px;
+border: 1px solid rgba(192,192,192, 0.5);
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+border-radius:10px;
+animation: fadeonly 0.5s ease-in;
+}
+.permissionhead{
+position:relative;
+border-bottom: 2px solid rgba(192,192,192, 1);
+margin-bottom:10px;
+text-align:center;
+}
+.permissionhead h4{
+position:relative;
+left:0px;
+}
+
+.permissionbody {
+position:relative;
+width:100%;
+height:400px;
+padding-left:20px;
+padding-top:0px;
+padding-right:20px;
+
+}
+.permissionbody input[type="text"]{
+width:100%;
+height:40px;
+padding-left:3px;
+padding-right:3px;
+padding-top:3px;
+font-color:#ccd0d5;
+margin-bottom:10px;
+border: 1px solid #dddfe2;
+}
+
+.permissionbody input[type="password"]{
+width:100%;
+height:40px;
+padding-left:3px;
+padding-right:3px;
+padding-top:3px;
+padding-bottom:3px;
+
+font-color:#ccd0d5;
+border: 1px solid #dddfe2;
+}
+
+.permissionbody button[id="permissionbuttonid"]{
+    position: relative;
+    border: 0px solid #FFBF00;
+    border-radius: 60px;
+    outline: 0;
+    color: black;
+    background-color: #FFBF00;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    margin-top:30px;
+margin-left:auto;
+margin-right:auto;
+}
+.permissionbody button[id="permissionbuttonid"]:hover{
+
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+.permissionfoot{
+display:none;
+position:relative;
+bottom:-20px;
+width:100%;
+height:130px;
+  margin-bottom: 0px;
+  background-color: ;
+  color: white;
+  border-top:0px solid rgba(192,192,192, 0.5);
+  border-bottom:0px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+
+.inputASLbg{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+z-index:10;
+}
+.inputASLdiv{
+position:relative;
+background-color:white;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:30px;
+width:320px;
+height:auto;
+padding-left:30px;
+padding-top:30px;
+padding-bottom:30px;
+padding-right:30px;
+border: 1px solid rgba(192,192,192, 0.5);
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+border-radius:10px;
+animation: fadeonly 0.5s ease-in;
+
+}
+.inputASLhead{
+position:relative;
+border-bottom: 2px solid rgba(192,192,192, 1);
+margin-bottom:10px;
+text-align:center;
+}
+.inputASLhead h4{
+position:relative;
+left:0px;
+}
+
+.inputASLbody {
+position:relative;
+width:100%;
+height:400px;
+padding-left:20px;
+padding-top:0px;
+padding-right:20px;
+
+}
+.inputASLbody input[type="number"]{
+width:100%;
+height:40px;
+padding-left:3px;
+padding-right:3px;
+padding-top:3px;
+font-color:#ccd0d5;
+margin-bottom:10px;
+border: 1px solid #dddfe2;
+}
+
+
+.inputASLbody button[id="inputASLbuttonid"]{
+    position: relative;
+    border: 0px solid #FFBF00;
+    border-radius: 60px;
+    outline: 0;
+    color: black;
+    background-color: #FFBF00;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    margin-top:30px;
+margin-left:auto;
+margin-right:auto;
+}
+.inputASLbody button[id="inputASLbuttonid"]:hover{
+
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+.inputASLfoot{
+display:none;
+position:relative;
+bottom:-20px;
+width:100%;
+height:130px;
+  margin-bottom: 0px;
+  background-color: ;
+  color: white;
+  border-top:0px solid rgba(192,192,192, 0.5);
+  border-bottom:0px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+border: 2px solid #615632;
+border-radius:10px;
+position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+color:white;
+}
+
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+
+    } 
+    .thpunchedbd{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:13px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:#A0A0A0;
+    padding:16px;
+    text-align:center;
+    }
+    .tdpunchedbd{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:13px;
+    color:#A0A0A0;
+    padding:10px;
+      text-align: center;
+    }
+        .tdpunchedspecial{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    
+    
+    }
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.navbarbutton {
+    position:absolute;
+    left:1%;
+    top:2%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:100px;
+    position:absolute;
+    left:650px;
+    top:0px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:830px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.startdutybuttonclass{
+width:200px;
+height:auto;
+margin-left:auto;
+margin-right:auto;
+position:relative;
+margin-bottom:10px;
+background-color:;
+}
+.prodbutduty{
+    background-color: rgba(249, 216, 105,0);
+    height:30px;
+    width:200px;
+    position:relative;
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ border-radius:15px;
+    border-color:rgb(249, 216, 105);
+
+    
+}
+.prodbutduty:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+
+
+
+/* Style the tab */
+.tab {
+  padding-left:38%;
+  position:absolute;
+  width:1900px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:230px;
+  width:1893px;
+  height:auto;
+  background-color:#2d2c29;
+
+}
+
+/* TABLE */
+.tablecontainer{
+position:relative;
+overflow:auto;
+ width:1850px;
+  height:615px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+      height:auto;
+          margin-left:auto
+    margin-right:auto;
+    position:relative;
+  }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+
+
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99.5%;
+height:99.2%;
+z-index:-1;
+}
+@media screen and (min-width: 801px) and (max-width: 960px) {
+
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+border: 2px solid #615632;
+border-radius:10px;
+position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:#A0A0A0;
+    text-align:center;
+    
+    
+    } 
+    .thpunchedbd{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:13px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+    } 
+    .tdpunched{
+        text-align:center;
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:#A0A0A0;
+    
+    
+    }
+    .tdpunchedbd{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:13px;
+    color:#A0A0A0;
+    padding:10px;
+      text-align: center;
+    }
+        .tdpunchedspecial{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    
+    
+    }
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:400px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.startdutybuttonclass{
+width:200px;
+height:auto;
+margin-left:auto;
+margin-right:auto;
+position:relative;
+margin-bottom:10px;
+background-color:;
+}
+.prodbutduty{
+    background-color: rgba(249, 216, 105,0);
+    height:30px;
+    width:200px;
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ border-radius:15px;
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbutduty:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:400px;
+  width:930px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:150px;
+  height:auto;
+  width:920px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+position:relative;
+overflow:auto;
+ width:890px;
+  height:300px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+      height:auto;
+    margin-left:auto
+    margin-right:auto;
+        position:relative;
+  }
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+@media screen and (max-width: 800px) and (min-width: 361px){
+
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+border: 2px solid #615632;
+border-radius:10px;
+position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:#A0A0A0;
+    text-align:center;
+    
+    
+    } 
+        .thpunchedbd{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:13px;
+    font-weight:bold;
+  color:white;
+    text-align:center;
+    } 
+    .tdpunched{
+        text-align:center;
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:#A0A0A0;
+    
+    
+    }
+    .tdpunchedbd{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:13px;
+    color:#A0A0A0;
+    padding:10px;
+      text-align: center;
+    }
+        .tdpunchedspecial{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    
+    
+    }
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:300px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.startdutybuttonclass{
+width:200px;
+height:auto;
+margin-left:auto;
+margin-right:auto;
+position:relative;
+margin-bottom:10px;
+}
+.prodbutduty{
+    background-color: rgba(249, 216, 105,0);
+    height:30px;
+    width:200px;
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ border-radius:15px;
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbutduty:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:250px;
+  width:535px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:auto;
+  width:760px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:760px;
+  height:150px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+      height:auto;
+    margin-left:auto
+    margin-right:auto;
+        position:relative;
+  }
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+@media screen and (max-width: 360px){
+
+/* cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height:auto;
+  background-color:#2d2c29;
+  margin-top:20px;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-family: arial;
+  border-radius:10px;
+  position:relative;
+}
+
+.price {
+  color: grey;
+  font-size: 17px;
+}
+.priceth{
+  color: grey;
+  font-size: 17px;
+  text-align:center;
+}
+
+.h3div{
+position:relative;
+width:100%;
+background-color:;
+}
+
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:300px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.startdutybuttonclass{
+width:200px;
+height:auto;
+margin-left:auto;
+margin-right:auto;
+position:relative;
+margin-bottom:10px;
+}
+.prodbutduty{
+    background-color: rgba(249, 216, 105,0);
+    height:30px;
+    width:200px;
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ border-radius:15px;
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbutduty:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:250px;
+  width:755px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:auto;
+  width:760px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:730px;
+  height:1400px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+  position:relative;
+  overflow:auto;
+  width:730px;
+  height:auto;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-left:auto
+    margin-right:auto;
+
+  }
+
+
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+</style>
+</head>
+
+
+  <h8 class="punchedtexttitle">Staff</h8>
+<div class="tab" >
+  <button class="tablinks prodbut" onclick="openCity(event, 'Staff')">Timesheet</button>
+
+</div>
+
+<div id="Staff" class="tabcontent" style="display:block;">
+
+  <h8 class="punchedtext">Timesheet</h8>
+  <div class="startdutybuttonclass">
+  <button type="button" id="startdutybuttonid" value="startduty" name="startdutybuttonname" class="prodbutduty" onclick="magdudutyna()">Start Duty</button>
+  <button type="button" id="aslbuttonid" value="asl" name="aslbuttonname" class="prodbutduty" onclick="asl()">Advance Salary Loan</button>
+  </div>
+  <div class="tablecontainer">
+  <table style="border:transparent;">
+  <tr style="z-index:100;position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th class="thpunched">Date</th>
+    <th class="thpunched">Day</th>
+    <th class="thpunched">Staff Name</th>
+    <th class="thpunched">Time-in</th>
+    <th class="thpunched">Time-out</th>
+    <th class="thpunched">Total hrs</th>
+    <th class="thpunched">Picture</th>
+    <th class="thpunched">Sales</th>
+    <th class="thpunched">Initial Salary</th>
+    <th class="thpunched">ASL Balance</th>
+    <th class="thpunched">Final Salary</th>
+  </tr>
+
+  <tbody id="timesheetbodyid"></tbody>
+
+</table>
+</div>
+
+</div>
+
+<div class="logintiminbg" id="logintiminbgid">
+    <div class="logindiv">
+        <div class="loginhead">
+            <span onclick="stafftimeinclose()" class="stafftimeincloseclass" >&times;</span>
+        <h4>Staff Time-in Account</h4>
+        </div>
+        <div class="loginbody">
+<form id="ajaxs" method="POST" action="">
+{% csrf_token %}
+    <input  type="text" oninput="usernamecorrected()" id="usernameid" class="usernameclass" name="usernameusername" placeholder="Username"></input><small id="errorusername"></small><br>
+    <input type="password" oninput="passwordcorrected()" id="passwordid" class="passwordclass" name="passwordusername" placeholder="Password"></input><small id="errorpassword"></small><br>
+    <br>
+    <input type="file" id="imageid" name="imagename" placeholder="Take Photo" accept="image/*" capture="user"></input>
+    
+    <button type="button" onclick="loginuser()" id="loginbuttonid" value="Loginvalue" name="loginbuttonusername" >Start Duty Now</button>
+    </form>
+
+        </div>
+        <div class="loginfoot">
+        </div>
+    </div>
+</div>
+
+
+<div class="adminpermissionbg" id="adminpermissionbgid">
+    <div class="permissiondiv">
+        <div class="permissionhead">
+            <span onclick="admintimeinclose()" class="stafftimeincloseclass" >&times;</span>
+        <h4>Admin Permission</h4>
+        </div>
+        <div class="permissionbody">
+<form id="ajaxsadmin" method="POST" action="">
+{% csrf_token %}
+    <input  type="text" oninput="usernameadmincorrected()" id="usernameadminid" class="usernameadminclass" name="usernameadminname" placeholder="Username"></input><small id="erroradminusername"></small><br>
+    <input type="password" oninput="passwordadmincorrected()" id="passwordadminid" class="passwordadminclass" name="passwordadminname" placeholder="Password"></input><small id="erroradminpassword"></small><br>
+    <br>
+    <button type="button" onclick="permissionuser()" id="permissionbuttonid" value="Permissionvalue" name="permissionbuttonname" >Confirm</button>
+    </form>
+
+        </div>
+        <div class="permissionfoot">
+        </div>
+    </div>
+</div>
+
+<div class="inputASLbg" id="inputASLbgid">
+    <div class="inputASLdiv">
+        <div class="inputASLbghead">
+            <span onclick="inputASLbgclose()" class="stafftimeincloseclass" >&times;</span>
+        <h4>Input Advance Salary Loan Amount</h4>
+        </div>
+        <div class="inputASLbody">
+
+    <input  type="Number" id="inputASLinputid" class="inputASLclass" name="inputASLname" placeholder="Input Advance Salary Loan Amount"></input><br>
+    <br>
+    <button type="button" onclick="inputASLuser(document.getElementById('inputASLinputid').value)" id="inputASLbuttonid" value="inputASLvalue" name="inputASLbuttonname" >Confirm</button>
+
+        </div>
+        <div class="inputASLfoot">
+        </div>
+    </div>
+</div>
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+
+
+$(document).ready(function(){
+
+        $.ajax({
+        type:'POST',
+        url:"{% url 'staff.html' %}",
+        data:{
+        "timeinfirst":"timeinfirst", 
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function(data){
+        var timesheetbodyid =   document.getElementById("timesheetbodyid");
+        var timesheetnew = JSON.parse(data.timesheets)
+        var removeappearbuttons = JSON.parse(data.removeappearbutton)
+        var startdutybuttonid = document.getElementById("startdutybuttonid");
+        var aslbuttonid = document.getElementById("aslbuttonid");
+        if(removeappearbuttons == 'removebutton'){
+        startdutybuttonid.style.display = 'none';
+        aslbuttonid.style.display = 'block';
+
+        }else if (removeappearbuttons == 'appearbutton'){
+        startdutybuttonid.style.display = 'block';
+        aslbuttonid.style.display = 'none';
+        }
+        var dataHTML='';
+        var salarythismonthtotal=0;
+            $('#timesheetbodyid').empty();
+
+            for (let punched of timesheetnew) {
+                if(punched["fields"].DateTime.substr(5, 2)=='01'){
+                var month = 'January'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='02'){
+                var month = 'February'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='03'){
+                var month = 'March'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='04'){
+                var month = 'April'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='05'){
+                var month = 'May'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='06'){
+                var month = 'June'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='07'){
+                var month = 'July'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='08'){
+                var month = 'August'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='09'){
+                var month = 'September'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='10'){
+                var month = 'October'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='11'){
+                var month = 'November'
+                }else if(punched["fields"].DateTime.substr(5, 2)=='12'){
+                var month = 'December'
+                }
+
+                var Totalminshr=parseInt(punched["fields"].Totalmins)/60
+                var Totalminsmins=parseInt(punched["fields"].Totalmins) % 60
+                var Totalminsfinal=(Totalminshr.toString())[0]+' hrs and '+Totalminsmins.toString()+' mins'
+                var finaldate=month+' '+punched["fields"].DateTime.substr(8, 2)+', '+punched["fields"].DateTime.substr(0, 4)
+                dataHTML = dataHTML + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd">'+finaldate+'</td><td class="tdpunchedbd" >'+punched["fields"].Day+'</td><td class="tdpunchedbd" >'+punched["fields"].Employeename+'</td><td class="tdpunchedbd" >'+punched["fields"].Timein+'</td><td class="tdpunchedbd" >'+punched["fields"].Timeout+'</td><td class="tdpunchedbd" >'+Totalminsfinal+'</td><td class="tdpunchedbd" ><img src="/media/'+punched["fields"].Productimg+'" style="width:100px;"></img></td><td class="tdpunchedbd" >₱'+punched["fields"].Sales+'.00</td><td class="tdpunchedbd" >₱'+punched["fields"].ISalary+'.00 </td><td class="tdpunchedbd" >₱'+punched["fields"].ASLbalance+'.00 </td><td class="tdpunchedbd" >₱'+punched["fields"].FSalary+'.00 </td></tr>';
+                salarythismonthtotal=salarythismonthtotal+punched["fields"].FSalary
+                }
+                dataHTML = dataHTML + '<tr class="trpunchedtablebd" ><td class="tdpunchedbd"></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" ></td><td class="tdpunchedbd" >Salary Total: </td><td class="tdpunchedbd" >₱'+salarythismonthtotal+'.00 </td></tr>'
+                timesheetbodyid.innerHTML=dataHTML;
+            
+        },
+        error: function(){
+
+        alert('Error')
+
+        
+        }
+    });
+
+});
+function magdudutyna(){
+var logintiminbgid = document.getElementById('logintiminbgid');
+logintiminbgid.style.display = 'flex';
+}
+function asl(){
+var adminpermissionbgid = document.getElementById('adminpermissionbgid');
+adminpermissionbgid.style.display = 'flex';
+}
+function stafftimeinclose(){
+var logintiminbgid = document.getElementById('logintiminbgid');
+logintiminbgid.style.display = 'none';
+}
+function admintimeinclose(){
+var adminpermissionbgid = document.getElementById('adminpermissionbgid');
+adminpermissionbgid.style.display = 'none';
+}
+function inputASLbgclose(){
+var inputASLbg = document.getElementById('inputASLbgid');
+inputASLbg.style.display = 'none';
+}
+function usernamecorrected(){
+var username = document.getElementById('usernameid');
+var errorpassword = document.getElementById('errorpassword');
+var errorusername = document.getElementById('errorusername');
+username.style.border = "";
+
+errorusername.innerHTML = "";
+username.style.marginBottom = "10px";
+}
+
+function passwordcorrected(){
+
+var password = document.getElementById('passwordid');
+var errorpassword = document.getElementById('errorpassword');
+
+password.style.border = "";
+
+errorpassword.innerHTML = "";
+password.style.marginBottom = "10px";
+
+}
+
+function usernameadmincorrected(){
+var username = document.getElementById('usernameadminid');
+var errorpassword = document.getElementById('erroradminpassword');
+var errorusername = document.getElementById('erroradminusername');
+username.style.border = "";
+
+errorusername.innerHTML = "";
+username.style.marginBottom = "10px";
+}
+
+function passwordadmincorrected(){
+
+var password = document.getElementById('passwordadminid');
+var errorpassword = document.getElementById('erroradminpassword');
+
+password.style.border = "";
+
+errorpassword.innerHTML = "";
+password.style.marginBottom = "10px";
+        
+}
+function loginuser(event){
+var username = document.getElementById('usernameid');
+var password = document.getElementById('passwordid');
+var image = document.getElementById('imageid');
+var errorpassword = document.getElementById('errorpassword');
+var errorusername = document.getElementById('errorusername');
+if(!username.value && !password.value){
+        username.value="";
+        password.value="";
+        username.style.border = "1px solid #FF0000";
+        password.style.border = "1px solid #FF0000";
+        username.style.marginBottom = "0px";
+        errorusername.innerHTML = "<small style='color:red;margin-bottom:10px;'>Username is empty!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is empty!  <i id='iexclampassword' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+}else if(!username.value && password.value){
+        username.style.border = "1px solid #FF0000";
+        username.style.marginBottom = "0px";
+        errorusername.innerHTML = "<small style='color:red;margin-bottom:10px;'>Username is empty!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        
+}else if(username.value && !password.value){
+
+        password.style.border = "1px solid #FF0000";
+        password.style.marginBottom = "0px";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is empty!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        
+}else if(username.value && password.value){
+
+submitter(event)
+}
+}
+function submitter(event){
+
+var datas = new FormData($('#ajaxs').get(0));
+
+        $.ajax({
+        type:'POST',
+        url:"{% url 'staff.html' %}",
+        data:datas,
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        contentType: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        success: function(reload){
+        var reloadresult=reload.reload;
+        
+        if(reloadresult == 'success'){
+        window.location.reload();
+        }else if(reloadresult=='usernamecheckfalse'){
+        var username = document.getElementById('usernameid');
+        var password = document.getElementById('passwordid');
+
+        var errorpassword = document.getElementById('errorpassword');
+        var errorusername = document.getElementById('errorusername');
+        username.value="";
+        password.value="";
+        username.style.border = "1px solid #FF0000";
+        password.style.border = "1px solid #FF0000";
+        username.style.marginBottom = "0px";
+        errorusername.innerHTML = "<small style='color:red;margin-bottom:10px;'>Username is invalid!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is invalid!  <i id='iexclampassword' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        }else if(reloadresult=='usernamechecktrue'){
+        var username = document.getElementById('usernameid');
+        var password = document.getElementById('passwordid');
+
+        var errorpassword = document.getElementById('errorpassword');
+        var errorusername = document.getElementById('errorusername');
+        password.value="";
+        password.style.border = "1px solid #FF0000";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is invalid!  <i id='iexclampassword' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        }
+
+        },
+        error: function(reload){
+
+        alert('Error')
+
+        
+        }
+    });
+
+}
+
+function permissionuser(event){
+var username = document.getElementById('usernameadminid');
+var password = document.getElementById('passwordadminid');
+var errorpassword = document.getElementById('erroradminpassword');
+var errorusername = document.getElementById('erroradminusername');
+if(!username.value && !password.value){
+        username.value="";
+        password.value="";
+        username.style.border = "1px solid #FF0000";
+        password.style.border = "1px solid #FF0000";
+        username.style.marginBottom = "0px";
+        errorusername.innerHTML = "<small style='color:red;margin-bottom:10px;'>Username is empty!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is empty!  <i id='iexclampassword' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+}else if(!username.value && password.value){
+        username.style.border = "1px solid #FF0000";
+        username.style.marginBottom = "0px";
+        errorusername.innerHTML = "<small style='color:red;margin-bottom:10px;'>Username is empty!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        
+}else if(username.value && !password.value){
+
+        password.style.border = "1px solid #FF0000";
+        password.style.marginBottom = "0px";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is empty!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        
+}else if(username.value && password.value){
+
+submitterpermission(event)
+}
+}
+function submitterpermission(event){
+
+var datass = new FormData($('#ajaxsadmin').get(0));
+
+        $.ajax({
+        type:'POST',
+        url:"{% url 'staff.html' %}",
+        data:datass,
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        contentType: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        success: function(reload){
+        var reloadresult=reload.reload;
+        
+        if(reloadresult == 'success'){
+        var adminpermissionbgid = document.getElementById('adminpermissionbgid');
+        adminpermissionbgid.style.display = 'none';
+        var inputASLbgid = document.getElementById('inputASLbgid');
+        inputASLbgid.style.display = 'flex';
+
+
+        }else if(reloadresult=='usernamecheckfalse'){
+        var username = document.getElementById('usernameid');
+        var password = document.getElementById('passwordid');
+
+        var errorpassword = document.getElementById('errorpassword');
+        var errorusername = document.getElementById('errorusername');
+        username.value="";
+        password.value="";
+        username.style.border = "1px solid #FF0000";
+        password.style.border = "1px solid #FF0000";
+        username.style.marginBottom = "0px";
+        errorusername.innerHTML = "<small style='color:red;margin-bottom:10px;'>Username is invalid!  <i id='iexclamusername' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is invalid!  <i id='iexclampassword' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        }else if(reloadresult=='usernamechecktrue'){
+        var username = document.getElementById('usernameid');
+        var password = document.getElementById('passwordid');
+
+        var errorpassword = document.getElementById('errorpassword');
+        var errorusername = document.getElementById('errorusername');
+        password.value="";
+        password.style.border = "1px solid #FF0000";
+        errorpassword.innerHTML = "<small style='color:red;margin-bottom:10px;'>Password is invalid!  <i id='iexclampassword' style='color:red;' class='fa fa-exclamation-circle' aria-hidden='true'></i></small>";
+        }
+
+        },
+        error: function(reload){
+
+        alert('Error')
+
+        
+        }
+    });
+
+}
+
+function inputASLuser(ASLvalue){
+        $.ajax({
+        type:'POST',
+        url:"{% url 'staff.html' %}",
+        data:{
+        'inputASL':ASLvalue,
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        },
+        
+        success: function(reload){
+        var reloadresult=reload.reload;
+        
+        if(reloadresult == 'success'){
+
+        window.location.reload();
+
+
+        }
+
+        },
+        error: function(reload){
+
+        alert('Error')
+
+        
+        }
+    });
+
+}
+</script>
+   
+</body>
+	
+{% endblock head %}
+</html> 

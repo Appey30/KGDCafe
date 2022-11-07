@@ -1,0 +1,2033 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" media="all">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+    <title>KGD E-Cafe</title>
+
+</head>
+
+<body style="background-color:#131312;">
+
+
+<img src="{% static 'qw1.png' %}"
+class="background"
+>
+</img>
+
+
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="saletoday">Sales Today</a>
+  <a href="kgddashboard">Dashboard</a>
+  <a href="products">Products</a>
+  <a href="pos">Point of Sale</a>
+  <a href="inventory">Inventory</a>
+  <a href="StocksandExp">Stock and Expenses</a>
+  <a href="Stocksorder">Stocks Order</a>
+  <a href="staff">Staff</a>
+      {% if userr == 4 %}
+  <a href="Stocksorderadmin">Stocks Order Admin</a>
+  {% endif %}
+</div>
+
+
+
+<div style="display:none;">
+
+<a style="text-decoration: none;color:red;" href="Stocksorder"><i class='fas fa-exclamation-circle' style='position:absolute;right:120px;font-size:48px;color:red'></i></a>
+
+<h8 style="color:red;position:absolute;right:40px;top:80px;"><a style="text-decoration: none;color:red;" href="Stocksorder">Franchisee has ordered stocks</a></h8>
+</div>
+<div id="main">
+
+  <button class="navbarbutton" onclick="openNav()">☰ Open Sidebar</button>  
+
+
+</div>
+<style>
+@media screen and (min-width: 1200px){
+.bell .material-icons { 
+  /* font-size:12rem !important; */
+  /* font-size:36px !important; */
+  font-size:80px !important;
+}
+
+
+
+
+.bell .anchor {
+  transform-origin:center top;
+  display:inline-block;
+  margin:0;
+  padding:0;  
+  position:relative;
+  right:0px;
+  height:20px;
+}
+.layer-1{
+position:relative;
+top:0px;
+}
+.layer-2{
+position:relative;
+top:-20px;
+}
+.layer-3{
+position:relative;
+top:-40px;
+}
+.bell .layer-1 {
+  color:#ffbf00;
+  z-index:9;
+  opacity:0;  
+}
+
+.bell .layer-2 {
+  color:#ffbf00;
+  z-index:8;
+
+}
+
+.bell .layer-3 {
+  color:#826100;
+  z-index:7;
+}
+
+@keyframes animation-layer-1 {
+  0% { transform: rotate(0deg);opacity:0; }
+  8.0% { transform: rotate(0deg);opacity:0; }
+  12.0% { transform: rotate(42deg);opacity:.5; }
+  16.0% { transform: rotate(-35deg);opacity:.4; }
+  20.0% { transform: rotate(0deg);opacity:.1; }
+  23.0% { transform: rotate(28deg);opacity:.3; }
+  26.0% { transform: rotate(-20deg);opacity:.2; }
+  29.0% { transform: rotate(0deg);opacity:.1; }
+  31.0% { transform: rotate(16deg);opacity:0; }
+  33.0% { transform: rotate(-12deg);opacity:0; }
+  35.0% { transform: rotate(0deg);opacity:0; }  
+  37.0% { transform: rotate(-6deg);opacity:0; }
+  39.0% { transform: rotate(0deg);opacity:0; }
+}
+
+@keyframes animation-layer-2 {
+  0% { transform: rotate(0deg); }
+  8.0% { transform: rotate(0deg); }
+  12.0% { transform: rotate(42deg); }
+  16.0% { transform: rotate(-35deg); }
+  20.0% { transform: rotate(0deg); }
+  23.0% { transform: rotate(28deg); }
+  26.0% { transform: rotate(-20deg); }
+  29.0% { transform: rotate(0deg); }
+  31.0% { transform: rotate(16deg); }
+  33.0% { transform: rotate(-12deg); }
+  35.0% { transform: rotate(0deg); }  
+  37.0% { transform: rotate(-6deg); }
+  39.0% { transform: rotate(0deg); }
+  40.0% { transform: rotate(6deg); }
+  44.0% { transform: rotate(-3deg); }
+  49.0% { transform: rotate(2deg);}
+  55.0% { transform: rotate(0deg); }
+  62.0% { transform: rotate(1deg); }
+  70.0% { transform: rotate(0deg); }  
+}
+
+@keyframes animation-layer-3 {
+  0% { transform: rotate(0deg);opacity:1; }
+  8.0% { transform: rotate(0deg);opacity:1; }
+  12.0% { transform: rotate(52deg);opacity:.5; }
+  16.0% { transform: rotate(-48deg);opacity:.4; }
+  20.0% { transform: rotate(0deg);opacity:1; }
+  23.0% { transform: rotate(42deg);opacity:.3; }
+  26.0% { transform: rotate(-30deg);opacity:.2; }
+  29.0% { transform: rotate(0deg);opacity:1; }
+  31.0% { transform: rotate(26deg);opacity:.15; }
+  33.0% { transform: rotate(-18deg);opacity:.1; }
+  35.0% { transform: rotate(0deg);opacity:1; }  
+  37.0% { transform: rotate(-12deg);opacity:.8; }
+  40.0% { transform: rotate(6deg);opacity:1; }
+  44.0% { transform: rotate(-3deg);opacity:.8; }
+  49.0% { transform: rotate(2deg);opacity:1; }
+  55.0% { transform: rotate(0deg);opacity:1; }
+  62.0% { transform: rotate(1deg);opacity:1; }
+  70.0% { transform: rotate(0deg);opacity:1; }
+}
+
+.notify{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+.hide{
+display: none;
+width:20%;
+}
+.notify:hover + .hide {
+  display: block;
+
+}
+.notifyadmin{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+
+.hideadmin{
+display: none;
+width:20%;
+}
+.notifyadmin:hover + .hideadmin {
+  display: block;
+
+}
+.notificationbell{
+position:absolute;
+top:0px;
+right:400px;
+height:0px;
+width:30px;
+text-align:justify;
+z-index:6;
+cursor:pointer;
+background-color:;
+}
+.notbell{
+position:absolute;
+right:600px;
+top:20px;font-size:48px;
+color:#ffbf00;
+cursor:pointer;
+}
+.circlenotbell{
+position:relative;
+left:40px;
+top:-50px;
+font-size:30px;
+color:red;
+cursor:pointer;
+display:none;
+z-index:100;
+
+}
+.notificationbellcounter{
+color:white;
+z-index:101;
+font-weight:bold;
+position:relative;
+left:47.5px;
+top:-75px;
+display:none;
+}
+
+.animationlayer1{
+animation: animation-layer-1 5000ms infinite; 
+}
+
+.animationlayer2{
+animation: animation-layer-2 5000ms infinite; 
+}
+
+.animationlayer3{
+animation: animation-layer-3 5000ms infinite; 
+}
+.notifcontentbg{
+position:absolute;
+width:100%;
+height:120%;
+background-color:rgba(0,0,0,0.8);
+z-index:5;
+top:0px;
+display:none;
+}
+
+.notifcontent{
+border: 2px solid #615632;
+border-radius: 15px;
+width:1880px;
+height:450px;
+position:absolute;
+right:10px;
+top:130px;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:20px;
+overflow:auto;
+
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.trbutton{
+background-color:transparent;
+border-bottom: 2px solid #615632;
+}
+
+.prodbutbase{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:7.5px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:70px;
+
+}
+.prodbutbase:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
+.focusbutton{
+    color:black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+.punchedtextbase{
+    font-size: 18px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.punchedtextbasetitle{
+    font-size: 25px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.thqueuebase{
+width:120.8px;
+position:relative;
+font-size:10px;
+color:#A0A0A0;
+} 
+.tdqueuebase{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+}
+.tdspecial{
+width:203px;
+}
+.queuetablebasediv{
+margin-left: auto;
+margin-right: auto;
+width:100%;
+margin-collapse:collapse;
+text-align: center;
+height:90%;
+overflow:auto;
+background-color:;
+}
+.queuetablebase{
+position:relative;
+margin-left: auto;
+margin-right: auto;
+width:100%;
+margin-collapse:collapse;
+text-align: center;
+}
+.showorders{
+border: 2px solid #615632;
+border-radius: 15px;
+width:650px;
+height:500px;
+position:absolute;
+left:20px;
+top:80px;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:10px;
+padding-bottom:50px;
+overflow:auto;
+display:none;
+text-align:center;
+}
+.trpunchedtablebase{
+border-bottom: 2px solid #615632;
+}
+.punchedtablebase{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:600px;
+text-align:center;
+}
+
+.showordertitlename{
+font-size: 30px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+}
+.contactnummmclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+.landmarknotessssclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+.billllssssclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+.tabbase {
+  padding-left:650px;
+  padding-top:5px;
+width:1880px;
+  height:40px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  right:10px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tabbase button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 15px;
+    color: rgb(252, 220, 109);
+    display:inline-block;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+    width:200px;
+    border-radius:60px;
+}
+.formbut{
+position:relative;
+top:10px;
+left:-50px;
+width:;
+height:;
+}
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tabbase button:hover {
+    cursor:pointer;
+    color: black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tabbase button.activebase {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+.custom-select{
+background-color:transparent;
+width:200px;
+}
+.custom-select select{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:200px;
+height:30px;
+font-size:15px;
+position:relative;
+}
+.ETAdiv{
+background-color:transparent;
+}
+.ETAdiv input{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:100px;
+height:30px;
+font-size:15px;
+position:relative;
+}
+.formpost{
+position:relative;
+left:260px;
+top:0px;
+width:0px;
+height:0px;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+.bell .material-icons { 
+  /* font-size:12rem !important; */
+  /* font-size:36px !important; */
+  font-size:80px !important;
+}
+
+
+
+
+.bell .anchor {
+  transform-origin:center top;
+  display:inline-block;
+  margin:0;
+  padding:0;  
+  position:relative;
+  right:0px;
+  height:20px;
+}
+.layer-1{
+position:relative;
+top:0px;
+}
+.layer-2{
+position:relative;
+top:-20px;
+}
+.layer-3{
+position:relative;
+top:-40px;
+}
+.bell .layer-1 {
+  color:#ffbf00;
+  z-index:9;
+  opacity:0;  
+}
+
+.bell .layer-2 {
+  color:#ffbf00;
+  z-index:8;
+
+}
+
+.bell .layer-3 {
+  color:#826100;
+  z-index:7;
+}
+
+@keyframes animation-layer-1 {
+  0% { transform: rotate(0deg);opacity:0; }
+  8.0% { transform: rotate(0deg);opacity:0; }
+  12.0% { transform: rotate(42deg);opacity:.5; }
+  16.0% { transform: rotate(-35deg);opacity:.4; }
+  20.0% { transform: rotate(0deg);opacity:.1; }
+  23.0% { transform: rotate(28deg);opacity:.3; }
+  26.0% { transform: rotate(-20deg);opacity:.2; }
+  29.0% { transform: rotate(0deg);opacity:.1; }
+  31.0% { transform: rotate(16deg);opacity:0; }
+  33.0% { transform: rotate(-12deg);opacity:0; }
+  35.0% { transform: rotate(0deg);opacity:0; }  
+  37.0% { transform: rotate(-6deg);opacity:0; }
+  39.0% { transform: rotate(0deg);opacity:0; }
+}
+
+@keyframes animation-layer-2 {
+  0% { transform: rotate(0deg); }
+  8.0% { transform: rotate(0deg); }
+  12.0% { transform: rotate(42deg); }
+  16.0% { transform: rotate(-35deg); }
+  20.0% { transform: rotate(0deg); }
+  23.0% { transform: rotate(28deg); }
+  26.0% { transform: rotate(-20deg); }
+  29.0% { transform: rotate(0deg); }
+  31.0% { transform: rotate(16deg); }
+  33.0% { transform: rotate(-12deg); }
+  35.0% { transform: rotate(0deg); }  
+  37.0% { transform: rotate(-6deg); }
+  39.0% { transform: rotate(0deg); }
+  40.0% { transform: rotate(6deg); }
+  44.0% { transform: rotate(-3deg); }
+  49.0% { transform: rotate(2deg);}
+  55.0% { transform: rotate(0deg); }
+  62.0% { transform: rotate(1deg); }
+  70.0% { transform: rotate(0deg); }  
+}
+
+@keyframes animation-layer-3 {
+  0% { transform: rotate(0deg);opacity:1; }
+  8.0% { transform: rotate(0deg);opacity:1; }
+  12.0% { transform: rotate(52deg);opacity:.5; }
+  16.0% { transform: rotate(-48deg);opacity:.4; }
+  20.0% { transform: rotate(0deg);opacity:1; }
+  23.0% { transform: rotate(42deg);opacity:.3; }
+  26.0% { transform: rotate(-30deg);opacity:.2; }
+  29.0% { transform: rotate(0deg);opacity:1; }
+  31.0% { transform: rotate(26deg);opacity:.15; }
+  33.0% { transform: rotate(-18deg);opacity:.1; }
+  35.0% { transform: rotate(0deg);opacity:1; }  
+  37.0% { transform: rotate(-12deg);opacity:.8; }
+  40.0% { transform: rotate(6deg);opacity:1; }
+  44.0% { transform: rotate(-3deg);opacity:.8; }
+  49.0% { transform: rotate(2deg);opacity:1; }
+  55.0% { transform: rotate(0deg);opacity:1; }
+  62.0% { transform: rotate(1deg);opacity:1; }
+  70.0% { transform: rotate(0deg);opacity:1; }
+}
+
+.notify{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+.hide{
+display: none;
+width:20%;
+}
+.notify:hover + .hide {
+  display: block;
+
+}
+.notifyadmin{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+
+.hideadmin{
+display: none;
+width:20%;
+}
+.notifyadmin:hover + .hideadmin {
+  display: block;
+
+}
+.notificationbell{
+position:absolute;
+top:0px;
+left:200px;
+height:0px;
+width:30px;
+text-align:justify;
+z-index:6;
+cursor:pointer;
+background-color:;
+}
+.notbell{
+position:absolute;
+right:600px;
+top:20px;font-size:48px;
+color:#ffbf00;
+cursor:pointer;
+}
+.circlenotbell{
+position:relative;
+left:40px;
+top:-50px;
+font-size:30px;
+color:red;
+cursor:pointer;
+display:none;
+z-index:100;
+
+}
+.notificationbellcounter{
+color:white;
+z-index:101;
+font-weight:bold;
+position:relative;
+left:47.5px;
+top:-75px;
+display:none;
+}
+
+.animationlayer1{
+animation: animation-layer-1 5000ms infinite; 
+}
+
+.animationlayer2{
+animation: animation-layer-2 5000ms infinite; 
+}
+
+.animationlayer3{
+animation: animation-layer-3 5000ms infinite; 
+}
+.notifcontentbg{
+position:absolute;
+width:100%;
+height:120%;
+background-color:rgba(0,0,0,0.8);
+z-index:5;
+top:0px;
+display:none;
+}
+
+.notifcontent{
+border: 2px solid #615632;
+border-radius: 15px;
+width:98%;
+height:450px;
+position:absolute;
+right:10px;
+top:130px;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:20px;
+overflow:auto;
+
+}
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.trbutton{
+background-color:transparent;
+border-bottom: 2px solid #615632;
+}
+
+.prodbutbase{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:7.5px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:20px;
+    width:50px;
+
+}
+.prodbutbase:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
+.focusbutton{
+    color:black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+.punchedtextbase{
+    font-size: 14px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.punchedtextbasetitle{
+    font-size: 25px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.thqueuebase{
+width:120.8px;
+position:relative;
+font-size:10px;
+color:#A0A0A0;
+} 
+.tdqueuebase{
+position:relative;
+width:120.8px;
+font-size:12px;
+color:#A0A0A0;
+}
+.tdspecial{
+width:203px;
+}
+.queuetablebasediv{
+margin-left: auto;
+margin-right: auto;
+width:100%;
+margin-collapse:collapse;
+text-align: center;
+height:90%;
+overflow:auto;
+background-color:;
+}
+.queuetablebase{
+position:relative;
+margin-left: auto;
+margin-right: auto;
+width:100%;
+margin-collapse:collapse;
+text-align: center;
+}
+.showorders{
+border: 2px solid #615632;
+border-radius: 15px;
+width:650px;
+height:500px;
+position:absolute;
+left:20px;
+top:80px;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:10px;
+padding-bottom:50px;
+overflow:auto;
+display:none;
+text-align:center;
+}
+.trpunchedtablebase{
+border-bottom: 2px solid #615632;
+}
+.punchedtablebase{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:600px;
+text-align:center;
+}
+.showordertitlename{
+font-size: 30px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+}
+.contactnummmclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+.landmarknotessssclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+.billllssssclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+.tabbase {
+  padding-left:150px;
+  padding-top:5px;
+  width:98%;
+  height:40px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  right:10px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tabbase button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 15px;
+    color: rgb(252, 220, 109);
+    display:inline-block;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+    width:200px;
+    border-radius:60px;
+}
+.formbut{
+position:relative;
+top:0px;
+left:0px;
+width:200px;
+height:;
+}
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tabbase button:hover {
+    cursor:pointer;
+    color: black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tabbase button.activebase {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+.custom-select{
+background-color:transparent;
+width:100px;
+}
+.custom-select select{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:100px;
+height:30px;
+font-size:12px;
+position:relative;
+}
+.ETAdiv{
+background-color:transparent;
+}
+.ETAdiv input{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:100px;
+height:30px;
+font-size:12px;
+position:relative;
+}
+.formpost{
+position:relative;
+left:150px;
+top:-33px;
+width:0px;
+height:0px;
+}
+}
+</style>
+{% if notifyorder != 0 %}
+  <div class="notify" id="notifyid">
+<a style="z-index:5;background-color:black;text-decoration: none;color:red;" href="Stocksorder"><i class='fas fa-exclamation-circle' style='position:absolute;right:200px;top:20px;font-size:48px;color:red'></i></a>
+</div>
+<div class="hide">
+<h8 style="z-index:5;background-color:black;color:red;position:absolute;right:40px;top:80px;"><a style="text-decoration: none;color:red;" href="Stocksorder">Admins are waiting for your orders to be received. Please click here when you receive your orders to notify them</a></h8>
+</div>
+{% endif %}
+{% if userr == 4 %}
+{% if notifyadmin != 0 %}
+  <div class="notifyadmin" id="notifyadminid">
+  <a style="z-index:5;background-color:black;text-decoration: none;color:red;" href="Stocksorderadmin"><i class='fas fa-exclamation-circle' style='position:absolute;right:200px;top:20px;font-size:48px;color:red'></i></a>
+</div>
+<div class="hideadmin">
+<h8 style="z-index:5;background-color:black;color:red;position:absolute;right:40px;top:80px;"><a style="text-decoration: none;color:red;" href="Stocksorderadmin">Someone has ordered stocks. Click here to acknowledge</a></h8>
+</div>
+{% endif %}
+{% endif %}
+{% if userr != 6 %}
+
+<audio id="audioid" style="position:absolute;opacity:0;" controls>
+  <source src="/media/MinionLaughing Ringtone.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+  <div class="bell notificationbell" id="notbellid" onclick="functionnotif()">
+    <div class="anchor material-icons layer-1" id="layeroneid">notifications_active</div>
+    <div class="anchor material-icons layer-2" id="layertwoid">notifications</div>
+    <div class="anchor material-icons layer-3" id="layerthreeid">notifications</div>
+  
+ <i class='fa fa-circle circlenotbell' id="circlenotbellid"></i>
+<span class="notificationbellcounter" id="notificationbellcounterid" ></span>
+</div>
+
+</div>
+<div class="notifcontentbg" id="notifcontentidbg">
+<div class="tabbase" >
+  <button class="tablinksbase activebase" onclick="openPart(event, 'notifcontentid')">Acknowledge Orders</button>
+  <button class="tablinksbase" onclick="openPart(event, 'acceptcontentid')">Accepted Orders</button>
+    <button class="tablinksbase" onclick="openPart(event, 'rejectcontentid')">Rejected Orders</button>
+</div>
+<div class="notifcontent" id="notifcontentid" style="display:block;">
+<h1 class="punchedtextbasetitle">Acknowledge Orders</h1>
+<div class="queuetablebasediv">
+                <table class="queuetablebase" >
+                        <tr style="border-bottom: 2px solid #615632;" >
+                          <th class="punchedtextbase">Customer's Name</th>
+                          <th class="punchedtextbase">Contact</th>
+                          <th class="punchedtextbase">Mode of payment</th>
+                          <th class="punchedtextbase">Barangay</th>
+                          <th class="punchedtextbase">Delivery Time</th>
+                          <th class="punchedtextbase">Select Rider</th>
+                          <th class="punchedtextbase">Select ETA</th>
+                          <th class="punchedtextbase">Action</th>
+                        </tr>
+                    <tbody id="acknowledgeid"></tbody>
+                    </table>
+                   <!-- {% for onlineorder in onlineorder %}
+                       
+                       <tr class="trbutton" >
+                                      <td class="tdqueuebase">{{onlineorder.Customername}}</td>
+                                      <td class="tdqueuebase">0{{onlineorder.contactnumber}}</td>
+                                      <td class="tdqueuebase">{{onlineorder.MOP}}</td>
+                                      <td class="tdqueuebase">{{onlineorder.Barangay}}</td>
+                                      <td class="tdqueuebase">{% if onlineorder.ScheduleTime == "00:00pm" %}{{onlineorder.Timetodeliver}}{% else %}{{onlineorder.ScheduleTime}}{% endif %}</td>
+                                      <td class="tdqueuebase">
+                                      {% if onlineorder.MOP == "GcashPickup" or onlineorder.MOP == "Pickup" %}
+                                      {% else %}
+                                      <div id="riderselectiddiv" class="custom-select" style="width:200px;">
+                                    <select name="Rider" id="Riderselectid{{onlineorder.contactnumber}}">
+                                        <option value="" selected disabled hidden>Choose here</option>
+                                        <option value="Appey">Appey</option>
+                                    </select>
+                                    
+                                    </div>
+                                    {% endif %}
+</td>
+
+<td class='tdqueuebase tdspecial'><form action='' method='GET' id='acceptrejectbuttonformid{{onlineorder.contactnumber}}' class='formbut'><button type='button' onclick='view('{{onlineorder.contactnumber}}', '{{onlineorder.Customername}}',{{onlineorder.GSubtotal}},{{onlineorder.DeliveryFee}})' class='prodbutbase' id='orderbutid{{onlineorder.contactnumber}}'>Orders</button><input type='hidden' value='' name='rider' id='inputidrider{{onlineorder.contactnumber}}' style='position:absolute;'><input type='hidden' value='' name='acceptcontactno' id='contactacceptid{{onlineorder.contactnumber}}' style='position:absolute;'><input type='hidden' value='' name='contactnoreject' id='contactrejectid{{onlineorder.contactnumber}}' style='position:absolute;'><button onclick='submitaccept({{onlineorder.contactnumber}}, '{{onlineorder.MOP}}')' type='button' class='prodbutbase' name='Acceptbutton' value='Accept'>Accept</button><button onclick='submitreject({{onlineorder.contactnumber}})' type='button' class='prodbutbase' name='Rejectbutton' value='Reject'>Reject</button></form></td>
+                                     
+                        </tr>
+                        
+                    {% endfor %}-->
+                
+
+</div>
+</div>
+<div class="notifcontent" id="acceptcontentid" style="display:none;">
+<h1 class="punchedtextbasetitle">Accepted Orders</h1>
+<div class="queuetablebasediv">
+                <table class="queuetablebase" >
+                        <tr style="border-bottom: 2px solid #615632;" >
+                          <th class="punchedtextbase">Customer's Name</th>
+                          <th class="punchedtextbase">Contact</th>
+                          <th class="punchedtextbase">Mode of payment</th>
+                          <th class="punchedtextbase">Barangay</th>
+                          <th class="punchedtextbase">Delivery Time</th>
+                          <th class="punchedtextbase">Rider</th>
+                          <th class="punchedtextbase">Action</th>
+                        </tr>
+
+                    {% for acceptedorder in acceptedorder %}
+                       
+                       <tr class="trbutton" >
+                                      <td class="tdqueuebase">{{acceptedorder.Customername}}</td>
+                                      <td class="tdqueuebase">0{{acceptedorder.contactnumber}}</td>
+                                      <td class="tdqueuebase">{{acceptedorder.MOP}}</td>
+                                      <td class="tdqueuebase">{{acceptedorder.Barangay}}</td>
+                                      <td class="tdqueuebase">{% if acceptedorder.ScheduleTime == "00:00pm" %}{{acceptedorder.Timetodeliver}}{% else %}{{acceptedorder.ScheduleTime}}{% endif %}</td>
+                                      <td class="tdqueuebase">{{acceptedorder.Rider}}</td>
+                                      <td class="tdqueuebase tdspecial">
+                                      <form action="" method="GET" id="buttonformidaccepted{{acceptedorder.contactnumber}}" class="formbut">
+                                      <input type="hidden" value="" name="contactnoaccepted" id="contactidaccepted{{acceptedorder.contactnumber}}" style="position:absolute;">
+                                      <input type="hidden" value="" name="rider" id="riderinputidaccepted{{acceptedorder.contactnumber}}" style="position:absolute;">
+                                      <button type="button" onclick="viewaccept('{{acceptedorder.contactnumber}}', '{{acceptedorder.Customername}}',{{acceptedorder.GSubtotal}},{{acceptedorder.DeliveryFee}},'{{acceptedorder.LandmarksnNotes}}', {{acceptedorder.Bill}})" class="prodbutbase" id="orderbutid{{acceptedorder.contactnumber}}">Orders</button>
+                                      <button onclick="rejectsubmitaccepted({{acceptedorder.contactnumber}})" type="button" class="prodbutbase" name="Rejectbutton" value="Reject">Reject</button>
+                                      <button onclick="readyaccepted({{acceptedorder.contactnumber}})" type="button" class="prodbutbase" id="readybuttonid{{acceptedorder.contactnumber}}" name="Ready" value="Ready">Ready</button>
+                                      </form>
+                                      <form action="" method="POST" class="formpost">
+                                      {% csrf_token %}
+                                      <button class="prodbutbase" type="button" style="display:none;" id="donebuttonid{{acceptedorder.contactnumber}}" onclick="done({{acceptedorder.contactnumber}})">Done</button>
+                                      </form>
+                                      </td>
+                                     
+                        </tr>
+                        
+                    {% endfor %}
+                </table>
+</div>
+</div>
+<div class="notifcontent" id="rejectcontentid" style="display:none;">
+
+<h1 class="punchedtextbasetitle">Rejected Orders</h1>
+<div class="queuetablebasediv">
+                <table class="queuetablebase" >
+                        <tr style="border-bottom: 2px solid #615632;" >
+                          <th class="punchedtextbase">Customer's Name</th>
+                          <th class="punchedtextbase">Contact</th>
+                          <th class="punchedtextbase">Mode of payment</th>
+                          <th class="punchedtextbase">Barangay</th>
+                          <th class="punchedtextbase">Delivery Time</th>
+
+                          <th class="punchedtextbase">Action</th>
+                        </tr>
+
+                    {% for rejectedorder in rejectedorder %}
+                       
+                       <tr class="trbutton" >
+                                      <td class="tdqueuebase">{{rejectedorder.Customername}}</td>
+                                      <td class="tdqueuebase">0{{rejectedorder.contactnumber}}</td>
+                                      <td class="tdqueuebase">{{rejectedorder.MOP}}</td>
+                                      <td class="tdqueuebase">{{rejectedorder.Barangay}}</td>
+                                      <td class="tdqueuebase">{% if rejectedorder.ScheduleTime == "00:00pm" %}{{rejectedorder.Timetodeliver}}{% else %}{{rejectedorder.ScheduleTime}}{% endif %}</td>
+                                      <td class="tdqueuebase tdspecial">
+                                      <form action="" method="GET" id="restorebuttonformid{{rejectedorder.contactnumber}}" class="formbut">
+                                      <button type="button" onclick="viewreject('{{rejectedorder.contactnumber}}', '{{rejectedorder.Customername}}',{{rejectedorder.GSubtotal}},{{rejectedorder.DeliveryFee}}, '{{rejectedorder.LandmarksnNotes}}', {{rejectedorder.Bill}})" class="prodbutbase" id="orderbutid{{rejectedorder.contactnumber}}">Orders</button>
+                                      <input type="hidden" value="" name="contactnorestore" id="restorecontactid{{rejectedorder.contactnumber}}" style="position:absolute;">
+                                      <button onclick="restore({{rejectedorder.contactnumber}})" type="button" class="prodbutbase" name="Restorebutton" value="Restore">Restore</button>
+                                      </form>
+                                      </td>
+                                     
+                        </tr>
+                        
+                    {% endfor %}
+                </table>
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+
+
+<input type="hidden" value ="" id="viewordersid"></input>
+
+<input type="hidden" value ="{{readylistcontact}}" id="readylistcontactid"></input>
+<input type="hidden" value ="{{viewordersaccept}}" id="viewordersacceptid"></input>
+<input type="hidden" value ="{{viewordersreject}}" id="viewordersrejectid"></input>
+<div class="showorders" id="showordersid" >
+<h5 id="customnameorderid" class="showordertitlename"></h5>
+<small id="contactnummmid" class="contactnummmclass"></small>
+        <table class="punchedtablebase" >
+        <tr class="trpunchedtablebase">
+        <th class="punchedtextbase">Qty</th>
+          <th class="punchedtextbase">Item</th>
+          <th class="punchedtextbase">Category</th>
+          <th class="punchedtextbase">Size</th>
+          <th class="punchedtextbase">Additional Addons</th>
+          <th class="punchedtextbase">Subtotal</th>
+
+        </tr>
+        
+        <tbody id='tablebodyshoworder'></tbody>
+        
+        </table>
+        <br>
+<small id="landmarknotessssid" class="landmarknotessssclass"></small>  
+<br>
+<small id="billllssssid" class="billllssssclass"></small> 
+
+</div>
+
+<script>
+
+function readyaccepted(contact){
+        $.ajax({
+        type:'POST',
+        url:"{% url 'postwo.html' %}",
+        data:{
+        'Ready':JSON.stringify(contact), 
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function(Ready){
+        console.log(Ready.Ready)
+        var readybutton=document.getElementById('readybuttonid'+contact);
+        var done = document.getElementById('donebuttonid'+contact);
+        if(Ready.Ready=='Ready'){
+        
+        readybutton.style.display = 'none';
+        done.style.display = 'block';
+        }else{
+        
+        readybutton.style.display = 'block';
+        done.style.display = 'none';
+        }
+        },
+        error: function(){
+            
+        }
+    });
+
+
+
+}
+
+function done(contact){
+var viewordersdone = document.getElementById('viewordersacceptid').value;
+var doneorderiii = JSON.parse(viewordersdone);
+var doneorderii = doneorderiii;
+var doneorderi = doneorderii[contact];
+var doneorder = JSON.parse(doneorderi);
+var doneorde = doneorder;
+console.log(doneorder)
+        $.ajax({
+        type:'POST',
+        url:"{% url 'postwo.html' %}",
+        data:{
+        'doneorders':JSON.stringify(doneorde), 
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+
+        success: function(){
+
+        alert('Saved and Done Transaction!')
+        window.location.reload()
+        },
+        error: function(){
+            
+        }
+    });
+
+
+}
+
+
+
+
+let tid = setInterval(function(){
+    if ( document.readyState !== 'complete' ) return;
+    clearInterval( tid );       
+            $.ajax({
+            type:'GET',
+            url:"{% url 'postwo.html' %}",
+            data:{"apini":"waapin"},
+            success: function(onlineorder){
+            $('#acknowledgeid').empty();
+            var dataHtml='';
+            var vieworders = document.getElementById('viewordersid')
+            var readylistcontactid = document.getElementById('readylistcontactid')
+            readylistcontact = JSON.parse(readylistcontactid.value);
+            console.log(readylistcontact)
+            countreadylistcontact= readylistcontact.length;
+            console.log(countreadylistcontact)
+            var readybutton;
+            var done;
+            for (var i = 0; i < countreadylistcontact; i++) {
+            console.log('mismo:'+readylistcontact[i])
+            readybutton = document.getElementById('readybuttonid'+readylistcontact[i])
+            readybutton.style.display = 'none';
+            done = document.getElementById('donebuttonid'+readylistcontact[i]);
+            done.style.display = 'block';
+            }
+            vieworders.value=onlineorder.onlineorderf[1]
+                var onlineorderffi=JSON.parse(onlineorder.onlineorderf[0]);
+                var counter = document.getElementById('notificationbellcounterid')
+                var bell = document.getElementById('notbellid') 
+                var layerfirst = document.getElementById('layeroneid') 
+                var layersecond = document.getElementById('layertwoid') 
+                var layerthird = document.getElementById('layerthreeid') 
+                var circle = document.getElementById('circlenotbellid') 
+                var length = onlineorderffi.length;
+                if(length){
+                var audioid = document.getElementById('audioid') 
+                audioid.play(); 
+                counter.style.display = "block"
+                circle.style.display = "block"
+                counter.innerHTML = length;
+                    if(bell.classList == "bell notificationbell"){
+                        //counter.classList.add('animationlayer2')
+                        bell.classList.add('animationlayer1');
+                        layerfirst.classList.add('animationlayer1');
+                        bell.classList.add('animationlayer2');
+                        //layersecond.classList.add('animationlayer2');
+                        bell.classList.add('animationlayer3');
+                        //layerthird.classList.add('animationlayer3');
+                    }
+                //alert('New Order! Please acknowledge!');
+                    if(length>9){
+                    counter.style.left = 42.5+"px" ;
+                    }
+                }else{
+                        //counter.classList.remove('animationlayer2')
+                        bell.classList.remove('animationlayer1');
+                        layerfirst.classList.remove('animationlayer1');
+                        bell.classList.remove('animationlayer2');
+                        //layersecond.classList.remove('animationlayer2');
+                        bell.classList.remove('animationlayer3');
+                        //layerthird.classList.remove('animationlayer3');
+                counter.style.display = "none"
+                circle.style.display = "none"
+                }
+                for(var onlineorders of onlineorderffi){
+                var lagyu = JSON.stringify(onlineorders["fields"].Customername);
+                var request = onlineorders["fields"].contactnumber+", "+lagyu+", "+onlineorders["fields"].GSubtotal+", "+onlineorders["fields"].DeliveryFee+", "+JSON.stringify(onlineorders["fields"].LandmarksnNotes)+", "+onlineorders["fields"].Bill;
+                var time = "";
+                var bargy="";
+                var MOPstringify = JSON.stringify(onlineorders["fields"].MOP)
+                if(onlineorders["fields"].Timetodeliver == "Now"){
+                time = "now";
+                }else{
+                time = onlineorders["fields"].ScheduleTime;
+                }
+                if(onlineorders["fields"].Barangay){
+                bargy = onlineorders["fields"].Barangay;
+                }else{
+                bargy = "None";
+                }
+                dataHtml += "<tr class='trbutton'><td class='tdqueuebase'>"+onlineorders["fields"].Customername+"</td><td class='tdqueuebase'> 0"+onlineorders["fields"].contactnumber+"</td><td class='tdqueuebase'>"+onlineorders["fields"].MOP+"</td><td class='tdqueuebase'>"+bargy+"</td><td class='tdqueuebase'>"+time+"</td><td class='tdqueuebase'><div id='riderselectiddiv"+onlineorders["fields"].contactnumber+"' class='custom-select'><select name='Rider' id='Riderselectid"+onlineorders["fields"].contactnumber+"'><option value='' selected disabled hidden>Choose here</option><option value='Appey'>Appey</option></select></div</td><td class='tdqueuebase'><div class='ETAdiv' id='ETAdivid"+onlineorders["fields"].contactnumber+"'><input type='time' id='ETAid"+onlineorders["fields"].contactnumber+"' ></input></div></td><td class='tdqueuebase tdspecial'><form action='' method='GET' id='acceptrejectbuttonformid"+onlineorders["fields"].contactnumber+"' class='formbut'><button type='button' onclick='view("+request+")' class='prodbutbase' id='orderbutid"+onlineorders["fields"].contactnumber+"'>Orders</button><input type='hidden' value='' name='rider' id='inputidrider"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='ETA' id='inputETA"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='acceptcontactno' id='contactacceptid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='contactnoreject' id='contactrejectid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><button onclick='submitaccept("+onlineorders["fields"].contactnumber+", "+MOPstringify+")' type='button' class='prodbutbase' name='Acceptbutton' value='Accept'>Accept</button><button onclick='submitreject("+onlineorders["fields"].contactnumber+")' type='button' class='prodbutbase' name='Rejectbutton' value='Reject'>Reject</button></form></td></tr>";
+                
+                }
+                $('#acknowledgeid').append(dataHtml);
+                
+
+                for(var key in onlineorderffi){
+                
+                var pickupbalueone = onlineorderffi[key]["fields"].MOP;
+                var ider = 'riderselectiddiv'+onlineorderffi[key]["fields"].contactnumber;
+
+                var etaer = 'ETAdivid'+onlineorderffi[key]["fields"].contactnumber;
+                
+                
+                if(pickupbalueone == "GcashDelivery" || pickupbalueone == "COD"){
+                
+                
+                $('#'+ider).css("display","block");
+                $('#'+etaer).css("display","block");
+
+                }else{
+                
+                $('#'+etaer).css("display","none");
+                $('#'+ider).css("display","none");
+                };
+                }
+
+            },
+            error: function(){
+            
+            }
+        });
+
+}, 100 );
+
+$(document).ready(function(){
+
+    setInterval(function(){
+
+$.ajax({
+            type:'GET',
+            url:"{% url 'postwo.html' %}",
+            data:{"apini":"waapin"},
+            success: function(onlineorder){
+            $('#acknowledgeid').empty();
+            var dataHtml='';
+            var readylistcontactid = document.getElementById('readylistcontactid')
+            readylistcontact = JSON.parse(readylistcontactid.value);
+            console.log(readylistcontact)
+            countreadylistcontact= readylistcontact.length;
+            console.log(countreadylistcontact)
+            var readybutton;
+            var done;
+            for (var i = 0; i < countreadylistcontact; i++) {
+            readybutton = document.getElementById('readybuttonid'+readylistcontact[i])
+            readybutton.style.display = 'none';
+            done = document.getElementById('donebuttonid'+readylistcontact[i]);
+            done.style.display = 'block';
+            }
+            var vieworders = document.getElementById('viewordersid')
+            vieworders.value=onlineorder.onlineorderf[1]
+
+                var onlineorderffi=JSON.parse(onlineorder.onlineorderf[0]);
+                var counter = document.getElementById('notificationbellcounterid')
+                var bell = document.getElementById('notbellid') 
+                var layerfirst = document.getElementById('layeroneid') 
+                var layersecond = document.getElementById('layertwoid') 
+                var layerthird = document.getElementById('layerthreeid') 
+                var circle = document.getElementById('circlenotbellid') 
+                var length = onlineorderffi.length;
+                if(length){
+                var audioid = document.getElementById('audioid') 
+                audioid.play(); 
+                counter.style.display = "block"
+                circle.style.display = "block"
+                counter.innerHTML = length;
+                    if(bell.classList == "bell notificationbell"){
+                        bell.classList.add('animationlayer1');
+                        //counter.classList.add('animationlayer2')
+                        layerfirst.classList.add('animationlayer1');
+                        bell.classList.add('animationlayer2');
+                        //layersecond.classList.add('animationlayer2');
+                        bell.classList.add('animationlayer3');
+                        //layerthird.classList.add('animationlayer3');
+                    }
+                //alert('New Order! Please acknowledge!');
+                    if(length>9){
+                    counter.style.left = 42.5+"px" ;
+                    }
+                }else{
+                        //counter.classList.remove('animationlayer2')
+                        bell.classList.remove('animationlayer1');
+                        layerfirst.classList.remove('animationlayer1');
+                        bell.classList.remove('animationlayer2');
+                        //layersecond.classList.remove('animationlayer2');
+                        bell.classList.remove('animationlayer3');
+                        //layerthird.classList.remove('animationlayer3');
+                counter.style.display = "none"
+                circle.style.display = "none"
+                }
+                for(var onlineorders of onlineorderffi){
+                var lagyu = JSON.stringify(onlineorders["fields"].Customername);
+                var request = onlineorders["fields"].contactnumber+", "+lagyu+", "+onlineorders["fields"].GSubtotal+", "+onlineorders["fields"].DeliveryFee+", "+JSON.stringify(onlineorders["fields"].LandmarksnNotes)+", "+onlineorders["fields"].Bill;
+                var time = "";
+                var bargy="";
+                var MOPstringify = JSON.stringify(onlineorders["fields"].MOP)
+                if(onlineorders["fields"].Timetodeliver == "Now"){
+                time = "now";
+                }else{
+                time = onlineorders["fields"].ScheduleTime;
+                }
+                if(onlineorders["fields"].Barangay){
+                bargy = onlineorders["fields"].Barangay;
+                }else{
+                bargy = "None";
+                }
+                dataHtml += "<tr class='trbutton'><td class='tdqueuebase'>"+onlineorders["fields"].Customername+"</td><td class='tdqueuebase'> 0"+onlineorders["fields"].contactnumber+"</td><td class='tdqueuebase'>"+onlineorders["fields"].MOP+"</td><td class='tdqueuebase'>"+bargy+"</td><td class='tdqueuebase'>"+time+"</td><td class='tdqueuebase'><div id='riderselectiddiv"+onlineorders["fields"].contactnumber+"' class='custom-select' ><select name='Rider' id='Riderselectid"+onlineorders["fields"].contactnumber+"' value=''><option value='' selected disabled hidden>Choose here</option><option value='Appey'>Appey</option></select></div</td><td class='tdqueuebase'><div class='ETAdiv' id='ETAdivid"+onlineorders["fields"].contactnumber+"'><input type='time' id='ETAid"+onlineorders["fields"].contactnumber+"'></input></div></td><td class='tdqueuebase tdspecial'><form action='' method='GET' id='acceptrejectbuttonformid"+onlineorders["fields"].contactnumber+"' class='formbut'><button type='button' onclick='view("+request+")' class='prodbutbase' id='orderbutid"+onlineorders["fields"].contactnumber+"'>Orders</button><input type='hidden' value='' name='rider' id='inputidrider"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='ETA' id='inputETA"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='acceptcontactno' id='contactacceptid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='contactnoreject' id='contactrejectid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><button onclick='submitaccept("+onlineorders["fields"].contactnumber+", "+MOPstringify+")' type='button' class='prodbutbase' name='Acceptbutton' value='Accept'>Accept</button><button onclick='submitreject("+onlineorders["fields"].contactnumber+")' type='button' class='prodbutbase' name='Rejectbutton' value='Reject'>Reject</button></form></td></tr>";
+                
+                }
+                $('#acknowledgeid').append(dataHtml);
+
+
+                for(var key in onlineorderffi){
+                
+                var pickupbalueone = onlineorderffi[key]["fields"].MOP;
+                var ider = 'riderselectiddiv'+onlineorderffi[key]["fields"].contactnumber;
+                var etaer = 'ETAdivid'+onlineorderffi[key]["fields"].contactnumber;
+
+                
+                
+                if(pickupbalueone == "GcashDelivery" || pickupbalueone == "COD"){
+                
+                
+                $('#'+ider).css("display","block");
+                $('#'+etaer).css("display","block");
+                }else{
+                
+                
+                $('#'+ider).css("display","none");
+                $('#'+etaer).css("display","none");
+                };
+                }
+
+            },
+            error: function(){
+            
+            }
+        });
+    
+    }, 10000);
+});
+
+
+function openPart(evt, cityName) {
+
+var prodbut = document.getElementsByClassName("prodbutbase");
+
+  for (i = 0; i < prodbut.length; i++) {
+    prodbut[i].className = prodbut[i].className.replace(" focusbutton", "");
+  }
+var showordersid = document.getElementById("showordersid");
+showordersid.style.display = "none";
+
+
+  var i, notifcontent, tablinksbase;
+  notifcontent = document.getElementsByClassName("notifcontent");
+  for (i = 0; i < notifcontent.length; i++) {
+    notifcontent[i].style.display = "none";
+  }
+  tablinksbase = document.getElementsByClassName("tablinksbase");
+  for (i = 0; i < tablinksbase.length; i++) {
+    tablinksbase[i].className = tablinksbase[i].className.replace(" activebase", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " activebase";
+};
+
+
+
+
+function submitaccept(contact, mop){
+var rider = document.getElementById('Riderselectid'+contact).value;
+var ETA = document.getElementById('ETAid'+contact).value;
+var contactvalue = document.getElementById('contactacceptid'+contact);
+if(mop == "GcashPickup" || mop == "Pickup"){
+contactvalue.value = contact;
+acceptsubmitter(contact);
+}else if(mop == "GcashDelivery" || mop == "COD"){
+
+    if(rider){
+    var ridervalue = document.getElementById('inputidrider'+contact);
+    
+    
+    contactvalue.value = contact;
+    ridervalue.value = rider;
+    }else{
+    alert('Please assign rider! ')
+    }
+    if(ETA){
+    var ETAvalue = document.getElementById('inputETA'+contact);
+    ETAvalue.value = ETA;
+    acceptsubmitter(contact);
+    }else{
+    alert('Please input Estimated Time Arrival! ')
+    }
+}
+};
+function acceptsubmitter(contact){
+
+var formacceptrejectid = document.getElementById('acceptrejectbuttonformid'+contact);
+formacceptrejectid.submit();
+};
+
+function submitreject(contact){
+
+var contactrejectvalue = document.getElementById('contactrejectid'+contact);
+$('#contactrejectid'+contact).val(contact);
+
+submitterreject(contact);
+};
+function submitterreject(contact){
+
+
+var formreject = document.getElementById('acceptrejectbuttonformid'+contact);
+formreject.submit();
+};
+function rejectsubmitaccepted(contactaccepted){
+
+
+var contactvalueaccepted = document.getElementById('contactidaccepted'+contactaccepted);
+//contactvalueaccepted.value = contactaccepted;
+$('#contactidaccepted'+contactaccepted).val(contactaccepted);
+rejectsubmitteraccepted(contactaccepted);
+}
+function rejectsubmitteraccepted(contactaccepted){
+
+var formacceptrejectidaccepted = document.getElementById('buttonformidaccepted'+contactaccepted);
+
+formacceptrejectidaccepted.submit();
+}
+
+function restore(contactrestore){
+
+$('#restorecontactid'+contactrestore).val(contactrestore);
+
+restoresubmitter(contactrestore);
+}
+function restoresubmitter(contactrestore){
+
+
+var restoreform = document.getElementById('restorebuttonformid'+contactrestore);
+restoreform.submit();
+}
+
+
+
+function functionnotif(){
+
+var contentnotif = document.getElementById('notifcontentidbg');
+var showordersdiv = document.getElementById('showordersid');
+
+var orderbut = document.getElementById('orderbutid'+contactnumberr);
+if(contactmatch){
+var orderbuttwo = document.getElementById('orderbutid'+contactmatch);
+}else{
+var orderbuttwo = orderbut;
+}
+
+if(contentnotif.style.display == "none"){
+contentnotif.style.display = "block";
+orderbuttwo.classList.remove("focusbutton");
+orderbut.classList.remove("focusbutton");
+}else{
+contentnotif.style.display = "none";
+}
+if(showordersdiv.style.display == "block"){
+showordersdiv.style.display = "none";
+}
+}
+
+
+var contactnumberr ="";
+var contactmatch="";
+function view(contactnumber, names, gtotal, devfee, notess, bill){
+
+contactnumberr = contactnumber;
+var nameshoworder = document.getElementById('customnameorderid');
+var contactnummmid = document.getElementById('contactnummmid');
+var landmarknotessssid = document.getElementById('landmarknotessssid');
+var showordersdiv = document.getElementById('showordersid');
+
+var vieworders = document.getElementById('viewordersid').value;
+
+var tablebody = document.getElementById('tablebodyshoworder')
+var orderbut = document.getElementById('orderbutid'+contactnumber);
+if(contactmatch){
+var orderbuttwo = document.getElementById('orderbutid'+contactmatch);
+}else{
+var orderbuttwo = orderbut;
+}
+
+var showorderiii = JSON.parse(vieworders);
+var showorderii = showorderiii;
+var showorderi = showorderii[contactnumber];
+var showorder = JSON.parse(showorderi)
+var i=0;
+var dataHtml = "";
+if(showordersdiv.style.display == "none" || contactmatch !== contactnumber){
+showordersdiv.style.display = "block";
+
+        if(orderbuttwo.classList == "prodbutbase focusbutton"){
+
+        orderbuttwo.classList.remove("focusbutton"); 
+        orderbut.classList.add("focusbutton");
+        }else{
+        orderbut.classList.add("focusbutton"); 
+        }
+}else{
+showordersdiv.style.display = "none";
+orderbuttwo.classList.remove("focusbutton");
+orderbut.classList.remove("focusbutton");
+}
+contactmatch = contactnumber;
+        var totalpunched = 0;
+        var showordercounter = showorder.length;
+            for(let i = 0;i<showordercounter;i++){
+        
+                totalpunched = totalpunched+parseInt(showorder[i].Subtotal);
+            };
+var grandtotal = 0;
+if(gtotal){
+grandtotal = gtotal;
+}else{
+grandtotal = totalpunched;
+}
+var gpslink;
+var blank ='_blank' ;
+var pinnedpoint;
+for(var showorders of showorder){
+            if(showorders.Category == "Snacks"){
+            var Categoryfinal = showorders.Subcategory;
+            }else{
+            var Categoryfinal = showorders.Category;
+            }
+            if(showorders.Size){
+            var Sizefinal=showorders.Size;
+            }else if (showorders.PSize){
+            var Sizefinal=showorders.PSize;
+            }else{
+            var Sizefinal = 'x';
+            }
+            if(showorders.Addons){
+            var addonsfinal = showorders.Addons+' x '+showorders.QtyAddons;
+            }else{
+            var addonsfinal = 'x';
+            }
+            dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase">₱'+showorders.Subtotal+'.00 </td></tr>';
+            urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
+            gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
+            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
+            };
+
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td></tr>';
+            if(showorder[0]['gpslat'] && showorder[0]['gpslat'] !== 14.5955){
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            }else{
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            }
+            tablebody.innerHTML = dataHtml;
+            nameshoworder.innerHTML = names+"'s Order";
+            contactnummmid.innerHTML = 'Contact Number: 0'+contactnumber;
+            landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notess;
+            var billllssssid = document.getElementById('billllssssid');
+            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+            
+}
+var contactnumberraccept ="";
+var contactmatchaccept="";
+function viewaccept(contactnumber, name, gtotal, devfee, notesss, bill){
+
+var contactnummmid = document.getElementById('contactnummmid');
+var landmarknotessssid = document.getElementById('landmarknotessssid');
+contactnumberraccept = contactnumber;
+
+var nameshoworder = document.getElementById('customnameorderid');
+var showordersdiv = document.getElementById('showordersid');
+
+var viewordersaccept = document.getElementById('viewordersacceptid').value;
+
+var tablebody = document.getElementById('tablebodyshoworder')
+var orderbut = document.getElementById('orderbutid'+contactnumber);
+if(contactmatchaccept){
+var orderbuttwo = document.getElementById('orderbutid'+contactmatchaccept);
+}else{
+var orderbuttwo = orderbut;
+}
+
+var acceptedorderiii = JSON.parse(viewordersaccept);
+var acceptedorderii = acceptedorderiii;
+var acceptedorderi = acceptedorderii[contactnumber];
+var acceptedorder = JSON.parse(acceptedorderi)
+var i=0;
+var dataHtml = "";
+if(showordersdiv.style.display == "none" || contactmatchaccept !== contactnumber){
+showordersdiv.style.display = "block";
+
+        if(orderbuttwo.classList == "prodbutbase focusbutton"){
+
+        orderbuttwo.classList.remove("focusbutton"); 
+        orderbut.classList.add("focusbutton");
+        }else{
+        orderbut.classList.add("focusbutton"); 
+        }
+}else{
+showordersdiv.style.display = "none";
+orderbuttwo.classList.remove("focusbutton");
+orderbut.classList.remove("focusbutton");
+}
+
+contactmatchaccept = contactnumber;
+        var totalpunched = 0;
+        var showordercounter = acceptedorder.length;
+            for(let i = 0;i<showordercounter;i++){
+        
+                totalpunched = totalpunched+parseInt(acceptedorder[i].Subtotal);
+            };
+
+
+var grandtotal = 0;
+if(gtotal){
+grandtotal = gtotal;
+}else{
+grandtotal = totalpunched;
+}
+var gpslink;
+var blank ='_blank' ;
+var pinnedpoint;
+for(var showorders of acceptedorder){
+            if(showorders.Category == "Snacks"){
+            var Categoryfinal = showorders.Subcategory;
+            }else{
+            var Categoryfinal = showorders.Category;
+            }
+            if(showorders.Size){
+            var Sizefinal=showorders.Size;
+            }else if (showorders.PSize){
+            var Sizefinal=showorders.PSize;
+            }else{
+            var Sizefinal = 'x';
+            }
+            if(showorders.Addons){
+            var addonsfinal = showorders.Addons+' x '+showorders.QtyAddons;
+            }else{
+            var addonsfinal = 'x';
+            }
+            urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
+            gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
+            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
+            dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase"> ₱'+showorders.Subtotal+'.00</td></tr>';
+            };
+            
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td></tr>';
+            
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
+            
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp"> ₱'+grandtotal+'.00</td></tr>';
+            if(acceptedorder[0]['gpslat'] && acceptedorder[0]['gpslat'] !== 14.5955 ){
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            }else{
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            }
+            tablebody.innerHTML = dataHtml;
+            
+            nameshoworder.innerHTML = name+"'s Order";
+            contactnummmid.innerHTML = 'Contact Number: 0'+contactnumber;
+            landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notesss;
+            var billllssssid = document.getElementById('billllssssid');
+            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+
+}
+
+
+
+
+
+var contactnumberrreject ="";
+var contactmatchreject="";
+function viewreject(contactnumber, name, gtotal, devfee, notessss, bill){
+
+contactnumberrreject = contactnumber;
+
+var nameshoworder = document.getElementById('customnameorderid');
+var showordersdiv = document.getElementById('showordersid');
+
+var viewordersreject = document.getElementById('viewordersrejectid').value;
+
+var tablebody = document.getElementById('tablebodyshoworder')
+var orderbut = document.getElementById('orderbutid'+contactnumber);
+if(contactmatchreject){
+var orderbuttwo = document.getElementById('orderbutid'+contactmatchreject);
+}else{
+var orderbuttwo = orderbut;
+}
+
+var rejectedorderiii = JSON.parse(viewordersreject);
+var rejectedorderii = rejectedorderiii;
+var rejectedorderi = rejectedorderii[contactnumber];
+var rejectedorder = JSON.parse(rejectedorderi)
+var i=0;
+var dataHtml = "";
+if(showordersdiv.style.display == "none" || contactmatchreject !== contactnumber){
+showordersdiv.style.display = "block";
+
+        if(orderbuttwo.classList == "prodbutbase focusbutton"){
+
+        orderbuttwo.classList.remove("focusbutton"); 
+        orderbut.classList.add("focusbutton");
+        }else{
+        orderbut.classList.add("focusbutton"); 
+        }
+}else{
+showordersdiv.style.display = "none";
+orderbuttwo.classList.remove("focusbutton");
+orderbut.classList.remove("focusbutton");
+}
+
+contactmatchreject = contactnumber;
+        var totalpunched = 0;
+        var showordercounter = rejectedorder.length;
+            for(let i = 0;i<showordercounter;i++){
+        
+                totalpunched = totalpunched+parseInt(rejectedorder[i].Subtotal);
+            };
+
+
+var grandtotal = 0;
+if(gtotal){
+grandtotal = gtotal;
+}else{
+grandtotal = totalpunched;
+}
+var gpslink;
+var blank ='_blank' ;
+var pinnedpoint;
+for(var showorders of rejectedorder){
+            if(showorders.Category == "Snacks"){
+            var Categoryfinal = showorders.Subcategory;
+            }else{
+            var Categoryfinal = showorders.Category;
+            }
+            if(showorders.Size){
+            var Sizefinal=showorders.Size;
+            }else if (showorders.PSize){
+            var Sizefinal=showorders.PSize;
+            }else{
+            var Sizefinal = 'x';
+            }
+            if(showorders.Addons){
+            var addonsfinal = showorders.Addons+' x '+showorders.QtyAddons;
+            }else{
+            var addonsfinal = 'x';
+            }
+            urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
+            gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
+            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
+            dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase">₱'+showorders.Subtotal+'.00</td></tr>';
+            };
+            
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td></tr>';
+            
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
+            
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp"> ₱'+grandtotal+'.00</td></tr>';
+            if(rejectedorder[0]['gpslat'] && rejectedorder[0]['gpslat'] !== 14.5955){
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            }else{
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            }
+            tablebody.innerHTML = dataHtml;
+            
+            nameshoworder.innerHTML = name+"'s Order";
+            var contactnummmid = document.getElementById('contactnummmid');
+            var landmarknotessssid = document.getElementById('landmarknotessssid');
+            contactnummmid.innerHTML = 'Contact Number: 0'+contactnumber;
+            landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notessss;
+            var billllssssid = document.getElementById('billllssssid');
+            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+            
+}
+
+
+</script>
+
+{% block head %}
+	
+{% endblock head %}
+ <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script>
+
+        $(document).ready(function () {
+
+            setInterval( function() {
+                $("#notifyadminid").load(location.href + " #notifyadminid");
+                $("#notifyid").load(location.href + " #notifyid");
+
+                
+
+             }, 900000 );
+
+        });
+        
+</script>
+
+</html>

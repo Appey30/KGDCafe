@@ -1,0 +1,1585 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block head %}
+<style>
+
+
+.formmodalme{
+position:relative;
+padding-left:50px;
+padding-top:50px;
+}
+.modalmade{
+position:absolute;
+
+left: 650px;
+top:200px;
+width:600px;
+height:500px;
+z-index:50;
+}
+.cancelbut{
+position:absolute;left:700px;top:10px;"
+}
+.receivedbut{
+position:relative;left:350px;top:400px;
+}
+.modalmadeback{
+position:absolute;
+left:-30px;
+top:-850px;
+width:1900px;
+height:1000px;
+z-index:49;
+background-color:rgba(0, 0, 0,0.7);
+
+}
+
+.close {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  z-index:51;
+  
+}
+.close:hover {
+  opacity: 1;
+}
+
+.link {
+text-decoration: underline;
+}
+.link:hover {
+color:white;
+}
+
+.navbarbutton {
+    position:absolute;
+    left:1%;
+    top:2%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:100px;
+    position:absolute;
+    left:500px;
+    top:0px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:830px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+.btn1 {
+  background-color: #018010; /* Blue background */
+  border: none; /* Remove borders */
+  color: #FDFEFE ; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 150%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:relative;
+  left:200px;
+}
+.btn1:hover {
+  background-color:#004a09;
+}
+.btn02 {
+
+  background-color: #009933; /* Blue background */
+  height:2%;
+  width:4%;
+  border: none; /* Remove borders */
+  color: #FFFFFF; /* White text */
+  padding: 1% 1%;/* Some padding */
+  padding-bottom:2.5%;
+  font-size: 200%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:absolute;
+  left:1650px;
+  top:50px;
+  border-radius:100%;
+
+}
+.btn02:hover {
+  background-color:#006600;
+} 
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style the tab */
+.tab {
+  padding-left:45%;
+  position:absolute;
+  width:1870px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  left:10px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:230px;
+  left:10px;
+  width:1860px;
+  height:700px;
+  background-color:#2d2c29;
+
+}
+
+/* TABLE */
+.tablecontainer{
+position:relative;
+
+ width:1855px;
+  height:625px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+.subtablecontainer1{
+position:relative;
+top:-10px;
+overflow:auto;
+ width:927px;
+  height:400px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer2{
+
+position:relative;
+top:10px;
+ width:927px;
+  height:100px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+    .addtable{
+    border-collapse: collapse;
+    position:relative;
+    left:-10px;
+    width:910px;
+    height:40px;
+    text-align:center;
+    }
+    .thaddtable{
+    width:15px;
+    position:relative;
+    left:10px;
+    font-size:11px;
+    text-align:center;
+    }
+    .tdaddtable{
+    width:13px;
+    position:relative;
+    left:0px;
+    text-align:center;
+    
+    }
+.subtablecontainer3{
+position:relative;
+top:30px;
+ width:927px;
+  height:75px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.item{
+position:relative;
+top:10px;
+left:10px;
+padding-left:15px;
+padding-top:0px;
+margin:auto auto;
+font-size:15px;
+height:30px;
+
+}
+.subtablecontainer4{
+position:relative;
+left:943px;
+top:-590px;
+ width:892px;
+  height:620px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  overflow:auto;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+
+.subtablecontainer5{
+position:relative;
+ width:912px;
+  height:590px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.yourorder{
+color:#A0A0A0;
+position:relative;
+left:10px;
+top:10px;
+
+}
+
+.subtablecontainer6{
+position:absolute;
+left:943px;
+top:50px;
+ width:880px;
+  height:530px;
+  z-index:1;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+  overflow:auto;
+}
+.subtablecontainer7{
+position:absolute;
+left:935px;
+top:80px;
+ width:900px;
+  height:600px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 99%;
+  overflow:;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99.5%;
+height:94%;
+z-index:-1;
+}
+.notify{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+.hide{
+display: none;
+width:20%;
+}
+.notify:hover + .hide {
+  display: block;
+
+}
+.notifyadmin{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+.hideadmin{
+display: none;
+width:20%;
+}
+.notifyadmin:hover + .hideadmin {
+  display: block;
+
+}
+@media screen and (min-width: 801px) and (max-width: 960px) {
+
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:40px;
+    position:absolute;
+    left:290px;
+    top:15px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:30px;
+    position:relative;
+    left:400px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+.btn02 {
+
+  background-color: #009933; /* Blue background */
+  height:50px;
+  width:50px;
+  border: none; /* Remove borders */
+  color: #FFFFFF; /* White text */
+  padding: 1% 1%;/* Some padding */
+  padding-bottom:2.5%;
+  font-size: 200%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:absolute;
+  left:800px;
+  top:15px;
+  border-radius:100%;
+
+}
+.btn02:hover {
+  background-color:#006600;
+} 
+
+/* Style the tab */
+.tab {
+  padding-left:400px;
+  width:920px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  display:block;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:150px;
+  height:400px;
+  width:920px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+position:relative;
+overflow:;
+ width:890px;
+  height:280px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+
+.subtablecontainer1{
+position:relative;
+top:10px;
+left:10px;
+overflow:auto;
+ width:450px;
+  height:130px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer2{
+
+position:relative;
+top:15px;
+left:10px;
+  width:450px;
+  height:60px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.firsttable{
+border-collapse: collapse;
+position:relative;
+left:0px;
+top:-10px;
+width:430px;
+text-align:center;
+background-color:;
+}
+.addtable{
+border-collapse: collapse;
+position:relative;
+left:0px;
+font-size:10px;
+top:-10px;
+width:450px;
+text-align:center;
+background-color:;
+}
+.clear{
+font-size:10px;
+}
+    .thaddtable{
+    width:8px;
+    height:3px;
+    position:relative;
+    left:10px;
+    font-size:10px;
+    text-align:center;
+    
+    
+    }
+    .tdaddtable{
+    width:11px;
+    height:8px;
+    padding-top:0px;
+    position:relative;
+    left:0px;
+    text-align:center;
+    background-color:;
+    
+    }
+.add{
+position:absolute;
+top:0px;
+left:20px;
+height:30px;
+width:50px;
+padding-left:8px;
+font-size:15px;
+}
+.suspendbut{
+position:relative;
+top:5px;
+left:-650px;
+height:25px;
+width:100px;
+padding-left:15px;
+padding-top:0px;
+font-size:15px;
+}
+.cancelbut{
+position:relative;
+top:-20px;
+left:250px;
+height:25px;
+width:150px;
+padding-left:10px;
+padding-top:0px;
+font-size:10px;
+}
+.receivedbut{
+position:relative;
+left:130px;
+top:50px;
+}
+.submitbut{
+position:relative;
+top:-20px;
+left:-530px;
+height:25px;
+width:120px;
+padding-left:15px;
+padding-top:0px;
+font-size:15px;
+}
+
+.subtablecontainer3{
+position:relative;
+top:20px;
+left:10px;
+ width:450px;
+  height:50px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer4{
+position:relative;
+left:470px;
+top:-230px;
+ width:410px;
+  height:250px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+  overflow-x:auto;
+}
+.item{
+position:relative;
+height:auto;
+width:auto;
+padding-left:15px;
+padding-top:0px;
+font-size:10px;
+}
+
+.subtablecontainer5{
+position:relative;
+left:10px;
+top:10px;
+ width:450px;
+  height:260px;
+  background-color:;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.yourorder{
+color:#A0A0A0;
+position:relative;
+left:10px;
+top:10px;
+font-size:15px;
+
+}
+
+.subtablecontainer6{
+position:absolute;
+left:475px;
+top:40px;
+ width:395px;
+  height:220px;
+  overflow:auto;
+  z-index:1;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer7{
+position:absolute;
+left:470px;
+top:70px;
+ width:410px;
+  height:260px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.modalmade{
+position:absolute;
+left: 200px;
+top:490px;
+width:600px;
+height:500px;
+z-index:50;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  color:white;
+  font-size:10px;
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+@media screen and (max-width: 800px){
+
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:30px;
+    position:absolute;
+    left:250px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+.btn02 {
+
+  background-color: #009933; /* Blue background */
+  height:45px;
+  width:45px;
+  border: none; /* Remove borders */
+  color: #FFFFFF; /* White text */
+  padding: 1% 1%;/* Some padding */
+  padding-bottom:2.5%;
+  font-size: 200%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:absolute;
+  left:650px;
+  top:20px;
+  border-radius:100%;
+
+}
+.btn02:hover {
+  background-color:#006600;
+} 
+/* Style the tab */
+.tab {
+  padding-left:180px;
+  width:645px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:210px;
+  width:800px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:795px;
+  height:150px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+
+</style>
+</head>
+<body style="background-color:#131312;">
+
+
+
+
+<div id="main">
+
+  <button class="navbarbutton" onclick="openNav()">☰ Open Sidebar</button>  
+  <h8 class="punchedtexttitle">Stocks Ordering System</h8>
+
+</div>
+  
+
+{% if notifyorder != 0 %}
+  <div class="notify">
+
+<a style="z-index:5;background-color:black;text-decoration: none;color:red;" href="Stocksorder"><i class='fas fa-exclamation-circle' style='position:absolute;right:200px;top:20px;font-size:48px;color:red'></i></a>
+</div>
+<div class="hide">
+<h8 style="z-index:5;background-color:black;color:red;position:absolute;right:40px;top:80px;"><a style="text-decoration: none;color:red;" href="Stocksorder">Admins are waiting for your orders to be received. Please click here when you receive your orders to notify them</a></h8>
+
+
+</div>
+{% endif %}
+{% if userr == 4 %}
+{% if notifyadmin != 0 %}
+  <div class="notifyadmin">
+<a style="z-index:5;background-color:black;text-decoration: none;color:red;" href="Stocksorderadmin"><i class='fas fa-exclamation-circle' style='position:absolute;right:200px;top:20px;font-size:48px;color:red'></i></a>
+</div>
+<div class="hideadmin">
+<h8 style="z-index:5;background-color:black;color:red;position:absolute;right:40px;top:80px;"><a style="text-decoration: none;color:red;" href="Stocksorderadmin">Someone has ordered stocks. Click here to acknowledge</a></h8>
+</div>
+{% endif %}
+{% endif %}
+<div class="tab" >
+  <button class="tablinks prodbut activeTab" onclick="openCity(event, 'Order')">Order</button>
+  <button class="tablinks prodbut" onclick="openCity(event, 'ToReceive')">To Receive</button>
+
+</div>
+{% if notifyorder != 0 %}
+<div id="Order" class="tabcontent">
+{% else %}
+ <div id="Order" class="tabcontent" style="display:block;">
+ {% endif %}
+  <h8 class="punchedtext">Order Stocks</h8>
+  <div class="tablecontainer">
+  <div class="subtablecontainer1">
+  <table class="firsttable" style="border:transparent;">
+  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th >Item</th>
+    <th >Category</th>
+    <th >Qty</th>
+    <th >Price</th>
+    <th >Subtotal</th>
+  </tr>
+        {% for punchednalareni in punchedlaso %}
+        <tr class="trpunchedtable">
+          <td class="tdpunched">{{punchednalareni.productname}}</td>
+          <td class="tdpunched">{{punchednalareni.Category}}</td>
+          <td class="tdpunched">{{punchednalareni.Qty}}</td>
+          <td class="tdpunched">{{punchednalareni.Price}}</td>
+          <td class="tdpunched">{{punchednalareni.Subtotal}}</td>
+        </tr>
+        {% endfor %}
+        {% if punchedtotal %}
+        <tr class="trpunchedtable">
+        <td style="color:red;">(Shipping Fee is not yet included )</td>
+        <td></td>
+        <td></td>
+        <td class="tdpunched">Total:</td>
+        <td class="tdpunched">{{punchedtotal}}</td>
+        </tr>
+        {% endif %}
+        
+
+</table>
+  </div>
+  <div class="subtablecontainer2">
+    <form method="POST" action="" id="addform" name="addformname" onsubmit="functionaddclear()"> 
+{% csrf_token %}
+    <div class="divaddtable">
+        <table class="addtable">
+                    <tr >
+                      <th class="thaddtable punchedtext ">Item</th>
+                      <th class="thaddtable punchedtext ">Category</th>
+                      <th class="thaddtable punchedtext ">Qty</th>
+                      <th class="thaddtable punchedtext ">Price</th>
+                      <th class="thaddtable punchedtext ">Subtotal</th>
+                      <th class="thaddtable punchedtext ">Action</th>
+                    </tr>
+
+                    <tr style="background-color:transparent;"> 
+                      {% if stor %}
+                      <td class="tdaddtable tdpunched">{{mepunched.productname}}</td>
+                      {% else %}
+                      <td></td>
+                      {% endif %}
+                  
+                      {% if stock %}
+                      <td class="tdaddtable tdpunched">{{mepunched.Category}}</td>
+                      {% else %}
+                      <td></td>
+                      {% endif %}
+
+                      {% if qty  %}
+                      <td class="tdaddtable tdpunched">{{mepunched.Qty}}</td>
+                      {% else %}
+                      <td></td>
+                      {% endif %}
+                  
+                      {% if presyoSTO %}
+                      <td class="tdaddtable tdpunched">{{mepunched.Price}}</td>
+                      {% else %}
+                      <td></td>
+                      {% endif %}
+
+                      {% if subtotsto  %}
+                      <td class="tdaddtable tdpunched">{{mepunched.Subtotal}}</td>
+                      {% else %}
+                      <td></td>
+                      {% endif %}
+
+                      {% if costSTO  %}
+                      {{mepunched.Cost}}
+                      {% endif%}
+
+                      {{mepunched.user}}
+
+                      <td class="tdaddtable tdpunched"><input  class="prodbut add" style="" type="submit" value="Add" name="addbutton" id="addbuttonid"{{disable}}></td>
+                    </tr>
+        </table> 
+    </div>
+ </form>
+  </div>
+  <div class="subtablecontainer3">
+          <form action="" method="POST">
+        {% csrf_token %}
+        <div class="modalmadeback" id="modalmadeeback" style="display:none;">
+        
+        <div class="modalmade" id="modalmadee" style="background-color:white;display:none;">
+        <button class="close" onclick="closex()">x</button>
+        <div class="formmodalme">
+        <div >
+        <h1 >Enter Details</h1>
+        </div>
+        <br>
+        <h5 >Name:</h5>
+        <div>
+        {{submitorder.CusName}}
+        </div>
+        <br>
+        <h5 >Delivery Address:</h5>
+        <div >
+        {{submitorder.DeliveryAddress}}
+        </div>
+        <br>
+        <h5 >Contact Number:</h5>
+        <div>
+        {{submitorder.contactnumber}}
+        </div>
+        <br>
+        <div>
+        {{submitorder.user}}
+        <input class="btn1" type="submit"  value="Confirm" name="submitorderbutton">
+        </div>
+        </div>
+        </div>
+        </div>
+            <div style="position:absolute;left:770px;top:5px">
+        
+                <input class="prodbut suspendbut" type="submit" value="Suspend" name="suspendbutton">
+            {% if disablesubmit %}
+            <input  {{disablesubmit}} class="submitbut" type="button" onclick="showmodalmade()" value="Submit Order">
+            {% else %}
+            <input  {{disablesubmit}} class="prodbut submitbut" type="button" onclick="showmodalmade()" value="Submit Order">
+            {% endif  %}
+            </div>
+            </form>
+        
+  </div>
+  <div class="subtablecontainer4">
+              {% for stock in stockbutton %}
+                    <form method="GET" action="" id="qtystoform{{stock.id}}" name="stockform{{stock.id}}">
+                        <input type="hidden" name="qty" value="" id="js_qty{{stock.id}}"> 
+                        <input type="hidden" name="Stock" value="Stock"> 
+                        <input onclick="myFunction{{stock.id}}()" type="" readonly="readonly" name="stock" value="{{stock.productname}}" class="dropbtnsto prodbut butprod item">            
+                    </form>
+
+              {% endfor %}
+  </div>
+  </div>
+
+</div>
+{% if notifyorder != 0 %}
+<div id="ToReceive" class="tabcontent" style="display:block;">
+{% else %}
+<div id="ToReceive" class="tabcontent">
+{% endif %}
+  <h8 class="punchedtext">To Receive</h8>
+  <div class="tablecontainer">
+            <div class="subtablecontainer5">
+    {% if notifyorder != 0 %}
+        <form method="POST" action=""> 
+        {% csrf_token %}
+            <input class="prodbut receivedbut"   type="submit" value="I have received my orders" name="received">
+        </form>
+    {% endif %}
+            </div>
+
+    <div class="subtablecontainer6">
+    
+        <table style="border:transparent;">
+  <tr style="position:absolute;position:sticky;background-color:#2d2c29;border-radius: 20px;">
+    <th >Item</th>
+    <th >Category</th>
+    <th >Qty</th>
+    <th >Price</th>
+    <th >Subtotal</th>
+
+  </tr>
+  {% for subord in toreceive %}
+  <tr >
+    <td style="color:#A0A0A0;">{{subord.productname}}</td>
+    <td style="color:#A0A0A0;">{{subord.Category}}</td>
+    <td style="color:#A0A0A0;">{{subord.Qty}}</td>
+    <td style="color:#A0A0A0;">{{subord.Price}}</td>
+    <td style="color:#A0A0A0;">{{subord.Subtotal}}</td>
+    
+  </tr>
+  {% endfor %}
+ {% if toreceivetotal %}
+  <tr >
+    <td style="color:red;">(Shipping few is not included)</td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;">Total:</td>
+    <td style="color:#A0A0A0;">{{toreceivetotal}}</td>
+    
+  </tr>
+  {% endif %}
+</table>
+</div>
+    </div>
+
+        <form action="" method="POST">
+        {% csrf_token %}
+    {% if disablecancel == "disabled" %}
+            <div class="subtablecontainer7">
+            <h3 class="yourorder">Your order</h3>
+                <input class="cancelbut"   type="submit" value="Cancel Order" name="cancelbutton" {{disablecancel}}>
+    
+            </div>
+    {% else %}
+            <div class="subtablecontainer7">
+            <h3 class="yourorder">Your order</h3>
+                <input class="prodbut cancelbut"  type="submit" value="Cancel Order" name="cancelbutton">
+    
+            </div>
+    {% endif %}
+        </form>
+
+  </div>
+</div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+<script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+{% for stockname in stockbutton %}
+<script>
+    function myFunction{{stockname.id}}() {
+      var submits = document.getElementById("qtystoform"+{{stockname.id}});
+      var qty = prompt("Please enter quantity here...", "1");
+      if (qty != null && qty != "") {
+        $("#js_qty"+{{stockname.id}}).val(parseInt(qty));
+        submits.submit();
+        document.forms['stockform'+{{stockname.id}}].onsubmit = functionsubmit();
+      }
+    }
+
+</script>
+{% endfor %}
+
+<script>
+let myVar = setInterval(function functionsubmit(){
+    if(document.readyState !== 'complete') return;
+        clearInterval(myVar);
+        $("#punchedid").val('{{userr}}');
+        if( '{{qty}}' ) {
+            $("#quantity").val(parseInt('{{qty}}'));
+        }
+
+        if( '{{stor}}') {
+            $("#produktopangalan").val('{{stor}}');
+        }
+        
+        if('{{stock}}'){
+                $("#kategorya").val('{{stock}}');
+        }
+
+        if('{{presyoSTO.Price}}'){
+            $("#presyona").val('{{presyoSTO.Price}}');
+        }
+        if('{{costSTO.Cost}}'){
+            $("#costnaid").val('{{costSTO.Cost}}');
+        }
+        if('{{subtotsto}}'){
+            $("#subtotalna").val('{{subtotsto}}');
+        }
+    
+}, 100);
+</script>
+<script>
+function showmodalmade(){
+var modal=document.getElementById("modalmadee");
+var modalback=document.getElementById("modalmadeeback")
+
+modalback.style.display = "block";
+modal.style.display = "block";
+$("#userrr").val({{userr}});
+
+}
+</script>
+<script>
+function closex(){
+var modall=document.getElementById("modalmadee");
+var modalbackl=document.getElementById("modalmadeeback")
+modalbackl.style.display = "none";
+modall.style.display = "none";
+
+}
+</script>
+
+
+</body>
+{% endblock head %}
+</html> 
+

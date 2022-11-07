@@ -1,0 +1,2106 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+
+    
+
+  </head>
+<body style="background-color:rgb(240,240,240)">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<style>
+@media screen and (min-width: 1200px) {
+.gobackbutton{
+z-index:2;
+position:fixed;
+top:0px;
+left:0px;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+.gobackbutton button{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+width:auto;
+height:auto;
+border:0px solid transparent;
+border-radius:15px;
+color:black;
+}
+.gobackbutton button:hover{
+
+box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+
+}
+.logodiv{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:250px;
+margin-bottom:5vh;
+margin-top:5vh;
+}
+.logo{
+	width:250px;
+	height:250px;
+	border-radius:100%;
+	box-shadow: 10px 10px 35px 5px black; 
+}
+
+.progressdiv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+}
+.trackdivwhole{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:1130px;
+
+}
+.wrapperloaderdiv{
+position:relative;
+height:400px;
+}
+.loaderdiv{
+position:relative;
+width:330px;
+margin-left:auto;
+margin-right:auto;
+
+}
+.imgbag{
+
+width:300px;
+height:300px;
+}
+.loader {
+position:relative;
+top:-100px;
+left:200px;
+background-color:white;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #ffbf00; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.circlesizeposition1{
+
+position:relative;
+display:inline-flex;
+
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize1{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition2{
+
+position:relative;
+display:inline-flex;
+
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize2{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition3{
+
+position:relative;
+display:inline-flex;
+
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize3{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition4{
+
+position:relative;
+display:inline-flex;
+
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize4{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition5{
+
+position:relative;
+display:inline-flex;
+
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize5{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.progress{
+position:relative;
+top:80px;
+left:70px;
+width:890px;
+
+}
+.progress-bar{
+background-color:#ffbf00;
+}
+.circlelineslabel{
+position:relative;
+
+margin-left:auto;
+margin-right:auto;
+width:1130px;
+
+text-align:center;
+}
+.circlelineslabel label{
+position:relative;
+top:-20px;
+left:-100px;
+}
+.estTimewholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+.Ordersummarywholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+text-align:center;
+}
+.Ordersummarywholediv h1{
+font-weight:bold;
+}
+.Paymentwholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+    .punchedtable{
+    border-collapse: collapse;
+    position:relative;
+    left: -10px;
+    width:100%;
+    text-align:center;
+    }
+    .punchedtable button{
+
+
+position:relative;
+left:0px;
+bottom:0px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  margin-left:auto;
+   margin-left:right;
+  color: white;
+  background-color: #E74C3C;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 80%;
+  height:100%;
+  font-size: 18px;
+    padding-top:0px;
+  padding-bottom:0px;
+    }
+    
+
+.punchedtable button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:black;
+    text-align:center;
+    
+    
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:black;
+    
+    
+    }
+    .trpunchedtable{
+    border-bottom: 2px solid rgba(192,192,192, 0.5);
+    }
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+color:black;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+}
+@media screen and (min-width: 992px) and (max-width: 1199px){
+.gobackbutton{
+z-index:2;
+position:fixed;
+top:0px;
+left:0px;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+.gobackbutton button{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+width:auto;
+height:auto;
+border:0px solid transparent;
+border-radius:15px;
+color:black;
+}
+.gobackbutton button:hover{
+
+box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+
+}
+.logodiv{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:250px;
+margin-bottom:5vh;
+margin-top:5vh;
+}
+.logo{
+	width:250px;
+	height:250px;
+	border-radius:100%;
+	box-shadow: 10px 10px 35px 5px black; 
+}
+
+.progressdiv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+}
+.trackdivwhole{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+
+
+}
+.wrapperloaderdiv{
+position:relative;
+height:400px;
+}
+.loaderdiv{
+position:relative;
+width:330px;
+margin-left:auto;
+margin-right:auto;
+
+}
+.imgbag{
+
+width:300px;
+height:300px;
+}
+.loader {
+position:relative;
+top:-100px;
+left:200px;
+background-color:white;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #ffbf00; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.circlesizeposition1{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize1{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition2{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize2{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition3{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize3{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition4{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:90px;
+}
+.circlesize4{
+font-size:100px;
+color:	rgb(211,211,211);
+
+}
+.circlesizeposition5{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize5{
+font-size:100px;
+color:	rgb(211,211,211);
+
+}
+.progress{
+position:relative;
+top:80px;
+width:75%;
+margin-left:auto;
+margin-right:auto;
+}
+.progress-bar{
+background-color:#ffbf00;
+width:0%;
+
+}
+.circlelineslabel{
+position:relative;
+display:flex;
+flex-wrap: wrap;
+align-content:flex-start;
+margin-left:auto;
+margin-right:auto;
+width:90%;
+}
+.circlelineslabel label{
+position:relative;
+text-align:center;
+
+}
+.estTimewholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+.Ordersummarywholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+text-align:center;
+}
+.Ordersummarywholediv h1{
+font-weight:bold;
+}
+.Paymentwholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+    .punchedtable{
+    border-collapse: collapse;
+    position:relative;
+    left: -10px;
+    width:100%;
+    text-align:center;
+    }
+    .punchedtable button{
+
+
+position:relative;
+left:0px;
+bottom:0px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  margin-left:auto;
+   margin-left:right;
+  color: white;
+  background-color: #E74C3C;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 80%;
+  height:100%;
+  font-size: 18px;
+    padding-top:0px;
+  padding-bottom:0px;
+    }
+    
+
+.punchedtable button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:black;
+    text-align:center;
+    
+    
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:black;
+    
+    
+    }
+    .trpunchedtable{
+    border-bottom: 2px solid rgba(192,192,192, 0.5);
+    }
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+color:black;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+.gobackbutton{
+z-index:2;
+position:fixed;
+top:0px;
+left:0px;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+.gobackbutton button{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+width:auto;
+height:auto;
+border:0px solid transparent;
+border-radius:15px;
+color:black;
+}
+.gobackbutton button:hover{
+
+box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+
+}
+.logodiv{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:250px;
+margin-bottom:5vh;
+margin-top:5vh;
+}
+.logo{
+	width:250px;
+	height:250px;
+	border-radius:100%;
+	box-shadow: 10px 10px 35px 5px black; 
+}
+
+.progressdiv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+}
+.trackdivwhole{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+
+
+}
+.wrapperloaderdiv{
+position:relative;
+height:400px;
+}
+.loaderdiv{
+position:relative;
+width:330px;
+margin-left:auto;
+margin-right:auto;
+
+}
+.imgbag{
+
+width:300px;
+height:300px;
+}
+.loader {
+position:relative;
+top:-100px;
+left:200px;
+background-color:white;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #ffbf00; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.circlesizeposition1{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize1{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition2{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize2{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition3{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize3{
+font-size:100px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition4{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:90px;
+}
+.circlesize4{
+font-size:100px;
+color:	rgb(211,211,211);
+
+}
+.circlesizeposition5{
+position:relative;
+width:90px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize5{
+font-size:100px;
+color:	rgb(211,211,211);
+
+}
+.progress{
+position:relative;
+top:80px;
+width:75%;
+margin-left:auto;
+margin-right:auto;
+}
+.progress-bar{
+background-color:#ffbf00;
+width:0%;
+
+}
+.circlelineslabel{
+position:relative;
+display:flex;
+flex-wrap: wrap;
+align-content:flex-start;
+margin-left:auto;
+margin-right:auto;
+width:90%;
+}
+.circlelineslabel label{
+position:relative;
+text-align:center;
+
+}
+.estTimewholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+.Ordersummarywholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+text-align:center;
+}
+.Ordersummarywholediv h1{
+font-weight:bold;
+}
+.Paymentwholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+    .punchedtable{
+    border-collapse: collapse;
+    position:relative;
+    left: -10px;
+    width:100%;
+    text-align:center;
+    }
+    .punchedtable button{
+
+
+position:relative;
+left:0px;
+bottom:0px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  margin-left:auto;
+   margin-left:right;
+  color: white;
+  background-color: #E74C3C;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 80%;
+  height:100%;
+  font-size: 18px;
+    padding-top:0px;
+  padding-bottom:0px;
+    }
+    
+
+.punchedtable button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:black;
+    text-align:center;
+    
+    
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:black;
+    
+    
+    }
+    .trpunchedtable{
+    border-bottom: 2px solid rgba(192,192,192, 0.5);
+    }
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+color:black;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+}
+@media screen and (max-width: 767px){
+.gobackbutton{
+position:fixed;
+top:0px;
+left:0px;
+float:left;
+margin-left:10px;
+margin-top:10px;
+z-index:2;
+}
+.gobackbutton button{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+width:auto;
+height:auto;
+border:0px solid transparent;
+border-radius:15px;
+color:black;
+}
+.gobackbutton button:hover{
+
+box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+
+}
+.logodiv{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:250px;
+margin-bottom:5vh;
+margin-top:5vh;
+}
+.logo{
+	width:250px;
+	height:250px;
+	border-radius:100%;
+	box-shadow: 10px 10px 35px 5px black; 
+}
+
+.progressdiv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+height:900px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+
+}
+.trackdivwhole{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+background:transparent;
+top:-500px;
+padding-bottom:0px;
+}
+.wrapperloaderdiv{
+position:relative;
+height:400px;
+}
+.loaderdiv{
+position:relative;
+width:330px;
+margin-left:auto;
+margin-right:auto;
+
+}
+.imgbag{
+
+width:300px;
+height:300px;
+}
+.loader {
+position:relative;
+top:-100px;
+left:200px;
+background-color:white;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #ffbf00; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.circlesizeposition1{
+position:relative;
+width:230px;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:30px;
+
+}
+.circlesize1{
+font-size:70px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition2{
+position:relative;
+width:230px;
+margin-left:auto;
+margin-right:auto;
+margin-bottom:30px;
+}
+.circlesize2{
+font-size:70px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition3{
+position:relative;
+width:230px;
+margin-left:auto;
+margin-right:auto;
+
+margin-bottom:30px;
+}
+.circlesize3{
+font-size:70px;
+color:	rgb(211,211,211);
+}
+.circlesizeposition4{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:230px;
+margin-bottom:30px;
+}
+.circlesize4{
+font-size:70px;
+color:	rgb(211,211,211);
+
+}
+.circlesizeposition5{
+position:relative;
+width:230px;
+margin-bottom:30px;
+margin-left:auto;
+margin-right:auto;
+}
+.circlesize5{
+font-size:70px;
+color:	rgb(211,211,211);
+
+}
+.progress{
+position:relative;
+top:450px;
+left:-85px;
+height:400px;
+width:20px;
+margin-left:auto;
+margin-right:auto;
+}
+.progress-bar{
+background-color:#ffbf00;
+z-index:1;
+
+}
+.circlelineslabel{
+position:relative;
+display:block;
+flex-wrap: wrap;
+align-content:flex-start;
+margin-left:auto;
+margin-right:auto;
+width:90%;
+}
+.circlelineslabel label{
+position:relative;
+text-align:center;
+top:-15px;
+
+}
+.estTimewholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+.Ordersummarywholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+text-align:center;
+overflow:auto;
+}
+.Ordersummarywholediv h1{
+font-weight:bold;
+}
+.Paymentwholediv{
+background-color:white;
+box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+padding-top:30px;
+padding-bottom:30px;
+margin-bottom:2vh;
+margin-left:2vh;
+margin-right:2vh;
+border-radius:1vh;
+padding:2vh;
+}
+    .punchedtable th{
+    display:none;
+    }
+
+
+  table {
+    border-collapse: collapse;
+    position:relative;
+    left: ;
+    width:100%;
+    text-align:center;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .punchedtable button{
+
+
+position:relative;
+left:0px;
+bottom:0px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  margin-left:auto;
+   margin-left:right;
+  color: white;
+  background-color: #E74C3C;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 80%;
+  height:100%;
+  font-size: 18px;
+    padding-top:0px;
+  padding-bottom:0px;
+    }
+    
+
+.punchedtable button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:17.5px;
+    font-weight:bold;
+    color:black;
+    text-align:center;
+    
+    
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:15px;
+    color:black;
+    
+    
+    }
+    .trpunchedtable{
+    border-bottom: 2px solid rgba(192,192,192, 0.5);
+    }
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+color:black;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+}
+</style>
+
+</head>
+
+
+ 
+
+<body>
+<div class="logodiv">
+<img src="{% static 'logoprofeq1.png' %}" class="logo"></img>
+</div>
+<div class="gobackbutton">
+<a href="../{{admin_id}}"><button><i class="fa fa-arrow-left"></i> Home</button></a>
+</div>
+<div class="progressdiv">
+<div class="wrapperloaderdiv">
+		<div class="loaderdiv" id="loaderid" >
+
+		</div>
+        </div>
+		<div class="trackdivwhole">
+			<div class="progress">
+			<div class="progress-bar" id="progresspercentid"></div><!-- style="width:25%"-->
+			</div>
+			<div class="circlelineslabel">
+				<div class="circlesizeposition1">
+				<i class="fa fa-circle circlesize1" id="circle1id"></i>
+				<label for="circle1id">Order submitted</label>
+				</div>
+				<div class="circlesizeposition2">
+				<i class="fa fa-circle circlesize2" id="circle2id"></i>
+				<label for="circle2id">Order processed</label>
+				</div>
+				<div class="circlesizeposition3">
+				<i class="fa fa-circle circlesize3" id="circle3id"></i>
+				<label for="circle3id">Order being prepared</label>
+				</div>
+				<div class="circlesizeposition4">
+				<i class="fa fa-circle circlesize4" id="circle4id"></i>
+				<label id="labelcircle4id" for="circle4id">Delivery on its way</label>
+				</div>
+				<div class="circlesizeposition5">
+				<i class="fa fa-circle circlesize5" id="circle5id"></i>
+				<label for="circle5id">Order received</label>
+				</div>
+			</div>
+		</div>
+</div>
+
+<div class="estTimewholediv">
+<h1 style="border-weight:bold;">Order Details</h1>
+<h3 id="EOAT" style="border-weight:bold;"></h3>
+<h5 id="estTime"></h5><br>
+<h3>Branch</h3>
+<h5>KGD Cafe <i id="branch"></i></h5><br>
+<h3 id="DeliveryAddresstitle"></h3>
+<h5 id="deliveryaddress"></h5><br>
+</div>
+
+<div class="Ordersummarywholediv">
+<h1>Summary Order</h1>
+        <table class="punchedtable" >
+        <tr class="trpunchedtable">
+          <th scope="col" class="punchedtext thpunched">Qty</th>
+          <th scope="col" class="punchedtext thpunched">Item</th>
+          <th scope="col" class="punchedtext thpunched">Category</th>
+          <th scope="col" class="punchedtext thpunched">Size</th>
+          <th scope="col" class="punchedtext thpunched">Additional Add-ons</th>
+          <th scope="col" class="punchedtext thpunched">Subtotal</th>
+          
+        </tr>
+        
+        <tbody style="color:black;" id='summarytableid'></tbody>
+        
+        </table>
+</div>
+
+<div class="Paymentwholediv">
+<h1 style="font-weight:bold;">Payment</h1>
+<h3>Mode of Payment</h3>
+<h5 id="paymentmethod"></h5><br>
+<h3 id="changefortitle">Change For</h3>
+<h5 id="changefor"></h5><br>
+</div>
+<script>
+
+
+let tid = setInterval(function(){
+var todelivertbodydata = document.getElementById('deliverthis');
+    if ( document.readyState !== 'complete' ) return;
+    clearInterval( tid );       
+            $.ajax({
+            type:'GET',
+            url:"{% url 'orderprogress.html' admin_id %}",
+            data:{"progressETA":"progressETA"},
+            success: function(customercontext){
+            $('#summarytableid').empty();
+            var dataHtml='';
+            var rejectornot=JSON.parse(customercontext.Reject);
+                var customercontextffi=JSON.parse(customercontext.vieworderscustomer);
+                console.log('vieworders: '+customercontextffi)
+                var length = customercontextffi.length;
+                if(rejectornot=='NotRejected'){
+                if(customercontextffi.length>0){
+                var estTimewholediv = document.getElementsByClassName('estTimewholediv')[0];
+                var Ordersummarywholediv = document.getElementsByClassName('Ordersummarywholediv')[0];
+                var Paymentwholediv = document.getElementsByClassName('Paymentwholediv')[0];
+                estTimewholediv.style.display='block';
+                Ordersummarywholediv.style.display='block';
+                Paymentwholediv.style.display='block';
+                for(var todeliverorders of customercontextffi){
+                if(todeliverorders["fields"].Category == "Snacks"){
+                var Categoryfinal = todeliverorders["fields"].Subcategory;
+                }else{
+                var Categoryfinal = todeliverorders["fields"].Category;
+                }
+                if(todeliverorders["fields"].Size){
+                var Sizefinal=todeliverorders["fields"].Size;
+                }else if (todeliverorders["fields"].PSize){
+                var Sizefinal=todeliverorders["fields"].PSize;
+                }else{
+                var Sizefinal = 'x';
+                }
+                if(todeliverorders["fields"].Addons){
+                var addonsfinal = todeliverorders["fields"].Addons+' x '+todeliverorders["fields"].QtyAddons;
+                }else{
+                var addonsfinal = 'x';
+                }
+
+                dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td data-label="Qty" class="tdqueuebase">'+todeliverorders["fields"].Qty+'</td><td data-label="Item" class="tdqueuebase">'+todeliverorders["fields"].productname+'</td><td data-label="Category" class="tdqueuebase">'+Categoryfinal+'</td><td data-label="Size" class="tdqueuebase">'+Sizefinal+'</td><td data-label="Additional Add-ons" class="tdqueuebase">'+addonsfinal+'</td><td data-label="Subtotal" class="tdqueuebase">₱'+todeliverorders["fields"].Subtotal+'.00 </td></tr>';
+                }
+                var totalpunched=0;
+                
+                
+                var devfee = customercontextffi[0]["fields"].DeliveryFee;
+                
+                for(let i = 0;i<(customercontextffi.length);i++){
+            
+                    totalpunched = totalpunched+parseInt(customercontextffi[i]["fields"].Subtotal);
+                    
+                    
+                }
+                //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
+                if(devfee>0){
+                var grandtotal = totalpunched+devfee;
+                dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                }else{
+                var grandtotal = totalpunched;
+                }
+                console.log('grandtotal: '+grandtotal)
+                console.log('totalpunched: '+totalpunched)
+                console.log('length: '+customercontextffi.length)
+                
+                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                $('#summarytableid').append(dataHtml);
+                var estTime=document.getElementById('estTime')
+                var EOAT = document.getElementById('EOAT')
+                
+
+                    if(customercontextffi[0]["fields"].ETA){
+                var firstnum=customercontextffi[0]["fields"].ETA[0];
+                var secondnum=customercontextffi[0]["fields"].ETA[1];
+                var thirdnum=customercontextffi[0]["fields"].ETA[3];
+                var fourthnum=customercontextffi[0]["fields"].ETA[4];
+                var hour = firstnum+secondnum;
+                var mins = thirdnum+fourthnum;
+                }
+                
+                var paymentmethod = document.getElementById('paymentmethod');
+                var changefor = document.getElementById('changefor');
+                var changefortitle = document.getElementById('changefortitle');
+                var deliveryaddress = document.getElementById('deliveryaddress');
+                var labelcircle4id = document.getElementById('labelcircle4id');
+                
+                paymentmethod.innerHTML = customercontextffi[0]["fields"].MOP;
+                if(customercontextffi[0]["fields"].MOP == "COD" || customercontextffi[0]["fields"].MOP == "GcashDelivery" ){
+                    if(parseInt(hour)>12){
+                    var initialhour = parseInt(hour)-12;
+                    var ampm = 'pm'
+                    }else{
+                    var initialhour = parseInt(hour)
+                    var ampm = 'am'
+                    }
+
+                                if(customercontextffi[0]["fields"].ETA){
+                    var finalhour = initialhour.toString();
+                    estTime.style.display = 'block';
+                    EOAT.style.display = 'block';
+                    estTime.innerHTML = finalhour+':'+thirdnum+fourthnum+ampm;
+                    EOAT.innerHTML = 'Estimated Order Arrival Time';
+                    }else{
+                    estTime.style.display = 'none';
+                    EOAT.style.display = 'none';
+                    
+                    }
+                    DeliveryAddresstitle.style.display = 'block';
+                    deliveryaddress.style.display = 'block';
+                    DeliveryAddresstitle.innerHTML = 'Delivery Address'
+                    deliveryaddress.innerHTML = '#'+customercontextffi[0]["fields"].Housenumber +' '+ customercontextffi[0]["fields"].StreetPurok +', '+ customercontextffi[0]["fields"].Barangay +', '+ customercontextffi[0]["fields"].MunicipalityCity +', '+ customercontextffi[0]["fields"].Province;
+
+                    labelcircle4id.innerHTML = 'Delivery on its way'; 
+                }else{
+                    if(customercontextffi[0]["fields"].ScheduleTime == "00:00pm"){
+                    estTime.innerHTML = 'Now'
+                    EOAT.innerHTML = 'Prepare Time';
+                    }else{
+                    estTime.innerHTML = customercontextffi[0]["fields"].ScheduleTime;
+                    EOAT.innerHTML = 'Prepare Time';
+                    }
+
+                DeliveryAddresstitle.style.display = 'none';
+                deliveryaddress.style.display = 'none';
+                labelcircle4id.innerHTML = 'Ready to pick-up'; 
+                }
+                        if(customercontextffi[0]["fields"].MOP == "GcashPickup" || customercontextffi[0]["fields"].MOP == "GcashDelivery"){
+                            changefor.style.display = 'none';
+                            changefortitle.style.display = 'none';
+                        }else{
+                            changefor.style.display = 'block';
+                            changefor.innerHTML = '₱'+customercontextffi[0]["fields"].Bill+'.00';
+                            changefortitle.style.display = 'block';
+
+                        }
+                var branch = document.getElementById('branch')
+                if(customercontextffi[0]["fields"].Admin == 4){
+                branch.innerHTML = 'San Agustin (Murcia)';
+                }else if(customercontextffi[0]["fields"].Admin == 5){
+                branch.innerHTML = 'San Agustin (Murcia)';
+                }else if(customercontextffi[0]["fields"].Admin == 6){
+                branch.innerHTML = 'Alfonso'; 
+                
+                }
+var progresss=JSON.parse(customercontext.progress);
+var circle1 = document.getElementById('circle1id');
+var circle2 = document.getElementById('circle2id');
+var circle3 = document.getElementById('circle3id');
+var circle4 = document.getElementById('circle4id');
+var circle5 = document.getElementById('circle5id');
+console.log(progresss)
+var loaders = document.getElementById('loaderid')
+if(progresss == 'zero'){
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+
+$('#loaderid').empty();
+circle1.style.color = "#ffbf00";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.innerHTML='<img src="{% static "bag.png" %}" class="imgbag"><div class="loader" ></div>'
+loaders.style.display='block'
+}else if(progresss == 'twentyfive'){
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('25%');
+$('#progresspercentid').width('20px%');
+} else {
+$('#progresspercentid').width('25%');
+$('#progresspercentid').height('20px');
+}
+
+circle1.style.color = "#ffbf00";
+circle2.style.color = "#ffbf00";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.innerHTML='<img src="{% static "bag.png" %}" class="imgbag"><div class="loader" ></div>'
+loaders.style.display='block'
+}else if(progresss == 'seventyfive'){
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('75%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('75%');
+$('#progresspercentid').height('20px');
+}
+
+circle1.style.color = "#ffbf00";
+circle2.style.color = "#ffbf00";
+circle3.style.color = "#ffbf00";
+circle4.style.color = "#ffbf00";
+circle5.style.color = "rgb(211,211,211)";
+loaders.innerHTML='<img src="{% static "bag.png" %}" class="imgbag"><div class="loader" ></div>'
+loaders.style.display='block'
+}else if(progresss == 'onehundred'){
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('100%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('100%');
+$('#progresspercentid').height('20px');
+}
+
+$('#loaderid').empty();
+circle1.style.color = "#ffbf00";
+circle2.style.color = "#ffbf00";
+circle3.style.color = "#ffbf00";
+circle4.style.color = "#ffbf00";
+circle5.style.color = "#ffbf00";
+loaders.innerHTML='<h1 style="font-weight:bold;font-size:30px;text-align:center;">Thank you for trusting KGD Delivery!</h1>'
+}else if(progresss == 'wala'){
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.style.display='none'
+}else{
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').height('20px');
+$('#progresspercentid').width('0%');
+}
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.style.display='none'
+
+}
+}else{
+$('#loaderid').empty();
+var loaders = document.getElementById('loaderid')
+var estTimewholediv = document.getElementsByClassName('estTimewholediv')[0];
+var Ordersummarywholediv = document.getElementsByClassName('Ordersummarywholediv')[0];
+var Paymentwholediv = document.getElementsByClassName('Paymentwholediv')[0];
+var circle1 = document.getElementById('circle1id');
+var circle2 = document.getElementById('circle2id');
+var circle3 = document.getElementById('circle3id');
+var circle4 = document.getElementById('circle4id');
+var circle5 = document.getElementById('circle5id');
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').height('20px');
+$('#progresspercentid').width('0%');
+}
+
+
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.innerHTML="<h1 style='font-weight:bold;font-size:30px;text-align:center;'>You haven't ordered yet.</h1>"
+estTimewholediv.style.display='none';
+Ordersummarywholediv.style.display='none';
+Paymentwholediv.style.display='none';
+}
+}else{
+$('#loaderid').empty();
+var loaders = document.getElementById('loaderid')
+loaders.innerHTML="<h1 style='font-weight:bold;font-size:30px;text-align:center;'>Your order has been rejected.</h1>"
+var circle1 = document.getElementById('circle1id');
+var circle2 = document.getElementById('circle2id');
+var circle3 = document.getElementById('circle3id');
+var circle4 = document.getElementById('circle4id');
+var circle5 = document.getElementById('circle5id');
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+var estTimewholediv = document.getElementsByClassName('estTimewholediv')[0];
+var Ordersummarywholediv = document.getElementsByClassName('Ordersummarywholediv')[0];
+var Paymentwholediv = document.getElementsByClassName('Paymentwholediv')[0];
+estTimewholediv.style.display='none';
+Ordersummarywholediv.style.display='none';
+Paymentwholediv.style.display='none';
+}
+            },
+            error: function(){
+            
+            }
+        });
+    
+}, 1000 );
+
+$(document).ready(function(){
+
+    setInterval(function(){
+    var todelivertbodydata = document.getElementById('deliverthis');     
+            $.ajax({
+            type:'GET',
+            url:"{% url 'orderprogress.html' admin_id %}",
+            data:{"progressETA":"progressETA"},
+            success: function(customercontext){
+            $('#summarytableid').empty();
+            var dataHtml='';
+            var rejectornot=JSON.parse(customercontext.Reject);
+                var customercontextffi=JSON.parse(customercontext.vieworderscustomer);
+                console.log('vieworders: '+customercontextffi)
+                var length = customercontextffi.length;
+
+                if(rejectornot=='NotRejected'){
+                if(customercontextffi.length>0){
+                var estTimewholediv = document.getElementsByClassName('estTimewholediv')[0];
+                var Ordersummarywholediv = document.getElementsByClassName('Ordersummarywholediv')[0];
+                var Paymentwholediv = document.getElementsByClassName('Paymentwholediv')[0];
+                estTimewholediv.style.display='block';
+                Ordersummarywholediv.style.display='block';
+                Paymentwholediv.style.display='block';
+                for(var todeliverorders of customercontextffi){
+                        if(todeliverorders["fields"].Category == "Snacks"){
+                        var Categoryfinal = todeliverorders["fields"].Subcategory;
+                        }else{
+                        var Categoryfinal = todeliverorders["fields"].Category;
+                        }
+                        if(todeliverorders["fields"].Size){
+                        var Sizefinal=todeliverorders["fields"].Size;
+                        }else if (todeliverorders["fields"].PSize){
+                        var Sizefinal=todeliverorders["fields"].PSize;
+                        }else{
+                        var Sizefinal = 'x';
+                        }
+                        if(todeliverorders["fields"].Addons){
+                        var addonsfinal = todeliverorders["fields"].Addons+' x '+todeliverorders["fields"].QtyAddons;
+                        }else{
+                        var addonsfinal = 'x';
+                        }
+
+
+                dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td data-label="Qty" class="tdqueuebase">'+todeliverorders["fields"].Qty+'</td><td data-label="Item" class="tdqueuebase">'+todeliverorders["fields"].productname+'</td><td data-label="Category" class="tdqueuebase">'+Categoryfinal+'</td><td data-label="Size" class="tdqueuebase">'+Sizefinal+'</td><td data-label="Additional Add-ons" class="tdqueuebase">'+addonsfinal+'</td><td data-label="Subtotal" class="tdqueuebase">₱'+todeliverorders["fields"].Subtotal+'.00 </td></tr>';
+                }
+                
+                var devfee = customercontextffi[0]["fields"].DeliveryFee;
+                
+                var totalpunched=0;
+                
+                
+                for(let i = 0;i<(customercontextffi.length);i++){
+            
+                    totalpunched = totalpunched+parseInt(customercontextffi[i]["fields"].Subtotal);
+                
+                }
+                
+                //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
+                if(devfee>0){
+                var grandtotal = totalpunched+devfee;
+                dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                }else{
+                var grandtotal = totalpunched;
+                }
+
+                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                $('#summarytableid').append(dataHtml);
+                var estTime=document.getElementById('estTime')
+                var EOAT = document.getElementById('EOAT')
+                
+
+                                if(customercontextffi[0]["fields"].ETA){
+                        var firstnum=customercontextffi[0]["fields"].ETA[0];
+                        var secondnum=customercontextffi[0]["fields"].ETA[1];
+                        var thirdnum=customercontextffi[0]["fields"].ETA[3];
+                        var fourthnum=customercontextffi[0]["fields"].ETA[4];
+                        var hour = firstnum+secondnum;
+                        var mins = thirdnum+fourthnum;
+                        }
+                var paymentmethod = document.getElementById('paymentmethod');
+                var changefor = document.getElementById('changefor');
+                var changefortitle = document.getElementById('changefortitle');
+                var deliveryaddress = document.getElementById('deliveryaddress');
+                var labelcircle4id = document.getElementById('labelcircle4id');
+                
+                paymentmethod.innerHTML = customercontextffi[0]["fields"].MOP;
+                        
+                        
+                        if(customercontextffi[0]["fields"].MOP == "COD" || customercontextffi[0]["fields"].MOP == "GcashDelivery" ){
+                            if(parseInt(hour)>12){
+                            var initialhour = parseInt(hour)-12;
+                            var ampm = 'pm'
+                            }else{
+                            var initialhour = parseInt(hour)
+                            var ampm = 'am'
+                            }
+
+                                if(customercontextffi[0]["fields"].ETA){
+                            var finalhour = initialhour.toString();
+                            estTime.style.display = 'block';
+                            EOAT.style.display = 'block';
+                            EOAT.innerHTML = 'Estimated Order Arrival Time';
+                            estTime.innerHTML = finalhour+':'+thirdnum+fourthnum+ampm;
+
+                            }else{
+                            estTime.style.display = 'none';
+                            EOAT.style.display = 'none';
+                            }
+                    
+                            DeliveryAddresstitle.style.display = 'block';
+                            deliveryaddress.style.display = 'block';
+                            DeliveryAddresstitle.innerHTML = 'Delivery Address'
+                            deliveryaddress.innerHTML = '#'+customercontextffi[0]["fields"].Housenumber +' '+ customercontextffi[0]["fields"].StreetPurok +', '+ customercontextffi[0]["fields"].Barangay +', '+ customercontextffi[0]["fields"].MunicipalityCity +', '+ customercontextffi[0]["fields"].Province;
+
+                            labelcircle4id.innerHTML = 'Delivery on its way'; 
+                        }else{
+                            if(customercontextffi[0]["fields"].ScheduleTime == "00:00pm"){
+                            estTime.innerHTML = 'Now'
+                            EOAT.innerHTML = 'Prepare Time';
+                            }else{
+                            estTime.innerHTML = customercontextffi[0]["fields"].ScheduleTime;
+                            EOAT.innerHTML = 'Prepare Time';
+                            }
+
+
+                        DeliveryAddresstitle.style.display = 'none';
+                        deliveryaddress.style.display = 'none';
+                        labelcircle4id.innerHTML = 'Ready to pick-up'; 
+                
+                        }
+                        if(customercontextffi[0]["fields"].MOP == "GcashPickup" || customercontextffi[0]["fields"].MOP == "GcashDelivery"){
+                            changefor.style.display = 'none';
+                            changefortitle.style.display = 'none';
+                        }else{
+                            changefor.style.display = 'block';
+                            changefor.innerHTML = '₱'+customercontextffi[0]["fields"].Bill+'.00';
+                            changefortitle.style.display = 'block';
+
+                        }
+                        
+                var branch = document.getElementById('branch')
+                if(customercontextffi[0]["fields"].Admin == 4){
+                branch.innerHTML = 'San Agustin (Murcia)';
+                }else if(customercontextffi[0]["fields"].Admin == 5){
+                branch.innerHTML = 'San Agustin (Murcia)';
+                }else if(customercontextffi[0]["fields"].Admin == 6){
+                branch.innerHTML = 'Alfonso'; 
+                
+                }
+var progresss=JSON.parse(customercontext.progress);
+var circle1 = document.getElementById('circle1id');
+var circle2 = document.getElementById('circle2id');
+var circle3 = document.getElementById('circle3id');
+var circle4 = document.getElementById('circle4id');
+var circle5 = document.getElementById('circle5id');
+console.log(progresss)
+var loaders = document.getElementById('loaderid');
+if(progresss == 'zero'){
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+circle1.style.color = "#ffbf00";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.innerHTML='<img src="{% static "bag.png" %}" class="imgbag"><div class="loader" ></div>'
+loaders.style.display='block'
+}else if(progresss == 'twentyfive'){
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('25%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').height('20px');
+$('#progresspercentid').width('25%');
+}
+circle1.style.color = "#ffbf00";
+circle2.style.color = "#ffbf00";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.innerHTML='<img src="{% static "bag.png" %}" class="imgbag"><div class="loader" ></div>'
+loaders.style.display='block'
+}else if(progresss == 'seventyfive'){
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('75%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').height('20px');
+$('#progresspercentid').width('75%');
+}
+
+circle1.style.color = "#ffbf00";
+circle2.style.color = "#ffbf00";
+circle3.style.color = "#ffbf00";
+circle4.style.color = "#ffbf00";
+circle5.style.color = "rgb(211,211,211)";
+loaders.innerHTML='<img src="{% static "bag.png" %}" class="imgbag"><div class="loader" ></div>'
+loaders.style.display='block'
+}else if(progresss == 'onehundred'){
+
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('100%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('100%');
+$('#progresspercentid').height('20px');
+}
+circle1.style.color = "#ffbf00";
+circle2.style.color = "#ffbf00";
+circle3.style.color = "#ffbf00";
+circle4.style.color = "#ffbf00";
+circle5.style.color = "#ffbf00";
+loaders.innerHTML="<h1 style='font-weight:bold;font-size:30px;text-align:center;'>Thank you for trusting KGD Delivery!</h1>"
+
+}else if(progresss == 'wala'){
+
+$('#loaderid').empty();
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.style.display='none'
+}else{
+$('#loaderid').empty();
+
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+loaders.style.display='none'
+}
+}else{
+$('#loaderid').empty();
+var loaders = document.getElementById('loaderid')
+loaders.innerHTML="<h1 style='font-weight:bold;font-size:30px;text-align:center;'>You haven't ordered yet.</h1>"
+var estTimewholediv = document.getElementsByClassName('estTimewholediv')[0];
+var Ordersummarywholediv = document.getElementsByClassName('Ordersummarywholediv')[0];
+var Paymentwholediv = document.getElementsByClassName('Paymentwholediv')[0];
+estTimewholediv.style.display='none';
+Ordersummarywholediv.style.display='none';
+Paymentwholediv.style.display='none';
+var circle1 = document.getElementById('circle1id');
+var circle2 = document.getElementById('circle2id');
+var circle3 = document.getElementById('circle3id');
+var circle4 = document.getElementById('circle4id');
+var circle5 = document.getElementById('circle5id');
+
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+}
+}else{
+$('#loaderid').empty();
+var loaders = document.getElementById('loaderid')
+loaders.innerHTML="<h1 style='font-weight:bold;font-size:30px;text-align:center;'>Your order has been rejected.</h1>"
+
+var estTimewholediv = document.getElementsByClassName('estTimewholediv')[0];
+var Ordersummarywholediv = document.getElementsByClassName('Ordersummarywholediv')[0];
+var Paymentwholediv = document.getElementsByClassName('Paymentwholediv')[0];
+estTimewholediv.style.display='none';
+Ordersummarywholediv.style.display='none';
+Paymentwholediv.style.display='none';
+if (window.matchMedia("(max-width: 767px)").matches) { // If media query matches
+$('#progresspercentid').height('0%');
+$('#progresspercentid').width('20px');
+} else {
+$('#progresspercentid').width('0%');
+$('#progresspercentid').height('20px');
+}
+var circle1 = document.getElementById('circle1id');
+var circle2 = document.getElementById('circle2id');
+var circle3 = document.getElementById('circle3id');
+var circle4 = document.getElementById('circle4id');
+var circle5 = document.getElementById('circle5id');
+circle1.style.color = "rgb(211,211,211)";
+circle2.style.color = "rgb(211,211,211)";
+circle3.style.color = "rgb(211,211,211)";
+circle4.style.color = "rgb(211,211,211)";
+circle5.style.color = "rgb(211,211,211)";
+
+}
+            },
+            error: function(){
+            
+            }
+        });
+    
+    }, 15000);
+});
+
+</script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+  import { getMessaging, onMessage, getToken } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-messaging.js";
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQ5SNfrKB73oHMgMfIiZnfIXTzvnY_5IA",
+    authDomain: "kgd-cafe.firebaseapp.com",
+    projectId: "kgd-cafe",
+    storageBucket: "kgd-cafe.appspot.com",
+    messagingSenderId: "279897354442",
+    appId: "1:279897354442:web:022b31ee613f3eea7bc433",
+    measurementId: "G-GWT5VVJXBK",
+  };
+   
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+          
+        const messaging = getMessaging();
+        getToken(messaging, { vapidKey: 'BI0QLa4Ex20PkU-txBwF08f5o4xejkwiM-NuUjBLsXsOtxSll6ceuKkHuvXIaS_BwPbwnVog58vn58sPdN50Z2c' }).then((currentToken) => {
+          if (currentToken) {
+            // Send the token to your server and update the UI if necessary
+            // ...
+            
+
+          } else {
+            // Show permission request UI
+            console.log('No registration token available. Request permission to generate one.');
+            // ...
+          }
+        }).catch((err) => {
+          console.log('An error occurred while retrieving token. ', err);
+          // ...
+        });
+      
+        messaging
+         .requestPermission()
+         .then(function () {
+           console.log("Notification permission granted.");
+           return messaging.getToken()
+         })
+         .catch(function (err) {
+         console.log("Unable to get permission to notify.", err);
+       });
+      
+      
+        messaging.onMessage((payload) => {
+        console.log('Message received. ', payload);
+
+
+      });
+</script>
+</body>
+</html>

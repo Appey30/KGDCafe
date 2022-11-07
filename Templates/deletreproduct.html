@@ -1,0 +1,100 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+
+
+</head>
+<style>
+
+
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+
+  width: 100%;
+  cursor: pointer;
+  height:10%;
+  text-align:center;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+  padding-top:1.3%;
+
+}
+.cancelbtn:hover {
+  background-color: #A9A9A9;
+  color: black;
+  padding-top:1.3%;
+
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+  
+}
+.deletebtn:hover {
+  background-color: #C40303;
+  
+  
+}
+.DelCen{
+text-align:center;
+width:50%;
+height:50%;
+position: Absolute;
+left:25%;
+top:35%;
+}
+</style>
+<body>
+
+
+<div class = "DelCen">
+      <h1>Delete Product</h1>
+                        
+                  <p>Are you sure you want to delete {{prodd.productname}} {{prodd.Size}}?</p>  
+                   
+                            <form  method = "POST" action="{% url 'modaldel:delprod' prodd.id %}">
+                                        {% csrf_token %}
+                                    <input type="submit" value = " Delete {{prodd.productname}} {{prodd.Size}}"  class="deletebtn"></input>
+                            </form>
+                          <a href = "{% url 'Products.html' %}"><button type="button"  class="cancelbtn">Cancel</button><a/>
+</div>                        
+    
+
+
+
+
+
+
+
+
+
+
+<script>
+
+</script>
+  
+
+<script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+<script>
+
+
+</script>
+ 
+</body>
+</body>
+</html> 

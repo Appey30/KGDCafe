@@ -1,0 +1,1681 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block head %}
+<style>
+.active{
+
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+.notify{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+.hide{
+display: none;
+width:20%;
+}
+.notify:hover + .hide {
+  display: block;
+
+}
+.notifyadmin{
+position:absolute;
+top:0px;
+right:0px;
+width:20%;
+text-align:justify;
+}
+.hideadmin{
+display: none;
+width:20%;
+}
+.notifyadmin:hover + .hideadmin {
+  display: block;
+
+}
+
+.formmodalme{
+position:relative;
+padding-left:50px;
+padding-top:50px;
+}
+.modalmade{
+position:absolute;
+
+left: 650px;
+top:200px;
+width:600px;
+height:500px;
+z-index:50;
+}
+.modalmadeback{
+position:absolute;
+left:-30px;
+top:-850px;
+width:1900px;
+height:1000px;
+z-index:49;
+background-color:rgba(0, 0, 0,0.7);
+
+}
+
+.close {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  z-index:51;
+  
+}
+.close:hover {
+  opacity: 1;
+}
+
+.link {
+text-decoration: underline;
+}
+.link:hover {
+color:white;
+}
+
+.navbarbutton {
+    position:absolute;
+    left:1%;
+    top:2%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:100px;
+    position:absolute;
+    left:500px;
+    top:0px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:730px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+.btn1 {
+  background-color: #018010; /* Blue background */
+  border: none; /* Remove borders */
+  color: #FDFEFE ; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 150%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:relative;
+  left:200px;
+}
+.btn1:hover {
+  background-color:#004a09;
+}
+.btn02 {
+
+  background-color: #009933; /* Blue background */
+  height:2%;
+  width:4%;
+  border: none; /* Remove borders */
+  color: #FFFFFF; /* White text */
+  padding: 1% 1%;/* Some padding */
+  padding-bottom:2.5%;
+  font-size: 200%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:absolute;
+  left:1650px;
+  top:50px;
+  border-radius:100%;
+
+}
+.btn02:hover {
+  background-color:#006600;
+} 
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style the tab */
+.tab {
+  padding-left:43%;
+  position:absolute;
+  width:1870px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  left:10px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:230px;
+  left:10px;
+  width:1860px;
+  height:700px;
+  background-color:#2d2c29;
+
+}
+
+/* TABLE */
+.tablecontainer{
+position:relative;
+
+ width:1855px;
+  height:625px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid transparent;
+}
+.subtablecontainer1{
+position:relative;
+top:-10px;
+overflow:auto;
+ width:1830px;
+  height:500px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer2{
+
+position:relative;
+top:10px;
+ width:927px;
+  height:100px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+    .addtable{
+    border-collapse: collapse;
+    position:relative;
+    left:-10px;
+    width:910px;
+    height:40px;
+    text-align:center;
+    }
+    .thaddtable{
+    width:15px;
+    position:relative;
+    left:10px;
+    font-size:11px;
+    text-align:center;
+    }
+    .tdaddtable{
+    width:13px;
+    position:relative;
+    left:0px;
+    text-align:center;
+    
+    }
+.subtablecontainer3{
+position:relative;
+top:30px;
+ width:927px;
+  height:75px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer4{
+position:relative;
+left:943px;
+top:-590px;
+ width:892px;
+  height:620px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer5{
+position:absolute;
+ width:912px;
+  height:590px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.shipp{
+position:relative;
+top:400px;
+left:400px;
+}
+.details{
+position:relative;
+left:10px;
+top:30px;
+padding-left:20px;
+padding-top:10px;
+ width:890px;
+  height:300px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.detailsstyle{
+font-size:10px;
+color:#A0A0A0;
+}
+.detailsstylelabel{
+font-size:15px;
+color:#A0A0A0;
+}
+.titledetails{
+position:relative;
+left:350px;
+top:20px;
+
+}
+.exacttitledetails{
+font-size:30px;
+color:white;
+}
+
+.yourorder{
+color:#A0A0A0;
+position:relative;
+left:950px;
+}
+
+.subtablecontainer6{
+position:absolute;
+left:948px;
+top:90px;
+z-index:1;
+ width:875px;
+  height:560px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+  overflow:auto;
+}
+.subtablecontainer7{
+
+position:absolute;
+left:935px;
+top:80px;
+ width:900px;
+  height:590px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 99%;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99.5%;
+height:94%;
+z-index:-1;
+}
+
+@media screen and (min-width: 801px) and (max-width: 960px) {
+.active{
+
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:40px;
+    position:absolute;
+    left:250px;
+    top:15px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:30px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+.btn02 {
+
+  background-color: #009933; /* Blue background */
+  height:50px;
+  width:50px;
+  border: none; /* Remove borders */
+  color: #FFFFFF; /* White text */
+  padding: 1% 1%;/* Some padding */
+  padding-bottom:2.5%;
+  font-size: 200%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:absolute;
+  left:800px;
+  top:15px;
+  border-radius:100%;
+
+}
+.btn02:hover {
+  background-color:#006600;
+} 
+
+/* Style the tab */
+.tab {
+  padding-left:300px;
+  width:920px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  display:block;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:140px;
+  height:400px;
+  width:920px;
+  background-color:#2d2c29;
+}
+
+.tablecontainerprepare{
+position:relative;
+overflow:;
+ width:900px;
+  height:305px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.tableaknowledge{
+font-size:10px;
+border:;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  
+} 
+.trtableacknowledge{
+position:absolute;
+position:sticky;
+top:0;
+background-color:#2d2c29;
+
+  
+} 
+.tdpunched{
+font-size:10px;
+color:#A0A0A0;
+} 
+
+
+.subtablecontainer1{
+position:relative;
+top:10px;
+left:5px;
+overflow:auto;
+ width:885px;
+  height:250px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+
+}
+.acknowledgebut{
+position:relative;
+left:400px;
+top:15px;
+
+}
+
+.subtablecontainer2{
+
+position:relative;
+top:10px;
+ width:400px;
+  height:100px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+    .addtable{
+    border-collapse: collapse;
+    position:relative;
+    left:-10px;
+    width:910px;
+    height:40px;
+    text-align:center;
+    }
+    .thaddtable{
+    width:15px;
+    position:relative;
+    left:10px;
+    font-size:11px;
+    text-align:center;
+    }
+    .tdaddtable{
+    width:13px;
+    position:relative;
+    left:0px;
+    text-align:center;
+    
+    }
+.subtablecontainer3{
+position:relative;
+top:30px;
+ width:927px;
+  height:75px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer4{
+position:relative;
+left:943px;
+top:-590px;
+ width:892px;
+  height:620px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer5{
+position:absolute;
+top:10px;
+left:10px;
+ width:412px;
+  height:280px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+
+.shipp{
+position:relative;
+top:240px;
+left:140px;
+}
+.shippthisorder{
+height:30px;
+}
+
+.titledetails{
+position:relative;
+left:120px;
+top:20px;
+
+}
+.exacttitledetails{
+font-size:20px;
+color:white;
+}
+.details{
+position:relative;
+left:5px;
+top:30px;
+ width:395px;
+  height:150px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+
+.subtablecontainer6{
+position:absolute;
+left:425px;
+top:10px;
+ width:465px;
+ overflow:auto;
+ z-index:1;
+  height:280px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.subtablecontainer7{
+
+position:absolute;
+left:425px;
+top:10px;
+ width:465px;
+  height:280px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.trpreparetable{
+position:absolute;
+position:sticky;
+background-color:#2d2c29;
+border-radius: 20px;
+
+}
+.thpreparetable{
+font-size:10px;
+
+}
+.tdpreparetable{
+font-size:10px;
+color:#A0A0A0;
+
+}
+/* TABLE
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+ */
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+ 
+
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+@media screen and (max-width: 800px){
+
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:30px;
+    position:absolute;
+    left:250px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+.btn02 {
+
+  background-color: #009933; /* Blue background */
+  height:45px;
+  width:45px;
+  border: none; /* Remove borders */
+  color: #FFFFFF; /* White text */
+  padding: 1% 1%;/* Some padding */
+  padding-bottom:2.5%;
+  font-size: 200%; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  position:absolute;
+  left:650px;
+  top:20px;
+  border-radius:100%;
+
+}
+.btn02:hover {
+  background-color:#006600;
+} 
+/* Style the tab */
+.tab {
+  padding-left:180px;
+  width:645px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:210px;
+  width:800px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:795px;
+  height:150px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+
+</style>
+</head>
+<body style="background-color:#131312;">
+
+
+
+
+<div id="main">
+
+  <button class="navbarbutton" onclick="openNav()">☰ Open Sidebar</button>  
+  <h8 class="punchedtexttitle">Stocks Order Admin</h8>
+
+</div>
+
+{% if notifyorder != 0 %}
+  <div class="notify">
+
+<a style="z-index:5;background-color:black;text-decoration: none;color:red;" href="Stocksorder"><i class='fas fa-exclamation-circle' style='position:absolute;right:200px;top:20px;font-size:48px;color:red'></i></a>
+</div>
+<div class="hide">
+<h8 style="z-index:5;background-color:black;color:red;position:absolute;right:40px;top:80px;"><a style="text-decoration: none;color:red;" href="Stocksorder">Admins are waiting for your orders to be received. Please click here when you receive your orders to notify them</a></h8>
+</div>
+{% endif %}
+{% if userr == 4 %}
+{% if notifyadmin != 0 %}
+  <div class="notifyadmin">
+<a style="z-index:5;background-color:black;text-decoration: none;color:red;" href="Stocksorderadmin"><i class='fas fa-exclamation-circle' style='position:absolute;right:200px;top:20px;font-size:48px;color:red'></i></a>
+</div>
+<div class="hideadmin">
+<h8 style="z-index:5;background-color:black;color:red;position:absolute;right:40px;top:80px;"><a style="text-decoration: none;color:red;" href="Stocksorderadmin">Someone has ordered stocks. Click here to acknowledge</a></h8>
+</div>
+{% endif %}
+{% endif %}
+<div class="tab" >
+  <button id="Acknowledgebut" class="tablinks prodbut" onclick="openCity(event, 'Acknowledge')">Acknowledge</button>
+  <button id="Preparebut" class="tablinks prodbut" onclick="openCity(event, 'Prepare')">Prepare</button>
+  <button id="Shipbut" class="tablinks prodbut" onclick="openCity(event, 'Ship')">Ship</button>
+</div>
+ <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+ <script>
+ $(document).ready(function(){
+ functionprepare();
+
+
+ });
+ </script>
+ {% if disable %}
+ <div id="Acknowledge" class="tabcontent" style="display:none;">
+
+ {% else %}
+  <div id="Acknowledge" class="tabcontent" style="display:block;">
+{% endif %}
+  <h8 class="punchedtext">Acknowledge Orders</h8>
+  <div class="tablecontainer">
+      <div class="subtablecontainer1">
+              {% if disable == "" %}
+              {% if detailstoreceive.CusName %}
+               <h3 style="padding-left:10px;color:white" >{{detailstoreceive.CusName}}'s Order</h3>
+              {% endif %}
+
+  
+              <table class="tableaknowledge">
+              <tr class="trtableacknowledge">
+                <th >Item</th>
+                <th >Category</th>
+                <th >Qty</th>
+                <th >Price</th>
+                <th >Subtotal</th>
+              </tr>
+                    {% for toreceive in toreceive %}
+                    <tr class="trpunchedtable">
+                      <td class="tdpunched">{{toreceive.productname}}</td>
+                      <td class="tdpunched">{{toreceive.Category}}</td>
+                      <td class="tdpunched">{{toreceive.Qty}}</td>
+                      <td class="tdpunched">{{toreceive.Price}}</td>
+                      <td class="tdpunched">{{toreceive.Subtotal}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% if punchedtotal %}
+                    <tr class="trpunchedtable">
+                    <td style="color:red;">(Shipping Fee is not yet included )</td>
+                    <td></td>
+                    <td></td>
+                    <td class="tdpunched">Total:</td>
+                    <td class="tdpunched">{{punchedtotal}}</td>
+                    </tr>
+                    {% endif %}
+        
+
+            </table>
+            {% endif %}
+
+      </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+              <div >
+                      {% if disable == "disabled" %}
+                    <input  class="acknowledgebut" type="submit" value="Aknowledge" name="aknowledgebutton" {{disable}}>
+                      {% else %}
+                      <input  class="prodbut acknowledgebut" type="submit" value="Aknowledge" name="aknowledgebutton" {{disable}}>
+                      {% endif %}
+              </div>
+                </form>
+  </div>
+</div>
+
+{% if shiporder == 0 %}
+    {% if disable == "disabled" %}
+    <div id="Prepare" class="tabcontent" style="display:block;">
+    {% else %}
+    <div id="Prepare" class="tabcontent">
+    {% endif %}
+{% else %}
+<div id="Prepare" class="tabcontent">
+{% endif %}
+  <h8 class="punchedtext">Prepare Stocks</h8>
+            {% if shiporder == 0 %}
+      <div class="tablecontainerprepare">
+ 
+        <div class="subtablecontainer5">
+            <div class="titledetails">
+            <h2 class="exacttitledetails">Frachisee Details</h2>
+            </div>
+            <div class="details">
+             {% for detailacknowledge in detailacknowledge %}
+            <h5 class="detailsstylelabel">Name:</h5>
+            <h3 class="detailsstyle">{{detailacknowledge.CusName}}</h3>
+           
+            <h5 class="detailsstylelabel">Shipping Address:</h5>
+            <h3 class="detailsstyle">{{detailacknowledge.DeliveryAddress}}</h3>
+            
+            <h5 class="detailsstylelabel">Contact Number:</h5>
+            <h3 class="detailsstyle">0{{detailacknowledge.contactnumber}}</h3>
+            
+            {% endfor %}
+            </div>
+
+        
+        </div>
+        {% if detailacknowledge %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="shipp">
+                <input class="prodbut shippthisorder" type="submit" value="Ship this Order" name="ship">
+                </div>
+            </form>
+        {% endif %}
+
+        <div class="subtablecontainer6">
+    
+            <table style="border:transparent;">
+                  <tr class="trpreparetable">
+                    <th class="thpreparetable" >Item</th>
+                    <th class="thpreparetable">Category</th>
+                    <th class="thpreparetable">Qty</th>
+                    <th class="thpreparetable">Price</th>
+                    <th class="thpreparetable">Subtotal</th>
+                  </tr>
+                  {% for subord in acknowledgeorder %}
+                  <tr >
+                    <td class="tdpreparetable">{{subord.productname}}</td>
+                    <td class="tdpreparetable">{{subord.Category}}</td>
+                    <td class="tdpreparetable">{{subord.Qty}}</td>
+                    <td class="tdpreparetable">{{subord.Price}}</td>
+                    <td class="tdpreparetable">{{subord.Subtotal}}</td>
+    
+                  </tr>
+                  {% endfor %}
+                    </tr>
+                    
+                    {% if acknowledge %}
+                    <tr class="trpunchedtable">
+                    <td class="tdpreparetable" style="color:red;">(Shipping Fee is not yet included )</td>
+                    <td></td>
+                    <td></td>
+                    <td class="tdpreparetable"c>Total:</td>
+                    <td class="tdpreparetable">{{acknowledge}}</td>
+                    </tr>
+                    {% endif %}
+                </table>
+        </div>
+
+        
+
+                <div class="subtablecontainer7">
+               
+            
+                </div>
+
+      </div>
+       {% endif %}
+</div>
+<script>
+
+var checkdisplayprepare = document.getElementById('Prepare').style.display;
+var Preparebutton = document.getElementsByClassName('tablinks');
+function functionprepare() {
+
+if(checkdisplayprepare == "block"){
+Preparebutton[1].className += " active";
+$('#Shipbut').removeClass(' active');
+$('#Acknowledgebut').removeClass(' active');
+}else{
+//Preparebutton[1].className = Preparebutton[1].className.replace(" active", "");
+
+ functionship();
+ 
+}
+}
+</script>
+
+ {% if shiporder != 0 %}
+<div id="Ship" class="tabcontent" style="display:block;">
+{% else %}
+<div id="Ship" class="tabcontent">
+{% endif %}
+  <h8 class="punchedtext">Ship Stocks</h8>
+{% if shiporder != 0 %}
+      <div class="tablecontainerprepare">
+        <div class="subtablecontainer5">
+            <div class="titledetails">
+            <h2 class="exacttitledetails">Frachisee Details</h2>
+            </div>
+            <div class="details">
+             {% for detailacknowledge in detailacknowledge %}
+            <h5 class="detailsstylelabel">Name:</h5>
+            <h3 class="detailsstyle">{{detailacknowledge.CusName}}</h3>
+            
+            <h5 class="detailsstylelabel">Shipping Address:</h5>
+            <h3 class="detailsstyle">{{detailacknowledge.DeliveryAddress}}</h3>
+           
+            <h5 class="detailsstylelabel">Contact Number:</h5>
+            <h3 class="detailsstyle">0{{detailacknowledge.contactnumber}}</h3>
+            
+            {% endfor %}
+            </div>
+        
+        </div>
+        {% if notifyorder == 0 %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="shipp">
+                <input class="prodbut shippthisorder" type="submit" value="Notify Franchisee" name="Notify">
+                </div>
+            </form>
+            {% else %}
+            <div class="shipp">
+            <input class="shippthisorder" type="submit" value="Notified" name="Notify" disabled>
+            </div>
+            {% endif %}
+
+        <div class="subtablecontainer6">
+    
+            <table style="border:transparent;">
+                  <tr style="position:absolute;position:sticky;background-color:#2d2c29;border-radius: 20px;">
+                    <th class="thpreparetable">Item</th>
+                    <th class="thpreparetable" >Category</th>
+                    <th class="thpreparetable">Qty</th>
+                    <th class="thpreparetable">Price</th>
+                    <th class="thpreparetable">Subtotal</th>
+                  </tr>
+                  {% for subord in acknowledgeorder %}
+                  <tr >
+                    <td class="tdpreparetable">{{subord.productname}}</td>
+                    <td class="tdpreparetable">{{subord.Category}}</td>
+                    <td class="tdpreparetable">{{subord.Qty}}</td>
+                    <td class="tdpreparetable">{{subord.Price}}</td>
+                    <td class="tdpreparetable">{{subord.Subtotal}}</td>
+    
+                  </tr>
+                  {% endfor %}
+                    </tr>
+                    
+                    {% if acknowledge %}
+                    <tr class="trpunchedtable">
+                    <td class="tdpreparetable" style="color:red;">(Shipping Fee is not yet included )</td>
+                    <td></td>
+                    <td></td>
+                    <td class="tdpreparetable" >Total:</td>
+                    <td class="tdpreparetable" >{{acknowledge}}</td>
+                    </tr>
+                    {% endif %}
+                </table>
+        </div>
+
+        
+
+                <div class="subtablecontainer7">
+               
+            
+                </div>
+
+      </div>
+      {% endif %}
+</div>
+<script>
+var checkdisplayship = document.getElementById('Ship').style.display;
+var Shipbutton =  document.getElementsByClassName('tablinks');
+
+
+function functionship(){
+if(checkdisplayship == "block"){
+
+Shipbutton[2].className += " active"; 
+$('#Preparebut').removeClass(' active');
+$('#Acknowledgebut').removeClass(' active');
+
+
+}else{
+//Shipbutton[2].className = Shipbutton[2].className.replace(" active", "");
+
+functionacknowledge()
+}
+}
+</script>
+<script>
+var checkdisplayprepare = document.getElementById('Prepare').style.display;
+var checkdisplayship = document.getElementById('Ship').style.display;
+var acknowledgedisplay = document.getElementById('Acknowledge').style.display;
+var Acknowledgebutton = document.getElementsByClassName('tablinks');
+
+function functionacknowledge(){
+
+if(checkdisplayprepare !== "block" && checkdisplayship !== "block"){
+
+acknowledgedisplay = "block";
+
+Acknowledgebutton[0].className += " active";
+$('#Preparebut').removeClass(' active');
+$('#Shipbut').removeClass(' active');
+
+}else{
+
+//Acknowledgebutton[0].className = Acknowledgebutton[0].className.replace(" active", "");
+acknowledgedisplay = "none";
+alert('Acknowledge2:'+acknowledgedisplay);
+
+}
+}
+</script>
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+<script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+{% for stockname in stockbutton %}
+<script>
+    function myFunction{{stockname.id}}() {
+      var submits = document.getElementById("qtystoform"+{{stockname.id}});
+      var qty = prompt("Please enter quantity here...", "1");
+      if (qty != null && qty != "") {
+        $("#js_qty"+{{stockname.id}}).val(parseInt(qty));
+        submits.submit();
+        document.forms['stockform'+{{stockname.id}}].onsubmit = functionsubmit();
+      }
+    }
+
+</script>
+{% endfor %}
+
+<script>
+let myVar = setInterval(function functionsubmit(){
+    if(document.readyState !== 'complete') return;
+        clearInterval(myVar);
+        $("#punchedid").val('{{userr}}');
+        if( '{{qty}}' ) {
+            $("#quantity").val(parseInt('{{qty}}'));
+        }
+
+        if( '{{stor}}') {
+            $("#produktopangalan").val('{{stor}}');
+        }
+        
+        if('{{stock}}'){
+                $("#kategorya").val('{{stock}}');
+        }
+
+        if('{{presyoSTO.Price}}'){
+            $("#presyona").val('{{presyoSTO.Price}}');
+        }
+        if('{{costSTO.Cost}}'){
+            $("#costnaid").val('{{costSTO.Cost}}');
+        }
+        if('{{subtotsto}}'){
+            $("#subtotalna").val('{{subtotsto}}');
+        }
+    
+}, 100);
+</script>
+<script>
+function showmodalmade(){
+var modal=document.getElementById("modalmadee");
+var modalback=document.getElementById("modalmadeeback")
+
+modalback.style.display = "block";
+modal.style.display = "block";
+$("#userrr").val({{userr}});
+
+}
+</script>
+<script>
+function closex(){
+var modall=document.getElementById("modalmadee");
+var modalbackl=document.getElementById("modalmadeeback")
+modalbackl.style.display = "none";
+modall.style.display = "none";
+
+}
+</script>
+
+
+</body>
+{% endblock head %}
+</html> 
+

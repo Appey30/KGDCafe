@@ -1,0 +1,44 @@
+        $.ajax({
+        type:'POST',
+        url:"{% url 'Onlineorder.html' admin_id %}",
+        data:{
+        'firstnameid':JSON.stringify(firstnameid.value), 
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function(){
+
+        }
+        
+        },
+        error: function(){
+
+        alert('Error')
+
+        
+        }
+    });
+
+
+
+
+
+
+
+$(document).ready(function(){
+
+
+
+});
+
+
+
+<div class="logintiminbg">
+    <div class="logindiv">
+        <div class="loginhead">
+        </div>
+        <div class="loginbody">
+        </div>
+        <div class="loginfoot">
+        </div>
+    </div>
+</div>

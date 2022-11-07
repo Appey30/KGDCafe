@@ -1,0 +1,1415 @@
+﻿{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" media="all">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+    <title>KGD Login</title>
+
+
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+    background-image:url({% static 'bas.jpg'%});
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+/*large*/
+@media screen and (min-width: 1200px) {
+.background{
+position:absolute;
+width:99.5%;
+height:94%;
+z-index:-1;
+}
+.pagetitle{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+margin-top:3vh;
+}
+.pagetitle h1{
+font-size:70px;
+font-weight:bold;
+
+}
+.punchedtext{
+    
+    font-size: 18px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+.notifcontentbg{
+width:100%;
+height:100%;
+padding:0 2vw 20vh;
+}
+.notifcontent{
+border: 2px solid #615632;
+border-radius: 15px;
+width:100%;
+height:100%;
+position:relative;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:20px;
+overflow:auto;
+}
+.punchedtexttitle{
+    font-size: 25px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.queuetable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+.showorders{
+border: 2px solid #615632;
+border-radius: 15px;
+position:absolute;
+width:96%;
+height:350px;
+
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:50px;
+overflow:auto;
+
+}
+.showordersbg{
+display:none;
+position:fixed;
+
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+
+padding:30vh 2vw 2vh 2vw;
+
+}
+.exitshoworderdiv{
+position:fixed;
+border-radius:100%;
+background:red;
+right:10px;
+top:10px;
+width:20px;
+height:20px;
+text-align:center;
+cursor:pointer;
+}
+.exitshoworderdiv:hover{
+background:#B1473C;
+}
+.exitshoworder{
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+position:relative;
+top:-3px;
+}
+.exitshoworder:hover{
+color:#D4CECE;
+}
+.showordertitlename{
+font-size: 30px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+}
+.contactnummmclass{
+margin-left:auto;
+margin-right:auto;
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+
+.trpunchedtable{
+border-bottom: 2px solid #615632;
+}
+.punchedtable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+.tdqueue{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+}
+.trbutton{
+background-color:transparent;
+border-bottom: 2px solid #615632;
+}
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:70px;
+
+}
+.prodbut:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
+.focusbutton{
+    color:black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+.custom-select{
+background-color:transparent;
+
+}
+.custom-select select{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:200px;
+height:30px;
+font-size:15px;
+position:relative;
+}
+
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+
+}
+@media screen and (min-width: 992px) and (max-width: 1199px){
+.background{
+position:absolute;
+width:99.5%;
+height:94%;
+z-index:-1;
+}
+.pagetitle{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+margin-top:3vh;
+}
+.pagetitle h1{
+font-size:70px;
+font-weight:bold;
+
+}
+.punchedtext{
+    
+    font-size: 18px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+.notifcontentbg{
+width:100%;
+height:100%;
+padding:0 2vw 20vh;
+}
+.notifcontent{
+border: 2px solid #615632;
+border-radius: 15px;
+width:100%;
+height:100%;
+position:relative;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:20px;
+overflow:auto;
+}
+.punchedtexttitle{
+    font-size: 25px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.queuetable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+.showorders{
+border: 2px solid #615632;
+border-radius: 15px;
+position:absolute;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+width:96%;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:50px;
+overflow:auto;
+
+}
+.showordersbg{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+
+padding:30vh 2vw 2vh 2vw;
+
+}
+.exitshoworderdiv{
+position:fixed;
+border-radius:100%;
+background:red;
+right:10px;
+top:10px;
+width:20px;
+height:20px;
+text-align:center;
+cursor:pointer;
+}
+.exitshoworderdiv:hover{
+background:#B1473C;
+}
+.exitshoworder{
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+position:relative;
+top:-3px;
+}
+.exitshoworder:hover{
+color:#D4CECE;
+}
+.showordertitlename{
+font-size: 30px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+}
+.contactnummmclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+
+.trpunchedtable{
+border-bottom: 2px solid #615632;
+}
+.punchedtable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+.tdqueue{
+position:relative;
+
+font-size:15px;
+color:#A0A0A0;
+}
+.trbutton{
+background-color:transparent;
+border-bottom: 2px solid #615632;
+}
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:70px;
+
+}
+.prodbut:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
+.focusbutton{
+    color:black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+.custom-select{
+background-color:transparent;
+
+}
+.custom-select select{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:200px;
+height:30px;
+font-size:15px;
+position:relative;
+}
+
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+.background{
+position:absolute;
+width:99.5%;
+height:94%;
+z-index:-1;
+}
+.pagetitle{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+margin-top:3vh;
+}
+.pagetitle h1{
+font-size:70px;
+font-weight:bold;
+
+}
+.punchedtext{
+    
+    font-size: 18px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+.notifcontentbg{
+width:100%;
+height:100%;
+padding:0 2vw 20vh;
+}
+.notifcontent{
+border: 2px solid #615632;
+border-radius: 15px;
+width:100%;
+height:100%;
+position:relative;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:20px;
+overflow:auto;
+}
+.punchedtexttitle{
+    font-size: 25px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.queuetable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+.showorders{
+border: 2px solid #615632;
+border-radius: 15px;
+position:absolute;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+width:96%;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:50px;
+overflow:auto;
+
+}
+.showordersbg{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+
+padding:30vh 2vw 2vh 2vw;
+
+}
+.exitshoworderdiv{
+position:fixed;
+border-radius:100%;
+background:red;
+right:10px;
+top:10px;
+width:20px;
+height:20px;
+text-align:center;
+cursor:pointer;
+}
+.exitshoworderdiv:hover{
+background:#B1473C;
+}
+.exitshoworder{
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+position:relative;
+top:-3px;
+}
+.exitshoworder:hover{
+color:#D4CECE;
+}
+.showordertitlename{
+font-size: 30px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+}
+.contactnummmclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+
+.trpunchedtable{
+border-bottom: 2px solid #615632;
+}
+.punchedtable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+.tdqueue{
+position:relative;
+
+font-size:15px;
+color:#A0A0A0;
+}
+.trbutton{
+background-color:transparent;
+border-bottom: 2px solid #615632;
+}
+.totalspecial{
+font-size: 22px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:22px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:15px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:70px;
+
+}
+.prodbut:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
+.focusbutton{
+    color:black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+.custom-select{
+background-color:transparent;
+
+}
+.custom-select select{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:200px;
+height:30px;
+font-size:15px;
+position:relative;
+}
+
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+
+}
+@media screen and (max-width: 767px){
+.background{
+position:absolute;
+width:99.5%;
+height:94%;
+z-index:-1;
+}
+.pagetitle{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+margin-top:3vh;
+}
+.pagetitle h1{
+font-size:70px;
+font-weight:bold;
+
+}
+.punchedtext{
+    
+    font-size: 12px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+.notifcontentbg{
+width:100%;
+height:100%;
+padding:0 2vw 20vh;
+}
+.notifcontent{
+border: 2px solid #615632;
+border-radius: 15px;
+width:100%;
+height:100%;
+position:relative;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:20px;
+overflow:auto;
+}
+.punchedtexttitle{
+    font-size: 25px;
+    font-weight:bold;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.queuetable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+
+.showorders{
+border: 2px solid #615632;
+border-radius: 15px;
+position:absolute;
+width:96%;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+background-color:#2d2c29;
+z-index:6;
+padding-left:20px;
+padding-right:20px;
+padding-top:20px;
+padding-bottom:50px;
+overflow:auto;
+
+}
+.showordersbg{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+
+padding:30vh 2vw 2vh 2vw;
+
+}
+.exitshoworderdiv{
+position:fixed;
+border-radius:100%;
+background:red;
+right:10px;
+top:10px;
+width:20px;
+height:20px;
+text-align:center;
+cursor:pointer;
+}
+.exitshoworderdiv:hover{
+background:#B1473C;
+}
+.exitshoworder{
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+position:relative;
+top:-3px;
+}
+.exitshoworder:hover{
+color:#D4CECE;
+}
+.showordertitlename{
+font-size: 15px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+}
+
+.contactnummmclass{
+position:relative;
+font-size:15px;
+color:#A0A0A0;
+}
+
+.trpunchedtable{
+border-bottom: 2px solid #615632;
+}
+.punchedtable{
+border-collapse: collapse;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:100%;
+text-align:center;
+}
+.tdqueue{
+position:relative;
+font-size:9px;
+color:#A0A0A0;
+}
+.trbutton{
+background-color:transparent;
+border-bottom: 2px solid #615632;
+}
+.totalspecial{
+font-size: 13px;
+font-weight:bold;
+background: rgb(252, 220, 109);
+background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+text-align:justify;
+}
+
+.totalphp{
+font-size:15px;
+font-weight:bold;
+text-align:justify;
+}
+
+.value{
+position:relative;
+width:120.8px;
+font-size:13px;
+color:#A0A0A0;
+text-align:justify;
+}
+.key{
+position:relative;
+width:120.8px;
+font-size:13px;
+color:#A0A0A0;
+font-weight:bold;
+text-align:justify;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:70px;
+
+}
+.prodbut:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
+.focusbutton{
+    color:black;
+    font-weight:bold;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+.custom-select{
+background-color:transparent;
+
+}
+.custom-select select{
+background-color:#2d2c29;
+color:#A0A0A0;
+width:200px;
+height:30px;
+font-size:15px;
+position:relative;
+}
+
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+
+}
+</style>
+</head>
+<body>
+<img src="{% static 'qw1.png' %}" class="background"></img>
+
+
+
+
+
+<div class="notifcontentbg">
+<div class="pagetitle">
+<h1 class="punchedtext" style="font-weight:bold;">Delivery</h1>
+</div>
+<div class="notifcontent">
+<h1 class="punchedtexttitle">To be Delivered Orders </h1>
+<table class="queuetable">
+  <tr class="trpunchedtable">
+    <th class="punchedtext">Grand Total</th>
+    <th class="punchedtext">Change For</th>
+    <th class="punchedtext">Change</th>
+     <th class="punchedtext">View Orders</th>
+  </tr>
+  
+   {% if messages %}
+        {% for message in messages %}
+            <script>
+                alert('{{message}}')
+            </script>
+        {% endfor %}
+    {% endif %}
+
+ <tbody id="deliverthis"></tbody>
+ </table>
+ <div class="showordersbg" id="showordersid">
+ <div class="showorders">
+ <div class="exitshoworderdiv" onclick="excitshoworder()">
+ <span class="exitshoworder" onclick="excitshoworder()">&times;</span>
+ </div>
+<h5 id="customnameorderid" class="showordertitlename"></h5>
+<small id="contactnummmid" class="contactnummmclass"></small>
+        <table class="punchedtable" >
+        <tr class="trpunchedtable">
+        <th class="punchedtext">Qty</th>
+          <th class="punchedtext">Item</th>
+          <th class="punchedtext">Category</th>
+          <th class="punchedtext">Size</th>
+          <th class="punchedtext">Additional Addons</th>
+          <th class="punchedtext">Subtotal</th>
+
+        </tr>
+        
+        <tbody id='tablebodyshoworder'></tbody>
+        
+        </table>
+</div>
+</div> 
+</div>
+<input type="hidden" value="" id="ridersviewordersid"></input>
+
+
+</div>
+
+<script>
+
+function excitshoworder(){
+var exitshoworderdiv = document.getElementsByClassName('exitshoworderdiv')[0];
+var exitshoworder = document.getElementsByClassName('exitshoworder')[0];
+var showordersbg = document.getElementsByClassName('showordersbg')[0];
+
+showordersbg.style.display='none';
+var orderbut = document.getElementsByClassName('prodbut');
+for(let i = 0;i<orderbut.length;i++){
+orderbut[i].classList.remove("focusbutton"); 
+
+}
+
+}
+function deliverthis(){
+
+var todelivertbody = document.getElementById('deliverthis');
+
+}
+
+
+
+
+
+let tid = setInterval(function(){
+var todelivertbodydata = document.getElementById('deliverthis');
+    if ( document.readyState !== 'complete' ) return;
+    clearInterval( tid );       
+            $.ajax({
+            type:'GET',
+            url:"{% url 'Rider.html' %}",
+            data:{"riderni":"rengorder"},
+            success: function(todeliverorder){
+            $('#deliverthis').empty();
+            var dataHtml='';
+            var vieworders = document.getElementById('ridersviewordersid')
+            vieworders.value=todeliverorder.viewordersrider
+            
+                var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
+                var length = todeliverorderffi.length;
+
+                for(var todeliverorders of todeliverorderffi){
+                var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
+                var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
+                var time = "";
+                var bargy="";
+                var MOPstringify = JSON.stringify(todeliverorders["fields"].MOP)
+                if(todeliverorders["fields"].Timetodeliver == "Now"){
+                time = "now";
+                }else{
+                time = todeliverorders["fields"].ScheduleTime;
+                }
+                if(todeliverorders["fields"].Barangay){
+                bargy = todeliverorders["fields"].Barangay;
+                }else{
+                bargy = "None";
+                }
+
+                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td></tr>";
+                
+                }
+                $('#deliverthis').append(dataHtml);
+
+
+
+            },
+            error: function(){
+            
+            }
+        });
+    
+}, 1000 );
+
+
+        $(document).ready(function () {
+
+            setInterval( function() {
+            $.ajax({
+            type:'GET',
+            url:"{% url 'Rider.html' %}",
+            data:{"riderni":"rengorder"},
+            success: function(todeliverorder){
+            $('#deliverthis').empty();
+            var dataHtml='';
+            var vieworders = document.getElementById('ridersviewordersid')
+            vieworders.value=todeliverorder.viewordersrider
+            
+                var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
+                var length = todeliverorderffi.length;
+                for(var todeliverorders of todeliverorderffi){
+                var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
+                var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
+                var time = "";
+                var bargy="";
+                var MOPstringify = JSON.stringify(todeliverorders["fields"].MOP)
+                if(todeliverorders["fields"].Timetodeliver == "Now"){
+                time = "now";
+                }else{
+                time = todeliverorders["fields"].ScheduleTime;
+                }
+                if(todeliverorders["fields"].Barangay){
+                bargy = todeliverorders["fields"].Barangay;
+                }else{
+                bargy = "None";
+                }
+
+                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td></tr>";
+                
+                }
+                $('#deliverthis').append(dataHtml);
+
+
+
+            },
+            error: function(){
+            
+            }
+        });
+
+                
+
+             }, 10000 );
+
+        });
+var contactnumberr ="";
+var contactmatch="";
+function viewriderpov(contactnumber, names, gtotal, devfee){
+
+contactnumberr = contactnumber;
+var nameshoworder = document.getElementById('customnameorderid');
+var contactnummmid = document.getElementById('contactnummmid');
+var showordersdiv = document.getElementById('showordersid');
+
+var vieworders = document.getElementById('ridersviewordersid').value;
+
+var tablebody = document.getElementById('tablebodyshoworder')
+var orderbut = document.getElementById('orderbutid'+contactnumber);
+
+if(contactmatch){
+var orderbuttwo = document.getElementById('orderbutid'+contactmatch);
+}else{
+var orderbuttwo = orderbut;
+}
+
+var showorderiii = JSON.parse(vieworders);
+
+var showorderii = showorderiii;
+var showorderi = showorderii[contactnumber];
+
+var showorder = JSON.parse(showorderi)
+var i=0;
+var dataHtml = "";
+if(showordersdiv.style.display == "none" || contactmatch !== contactnumber){
+showordersdiv.style.display = "block";
+
+        if(orderbuttwo.classList == "prodbut focusbutton"){
+
+        orderbuttwo.classList.remove("focusbutton"); 
+        orderbut.classList.add("focusbutton");
+        }else{
+        orderbut.classList.add("focusbutton"); 
+        }
+}else{
+showordersdiv.style.display = "none";
+orderbuttwo.classList.remove("focusbutton");
+orderbut.classList.remove("focusbutton");
+}
+contactmatch = contactnumber;
+        var totalpunched = 0;
+        var showordercounter = showorder.length;
+            for(let i = 0;i<showordercounter;i++){
+        
+                totalpunched = totalpunched+parseInt(showorder[i].Subtotal);
+            };
+var grandtotal = 0;
+if(gtotal){
+grandtotal = gtotal;
+}else{
+grandtotal = totalpunched;
+}
+var gpslink;
+var blank ='_blank' ;
+var pinnedpoint;
+for(var showorders of showorder){
+if(showorders.Size){
+var sizefinal = showorders.Size;
+}else if(showorders.PSize){
+var sizefinal = showorders.PSize;
+}else{
+var sizefinal = 'x'
+}
+if(showorders.Addons){
+var addonsfinal=showorders.Addons+' x '+showorders.QtyAddons;
+}else{
+var addonsfinal='x';
+}
+            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">'+showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
+            urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
+            gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
+            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
+            };
+
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Subtotal:</td><td class="tdqueue value"> ₱'+totalpunched+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Delivery Fee:</td><td class="tdqueue value"> ₱'+devfee+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue totalspecial">Total:</td><td class="tdqueue totalphp">₱'+grandtotal+'.00</td></tr>';
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueue'></td><td class='tdqueue'></td><td class='tdqueue'><button class='prodbut' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueue'><button class='prodbut' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueue totalspecial'></td><td class='tdqueue totalphp'></td></tr>";
+            tablebody.innerHTML = dataHtml;
+            nameshoworder.innerHTML = names+"'s Order";
+
+            contactnummmid.innerHTML = '<small class="tdqueue">Contact Number: 0'+contactnumber+'</small>';
+}
+
+</script>
+
+
+
+
+
+<script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+  
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+  import { getMessaging, onMessage, getToken } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-messaging.js";
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQ5SNfrKB73oHMgMfIiZnfIXTzvnY_5IA",
+    authDomain: "kgd-cafe.firebaseapp.com",
+    projectId: "kgd-cafe",
+    storageBucket: "kgd-cafe.appspot.com",
+    messagingSenderId: "279897354442",
+    appId: "1:279897354442:web:022b31ee613f3eea7bc433",
+    measurementId: "G-GWT5VVJXBK",
+  };
+   
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+          
+        const messaging = getMessaging();
+        getToken(messaging, { vapidKey: 'BI0QLa4Ex20PkU-txBwF08f5o4xejkwiM-NuUjBLsXsOtxSll6ceuKkHuvXIaS_BwPbwnVog58vn58sPdN50Z2c' }).then((currentToken) => {
+          if (currentToken) {
+            // Send the token to your server and update the UI if necessary
+            // ...
+
+
+          } else {
+            // Show permission request UI
+            console.log('No registration token available. Request permission to generate one.');
+            // ...
+          }
+        }).catch((err) => {
+          console.log('An error occurred while retrieving token. ', err);
+          // ...
+        });
+      
+        messaging
+         .requestPermission()
+         .then(function () {
+           console.log("Notification permission granted.");
+           return messaging.getToken()
+         })
+         .catch(function (err) {
+         console.log("Unable to get permission to notify.", err);
+       });
+      
+      
+        messaging.onMessage((payload) => {
+        console.log('Message received. ', payload);
+
+
+      });
+</script>
+</body>
+
+	
+
+</html> 

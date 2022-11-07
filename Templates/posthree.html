@@ -1,0 +1,5076 @@
+﻿{% extends 'base.html' %}
+
+
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html>
+{% block head %}
+	
+
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+.forlink{
+    font-size: 20px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.forlink:hover{
+    font-size: 20px;
+    color:black;
+    background: black;
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 10px;
+    color: rgb(252, 220, 109);
+    display: block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:20px;
+    width:60px;
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sampw {
+    background-color: rgba(249, 216, 105,0);
+
+    font-size: 16px;
+    color: rgb(252, 220, 109);;
+    display: block;
+    padding: 3px 20px;
+    border-radius: 60px;
+    border-color:rgb(249, 216, 105);
+
+}
+.sampw:hover {
+        font-family: Oswald-regular;
+    font-weight:bold;
+    color: #121212;
+    cursor:pointer;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
+
+.samp {
+    background-color: rgba(249, 216, 105,0);
+    border-color:rgb(249, 216, 105);
+    font-size: 16px;
+    color: rgb(252, 220, 109);;
+    display: block;
+    padding: 3px 20px;
+    border-radius: 60px;
+
+}
+.samp:hover {
+    font-family: Oswald-regular;
+    font-weight:bold;
+    transform: scale(1.3);
+    transition: transform .2s;
+    color: #121212;
+    cursor:pointer;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+
+}
+
+.punchedtext{
+    font-size: 20px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.navbarbutton {
+    position:absolute;
+    left:1%;
+    top:2%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+}
+.quebarbutton {
+    position:absolute;
+    left:1%;
+    top:2%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:none;
+}
+
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+/* TAB BAR */
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  position: absolute;
+  left: 60%;
+  top:8.5%;
+  width: 37%;
+
+}
+
+/* Style the buttons inside the tab */
+
+
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);;
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    border-radius:60px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    border-weight:2px;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: #121212;
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    cursor:pointer;
+
+
+}
+
+/* Style the tab content */
+.tabcontent {
+background-color: #FFC300;
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+  position: absolute;
+  left: 60%;
+  top:20.7%;
+  width:35.8%;
+  height:70%;
+
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+/* tab BAR */
+
+/* MODAL*/
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* MODAL*/
+
+
+/* Dropup Button 
+.dropbtnfries {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtnbubwaf {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtnshawarma {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtnP {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtncookies {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtnao {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtnfrz {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtnfr {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+*/
+/* The container <div> - needed to position the dropup content */
+.dropupfr {
+  position: relative;
+  display: inline-block;
+  background-color: #2d2c29;
+
+}
+.dropupP {
+  position: relative;
+  display: inline-block;
+  background-color: #2d2c29;
+
+}
+
+.dropupmt {
+  position: relative;
+  display: inline-block;
+  background-color: #2d2c29;
+
+
+}
+/* Dropup content (Hidden by Default) */
+.dropup-contentmt {
+  
+  display: none;
+  position: absolute;
+  bottom: -250%;
+  left:10%;
+  min-width: 160px;
+  z-index: 1;
+ 
+  
+
+ 
+}
+.dropup-contentP {
+  display: none;
+  position: absolute;
+  bottom: -160%;
+  left:10%;
+  min-width: 160px;
+  z-index: 1;
+
+ 
+}
+/* Dropup content (Hidden by Default) */
+.dropup-contentfr {
+  display: none;
+  position: absolute;
+  bottom: -160%;
+  left:10%;
+  min-width: 160px;
+  z-index: 1;
+
+
+ 
+}
+
+/* Links inside the dropup */
+.dropup-contentmt a {
+  
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+
+}
+/* Links inside the dropup */
+.dropup-contentfr a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropup-contentP a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropup links on hover */
+.dropup-contentmt a:hover {background-color: #ddd;
+
+}
+/* Change color of dropup links on hover */
+.dropup-contentP a:hover {background-color: #ddd;
+
+}
+/* Change color of dropup links on hover */
+.dropup-contentfr a:hover {background-color: #ddd;
+
+}
+
+/* Show the dropup menu on hover */
+.dropupmt:hover .dropup-contentmt {
+  display: block;
+}
+.dropupP:hover .dropup-contentP {
+  display: block;
+}
+/* Show the dropup menu on hover */
+.dropupfr:hover .dropup-contentfr {
+  display: block;
+}
+
+/*
+ Change the background color of the dropup button when the dropup content is shown 
+.dropupmt:hover .dropbtnmt {
+  background-color: #2980B9;
+  }
+
+   Change the background color of the dropup button when the dropup content is shown 
+.dropupfr:hover .dropbtnfr {
+  background-color: #2980B9;
+  }
+.dropupP:hover .dropbtnP {
+  background-color: #2980B9;
+}
+     Change the background color of the dropup button when the dropup content is shown 
+.dropbtnfrz:hover {
+  background-color: #2980B9;
+}
+     Change the background color of the dropup button when the dropup content is shown 
+.dropbtnao:hover {
+  background-color: #2980B9;
+}
+.dropbtncookies:hover {
+  background-color: #2980B9;
+}
+.dropbtnshawarma:hover {
+  background-color: #2980B9;
+}
+.dropbtnfries:hover {
+  background-color: #2980B9;
+}
+.dropbtnbubwaf:hover {
+  background-color: #2980B9;
+}
+*/
+
+.dropbtnqueue {
+    position:absolute;
+    left:-40%;
+    top:0%;
+    background-color: rgba(249, 216, 105,0);
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(252, 220, 109);;
+    display: block;
+    padding: 3px 20px;
+    border-radius: 60px;
+
+}
+
+
+
+
+.dropbtnqueue:hover, .dropbtnqueue:focus {
+
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+
+
+}
+.dropdown {
+  position: absolute;
+  left:63%;
+  top:35%;
+  display: inline-block;
+  width:100%;
+  height:100%;
+}
+
+.dropdown-contentqueue {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 50px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+
+.dropdown-contentqueue a {
+  color: black;
+  position:absolute;
+
+
+
+  text-decoration: none;
+  display: block;
+
+}
+
+.dropbtnqueue a:hover {background-color: #ddd;}
+
+.show {display: block;}
+body{
+
+background-image:url({% static 'bas.jpg'%});
+ background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+ 
+
+}
+@media screen and (max-width: 800px){
+    .wrapper{
+    width:800px;
+    height:360px;
+    }
+    .pagetitle{
+    position:absolute;
+    left:300px;
+    top:0px;
+    font-weight:bold;
+    font-size:40px;
+    line-height:80%
+    }
+    .navbarbutton {
+      position:absolute;
+      left:8px;
+      top:0px;
+      font-size: 10px;
+      cursor: pointer;
+      background-color: #111;
+      color: white;
+      padding: 5px 7.5px;
+      border-radius: 60px;
+      border: 2px solid #615632;
+      height:30px;
+      width:100px;
+    }
+
+    .navbarbutton:hover {
+      background-color: #444;
+        cursor: pointer;
+      border-color:rgb(249, 216, 105);;
+      border-weight:1px; 
+      border-radius: 60px;
+    }
+
+    #main {
+      transition: margin-left .5s;
+      padding: 16px;
+    }
+
+    .divqueue1{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color:#2d2c29;
+    height:150px;
+    width:280px;
+    position:absolute;
+    left:10px;
+    top:30.6px;
+    overflow:;
+    }
+    .divqueue2{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color:#2d2c29;
+    height:150px;
+    width:280px;
+    position:absolute;
+    left:10px;
+    top:200px;
+    overflow:;
+    }
+    .divqueue3{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color:#2d2c29;
+    height:150px;
+    width:280px;
+    position:absolute;
+    left:10px;
+    top:370px;
+    overflow:;
+    }
+    .headqueue{
+    position:relative;
+    top:0px;
+    left:-15px;
+    width:280px;
+    }
+    .queuetitle{
+     font-size:20px;
+     text-align:center;
+     font-weight:bold;
+     position:relative;
+     left:80px;
+     
+    }
+    .queuenamea{
+    color:#A0A0A0;
+    position:absolute;
+    left:0px;
+    top:-10px;
+    font-size:25px;
+
+    }
+   .qnamediv{
+   background-color:transparent;
+   width:90px;
+   height:45px;
+   position:absolute;
+   left:70px;
+   top:25px;
+   z-index:1;
+   overflow-x:auto;
+    }
+    .queuetotal{
+    position:relative;
+    left:-100px;
+    top:0px;
+    font-size:12px;
+    }
+    .queuetotala{
+    color:#A0A0A0;
+    position:relative;
+    left:-100px;
+    top:0px;
+    font-size:14px;
+    }
+    .queuechange{
+    position:relative;
+    left:50px;
+    top:0px;
+    font-size:12px;
+    }
+    .queuechangea{
+    color:#A0A0A0;
+    position:relative;
+    left:50px;
+    top:0px;
+    font-size:14px;
+    }
+
+    .divqueuetable{
+    height:21;
+    overflow:auto;
+    position:relative;
+    top:-5px;
+    left:0px;
+    width:100%;
+    height:70px;
+        background-color:transparent;
+    margin-left:auto;
+    margin-right:auto;
+    }
+    .queuetable{
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+    margin-collapse:collapse;
+
+    }
+    .thqueue{
+    width:120.8px;
+    position:relative;
+
+    font-size:10px;
+    color:#A0A0A0;
+    } 
+    .tdqueue{
+    position:relative;
+
+    width:120.8px;
+    font-size:8px;
+    color:#A0A0A0;
+    }
+    .divfillupqueue{
+    background-color:transparent;
+    height:37.8px;
+    width:217px;
+    position:relative;
+    top:0px;
+    left:0px;
+    margin-left:auto;
+    margin-right:auto;
+    }
+    .queuecustomer{
+    position:relative;
+    left:-10px;
+    top:-67px;
+    font-size:10px;
+    }
+    .customerformqueue{
+    position:relative;
+    top:-90px;
+    left:40px;
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 15px;
+    width:60px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:10px;
+    }
+    .queueamount{
+    position:relative;
+    left:108px;
+    top:-115px;
+    font-size:10px;
+    }
+    .amountformqueue{
+    position:relative;
+    top:-140px;
+    left:150px;
+    width:40px;
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 15px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:10px;
+    }
+
+        .prodbutpositiondone{
+    position:relative;
+    left:35px;
+    top:5px;
+    
+    }
+        .prodbutpositioncancel{
+    position:relative;
+    left:130px;
+    top:-15px;
+    
+    }
+    .punchedcontainer{
+    border: 2px solid #615632;
+    border-radius: 15px;
+    height:180px;
+    width:240px;
+    position:absolute;
+    left:150px;
+    top:31px;
+    background-color:#2d2c29;
+    }
+    .divpunchedtable{
+    background-color:transparent;
+    position:relative;
+    left:-20px;
+    width:240px;
+    height:180px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    
+    }
+    .punchedtable{
+    border-collapse: collapse;
+    position:relative;
+    left: -10px;
+    width:230px;
+    text-align:center;
+    }
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:12px;
+    color:#A0A0A0;
+    
+    
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:8px;
+    color:#A0A0A0;
+    
+    
+    }
+    .trpunchedtable{
+    border-bottom: 2px solid #615632;
+    }
+    .addcontainer{
+    border: 2px solid #615632;
+    border-radius: 15px;
+    position:absolute;
+    left:150px;
+    top:215px;
+    width:240px;
+    height:50px;
+    background-color:#2d2c29;
+    }
+    .divaddtable{
+    position:relative;
+    left:-15px;
+    width:240px;
+    height:40px;
+    background-color:transparent;
+    }
+    .addtable{
+    border-collapse: collapse;
+    position:relative;
+    left:-10px;
+    width:200px;
+    height:40px;
+    text-align:center;
+    }
+    .thaddtable{
+    width:15px;
+    position:relative;
+    left:10px;
+    font-size:11px;
+    text-align:center;
+    }
+    .tdaddtable{
+    width:13px;
+    position:relative;
+    left:15px;
+    text-align:center;
+    }
+    .suspendcontainer{
+    position:absolute;
+    left:150px;
+    top:270px;
+    width:240px;
+    height:8%;
+    background-color:#2d2c29;
+    border: 2px solid #615632;
+    border-radius: 15px;
+    }
+    .totalsuspend{
+    font-size:15px;
+    font-weight: bold
+    }
+    .totalsuspenda{
+    color:#A0A0A0;
+    font-size:20px;
+    font-weight: bold
+    }
+    
+    .suspendbut{
+    position:relative;
+    top:-8px;
+    left:-10px;
+    }
+    .btnq{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 10px;
+    color: rgb(252, 220, 109);
+    display: block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    text-align:center;
+    padding-left:15px;
+    padding-bottom:10px;
+    padding-top:0px;
+    }
+    .btnq:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    }
+    .dropbtnqueue {
+        position:relative;
+        left:-40px;
+        top:-13px;
+        background-color: rgba(249, 216, 105,0);
+        cursor: pointer;
+
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-radius: 60px;
+        text-align:center;
+        height:20px;
+        width:60px;
+    }
+
+
+
+
+    .dropbtnqueue:hover, .dropbtnqueue:focus {
+
+        color: #121212;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+
+
+    }
+    .dropdown {
+      position: relative;
+      left:130px;
+      top:-30px;
+      display: inline-block;
+      width:100%;
+      height:100%;
+    }
+
+    .dropdown-contentqueue {
+      display: none;
+      position: relative;
+      left:-60px;
+      top:40%;
+      height:65px;
+      background-color: #2d2c29;
+      width: 100px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+
+
+    }
+
+    .dropdown-contentqueue a {
+      color: black;
+      position:relative;
+      text-decoration: none;
+      display: block;
+
+    }
+
+    .dropbtnqueue a:hover {background-color: #ddd;}
+
+    .show {display: block;}
+    .sampw {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 10px;
+        width:30px;
+        height:20px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-radius: 60px;
+        border-color:rgb(249, 216, 105);
+
+    }
+    .sampw:hover {
+            font-family: Oswald-regular;
+        font-weight:bold;
+        color: #121212;
+        cursor:pointer;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    }
+    .tab {
+      border: 2px solid #615632;
+      border-radius:15px;
+      overflow: hidden;
+      background-color: #2d2c29;
+      position: absolute;
+      left: 400px;
+      top:30px;
+      width: 300px;
+    }
+    .tabsub{
+      border: 2px solid #615632;
+      border-radius:15px;
+      overflow: hidden;
+      background-color: #2d2c29;
+      position: absolute;
+      left: -3px;
+      top:-28px;
+      width: 300px;
+      height:25px;
+      padding-top:0px;
+      padding-bottom:10px;
+    }
+
+    /* Style the buttons inside the tab */
+    
+    .tabsub button {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 10px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-color:rgba(249, 216, 105,0);
+        float: left;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius:60px;
+        width:50px;
+        height:20px;
+        padding:0px;
+        }
+
+
+    /* Change background color of buttons on hover   background-color: #D4AC0D;*/
+    .tabsub button:hover {
+        padding:0px;
+        font-size: 10px;
+        cursor:pointer;
+        color: #121212;
+        border-weight:2px;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+        }
+
+        /* Create an active/current tablink class */
+        .tabsub button.active {
+
+            font-size: 10px;
+            color: #121212;
+            border-color: rgb(249, 216, 105);
+            border-weight:2px;
+            cursor:pointer;
+            width:50px;
+            height:20px;
+
+
+        }
+
+    .tab button {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 10px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-color:rgba(249, 216, 105,0);
+        float: left;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius:60px;
+        width:50px;
+        padding:0px;
+        }
+
+    /* Change background color of buttons on hover   background-color: #D4AC0D;*/
+    .tab button:hover {
+        padding:0px;
+        font-size: 10px;
+        cursor:pointer;
+        color: #121212;
+        border-weight:2px;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            padding:0px;
+            font-size: 10px;
+            color: #121212;
+            border-color: rgb(249, 216, 105);
+            border-weight:2px;
+            cursor:pointer;
+            width:50px;
+            height:20px;
+
+
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+          background-color: #2d2c29;
+          display: none;
+          -webkit-animation: fadeEffect 1s;
+          animation: fadeEffect 1s;
+          position: absolute;
+          left: 400px;
+          top:60px;
+          width: 300px;
+          height:20px;
+          padding-top:0px;
+          padding-bottom:10px;
+
+        }
+        .tabcontentstyle{
+         border: 2px solid #615632;
+         border-radius: 15px;
+         width:300px;
+         height:300px;
+         position:absolute;
+         top:60px;
+         background-color:#2d2c29;
+        }
+        .tabsubcontentstyle {
+        border: 2px solid #615632;
+        border-radius: 15px;
+        width:300px;
+        height:250px;
+        position:absolute;
+        top:80px;
+        background-color:#2d2c29;
+
+        }
+        /* Fade in tabs */
+        @-webkit-keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+
+        @keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+        .forlink{
+            font-size: 10px;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .forlink:hover{
+            font-size: 10px;
+            color:black;
+
+        }
+        .dropupfr {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+
+        }
+        .dropupP {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+
+        }
+
+        .dropupmt {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+
+
+        }
+        /* Dropup content (Hidden by Default) */
+        .dropup-contentmt {
+          display: none;
+          position: absolute;
+          top: 40px;
+          left:-20px;
+          min-width: 160px;
+          z-index: 1;
+ 
+
+ 
+        }
+        .dropup-contentP {
+          display: none;
+          position: absolute;
+          top: 40px;
+          left:-20px;
+          min-width: 160px;
+          z-index: 1;
+ 
+ 
+        }
+        /* Dropup content (Hidden by Default) */
+        .dropup-contentfr {
+          display: none;
+          position: absolute;
+          top: 40px;
+          left:-20px;
+          min-width: 160px;
+          z-index: 1;
+        }
+
+        /* Links inside the dropup */
+        .dropup-contentmt a {
+  
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+
+        }
+        /* Links inside the dropup */
+        .dropup-contentfr a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        .dropup-contentP a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        /* Change color of dropup links on hover */
+        .dropup-contentmt a:hover {background-color: #ddd;
+
+        }
+        /* Change color of dropup links on hover */
+        .dropup-contentP a:hover {background-color: #ddd;
+
+        }
+        /* Change color of dropup links on hover */
+        .dropup-contentfr a:hover {background-color: #ddd;
+
+        }
+
+        /* Show the dropup menu on hover */
+        .dropupmt:hover .dropup-contentmt {
+          display: block;
+        }
+        .dropupP:hover .dropup-contentP {
+          display: block;
+        }
+        /* Show the dropup menu on hover */
+        .dropupfr:hover .dropup-contentfr {
+          display: block;
+        }
+        .butprod{
+        width:100px;
+        text-align:center;
+        margin-left:1%;
+        margin-top:2%;
+        padding-left:1%;
+        padding-top:1%;
+        padding-bottom:1%;
+        font-size:10px;
+        }
+.qsidebar {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.qsidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  width: 300px;
+}
+
+.qsidebar a:hover {
+  color: #f1f1f1;
+  width: 300px;
+}
+
+.qsidebar .closebtn {
+  position: absolute;
+  top: -15px;
+
+  right: -230px;
+  font-size: 36px;
+
+}
+
+.quebarbutton {
+    position:absolute;
+    left:10px;
+    top:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+  width:100px;
+  height:28px;
+  font-size:10px;
+  padding-top:3px;
+  padding-left:10px;
+}
+
+.quebarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+
+}
+
+#qmain {
+  transition: margin-left .5s;
+  padding: 16px;
+  width: 300px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .qsidebar {padding-top: 15px;width: 300px;}
+  .qsidebar a {font-size: 18px;width: 300px;}
+}
+}
+
+@media screen and (min-width: 801px) and (max-width: 960px) {
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+    .wrapper{
+    width:800px;
+    height:360px;
+    }
+    .pagetitle{
+    position:absolute;
+    left:350px;
+    top:0px;
+    font-weight:bold;
+    font-size:50px;
+    line-height:80%
+    }
+    .navbarbutton {
+      position:absolute;
+      left:8px;
+      top:0px;
+      font-size: 15px;
+      cursor: pointer;
+      background-color: #111;
+      color: white;
+      padding-left:0px;
+      padding-top:7px;
+      border-radius: 60px;
+      border: 2px solid #615632;
+      height:40px;
+      width:130px;
+    }
+
+    .navbarbutton:hover {
+      background-color: #444;
+        cursor: pointer;
+      border-color:rgb(249, 216, 105);;
+      border-weight:1px; 
+      border-radius: 60px;
+    }
+
+    #main {
+      transition: margin-left .5s;
+      padding: 16px;
+    }
+
+    .divqueue1{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color: rgba(45, 44, 41,100);
+    height:150px;
+    width:280px;
+    position:absolute;
+    left:10px;
+    top:60.6px;
+    overflow:;
+    }
+    .divqueue2{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color: rgba(45, 44, 41,100);
+    height:150px;
+    width:280px;
+    position:absolute;
+    left:10px;
+    top:230px;
+    overflow:;
+    }
+    .divqueue3{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color: rgba(45, 44, 41,100);
+    height:150px;
+    width:280px;
+    position:absolute;
+    left:10px;
+    top:400px;
+    overflow:;
+    }
+    .headqueue{
+    position:relative;
+    top:0px;
+    left:-15px;
+    width:280px;
+    }
+    .queuetitle{
+     font-size:20px;
+     text-align:center;
+     font-weight:bold;
+     position:relative;
+     left:80px;
+     
+    }
+    
+    .queuename{
+    position:absolute;
+    left:-25px;
+    top:0px;
+    font-size:10px;
+
+    }
+    .queuenamea{
+    color:#A0A0A0;
+    position:relative;
+    left:0px;
+    top:0px;
+    font-size:10px;
+
+    }
+    .qnamediv{
+   background-color:transparent;
+   width:40px;
+   height:45px;
+   position:absolute;
+   left:5px;
+   top:0px;
+   z-index:1;
+   overflow-x:auto;
+    }
+    .queuetotal{
+    position:absolute;
+    left:50px;
+    top:0px;
+    font-size:10px;
+
+    }
+    .queuetotala{
+    color:#A0A0A0;
+    position:absolute;
+    left:75px;
+    top:0px;
+    font-size:10px;
+
+    }
+    
+    .queueamount{
+    position:absolute;
+    left:110px;
+    top:0px;
+    font-size:10px;
+
+    }
+    .queueamounta{
+    color:#A0A0A0;
+    position:absolute;
+    left:150px;
+    top:0px;
+    font-size:10px;
+
+    }
+    .queuechange{
+    position:absolute;
+    left:180px;
+    top:0px;
+    font-size:10px;
+
+    }
+    .queuechangea{
+    color:#A0A0A0;
+    position:absolute;
+    left:220px;
+    top:0px;
+    font-size:10px;
+
+    }
+
+    .divqueuetable{
+    height:21;
+    overflow:auto;
+    position:relative;
+    top:-5px;
+    left:-30px;
+    width:300px;
+    height:70px;
+    background-color:transparent;
+    margin-left:;
+    margin-right:;
+    }
+    .queuetable{
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+    margin-collapse:collapse;
+    background-color:transparent;
+    }
+    .thqueue{
+    width:120.8px;
+    position:relative;
+
+    font-size:10px;
+    color:#A0A0A0;
+    } 
+    .tdqueue{
+    position:relative;
+
+    width:120.8px;
+    font-size:8px;
+    color:#A0A0A0;
+    }
+    .divfillupqueue{
+    background-color:transparent;
+    height:37.8px;
+    width:217px;
+    position:relative;
+    top:0px;
+    left:0px;
+    margin-left:auto;
+    margin-right:auto;
+    }
+    .queuecustomer{
+    position:relative;
+    left:-10px;
+    top:-67px;
+    font-size:10px;
+    }
+    .customerformqueue{
+    position:relative;
+    top:-90px;
+    left:40px;
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 15px;
+    width:60px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:10px;
+    }
+ 
+    .amountformqueue{
+    position:relative;
+    top:-140px;
+    left:150px;
+    width:40px;
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 15px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:10px;
+    }
+    .prodbutpositionpay{
+    position:relative;
+    left:;
+    top:0px;
+    
+    }
+        .prodbutpositiondone{
+    position:relative;
+    left:25px;
+    top:20px;
+    
+    }
+        .prodbutpositioncancel{
+    position:relative;
+    left:90px;
+    top:0px;
+    
+    }
+    .punchedcontainer{
+    border: 2px solid #615632;
+    border-radius: 15px;
+    height:230px;
+    width:300px;
+    position:absolute;
+    left:310px;
+    top:60px;
+    background-color:#2d2c29;
+
+    }
+    .divpunchedtable{
+    background-color:transparent;
+    position:relative;
+    left:-20px;
+    width:300px;
+    height:230px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    
+    }
+    .punchedtable{
+    border-collapse: collapse;
+    position:relative;
+    left: -10px;
+    width:290px;
+    text-align:center;
+
+    }
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    font-size:12px;
+    color:#A0A0A0;
+    
+    
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    width:90px;
+    font-size:8px;
+    color:#A0A0A0;
+    
+    
+    }
+    .trpunchedtable{
+    border-bottom: 2px solid #615632;
+    }
+    .addcontainer{
+    border: 2px solid #615632;
+    border-radius: 15px;
+    position:absolute;
+    left:310px;
+    top:300px;
+    width:300px;
+    height:50px;
+    background-color:#2d2c29;
+    }
+    .divaddtable{
+    position:relative;
+    left:-15px;
+    width:300px;
+    height:40px;
+    background-color:transparent;
+    }
+    .addtable{
+    border-collapse: collapse;
+    position:relative;
+    left:0px;
+    width:280px;
+    height:40px;
+    text-align:center;
+    background-color:transparent;
+    }
+    .clearname{
+    height:15px;
+    width:100px;
+    font-size:10px;
+    padding-left:0px;
+    padding-right:0px;
+    }
+    .clearcat{
+    position:relative;
+    top:2px;
+    left:10px;
+    width:40px;
+    height:15px;
+    font-size:10px;
+    padding-left:0px;
+    padding-right:0px;
+    }
+    .clearsubcat{
+    position:relative;
+    top:2px;
+    left:10px;
+    width:40px;
+    height:15px;
+    font-size:10px;
+    padding-left:0px;
+    padding-right:0px;
+    }
+    .clear{
+    height:15px;
+    font-size:10px;
+    padding-left:0px;
+    }
+    .thaddtable{
+    width:15px;
+    position:relative;
+    left:10px;
+    font-size:11px;
+    text-align:center;
+    }
+    .tdaddtable{
+    width:15px;
+    position:relative;
+    left:15px;
+    text-align:center;
+    }
+    .suspendcontainer{
+    position:absolute;
+    left:310px;
+    top:360px;
+    width:300px;
+    height:150px;
+    background-color:#2d2c29;
+    border: 2px solid #615632;
+    border-radius: 15px;
+    
+    }
+    .totalsuspend{
+    font-size:15px;
+    font-weight: bold;
+    position:absolute;
+    top:80px;
+    left:30px;
+    }
+    .totalsuspenda{
+    color:#A0A0A0;
+    font-size:15px;
+    font-weight: bold;
+    position:absolute;
+    top:80px;
+    left:80px;
+    }
+    .totalchange{
+    font-size:15px;
+    font-weight: bold;
+    position:absolute;
+    top:80px;
+    left:150px;
+    }
+    .totalchangea{
+    color:#A0A0A0;
+    font-size:15px;
+    font-weight: bold;
+    position:absolute;
+    top:80px;
+    left:220px;
+    }
+    .Calculatebut{
+    position:absolute;
+    top:114px;
+    left:50px;
+    z-index:1;
+    }
+    .suspendbut{
+    position:absolute;
+    top:63px;
+    left:-50px;
+    z-index:1;
+    }
+    .Cusnamediv{
+    position:absolute;
+    top:10px;
+    left:15px;
+
+    }
+   .cus{
+    position:relative;
+    font-size:10px;
+
+    }
+    .bill{
+    position:relative;
+    font-size:10px;
+    
+
+    }
+    .billdiv{
+    position:relative;
+    top:-100px;
+    left:9px;
+
+    }
+
+    .cusnameinput{
+        background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 20px;
+    width:120px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:10px;
+    }
+.billinput{
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 20px;
+    width:75px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:10px;
+}
+
+
+    .btnq{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 10px;
+    color: rgb(252, 220, 109);
+    display: block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    text-align:center;
+    padding-left:15px;
+    padding-bottom:10px;
+    padding-top:0px;
+
+    }
+    .btnq:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    }
+    .dropbtnqueue {
+        position:absolute;
+        left:-30px;
+        top:145px;
+        background-color: rgba(249, 216, 105,0);
+        cursor: pointer;
+
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-radius: 60px;
+        text-align:center;
+        height:20px;
+        width:60px;
+    }
+
+
+
+
+    .dropbtnqueue:hover, .dropbtnqueue:focus {
+
+        color: #121212;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+
+
+    }
+    .dropdown {
+      position: relative;
+      left:130px;
+      top:-30px;
+      display: inline-block;
+      width:100%;
+      height:100%;
+    }
+
+    .dropdown-contentqueue {
+      display: none;
+      position: relative;
+      left:-50px;
+      top:20px;
+      padding-left:10px;
+      padding-right:10px;
+      padding-top:10px;
+      height:125px;
+      background-color: #2d2c29;
+      width: 100px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border: 2px solid #615632;
+      border-radius:15px;
+
+    }
+
+    .dropdown-contentqueue a {
+      color: black;
+      position:relative;
+      text-decoration: none;
+      display: block;
+
+    }
+
+    .dropbtnqueue a:hover {background-color: #ddd;}
+
+    .show {display: block;}
+    .sampw {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 10px;
+        width:30px;
+        height:20px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-radius: 60px;
+        border-color:rgb(249, 216, 105);
+
+    }
+    .sampw:hover {
+            font-family: Oswald-regular;
+        font-weight:bold;
+        color: #121212;
+        cursor:pointer;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    }
+    .tab {
+      border: 2px solid #615632;
+      border-radius:15px;
+      overflow: hidden;
+      background-color: #2d2c29;
+      position: absolute;
+      left: 630px;
+      top:60px;
+      width: 300px;
+    }
+    .tabsub{
+      border: 2px solid #615632;
+      border-radius:15px;
+      overflow: hidden;
+      background-color: #2d2c29;
+      position: absolute;
+      left: 0px;
+      top:90px;
+      width: 300px;
+      height:25px;
+      padding-top:0px;
+      padding-bottom:10px;
+
+    }
+
+    /* Style the buttons inside the tab */
+    
+    .tabsub button {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 10px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-color:rgba(249, 216, 105,0);
+        float: left;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius:60px;
+        width:50px;
+        height:20px;
+        padding:0px;
+        }
+
+
+    /* Change background color of buttons on hover   background-color: #D4AC0D;*/
+    .tabsub button:hover {
+        padding:0px;
+        font-size: 10px;
+        cursor:pointer;
+        color: #121212;
+        border-weight:2px;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+        }
+
+        /* Create an active/current tablink class */
+        .tabsub button.active {
+
+            font-size: 10px;
+            color: #121212;
+            border-color: rgb(249, 216, 105);
+            border-weight:2px;
+            cursor:pointer;
+            width:50px;
+            height:20px;
+
+
+        }
+
+    .tab button {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 10px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-color:rgba(249, 216, 105,0);
+        float: left;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius:60px;
+        width:50px;
+        padding:0px;
+        }
+
+    /* Change background color of buttons on hover   background-color: #D4AC0D;*/
+    .tab button:hover {
+        padding:0px;
+        font-size: 10px;
+        cursor:pointer;
+        color: #121212;
+        border-weight:2px;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            padding:0px;
+            font-size: 10px;
+            color: #121212;
+            border-color: rgb(249, 216, 105);
+            border-weight:2px;
+            cursor:pointer;
+            width:50px;
+            height:20px;
+
+
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+          background-color: #2d2c29;
+          display: none;
+          -webkit-animation: fadeEffect 1s;
+          animation: fadeEffect 1s;
+          position: absolute;
+          left: 630px;
+
+          width: 300px;
+          height:20px;
+          padding-top:0px;
+          padding-bottom:10px;
+
+        }
+        .tabcontentstyle{
+         border: 2px solid #615632;
+         border-radius: 15px;
+         width:300px;
+         height:450px;
+         position:absolute;
+         top:90px;
+         background-color:#2d2c29;
+        }
+        .tabsubcontentstyle {
+        border: 2px solid #615632;
+        border-radius: 15px;
+        width:300px;
+        height:425px;
+        position:absolute;
+        top:120px;
+        background-color:#2d2c29;
+
+        }
+          .tabsubposition{
+
+          position: absolute;
+          left: -2px;
+          top:-33px;
+          width: 300px;
+          height:25px;
+
+
+        }
+        /* Fade in tabs */
+        @-webkit-keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+
+        @keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+        .forlink{
+            font-size: 10px;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .forlink:hover{
+            font-size: 10px;
+            color:black;
+
+        }
+        .dropupfr {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+
+        }
+        .dropupP {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+
+        }
+
+        .dropupmt {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+
+
+        }
+        /* Dropup content (Hidden by Default) */
+        .dropup-contentmt {
+  
+          display: none;
+          position: absolute;
+          top: 30px;
+          left:-20px;
+          min-width: 160px;
+          height:130px;
+          padding-top:10px;
+          padding-left:10px;
+          padding-right:10px;
+          z-index: 1;
+      border: 2px solid #615632;
+      border-radius:15px;
+
+ 
+        }
+        .dropup-contentP {
+          display: none;
+          position: absolute;
+          top: 30px;
+          left:-20px;
+          min-width: 160px;
+          height:90px;
+          z-index: 1;
+          padding-top:10px;
+          padding-left:10px;
+          padding-right:10px;
+          z-index: 1;
+        border: 2px solid #615632;
+        border-radius:15px;
+        }
+        /* Dropup content (Hidden by Default) */
+        .dropup-contentfr {
+          display: none;
+          position: absolute;
+          top: 30px;
+          left:-20px;
+          min-width: 160px;
+          height:90px;
+          z-index: 1;
+          padding-top:10px;
+          padding-left:10px;
+          padding-right:10px;
+          z-index: 1;
+        border: 2px solid #615632;
+        border-radius:15px;
+        }
+
+        /* Links inside the dropup */
+        .dropup-contentmt a {
+  
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+
+        }
+        /* Links inside the dropup */
+        .dropup-contentfr a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        .dropup-contentP a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        /* Change color of dropup links on hover */
+        .dropup-contentmt a:hover {background-color: #ddd;
+
+        }
+        /* Change color of dropup links on hover */
+        .dropup-contentP a:hover {background-color: #ddd;
+
+        }
+        /* Change color of dropup links on hover */
+        .dropup-contentfr a:hover {background-color: #ddd;
+
+        }
+
+        /* Show the dropup menu on hover */
+        .dropupmt:hover .dropup-contentmt {
+          display: block;
+        }
+        .dropupP:hover .dropup-contentP {
+          display: block;
+        }
+        /* Show the dropup menu on hover */
+        .dropupfr:hover .dropup-contentfr {
+          display: block;
+        }
+        .butprod{
+        width:100px;
+        text-align:center;
+        margin-left:1%;
+        margin-top:2%;
+        padding-left:1%;
+        padding-top:1%;
+        padding-bottom:1%;
+        font-size:10px;
+        }
+.qsidebar {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  background-color: none;
+  overflow: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  display:block;
+
+}
+
+.qsidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  width: 300px;
+}
+
+.qsidebar a:hover {
+  color: #f1f1f1;
+  width: 300px;
+}
+
+.qsidebar .closebtn {
+  position: absolute;
+  top: -15px;
+
+  right: -230px;
+  font-size: 36px;
+  display:none;
+}
+
+.quebarbutton {
+    position:absolute;
+    left:10px;
+    top:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+  width:100px;
+  height:28px;
+  font-size:10px;
+  padding-top:3px;
+  padding-left:10px;
+  display:none;
+}
+
+.quebarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+
+}
+
+#qmain {
+  transition: margin-left .5s;
+  padding: 16px;
+  width: 300px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .qsidebar {padding-top: 15px;width: 300px;}
+  .qsidebar a {font-size: 18px;width: 300px;}
+}
+}
+@media screen and (min-width: 961px) and (max-width: 1920px){
+    .clearname{
+    position:relative;
+    left:-10px;
+    padding-left:5px;
+    }
+    .clearcat{
+    position:relative;
+    top:2px;
+    left:10px;
+    width:80px;
+    height:35px;
+    font-size:18px;
+    padding-left:5px;
+    padding-right:0px;
+    }
+        .clearsubcat{
+    position:relative;
+    top:2px;
+    left:10px;
+    width:80px;
+    height:35px;
+    font-size:18px;
+    padding-left:5px;
+    padding-right:0px;
+    }
+    .pagetitle{
+    position:absolute;
+    left:750px;
+    top:0px;
+    font-weight:bold;
+    font-size:70px;
+    line-height:80%;
+
+    }
+    .navbarbutton {
+      position:absolute;
+      left:8px;
+      top:10px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #111;
+      color: white;
+      padding-left:0px;
+      padding-top:7px;
+      border-radius: 60px;
+      border: 2px solid #615632;
+      height:60px;
+      width:200px;
+
+    }
+
+    .navbarbutton:hover {
+      background-color: #444;
+        cursor: pointer;
+      border-color:rgb(249, 216, 105);;
+      border-weight:1px; 
+      border-radius: 60px;
+    }
+
+    #main {
+      transition: margin-left .5s;
+      padding: 16px;
+
+
+    }
+
+    .divqueue1{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color: rgba(45, 44, 41,100);
+    height:300px;
+    width:620px;
+    position:absolute;
+    left:10px;
+    top:80.6px;
+    overflow:;
+   
+
+    }
+    .divqueue2{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color: rgba(45, 44, 41,100);
+    height:300px;
+    width:620px;
+    position:absolute;
+    left:10px;
+    top:400px;
+    overflow:;
+
+    }
+    .divqueue3{
+    border: 1px solid #615632;
+    border-radius: 10px;
+    background-color: rgba(45, 44, 41,100);
+    height:300px;
+    width:620px;
+    position:absolute;
+    left:10px;
+    top:720px;
+    overflow:;
+
+    }
+    .headqueue{
+    position:relative;
+    top:0px;
+    left:-15px;
+    width:620px;
+    height:50px;
+
+    }
+    .queuetitle{
+     font-size:30px;
+     text-align:center;
+     font-weight:bold;
+     position:relative;
+     left:230px;
+    
+    }
+    .queuename{
+    position:absolute;
+    left:10px;
+    top:20px;
+    font-size:20px;
+
+    }
+    .queuenamea{
+    color:#A0A0A0;
+    position:absolute;
+    left:0px;
+    top:-10px;
+    font-size:25px;
+
+    }
+    .qnamediv{
+   background-color:transparent;
+   width:90px;
+   height:45px;
+   position:absolute;
+   left:70px;
+   top:25px;
+   z-index:1;
+   overflow-x:auto;
+    }
+    .queuetotal{
+    position:absolute;
+    left:160px;
+    top:20px;
+    font-size:20px;
+
+    }
+    .queuetotala{
+    color:#A0A0A0;
+    position:absolute;
+    left:220px;
+    top:15px;
+    font-size:25px;
+
+    }
+    
+    .queueamount{
+    position:absolute;
+    left:300px;
+    top:20px;
+    font-size:20px;
+
+    }
+    .queueamounta{
+    color:#A0A0A0;
+    position:absolute;
+    left:380px;
+    top:15px;
+    font-size:25px;
+
+    }
+    .queuechange{
+    position:absolute;
+    left:460px;
+    top:20px;
+    font-size:20px;
+
+    }
+    .queuechangea{
+    color:#A0A0A0;
+    position:absolute;
+    left:540px;
+    top:15px;
+    font-size:25px;
+
+    }
+
+    .divqueuetable{
+    height:21;
+    overflow:auto;
+    position:relative;
+    top:-5px;
+    left:0px;
+    width:100%;
+    height:160px;
+        background-color:transparent;
+    margin-left:auto;
+    margin-right:auto;
+
+    }
+    .queuetable{
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+    margin-collapse:collapse;
+    
+
+    }
+    .thqueue{
+    width:120.8px;
+    position:relative;
+
+    font-size:20px;
+    color:#A0A0A0;
+    background-color:transparent;
+    } 
+    .tdqueue{
+    position:relative;
+    width:120.8px;
+    font-size:20px;
+    color:#A0A0A0;
+    background-color:transparent;
+    text-align:center;
+    }
+    .divfillupqueue{
+    background-color:transparent;
+    height:75px;
+    width:100%;
+    position:relative;
+    top:-20px;
+    left:0px;
+    margin-left:auto;
+    margin-right:auto;
+
+    }
+    .queuecustomer{
+    position:relative;
+    left:-10px;
+    top:-120px;
+    font-size:20px;
+
+    }
+    .customerformqueue{
+    position:relative;
+    top:-170px;
+    left:100px;
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 30px;
+    width:200px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:20px;
+
+    }
+
+    .amountformqueue{
+    position:relative;
+    top:-270px;
+    left:400px;
+    width:100px;
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 30px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:20px;
+
+    }
+    
+        .prodbutpositiondone{
+    position:absolute;
+    left:130px;
+    top:55px;
+    
+    }
+        .prodbutpositioncancel{
+    position:absolute;
+    left:300px;
+    top:55px;
+    
+    }
+    
+    .prodbut{
+        background-color: rgba(249, 216, 105,0);
+        font-size: 20px;
+        color: rgb(252, 220, 109);
+        display: block;
+        border-radius: 30px;
+        border-color:rgb(249, 216, 105);
+        height:40px;
+        width:150px;
+    
+    }
+    .prodbut:hover {
+        font-family: Oswald-regular;
+        transform: scale(1.1);
+        transition: transform .2s;
+        font-weight:bold;
+        cursor:pointer;
+        color: #121212;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+    }
+
+    .punchedcontainer{
+    border: 2px solid #615632;
+    border-radius: 15px;
+    height:425px;
+    width:620px;
+    position:absolute;
+    left:650px;
+    top:80px;
+    background-color:#2d2c29;
+
+    }
+    .divpunchedtable{
+    background-color:transparent;
+    position:relative;
+    left:-20px;
+    width:620px;
+    height:425px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    
+    }
+    .punchedtable{
+    border-collapse: collapse;
+    position:relative;
+    left: 0px;
+    width:100%;
+    text-align:center;
+    background-color:transparent;
+    }
+    .thpunched{
+    width:90px;
+    position:relative;
+    left:0px;
+    top:0px;
+    height:0px;
+    font-size:20px;
+    font-weight:bold;
+    color:#A0A0A0;
+    background-color:white;
+    } 
+    .tdpunched{
+    position:relative;
+    left:0px;
+    height:25px;
+    width:90px;
+    font-size:20px;
+    color:#A0A0A0;
+    
+    
+    }
+    .trpunchedtable{
+    border-bottom: 2px solid #615632;
+    }
+    .addcontainer{
+    border: 2px solid #615632;
+    border-radius: 15px;
+    position:absolute;
+    left:650px;
+    top:520px;
+    width:620px;
+    height:100px;
+    background-color:#2d2c29;
+    }
+    .divaddtable{
+    position:relative;
+    left:-15px;
+    width:100%;
+    height:100%;
+    background-color:transparent;
+    }
+    .addtable{
+    border-collapse: collapse;
+    position:relative;
+    left:10px;
+    top:10px;
+    width:100%;
+    text-align:center;
+    background-color:transparent;
+    }
+    .thaddtable{
+
+    position:relative;
+    left:10px;
+    font-size:20px;
+    text-align:center;
+    font-weight:bold;
+    }
+    .tdaddtable{
+
+    position:relative;
+    left:15px;
+    font-size:20px;
+    text-align:center;
+    }
+    .addbutstyle{
+    font-size:20px;
+    width:100px;
+    position:relative;
+    left:0px;
+    }
+    .suspendcontainer{
+    position:absolute;
+    left:650px;
+    top:630px;
+    width:620px;
+    height:200px;
+    background-color:#2d2c29;
+    border: 2px solid #615632;
+    border-radius: 15px;
+    
+    }
+    .totalsuspend{
+    font-size:25px;
+    font-weight: bold;
+    position:absolute;
+    top:70px;
+    left:280px;
+    }
+    .totalsuspenda{
+    color:#A0A0A0;
+    font-size:30px;
+    font-weight: bold;
+    position:absolute;
+    top:65px;
+    left:350px;
+    }
+    .totalchange{
+    font-size:25px;
+    font-weight: bold;
+    position:absolute;
+    top:70px;
+    left:440px;
+    }
+    .totalchangea{
+    color:#A0A0A0;
+    font-size:30px;
+    font-weight: bold;
+    position:absolute;
+    top:65px;
+    left:540px;
+    }
+    .Calculatebut{
+    position:absolute;
+    top:137px;
+    left:80px;
+    z-index:1;
+    }
+    .suspendbut{
+    position:absolute;
+    top:65px;
+    left:-90px;
+    z-index:1;
+    }
+    .Cusnamediv{
+    position:relative;
+    top:-180px;
+    left:0px;
+
+    }
+    .billdiv{
+    position:relative;
+    top:-150px;
+    left:20px;
+
+    }
+
+    .cusnameinput{
+        background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 30px;
+    width:300px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:20px;
+    }
+.billinput{
+    background: rgb(29, 28, 26);
+    background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: -webkit-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    background: linear-gradient(to right, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d1c1a', endColorstr='#413a22', GradientType=1);
+    color:#A0A0A0;
+    height: 30px;
+    width:150px;
+    border-radius: 0px;
+    border: 1px solid #615632;
+    font-size:20px;
+}
+
+
+    .btnq{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 20px;
+    color: rgb(252, 220, 109);
+    display: block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    text-align:center;
+    padding-left:15px;
+    padding-bottom:10px;
+    padding-top:0px;
+
+
+    }
+    .btnq:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    }
+    .dropbtnqueue {
+        position:absolute;
+        left:90px;
+        top:165px;
+        background-color: rgba(249, 216, 105,0);
+        cursor: pointer;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-radius: 60px;
+        text-align:center;
+        height:40px;
+        width:150px;
+    }
+
+
+
+
+    .dropbtnqueue:hover, .dropbtnqueue:focus {
+
+        color: #121212;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+
+
+    }
+    .dropdown {
+      position: relative;
+      left:130px;
+      top:-30px;
+      display: inline-block;
+      width:100%;
+      height:100%;
+    }
+
+    .dropdown-contentqueue {
+      display: none;
+      position: relative;
+      left:90px;
+      top:-40px;
+      height:190px;
+      background-color: #2d2c29;
+      width: 150px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border: 2px solid #615632;
+      border-radius:15px;
+      padding-left:5px;
+      padding-right:5px;
+      padding-top:10px;
+    }
+
+    .dropdown-contentqueue a {
+      color: black;
+      position:relative;
+      text-decoration: none;
+      display: block;
+
+    }
+
+    .dropbtnqueue a:hover {background-color: #ddd;}
+
+    .show {display: block;}
+    .sampw {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 20px;
+        height:40px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-radius: 60px;
+        border-color:rgb(249, 216, 105);
+
+    }
+    .sampw:hover {
+            font-family: Oswald-regular;
+        font-weight:bold;
+        color: #121212;
+        cursor:pointer;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    }
+    .tab {
+      border: 2px solid #615632;
+      border-radius:15px;
+      overflow: hidden;
+      background-color: #2d2c29;
+      position: absolute;
+      left: 1285px;
+      top:80px;
+      width:620px;
+      height:40px;
+    }
+
+
+    /* Style the buttons inside the tab */
+    
+    .tabsub button {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 20px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-color:rgba(249, 216, 105,0);
+        float: left;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius:60px;
+        width:100px;
+        height:35px;
+        padding:0px;
+        }
+
+
+    /* Change background color of buttons on hover   background-color: #D4AC0D;*/
+    .tabsub button:hover {
+        padding-top:0px;
+        font-size: 20px;
+        cursor:pointer;
+        color: #121212;
+        border-weight:2px;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        
+        }
+
+        /* Create an active/current tablink class */
+        .tabsub button.active {
+
+            font-size: 10px;
+            color: #121212;
+            border-color: rgb(249, 216, 105);
+            border-weight:2px;
+            cursor:pointer;
+            width:50px;
+            height:20px;
+
+
+        }
+
+    .tab button {
+        background-color: rgba(249, 216, 105,0);
+        font-size: 20px;
+        color: rgb(252, 220, 109);;
+        display: block;
+        border-color:rgba(249, 216, 105,0);
+        float: left;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius:60px;
+        width:80px;
+        height:35px;
+        padding:0px;
+        }
+
+    /* Change background color of buttons on hover   background-color: #D4AC0D;*/
+    .tab button:hover {
+        padding:0px;
+        font-size: 10px;
+        cursor:pointer;
+        color: #121212;
+        border-weight:2px;
+        background: rgb(249, 216, 105);
+        background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+        background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            padding:0px;
+            font-size: 10px;
+            color: #121212;
+            border-color: rgb(249, 216, 105);
+            border-weight:2px;
+            cursor:pointer;
+            width:80px;
+            height:35px;
+
+
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+          background-color: #2d2c29;
+          display: none;
+          -webkit-animation: fadeEffect 1s;
+          animation: fadeEffect 1s;
+          position: absolute;
+          left: 1290px;
+          width: 300px;
+          height:20px;
+          padding-top:0px;
+          padding-bottom:10px;
+
+        }
+        .tabsub{
+          border: 2px solid #615632;
+          border-radius:15px;
+          overflow: hidden;
+          background-color: #2d2c29;
+          position:absolute;
+          left: 1285px;
+          top:130px;
+          width:620px;
+          height:40px;
+        }
+        .tabcontentstyle{
+         border: 2px solid #615632;
+         border-radius: 15px;
+         width:600px;
+         height:780px;
+         position:absolute;
+         top:130px;
+         background-color:#2d2c29;
+
+        }
+        .tabsubcontentstyle {
+        border: 2px solid #615632;
+        border-radius: 15px;
+         width:620px;
+         height:750px;
+        position:absolute;
+        top:180px;
+        background-color:#2d2c29;
+
+        }
+        .tabsubposition{
+          position: absolute;
+          left: -5px;
+          top:-50px;
+
+        }
+        /* Fade in tabs */
+        @-webkit-keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+
+        @keyframes fadeEffect {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+        .forlink{
+            font-size: 20px;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .forlink:hover{
+            font-size: 20px;
+            color:black;
+
+        }
+        .dropupfr {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+            
+        }
+        .dropupP {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+          
+        }
+
+        .dropupmt {
+          position: relative;
+          display: inline-block;
+          background-color: #2d2c29;
+
+
+        }
+        /* Dropup content (Hidden by Default) */
+        .dropup-contentmt {
+  
+          display: none;
+          position: absolute;
+          top: 40px;
+          left:0px;
+          min-width: 160px;
+          z-index: 1;
+          height:200px;
+          border: 2px solid #615632;
+          border-radius:15px;
+          padding-left:5px;
+          padding-right:5px;
+          padding-top:10px;
+  
+
+ 
+        }
+        .dropup-contentP {
+          display: none;
+          position: absolute;
+          top: 40px;
+          left:0px;
+          min-width: 160px;
+          z-index: 1;
+      border: 2px solid #615632;
+      border-radius:15px;
+      padding-left:5px;
+      padding-right:5px;
+      padding-top:10px;
+      height:130px;
+
+        }
+        /* Dropup content (Hidden by Default) */
+        .dropup-contentfr {
+          display: none;
+          position: absolute;
+          top: 40px;
+          left:0px;
+          min-width: 160px;
+          z-index: 1;
+      border: 2px solid #615632;
+      border-radius:15px;
+      padding-left:5px;
+      padding-right:5px;
+      padding-top:10px;
+      height:130px;
+        }
+
+        /* Links inside the dropup */
+        .dropup-contentmt a {
+  
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+
+        }
+        /* Links inside the dropup */
+        .dropup-contentfr a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        .dropup-contentP a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        /* Change color of dropup links on hover */
+        .dropup-contentmt a:hover {background-color: #ddd;
+
+        }
+        /* Change color of dropup links on hover */
+        .dropup-contentP a:hover {background-color: #ddd;
+
+        }
+        /* Change color of dropup links on hover */
+        .dropup-contentfr a:hover {background-color: #ddd;
+
+        }
+
+        /* Show the dropup menu on hover */
+        .dropupmt:hover .dropup-contentmt {
+          display: block;
+        }
+        .dropupP:hover .dropup-contentP {
+          display: block;
+        }
+        /* Show the dropup menu on hover */
+        .dropupfr:hover .dropup-contentfr {
+          display: block;
+        }
+        .butprod{
+        width:150px;
+        text-align:center;
+        margin-left:1%;
+        margin-top:2%;
+        padding-left:1%;
+        padding-top:1%;
+        padding-bottom:1%;
+        font-size:20px;
+        }
+.qsidebar {
+  height: 1080px;
+  width: 630px;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  background-color: none;
+  overflow: hidden;
+
+  transition: 0.5s;
+  padding-top: 60px;
+  display:block;
+
+}
+
+.qsidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  width: 300px;
+}
+
+.qsidebar a:hover {
+  color: #f1f1f1;
+  width: 300px;
+}
+
+.qsidebar .closebtn {
+  position: absolute;
+  top: -15px;
+
+  right: -230px;
+  font-size: 36px;
+  display:none;
+}
+
+.quebarbutton {
+    position:absolute;
+    left:10px;
+    top:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+  width:100px;
+  height:28px;
+  font-size:10px;
+  padding-top:3px;
+  padding-left:10px;
+  display:none;
+}
+
+.quebarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+
+}
+
+#qmain {
+  transition: margin-left .5s;
+  padding: 16px;
+  width: 300px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .qsidebar {padding-top: 15px;width: 300px;}
+  .qsidebar a {font-size: 18px;width: 300px;}
+}
+}
+</style>
+
+<div id="myqSidebar" class="qsidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeQue()">×</a>
+
+    <div class="w3-container divqueue1" >
+        <div class="headqueue">
+            <h8 class="punchedtext queuetitle">1ST QUEUE</h8>
+
+        </div>
+        <div class="w3-container divqueuetable">
+                <table class="queuetable" >
+                        <tr style="border-bottom: 2px solid #615632;" >
+                          <th class="thqueue">Item</th>
+                          <th class="thqueue">Category</th>
+                          <th class="thqueue">Size</th>
+                          <th class="thqueue">Qty</th>
+                          <th class="thqueue">Price</th>
+                          <th class="thqueue">Subtotal</th>
+                        </tr>
+
+                    {% for que1 in q1 %}
+                       <tr style="border-bottom: 2px solid #615632;" >
+                                      <td class="tdqueue">{{que1.productname}}</td>
+                                      {% if que1.Category == "Snacks" %}
+                                      <td class="tdqueue">{{que1.Subcategory}}</td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que1.Category}}</td>
+                                      {% endif %}
+                                      {% if que1.Size %}
+                                      <td class="tdqueue">{{que1.Size}}</td>
+                                      {% elif que1.PSize %}
+                                      <td class="tdqueue">{{que1.PSize}}</td>
+                                      {% else %}
+                                      <td></td>
+                                      {% endif %}
+                                      {% if que1.Qty == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que1.Qty}}</td>
+                                      {% endif %}
+                                      {% if que1.Price == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que1.Price}}</td>
+                                      {% endif %}
+                                      {% if que1.Subtotal == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que1.Subtotal}}</td>
+                                      {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+        </div>
+        <div class="w3-container divfillupqueue">
+                    <label class="punchedtext queuename">Name:</label>
+            <div class="qnamediv">
+            <h8 class="queuenamea" >{{q11.0.0}}</h8>
+            </div>
+        <label class="punchedtext queuetotal">Total:</label>
+        {% if q111 %}
+                    <h8  class="queuetotala">₱{{q111}}</h8>
+        {% else %}
+        <h8  class="queuetotala"></h8>
+        {% endif %}
+
+            <label class="punchedtext queueamount">Amount:</label>
+         {% if q11.0.1 %}
+            <h8 class="queueamounta">₱{{q11.0.1}}</h8>
+            {% else %}
+            <h8 class="queueamounta"></h8>
+            {% endif %}
+
+             <label class="punchedtext queuechange">Change:</label>
+              {% if q11.0.2 %}
+             <h8 class="queuechangea">₱{{q11.0.2}}</h8>
+             {% else %}
+             <h8 class="queuechangea"></h8>
+             {% endif %}
+                     <form action="" method="POST" id="queue1form">
+                        {% csrf_token %}
+                <button class="prodbut prodbutpositiondone" type="submit" id="done1" name="done1" value="done1" >Done</button>
+                <button class="prodbut prodbutpositioncancel" onclick="functioncancel1()" type="" id="cancel1" name="cancel1" value="">Cancel</button>
+               </form>
+
+
+        </div>
+    </div >
+
+    <div class="w3-container divqueue2">
+        <div class="headqueue">
+            <h8 class="punchedtext queuetitle">2ND QUEUE</h8>
+        </div>
+        <div class="w3-container divqueuetable">
+                <table class="queuetable">
+                        <tr style="border-bottom: 2px solid #615632;" >
+                          <th class="thqueue">Item</th>
+                          <th class="thqueue">Category</th>
+                          <th class="thqueue">Size</th>
+                          <th class="thqueue">Qty</th>
+                          <th class="thqueue">Price</th>
+                          <th class="thqueue">Subtotal</th>
+                        </tr>
+
+                    {% for que2 in q2 %}
+                       <tr >
+                                      <td class="tdqueue">{{que2.productname}}</td>
+                                      {% if que2.Category == "Snacks" %}
+                                      <td class="tdqueue">{{que2.Subcategory}}</td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que2.Category}}</td>
+                                      {% endif %}
+                                      {% if que2.Size %}
+                                      <td class="tdqueue">{{que2.Size}}</td>
+                                      {% elif que2.PSize %}
+                                      <td class="tdqueue">{{que2.PSize}}</td>
+                                      {% else %}
+                                      <td></td>
+                                      {% endif %}
+                                      {% if que2.Qty == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que2.Qty}}</td>
+                                      {% endif %}
+                                      {% if que2.Price == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que2.Price}}</td>
+                                      {% endif %}
+                                      {% if que2.Subtotal == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que2.Subtotal}}</td>
+                                      {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+        </div>
+
+
+        <div class="w3-container divfillupqueue" >
+                            <label class="punchedtext queuename">Name:</label>
+            <div class="qnamediv">
+            <h8 class="queuenamea">{{q22.0.0}}</h8>
+            </div>
+        <label class="punchedtext queuetotal">Total:</label>
+        {% if q222 %}
+                    <h8  class="queuetotala">₱{{q222}}</h8>
+        {% else %}
+        <h8  class="queuetotala"></h8>
+        {% endif %}
+
+            <label class="punchedtext queueamount">Amount:</label>
+         {% if q22.0.1 %}
+            <h8 class="queueamounta">₱{{q22.0.1}}</h8>
+            {% else %}
+            <h8 class="queueamounta"></h8>
+            {% endif %}
+
+             <label class="punchedtext queuechange">Change:</label>
+              {% if q22.0.2 %}
+             <h8 class="queuechangea">₱{{q22.0.2}}</h8>
+             {% else %}
+             <h8 class="queuechangea"></h8>
+             {% endif %}
+                <form action="" method="POST" id="queue2form">
+                        {% csrf_token %}
+                <button class="prodbut prodbutpositiondone" type="submit" id="done2" name="done2" value="done2" >Done</button>
+                <button class="prodbut prodbutpositioncancel" onclick="functioncancel2()" type="" id="cancel2" name="cancel2" value="" >Cancel</button>
+                </form>
+        </div>
+    </div >
+
+    <div class="w3-container divqueue3" >
+        <div class="headqueue">
+            <h8 class="punchedtext queuetitle">3RD QUEUE</h8>
+        </div>
+        <div class="w3-container divqueuetable">
+                <table class="queuetable" >
+                        <tr  >
+                          <th class="thqueue">Item</th>
+                          <th class="thqueue">Category</th>
+                          <th class="thqueue">Size</th>
+                          <th class="thqueue">Qty</th>
+                          <th class="thqueue">Price</th>
+                          <th class="thqueue">Subtotal</th>
+                        </tr>
+
+                    {% for que3 in q3 %}
+                       <tr >
+                                      <td class="tdqueue">{{que3.productname}}</td>
+                                      {% if que3.Category == "Snacks" %}
+                                      <td class="tdqueue">{{que3.Subcategory}}</td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que3.Category}}</td>
+                                      {% endif %}
+                                      {% if que3.Size %}
+                                      <td class="tdqueue">{{que3.Size}}</td>
+                                      {% elif que3.PSize %}
+                                      <td class="tdqueue">{{que3.PSize}}</td>
+                                      {% else %}
+                                      <td></td>
+                                      {% endif %}
+                                      {% if que3.Qty == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que3.Qty}}</td>
+                                      {% endif %}
+                                      {% if que2.Price == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que3.Price}}</td>
+                                      {% endif %}
+                                      {% if que3.Subtotal == 0 %}
+                                      <td></td>
+                                      {% else %}
+                                      <td class="tdqueue">{{que3.Subtotal}}</td>
+                                      {% endif %}
+                       </tr>
+                    {% endfor %}
+                </table>
+        </div>
+
+        <div class="w3-container divfillupqueue">
+                    <label class="punchedtext queuename">Name:</label>
+            <div class="qnamediv">
+            <h8 class="queuenamea">{{q33.0.0}}</h8>
+            </div>
+        <label class="punchedtext queuetotal">Total:</label>
+        {% if q333 %}
+                    <h8  class="queuetotala">₱{{q333}}</h8>
+        {% else %}
+        <h8  class="queuetotala"></h8>
+        {% endif %}
+
+            <label class="punchedtext queueamount">Amount:</label>
+         {% if q33.0.1 %}
+            <h8 class="queueamounta">₱{{q33.0.1}}</h8>
+            {% else %}
+            <h8 class="queueamounta"></h8>
+            {% endif %}
+
+             <label class="punchedtext queuechange">Change:</label>
+              {% if q33.0.2 %}
+             <h8 class="queuechangea">₱{{q33.0.2}}</h8>
+             {% else %}
+             <h8 class="queuechangea"></h8>
+             {% endif %}
+                <form action="" method="POST" id="queue2form">
+                {% csrf_token %}
+                <button class="prodbut prodbutpositiondone" type="submit" id="done3" name="done3" value="done3" >Done</button>
+                <button class="prodbut prodbutpositioncancel" onclick="functioncancel3()" type="" id="cancel3" name="cancel3" value="">Cancel</button>
+                </form>
+        </div>
+    </div>
+
+</div>
+<div id="main">
+  <button class="navbarbutton" onclick="openNav()">☰ Open Sidebar</button>  
+  <button class="quebarbutton" onclick="openQue()">☰ Open Queue</button>  
+    <h8 class="pagetitle punchedtext">Point of Sale</h8>
+</div>
+			{% if messages %}
+				{% for message in messages %}
+					<script>alert('{{ message }}')</script>
+				{% endfor %}
+
+
+			{% endif %}
+		
+<div class="w3-container punchedcontainer">
+    <div class="w3-container divpunchedtable">
+        <table class="punchedtable" >
+        <tr class="trpunchedtable">
+          <th class="punchedtext thpunched">Item</th>
+          <th class="punchedtext thpunched">Category</th>
+          <th class="punchedtext thpunched">Size</th>
+          <th class="punchedtext thpunched">Qty</th>
+          <th class="punchedtext thpunched">Price</th>
+          <th class="punchedtext thpunched">Subtotal</th>
+
+        </tr>
+        
+        <tbody style="color:white;" id='punchedtablebody'></tbody>
+        
+        </table>
+    </div>
+</div>
+
+<div class="w3-container addcontainer">
+    <div class="divaddtable">
+        <table class="addtable">
+
+                    <tr >
+                      <th class="thaddtable punchedtext ">Item</th>
+                      <th class="thaddtable punchedtext ">Category</th>
+                      <th class="thaddtable punchedtext ">Size</th>
+                      <th class="thaddtable punchedtext ">Qty</th>
+                      <th class="thaddtable punchedtext ">Price</th>
+                      <th class="thaddtable punchedtext ">Subtotal</th>
+                      <th class="thaddtable punchedtext ">Action</th>
+                    </tr>
+                    <tr> 
+                      <td class="tdaddtable tdpunched">{{mepunched.productname}}</td>
+                      <td id="categoryid" class="tdaddtable tdpunched">{{mepunched.Category}}</td>
+                      <td id="subcategoryid" style="display:none;" class="tdaddtable tdpunched">{{mepunched.Subcategory}}</td>
+                      
+                      <td class="tdaddtable tdpunched">{{mepunched.Size}}{{mepunched.PSize}}</td>
+                      <!--<td id="pizzasize" style="display:none;" class="tdaddtable tdpunched">{{mepunched.PSize}}</td>-->
+                      
+                      <td class="tdaddtable tdpunched">{{mepunched.Qty}}</td>
+                      <td class="tdaddtable tdpunched">{{mepunched.Price}}</td>
+                      <td class="tdaddtable tdpunched">{{mepunched.Subtotal}}</td>
+                      {{mepunched.user}}
+                      {{mepunched.Cost}}
+                      
+                      <td class="tdaddtable tdpunched"><input  class="prodbut addbutstyle" type="button" onClick="addpunched()" value="Add" name="addbutton" id="addbuttonid"></td>
+                    </tr>
+                    
+        </table> 
+    </div>
+
+</div>
+
+
+
+<div class="w3-container suspendcontainer">
+        <h8 class="punchedtext totalsuspend">Total: </h8><h8 id="totalpunched" class="totalsuspenda"></h8>
+        <h8 class="punchedtext totalchange">Change: </h8><h8 id="changepunched" class="totalchangea"></h8>
+            <div class="suspendbutdiv" style="position:absolute;left:78%;top:35%;">
+        
+                <input onclick="suspend()" class="prodbut suspendbut" type="button" value="Suspend" name="suspendbutton">
+
+            </div>
+            <div>
+            <input class="prodbut Calculatebut" type="button" value="Calculate" onclick="calculatechange()">
+            </div>
+            <div class="dropdown">
+               <button onclick="myFunctionqueue()"  class="dropbtnqueue btnq" >Queue</button>
+                        
+                        
+                        
+                        
+                        <div id="myDropdownqueue" class="dropdown-contentqueue" >
+                        <form action="" method="GET" id="hiddenform">
+                        <input name="amountpay" id="inputamount" type="hidden" value=""></input>
+                        <input name="arrayname" id="array" type="hidden" value=""></input>
+                        <input name="total1" id="totalpunched1" type="hidden" value=""></input>
+                        <input name="Q1" value="Queue1" type="hidden"></input>
+                        <button class="sampw" onclick="functionq1()" type="button" id="que1"  style="width:100%;">Queue1</button>
+                        </form>
+                        <form action="" method="GET" id="hiddenform2">
+                        <input name="amountpay2" id="inputamount2" type="hidden" value=""></input>
+                        <input name="arrayname2" id="array2" type="hidden" value=""></input>
+                        <input name="total2" id="totalpunched2" type="hidden" value=""></input>
+                        <input name="Q2" value="Queue2" type="hidden"></input>
+                        <button class="sampw" onclick="functionq2()" type="button" id="que2"  style="width:100%;">Queue2</button>
+                        </form>
+                        </form>
+                        <form action="" method="GET" id="hiddenform3">
+                        <input name="amountpay3" id="inputamount3" type="hidden" value=""></input>
+                        <input name="arrayname3" id="array3" type="hidden" value=""></input>
+                        <input name="total3" id="totalpunched3" type="hidden" value=""></input>
+                        <input name="Q3" value="Queue3" type="hidden"></input>
+                        <button class="sampw"onclick="functionq3()"  type="button"  style="width:100%;">Queue3</button>
+                        </form>
+
+                        </div>
+                        
+
+                  
+            </div>
+            <div class="Cusnamediv">
+            <h8 class="punchedtext cus">Customer:</h8>
+            <input class="cusnameinput" type="text" placeholder=" Enter Customer's Name" id="Customername"></input>
+            </div>
+            <div class="billdiv ">
+            <h8 class="punchedtext bill">Amount:</h8>
+            <input class="billinput" type="number" placeholder=" Enter Amount to bill" id="Amount"></input>
+            </div>
+</div>
+
+
+
+
+
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunctionqueue() {
+var getName = document.getElementById('Customername').value;
+alert(getName);
+if(getName){
+document.getElementById("myDropdownqueue").classList.toggle("show");
+}else{
+    var cusname = document.getElementById('Customername');
+    alert("Please input Customer's Name");
+    cusname.style.borderColor = "red";
+}
+
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtnqueue')) {
+    var dropdowns = document.getElementsByClassName("dropdown-contentqueue");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+
+
+
+
+<div class="tab">
+{% for Category in Categoriess %}
+{% if Category.Categorychoices == "Stock" %}
+{% else %}
+  <button class="tablinks" onclick="openCity(event, '{{Category.Categorychoices}}')">
+  <h8 class="forlink">{{Category.Categorychoices}}</h8>
+  </button>
+{% endif %}
+{% endfor %}
+</div>
+
+
+    <div class="w3-container ">
+        <div id="Milktea" class="tabcontent tabcontentstyle " style="display:block;">
+
+            {% for mtname in mtbuttons %}
+            
+                    <div class="dropupmt" >
+                        
+                        
+                            <input type="hidden" name="Pricemt" value="{{mtprices}}" id="pricemt"> 
+                            <input type="hidden" name="Costmt" value="{{mtcosts}}" id="costmt">
+                            <input type="hidden" name="qty" value="" id="js_qty{{mtname.id}}"> 
+                            <input type="hidden" id="Milkteaa{{mtname.id}}" name="Milktea" value="Milktea"> 
+                            <input type="" readonly="readonly" id="milkteaa{{mtname.id}}" name="milktea" value="{{mtname.productname}}" class="dropbtnmt prodbut butprod">
+                                <div class="dropup-contentmt" style="background-color:#2d2c29;">
+                                    {% for mtsize in mtsizes %}
+                                    <input onclick="myFunction{{mtsize.id}}{{mtname.id}}()" id="size{{mtsize.id}}{{mtname.id}}" type="submit" readonly="readonly"  name="Size" value="{{mtsize.Sizechoices}}" class="prodbut" style="cursor:pointer;width:100%;"><br>
+                                    {% endfor %}
+                                    
+                                </div>
+                        
+                    </div>
+            {% endfor %}
+            <input type="hidden" name="Costmtkey" value="{{mtkeyscosts}}" id="costmtkey">
+        </div>
+    </div>
+
+     {% for mtname in mtbuttons %}
+    {% for mtsize in mtsizes %}
+<script>
+
+var costtt = [];
+    function myFunction{{mtsize.id}}{{mtname.id}}() {
+    var Item=document.getElementById("Item");
+    var Category=document.getElementById("Category");
+    var Size=document.getElementById("Size");
+    var Qty=document.getElementById("Qty");
+    var Price=document.getElementById("Price");
+    var Subtotal=document.getElementById("Subtotal");
+    var Milkteai = document.getElementById("Milkteaa"+{{mtname.id}}).value;
+    var Sizei = document.getElementById("size"+{{mtsize.id}}+{{mtname.id}}).value;
+    var milkteai = document.getElementById("milkteaa"+{{mtname.id}}).value;
+    var tdpsize=document.getElementById("psukatna");
+    var tdsubcateg=document.getElementById("subcategoryid");
+    var tdsize=document.getElementById("sukatna");
+    var tdcateg=document.getElementById("categoryid");
+    var qty = prompt("Please enter quantity here...", "1");
+    if (qty != null && qty != "") {
+        $("#js_qty"+{{mtname.id}}).val(parseInt(qty));
+        
+        
+        var qtyi = document.getElementById("js_qty"+{{mtname.id}}).value;
+        var Priceiiii = document.getElementById("pricemt").value;
+
+        var Priceiii = JSON.parse(Priceiiii);
+        var Priceii = Priceiii;
+        
+        var Pricei = Priceii[milkteai+Sizei];
+        var Subtotali = (qtyi*Pricei);
+        var Costiiii = document.getElementById("costmt").value;
+        var Costiii = JSON.parse(Costiiii);
+        var Costii = Costiii;
+        var keys=document.getElementById("costmtkey").value;
+        var Costkeys = JSON.parse(keys);
+        var Costkeysi = Costkeys;
+        
+        var counterlen=Costkeysi.length;
+        
+        var ii=0;
+        var costofitem = {};
+        for (var keyno in Costii) {
+        
+        costofitem[Costkeysi[keyno]] = Costii[ii];
+        ii += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costi=costofitem[milkteai+Sizei];
+       
+       
+        
+        
+        tdsize.style.display="block";
+        tdsubcateg.style.display="none";
+        tdpsize.style.display="none";
+        tdcateg.style.display="block";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(milkteai);
+        $("#subkategorya").val("");
+        $("#kategorya").val(Milkteai);
+        $("#sukatna").val(Sizei);
+        $("#psukatna").val("");
+        $("#costnaid").val(Costi);
+        $("#presyona").val(parseInt(Pricei));
+        $("#subtotalna").val(parseInt(Subtotali));
+        $("#quantity").val(parseInt(qtyi));
+        
+      }
+    }
+
+</script>
+    {% endfor %}
+{% endfor %}
+
+    <div class="w3-container ">
+        <div id="Frappe" class="tabcontent tabcontentstyle">
+
+            {% for frname in frbuttons %}
+            
+                    <div class="dropupfr" >
+                        
+                        
+                            <input type="hidden" name="Pricefr" value="{{frprices}}" id="pricefr"> 
+                            <input type="hidden" name="Costfr" value="{{frcosts}}" id="costfr">
+                            <input type="hidden" name="qty" value="" id="js_qty{{frname.id}}"> 
+                            <input type="hidden" id="Frappea{{frname.id}}" name="Frappe" value="Frappe"> 
+                            <input type="" readonly="readonly" id="frappea{{frname.id}}" name="frappe" value="{{frname.productname}}" class="dropbtnfr prodbut butprod">
+                                <div class="dropup-contentfr" style="background-color:#2d2c29;">
+                                    {% for frsize in frsizes %}
+                                    <input onclick="myFunction{{frsize.id}}{{frname.id}}()" id="size{{frsize.id}}{{frname.id}}" type="submit" readonly="readonly"  name="Size" value="{{frsize.Sizechoices}}" class="prodbut" style="cursor:pointer;width:100%;"><br>
+                                    {% endfor %}
+                                    
+                                </div>
+                        
+                    </div>
+            {% endfor %}
+            <input type="hidden" name="Costfrkey" value="{{frkeyscosts}}" id="costfrkey">
+        </div>
+    </div>
+
+     {% for frname in frbuttons %}
+    {% for frsize in frsizes %}
+<script>
+    function myFunction{{frsize.id}}{{frname.id}}() {
+
+    var Frappeifr = document.getElementById("Frappea"+{{frname.id}}).value;
+    
+    var Sizeifr = document.getElementById("size"+{{frsize.id}}+{{frname.id}}).value;
+    
+    var frappeifr = document.getElementById("frappea"+{{frname.id}}).value;
+    
+    var tdpsizefr=document.getElementById("psukatna");
+    var tdsubcategfr=document.getElementById("subcategoryid");
+    var tdsizefr=document.getElementById("sukatna");
+    var tdcategfr=document.getElementById("categoryid");
+    var qtyfr = prompt("Please enter quantity here...", "1");
+    if (qtyfr != null && qtyfr != "") {
+        $("#js_qty"+{{frname.id}}).val(parseInt(qtyfr));
+        
+        
+        var qtyifr = document.getElementById("js_qty"+{{frname.id}}).value;
+        
+        var Priceiiiifr = document.getElementById("pricefr").value;
+        
+        var Priceiiifr = JSON.parse(Priceiiiifr);
+        var Priceiifr = Priceiiifr;
+        
+        var Priceifr = Priceiifr[frappeifr+Sizeifr];
+        
+        var Subtotalifr = (qtyifr*Priceifr);
+        
+        var Costiiiifr = document.getElementById("costfr").value;
+        var Costiiifr = JSON.parse(Costiiiifr);
+        var Costiifr = Costiiifr;
+        
+        var keysfr=document.getElementById("costfrkey").value;
+        var Costkeysfr = JSON.parse(keysfr);
+        var Costkeysifr = Costkeysfr;
+        
+        var counterlenfr=Costkeysifr.length;
+        
+        var iifr=0;
+        var costofitemfr = {};
+        for (var keynofr in Costiifr) {
+        
+        costofitemfr[Costkeysifr[keynofr]] = Costiifr[iifr];
+        iifr += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costifr=costofitemfr[frappeifr+Sizeifr];
+       
+       
+        
+        
+        tdsizefr.style.display="block";
+        tdsubcategfr.style.display="none";
+        tdpsizefr.style.display="none";
+        tdcategfr.style.display="block";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(frappeifr);
+        $("#subkategorya").val("");
+        $("#kategorya").val(Frappeifr);
+        $("#sukatna").val(Sizeifr);
+        $("#psukatna").val("");
+        $("#costnaid").val(Costifr);
+        $("#presyona").val(parseInt(Priceifr));
+        $("#subtotalna").val(parseInt(Subtotalifr));
+        $("#quantity").val(parseInt(qtyifr));
+        
+      }
+    }
+
+</script>
+    {% endfor %}
+{% endfor %}
+    
+    <div class="w3-container ">
+        <div id="Freeze" class="tabcontent tabcontentstyle">
+            {% for frzname in freezebuttons %}
+            
+                    <div class="dropupfrz" >
+                        
+                        
+                            <input type="hidden" name="Pricefrz" value="{{frzprices}}" id="pricefrz"> 
+                            <input type="hidden" name="Costfrz" value="{{frzcosts}}" id="costfrz">
+                            <input type="hidden" name="qty" value="" id="js_qty{{frzname.id}}"> 
+                            <input type="hidden" id="Freezea{{frzname.id}}" name="Freeze" value="Freeze"> 
+                            <input onclick="myFunction{{frzname.id}}()" type="" readonly="readonly" id="freezea{{frzname.id}}" name="freeze" value="{{frzname.productname}}" class="dropbtnfr prodbut butprod">
+
+                        
+                    </div>
+            {% endfor %}
+
+            <input type="hidden" name="Costfrzkey" value="{{frzkeyscosts}}" id="costfrzkey">
+        </div>
+    </div>
+     {% for frzname in freezebuttons %}
+    
+<script>
+    function myFunction{{frzname.id}}() {
+
+    var Freezeifrz = document.getElementById("Freezea"+{{frzname.id}}).value;
+    
+    //var Sizeifrz = document.getElementById("size"+{{frzname.id}}).value;
+    
+    var freezeifrz = document.getElementById("freezea"+{{frzname.id}}).value;
+    //alert('freezeifrz:   '+freezeifrz);
+    var tdpsizefrz=document.getElementById("psukatna");
+    var tdsubcategfrz=document.getElementById("subcategoryid");
+    var tdsizefrz=document.getElementById("sukatna");
+    var tdcategfrz=document.getElementById("categoryid");
+    var qtyfrz = prompt("Please enter quantity here...", "1");
+    if (qtyfrz != null && qtyfrz != "") {
+        $("#js_qty"+{{frzname.id}}).val(parseInt(qtyfrz));
+        
+        
+        var qtyifrz = document.getElementById("js_qty"+{{frzname.id}}).value;
+        //alert('qtyifrz:   '+qtyifrz);
+        var Priceiiiifrz = document.getElementById("pricefrz").value;
+        
+        var Priceiiifrz = JSON.parse(Priceiiiifrz);
+        var Priceiifrz = Priceiiifrz;
+        
+        var Priceifrz = Priceiifrz[freezeifrz];
+        //alert('Priceifrz:   '+Priceifrz);
+        var Subtotalifrz = (qtyifrz*Priceifrz);
+        //alert('Subtotalifrz:   '+Subtotalifrz);
+        var Costiiiifrz = document.getElementById("costfrz").value;
+        var Costiiifrz = JSON.parse(Costiiiifrz);
+        var Costiifrz = Costiiifrz;
+        //alert('Costiifrz:   '+Costiifrz);
+        
+        var keysfrz=document.getElementById("costfrzkey").value;
+        var Costkeysfrz = JSON.parse(keysfrz);
+        var Costkeysifrz = Costkeysfrz;
+        //alert('Costkeysifrz:   '+Costkeysifrz);
+        var counterlenfrz=Costkeysifrz.length;
+        
+        var iifrz=0;
+        var costofitemfrz = {};
+        for (var keynofrz in Costiifrz) {
+        
+        costofitemfrz[Costkeysifrz[keynofrz]] = Costiifrz[iifrz];
+        iifrz += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costifrz=costofitemfrz[freezeifrz];
+        tdsizefrz.style.display="none";
+        tdsubcategfrz.style.display="none";
+        tdpsizefrz.style.display="none";
+        tdcategfrz.style.display="block";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(freezeifrz);
+        $("#kategorya").val(Freezeifrz);
+        $("#subkategorya").val("");
+        $("#sukatna").val("");
+        $("#psukatna").val("");
+        $("#costnaid").val(Costifrz);
+        $("#presyona").val(parseInt(Priceifrz));
+        $("#subtotalna").val(parseInt(Subtotalifrz));
+        $("#quantity").val(parseInt(qtyifrz));
+       
+      }
+    }
+
+</script>
+    {% endfor %}
+
+    <div class="w3-container ">
+
+              <div class="tabsub tabcontent"  id="Snacks">
+                {% for Subcategory in Subcategoriess %}
+                  <button class="tablinks " onclick="openCity(event, '{{Subcategory.Subcategorychoices}}')" style="padding-top:1%;">{{Subcategory.Subcategorychoices}}</button>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+
+    <div class="w3-container ">
+        <div id="Add-ons" class="tabcontent tabcontentstyle">
+            {% for aoname in addonsbuttons %}
+            
+                    <div class="dropupao" >
+                        
+                        
+                            <input type="hidden" name="Priceao" value="{{aoprices}}" id="priceao"> 
+                            <input type="hidden" name="Costao" value="{{aocosts}}" id="costao">
+                            <input type="hidden" name="qty" value="" id="js_qty{{aoname.id}}"> 
+                            <input type="hidden" id="Addonsa{{aoname.id}}" name="Addons" value="Addons"> 
+                            <input onclick="myFunction{{aoname.id}}()" type="" readonly="readonly" id="addonsa{{aoname.id}}" name="addons" value="{{aoname.productname}}" class="dropbtnfr prodbut butprod">
+
+                        
+                    </div>
+            {% endfor %}
+
+            <input type="hidden" name="Costaokey" value="{{aokeyscosts}}" id="costaokey">   
+        </div>
+    </div>
+
+     {% for aoname in addonsbuttons %}
+    
+<script>
+    function myFunction{{aoname.id}}() {
+
+    var Addonsiao = document.getElementById("Addonsa"+{{aoname.id}}).value;
+    
+    //var Sizeifrz = document.getElementById("size"+{{frzname.id}}).value;
+    
+    var addonsiao = document.getElementById("addonsa"+{{aoname.id}}).value;
+    //alert('addonsiao:   '+addonsiao);
+    var tdpsizeao=document.getElementById("psukatna");
+    var tdsubcategao=document.getElementById("subcategoryid");
+    var tdsizeao=document.getElementById("sukatna");
+    var tdcategao=document.getElementById("categoryid");
+    var qtyao = prompt("Please enter quantity here...", "1");
+    if (qtyao != null && qtyao != "") {
+        $("#js_qty"+{{aoname.id}}).val(parseInt(qtyao));
+        
+        
+        var qtyiao = document.getElementById("js_qty"+{{aoname.id}}).value;
+        //alert('qtyiao:   '+qtyiao);
+        var Priceiiiiao = document.getElementById("priceao").value;
+        //alert('Priceiiiiao:   '+Priceiiiiao);
+        var Priceiiiao = JSON.parse(Priceiiiiao);
+        var Priceiiao = Priceiiiao;
+        
+        var Priceiao = Priceiiao[addonsiao];
+        //alert('Priceiao:   '+Priceiao);
+        var Subtotaliao = (qtyiao*Priceiao);
+        
+        var Costiiiiao = document.getElementById("costao").value;
+        var Costiiiao = JSON.parse(Costiiiiao);
+        var Costiiao = Costiiiao;
+        //alert('Costiiao:   '+Costiiao);
+        
+        var keysao=document.getElementById("costaokey").value;
+        var Costkeysao = JSON.parse(keysao);
+        var Costkeysiao = Costkeysao;
+        //alert('Costkeysiao:   '+Costkeysiao);
+        var counterlenao=Costkeysiao.length;
+        
+        var iiao=0;
+        var costofitemao = {};
+        for (var keynoao in Costiiao) {
+        
+        costofitemao[Costkeysiao[keynoao]] = Costiiao[iiao];
+        iiao += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costiao=costofitemao[addonsiao];
+        tdsizeao.style.display="none";
+        tdsubcategao.style.display="none";
+        tdpsizeao.style.display="none";
+        tdcategao.style.display="block";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(addonsiao);
+        $("#kategorya").val(Addonsiao);
+        $("#sukatna").val("");
+        $("#psukatna").val("");
+        $("#subkategorya").val("");
+        $("#costnaid").val(Costiao);
+        $("#presyona").val(parseInt(Priceiao));
+        $("#subtotalna").val(parseInt(Subtotaliao));
+        $("#quantity").val(parseInt(qtyiao));
+      }
+    }
+
+</script>
+    {% endfor %}
+
+    <div class="w3-container ">
+        <div id="Cookies" class="tabcontent tabsubcontentstyle">
+            <div class="tabsub tabsubposition" >
+            {% for Subcategory in Subcategoriess %}
+              <button class="tablinks" onclick="openCity(event, '{{Subcategory.Subcategorychoices}}')">{{Subcategory.Subcategorychoices}}</button>
+            {% endfor %}
+            </div>
+            {% for cookiesname in cookiesbuttons %}
+            
+                    <div class="dropupcookies" >
+                        
+                        
+                            <input type="hidden" name="Pricecookies" value="{{cookiesprices}}" id="pricecookies"> 
+                            <input type="hidden" name="Costcookies" value="{{cookiescosts}}" id="costcookies">
+                            <input type="hidden" name="qty" value="" id="js_qty{{cookiesname.id}}"> 
+                            <input type="hidden" id="Cookiesa{{cookiesname.id}}" name="Cookies" value="Cookies"> 
+                            <input onclick="myFunction{{cookiesname.id}}()" type="" readonly="readonly" id="cookiesa{{cookiesname.id}}" name="cookies" value="{{cookiesname.productname}}" class="dropbtncookies prodbut butprod">
+
+                        
+                    </div>
+            {% endfor %}
+
+            <input type="hidden" name="Costcookieskey" value="{{cookieskeyscosts}}" id="costcookieskey">  
+        </div>
+    </div>
+     {% for cookiesname in cookiesbuttons %}
+    
+<script>
+    function myFunction{{cookiesname.id}}() {
+
+    var Cookiesicookies = document.getElementById("Cookiesa"+{{cookiesname.id}}).value;
+    
+    //var Sizeicookies = document.getElementById("size"+{{cookiesname.id}}).value;
+    
+    var cookiesicookies = document.getElementById("cookiesa"+{{cookiesname.id}}).value;
+    
+    var tdpsizecookies=document.getElementById("psukatna");
+    var tdsubcategcookies=document.getElementById("subcategoryid");
+    var tdsizecookies=document.getElementById("sukatna");
+    var tdcategcookies=document.getElementById("categoryid");
+    var qtycookies = prompt("Please enter quantity here...", "1");
+    if (qtycookies != null && qtycookies != "") {
+        $("#js_qty"+{{cookiesname.id}}).val(parseInt(qtycookies));
+        
+        
+        var qtyicookies = document.getElementById("js_qty"+{{cookiesname.id}}).value;
+        
+        var Priceiiiicookies = document.getElementById("pricecookies").value;
+        
+        var Priceiiicookies = JSON.parse(Priceiiiicookies);
+        var Priceiicookies = Priceiiicookies;
+        
+        var Priceicookies = Priceiicookies[cookiesicookies];
+        
+
+        var Subtotalicookies = (qtyicookies*Priceicookies);
+        
+        var Costiiiicookies = document.getElementById("costcookies").value;
+        var Costiiicookies = JSON.parse(Costiiiicookies);
+        var Costiicookies = Costiiicookies;
+        
+        
+        var keyscookies=document.getElementById("costcookieskey").value;
+        var Costkeyscookies = JSON.parse(keyscookies);
+        var Costkeysicookies = Costkeyscookies;
+        
+        var counterlencookies=Costkeysicookies.length;
+        
+        var iicookies=0;
+        var costofitemcookies = {};
+        for (var keynocookies in Costiicookies) {
+        
+        costofitemcookies[Costkeysicookies[keynocookies]] = Costiicookies[iicookies];
+        iicookies += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costicookies=costofitemcookies[cookiesicookies];
+        tdsizecookies.style.display="none";
+        tdsubcategcookies.style.display="block";
+        tdpsizecookies.style.display="none";
+        tdcategcookies.style.display="none";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(cookiesicookies);
+        $("#kategorya").val("Snacks");
+        $("#subkategorya").val(Cookiesicookies);
+        $("#costnaid").val(Costicookies);
+        $("#sukatna").val("");
+        $("#psukatna").val("");
+        $("#presyona").val(parseInt(Priceicookies));
+        $("#subtotalna").val(parseInt(Subtotalicookies));
+        $("#quantity").val(parseInt(qtyicookies));
+      }
+    }
+
+</script>
+    {% endfor %}
+        <div class="w3-container ">
+        <div id="Pizza" class="tabcontent tabsubcontentstyle" >
+            <div class="tabsub tabsubposition" >
+            {% for Subcategory in Subcategoriess %}
+              <button class="tablinks " onclick="openCity(event, '{{Subcategory.Subcategorychoices}}')" class="prodbut " >{{Subcategory.Subcategorychoices}}</button>
+            {% endfor %}
+            </div>
+            {% for pizzaname in pizzabuttons %}
+            
+                    <div class="dropupp" >
+                        
+                        
+                            <input type="hidden" name="Pricepizza" value="{{pizzaprices}}" id="pricepizza"> 
+                            <input type="hidden" name="Costpizza" value="{{pizzacosts}}" id="costpizza">
+                            <input type="hidden" name="qty" value="" id="js_qty{{pizzaname.id}}"> 
+                            <input type="hidden" id="Pizzaa{{pizzaname.id}}" name="Pizza" value="Pizza"> 
+                            <input type=""  readonly="readonly" id="pizzaa{{pizzaname.id}}" name="pizzaappe" value="{{pizzaname.productname}}" class="dropbtnpizza prodbut butprod">
+                                <div class="dropup-contentp" style="background-color:#2d2c29;">
+                                    {% for pizzasize in psizes %}
+                                    <input onclick="myFunction{{pizzasize.id}}{{pizzaname.id}}()" id="size{{pizzasize.id}}{{pizzaname.id}}" type="submit" readonly="readonly"  name="Size" value="{{pizzasize.PSizechoices}}" class="prodbut" style="cursor:pointer;width:100%;"><br>
+                                    {% endfor %}
+                                    
+                                </div>
+                        
+                    </div>
+            {% endfor %}
+            <input type="hidden" name="Costpizzakey" value="{{pizzakeyscosts}}" id="costpizzakey">
+        </div>
+    </div>
+
+     {% for pizzaname in pizzabuttons %}
+    {% for pizzasize in psizes %}
+<script>
+    function myFunction{{pizzasize.id}}{{pizzaname.id}}() {
+
+    var Pizzaipizza = document.getElementById("Pizzaa"+{{pizzaname.id}}).value;
+    
+    var Sizeipizza = document.getElementById("size"+{{pizzasize.id}}+{{pizzaname.id}}).value;
+    
+    var pizzaipizza = document.getElementById("pizzaa"+{{pizzaname.id}}).value;
+    
+    var tdpsizepizza=document.getElementById("psukatna");
+    var tdsubcategpizza=document.getElementById("subcategoryid");
+    var tdsizepizza=document.getElementById("sukatna");
+    var tdcategpizza=document.getElementById("categoryid");
+    var qtypizza = prompt("Please enter quantity here...", "1");
+    if (qtypizza != null && qtypizza != "") {
+        $("#js_qty"+{{pizzaname.id}}).val(parseInt(qtypizza));
+        
+        
+        var qtyipizza = document.getElementById("js_qty"+{{pizzaname.id}}).value;
+        
+        var Priceiiiipizza = document.getElementById("pricepizza").value;
+        
+        var Priceiiipizza = JSON.parse(Priceiiiipizza);
+        var Priceiipizza = Priceiiipizza;
+        
+        var Priceipizza = Priceiipizza[pizzaipizza+Sizeipizza];
+        
+        var Subtotalipizza = (qtyipizza*Priceipizza);
+        
+        var Costiiiipizza = document.getElementById("costpizza").value;
+        var Costiiipizza = JSON.parse(Costiiiipizza);
+        var Costiipizza = Costiiipizza;
+        
+        var keyspizza=document.getElementById("costpizzakey").value;
+        var Costkeyspizza = JSON.parse(keyspizza);
+        var Costkeysipizza = Costkeyspizza;
+        
+        var counterlenpizza=Costkeysipizza.length;
+        
+        var iipizza=0;
+        var costofitempizza = {};
+        for (var keynopizza in Costiipizza) {
+        
+        costofitempizza[Costkeysipizza[keynopizza]] = Costiipizza[iipizza];
+        iipizza += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costipizza=costofitempizza[pizzaipizza+Sizeipizza];
+
+
+        tdsizepizza.style.display="none";
+        tdsubcategpizza.style.display="block";
+        tdpsizepizza.style.display="block";
+        tdcategpizza.style.display="none";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(pizzaipizza);
+        $("#subkategorya").val(Pizzaipizza);
+        $("#kategorya").val("Snacks");
+        $("#psukatna").val(Sizeipizza);
+        $("#sukatna").val("");
+        $("#costnaid").val(Costipizza);
+        $("#presyona").val(parseInt(Priceipizza));
+        $("#subtotalna").val(parseInt(Subtotalipizza));
+        $("#quantity").val(parseInt(qtyipizza));
+      }
+    }
+
+</script>
+    {% endfor %}
+{% endfor %}
+
+
+    <div class="w3-container ">
+        <div id="Shawarma" class="tabcontent tabsubcontentstyle">
+            <div class="tabsub tabsubposition" >
+            {% for Subcategory in Subcategoriess %}
+              <button class="tablinks " onclick="openCity(event, '{{Subcategory.Subcategorychoices}}')">{{Subcategory.Subcategorychoices}}</button>
+            {% endfor %}
+            </div>
+{% for shawarmaname in shawarmabuttons %}
+            
+                    <div class="dropupshawarma" >
+                        
+                        
+                            <input type="hidden" name="Priceshawarma" value="{{shawarmaprices}}" id="priceshawarma"> 
+                            <input type="hidden" name="Costshawarma" value="{{shawarmacosts}}" id="costshawarma">
+                            <input type="hidden" name="qty" value="" id="js_qty{{shawarmaname.id}}"> 
+                            <input type="hidden" id="Shawarmaa{{shawarmaname.id}}" name="Shawarma" value="Shawarma"> 
+                            <input onclick="myFunction{{shawarmaname.id}}()" type="" readonly="readonly" id="shawarmaa{{shawarmaname.id}}" name="shawarma" value="{{shawarmaname.productname}}" class="dropbtnshawarma prodbut butprod">
+
+                        
+                    </div>
+            {% endfor %}
+
+            <input type="hidden" name="Costshawarmakey" value="{{shawarmakeyscosts}}" id="costshawarmakey">  
+        </div>
+    </div>
+     {% for shawarmaname in shawarmabuttons %}
+    
+<script>
+    function myFunction{{shawarmaname.id}}() {
+
+    var Shawarmaishawarma = document.getElementById("Shawarmaa"+{{shawarmaname.id}}).value;
+    
+    //var Sizeifries = document.getElementById("size"+{{friesname.id}}).value;
+    
+    var shawarmaishawarma = document.getElementById("shawarmaa"+{{shawarmaname.id}}).value;
+    
+    var tdpsizeshawarma=document.getElementById("psukatna");
+    var tdsubcategshawarma=document.getElementById("subcategoryid");
+    var tdsizeshawarma=document.getElementById("sukatna");
+    var tdcategshawarma=document.getElementById("categoryid");
+    var qtyshawarma = prompt("Please enter quantity here...", "1");
+    if (qtyshawarma != null && qtyshawarma != "") {
+        $("#js_qty"+{{shawarmaname.id}}).val(parseInt(qtyshawarma));
+        
+        
+        var qtyishawarma = document.getElementById("js_qty"+{{shawarmaname.id}}).value;
+        
+        var Priceiiiishawarma = document.getElementById("priceshawarma").value;
+        
+        var Priceiiishawarma = JSON.parse(Priceiiiishawarma);
+        var Priceiishawarma = Priceiiishawarma;
+        
+        var Priceishawarma = Priceiishawarma[shawarmaishawarma];
+        
+        var Subtotalishawarma = (qtyishawarma*Priceishawarma);
+        
+        var Costiiiishawarma = document.getElementById("costshawarma").value;
+        var Costiiishawarma = JSON.parse(Costiiiishawarma);
+        var Costiishawarma = Costiiishawarma;
+        
+        
+        var keysshawarma=document.getElementById("costshawarmakey").value;
+        var Costkeysshawarma = JSON.parse(keysshawarma);
+        var Costkeysishawarma = Costkeysshawarma;
+        
+        var counterlenshawarma=Costkeysishawarma.length;
+        
+        var iishawarma=0;
+        var costofitemshawarma = {};
+        for (var keynoshawarma in Costiishawarma) {
+        
+        costofitemshawarma[Costkeysishawarma[keynoshawarma]] = Costiishawarma[iishawarma];
+        iishawarma += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costishawarma=costofitemshawarma[shawarmaishawarma];
+        tdsizeshawarma.style.display="none";
+        tdsubcategshawarma.style.display="block";
+        tdpsizeshawarma.style.display="none";
+        tdcategshawarma.style.display="none";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(shawarmaishawarma);
+        $("#kategorya").val("Snacks");
+        $("#subkategorya").val(Shawarmaishawarma);
+        $("#costnaid").val(Costishawarma);
+        $("#sukatna").val("");
+        $("#psukatna").val("");
+        $("#presyona").val(parseInt(Priceishawarma));
+        $("#subtotalna").val(parseInt(Subtotalishawarma));
+        $("#quantity").val(parseInt(qtyishawarma));
+      }
+    }
+
+</script>
+    {% endfor %}  
+
+    <div class="w3-container ">
+        <div id="Fries" class="tabcontent tabsubcontentstyle">
+            <div class="tabsub tabsubposition">
+            {% for Subcategory in Subcategoriess %}
+              <button class="tablinks " onclick="openCity(event, '{{Subcategory.Subcategorychoices}}')" >{{Subcategory.Subcategorychoices}}</button>
+            {% endfor %}
+            </div>
+            {% for friesname in friesbuttons %}
+            
+                    <div class="dropupfries" >
+                        
+                        
+                            <input type="hidden" name="Pricefries" value="{{friesprices}}" id="pricefries"> 
+                            <input type="hidden" name="Costfries" value="{{friescosts}}" id="costfries">
+                            <input type="hidden" name="qty" value="" id="js_qty{{friesname.id}}"> 
+                            <input type="hidden" id="Friesa{{friesname.id}}" name="Fries" value="Fries"> 
+                            <input onclick="myFunction{{friesname.id}}()" type="" readonly="readonly" id="friesa{{friesname.id}}" name="fries" value="{{friesname.productname}}" class="dropbtnfries prodbut butprod">
+
+                        
+                    </div>
+            {% endfor %}
+
+            <input type="hidden" name="Costfrieskey" value="{{frieskeyscosts}}" id="costfrieskey">  
+        </div>
+    </div>
+     {% for friesname in friesbuttons %}
+    
+<script>
+    function myFunction{{friesname.id}}() {
+
+    var Friesifries = document.getElementById("Friesa"+{{friesname.id}}).value;
+    
+    //var Sizeifries = document.getElementById("size"+{{friesname.id}}).value;
+    
+    var friesifries = document.getElementById("friesa"+{{friesname.id}}).value;
+    
+    var tdpsizefries=document.getElementById("psukatna");
+    var tdsubcategfries=document.getElementById("subcategoryid");
+    var tdsizefries=document.getElementById("sukatna");
+    var tdcategfries=document.getElementById("categoryid");
+    var qtyfries = prompt("Please enter quantity here...", "1");
+    if (qtyfries != null && qtyfries != "") {
+        $("#js_qty"+{{friesname.id}}).val(parseInt(qtyfries));
+        
+        
+        var qtyifries = document.getElementById("js_qty"+{{friesname.id}}).value;
+        
+        var Priceiiiifries = document.getElementById("pricefries").value;
+        
+        var Priceiiifries = JSON.parse(Priceiiiifries);
+        var Priceiifries = Priceiiifries;
+        
+        var Priceifries = Priceiifries[friesifries];
+        
+        var Subtotalifries = (qtyifries*Priceifries);
+        
+        var Costiiiifries = document.getElementById("costfries").value;
+        var Costiiifries = JSON.parse(Costiiiifries);
+        var Costiifries = Costiiifries;
+        
+        
+        var keysfries=document.getElementById("costfrieskey").value;
+        var Costkeysfries = JSON.parse(keysfries);
+        var Costkeysifries = Costkeysfries;
+        
+        var counterlenfries=Costkeysifries.length;
+        
+        var iifries=0;
+        var costofitemfries = {};
+        for (var keynofries in Costiifries) {
+        
+        costofitemfries[Costkeysifries[keynofries]] = Costiifries[iifries];
+        iifries += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costifries=costofitemfries[friesifries];
+        tdsizefries.style.display="none";
+        tdsubcategfries.style.display="block";
+        tdpsizefries.style.display="none";
+        tdcategfries.style.display="none";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(friesifries);
+        $("#kategorya").val("Snacks");
+        $("#subkategorya").val(Friesifries);
+        $("#costnaid").val(Costifries);
+        $("#sukatna").val("");
+        $("#psukatna").val("");
+        $("#presyona").val(parseInt(Priceifries));
+        $("#subtotalna").val(parseInt(Subtotalifries));
+        $("#quantity").val(parseInt(qtyifries));
+      }
+    }
+
+</script>
+    {% endfor %}
+
+    <div class="w3-container ">
+        <div id="Bubble Waffle" class="tabcontent tabsubcontentstyle">
+            <div class="tabsub tabsubposition">
+            {% for Subcategory in Subcategoriess %}
+              <button class="tablinks " onclick="openCity(event, '{{Subcategory.Subcategorychoices}}')">{{Subcategory.Subcategorychoices}}</button>
+            {% endfor %}
+            </div>
+            {% for bubwafname in bubwafbuttons %}
+            
+                    <div class="dropupbubwaf" >
+                        
+                        
+                            <input type="hidden" name="Pricebubwaf" value="{{bubwafprices}}" id="pricebubwaf"> 
+                            <input type="hidden" name="Costbubwaf" value="{{bubwafcosts}}" id="costbubwaf">
+                            <input type="hidden" name="qty" value="" id="js_qty{{bubwafname.id}}"> 
+                            <input type="hidden" id="Bubwafa{{bubwafname.id}}" name="Bubwaf" value="Bubble Waffle"> 
+                            <input onclick="myFunction{{bubwafname.id}}()" type="" readonly="readonly" id="bubwafa{{bubwafname.id}}" name="bubwaf" value="{{bubwafname.productname}}" class="dropbtnbubwaf prodbut butprod">
+
+                        
+                    </div>
+            {% endfor %}
+
+            <input type="hidden" name="Costbubwafkey" value="{{bubwafkeyscosts}}" id="costbubwafkey">  
+        </div>
+    </div>
+     {% for bubwafname in bubwafbuttons %}
+    
+<script>
+    function myFunction{{bubwafname.id}}() {
+
+    var Bubwafibubwaf = document.getElementById("Bubwafa"+{{bubwafname.id}}).value;
+    
+    //var Sizeifries = document.getElementById("size"+{{friesname.id}}).value;
+    
+    var bubwafibubwaf = document.getElementById("bubwafa"+{{bubwafname.id}}).value;
+    
+    var tdpsizebubwaf=document.getElementById("psukatna");
+    var tdsubcategbubwaf=document.getElementById("subcategoryid");
+    var tdsizebubwaf=document.getElementById("sukatna");
+    var tdcategbubwaf=document.getElementById("categoryid");
+    var qtybubwaf = prompt("Please enter quantity here...", "1");
+    if (qtybubwaf != null && qtybubwaf != "") {
+        $("#js_qty"+{{bubwafname.id}}).val(parseInt(qtybubwaf));
+        
+        
+        var qtyibubwaf = document.getElementById("js_qty"+{{bubwafname.id}}).value;
+        
+        var Priceiiiibubwaf = document.getElementById("pricebubwaf").value;
+        
+        var Priceiiibubwaf = JSON.parse(Priceiiiibubwaf);
+        var Priceiibubwaf = Priceiiibubwaf;
+        
+        var Priceibubwaf = Priceiibubwaf[bubwafibubwaf];
+        
+        var Subtotalibubwaf = (qtyibubwaf*Priceibubwaf);
+        
+        var Costiiiibubwaf = document.getElementById("costbubwaf").value;
+        var Costiiibubwaf = JSON.parse(Costiiiibubwaf);
+        var Costiibubwaf = Costiiibubwaf;
+        
+        
+        var keysbubwaf=document.getElementById("costbubwafkey").value;
+        var Costkeysbubwaf = JSON.parse(keysbubwaf);
+        var Costkeysibubwaf = Costkeysbubwaf;
+        
+        var counterlenbubwaf=Costkeysibubwaf.length;
+        
+        var iibubwaf=0;
+        var costofitembubwaf = {};
+        for (var keynobubwaf in Costiibubwaf) {
+        
+        costofitembubwaf[Costkeysibubwaf[keynobubwaf]] = Costiibubwaf[iibubwaf];
+        iibubwaf += 1;
+        } 
+
+      
+       //costofitem.push(item);
+       var Costibubwaf=costofitembubwaf[bubwafibubwaf];
+        tdsizebubwaf.style.display="none";
+        tdsubcategbubwaf.style.display="block";
+        tdpsizebubwaf.style.display="none";
+        tdcategbubwaf.style.display="none";
+        $("#punchedid").val({{userr}});
+        $("#produktopangalan").val(bubwafibubwaf);
+        $("#kategorya").val("Snacks");
+        $("#subkategorya").val(Bubwafibubwaf);
+        $("#sukatna").val("");
+        $("#psukatna").val("");
+        $("#costnaid").val(Costibubwaf);
+        $("#presyona").val(parseInt(Priceibubwaf));
+        $("#subtotalna").val(parseInt(Subtotalibubwaf));
+        $("#quantity").val(parseInt(qtyibubwaf));
+      }
+    }
+
+</script>
+    {% endfor %}
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+
+
+
+
+ <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+
+
+
+
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+<script>
+function openQue() {
+  document.getElementById("myqSidebar").style.width = "300px";
+  document.getElementById("qmain").style.marginLeft = "300px";
+}
+
+function closeQue() {
+  document.getElementById("myqSidebar").style.width = "0";
+  document.getElementById("qmain").style.marginLeft= "0";
+}
+</script>
+                <script>
+                function functioncancel1() {
+                  var r = confirm("Are you sure you want to cancel this queue?");
+                  var submit1=document.getElementById('queue1form')
+                  if (r == true) {
+                    $('#cancel1').val('cancel1')
+                    submit1.submit();
+                  }
+                }
+                </script>
+
+                <script>
+                function functioncancel2() {
+                  var r = confirm("Are you sure you want to cancel this queue?");
+                  var submit2=document.getElementById('queue2form')
+                  if (r == true) {
+                    $('#cancel2').val('cancel2')
+                    submit2.submit();
+                  }
+                }
+                </script>
+                <script>
+                function functioncancel3() {
+                  var r = confirm("Are you sure you want to cancel this queue?");
+                  var submit3=document.getElementById('queue3form')
+                  if (r == true) {
+                    $('#cancel3').val('cancel3')
+                    submit3.submit();
+                  }
+                }
+                </script>
+<script>
+function suspend(){
+
+    while (allpunched.length) { 
+    allpunched.pop();
+    
+    
+    }
+        var tablebody=document.getElementById('punchedtablebody');
+        var dataHtml='';
+        let totalpunchedsus="";
+
+            for(let punched of allpunched){
+            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+punched.Category+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.Price+'</td><td class="tdpunched">'+punched.Subtotal+'</td></tr>';
+            };
+            
+            tablebody.innerHTML = dataHtml;
+            document.getElementById('totalpunched').innerHTML = totalpunchedsus;
+            $("#totalpunched1").val(totalpunchedsus);
+            $("#totalpunched2").val(totalpunchedsus);
+            $("#totalpunched3").val(totalpunchedsus);
+            $("#Customername").val("");
+            $("#inputamount").val("");
+            changeinnerhtml.innerHTML = "";
+            document.getElementById('Customername').style.borderColor = "#615632";
+}
+</script>
+
+<script>
+var allpunched = [];
+var clickaddbutton = 0;
+
+function addpunched() {
+var getName = document.getElementById('Customername').value;
+var getprice = document.getElementById('presyona').value;
+var getitem = document.getElementById('produktopangalan').value;
+if(getitem){
+ if(getprice){
+
+        clickaddbutton = clickaddbutton+1; 
+
+        var getid = document.getElementById('punchedid').value;
+        
+        var getcategory = document.getElementById('kategorya').value;
+        var getsize = document.getElementById('sukatna').value;
+        
+        var getsubtotal = document.getElementById('subtotalna').value;
+        var getsubcategory = document.getElementById('subkategorya').value;
+        var getpsize = document.getElementById('psukatna').value;
+        var getqty = document.getElementById('quantity').value;
+        var getcost = document.getElementById('costnaid').value;
+        var puncheditem="puncheditemi"+(clickaddbutton-1);
+        var indexi = (clickaddbutton-1);
+
+            var puncheditem = {
+                index:indexi,
+                user:getid,
+                productname:getitem,
+                Category:getcategory,
+                Subcategory:getsubcategory,
+                Size:getsize,
+                PSize:getpsize,
+                Price:getprice,
+                Subtotal:getsubtotal,
+                Cost:getcost,
+                Qty:getqty,
+                CusName:getNames, 
+            };
+        allpunched.push(puncheditem);
+
+        //alert(allpunched[indexi].Price);
+        //document.getElementById('tdItem').innerHTML= allpunched[indexi].milktea;
+        var tablebody=document.getElementById('punchedtablebody');
+        var dataHtml='';
+        let totalpunched=0;
+
+            for(let i = 0;i<clickaddbutton;i++){
+        
+                totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
+            };
+            
+            for(let punched of allpunched){
+            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+punched.Category+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.Price+'</td><td class="tdpunched">'+punched.Subtotal+'</td></tr>';
+            };
+            
+            tablebody.innerHTML = dataHtml;
+            document.getElementById('totalpunched').innerHTML = '₱'+totalpunched;
+            $("#totalpunched1").val(totalpunched);
+            $("#totalpunched2").val(totalpunched);
+            $("#totalpunched3").val(totalpunched);
+            document.getElementById('Customername').style.borderColor = "#615632";
+        $("#punchedid").val("");
+        $("#produktopangalan").val("");
+        $("#kategorya").val("");
+        $("#subkategorya").val("");
+        $("#sukatna").val("");
+        $("#psukatna").val("");
+        $("#costnaid").val("");
+        $("#presyona").val("");
+        $("#subtotalna").val("");
+        $("#quantity").val("");
+ }else{
+ alert('This Item or Size of this item is not in the product list. Please add first!');
+
+ }
+}else{
+ alert('Please punch item first!');
+}
+}
+</script>
+<script>
+function functionq1() {
+    if(allpunched.length != 0){
+    
+        var getamount=document.getElementById("Amount").value;
+        if(getamount){
+            var inputarray=document.getElementById("array");
+            var submit=document.getElementById("hiddenform");
+            var jsoon=JSON.stringify(allpunched);
+            $("#array").val(jsoon);
+            $("#inputamount").val(getamount);
+            
+            submit.submit();
+        }else{
+        var redamount=document.getElementById("Amount");
+        alert('Please input Amount first!');
+        redamount.style.borderColor = "red";
+        };
+    }else{
+    alert('Please punch item first!');
+    };
+}
+</script>
+
+<script>
+function functionq2() {
+if(allpunched.length != 0){
+    
+
+        var getamount2=document.getElementById("Amount").value;
+        if(getamount2){
+            var inputarray2=document.getElementById("array2");
+            var submit2=document.getElementById("hiddenform2");
+            var jsoon2=JSON.stringify(allpunched);
+            $("#array2").val(jsoon2);
+            $("#inputamount2").val(getamount2);
+        
+            submit2.submit();
+        }else{
+        var redamount2=document.getElementById("Amount");
+        alert('Please input Amount first!');
+        redamount2.style.borderColor = "red";
+        };
+    }else{
+    alert('Please punch item first!');
+    };
+}
+</script>
+<script>
+function functionq3() {
+if(allpunched.length != 0){
+        var getamount3=document.getElementById("Amount").value;
+
+        if(getamount3){
+            var inputarray3=document.getElementById("array3");
+            var submit3=document.getElementById("hiddenform3");
+            var jsoon3=JSON.stringify(allpunched);
+            $("#array3").val(jsoon3);
+            $("#inputamount3").val(getamount3);
+        
+            submit3.submit();
+        }else{
+        var redamount3=document.getElementById("Amount");
+        alert('Please input Amount first!');
+        redamount3.style.borderColor = "red";
+        }
+    }else{
+    alert('Please punch item first!');
+    };
+}
+</script>
+
+<script>
+function calculatechange(){
+var getamount=document.getElementById("Amount").value;
+if(getamount){
+var gettotal=document.getElementById("totalpunched1").value;
+var changeinnerhtml = document.getElementById("changepunched");
+change=(parseInt(getamount)-parseInt(gettotal));
+
+changeinnerhtml.innerHTML = "₱"+change;
+}else{
+    alert('Please input Amount first!');
+    redamount.style.borderColor = "red";
+};
+};
+</script>
+
+</body>
+</html> 
+{% endblock head %}
