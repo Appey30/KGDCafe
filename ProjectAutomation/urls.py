@@ -13,9 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include 
+from AutomationApp import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/',views.login_user,name='index.html'),
+	path('index/kgdlog', views.login_user,name='kgdlog'),
+    path('index/kgddashboard',views.kgddashboard,name='kgddashboard.html'),
 ]

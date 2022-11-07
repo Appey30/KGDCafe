@@ -1,0 +1,1131 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+{% block head %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+background-image:url({% static 'bas.jpg'%});
+ background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+
+.navbarbutton {
+    position:absolute;
+    left:1%;
+    top:2%;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:100px;
+    position:absolute;
+    left:650px;
+    top:0px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:830px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+
+
+
+/* Style the tab */
+.tab {
+  padding-left:38%;
+  position:absolute;
+  width:1900px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:230px;
+  width:1893px;
+  height:720px;
+  background-color:#2d2c29;
+
+}
+
+/* TABLE */
+.tablecontainer{
+position:relative;
+overflow:auto;
+ width:1850px;
+  height:615px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+
+
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99.5%;
+height:99.2%;
+z-index:-1;
+}
+@media screen and (min-width: 801px) and (max-width: 960px) {
+.notify{
+position:absolute;
+top:-10px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hide{
+display: block;
+position:absolute;
+top:-70px;
+right:0px;
+width:250px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.notifyadmin{
+position:absolute;
+top:-20px;
+right:60px;
+width:20%;
+text-align:justify;
+z-index:500;
+}
+.hideadmin{
+display: block;
+position:absolute;
+top:-60px;
+right:-30px;
+width:300px;
+text-align:justify;
+font-size:10px;
+z-index:500;
+}
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:350px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:50px;
+    position:relative;
+    left:390px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:300px;
+  width:930px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:15%;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:150px;
+  height:400px;
+  width:920px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+position:relative;
+overflow:auto;
+ width:890px;
+  height:300px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+@media screen and (max-width: 800px) and (min-width: 361px){
+
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:300px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:250px;
+  width:535px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:210px;
+  width:760px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:760px;
+  height:150px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+@media screen and (max-width: 360px){
+
+.navbarbutton {
+  position:absolute;
+  left:10px;
+  top:20px;
+  font-size: 15px;
+  width:150px;
+  height:40px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 0px 0px;
+  border-radius: 60px;
+  border: 2px solid #615632;
+  display:block;
+}
+.navbarbutton:hover {
+  background-color: #444;
+    cursor: pointer;
+  border-color:rgb(249, 216, 105);;
+  border-weight:1px; 
+  border-radius: 60px;
+}
+.punchedtexttitle{
+    font-size:50px;
+    position:absolute;
+    left:300px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.punchedtext{
+
+    font-size:40px;
+    position:relative;
+    left:330px;
+    background: rgb(252, 220, 109);
+    background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.prodbut{
+    background-color: rgba(249, 216, 105,0);
+    
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+ 
+    border-color:rgb(249, 216, 105);
+    
+}
+.prodbut:hover {
+    font-family: Oswald-regular;
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+
+
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+
+/* Style the tab */
+.tab {
+  padding-left:250px;
+  width:755px;
+  height:30px;
+  background-color:#2d2c29;
+  position:absolute;
+  top:80px;
+  overflow: hidden;
+  border-weight: 2px;
+  border-radius:60px;
+  border: 2px solid #615632;
+  
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: rgba(249, 216, 105,0);
+    font-size: 12px;
+    color: rgb(252, 220, 109);
+    display: block;
+    padding: 3px 20px;
+    border-color:rgba(249, 216, 105,0);
+    float: left;
+    cursor: pointer;
+    transition: 0.3s;
+    height:30px;
+}
+
+/* Change background color of buttons on hover   background-color: #D4AC0D;*/
+.tab button:hover {
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 100%);
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: rgb(249, 216, 105);
+    border-color: rgb(249, 216, 105);
+    border-weight:2px;
+    border-radius:60px;
+    cursor:pointer;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 2px solid #615632;
+  border-radius: 15px;
+  background-color:#2d2c29;
+  z-index:0;
+  position:absolute;
+  top:120px;
+  height:1500px;
+  width:760px;
+  background-color:#2d2c29;
+}
+
+.tablecontainer{
+  position:relative;
+  overflow:auto;
+  width:730px;
+  height:1400px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+}
+.monthlydiv{
+  position:relative;
+  overflow:auto;
+  width:730px;
+  height:1400px;
+  background-color:transparent;
+  border-radius: 15px;
+  border: 2px solid #615632;
+  }
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+  color:white;
+
+}
+
+tr:nth-child(even) {
+  background-color: #1a1915;
+  color:white;
+}
+.background{
+position:absolute;
+width:99%;
+height:98.3%;
+z-index:-1;
+}
+}
+
+</style>
+</head>
+
+
+  <h8 class="punchedtexttitle">Dashboard</h8>
+<div class="tab" >
+  <button class="tablinks prodbut" onclick="openCity(event, 'Daily')">Daily</button>
+  <button class="tablinks prodbut" onclick="openCity(event, 'Monthly')">Monthly</button>
+  <button class="tablinks prodbut" onclick="openCity(event, 'Quarterly')">Quarterly</button>
+  <button class="tablinks prodbut" onclick="openCity(event, 'Yearly')">Yearly</button>
+</div>
+
+<div id="Daily" class="tabcontent" style="display:block;">
+  <h8 class="punchedtext">Daily</h8>
+  <div class="tablecontainer">
+  <table style="border:transparent;">
+  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th >Date</th>
+    <th >Sales</th>
+    <th >Expenses</th>
+    <th >Start Stocks</th>
+    <th >End Stocks</th>
+    <th >Value Stocks</th>
+    <th >Net Est.</th>
+  </tr>
+ {% for dailysales in ddaily %}
+  <tr >
+    <td style="color:#A0A0A0;">{{dailysales.DateTime|date:'N d, Y'}}</td>
+    <td style="color:#A0A0A0;">{{dailysales.Sales}}</td>
+    <td style="color:#A0A0A0;">{{dailysales.Expenses}}</td>
+    <td style="color:#A0A0A0;">{{dailysales.Startstocks}}</td>
+    <td style="color:#A0A0A0;">{{dailysales.Endstocks}}</td>
+    <td style="color:#A0A0A0;">{{dailysales.Valuestocks}}</td>
+    <td style="color:#A0A0A0;">{{dailysales.Net}}</td>
+  </tr>
+ {% endfor %}
+   <tr>
+    <td style="color:white;font-weight:bold;">Total</td>
+    <td style="color:white;font-weight:bold;">₱{{totalsales}}</td>
+    <td style="color:white;font-weight:bold;"></td>
+    <td style="color:white;font-weight:bold;"></td>
+    <td style="color:white;font-weight:bold;"></td>
+    <td style="color:white;font-weight:bold;"></td>
+    <td style="color:white;font-weight:bold;">₱{{totalnet}}</td>
+  </tr>
+
+</table>
+</div>
+
+</div>
+
+<div id="Monthly" class="tabcontent">
+  <h8 class="punchedtext">Monthly</h8>
+  <div class="monthlydiv">
+  <table style="border: 2px solid #615632;border-radius:15px">
+  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th>Month</th>
+    <th>Sales</th>
+    <th>Expenses</th>
+    <th>C.O.G.S</th>
+    <th>Net</th>
+  </tr>
+  {% for monthlyy in monthly %}
+  <tr >
+      {% for monthlyyy in monthlyy %}
+            <td style="color:#A0A0A0;">{{monthlyyy}}</td>
+      {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+</div>
+</div>
+
+<div id="Quarterly" class="tabcontent">
+  <h8 class="punchedtext">Quarterly</h8>
+  <table style="border: 2px solid #615632;border-radius:15px">
+  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th>Quarter</th>
+    <th>Sales</th>
+    <th>Expenses</th>
+    <th>Net</th>
+    <th>No. of Cups Sold</th>
+  </tr>
+  <tr>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+  </tr>
+
+</table>
+
+</div>
+<div id="Yearly" class="tabcontent">
+  <h8 class="punchedtext">Yearly</h8>
+  <table style="border: 2px solid #615632;border-radius:15px">
+  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th>Year</th>
+    <th>Sales</th>
+    <th>Expenses</th>
+    <th>Net</th>
+    <th>No. of Cups Sold</th>
+  </tr>
+  <tr>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+    <td style="color:#A0A0A0;"></td>
+  </tr>
+
+</table>
+
+</div>
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+   
+</body>
+	
+{% endblock head %}
+</html> 
