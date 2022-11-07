@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AutomationApp',
     'whitenoise.runserver_nostatic',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'ProjectAutomation.urls'
@@ -75,7 +81,9 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'ProjectAutomation.wsgi.application'
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -119,9 +127,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Singapore'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -150,3 +160,41 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTHENTICATION_BACKEND = {
+#needed to login with username in django admin, regardless of allauth
+'django.contrib.auth.backends.ModelBackend',
+
+# 'allauth' specific application methods, such as login by email
+'allauth.account.auth_backends.AUTHENTICATION_BACKEND',
+
+}
+
+
+SITE_ID=1
+ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
+ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4' 
+#ACCOUNT_ADAPTER = 'app.my_adapter.MyAccountAdapter'
+#LOGIN_REDIRECT_URL = 'next'
+#LOGIN_REDIRECT_URL = 'request.path_info'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'js_sdk',
+        'SCOPE': ['public_profile, email'],
+        'AUTH_PARAMS': {'auth_type': 'reauthorize'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'name',
+            'email',
+            'short_name',
+            'first_name',
+            'last_name',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+    }
+}
