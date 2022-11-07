@@ -17,7 +17,7 @@ from django.utils.timezone import localtime
 from django.contrib.auth.decorators import login_required
 #from webpos import settings
 from collections import namedtuple
-import geojson
+
 import json
 import requests
 from django.core import serializers
@@ -31,6 +31,9 @@ from django.template import *
 
 
 # Create your views here.
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
 def PrivacyPolicy(request):
     userr=request.user.id
     return render(request, 'privacypolicy.html')
@@ -56,7 +59,7 @@ def totalboughtappey(request):
 @login_required
 def RiderPOV(request):
     userr=request.user.id
-    if request.is_ajax() and request.GET.get('riderni'):
+    if is_ajax(request=request) and request.GET.get('riderni'):
         if (len(Acceptorder.objects.filter(Rider='Appey')))>0:
             rengkakungideliveri=Acceptorder.objects.filter(Rider='Appey').distinct('contactnumber')
         else:
@@ -1352,7 +1355,7 @@ def postwo(request):
 
         onlineordercounter = len(Customer.objects.filter(Admin=userr).distinct('contactnumber'))
 
-        if request.is_ajax() and request.POST.get("Ready"):
+        if is_ajax(request=request) and request.POST.get("Ready"):
             contactnumberready = request.POST.get('Ready')
             Readyadd = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready).first()
             Readyacceptorder=Acceptorder.objects.create(
@@ -1404,13 +1407,13 @@ def postwo(request):
             else:
                 pickupCustomer(request , messageacknowledgetoken)
             return JsonResponse({'Ready':'Ready'})
-        if request.is_ajax() and request.GET.get("apini"):
+        if is_ajax(request=request) and request.GET.get("apini"):
             onlineordercounterf = onlineordercounter
             onlineorderf = [serializers.serialize('json',onlineorder, cls=JSONEncoder),vieworders]
 
             return JsonResponse({'onlineorderf':onlineorderf})
             
-        if request.is_ajax() and request.POST.get('doneorders'):
+        if is_ajax(request=request) and request.POST.get('doneorders'):
             contactnumberdonei = json.loads(request.POST.get('doneorders'))
             contactnumberdone = contactnumberdonei[0]['contactnumber']
             if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
@@ -2212,7 +2215,7 @@ def Onlineordersystem(request, admin_id):
             promoidentifier='FirstTimer'
         else:
             promoidentifier=''
-        if request.is_ajax() and request.POST.get('username'):
+        if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
             passwordss=json.loads(request.POST.get('password'))
             
@@ -2230,7 +2233,7 @@ def Onlineordersystem(request, admin_id):
                 # Return an 'invalid login' error message.
                 return JsonResponse({'reload':usernamechecki})    
         
-        if request.is_ajax() and request.POST.get('firstnameid'):
+        if is_ajax(request=request) and request.POST.get('firstnameid'):
             firstnameid=json.loads(request.POST.get('firstnameid'))
             lastnameid=json.loads(request.POST.get('lastnameid'))
             emailid=json.loads(request.POST.get('emailid'))
@@ -2271,7 +2274,7 @@ def Onlineordersystem(request, admin_id):
             }
             return JsonResponse(context)
 
-        if request.is_ajax() and request.POST.get('response.first_name'):
+        if is_ajax(request=request) and request.POST.get('response.first_name'):
             first = json.loads(request.POST.get('response.first_name'))
             print(first)
             last = json.loads(request.POST.get('response.last_name'))
@@ -2302,7 +2305,7 @@ def Onlineordersystem(request, admin_id):
                 authcreatedsocialaccount=login(request, user)
                 settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
-        if request.is_ajax() and request.GET.get('addressss'):
+        if is_ajax(request=request) and request.GET.get('addressss'):
             userr=request.user.id
             username=request.user.username
             if request.user.first_name:
@@ -2326,7 +2329,7 @@ def Onlineordersystem(request, admin_id):
                     addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
-                    addressuser = serializers.serialize('geojson',addressuseri, cls=JSONEncoder)
+                    addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
                     print('addressuser1:',addressuser)
                 else:
                     addressuseri = []
@@ -2336,7 +2339,7 @@ def Onlineordersystem(request, admin_id):
                         addressuseri.append(addressuserii)
                     
                         i += 1
-                    addressuser=serializers.serialize('geojson',addressuseri, cls=JSONEncoder)
+                    addressuser=serializers.serialize('json',addressuseri, cls=JSONEncoder)
                     print('addressuser2:',addressuser)
             else:
                 addressuseri = Sales.objects.none()
@@ -2456,7 +2459,7 @@ def orderprogress(request, admin_id):
         else:
             firstname=''
             lastname=''
-        if request.is_ajax() and request.GET.get('progressETA'):
+        if is_ajax(request=request) and request.GET.get('progressETA'):
             if Acceptorder.objects.filter(Admin=admin_id, Customername=firstname+' '+lastname):
                 ETAi=Acceptorder.objects.filter(Admin=admin_id, Customername=firstname+' '+lastname).values_list('ETA', flat=True).first()
             else:
@@ -2522,7 +2525,7 @@ def saletoday(request):
         notifyadmin=submitstockorder.objects.all().count()
     else:
         notifyadmin=0
-    if request.is_ajax() and request.POST.get("list"):
+    if is_ajax(request=request) and request.POST.get("list"):
         datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
         monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
         yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
@@ -2889,7 +2892,7 @@ def staff(request):
         notifyadmin=submitstockorder.objects.all().count()
     else:
         notifyadmin=0
-    if request.is_ajax() and request.POST.get("timeinfirst"):
+    if is_ajax(request=request) and request.POST.get("timeinfirst"):
             day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
             datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
             monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
@@ -2928,7 +2931,7 @@ def staff(request):
             }
             return JsonResponse(context)
 
-    if request.is_ajax() and request.POST.get('usernameusername'):
+    if is_ajax(request=request) and request.POST.get('usernameusername'):
         day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
         datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
         monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
@@ -2991,7 +2994,7 @@ def staff(request):
             # Return an 'invalid login' error message.
             return JsonResponse({'reload':usernamechecki}) 
             
-    if request.is_ajax() and request.POST.get('usernameadminname'):
+    if is_ajax(request=request) and request.POST.get('usernameadminname'):
         day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
         datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
         monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
@@ -3006,7 +3009,7 @@ def staff(request):
             usernamecheck=json.dumps(usernamechecki)
             # Return an 'invalid login' error message.
             return JsonResponse({'reload':usernamechecki})  
-    if request.is_ajax() and request.POST.get('inputASL'):
+    if is_ajax(request=request) and request.POST.get('inputASL'):
         day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
         datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
         monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
@@ -3352,7 +3355,7 @@ def kgddashboard(request):
 
             onlineordercounter = len(Customer.objects.filter(Admin=userr).distinct('contactnumber'))
 
-            if request.is_ajax() and request.POST.get("Ready"):
+            if is_ajax(request=request) and request.POST.get("Ready"):
                 contactnumberready = request.POST.get('Ready')
                 Readyadd = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready).first()
                 Readyacceptorder=Acceptorder.objects.create(
@@ -3404,12 +3407,12 @@ def kgddashboard(request):
                 else:
                     pickupCustomer(request , messageacknowledgetoken)
                 return JsonResponse({'Ready':'Ready'})
-            if request.is_ajax() and request.GET.get("apini"):
+            if is_ajax(request=request) and request.GET.get("apini"):
                 onlineordercounterf = onlineordercounter
                 onlineorderf = [serializers.serialize('json',onlineorder, cls=JSONEncoder),vieworders]
                 return JsonResponse({'onlineorderf':onlineorderf})
             
-            if request.is_ajax() and request.POST.get('doneorders'):
+            if is_ajax(request=request) and request.POST.get('doneorders'):
                 contactnumberdonei = json.loads(request.POST.get('doneorders'))
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
                 if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
@@ -4233,7 +4236,7 @@ def kgddashboard(request):
 
             onlineordercounter = len(Customer.objects.filter(Admin=userr).distinct('contactnumber'))
 
-            if request.is_ajax() and request.POST.get("Ready"):
+            if is_ajax(request=request) and request.POST.get("Ready"):
                 contactnumberready = request.POST.get('Ready')
                 Readyadd = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready).first()
                 Readyacceptorder=Acceptorder.objects.create(
@@ -4284,12 +4287,12 @@ def kgddashboard(request):
                 else:
                     pickupCustomer(request , messageacknowledgetoken)
                 return JsonResponse({'Ready':'Ready'})
-            if request.is_ajax() and request.GET.get("apini"):
+            if is_ajax(request=request) and request.GET.get("apini"):
                 onlineordercounterf = onlineordercounter
                 onlineorderf = [serializers.serialize('json',onlineorder, cls=JSONEncoder),vieworders]
                 return JsonResponse({'onlineorderf':onlineorderf})
             
-            if request.is_ajax() and request.POST.get('doneorders'):
+            if is_ajax(request=request) and request.POST.get('doneorders'):
                 contactnumberdonei = json.loads(request.POST.get('doneorders'))
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
                 if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
@@ -4810,3 +4813,4 @@ def kgddashboard(request):
                         readylistcontact=list(Acceptorder.objects.none())
                     print('readylistcontact1:',readylistcontact)
                     return render(request, 'kgddashboard.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'userr':userr,'monthlysales':monthlysales,'ddaily':ddaily,'totalnet':totalnet,'totalsales':totalsales})
+

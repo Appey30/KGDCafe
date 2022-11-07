@@ -31,7 +31,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include 
-from firstapp import views
+from AutomationApp import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
@@ -50,7 +50,7 @@ urlpatterns = [
       #path('index/postwo',views.postwo,name='postwo.html'),
       path('index/inventory',views.inventory,name='inventory.html'),
       path('index/kgddashboard',views.kgddashboard,name='kgddashboard.html'),
-      path('index/products/', include ('firstapp.urls', namespace = 'modaldel')),
+      path('index/products/', include ('AutomationApp.urls', namespace = 'modaldel')),
       path('index/StocksandExp',views.StocksandExp,name='StocksandExp.html'),
       path('index/Stocksorder',views.StocksOrder,name='StockOrder.html'),
       path('index/Stocksorderadmin',views.stockorderad,name='stockorderadmin.html'),
