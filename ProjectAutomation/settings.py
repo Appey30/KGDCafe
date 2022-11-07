@@ -80,18 +80,18 @@ WSGI_APPLICATION = 'ProjectAutomation.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'firstapp',
-        'USER': 'postgres',
-        'PASSWORD': '0918382947kJ',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'firstapp',
+#        'USER': 'postgres',
+#        'PASSWORD': '0918382947kJ',
+#        'HOST': 'localhost',
+#        'PORT': '5432',
+#    }
+#}
+DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
