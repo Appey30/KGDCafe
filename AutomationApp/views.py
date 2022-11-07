@@ -899,7 +899,7 @@ def StocksOrder(request):
             pass
         else:
             objs = [Sales(
-                    user=4,
+                    user=1,
                     productname=sub.productname,
                     Category=sub.Category,
                     Price =sub.Price,
@@ -924,7 +924,7 @@ def StocksOrder(request):
             punchedtotal=0
     else:
             punchedtotal=punchedprodso.objects.filter(user=userr).aggregate(Sum('Subtotal')).get('Subtotal__sum')
-    stockbutton = user1.objects.filter(Category__Categorychoices='Stock',user__id="4").distinct('productname')
+    stockbutton = user1.objects.filter(Category__Categorychoices='Stock',user__id="1").distinct('productname')
     punchedlaso=punchedprodso.objects.filter(user=userr)
     submitorder=stockorderform 
     acknowledgeorder=acknowledgedstockorder.objects.all().exclude(productname="").exclude(CusName="Shipped").exclude(CusName="Notify").exclude(productname=None)
@@ -961,8 +961,8 @@ def StocksOrder(request):
                 stock=request.GET.get('Stock')
                 
                 try:
-                    presyoSTO=user1.objects.filter(Category__Categorychoices=stock,productname=stor,user__id=4).values('Price').get()
-                    costSTO=user1.objects.filter(Category__Categorychoices=stock,productname=stor,user__id=4).values('Cost').get()
+                    presyoSTO=user1.objects.filter(Category__Categorychoices=stock,productname=stor,user__id=1).values('Price').get()
+                    costSTO=user1.objects.filter(Category__Categorychoices=stock,productname=stor,user__id=1).values('Cost').get()
                     counttoreceive=submitstockorder.objects.all().count()
                     if counttoreceive == 0:
                         disablesubmit=""
@@ -2196,7 +2196,7 @@ def inventory(request):
 
 
 def Onlineordersystem(request, admin_id):
-        print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
+        print('QTY Sold for five months: ',Sales.objects.filter(user=1).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
         if request.user.is_anonymous:
