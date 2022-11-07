@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w6d87uzs=5e()6i$d_*g1cpt)7^dpjtwnub&e&oy5y3l=3wutr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -80,18 +80,20 @@ WSGI_APPLICATION = 'ProjectAutomation.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'firstapp',
-#        'USER': 'postgres',
-#        'PASSWORD': '0918382947kJ',
-#        'HOST': 'localhost',
-#        'PORT': '5432',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'firstapp',
+        'USER': 'postgres',
+        'PASSWORD': '0918382947kJ',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+#db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
 
+#DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
