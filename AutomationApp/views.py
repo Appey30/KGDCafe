@@ -4,6 +4,7 @@ from django.contrib.auth.models import auth, User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.template import *
+from .models import user1 , Categories, Sizes, Subcategories, PSizes
 
 # Create your views here.
 
