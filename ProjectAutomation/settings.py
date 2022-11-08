@@ -174,7 +174,7 @@ AUTHENTICATION_BACKEND = {
 
 SITE_ID=1
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
-ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4' 
+ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/1' 
 #ACCOUNT_ADAPTER = 'app.my_adapter.MyAccountAdapter'
 #LOGIN_REDIRECT_URL = 'next'
 #LOGIN_REDIRECT_URL = 'request.path_info'

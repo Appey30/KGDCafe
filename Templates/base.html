@@ -1771,7 +1771,7 @@ for(var showorders of showorder){
             dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase">₱'+showorders.Subtotal+'.00 </td></tr>';
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
-            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            urlpinned='https://www.google.com/maps/place/'+showorders.pinnedlat+','+showorders.pinnedlng+'/@'+showorders.pinnedlat+','+showorders.pinnedlng+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
             };
 
@@ -1872,7 +1872,7 @@ for(var showorders of acceptedorder){
             }
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
-            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            urlpinned='https://www.google.com/maps/place/'+showorders.pinnedlat+','+showorders.pinnedlng+'/@'+showorders.pinnedlat+','+showorders.pinnedlng+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
             dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase"> ₱'+showorders.Subtotal+'.00</td></tr>';
             };
@@ -1980,7 +1980,7 @@ for(var showorders of rejectedorder){
             }
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
-            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            urlpinned='https://www.google.com/maps/place/'+showorders.pinnedlat+','+showorders.pinnedlng+'/@'+showorders.pinnedlat+','+showorders.pinnedlng+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
             dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase">₱'+showorders.Subtotal+'.00</td></tr>';
             };

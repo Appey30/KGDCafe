@@ -2870,9 +2870,16 @@ def saletoday(request):
         'FriesFinalBD':json.dumps(FriesFinalBD, cls=JSONEncoder),
         'BubwafFinalBD':json.dumps(BubwafFinalBD, cls=JSONEncoder),
         'AoFinalBD':json.dumps(AoFinalBD, cls=JSONEncoder),
+        
         }
         return JsonResponse(context)
-    return render(request, 'saletoday.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
+    if len(Acceptorder.objects.filter(Admin=userr, productname='Ready'))>0:
+        initial=Acceptorder.objects.filter(Admin=userr, productname='Ready').values_list('contactnumber', flat=True)
+        readylistcontact=list(initial)
+    else:
+        readylistcontact=list(Acceptorder.objects.none())
+    print('readylistcontact1:',readylistcontact)
+    return render(request, 'saletoday.html',{'readylistcontact':readylistcontact, 'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
 
 
 @login_required
@@ -3049,7 +3056,7 @@ def send_notification(registration_ids , message_title , message_desc):
 
 def submitted(request):
     registration  = [
-    'd_MoYwDQXNcVXD3lUmizxD:APA91bHyoTw4kD38duZdj-OzgjX8KJCLJ8yjxPawCdZNTPxB5ot_3U4_w1BgxfWCoos1mf7G9-XSk_GX8xZNGur8gAbU5uC4wF1JRsEtmBuMm5eDkUH_YmYcQzQnFE58Azni1RHQ9FQF', 
+    'eLx-9ug215d4GAGtBPZq6X:APA91bF9w9HkeHaJzS6NZ0zuMSGNbm_Da_yfR5PPrKSvxbVd8a2t00_mHtqv9UxOqAX3zOrpfaPCCjHqVk2C_ZvcF9VkaYCeZMuZJnwCbfmw-aU3uHMHW_hF_4Fo5G7Mx2JLNiV8v2Fu', 
     'dqwRgSL6T2A0A2KL2Wplym:APA91bEfnHBl1g-a8Jo4FYobCqArH356pJWz5-aBmscXxCz10WfX7rj0TEqk3hJ2n6Yoea-uqZ_Jr8TauvcIH4Am9-NWKY-cTjeY62-iZCsB5WVrunICeglSd5EG6JVhwztD1aYMxcQr',
     'cRYcvuVFlENHjU9Pb1Km3q:APA91bHPi5N-I4w8yq4Wks-EfxJv2rSMQadZs2I-22EfSbisEzIqkd6ju-xTqxWNlFVQNAF9saNsWbYyu7h_fbzIk45xs1Ix7N-7cH7yLnrS2a8IXI8T5WSRZPcLk_0AJEwcaA_h2OqT'
     ]
