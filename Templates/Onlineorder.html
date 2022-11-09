@@ -25723,8 +25723,8 @@ totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 {% for cookiesb in cookiesbuttons %}
 <div class="card">
-    {% if cookiesb.Productimg %}
-    <img src="{{cookiesb.Productimg.url}}"  style="width:100%">
+    {% if cookiesb.productname == cookiesb.productname %}
+    <img src="{% static cookiesb.productname %}Cookies.png" style="width:100%">
     {% else %}
     <img src="#"  style="width:100%">
     {% endif %}
@@ -25942,8 +25942,8 @@ totalcookies.innerHTML = "Total: ₱"+totalcookiess+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Shawarma">
 {% for shawarmab in shawarmabuttons %}
 <div class="card">
-    {% if shawarmab.Productimg %}
-    <img src="{{shawarmab.Productimg.url}}"  style="width:100%">
+    {% if shawarmab.productname == shawarmab.productname %}
+    <img src="{% static shawarmab.productname %}Shawarma.png" style="width:100%">
     {% else %}
     <img src="#"  style="width:100%">
     {% endif %}
@@ -26163,8 +26163,8 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
 {% if friesb.productname == 'Free Fries' %}
 {% else %}
 <div class="card">
-    {% if friesb.Productimg %}
-    <img src="{{friesb.Productimg.url}}" style="width:100%">
+    {% if friesb.productname == friesb.productname %}
+    <img src="{% static friesb.productname %}Fries.png" style="width:100%">
     {% else %}
     <img src="#" style="width:100%">
     {% endif %}
@@ -26390,8 +26390,8 @@ totalfries.innerHTML = "Total: ₱"+totalfries+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Bubwaf">
 {% for bubwafb in bubwafbuttons %}
 <div class="card">
-    {% if bubwafb.Productimg %}
-    <img src="{{bubwafb.Productimg.url}}" style="width:100%">
+    {% if bubwafb.productname == bubwafb.productname %}
+    <img src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%">
     {% else %}
     <img src="#"  style="width:100%">
     {% endif %}
@@ -26626,8 +26626,8 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Pizza">
 {% for pizzab in pizzabuttons %}
 <div class="card">
-    {% if pizzab.Productimg %}
-    <img src="{{pizzab.Productimg.url}}" style="width:100%">
+    {% if pizzab.productname == pizzab.productname %}
+    <img src="{% static pizzab.productname %}Pizza.png" style="width:100%">
     {% else %}
     <img src="#"  style="width:100%">
     {% endif %}
