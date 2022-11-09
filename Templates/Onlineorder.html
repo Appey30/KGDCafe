@@ -26179,7 +26179,7 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
   <input type="hidden" value="{{friesb.Price}}" id="friesP{{friesb.id}}"></input>
   {% if friesb.productname %}
   <input type="hidden" value="{% static friesb.productname %}Fries.png" id="friesI{{friesb.id}}"></input>
-    <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, {% static friesb.productname %}Fries.png, '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
+    <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '{{friesb.productname }}', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
   {% else %}
   <input type="hidden" value="#" id="friesI{{friesb.id}}"></input>
     <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '#', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
@@ -26347,7 +26347,7 @@ var qtycountfries = $('#qtynumfries').val();
     
 var totalfriesa = friesprice*qtycountfries;
 var picnaningfries = document.getElementById("picningfries");
-picnaningfries.src = imahefries;
+picnaningfries.src = imahefries+'Fries.png';
 var lagyunaningfries = document.getElementById("namenaningfries");
 lagyunaningfries.innerHTML = productname;
 stotalfries = totalfriesa;
