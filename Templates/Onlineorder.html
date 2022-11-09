@@ -25994,7 +25994,7 @@ shawarma.innerHTML = "₱"+shawarmap+".00";
             <h3 class="choosesizeshawarma">Available</h3>
 
                 <div id="shawarmaid" onclick="functionfocusshawarma()" class="shawarma choicesizeshawarma">
-                <img src="{% static 'ShawarmaShawarma.png'}"  style="width:100%">
+                <img src="{% static Shawarma %}Shawarma.png"  style="width:100%">
                 <h3>Shawarma Beef</h3>
                 </div>
             <script>
@@ -26177,9 +26177,9 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
 </table>
     <input type="hidden" value="{{friesb.productname}}" id="friesname{{friesb.id}}"></input>
   <input type="hidden" value="{{friesb.Price}}" id="friesP{{friesb.id}}"></input>
-  {% if friesb.Productimg %}
-  <input type="hidden" value="{{friesb.Productimg.url}}" id="friesI{{friesb.id}}"></input>
-    <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '{% static friesb.productname %}Fries.png', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
+  {% if friesb.productname %}
+  <input type="hidden" value="{% static friesb.productname %}Fries.png" id="friesI{{friesb.id}}"></input>
+    <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, {% static friesb.productname %}Fries.png, '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
   {% else %}
   <input type="hidden" value="#" id="friesI{{friesb.id}}"></input>
     <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '#', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
