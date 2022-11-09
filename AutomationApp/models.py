@@ -40,7 +40,7 @@ class user1 (models.Model):
     Cost = models.DecimalField(decimal_places=2,max_digits = 7,blank = False, null = False, default='0.00')
     Qty = models.IntegerField(blank = False, null = False, default='1')
     Promo = models.CharField(max_length = 50, blank = False, null = False, default='')
-    Productimg = models.ImageField(upload_to='Productimg',blank = True, null = True)
+    Productimg = models.ImageField(upload_to='media/Productimg',blank = True, null = True)
     def __str__(self):
         return str(self.productname) +" "+ str(self.Size)
       
