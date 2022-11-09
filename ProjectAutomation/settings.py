@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 
 ]
 
@@ -173,6 +174,8 @@ AUTHENTICATION_BACKEND = {
 
 
 SITE_ID=1
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
 ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/1' 
 #ACCOUNT_ADAPTER = 'app.my_adapter.MyAccountAdapter'
