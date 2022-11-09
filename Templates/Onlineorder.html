@@ -25503,8 +25503,8 @@ totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Freeze">
 {% for freezeb in freezebuttons %}
 <div class="card">
-    {% if freezeb.Productimg %}
-    <img src="{{freezeb.Productimg.url}}"  style="width:100%">
+    {% if freezeb.productname == freezeb.productname and "FRZ.png" %}
+    <img src="{% static freezeb.productname %}FRZ.png" style="width:100%">
     {% else %}
     <img src="#"  style="width:100%">
     {% endif %}
