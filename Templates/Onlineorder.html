@@ -24899,11 +24899,20 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Frappe">
 {% for frappeb in frbuttons %}
 <div class="card">
+<!--
     {% if frappeb.Productimg %}
     <img src="{{frappeb.Productimg.url}}"  style="width:100%">
     {% else %}
     <img src="#"  style="width:100%">
     {% endif %}
+    -->
+
+    {% if frappeb.productname == frappeb.productname and "FR.png" %}
+    <img src="{% static frappeb.productname %}FR.png" style="width:100%">
+    {% else %}
+    <img src="#"  style="width:100%">
+    {% endif %}
+
   <div class="h3div"><h3>{{frappeb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
   <tr>
