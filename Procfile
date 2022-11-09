@@ -1,1 +1,1 @@
-web: gunicorn ProjectAutomation.wsgi
+web: python manage.py migrate && gunicorn ProjectAutomation.wsgi
