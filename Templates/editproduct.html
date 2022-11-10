@@ -78,8 +78,8 @@ top:35%;
                             </div>
                             <div class="fieldWrapper">
                                 <label>Category:</label>
-                                <select id="editcategid" name="editcateg" value="">
-                                <option value="" selected disabled hidden>Choose here</option>
+                                <select id="editcategid" name="editcateg" value="{{eprodd.Category}}">
+                                <option value="{{eprodd.Category}}" selected disabled hidden>{{eprodd.Category}}</option>
                                     <option value="Milktea">Milktea</option>
                                     <option value="Frappe">Frappe</option>
                                     <option value="Freeze">Freeze</option>
@@ -92,8 +92,8 @@ top:35%;
 
                             <div class="fieldWrapper" id="subcat">
                                 <label>Subcategory:</label>
-                                <select id="editsubcategid" name="editsubcateg" value="">
-                                <option value="" selected disabled hidden>Choose here</option>
+                                <select id="editsubcategid" name="editsubcateg" value="{{eprodd.Subcategory}}">
+                                <option value="{{eprodd.Subcategory}}" selected disabled hidden>{{eprodd.Subcategory}}</option>
                                     <option value="Pizza">Pizza</option>
                                     <option value="Fries">Fries</option>
                                     <option value="Shawarma">Shawarma</option>
@@ -107,8 +107,8 @@ top:35%;
                             <br>
                             <div class="fieldWrapper" id="sukats">
                                 <label>Size:</label>
-                                <select id="editsizeid" name="editsize" value="">
-                                <option value="" selected disabled hidden>Choose here</option>
+                                <select id="editsizeid" name="editsize" value="{{eprodd.Size}}">
+                                <option value="{{eprodd.Size}}" selected disabled hidden>{{eprodd.Size}}</option>
                                     <option value="Full">Full</option>
                                     <option value="Reg">Reg</option>
                                     <option value="Small">Small</option>
@@ -120,33 +120,33 @@ top:35%;
                             <div class="fieldWrapper" id="psukats">
                                 <label>Pizza Size:</label>
 
-                                <select id="editpsizeid" name="editpsize" value="">
+                                <select id="editpsizeid" name="editpsize" value="{{eprodd.PSize}}">
                                     <option value="Full">Barkada(10")</option>
                                     <option value="Reg">Pamilya(12")</option>
-                                    <option value="" selected disabled hidden>Choose here</option>
+                                    <option value="{{eprodd.PSize}}" selected disabled hidden>{{eprodd.PSize}}</option>
                                 </select>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Price:</label>
-                                <input class="" type="number" value="" id="editpriceid"  name="editpricename"></input>
+                                <input class="" type="number" value="{{eprodd.Price}}" id="editpriceid"  name="editpricename"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Cost:</label>
-                                <input class="" type="number" value="" id="editcostid" name="editcostname"></input>
+                                <input class="" type="number" value="{{eprodd.Cost}}" id="editcostid" name="editcostname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Product Description:</label>
-                                <input class="" type="text" value="" id="editpdescriptionid" name="editpdescriptionname"></input>
+                                <input class="{{eprodd.PDescription}}" type="text" value="" id="editpdescriptionid" name="editpdescriptionname"></input>
                                 <br>
 
                             </div>
-                                <input class="" value="" type="hidden" id="edituserid" name="editusername"></input>
+                                <input class="" value="{{eprodd.user}}" type="hidden" id="edituserid" name="editusername"></input>
                             <div class="fieldWrapper">
                             <input type = "submit" name = "doneeditbuttonname" value = "Done Edit" class="btn1" >
                             </div>
@@ -168,7 +168,7 @@ top:35%;
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  function defaultvalues({{eprodd.user}}, '{{eprodd.productname}}', '{{eprodd.Category}}', '{{eprodd.Subcategory}}', '{{eprodd.Size}}', '{{eprodd.PSize}}', '{{eprodd.Price}}', '{{eprodd.Cost}}', '{{eprodd.PDescription}}');
+  function defaultvalues(, '{{eprodd.productname}}', '{{eprodd.Category}}', '{{eprodd.Subcategory}}', '{{eprodd.Size}}', '{{eprodd.PSize}}', '{{eprodd.Price}}', '{{eprodd.Cost}}', '{{eprodd.PDescription}}');
 
 });
 
