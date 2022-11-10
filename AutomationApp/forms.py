@@ -6,7 +6,7 @@ from .models import user1, punchedprod, queue1, Sales,punchedprodso,submitstocko
 class editform(ModelForm):
 	class Meta:
 		model = user1
-		fields = ['user','productname','Category','Subcategory','Size','PSize' ,'Price','Cost','Productimg']
+		fields = ['user','productname','Category','Subcategory','Size','PSize' ,'Price','Cost','PDescription']
 		labels = {
 				'user':'user',
 				'productname' : 'Prouct Name',
@@ -16,7 +16,7 @@ class editform(ModelForm):
 				'PSize' : 'PSize',
 				'Price' : 'Price',
 				'Cost' : 'Cost',
-				'Description':'Description',
+				'PDescription':'PDescription',
 		}
 		widgets = {
 				'user' : forms.NumberInput(attrs={'class':'form-control clear','type':'hidden','placeholder':'Enter Product Name here...','id':'user1id'}),
@@ -27,7 +27,7 @@ class editform(ModelForm):
 				'PSize' : forms.Select(attrs={'class':'form-control clear','placeholder':'Enter Size here...'}),
 				'Price' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Price here...'}),
 				'Cost' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Cost here...'}),
-				'Description' : forms.TextInput(attrs={'class':'form-control clear','placeholder':'Enter Description Name here...'}),
+				'PDescription' : forms.TextInput(attrs={'class':'form-control clear','placeholder':'Enter Description Name here...'}),
 		}
 
 class punched(ModelForm):

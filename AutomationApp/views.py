@@ -134,7 +134,7 @@ def products(request):
        productss = user1.objects.all().filter(user__id=userr).exclude(Promo='FreeFries').order_by('-id')
        submitted = False
        if request.method == "POST":
-            aprod = editform(request.POST, request.FILES)
+            aprod = editform(request.POST)
             if aprod.is_valid():
                 aprod.save()
                 
