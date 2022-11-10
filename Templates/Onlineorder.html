@@ -23798,8 +23798,8 @@ reveals[i].classList.add("activee")
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
 {% for milkteab in mtbuttons %}
-<div class="card">
-    <div id="{{milkteab.productname}}" class="seedescriptions">
+<div id="{{milkteab.productname}}" class="card">
+    <div id="seedescriptions{{milkteab.productname}}" class="seedescriptions">
     <h3>See Description</h3>
     </div>
 
@@ -23838,9 +23838,10 @@ reveals[i].classList.add("activee")
 </div>
 
 <script>
-$('.seedescriptions').hover(function() {
+$('.card').hover(function() {
    var cardid = this.id;
-   cardid.display = "block";
+   var cardidfinal = 'seedescriptions'+cardid;
+   cardidfinal.display = "block";
 
 });
 document.addEventListener("DOMContentLoaded", function(event) { 
