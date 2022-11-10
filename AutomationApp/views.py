@@ -144,7 +144,7 @@ def editprod(request, edit_id):
                     editcateg = 4
                 elif editcategi == "Add-ons":
                     editcateg = 5
-                else 
+                else:
                     editcateg = None
                 if editsubcategi == "Pizza":
                     editsubcateg = 1
