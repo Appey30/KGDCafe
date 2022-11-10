@@ -78,7 +78,8 @@ top:35%;
                             </div>
                             <div class="fieldWrapper">
                                 <label>Category:</label>
-                                <select id="editcategid" name="editcateg">
+                                <select id="editcategid" name="editcateg" value="">
+                                <option value="" selected disabled hidden>Choose here</option>
                                     <option value="Milktea">Milktea</option>
                                     <option value="Frappe">Frappe</option>
                                     <option value="Freeze">Freeze</option>
@@ -91,7 +92,8 @@ top:35%;
 
                             <div class="fieldWrapper" id="subcat">
                                 <label>Subcategory:</label>
-                                <select id="editsubcategid" name="editsubcateg">
+                                <select id="editsubcategid" name="editsubcateg" value="">
+                                <option value="" selected disabled hidden>Choose here</option>
                                     <option value="Pizza">Pizza</option>
                                     <option value="Fries">Fries</option>
                                     <option value="Shawarma">Shawarma</option>
@@ -105,7 +107,8 @@ top:35%;
                             <br>
                             <div class="fieldWrapper" id="sukats">
                                 <label>Size:</label>
-                                <select id="editsizeid" name="editsize">
+                                <select id="editsizeid" name="editsize" value="">
+                                <option value="" selected disabled hidden>Choose here</option>
                                     <option value="Full">Full</option>
                                     <option value="Reg">Reg</option>
                                     <option value="Small">Small</option>
@@ -117,9 +120,10 @@ top:35%;
                             <div class="fieldWrapper" id="psukats">
                                 <label>Pizza Size:</label>
 
-                                <select id="editpsizeid" name="editpsize">
+                                <select id="editpsizeid" name="editpsize" value="">
                                     <option value="Full">Barkada(10")</option>
                                     <option value="Reg">Pamilya(12")</option>
+                                    <option value="" selected disabled hidden>Choose here</option>
                                 </select>
                                 <br>
                                 
@@ -164,7 +168,7 @@ top:35%;
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  function defaultvalues({{eprodd.user}}, '{{eprodd.productname}}', '{{eprodd.Category}}', '{{eprodd.Subcategory}}', '{{eprodd.Size}}', '{{eprodd.PSize}}', {{eprodd.Price}}, {{eprodd.Cost}}, '{{eprodd.PDescription}}');
+  function defaultvalues({{eprodd.user}}, '{{eprodd.productname}}', '{{eprodd.Category}}', '{{eprodd.Subcategory}}', '{{eprodd.Size}}', '{{eprodd.PSize}}', '{{eprodd.Price}}', '{{eprodd.Cost}}', '{{eprodd.PDescription}}');
 
 });
 
