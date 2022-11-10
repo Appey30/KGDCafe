@@ -1317,14 +1317,11 @@ align-content:flex-start;
   text-align: center;
   font-family: arial;
 }
-.seedescriptions{
-display:none;
-position:absolute;
+.myDIV{
 
-  font-size: 8px;
-  text-align:center;
-  width:100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+position:absolute;
+right:1px;
+top:1px;
 }
 .card:hover{
 /*box-shadow: 0px 0px 0px #a5a5a5,
@@ -23799,9 +23796,10 @@ reveals[i].classList.add("activee")
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
 {% for milkteab in mtbuttons %}
 <div  id="{{milkteab.productname}}" class="card">
-    <div id="seedescriptions{{milkteab.productname}}" class="seedescriptions">
-    <h3>See Description</h3>
-    </div>
+<div class="myDIV">
+    <button id="myBtn" class="fa-regular fa-circle-info"></button>
+</div><i class="fa-regular fa-circle-info"
+<div class="hide">Add Product</div>
 
     <!--{% if milkteab.Productimg %}
     <img src="{{milkteab.Productimg.url}}" style="width:100%">
