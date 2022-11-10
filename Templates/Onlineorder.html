@@ -1318,11 +1318,15 @@ align-content:flex-start;
   font-family: arial;
 }
 .myDIV{
- width: 15px;
-  height:15px;
+ width: auto;
+height:auto;
 position:absolute;
-right:1px;
+right:10px;
 top:1px;
+
+}
+.infobutton{
+background-color:rgba(0,0,0,0);
 }
 .hide{
 display:none;
@@ -5330,11 +5334,15 @@ align-content:flex-start;
   font-family: arial;
 }
 .myDIV{
-  width: 15px;
-  height:15px;
+ width: auto;
+height:auto;
 position:absolute;
-right:5px;
+right:10px;
 top:1px;
+
+}
+.infobutton{
+background-color:rgba(0,0,0,0);
 }
 .hide{
 display:none;
@@ -9329,7 +9337,10 @@ height:auto;
 position:absolute;
 right:10px;
 top:1px;
-background-color:grey;
+
+}
+.infobutton{
+background-color:rgba(0,0,0,0);
 }
 .hide{
 display:none;
@@ -13328,10 +13339,14 @@ align-content:flex-start;
 }
 .myDIV{
  width: auto;
-  height:auto;
+height:auto;
 position:absolute;
-right:1px;
+right:10px;
 top:1px;
+
+}
+.infobutton{
+background-color:rgba(0,0,0,0);
 }
 .hide{
 display:none;
@@ -17467,11 +17482,16 @@ align-content:flex-start;
 }
 .myDIV{
  width: auto;
-  height:auto;
+height:auto;
 position:absolute;
-right:1px;
+right:10px;
 top:1px;
+
 }
+.infobutton{
+background-color:rgba(0,0,0,0);
+}
+
 .hide{
 display:none;
 }
@@ -23806,7 +23826,7 @@ reveals[i].classList.add("activee")
 {% for milkteab in mtbuttons %}
 <div  id="{{milkteab.productname}}" class="card">
 <div class="myDIV">
-    <button id="myBtn"><i class="fa fa-info-circle" style="font-size:24px"></i></button>
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" style="font-size:24px"></i></button>
 </div>
 
 <div class="hide">See Description</div>
