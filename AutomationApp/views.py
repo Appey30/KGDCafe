@@ -118,7 +118,25 @@ def delprod(request, del_id):
         else:
             return render(request, 'deletreproduct.html',{'prodd':prodd,'productss':productss})
 
+@login_required
+def editprod(request, edit_id):
 
+        userr=request.user.id
+        eprodd = user1.objects.get(id=edit_id)
+        productss = user1.objects.all().filter(user__id=userr)
+        if request.method == "POST":
+            editpdescriptionname = request.POST.get("editpdescriptionname")
+            editcostname = request.POST.get("editcostname")
+            editpricename = request.POST.get("editpricename")
+            editpsize = request.POST.get("editpsize")
+            editsize = request.POST.get("editsize")
+            editsubcateg = request.POST.get("editsubcateg")
+            editcateg = request.POST.get("editcateg")
+            editproductnamename = request.POST.get("editproductnamename")
+            eprodd.update(productname=editproductnamename, Category=editcateg, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
+            return redirect('Products.html')
+        else:
+            return render(request, 'editproduct.html',{'eprodd':eprodd,'productss':productss})
 
 
 @login_required

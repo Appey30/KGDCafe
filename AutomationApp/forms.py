@@ -27,7 +27,7 @@ class editform(ModelForm):
 				'PSize' : forms.Select(attrs={'class':'form-control clear','placeholder':'Enter Size here...'}),
 				'Price' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Price here...'}),
 				'Cost' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Cost here...'}),
-				'PDescription' : forms.TextInput(attrs={'class':'form-control clear','placeholder':'Enter Description Name here...'}),
+				'PDescription' : forms.TextInput(attrs={'class':'form-control clear','placeholder':'Enter Description here...'}),
 		}
 
 class punched(ModelForm):

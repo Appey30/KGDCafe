@@ -7,4 +7,5 @@ urlpatterns = [
 #path('add',views.addproduct, name='addprod.html'), 
 #path('/<str:prodd_id>', views.dproduct , name='deleteprod'),
 path('<del_id>', views.delprod , name='delprod'),
+path('<editprod_id>', views.editprod , name='editprod'),
 ]
