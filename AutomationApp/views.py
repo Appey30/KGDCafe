@@ -126,14 +126,8 @@ def editprod(request, edit_id):
         eprodd = user1.objects.get(id=edit_id)
         productss = user1.objects.all().filter(user__id=userr)
         if request.method == "POST":
-            if request.POST.get("editcateg") or request.POST.get("editpdescriptionname") or request.POST.get("editcostname") or request.POST.get("editpricename") or request.POST.get("editpsize") or request.POST.get("editsize") or request.POST.get("editsubcateg"):
+            if request.POST.get("editcateg"):
                 editcategi = request.POST.get("editcateg")
-                editpdescriptionname = request.POST.get("editpdescriptionname")
-                editcostname = float(request.POST.get("editcostname"))
-                editpricename = int(request.POST.get("editpricename"))
-                editpsizei = request.POST.get("editpsize")
-                editsizei = request.POST.get("editsize")
-                editsubcategi = request.POST.get("editsubcateg")
                 if editcategi == "Milktea":
                     editcateg = 1
                 elif editcategi == "Frappe":
@@ -144,8 +138,12 @@ def editprod(request, edit_id):
                     editcateg = 4
                 elif editcategi == "Add-ons":
                     editcateg = 5
-                else:
-                    editcateg = None
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(Category=editcateg)
+            if request.POST.get("editproductnamename"):
+                editproductnamename = request.POST.get("editproductnamename")
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(productname=editproductnamename)
+            if request.POST.get("editsubcateg"):
+                editsubcategi = request.POST.get("editsubcateg")
                 if editsubcategi == "Pizza":
                     editsubcateg = 1
                 elif editsubcategi == "Fries":
@@ -158,6 +156,9 @@ def editprod(request, edit_id):
                     editsubcateg = 5
                 else:
                     editsubcateg = None
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(Subcategory=editsubcateg)
+            if request.POST.get("editsize"):
+                editsizei = request.POST.get("editsize")
                 if editsizei == "Reg":
                     editsize = 1
                 elif editsizei == "Full":
@@ -166,17 +167,26 @@ def editprod(request, edit_id):
                     editsize = 3
                 else:
                     editsize = None
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(Size=editsize)
+            if request.POST.get("editpsize"):
+                editpsizei = request.POST.get("editpsize")
                 if editpsizei == 'Barkada(10")':
                     editpsize = 1
                 elif editpsizei == 'Pamilya(12")':
                     editpsize = 2
                 else:
                     editpsize = None
-                editproductnamename = request.POST.get("editproductnamename")
-                finaleprodd=user1.objects.filter(id=prodidtarget).update(id=prodidtarget,productname=editproductnamename, Category=editcateg, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
-                return redirect('Products.html')
-            else: 
-                return redirect('Products.html')
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(PSize=editpsize)
+            if request.POST.get("editpricename"):
+                editpricename = request.POST.get("editpricename")
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(Price=editpricename)
+            if request.POST.get("editcostname"):
+                editcostname = request.POST.get("editcostname")
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(Cost=editcostname)
+            if request.POST.get("editpdescriptionname"):
+                editcostname = request.POST.get("editpdescriptionname")
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(PDescription=editpdescriptionname)
+            return redirect('Products.html')
         else:
             return render(request, 'editproduct.html',{'eprodd':eprodd,'productss':productss})
 
