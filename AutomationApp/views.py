@@ -136,7 +136,7 @@ def editprod(request, edit_id):
             finaleprodd=eprodd.update(productname=editproductnamename, Category=editcateg, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
             return redirect('Products.html')
         else:
-            return render(request, 'editproduct.html',{'finaleprodd':finaleprodd,'eprodd':eprodd,'productss':productss})
+            return render(request, 'editproduct.html',{'eprodd':eprodd,'productss':productss})
 
 
 @login_required
