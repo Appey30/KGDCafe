@@ -133,9 +133,9 @@ def editprod(request, edit_id):
             editpsize = request.POST.get("editpsize")
             editsize = request.POST.get("editsize")
             editsubcateg = request.POST.get("editsubcateg")
-            editcateg = request.POST.get("editcateg")
+            editcategi = request.POST.get("editcateg")
             editproductnamename = request.POST.get("editproductnamename")
-            finaleprodd=user1.objects.filter(id=prodidtarget).update(id=prodidtarget,productname=editproductnamename, Category=editcateg, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
+            finaleprodd=user1.objects.filter(id=prodidtarget).update(id=prodidtarget,productname=editproductnamename, Category=editcategi, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
             return redirect('Products.html')
         else:
             return render(request, 'editproduct.html',{'eprodd':eprodd,'productss':productss})
