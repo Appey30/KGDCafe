@@ -2649,13 +2649,13 @@ def saletoday(request):
 
 
 
-        pizzaBarkadaproductnames=user1.objects.filter(user__id=userr,Subcategory__Subcategorychoices='Pizza',PSize__PSizechoices='Barkada').values_list('productname',flat=True)
+        pizzaBarkadaproductnames=user1.objects.filter(user__id=userr,Subcategory__Subcategorychoices='Pizza',PSize__PSizechoices='Barkada(10")').values_list('productname',flat=True)
         ip=0
         pizzaBarkadabd={}
         while ip<pizzaBarkadaproductnames.count():
             try:
                 pizzaBarkadabdcount=0
-                pizzaBarkadabdcountii=Sales.objects.filter(user=userr,productname=pizzaBarkadaproductnames[ip],Subcategory='Pizza',PSize='Barkada',DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Qty').aggregate(Sum('Qty')).get('Qty__sum')
+                pizzaBarkadabdcountii=Sales.objects.filter(user=userr,productname=pizzaBarkadaproductnames[ip],Subcategory='Pizza',PSize='Barkada(10")',DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Qty').aggregate(Sum('Qty')).get('Qty__sum')
                 if pizzaBarkadabdcountii:
                     pizzaBarkadabdcounti=pizzaBarkadabdcountii
                 else:
@@ -2667,13 +2667,13 @@ def saletoday(request):
             ip+=1
 
 
-        pizzaPamilyaproductnames=user1.objects.filter(user__id=userr,Subcategory__Subcategorychoices='Pizza',PSize__PSizechoices='Pamilya').values_list('productname',flat=True)
+        pizzaPamilyaproductnames=user1.objects.filter(user__id=userr,Subcategory__Subcategorychoices='Pizza',PSize__PSizechoices='Pamilya(12")').values_list('productname',flat=True)
         iip=0
         pizzaPamilyabd={}
         while iip<pizzaPamilyaproductnames.count():
             try:
                 pizzaPamilyabdcount=0
-                pizzaPamilyabdcountii=Sales.objects.filter(user=userr,productname=pizzaPamilyaproductnames[iip],Subcategory='Pizza',PSize='Pamilya',DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Qty').aggregate(Sum('Qty')).get('Qty__sum')
+                pizzaPamilyabdcountii=Sales.objects.filter(user=userr,productname=pizzaPamilyaproductnames[iip],Subcategory='Pizza',PSize='Pamilya(12")',DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Qty').aggregate(Sum('Qty')).get('Qty__sum')
                 if pizzaPamilyabdcountii:
                     pizzaPamilyabdcounti=pizzaPamilyabdcountii
                 else:
