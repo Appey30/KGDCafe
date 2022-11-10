@@ -126,7 +126,7 @@ def editprod(request, edit_id):
         eprodd = user1.objects.get(id=edit_id)
         productss = user1.objects.all().filter(user__id=userr)
         if request.method == "POST":
-            if request.POST.get("editcateg"):
+            if request.POST.get("editcateg") or request.POST.get("editpdescriptionname") or request.POST.get("editcostname") or request.POST.get("editpricename") or request.POST.get("editpsize") or request.POST.get("editsize") or editsubcategi = request.POST.get("editsubcateg"):
                 editcategi = request.POST.get("editcateg")
                 editpdescriptionname = request.POST.get("editpdescriptionname")
                 editcostname = float(request.POST.get("editcostname"))
