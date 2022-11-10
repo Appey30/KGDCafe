@@ -184,7 +184,7 @@ def editprod(request, edit_id):
                 editcostname = request.POST.get("editcostname")
                 finaleprodd=user1.objects.filter(id=prodidtarget).update(Cost=editcostname)
             if request.POST.get("editpdescriptionname"):
-                editcostname = request.POST.get("editpdescriptionname")
+                editpdescriptionname = request.POST.get("editpdescriptionname")
                 finaleprodd=user1.objects.filter(id=prodidtarget).update(PDescription=editpdescriptionname)
             return redirect('Products.html')
         else:
