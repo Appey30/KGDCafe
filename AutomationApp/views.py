@@ -125,15 +125,15 @@ def editprod(request, edit_id):
         prodidtarget=edit_id
         eprodd = user1.objects.get(id=edit_id)
         productss = user1.objects.all().filter(user__id=userr)
-        if request.method == "POST" and request.POST.get("editcateg"):
+        if request.method == "POST":
             if request.POST.get("editcateg") or request.POST.get("editpdescriptionname") or request.POST.get("editcostname") or request.POST.get("editpricename") or request.POST.get("editpsize") or request.POST.get("editsize") or request.POST.get("editsubcateg"):
-                editcategi = request.POST.get("editcateg")
-                editpdescriptionname = request.POST.get("editpdescriptionname")
-                editcostname = float(request.POST.get("editcostname"))
-                editpricename = int(request.POST.get("editpricename"))
-                editpsizei = request.POST.get("editpsize")
-                editsizei = request.POST.get("editsize")
-                editsubcategi = request.POST.get("editsubcateg")
+                editcategi = request.POST.get("editcateg") or None
+                editpdescriptionname = request.POST.get("editpdescriptionname") or None
+                editcostname = float(request.POST.get("editcostname")) or None
+                editpricename = int(request.POST.get("editpricename")) or None
+                editpsizei = request.POST.get("editpsize") or None
+                editsizei = request.POST.get("editsize") or None
+                editsubcategi = request.POST.get("editsubcateg") or None
                 if editcategi == "Milktea":
                     editcateg = 1
                 elif editcategi == "Frappe":
