@@ -127,7 +127,7 @@ def editprod(request, edit_id):
         productss = user1.objects.all().filter(user__id=userr)
         if request.method == "POST":
             editpdescriptionname = request.POST.get("editpdescriptionname")
-            editcostname = int(request.POST.get("editcostname"))
+            editcostname = float(request.POST.get("editcostname"))
             editpricename = int(request.POST.get("editpricename"))
             editpsize = request.POST.get("editpsize")
             editsize = request.POST.get("editsize")
