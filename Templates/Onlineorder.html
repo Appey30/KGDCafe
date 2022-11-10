@@ -21649,6 +21649,9 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 </script>
 {% for promob in FreeFriespromobuttons %}
 <div class="card">
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if promob.Productimg %}
     <img src="{{promob.Productimg.url}}"  style="width:100%">
     {% else %}
@@ -25700,7 +25703,9 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
     <img src="#"  style="width:100%">
     {% endif %}
     -->
-
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if frappeb.productname == frappeb.productname and "FR.png" %}
     <img src="{% static frappeb.productname %}FR.png" style="width:100%">
     {% else %}
@@ -26297,6 +26302,9 @@ totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Freeze">
 {% for freezeb in freezebuttons %}
 <div class="card">
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if freezeb.productname == freezeb.productname and "FRZ.png" %}
     <img src="{% static freezeb.productname %}FRZ.png" style="width:100%">
     {% else %}
@@ -26517,6 +26525,9 @@ totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 {% for cookiesb in cookiesbuttons %}
 <div class="card">
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if cookiesb.productname == cookiesb.productname %}
     <img src="{% static cookiesb.productname %}Cookies.png" style="width:100%">
     {% else %}
@@ -26736,6 +26747,9 @@ totalcookies.innerHTML = "Total: ₱"+totalcookiess+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Shawarma">
 {% for shawarmab in shawarmabuttons %}
 <div class="card">
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if shawarmab.productname == shawarmab.productname %}
     <img src="{% static shawarmab.productname %}Shawarma.png" style="width:100%">
     {% else %}
@@ -26957,6 +26971,9 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
 {% if friesb.productname == 'Free Fries' %}
 {% else %}
 <div class="card">
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if friesb.productname == friesb.productname %}
     <img src="{% static friesb.productname %}Fries.png" style="width:100%">
     {% else %}
@@ -27184,6 +27201,9 @@ totalfries.innerHTML = "Total: ₱"+totalfries+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Bubwaf">
 {% for bubwafb in bubwafbuttons %}
 <div class="card">
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if bubwafb.productname == bubwafb.productname %}
     <img src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%">
     {% else %}
@@ -27420,6 +27440,9 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Pizza">
 {% for pizzab in pizzabuttons %}
 <div class="card">
+<div class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
     {% if pizzab.productname == pizzab.productname %}
     <img src="{% static pizzab.productname %}Pizza.png" style="width:100%">
     {% else %}
