@@ -23838,7 +23838,18 @@ reveals[i].classList.add("activee")
 </div>
 
 <script>
+var idcard = document.getElementById({{milkteab.productname}});
+idcard.addEventListener("mouseover", function(event) { 
+ getidcard = idcard.id;
+ getidsee = document.getElementById(getidcard)
+ getidsee.style.display = 'block';
+});
 
+idcard.addEventListener("mouseout", function(event) { 
+ getidcard = idcard.id;
+ getidsee = document.getElementById(getidcard)
+ getidsee.style.display = 'none';
+});
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{milkteab.id}}();
