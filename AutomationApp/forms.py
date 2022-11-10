@@ -16,7 +16,7 @@ class editform(ModelForm):
 				'PSize' : 'PSize',
 				'Price' : 'Price',
 				'Cost' : 'Cost',
-				'Productimg':'Productimg',
+				'Description':'Description',
 		}
 		widgets = {
 				'user' : forms.NumberInput(attrs={'class':'form-control clear','type':'hidden','placeholder':'Enter Product Name here...','id':'user1id'}),
@@ -27,7 +27,7 @@ class editform(ModelForm):
 				'PSize' : forms.Select(attrs={'class':'form-control clear','placeholder':'Enter Size here...'}),
 				'Price' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Price here...'}),
 				'Cost' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Cost here...'}),
-				
+				'Description' : forms.TextInput(attrs={'class':'form-control clear','placeholder':'Enter Description Name here...'}),
 		}
 
 class punched(ModelForm):
