@@ -23838,10 +23838,19 @@ reveals[i].classList.add("activee")
 </div>
 
 <script>
+var varsee = "";
  function functioncardmouseover(productname){
  getisee=document.getElementById('seedescriptions'+productname)
  getisee.style.display = "block"
+ varsee = 'seedescriptions'+productname;
 };
+
+var varseeout = document.getElementById(varsee);
+varseeout.addEventListener("mouseout", function(event) { 
+varseeout.style.display = "none";
+varsee = "";
+});
+
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{milkteab.id}}();
 });
