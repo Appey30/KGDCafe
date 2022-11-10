@@ -126,52 +126,55 @@ def editprod(request, edit_id):
         eprodd = user1.objects.get(id=edit_id)
         productss = user1.objects.all().filter(user__id=userr)
         if request.method == "POST":
-            editpdescriptionname = request.POST.get("editpdescriptionname")
-            editcostname = float(request.POST.get("editcostname"))
-            editpricename = int(request.POST.get("editpricename"))
-            editpsizei = request.POST.get("editpsize")
-            editsizei = request.POST.get("editsize")
-            editsubcategi = request.POST.get("editsubcateg")
-            editcategi = request.POST.get("editcateg")
-            if editcategi == "Milktea":
-                editcateg = 1
-            elif editcategi == "Frappe":
-                editcateg = 2
-            elif editcategi == "Freeze":
-                editcateg = 3
-            elif editcategi == "Snacks":
-                editcateg = 4
-            elif editcategi == "Add-ons":
-                editcateg = 5
-            if editsubcategi == "Pizza":
-                editsubcateg = 1
-            elif editsubcategi == "Fries":
-                editsubcateg = 2
-            elif editsubcategi == "Shawarma":
-                editsubcateg = 3
-            elif editsubcategi == "Cookies":
-                editsubcateg = 4
-            elif editsubcategi == "Bubble Waffle":
-                editsubcateg = 5
-            else:
-                editsubcateg = None
-            if editsizei == "Reg":
-                editsize = 1
-            elif editsizei == "Full":
-                editsize = 2
-            elif editsizei == "Small":
-                editsize = 3
-            else:
-                editsize = None
-            if editpsizei == 'Barkada(10")':
-                editpsize = 1
-            elif editpsizei == 'Pamilya(12")':
-                editpsize = 2
-            else:
-                editpsize = None
-            editproductnamename = request.POST.get("editproductnamename")
-            finaleprodd=user1.objects.filter(id=prodidtarget).update(id=prodidtarget,productname=editproductnamename, Category=editcateg, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
-            return redirect('Products.html')
+            if request.POST.get("editcateg"):
+                editcategi = request.POST.get("editcateg")
+                editpdescriptionname = request.POST.get("editpdescriptionname")
+                editcostname = float(request.POST.get("editcostname"))
+                editpricename = int(request.POST.get("editpricename"))
+                editpsizei = request.POST.get("editpsize")
+                editsizei = request.POST.get("editsize")
+                editsubcategi = request.POST.get("editsubcateg")
+                if editcategi == "Milktea":
+                    editcateg = 1
+                elif editcategi == "Frappe":
+                    editcateg = 2
+                elif editcategi == "Freeze":
+                    editcateg = 3
+                elif editcategi == "Snacks":
+                    editcateg = 4
+                elif editcategi == "Add-ons":
+                    editcateg = 5
+                if editsubcategi == "Pizza":
+                    editsubcateg = 1
+                elif editsubcategi == "Fries":
+                    editsubcateg = 2
+                elif editsubcategi == "Shawarma":
+                    editsubcateg = 3
+                elif editsubcategi == "Cookies":
+                    editsubcateg = 4
+                elif editsubcategi == "Bubble Waffle":
+                    editsubcateg = 5
+                else:
+                    editsubcateg = None
+                if editsizei == "Reg":
+                    editsize = 1
+                elif editsizei == "Full":
+                    editsize = 2
+                elif editsizei == "Small":
+                    editsize = 3
+                else:
+                    editsize = None
+                if editpsizei == 'Barkada(10")':
+                    editpsize = 1
+                elif editpsizei == 'Pamilya(12")':
+                    editpsize = 2
+                else:
+                    editpsize = None
+                editproductnamename = request.POST.get("editproductnamename")
+                finaleprodd=user1.objects.filter(id=prodidtarget).update(id=prodidtarget,productname=editproductnamename, Category=editcateg, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
+                return redirect('Products.html')
+            else: 
+                return redirect('Products.html')
         else:
             return render(request, 'editproduct.html',{'eprodd':eprodd,'productss':productss})
 
