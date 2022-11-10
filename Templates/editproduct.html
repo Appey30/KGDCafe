@@ -142,7 +142,7 @@ top:35%;
                                 <br>
 
                             </div>
-                                <input class="" value="" type="text" id="edituserid" name="editusername"></input>
+                                <input class="" value="" type="hidden" id="edituserid" name="editusername"></input>
                             <div class="fieldWrapper">
                             <input type = "submit" name = "doneeditbuttonname" value = "Done Edit" class="btn1" >
                             </div>
@@ -182,9 +182,9 @@ document.querySelector("#editsizeid") = Size;
 document.querySelector("#editpsizeid") = PSize;
 
 var Pricevar = document.getElementById("editpriceid");
-Pricevar.value = Price;
+Pricevar.defaultValu = Price;
 var Costvar = document.getElementById("editcostid");
-Costvar.value = Cost;
+Costvar.defaultValu = Cost;
 var PDescriptionvar = document.getElementById("editpdescriptionid");
 PDescriptionvar.value = PDescription;
 };
