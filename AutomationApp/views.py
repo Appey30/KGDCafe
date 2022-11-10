@@ -122,6 +122,7 @@ def delprod(request, del_id):
 def editprod(request, edit_id):
 
         userr=request.user.id
+        prodidtarget=edit_id
         eprodd = user1.objects.get(id=edit_id)
         productss = user1.objects.all().filter(user__id=userr)
         if request.method == "POST":
@@ -133,7 +134,7 @@ def editprod(request, edit_id):
             editsubcateg = request.POST.get("editsubcateg")
             editcateg = request.POST.get("editcateg")
             editproductnamename = request.POST.get("editproductnamename")
-            finaleprodd=user1.objects.filter(user__id=userr, id=edit_id).update(productname=editproductnamename, Category__Categorychoices=editcateg, Subcategory__Subcategorychoices=editsubcateg, Size__Sizechoices=editsize, PSize__PSizechoices=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
+            finaleprodd=eprodd.update(productname=editproductnamename, Category__Categorychoices=editcateg, Subcategory__Subcategorychoices=editsubcateg, Size__Sizechoices=editsize, PSize__PSizechoices=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
             return redirect('Products.html')
         else:
             return render(request, 'editproduct.html',{'eprodd':eprodd,'productss':productss})
