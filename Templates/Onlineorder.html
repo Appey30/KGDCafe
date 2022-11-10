@@ -1320,7 +1320,7 @@ align-content:flex-start;
 .seedescriptions{
 display:block;
 position:absolute;
-  color: grey;
+
   font-size: 8px;
   text-align:center;
   width:100%;
@@ -5329,9 +5329,9 @@ align-content:flex-start;
   font-family: arial;
 }
 .seedescriptions{
-display:block;
+display:none;
 position:absolute;
-  color: grey;
+
   font-size: 8px;
   text-align:center;
   width:100%;
@@ -9324,7 +9324,7 @@ align-content:flex-start;
 .seedescriptions{
 display:block;
 position:absolute;
-  color: grey;
+
   font-size: 8px;
   text-align:center;
   width:100%;
@@ -13325,7 +13325,7 @@ align-content:flex-start;
 .seedescriptions{
 display:block;
 position:absolute;
-  color: grey;
+
   font-size: 8px;
   text-align:center;
   width:100%;
@@ -17463,7 +17463,7 @@ align-content:flex-start;
 .seedescriptions{
 display:block;
 position:absolute;
-  color: grey;
+
   font-size: 8px;
   text-align:center;
   width:100%;
@@ -23798,10 +23798,11 @@ reveals[i].classList.add("activee")
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
 {% for milkteab in mtbuttons %}
-<div class="card">
-    <div class="seedescriptions">
+<div id="{{milkteab.productname}}" class="card">
+    <div id="seedescriptionsid" class="seedescriptions">
     <h3>See Description</h3>
     </div>
+
     <!--{% if milkteab.Productimg %}
     <img src="{{milkteab.Productimg.url}}" style="width:100%">
     {% else %}
@@ -23837,6 +23838,11 @@ reveals[i].classList.add("activee")
 </div>
 
 <script>
+$('.card').hover(function() {
+   var cardid = this.id;
+   cardid.display = "block"
+
+});
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{milkteab.id}}();
 });
