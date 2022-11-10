@@ -153,16 +153,22 @@ def editprod(request, edit_id):
                 editsubcateg = 4
             elif editsubcategi == "Bubble Waffle":
                 editsubcateg = 5
+            else:
+                editsubcateg = None
             if editsizei == "Reg":
                 editsize = 1
             elif editsizei == "Full":
                 editsize = 2
             elif editsizei == "Small":
                 editsize = 3
+            else:
+                editsize = None
             if editpsizei == 'Barkada(10")':
                 editpsize = 1
             elif editpsizei == 'Pamilya(12")':
                 editpsize = 2
+            else:
+                editpsize = None
             editproductnamename = request.POST.get("editproductnamename")
             finaleprodd=user1.objects.filter(id=prodidtarget).update(id=prodidtarget,productname=editproductnamename, Category=editcateg, Subcategory=editsubcateg, Size=editsize, PSize=editpsize, Price=editpricename, Cost=editcostname, PDescription=editpdescriptionname)
             return redirect('Products.html')
