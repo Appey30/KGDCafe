@@ -23840,8 +23840,9 @@ reveals[i].classList.add("activee")
 <script>
 $('.card').hover(function() {
   var cardid = $( this ).id;
+  alert(cardid);
    var cardidfinal = document.getElementById('seedescriptions'+cardid);
-   cardidfinal.display = "block";
+   $('#seedescriptions'+cardid).css('display', 'block');
 
 });
 document.addEventListener("DOMContentLoaded", function(event) { 
