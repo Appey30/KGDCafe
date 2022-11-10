@@ -23798,7 +23798,7 @@ reveals[i].classList.add("activee")
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
 {% for milkteab in mtbuttons %}
-<div id="{{milkteab.productname}}" class="card">
+<div id="cardid{{milkteab.productname}}" class="card">
     <div id="seedescriptions{{milkteab.productname}}" class="seedescriptions">
     <h3>See Description</h3>
     </div>
@@ -23838,12 +23838,25 @@ reveals[i].classList.add("activee")
 </div>
 
 <script>
-$('.card').hover(function() {
-  var cardid = this.id;
+const el = document.getElementById('cardid'+{{milkteab.productname}});
 
-   var cardidfinal = document.getElementById('seedescriptions'+cardid);
-   $('#seedescriptions'+cardid).css('display', 'block');
+const hiddenDiv = document.getElementById('seedescriptions'+{{milkteab.productname}});
 
+// ✅ Show hidden DIV on hover
+el.addEventListener('mouseover', function handleMouseOver() {
+  hiddenDiv.style.display = 'block';
+
+  // 👇️ if you used visibility property to hide div
+  // hiddenDiv.style.visibility = 'visible';
+});
+
+// ✅ (optionally) Hide DIV on mouse out
+el.addEventListener('mouseout', function handleMouseOut() {
+  hiddenDiv.style.display = 'none';
+
+  // 👇️ if you used visibility property to hide div
+  // hiddenDiv.style.visibility = 'hidden';
+});
 });
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{milkteab.id}}();
