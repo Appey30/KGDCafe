@@ -165,35 +165,7 @@ top:35%;
 
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function(event) {
 
-  function defaultvalues(, '{{eprodd.productname}}', '{{eprodd.Category}}', '{{eprodd.Subcategory}}', '{{eprodd.Size}}', '{{eprodd.PSize}}', '{{eprodd.Price}}', '{{eprodd.Cost}}', '{{eprodd.PDescription}}');
-
-});
-
-function defaultvalues(user, productname, Category, Subcategory, Size, PSize, Price, Cost, PDescription){
-var uservar = document.getElementById("edituserid");
-uservar.value = user;
-var productnamevar = document.getElementById("editproductnameid");
-productnamevar.value = productname;
-var Pricevar = document.getElementById("editpriceid");
-$('#editpriceid').val(Price);
-/*var Costvar = document.getElementById("editcostid");*/
-$('#editcostid').val(Cost);
-/*var PDescriptionvar = document.getElementById("editpdescriptionid");*/
-$('#editpdescriptionid').val(PDescription);
-document.querySelector('#editcategid').value = Category;
-
-document.querySelector("#editsubcategid") = Subcategory;
-
-document.querySelector("#editsizeid") = Size;
-
-document.querySelector("#editpsizeid") = PSize;
-
-
-};
-</script>
   
 
 <script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script> 
