@@ -124,7 +124,7 @@ def editprod(request, edit_id):
         userr=request.user.id
         prodidtarget=edit_id
         eprodd = user1.objects.get(id=edit_id)
-        print(edit_id:,'user1.objects.filter(id=prodidtarget)')
+        print('edit_id:',user1.objects.filter(id=prodidtarget))
         productss = user1.objects.all().filter(user__id=userr)
         if request.method == "POST":
             editpdescriptionname = request.POST.get("editpdescriptionname")
