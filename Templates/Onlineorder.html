@@ -23841,13 +23841,13 @@ reveals[i].classList.add("activee")
 var idcard = document.getElementById({{milkteab.productname}});
 idcard.addEventListener("mouseover", function(event) { 
  getidcard = idcard.id;
- getidsee = document.getElementById(getidcard)
+ getidsee = document.getElementById('seedescriptions'+getidcard)
  getidsee.style.display = 'block';
 });
 
 idcard.addEventListener("mouseout", function(event) { 
  getidcard = idcard.id;
- getidsee = document.getElementById(getidcard)
+ getidsee = document.getElementById('seedescriptions'+getidcard)
  getidsee.style.display = 'none';
 });
 
