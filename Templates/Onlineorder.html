@@ -23798,7 +23798,7 @@ reveals[i].classList.add("activee")
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
 {% for milkteab in mtbuttons %}
-<div id="{{milkteab.productname}}" class="card">
+<div onmouseover="functioncardmouseover('{{milkteab.productname}}')" id="{{milkteab.productname}}" class="card">
     <div id="seedescriptions{{milkteab.productname}}" class="seedescriptions">
     <h3>See Description</h3>
     </div>
@@ -23838,21 +23838,10 @@ reveals[i].classList.add("activee")
 </div>
 
 <script>
-  
-var idcard = document.getElementById('{{milkteab.productname}}');
-idcard.addEventListener("mouseover", function(event) { 
-
- getidcard = idcard.id;
- getidsee = document.getElementById('seedescriptions'+getidcard)
- getidsee.style.display = 'block';
-});
-
-idcard.addEventListener("mouseout", function(event) { 
- getidcard = idcard.id;
- getidsee = document.getElementById('seedescriptions'+getidcard)
- getidsee.style.display = 'none';
-});
-
+ function functioncardmouseover(productname){
+ getisee=document.getElementById('seedescriptions'+productname)
+ getisee.style.display = "block"
+};
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{milkteab.id}}();
 });
