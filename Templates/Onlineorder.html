@@ -1319,9 +1319,13 @@ align-content:flex-start;
 }
 .seedescriptions{
 display:none;
+position:absolute;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
 }
-.card:hover {
-
+.card:hover + .seedescriptions{
+display:block;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+transition:background-image 1s;
 /*box-shadow: 0px 0px 0px #a5a5a5,
    -1px -1px 10px #e2e2e2, inset 5px 5px 10px #b5b5b5,
             inset -5px -5px 5px #ffffff;
@@ -5325,8 +5329,13 @@ align-content:flex-start;
 }
 .seedescriptions{
 display:none;
+position:absolute;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
 }
-.card:hover {
+.card:hover + .seedescriptions{
+display:block;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+transition:background-image 1s;
 /*box-shadow: 0px 0px 0px #a5a5a5,
    -1px -1px 10px #e2e2e2, inset 5px 5px 10px #b5b5b5,
             inset -5px -5px 5px #ffffff;
@@ -9312,8 +9321,13 @@ align-content:flex-start;
 }
 .seedescriptions{
 display:none;
+position:absolute;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
 }
-.card:hover {
+.card:hover + .seedescriptions{
+display:block;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+transition:background-image 1s;
 /*box-shadow: 0px 0px 0px #a5a5a5,
    -1px -1px 10px #e2e2e2, inset 5px 5px 10px #b5b5b5,
             inset -5px -5px 5px #ffffff;
@@ -13307,8 +13321,13 @@ align-content:flex-start;
 }
 .seedescriptions{
 display:none;
+position:absolute;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
 }
-.card:hover {
+.card:hover + .seedescriptions{
+display:block;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+transition:background-image 1s;
 /*box-shadow: 0px 0px 0px #a5a5a5,
    -1px -1px 10px #e2e2e2, inset 5px 5px 10px #b5b5b5,
             inset -5px -5px 5px #ffffff;
@@ -17438,9 +17457,14 @@ align-content:flex-start;
   font-family: arial;
 }
 .seedescriptions{
+position:absolute;
 display:none;
+
 }
-.card:hover {
+.card:hover + .seedescriptions{
+display:block;
+background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+transition:background-image 1s;
 /*box-shadow: 0px 0px 0px #a5a5a5,
    -1px -1px 10px #e2e2e2, inset 5px 5px 10px #b5b5b5,
             inset -5px -5px 5px #ffffff;
@@ -23771,7 +23795,7 @@ reveals[i].classList.add("activee")
 {% for milkteab in mtbuttons %}
 <div class="card">
     <div class="seedescriptions">
-    <h3 class="priceth">See Descriptions</h3>
+    <h3 class="priceth">See Description</h3>
     </div>
     <!--{% if milkteab.Productimg %}
     <img src="{{milkteab.Productimg.url}}" style="width:100%">
