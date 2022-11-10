@@ -164,7 +164,7 @@ top:35%;
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  function defaultvalues({{eprodd.user}}, '{{eprodd.productname}}', '{{eprodd.Category}}', '{{eprodd.Subcategory}}', '{{eprodd.Size}}', '{{eprodd.PSize}}', {{eprodd.Price}}, {{eprodd.Cost}}, '{{PDescription.Size}}');
+  function defaultvalues({{eprodd.user}}, '{{eprodd.productname}}', '{{eprodd.Category}}', '{{eprodd.Subcategory}}', '{{eprodd.Size}}', '{{eprodd.PSize}}', {{eprodd.Price}}, {{eprodd.Cost}}, '{{eprodd.PDescription}}');
 
 });
 
@@ -174,9 +174,9 @@ uservar.value = user;
 var productnamevar = document.getElementById("editproductnameid");
 productnamevar.value = productname;
 var Pricevar = document.getElementById("editpriceid");
-$('#editpriceid').val(Price);
+$('#editpriceid').val({{eprodd.Price}});
 /*var Costvar = document.getElementById("editcostid");*/
-$('#editcostid').val(Cost);
+$('#editcostid').val({{eprodd.Cost}});
 /*var PDescriptionvar = document.getElementById("editpdescriptionid");*/
 $('#editpdescriptionid').val(PDescription);
 document.querySelector('#editcategid').value = Category;
