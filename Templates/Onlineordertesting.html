@@ -21865,28 +21865,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 }
 </script>
 {% for promob in FreeFriespromobuttons %}
-<div class="containeri">
-  <ul class="cardsi">
-    <li class="cardi cardsi__item">
-      <div class="cardi__frame">
-        <div class="cardi__picture">
-    {% if promob.Productimg %}
-    <img src="{{promob.Productimg.url}}"  style="width:100%">
-    {% else %}
-    <img src="#" style="width:100%">
-    {% endif %}
-        </div>
-        <h2 class="cardi__title">{{promob.productname}}</h2>
-      </div>
-      <div class="cardi__overlay"></div>
-      <div class="cardi__content">
-        <h2>{{promob.productname}}</h2>
-        <p>{{promob.PDescription}}</p>
-      </div>
-    </li>
 
-  </ul>
-</div>
 <div class="card">
 <div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
@@ -21963,7 +21942,30 @@ fullprom.innerHTML = "₱"+promp+".00";
 <h2 class="ourmenutitle">Our Menu</h2>
 <h5 id="freefriesid"></h5>
 </div>
+{% for promob in FreeFriespromobuttons %}
+<div class="containeri">
+  <ul class="cardsi">
+    <li class="cardi cardsi__item">
+      <div class="cardi__frame">
+        <div class="cardi__picture">
+    {% if promob.Productimg %}
+    <img src="{{promob.Productimg.url}}"  style="width:100%">
+    {% else %}
+    <img src="#" style="width:100%">
+    {% endif %}
+        </div>
+        <h2 class="cardi__title">{{promob.productname}}</h2>
+      </div>
+      <div class="cardi__overlay"></div>
+      <div class="cardi__content">
+        <h2>{{promob.productname}}</h2>
+        <p>{{promob.PDescription}}</p>
+      </div>
+    </li>
 
+  </ul>
+</div>
+{% endfor %}
 <div class="productsmenudiv">
 <div class="productstab reveal fade-bottom">
 <div class="tab productstabbuttondiv reveal fade-bottom" id="tab">
