@@ -78,7 +78,7 @@ top:35%;
                             </div>
                             <div class="fieldWrapper" >
                                 <label>Category:</label>
-                                <select id="editcategid" name="editcateg" value="{{eprodd.Category}}">
+                                <select id="editcategid" onchange="myFunctioncat()" name="editcateg" value="{{eprodd.Category}}">
                                 <option value="{{eprodd.Category}}" selected disabled hidden>{{eprodd.Category}}</option>
                                     <option value="Milktea">Milktea</option>
                                     <option value="Frappe">Frappe</option>
@@ -89,10 +89,10 @@ top:35%;
                                 <br>
                                 
                             </div>
-
+                            
                             <div class="fieldWrapper" id="subcat">
                                 <label>Subcategory:</label>
-                                <select id="editsubcategid" name="editsubcateg" value="{{eprodd.Subcategory}}">
+                                <select id="editsubcategid" onchange="myFunctionsubcat()" name="editsubcateg" value="{{eprodd.Subcategory}}">
                                 <option value="{{eprodd.Subcategory}}" selected disabled hidden>{{eprodd.Subcategory}}</option>
                                     <option value="Pizza">Pizza</option>
                                     <option value="Fries">Fries</option>
