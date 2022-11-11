@@ -21948,8 +21948,8 @@ fullprom.innerHTML = "₱"+promp+".00";
     <li class="cardi cardsi__item">
       <div class="cardi__frame">
         <div class="cardi__picture">
-    {% if milkteab.Productimg %}
-    <img src="{{milkteab.Productimg.url}}"  style="width:100%">
+    {% if milkteab.productname == milkteab.productname and "MT.png" %}
+    <img src="{% static milkteab.productname %}MT.png" style="width:100%">
     {% else %}
     <img src="#" style="width:100%">
     {% endif %}
