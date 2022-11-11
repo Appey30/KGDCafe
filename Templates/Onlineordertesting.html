@@ -22942,20 +22942,22 @@ showdescriptionproductnameid.innerHTML=productname;
 
 var = showproductdescriptionid=document.getElementById('showproductdescriptionid');
 showdescriptionproductnameid.innerHTML=productdescription;
-}
+};
+
 function showdescriptioncontentclose(){
 var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
-
-
 var atbmodalshowdescriptioncontent = document.getElementsByClassName("showdescriptiondiv");
 atbmodalshowdescriptioncontent[0].style.animation="fade-bottom-out 0.5s";
 setTimeout(closeshowdescription, 500);
-
 }
+
 function closeshowdescription(){
 var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
 closebgwithcontentshowdescription[0].style.display = "none";
 }
+
+
+
 
 function gpsallow(){
 
@@ -24722,7 +24724,7 @@ $(document).ready(function(){
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
 
-<div class="hide">See Description</div>
+
 
     <!--{% if milkteab.Productimg %}
     <img src="{{milkteab.Productimg.url}}" style="width:100%">
@@ -24733,7 +24735,7 @@ $(document).ready(function(){
     {% if milkteab.productname == milkteab.productname and "MT.png" %}
     <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="{% static milkteab.productname %}MT.png" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
     {% else %}
-    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%">
+    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
     {% endif %}
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
   <div id="h3divconfigidCappuccino" class="h3divconfig"><h3>{{milkteab.productname}}</h3></div>
