@@ -15,6 +15,16 @@
 
 
 /* Float cancel and delete buttons and add an equal width */
+.fieldwrapper{
+height:50px;
+margin-top:30px;
+
+background-color:transparent;
+}
+.clear{
+
+margin:0px 0px 0px 0px;
+}
 .btn1 {
   background-color: #018010; /* Blue background */
   border: none; /* Remove borders */
@@ -72,13 +82,13 @@ top:35%;
                             
                             <div class="fieldWrapper">
                                 <label>Product Name:</label>
-                            <input class="" type="text" value="{{eprodd.productname}}" name="editproductnamename" id="editproductnameid"></input>
+                            <input class="form-control clear" type="text" value="{{eprodd.productname}}" name="editproductnamename" id="editproductnameid"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper" >
                                 <label>Category:</label>
-                                <select id="editcategid" onchange="myFunctioncat()" name="editcateg" value="{{eprodd.Category}}">
+                                <select class="form-control clear" id="editcategid" onchange="myFunctioncat()" name="editcateg" value="{{eprodd.Category}}">
                                 <option value="{{eprodd.Category}}" selected disabled hidden>{{eprodd.Category}}</option>
                                     <option value="Milktea">Milktea</option>
                                     <option value="Frappe">Frappe</option>
@@ -92,7 +102,7 @@ top:35%;
                             
                             <div class="fieldWrapper" id="subcat">
                                 <label>Subcategory:</label>
-                                <select id="editsubcategid" onchange="myFunctionsubcat()" name="editsubcateg" value="{{eprodd.Subcategory}}">
+                                <select class="form-control clear" id="editsubcategid" onchange="myFunctionsubcat()" name="editsubcateg" value="{{eprodd.Subcategory}}">
                                 <option value="{{eprodd.Subcategory}}" selected disabled hidden>{{eprodd.Subcategory}}</option>
                                     <option value="Pizza">Pizza</option>
                                     <option value="Fries">Fries</option>
@@ -107,7 +117,7 @@ top:35%;
                             <br>
                             <div class="fieldWrapper" id="sukats">
                                 <label>Size:</label>
-                                <select id="editsizeid" name="editsize" value="{{eprodd.Size}}">
+                                <select class="form-control clear" id="editsizeid" name="editsize" value="{{eprodd.Size}}">
                                 <option value="{{eprodd.Size}}" selected disabled hidden>{{eprodd.Size}}</option>
                                     <option value="Full">Full</option>
                                     <option value="Reg">Reg</option>
@@ -120,7 +130,7 @@ top:35%;
                             <div class="fieldWrapper" id="psukats">
                                 <label>Pizza Size:</label>
 
-                                <select id="editpsizeid" name="editpsize" value="{{eprodd.PSize}}">
+                                <select class="form-control clear" id="editpsizeid" name="editpsize" value="{{eprodd.PSize}}">
                                     <option value="Full">Barkada(10")</option>
                                     <option value="Reg">Pamilya(12")</option>
                                     <option value="{{eprodd.PSize}}" selected disabled hidden>{{eprodd.PSize}}</option>
@@ -130,7 +140,7 @@ top:35%;
                             </div>
                             <div class="fieldWrapper">
                                 <label>Price:</label>
-                                <input class="" type="number" value="{{eprodd.Price}}" id="editpriceid"  name="editpricename"></input>
+                                <input class="form-control clear" type="number" value="{{eprodd.Price}}" id="editpriceid"  name="editpricename"></input>
                                 <br>
                                 
                             </div>
@@ -142,7 +152,7 @@ top:35%;
                             </div>
                             <div class="fieldWrapper">
                                 <label>Product Description:</label>
-                                <input class="{{eprodd.PDescription}}" type="text" value="{{eprodd.PDescription}}" id="editpdescriptionid" name="editpdescriptionname"></input>
+                                <input class="form-control clear" type="text" value="{{eprodd.PDescription}}" id="editpdescriptionid" name="editpdescriptionname"></input>
                                 <br>
 
                             </div>
