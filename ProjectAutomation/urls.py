@@ -33,6 +33,7 @@ urlpatterns = [
       #path('index/posthree',views.posthree,name='posthree.html'),
       path('index/pos',views.postwo,name='postwo.html'),
       path('index/onlineorder/<int:admin_id>',views.Onlineordersystem,name='Onlineorder.html'),
+      path('index/onlineordertesting/<int:admin_id>',views.Onlineordertestingsystem,name='Onlineordertesting.html'),
       #path('index/postwo',views.postwo,name='postwo.html'),
       path('index/inventory',views.inventory,name='inventory.html'),
       path('index/kgddashboard',views.kgddashboard,name='kgddashboard.html'),

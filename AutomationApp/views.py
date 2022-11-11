@@ -4891,3 +4891,257 @@ def kgddashboard(request):
                     print('readylistcontact1:',readylistcontact)
                     return render(request, 'kgddashboard.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'userr':userr,'monthlysales':monthlysales,'ddaily':ddaily,'totalnet':totalnet,'totalsales':totalsales})
 
+def Onlineordertestingsystem(request, admin_id):
+        print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
+        userr=request.user.id
+        username=request.user.username
+        if request.user.is_anonymous:
+            promoidentifier=''
+        #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
+        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
+        #        promoidentifier='FirstTimer'
+        #    else:
+        #        promoidentifier='FirstTimer'
+        #elif request.user.first_name:
+        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
+        #        promoidentifier=''
+        #    else:
+        #        promoidentifier='FirstTimer'
+        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
+            promoidentifier='FirstTimer'
+        else:
+            promoidentifier=''
+        if is_ajax(request=request) and request.POST.get('username'):
+            usernamess=json.loads(request.POST.get('username'))
+            passwordss=json.loads(request.POST.get('password'))
+            
+            userss = authenticate(request, username=usernamess, password=passwordss)
+            if userss is not None:
+                login(request, userss)
+            # Redirect to a success page.
+                return JsonResponse({'reload':'success'})
+            else:
+                if User.objects.filter(username=usernamess):
+                    usernamechecki='usernamechecktrue'
+                else:
+                    usernamechecki='usernamecheckfalse'
+                usernamecheck=json.dumps(usernamechecki)
+                # Return an 'invalid login' error message.
+                return JsonResponse({'reload':usernamechecki})    
+        
+        if is_ajax(request=request) and request.POST.get('firstnameid'):
+            firstnameid=json.loads(request.POST.get('firstnameid'))
+            lastnameid=json.loads(request.POST.get('lastnameid'))
+            emailid=json.loads(request.POST.get('emailid'))
+            usernamesu=json.loads(request.POST.get('usernamesuid'))
+            passwordsu=make_password(json.loads(request.POST.get('passwordsuid')))
+            if User.objects.filter(first_name=firstnameid):
+                firstnamechecker = 'notpass'
+            else:
+                firstnamechecker = 'pass'
+            if User.objects.filter(last_name=lastnameid):
+                lastnamechecker = 'pass'
+            else:
+                lastnamechecker = 'pass'
+            if User.objects.filter(email=emailid):
+                emailchecker = 'notpass'
+            else:
+                emailchecker = 'pass'
+            if User.objects.filter(username=usernamesu):
+                usernamesuchecker = 'notpass'
+            else:
+                usernamesuchecker = 'pass'
+            if User.objects.filter(password=json.loads(request.POST.get('passwordsuid'))):
+                passwordsuchecker = 'notpass'
+            else:
+                passwordsuchecker = 'pass'
+            if firstnamechecker == 'pass' and lastnamechecker == 'pass' and emailchecker == 'pass' and usernamesuchecker == 'pass' and passwordsuchecker == 'pass':
+                createnewaccount = User.objects.create(first_name=firstnameid,last_name=lastnameid,username=usernamesu,email=emailid,password=passwordsu)
+                usersu = User.objects.get(first_name=firstnameid,last_name=lastnameid,username=usernamesu,email=emailid,password=passwordsu)
+                login(request, usersu)
+                print('usernamesu: ',usernamesu)
+            # Redirect to a success page.
+            context={
+            'firstnameid':json.dumps(firstnamechecker),
+            'lastnameid':json.dumps(lastnamechecker),
+            'emailid':json.dumps(emailchecker),
+            'usernamesu':json.dumps(usernamesuchecker),
+            'passwordsu':json.dumps(passwordsuchecker)
+            }
+            return JsonResponse(context)
+
+        if is_ajax(request=request) and request.POST.get('response.first_name'):
+            first = json.loads(request.POST.get('response.first_name'))
+            print(first)
+            last = json.loads(request.POST.get('response.last_name'))
+            print(last)
+            short = json.loads((request.POST.get('response.short_name')).lower())
+            print(short)
+            uids=json.loads(request.POST.get('response.id'))
+            responseresponse=json.loads(request.POST.get('response.response'))
+            try:
+                email=responseresponse.email
+            except AttributeError:
+                email=''
+            if User.objects.filter(first_name=first, last_name=last):
+                print('meron')
+                createsocialaccounttwo = User.objects.filter(first_name=first,last_name=last,username=short)
+                user=User.objects.get(first_name=first,last_name=last,username=short)
+                socialaccountsslogin=login(request, user)
+                settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
+                return JsonResponse({'reload':'reload'})
+            else:
+                print('none')
+                if responseresponse['email']:
+                    createsocialaccounttwo = User.objects.create(first_name=first,last_name=last,username=short,email=email)
+                else:
+                    createsocialaccounttwo = User.objects.create(first_name=first,last_name=last,username=short)
+                user=User.objects.get(id=createsocialaccounttwo.id)
+                createsocialaccount = SocialAccount.objects.create(user=user, provider='facebook', uid=uids, extra_data=responseresponse)
+                authcreatedsocialaccount=login(request, user)
+                settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
+                return JsonResponse({'reload':'reload'})
+        if is_ajax(request=request) and request.GET.get('addressss'):
+            userr=request.user.id
+            username=request.user.username
+            if request.user.first_name:
+                firstname=request.user.first_name
+                lastname=request.user.last_name
+            elif request.user.is_anonymous:
+                print('AnonymousUser')
+                firstname=''
+                lastname=''
+            else:
+                firstname=''
+                lastname=''
+            print(firstname)
+            print(lastname)
+
+            if Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
+                counteruser=Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
+            
+                if len(counteruser) == 1 and counteruser[0] != None:
+                    addressuseri = []
+                    addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
+                    #addressuseri[0] = addressuserii
+                    addressuseri.append(addressuserii)
+                    addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    print('addressuser1:',addressuser)
+                else:
+                    addressuseri = []
+                    i=0
+                    while i<len(counteruser):
+                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
+                        addressuseri.append(addressuserii)
+                    
+                        i += 1
+                    addressuser=serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    print('addressuser2:',addressuser)
+            else:
+                addressuseri = Sales.objects.none()
+                addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                print('addressuser3:',addressuser)
+            return JsonResponse({'addressuser':addressuser})
+        mtbuttons = user1.objects.filter(Category__Categorychoices='Milktea',user__id=admin_id).distinct('productname')
+        mtsizes = Sizes.objects.all()
+        Categoriess = Categories.objects.all()
+        Subcategoriess = Subcategories.objects.all()
+        frbuttons = user1.objects.filter(Category__Categorychoices='Frappe',user__id=admin_id).distinct('productname')
+        frsizes = Sizes.objects.all().exclude(Sizechoices__exact='Small')
+        psizes = PSizes.objects.all()
+        freezebuttons = user1.objects.filter(Category__Categorychoices='Freeze',user__id=admin_id).distinct('productname')
+        addonsbuttons = user1.objects.filter(Category__Categorychoices='Add-ons',user__id=admin_id).distinct('productname')
+        cookiesbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Cookies',user__id=admin_id).distinct('productname')
+        friesbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=admin_id).distinct('productname')
+        shawarmabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Shawarma',user__id=admin_id).distinct('productname')
+        bubwafbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Bubble Waffle',user__id=admin_id).distinct('productname')
+        pizzabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=admin_id).distinct('productname')
+        FreeFriespromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='FreeFries').distinct('productname')
+        i=0
+        pizzapricess={}
+        pizzapricesii = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=admin_id).values_list('Price',flat=True).order_by('-id')
+        
+        pizzaproductnameii=pizzapricesii.values_list('productname',flat=True)
+        
+        pizzasizeii=pizzapricesii.values_list('PSize__PSizechoices',flat=True)
+        
+        while i<pizzapricesii.count():
+            pizzapricess[pizzaproductnameii[i]+pizzasizeii[i]]=pizzapricesii[i]
+
+            i += 1
+        pizzapricesss=pizzapricess
+        
+        pizzaall=json.dumps(pizzapricesss)
+        snbuttons = user1.objects.filter(Category__Categorychoices='Snacks',user__id=admin_id)
+
+        if request.GET.get('payment'):
+            #arraypunchedii=json.dumps(request.GET.get('array'))
+            arraypunchedi=json.loads(request.GET.get('array'))
+            arraypunched=arraypunchedi
+            changeefor=int(json.loads(request.GET.get('changefor') or '0'))
+            print('arraypunched:',arraypunched)
+            objs = [Customer(
+                        Admin=admin_id,
+                        Customername=request.GET.get('fullname'),
+                        Province=request.GET.get('Province'),
+                        MunicipalityCity=request.GET.get('Municipality') or None,
+                        Barangay=request.GET.get('barangay') or None,
+                        StreetPurok=request.GET.get('street') or None,
+                        Housenumber=request.GET.get('houseno') or None,
+                        LandmarksnNotes=request.GET.get('notesmark') or None,
+                        DeliveryFee=request.GET.get('devfeename') or 0,
+                        contactnumber=request.GET.get('contactno'),
+                        Bill=request.GET.get('changefor') or 0,
+                        Change=(changeefor-int(request.GET.get('totalwithdevfeename') or 0)) or 0,
+                        productname=obj['productname'],
+                        Category=obj['Category'],
+                        Subcategory=obj['Subcategory'] or None,
+                        Size=obj['Size'] or None,
+                        PSize=obj['PSize'] or None,
+                        Addons=obj['Addonsname'] or None,
+                        QtyAddons=obj['Addonsqty'] or 0,
+                        Price=user1.objects.filter(user__id=admin_id, productname=obj['productname'], PSize__PSizechoices=obj['PSize'] or None, Size__Sizechoices=obj['Size'] or None).values('Price')[0]['Price'] or 0,
+                        Cost=user1.objects.filter(user__id=admin_id, productname=obj['productname'], PSize__PSizechoices=obj['PSize'] or None, Size__Sizechoices=obj['Size'] or None).values('Cost')[0]['Cost'] or 0,
+                        Subtotal = obj['Subtotal'],
+                        GSubtotal=request.GET.get('totalwithdevfeename') or 0,
+                        Qty=obj['Qty'],
+                        MOP=request.GET.get('payment'),
+                        ordertype='Online',
+                        Timetodeliver=request.GET.get('deliverytime') or None,
+                        ScheduleTime=request.GET.get('schedtimename') or None,
+                        gpslat = request.GET.get('gpslat') or None,
+                        gpslng = request.GET.get('gpslng') or None,
+                        gpsaccuracy = request.GET.get('gpsaccuracy') or None,
+                        pinnedlat = request.GET.get('latitude') or None,
+                        pinnedlng = request.GET.get('longitude') or None,
+
+                        tokens = request.GET.get('tokens') or None,
+                        DateTime=datetime.datetime.now(pytz.timezone('Asia/Singapore')),
+                )
+                for obj in arraypunched
+            ]
+            customerandorder = Customer.objects.bulk_create(objs)
+            arraypunchedcounter=len(customerandorder)
+
+            messages.success(request, "Your order has been submitted!")
+            onlineorder = Customer.objects.filter(Admin=admin_id).distinct('contactnumber')
+            submitted(request)
+            return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress')
+        else:
+            onlineorder = Customer.objects.none()
+        viewordersi={}
+        arrayone=[]
+        contactdistincteri = Customer.objects.filter(Admin=userr).distinct('contactnumber')
+        contactdistincter=contactdistincteri.values_list('contactnumber',flat=True)
+        i=0
+        for cndistinct in contactdistincter:
+            arrayseparatoriii=Customer.objects.filter(Admin=userr,contactnumber=cndistinct)
+            arrayseparator = list(arrayseparatoriii)
+            arrayone.append(arrayseparator)
+            viewordersi[contactdistincter[i]]=arrayone[i]
+            i=i+1
+        settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
+        #vieworders=json.dumps(viewordersi)
+        #print('vieworders: ',vieworders)
+        
+        return render(request, 'Onlineorder.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
