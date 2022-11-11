@@ -16,6 +16,8 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 <a href="https://icons8.com/icon/42457/shopping-bag"></a>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     
@@ -1307,7 +1309,17 @@ align-content:flex-start;
 
 }
 /* cards */
-.containeri {
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background-color: #333333;
+}
+
+.container {
   flex-grow: 1;
   max-width: 960px;
   margin-left: auto;
@@ -1316,7 +1328,7 @@ align-content:flex-start;
   padding-right: 20px;
 }
 
-.cardsi {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
@@ -1325,16 +1337,16 @@ align-content:flex-start;
   list-style: none;
 }
 
-.cardsi__item {
+.cards__item {
   height: 400px;
 }
 
-.cardi {
+.card {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #000000;
   
   &::before {
     content: "";
@@ -1361,7 +1373,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__frame {
+.card__frame {
   position: absolute;
   top: 0;
   left: 0;
@@ -1374,9 +1386,9 @@ align-content:flex-start;
   text-align: center;
 }
 
-.cardi__picture {
+.card__picture {
   margin-bottom: 12px;
-  
+  filter: invert(1);
   
   img {
     display: block;
@@ -1385,14 +1397,14 @@ align-content:flex-start;
   }
 }
 
-.cardi__title {
+.card__title {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.cardi__overlay {
+.card__overlay {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -1430,11 +1442,11 @@ align-content:flex-start;
     }
   }
   
-  .cardi:nth-child(1) & {
+  .card:nth-child(1) & {
     background-image: linear-gradient(45deg, #3503ad, #f7308c);
   }
   
-  .cardi:nth-child(2) & {
+  .card:nth-child(2) & {
     background-image: linear-gradient(45deg, #ccff00, #09afff);
   }
   
@@ -1443,7 +1455,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__content {
+.card__content {
   z-index: 1;
   padding: 20px;
   line-height: 1.4;
@@ -1453,7 +1465,7 @@ align-content:flex-start;
   pointer-events: none;
   transition: 0s;
   
-  .cardi__overlay:hover ~ & {
+  .card__overlay:hover ~ & {
     opacity: 1;
     visibility: visible;
     transition: 0.2s 0.3s;
@@ -1463,16 +1475,6 @@ align-content:flex-start;
     margin: 0;
     margin-bottom: 16px;
   }
-}
-.cardi {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 300px;
-  height:360px;
-  margin-top:20px;
-  margin-left:20px;
-  margin-right:20px;
-  text-align: center;
-  font-family: arial;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -5639,7 +5641,17 @@ align-content:flex-start;
 
 }
 /* cards */
-.containeri {
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background-color: #333333;
+}
+
+.container {
   flex-grow: 1;
   max-width: 960px;
   margin-left: auto;
@@ -5648,7 +5660,7 @@ align-content:flex-start;
   padding-right: 20px;
 }
 
-.cardsi {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
@@ -5657,16 +5669,16 @@ align-content:flex-start;
   list-style: none;
 }
 
-.cardsi__item {
+.cards__item {
   height: 400px;
 }
 
-.cardi {
+.card {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #000000;
   
   &::before {
     content: "";
@@ -5693,7 +5705,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__frame {
+.card__frame {
   position: absolute;
   top: 0;
   left: 0;
@@ -5706,9 +5718,9 @@ align-content:flex-start;
   text-align: center;
 }
 
-.cardi__picture {
+.card__picture {
   margin-bottom: 12px;
-
+  filter: invert(1);
   
   img {
     display: block;
@@ -5717,14 +5729,14 @@ align-content:flex-start;
   }
 }
 
-.cardi__title {
+.card__title {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.cardi__overlay {
+.card__overlay {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -5762,11 +5774,11 @@ align-content:flex-start;
     }
   }
   
-  .cardi:nth-child(1) & {
+  .card:nth-child(1) & {
     background-image: linear-gradient(45deg, #3503ad, #f7308c);
   }
   
-  .cardi:nth-child(2) & {
+  .card:nth-child(2) & {
     background-image: linear-gradient(45deg, #ccff00, #09afff);
   }
   
@@ -5775,7 +5787,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__content {
+.card__content {
   z-index: 1;
   padding: 20px;
   line-height: 1.4;
@@ -5785,7 +5797,7 @@ align-content:flex-start;
   pointer-events: none;
   transition: 0s;
   
-  .cardi__overlay:hover ~ & {
+  .card__overlay:hover ~ & {
     opacity: 1;
     visibility: visible;
     transition: 0.2s 0.3s;
@@ -5795,16 +5807,6 @@ align-content:flex-start;
     margin: 0;
     margin-bottom: 16px;
   }
-}
-.cardi {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 300px;
-  height:360px;
-  margin-top:20px;
-  margin-left:20px;
-  margin-right:20px;
-  text-align: center;
-  font-family: arial;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -9955,7 +9957,17 @@ align-content:flex-start;
 /* cards */
 
 
-.containeri {
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background-color: #333333;
+}
+
+.container {
   flex-grow: 1;
   max-width: 960px;
   margin-left: auto;
@@ -9964,7 +9976,7 @@ align-content:flex-start;
   padding-right: 20px;
 }
 
-.cardsi {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
@@ -9973,16 +9985,16 @@ align-content:flex-start;
   list-style: none;
 }
 
-.cardsi__item {
+.cards__item {
   height: 400px;
 }
 
-.cardi {
+.card {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #000000;
   
   &::before {
     content: "";
@@ -10009,7 +10021,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__frame {
+.card__frame {
   position: absolute;
   top: 0;
   left: 0;
@@ -10022,9 +10034,9 @@ align-content:flex-start;
   text-align: center;
 }
 
-.cardi__picture {
+.card__picture {
   margin-bottom: 12px;
-
+  filter: invert(1);
   
   img {
     display: block;
@@ -10033,14 +10045,14 @@ align-content:flex-start;
   }
 }
 
-.cardi__title {
+.card__title {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.cardi__overlay {
+.card__overlay {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -10078,11 +10090,11 @@ align-content:flex-start;
     }
   }
   
-  .cardi:nth-child(1) & {
+  .card:nth-child(1) & {
     background-image: linear-gradient(45deg, #3503ad, #f7308c);
   }
   
-  .cardi:nth-child(2) & {
+  .card:nth-child(2) & {
     background-image: linear-gradient(45deg, #ccff00, #09afff);
   }
   
@@ -10091,7 +10103,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__content {
+.card__content {
   z-index: 1;
   padding: 20px;
   line-height: 1.4;
@@ -10101,7 +10113,7 @@ align-content:flex-start;
   pointer-events: none;
   transition: 0s;
   
-  .cardi__overlay:hover ~ & {
+  .card__overlay:hover ~ & {
     opacity: 1;
     visibility: visible;
     transition: 0.2s 0.3s;
@@ -10111,16 +10123,6 @@ align-content:flex-start;
     margin: 0;
     margin-bottom: 16px;
   }
-}
-.cardi {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 300px;
-  height:360px;
-  margin-top:20px;
-  margin-left:20px;
-  margin-right:20px;
-  text-align: center;
-  font-family: arial;
 }
 .myDIV{
  width: auto;
@@ -14268,7 +14270,17 @@ align-content:flex-start;
 
 }
 /* cards */
-.containeri {
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background-color: #333333;
+}
+
+.container {
   flex-grow: 1;
   max-width: 960px;
   margin-left: auto;
@@ -14277,7 +14289,7 @@ align-content:flex-start;
   padding-right: 20px;
 }
 
-.cardsi {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
@@ -14286,16 +14298,16 @@ align-content:flex-start;
   list-style: none;
 }
 
-.cardsi__item {
+.cards__item {
   height: 400px;
 }
 
-.cardi {
+.card {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #000000;
   
   &::before {
     content: "";
@@ -14322,7 +14334,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__frame {
+.card__frame {
   position: absolute;
   top: 0;
   left: 0;
@@ -14335,9 +14347,9 @@ align-content:flex-start;
   text-align: center;
 }
 
-.cardi__picture {
+.card__picture {
   margin-bottom: 12px;
- 
+  filter: invert(1);
   
   img {
     display: block;
@@ -14346,14 +14358,14 @@ align-content:flex-start;
   }
 }
 
-.cardi__title {
+.card__title {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.cardi__overlay {
+.card__overlay {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -14391,11 +14403,11 @@ align-content:flex-start;
     }
   }
   
-  .cardi:nth-child(1) & {
+  .card:nth-child(1) & {
     background-image: linear-gradient(45deg, #3503ad, #f7308c);
   }
   
-  .cardi:nth-child(2) & {
+  .card:nth-child(2) & {
     background-image: linear-gradient(45deg, #ccff00, #09afff);
   }
   
@@ -14404,7 +14416,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__content {
+.card__content {
   z-index: 1;
   padding: 20px;
   line-height: 1.4;
@@ -14414,7 +14426,7 @@ align-content:flex-start;
   pointer-events: none;
   transition: 0s;
   
-  .cardi__overlay:hover ~ & {
+  .card__overlay:hover ~ & {
     opacity: 1;
     visibility: visible;
     transition: 0.2s 0.3s;
@@ -14424,16 +14436,6 @@ align-content:flex-start;
     margin: 0;
     margin-bottom: 16px;
   }
-}
-.cardi {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 300px;
-  height:360px;
-  margin-top:20px;
-  margin-left:20px;
-  margin-right:20px;
-  text-align: center;
-  font-family: arial;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -18728,7 +18730,17 @@ align-content:flex-start;
 
 }
 /* cards */
-.containeri {
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background-color: #333333;
+}
+
+.container {
   flex-grow: 1;
   max-width: 960px;
   margin-left: auto;
@@ -18737,7 +18749,7 @@ align-content:flex-start;
   padding-right: 20px;
 }
 
-.cardsi {
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px;
@@ -18746,16 +18758,16 @@ align-content:flex-start;
   list-style: none;
 }
 
-.cardsi__item {
+.cards__item {
   height: 400px;
 }
 
-.cardi {
+.card {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #000000;
   
   &::before {
     content: "";
@@ -18782,7 +18794,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__frame {
+.card__frame {
   position: absolute;
   top: 0;
   left: 0;
@@ -18795,9 +18807,9 @@ align-content:flex-start;
   text-align: center;
 }
 
-.cardi__picture {
+.card__picture {
   margin-bottom: 12px;
-
+  filter: invert(1);
   
   img {
     display: block;
@@ -18806,14 +18818,14 @@ align-content:flex-start;
   }
 }
 
-.cardi__title {
+.card__title {
   margin: 0;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.cardi__overlay {
+.card__overlay {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -18851,11 +18863,11 @@ align-content:flex-start;
     }
   }
   
-  .cardi:nth-child(1) & {
+  .card:nth-child(1) & {
     background-image: linear-gradient(45deg, #3503ad, #f7308c);
   }
   
-  .cardi:nth-child(2) & {
+  .card:nth-child(2) & {
     background-image: linear-gradient(45deg, #ccff00, #09afff);
   }
   
@@ -18864,7 +18876,7 @@ align-content:flex-start;
   }
 }
 
-.cardi__content {
+.card__content {
   z-index: 1;
   padding: 20px;
   line-height: 1.4;
@@ -18874,7 +18886,7 @@ align-content:flex-start;
   pointer-events: none;
   transition: 0s;
   
-  .cardi__overlay:hover ~ & {
+  .card__overlay:hover ~ & {
     opacity: 1;
     visibility: visible;
     transition: 0.2s 0.3s;
@@ -18884,16 +18896,6 @@ align-content:flex-start;
     margin: 0;
     margin-bottom: 16px;
   }
-}
-.cardi {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 300px;
-  height:360px;
-  margin-top:20px;
-  margin-left:20px;
-  margin-right:20px;
-  text-align: center;
-  font-family: arial;
 }
 .card {
 
@@ -22611,24 +22613,47 @@ fullprom.innerHTML = "₱"+promp+".00";
 <h5 id="freefriesid"></h5>
 </div>
 
-<div class="containeri">
-  <ul class="cardsi">
-    <li class="cardi cardsi__item">
-      <div class="cardi__frame">
-        <div class="cardi__picture">
-
-    <img src="https://image.flaticon.com/icons/svg/478/478543.svg" alt="" width="120">
-
+<div class="container">
+  <ul class="cards">
+    <li class="card cards__item">
+      <div class="card__frame">
+        <div class="card__picture">
+          <img src="https://image.flaticon.com/icons/svg/1496/1496034.svg" alt="" width="120">
         </div>
-        <h2 class="cardi__title">Darkchoco</h2>
+        <h2 class="card__title">Design</h2>
       </div>
-      <div class="cardi__overlay"></div>
-      <div class="cardi__content">
-        <h2>Darkchoco</h2>
-        <p>asdasdasd</p>
+      <div class="card__overlay"></div>
+      <div class="card__content">
+        <h2>Design</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque ipsum veritatis id quia cupiditate sed architecto aliquam nostrum unde nam minima voluptas dicta, beatae sint reprehenderit sit ducimus officiis ratione?</p>
       </div>
     </li>
-
+    <li class="card cards__item">
+      <div class="card__frame">
+        <div class="card__picture">
+          <img src="https://image.flaticon.com/icons/svg/1336/1336494.svg" alt="" width="120">
+        </div>
+        <h2 class="card__title">Code</h2>
+      </div>
+      <div class="card__overlay"></div>
+      <div class="card__content">
+        <h2>Code</h2>
+        <p>Dignissimos ipsam culpa vitae vel hic harum omnis doloremque debitis laudantium neque quos iure voluptates quidem ratione esse modi, rerum illum facere eius accusantium dolorem incidunt beatae officiis voluptatem? Nostrum.</p>
+      </div>
+    </li>
+    <li class="card cards__item">
+      <div class="card__frame">
+        <div class="card__picture">
+          <img src="https://image.flaticon.com/icons/svg/478/478543.svg" alt="" width="120">
+        </div>
+        <h2 class="card__title">Launch</h2>
+      </div>
+      <div class="card__overlay"></div>
+      <div class="card__content">
+        <h2>Launch</h2>
+        <p>Asperiores, harum dignissimos at neque quaerat, excepturi, ipsa in consectetur blanditiis tempore error! Libero fuga possimus qui saepe temporibus praesentium, ut ratione facere rem distinctio, beatae omnis officiis illum animi.</p>
+      </div>
+    </li>
   </ul>
 </div>
 
