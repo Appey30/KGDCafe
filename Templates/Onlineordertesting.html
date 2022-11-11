@@ -23309,7 +23309,7 @@ longitude.value = position.lng;
     <div class="showdescriptionhead">
     <span onclick="showdescriptioncontentclose()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
      <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameid" ></h1>
+    <h1 id="showdescriptionproductnameid"></h1>
      </div>
     </div>
     <div class="showdescriptionbody">
@@ -25085,10 +25085,10 @@ var showdescriptiondivbgid=document.getElementById('showdescriptiondivbgid');
 showdescriptiondivbgid.style.display="block";
 
 var showdescriptionproductnameid=document.getElementById('showdescriptionproductnameid');
-showdescriptionproductnameid.innerHTML=productname;
+showdescriptionproductnameid.innerHTML="<h1>"+productname+"</h1>";
 
 var showproductdescriptionid=document.getElementById('showproductdescriptionid');
-showdescriptionproductnameid.innerHTML=productdescription;
+showproductdescriptionid.innerHTML="<h3>"+productdescription+"</h3>";
 };
 
 function showdescriptioncontentclose(){
