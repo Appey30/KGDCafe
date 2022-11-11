@@ -16937,6 +16937,119 @@ margin-top:10px;
    transition:box-shadow .2s;
 
 }
+
+
+.showdescriptiondivbg{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:1;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+}
+.showdescriptiondiv{
+position:relative;
+width:90%;
+height:auto;
+background-color:white;
+transition-delay: 2s;
+border-radius:15px;
+}
+.showdescriptionhead {
+    position:relative;
+    top:-20px;
+    left:0px;
+  width:100%;
+  height:50px;
+  background-color: #FFBF00;
+  color: white;
+border-radius:15px 15px 0px 0px;
+
+}
+
+.showdescriptionhead h1{
+position:relative;
+top:5px;
+margin-left:20px;
+text-align:center;
+
+}
+.atbmodalshowdescriptioncontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+float:right;
+margin-top:10px;
+margin-right:10px;
+}
+
+.atbmodalshowdescriptioncontentclose:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.showdescriptiontitlediv{
+margin-left:auto;
+margin-right:auto;
+width:355px;
+background:;
+}
+.showdescriptiontitle{
+font-family:sans-serif;
+position:relative;
+
+bottom:0px;
+color:black;
+font-weight:bold;
+}
+.showdescriptionbody {
+position:relative;
+width:100%;
+height:auto;
+padding-left:20px;
+
+padding-bottom:20px;
+padding-right:20px;
+background-color:;
+}
+.showdescriptionbody h3{
+position:relative;
+top:0px;
+color:black;
+margin-left:20px;
+text-align:center;
+}
+.showdescriptionbody h5{
+position:relative;
+top:0px;
+color:black;
+margin-left:20px;
+text-align:center;
+}
+.showdescriptionfoot {
+position:relative;
+bottom:;
+width:100%;
+height:auto;
+  padding-bottom: 20px;
+  background-color: white;
+  color: black;
+  border-top:2px solid rgba(192,192,192, 0.5);
+  border-bottom:2px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+  text-align:center;
+}
+
+
+
 .showgpsdivbg{
 display:none;
 position:fixed;
@@ -22782,6 +22895,7 @@ longitude.value = position.lng;
 </div>
 
 
+
 <div id="showgpsdivbgid" class="showgpsdivbg">
 <div id="showgpsdivid" class="showgpsdiv">
     <div class="showgpshead">
@@ -22802,7 +22916,46 @@ longitude.value = position.lng;
 </div>
 </div>
 
+<div id="showdescriptiondivbgid" class="showdescriptiondivbg">
+<div id="showdescriptiondivid" class="showdescriptiondiv">
+    <div class="showdescriptionhead">
+    <span onclick="showdescriptioncontentclose()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
+     <div class="showdescriptiontitlediv">
+    <h1 id="showdescriptionproductnameid" ></h1>
+     </div>
+    </div>
+    <div class="showdescriptionbody">
+    <h3 id="showproductdescriptionid"></h3>
+
+    </div>
+    <div class="showdescriptionfoot">
+ </div>
+</div>
+</div>
 <script>
+function showdescriptionMT(productname, productdescription){
+var = showdescriptiondivbgid=document.getElementById('showdescriptiondivbgid');
+showdescriptiondivbgid.style.display="block";
+
+var = showdescriptionproductnameid=document.getElementById('showdescriptionproductnameid');
+showdescriptionproductnameid.innerHTML=productname;
+
+var = showproductdescriptionid=document.getElementById('showproductdescriptionid');
+showdescriptionproductnameid.innerHTML=productdescription;
+}
+function showdescriptioncontentclose(){
+var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
+
+
+var atbmodalshowdescriptioncontent = document.getElementsByClassName("showdescriptiondiv");
+atbmodalshowdescriptioncontent[0].style.animation="fade-bottom-out 0.5s";
+setTimeout(closeshowdescription, 500);
+
+}
+function closeshowdescription(){
+var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
+closebgwithcontentshowdescription[0].style.display = "none";
+}
 
 function gpsallow(){
 
@@ -24558,6 +24711,7 @@ $(document).ready(function(){
     }
   });
 });
+
 </script>
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
@@ -24577,7 +24731,7 @@ $(document).ready(function(){
     {% endif %}
     -->
     {% if milkteab.productname == milkteab.productname and "MT.png" %}
-    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="{% static milkteab.productname %}MT.png" style="width:100%">
+    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="{% static milkteab.productname %}MT.png" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
     {% else %}
     <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%">
     {% endif %}
@@ -24608,7 +24762,6 @@ $(document).ready(function(){
 </div>
 
 <script>
-
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
