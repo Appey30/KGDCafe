@@ -24576,10 +24576,13 @@ reveals[i].classList.add("activee")
 }
 $(document).ready(function(){
   $(".card").hover(function(){
-    $(this).css("background-color", "yellow");
+
     alert($(this).attr('id'))
+    var gethideid="hideid"+$(this).attr('id')
+    $("#"+gethideid).css("display", "block");
     }, function(){
-    $(this).css("background-color", "pink");
+    var gethideidtwo="hideid"+$(this).attr('id')
+    $("#"+gethideidtwo).css("display", "none");
   });
 });
 </script>
@@ -24592,7 +24595,7 @@ $(document).ready(function(){
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
 
-<div class="hide">See Description</div>
+<div id="hideid{{milkteab.productname}}" class="hide">See Description</div>
 
     <!--{% if milkteab.Productimg %}
     <img src="{{milkteab.Productimg.url}}" style="width:100%">
