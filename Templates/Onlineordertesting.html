@@ -1320,15 +1320,13 @@ align-content:flex-start;
 .myDIV{
  width: auto;
 height:auto;
+display:none;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
-.myDIV:hover + .hide {
-  display: block;
 
-}
 .myDIV i {
 font-size:24px
 }
@@ -1343,6 +1341,7 @@ border:0px transparent;
 }
 .hide{
 display:none;
+
 }
 .card:hover{
 /*box-shadow: 0px 0px 0px #a5a5a5,
@@ -5485,15 +5484,13 @@ align-content:flex-start;
 .myDIV{
  width: auto;
 height:auto;
+display:none;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
-.myDIV:hover + .hide {
-  display: block;
 
-}
 .myDIV i {
 font-size:24px
 }
@@ -9632,15 +9629,13 @@ align-content:flex-start;
 .myDIV{
  width: auto;
 height:auto;
+display:none;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
-.myDIV:hover + .hide {
-  display: block;
 
-}
 .myDIV i {
 font-size:24px
 }
@@ -13787,16 +13782,14 @@ align-content:flex-start;
 }
 .myDIV{
  width: auto;
+ display:none;
 height:auto;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
-.myDIV:hover + .hide {
-  display: block;
 
-}
 .myDIV i {
 font-size:15px
 }
@@ -18086,16 +18079,14 @@ position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
+display:none;
 }
 
 .myDIV i {
 font-size:15px
 
 }
-.myDIV:hover + .hide {
-  display: block;
 
-}
 .myDIV i:hover {
 font-size:21px;
 transition:font-size 0.5s;
@@ -24577,7 +24568,6 @@ reveals[i].classList.add("activee")
 $(document).ready(function(){
   $(".card").hover(function(){
 
-    alert($(this).attr('id'))
     var gethideid="hideid"+$(this).attr('id')
     $("#"+gethideid).css("display", "block");
     }, function(){
@@ -24591,11 +24581,11 @@ $(document).ready(function(){
 {% for milkteab in mtbuttons %}
 
 <div  id="{{milkteab.productname}}" class="card">
-<div class="myDIV">
+<div id="hideid{{milkteab.productname}}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
 
-<div id="hideid{{milkteab.productname}}" class="hide">See Description</div>
+<div class="hide">See Description</div>
 
     <!--{% if milkteab.Productimg %}
     <img src="{{milkteab.Productimg.url}}" style="width:100%">
