@@ -24551,8 +24551,11 @@ $(document).ready(function(){
     var gethideid="hideid"+$(this).attr('id')
     $("#"+gethideid).css("display", "block");
     }, function(){
+    if(window.matchMedia("(max-width: 767px)").matches){
+    }else{
     var gethideidtwo="hideid"+$(this).attr('id')
     $("#"+gethideidtwo).css("display", "none");
+    }
   });
 });
 </script>
