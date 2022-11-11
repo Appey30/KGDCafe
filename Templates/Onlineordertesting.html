@@ -24577,6 +24577,7 @@ reveals[i].classList.add("activee")
 $(document).ready(function(){
   $(".card").hover(function(){
     $(this).css("background-color", "yellow");
+    alert(this.attr('id'))
     }, function(){
     $(this).css("background-color", "pink");
   });
