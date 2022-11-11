@@ -23321,28 +23321,7 @@ longitude.value = position.lng;
 </div>
 </div>
 <script>
-function showdescriptionMT(productname, productdescription){
-var = showdescriptiondivbgid=document.getElementById('showdescriptiondivbgid');
-showdescriptiondivbgid.style.display="block";
 
-var = showdescriptionproductnameid=document.getElementById('showdescriptionproductnameid');
-showdescriptionproductnameid.innerHTML=productname;
-
-var = showproductdescriptionid=document.getElementById('showproductdescriptionid');
-showdescriptionproductnameid.innerHTML=productdescription;
-};
-
-function showdescriptioncontentclose(){
-var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
-var atbmodalshowdescriptioncontent = document.getElementsByClassName("showdescriptiondiv");
-atbmodalshowdescriptioncontent[0].style.animation="fade-bottom-out 0.5s";
-setTimeout(closeshowdescription, 500);
-}
-
-function closeshowdescription(){
-var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
-closebgwithcontentshowdescription[0].style.display = "none";
-}
 
 
 
@@ -25101,7 +25080,28 @@ $(document).ready(function(){
     }
   });
 });
+function showdescriptionMT(productname, productdescription){
+var = showdescriptiondivbgid=document.getElementById('showdescriptiondivbgid');
+showdescriptiondivbgid.style.display="block";
 
+var = showdescriptionproductnameid=document.getElementById('showdescriptionproductnameid');
+showdescriptionproductnameid.innerHTML=productname;
+
+var = showproductdescriptionid=document.getElementById('showproductdescriptionid');
+showdescriptionproductnameid.innerHTML=productdescription;
+};
+
+function showdescriptioncontentclose(){
+var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
+var atbmodalshowdescriptioncontent = document.getElementsByClassName("showdescriptiondiv");
+atbmodalshowdescriptioncontent[0].style.animation="fade-bottom-out 0.5s";
+setTimeout(closeshowdescription, 500);
+}
+
+function closeshowdescription(){
+var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
+closebgwithcontentshowdescription[0].style.display = "none";
+}
 </script>
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
