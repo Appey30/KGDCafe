@@ -18591,7 +18591,7 @@ align-content:flex-start;
 }
 /* cards */
 .card {
-
+  
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 150px;
   height:180px;
@@ -25137,15 +25137,14 @@ showproductdescriptionid.innerHTML="<h3>"+productdescription+"</h3>";
 };
 
 function showdescriptioncontentclose(){
-var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
-var atbmodalshowdescriptioncontent = document.getElementsByClassName("showdescriptiondiv");
-atbmodalshowdescriptioncontent[0].style.animation="fade-bottom-out 0.5s";
+var atbmodalshowdescriptioncontent = document.getElementById("showdescriptiondivid");
+atbmodalshowdescriptioncontent.style.animation="fade-bottom-out 0.5s";
 setTimeout(closeshowdescription, 500);
 }
 
 function closeshowdescription(){
-var closebgwithcontentshowdescription = document.getElementsByClassName("showdescriptiondivbg");
-closebgwithcontentshowdescription[0].style.display = "none";
+var closebgwithcontentshowdescription = document.getElementById("showdescriptiondivbgid");
+closebgwithcontentshowdescription.style.display = "none";
 }
 </script>
 <div class="wraptabcontentprod">
@@ -25165,12 +25164,12 @@ closebgwithcontentshowdescription[0].style.display = "none";
     <img src="#" style="width:100%">
     {% endif %}
 
-    onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')"
+
     -->
     {% if milkteab.productname == milkteab.productname and "MT.png" %}
     <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="{% static milkteab.productname %}MT.png" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
     {% else %}
-    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%" >
+    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
     {% endif %}
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
   <div id="h3divconfigidCappuccino" class="h3divconfig"><h3>{{milkteab.productname}}</h3></div>
