@@ -216,6 +216,8 @@ align-items:center;
 position:relative;
 width:1000px;
 height:auto;
+margin-left:auto;
+margin-right:auto;
 background-color:white;
 transition-delay: 2s;
 
@@ -4486,6 +4488,8 @@ align-items:center;
 position:relative;
 width:900px;
 height:auto;
+margin-left:auto;
+margin-right:auto;
 background-color:white;
 transition-delay: 2s;
 
@@ -8730,6 +8734,8 @@ align-items:center;
 position:relative;
 width:700px;
 height:auto;
+margin-left:auto;
+margin-right:auto;
 background-color:white;
 transition-delay: 2s;
 
@@ -12988,6 +12994,8 @@ align-items:center;
 position:relative;
 width:90%;
 height:auto;
+margin-left:auto;
+margin-right:auto;
 background-color:white;
 transition-delay: 2s;
 
@@ -17381,6 +17389,8 @@ align-items:center;
 position:relative;
 width:90%;
 height:auto;
+margin-left:auto;
+margin-right:auto;
 background-color:white;
 transition-delay: 2s;
 border-radius:15px;
@@ -25127,7 +25137,10 @@ $(document).ready(function(){
 });
 function showdescriptionMT(productname, productdescription){
 var showdescriptiondivbgid=document.getElementById('showdescriptiondivbgid');
-showdescriptiondivbgid.style.display="block";
+showdescriptiondivbgid.style.display="flex";
+
+var atbmodalshowdescriptioncontent = document.getElementById("showdescriptiondivid");
+atbmodalshowdescriptioncontent.style.animation="fade-bottom-in 0.5s";
 
 var showdescriptionproductnameid=document.getElementById('showdescriptionproductnameid');
 showdescriptionproductnameid.innerHTML=productname;
@@ -25139,7 +25152,7 @@ showproductdescriptionid.innerHTML="<h3>"+productdescription+"</h3>";
 function showdescriptioncontentclose(){
 var atbmodalshowdescriptioncontent = document.getElementById("showdescriptiondivid");
 atbmodalshowdescriptioncontent.style.animation="fade-bottom-out 0.5s";
-alert("triggered showdescriptioncontentclose")
+
 setTimeout(closeshowdescription, 500);
 };
 
