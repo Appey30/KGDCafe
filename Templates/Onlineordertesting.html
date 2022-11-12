@@ -25164,11 +25164,13 @@ closebgwithcontentshowdescription[0].style.display = "none";
     {% else %}
     <img src="#" style="width:100%">
     {% endif %}
+
+    onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')"
     -->
     {% if milkteab.productname == milkteab.productname and "MT.png" %}
     <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="{% static milkteab.productname %}MT.png" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
     {% else %}
-    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
+    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%" >
     {% endif %}
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
   <div id="h3divconfigidCappuccino" class="h3divconfig"><h3>{{milkteab.productname}}</h3></div>
