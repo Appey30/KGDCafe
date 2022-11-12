@@ -7,8 +7,7 @@ from .models import timesheet, Acceptorder, Rejectorder,Customer, acknowledgedst
 from .forms import editform, punched,punchedso, stocksandexpenses,stockorderform
 from django.urls import reverse
 import copy, pickle
-from django.contrib import admin
-from django.contrib.sites.models import Site
+
 from django.http import JsonResponse
 from django.db.models import Sum, F
 import datetime
@@ -32,7 +31,6 @@ from django.contrib.auth.hashers import make_password
 from django.template import *
 
 
-# Create your views here.
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
@@ -4897,7 +4895,7 @@ def Onlineordertestingsystem(request, admin_id):
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
-        admin.site.unregister(Site)
+
         if request.user.is_anonymous:
             promoidentifier=''
         #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
