@@ -13005,14 +13005,7 @@ border-radius:15px 15px 0px 0px;
 
 }
 
-.showdescriptionhead h1{
-position:relative;
-top:5px;
-margin-left:20px;
-text-align:center;
-font-size:25px;
 
-}
 .atbmodalshowdescriptioncontentclose {
   color: #aaa;
   z-index:1;
@@ -13035,6 +13028,14 @@ width:600px;
 height:auto;
 background:;
 }
+.showdescriptiontitlediv h1{
+position:relative;
+top:5px;
+margin-left:20px;
+text-align:center;
+font-size:25px;
+}
+
 .showdescriptionbody {
 position:relative;
 width:100%;
@@ -17425,6 +17426,14 @@ width:355px;
 height:auto;
 background:;
 }
+.showdescriptiontitlediv h1{
+position:relative;
+top:5px;
+margin-left:20px;
+text-align:center;
+font-size:25px;
+}
+
 .showdescriptiontitle{
 font-family:sans-serif;
 position:relative;
@@ -25121,7 +25130,7 @@ var showdescriptiondivbgid=document.getElementById('showdescriptiondivbgid');
 showdescriptiondivbgid.style.display="block";
 
 var showdescriptionproductnameid=document.getElementById('showdescriptionproductnameid');
-showdescriptionproductnameid.innerHTML="<h1>"+productname+"</h1>";
+showdescriptionproductnameid.innerHTML=productname;
 
 var showproductdescriptionid=document.getElementById('showproductdescriptionid');
 showproductdescriptionid.innerHTML="<h3>"+productdescription+"</h3>";
