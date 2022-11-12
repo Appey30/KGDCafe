@@ -17,7 +17,7 @@ from django.utils.timezone import localtime
 from django.contrib.auth.decorators import login_required
 #from webpos import settings
 from collections import namedtuple
-from django.contrib.sites.models import Site
+
 import json
 import requests
 from django.core import serializers
