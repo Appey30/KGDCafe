@@ -184,7 +184,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineordertesting/4'
 
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
-        'METHOD': 'js_sdk',
+        'METHOD': 'oauth2',
         'SCOPE': ['public_profile, email'],
         'AUTH_PARAMS': {'auth_type': 'reauthorize'},
         'INIT_PARAMS': {'cookie': True},
