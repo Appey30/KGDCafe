@@ -26660,6 +26660,9 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Frappe">
 {% for frappeb in frbuttons %}
 <div class="card">
+<div id="hideid{{frappeb.productname|cut:" " }}" class="myDIV">
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+</div>
 <!--
     {% if frappeb.Productimg %}
     <img src="{{frappeb.Productimg.url}}"  style="width:100%">
@@ -27266,7 +27269,8 @@ totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Freeze">
 {% for freezeb in freezebuttons %}
 <div class="card">
-<div class="myDIV">
+
+<div id="hideid{{freezeb.productname|cut:" " }}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if freezeb.productname == freezeb.productname and "FRZ.png" %}
@@ -27489,7 +27493,7 @@ totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 {% for cookiesb in cookiesbuttons %}
 <div class="card">
-<div class="myDIV">
+<div id="hideid{{cookiesb.productname|cut:" " }}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if cookiesb.productname == cookiesb.productname %}
@@ -27711,7 +27715,7 @@ totalcookies.innerHTML = "Total: ₱"+totalcookiess+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Shawarma">
 {% for shawarmab in shawarmabuttons %}
 <div class="card">
-<div class="myDIV">
+<div id="hideid{{shawarmab.productname|cut:" " }}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if shawarmab.productname == shawarmab.productname %}
@@ -27935,7 +27939,7 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
 {% if friesb.productname == 'Free Fries' %}
 {% else %}
 <div class="card">
-<div class="myDIV">
+<div id="hideid{{friesb.productname|cut:" " }}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if friesb.productname == friesb.productname %}
@@ -28165,7 +28169,7 @@ totalfries.innerHTML = "Total: ₱"+totalfries+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Bubwaf">
 {% for bubwafb in bubwafbuttons %}
 <div class="card">
-<div class="myDIV">
+<div id="hideid{{bubwafb.productname|cut:" " }}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if bubwafb.productname == bubwafb.productname %}
@@ -28404,7 +28408,7 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Pizza">
 {% for pizzab in pizzabuttons %}
 <div class="card">
-<div class="myDIV">
+<div id="hideid{{pizzab.productname|cut:" " }}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if pizzab.productname == pizzab.productname %}
