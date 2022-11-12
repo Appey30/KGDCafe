@@ -197,112 +197,6 @@ margin-top:10px;
    transition:box-shadow .2s;
 
 }
-.showdescriptiondivbg{
-display:none;
-position:fixed;
-top:0px;
-left:0px;
-z-index:1;
-width:100%;
-height:100%;
-background-color:rgba(0,0,0,0.8);
-flex-direction:row;
-flex-wrap:nowrap;
-align-content:normal;
-justify-content:center;
-align-items:center;
-}
-.showdescriptiondiv{
-position:relative;
-width:1000px;
-height:auto;
-margin-left:auto;
-margin-right:auto;
-background-color:white;
-transition-delay: 2s;
-
-border-radius:15px;
-}
-.showdescriptionhead {
-    position:relative;
-    top:-20px;
-    left:0px;
-  width:100%;
-  height:50px;
-  background-color: #FFBF00;
-  color: white;
-border-radius:15px 15px 0px 0px;
-
-}
-
-.showdescriptionhead h1{
-position:relative;
-top:5px;
-margin-left:20px;
-text-align:center;
-
-}
-.atbmodalshowdescriptioncontentclose {
-  color: #aaa;
-  z-index:10;
-  font-size: 28px;
-  font-weight: bold;
-float:right;
-margin-top:10px;
-margin-right:10px;
-}
-
-.atbmodalshowdescriptioncontentclose:hover {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.showdescriptiontitlediv{
-margin-left:auto;
-margin-right:auto;
-width:700px;
-height:auto;
-background:;
-}
-.showdescriptionbody {
-position:relative;
-width:100%;
-height:auto;
-padding-left:20px;
-
-padding-bottom:20px;
-padding-right:20px;
-}
-.showdescriptionbody p{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-margin-right:20px;
-text-align:center;
-}
-.showdescriptionbody h5{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-text-align:center;
-}
-.showdescriptionfoot {
-
-position:relative;
-bottom:-20px;
-width:100%;
-height:auto;
-  padding-bottom: 20px;
-  background-color: white;
-  color: black;
-  border-top:2px solid rgba(192,192,192, 0.5);
-  border-bottom:2px solid rgba(192,192,192, 0.5);
-  border-radius:15px;
-    text-align:center;
-}
-
 .showgpsdivbg{
 display:none;
 position:fixed;
@@ -1424,19 +1318,24 @@ align-content:flex-start;
   font-family: arial;
 }
 .myDIV{
-z-index:10;
  width: auto;
 height:auto;
-display:none;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
+.myDIV:hover + .hide {
+  display: block;
 
+}
 .myDIV i {
-font-size:24px;
-color: rgba(0,0,0,0.3);
+font-size:24px
+}
+.myDIV i:hover {
+font-size:30px;
+transition:font-size 0.5s;
+color:rgba(0,0,0,0.5);
 }
 .infobutton{
 background-color:rgba(0,0,0,0);
@@ -1444,7 +1343,6 @@ border:0px transparent;
 }
 .hide{
 display:none;
-
 }
 .card:hover{
 /*box-shadow: 0px 0px 0px #a5a5a5,
@@ -4470,112 +4368,6 @@ margin-top:10px;
    transition:box-shadow .2s;
 
 }
-.showdescriptiondivbg{
-display:none;
-position:fixed;
-top:0px;
-left:0px;
-z-index:1;
-width:100%;
-height:100%;
-background-color:rgba(0,0,0,0.8);
-flex-direction:row;
-flex-wrap:nowrap;
-align-content:normal;
-justify-content:center;
-align-items:center;
-}
-.showdescriptiondiv{
-position:relative;
-width:900px;
-height:auto;
-margin-left:auto;
-margin-right:auto;
-background-color:white;
-transition-delay: 2s;
-
-border-radius:15px;
-}
-.showdescriptionhead {
-    position:relative;
-    top:-20px;
-    left:0px;
-  width:100%;
-  height:50px;
-  background-color: #FFBF00;
-  color: white;
-border-radius:15px 15px 0px 0px;
-
-}
-
-.showdescriptionhead h1{
-position:relative;
-top:5px;
-margin-left:20px;
-text-align:center;
-
-}
-.atbmodalshowdescriptioncontentclose {
-  color: #aaa;
-  z-index:10;
-  font-size: 28px;
-  font-weight: bold;
-float:right;
-margin-top:10px;
-margin-right:10px;
-}
-
-.atbmodalshowdescriptioncontentclose:hover {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.showdescriptiontitlediv{
-margin-left:auto;
-margin-right:auto;
-width:700px;
-height:auto;
-background:;
-}
-.showdescriptionbody {
-position:relative;
-width:100%;
-height:auto;
-padding-left:20px;
-
-padding-bottom:20px;
-padding-right:20px;
-}
-.showdescriptionbody p{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-margin-right:20px;
-text-align:center;
-}
-.showdescriptionbody h5{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-text-align:center;
-}
-.showdescriptionfoot {
-
-position:relative;
-bottom:-20px;
-width:100%;
-height:auto;
-  padding-bottom: 20px;
-  background-color: white;
-  color: black;
-  border-top:2px solid rgba(192,192,192, 0.5);
-  border-bottom:2px solid rgba(192,192,192, 0.5);
-  border-radius:15px;
-    text-align:center;
-}
-
 .showgpsdivbg{
 display:none;
 position:fixed;
@@ -5691,19 +5483,24 @@ align-content:flex-start;
   font-family: arial;
 }
 .myDIV{
-z-index:10;
  width: auto;
 height:auto;
-display:none;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
+.myDIV:hover + .hide {
+  display: block;
 
+}
 .myDIV i {
-font-size:24px;
-color: rgba(0,0,0,0.3);
+font-size:24px
+}
+.myDIV i:hover {
+font-size:30px;
+transition:font-size 0.5s;
+color:rgba(0,0,0,0.5);
 }
 .infobutton{
 background-color:rgba(0,0,0,0);
@@ -8717,116 +8514,6 @@ margin-top:10px;
    transition:box-shadow .2s;
 
 }
-.showdescriptiondivbg{
-display:none;
-position:fixed;
-top:0px;
-left:0px;
-z-index:1;
-width:100%;
-height:100%;
-background-color:rgba(0,0,0,0.8);
-flex-direction:row;
-flex-wrap:nowrap;
-align-content:normal;
-justify-content:center;
-align-items:center;
-}
-.showdescriptiondiv{
-position:relative;
-width:700px;
-height:auto;
-margin-left:auto;
-margin-right:auto;
-background-color:white;
-transition-delay: 2s;
-
-border-radius:15px;
-}
-.showdescriptionhead {
-    position:relative;
-    top:-20px;
-    left:0px;
-  width:100%;
-  height:50px;
-  background-color: #FFBF00;
-  color: white;
-border-radius:15px 15px 0px 0px;
-
-}
-
-.showdescriptionhead h1{
-position:relative;
-top:5px;
-margin-left:20px;
-text-align:center;
-
-}
-.atbmodalshowdescriptioncontentclose {
-  color: #aaa;
-  z-index:10;
-  font-size: 28px;
-  font-weight: bold;
-float:right;
-margin-top:10px;
-margin-right:10px;
-}
-
-.atbmodalshowdescriptioncontentclose:hover {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.showdescriptiontitlediv{
-margin-left:auto;
-margin-right:auto;
-width:600px;
-height:auto;
-background:;
-};
-
-.showdescriptionbody {
-position:relative;
-width:100%;
-height:auto;
-padding-left:20px;
-
-padding-bottom:20px;
-padding-right:20px;
-}
-.showdescriptionbody p{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-margin-right:20px;
-text-align:center;
-}
-.showdescriptionbody h5{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-text-align:center;
-}
-.showdescriptionfoot {
-
-position:relative;
-bottom:-20px;
-width:100%;
-height:auto;
-  padding-bottom: 20px;
-  background-color: white;
-  color: black;
-  border-top:2px solid rgba(192,192,192, 0.5);
-  border-bottom:2px solid rgba(192,192,192, 0.5);
-  border-radius:15px;
-  text-align:center;
-}
-
-
-
-
 .showgpsdivbg{
 display:none;
 position:fixed;
@@ -9943,19 +9630,24 @@ align-content:flex-start;
   font-family: arial;
 }
 .myDIV{
-z-index:10;
  width: auto;
 height:auto;
-display:block;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
+.myDIV:hover + .hide {
+  display: block;
 
+}
 .myDIV i {
-font-size:24px;
-color: rgba(0,0,0,0.3);
+font-size:24px
+}
+.myDIV i:hover {
+font-size:30px;
+transition:font-size 0.5s;
+color:rgba(0,0,0,0.5);
 }
 .infobutton{
 background-color:rgba(0,0,0,0);
@@ -12976,116 +12668,6 @@ margin-top:10px;
    transition:box-shadow .2s;
 
 }
-
-.showdescriptiondivbg{
-display:none;
-position:fixed;
-top:0px;
-left:0px;
-z-index:1;
-width:100%;
-height:100%;
-background-color:rgba(0,0,0,0.8);
-flex-direction:row;
-flex-wrap:nowrap;
-align-content:normal;
-justify-content:center;
-align-items:center;
-
-}
-.showdescriptiondiv{
-position:relative;
-width:90%;
-height:auto;
-margin-left:auto;
-margin-right:auto;
-background-color:white;
-transition-delay: 2s;
-
-border-radius:15px;
-}
-.showdescriptionhead {
-    position:relative;
-    top:-20px;
-    left:0px;
-  width:100%;
-  height:50px;
-  background-color: #FFBF00;
-  color: white;
-border-radius:15px 15px 0px 0px;
-
-}
-
-
-.atbmodalshowdescriptioncontentclose {
-  color: #aaa;
-  z-index:10;
-  font-size: 28px;
-  font-weight: bold;
-float:right;
-margin-top:10px;
-margin-right:10px;
-}
-
-.atbmodalshowdescriptioncontentclose:hover {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.showdescriptiontitlediv{
-margin-left:auto;
-margin-right:auto;
-width:600px;
-height:auto;
-background:;
-}
-.showdescriptiontitlediv h1{
-position:relative;
-top:5px;
-margin-left:20px;
-text-align:center;
-font-size:23px;
-}
-
-.showdescriptionbody {
-position:relative;
-width:100%;
-height:auto;
-padding-left:20px;
-
-padding-bottom:20px;
-padding-right:20px;
-}
-.showdescriptionbody p{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-margin-right:20px;
-text-align:center;
-font-size:15px;
-}
-.showdescriptionbody h5{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-text-align:center;
-}
-.showdescriptionfoot {
-
-position:relative;
-bottom:-20px;
-width:100%;
-height:auto;
-  padding-bottom: 20px;
-  background-color: white;
-  color: black;
-  border-top:2px solid rgba(192,192,192, 0.5);
-  border-bottom:2px solid rgba(192,192,192, 0.5);
-  border-radius:15px;
-    text-align:center;
-}
 .showgpsdivbg{
 display:none;
 position:fixed;
@@ -14204,19 +13786,25 @@ align-content:flex-start;
   font-family: arial;
 }
 .myDIV{
-z-index:10;
  width: auto;
- display:block;
 height:auto;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
 }
+.myDIV:hover + .hide {
+  display: block;
 
+}
 .myDIV i {
-font-size:15px;
-color: rgba(0,0,0,0.3);
+font-size:15px
+}
+
+.myDIV i:hover {
+font-size:21px;
+transition:font-size 0.5s;
+color:rgba(0,0,0,0.5);
 }
 .infobutton{
 background-color:rgba(0,0,0,0);
@@ -17373,132 +16961,6 @@ margin-top:10px;
    transition:box-shadow .2s;
 
 }
-
-
-.showdescriptiondivbg{
-display:none;
-position:fixed;
-top:0px;
-left:0px;
-z-index:1;
-width:100%;
-height:100%;
-background-color:rgba(0,0,0,0.8);
-flex-direction:row;
-flex-wrap:nowrap;
-align-content:normal;
-justify-content:center;
-align-items:center;
-}
-.showdescriptiondiv{
-position:relative;
-width:90%;
-height:auto;
-margin-left:auto;
-margin-right:auto;
-background-color:white;
-transition-delay: 2s;
-border-radius:15px;
-}
-.showdescriptionhead {
-    position:relative;
-    top:-20px;
-    left:0px;
-  width:100%;
-  height:50px;
-  background-color: #FFBF00;
-  color: white;
-border-radius:15px 15px 0px 0px;
-
-}
-
-.showdescriptionhead h1{
-position:relative;
-top:5px;
-margin-left:20px;
-text-align:center;
-
-}
-.atbmodalshowdescriptioncontentclose {
-  color: #aaa;
-  z-index:10;
-  font-size: 28px;
-  font-weight: bold;
-float:right;
-margin-top:10px;
-margin-right:10px;
-}
-
-.atbmodalshowdescriptioncontentclose:hover {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.showdescriptiontitlediv{
-margin-left:auto;
-margin-right:auto;
-width:355px;
-height:auto;
-background:;
-}
-.showdescriptiontitlediv h1{
-position:relative;
-top:5px;
-margin-left:20px;
-text-align:center;
-font-size:20px;
-}
-
-.showdescriptiontitle{
-font-family:sans-serif;
-position:relative;
-
-bottom:0px;
-color:black;
-font-weight:bold;
-}
-.showdescriptionbody {
-position:relative;
-width:100%;
-height:auto;
-padding-left:20px;
-
-padding-bottom:20px;
-padding-right:20px;
-background-color:;
-}
-.showdescriptionbody p{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-margin-right:20px;
-text-align:center;
-font-size:15px;
-}
-.showdescriptionbody h5{
-position:relative;
-top:0px;
-color:black;
-margin-left:20px;
-text-align:center;
-}
-.showdescriptionfoot {
-position:relative;
-bottom:;
-width:100%;
-height:auto;
-  padding-bottom: 20px;
-  background-color: white;
-  color: black;
-  border-top:2px solid rgba(192,192,192, 0.5);
-  border-bottom:2px solid rgba(192,192,192, 0.5);
-  border-radius:15px;
-  text-align:center;
-}
-
-
-
 .showgpsdivbg{
 display:none;
 position:fixed;
@@ -18607,7 +18069,7 @@ align-content:flex-start;
 }
 /* cards */
 .card {
-  
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 150px;
   height:180px;
@@ -18618,23 +18080,27 @@ align-content:flex-start;
   font-family: arial;
 }
 .myDIV{
-z-index:10;
  width: auto;
 height:auto;
-display:block;
 position:absolute;
 right:10px;
 top:10px;
 border:0px transparent;
-
 }
 
 .myDIV i {
-font-size:15px;
-color: rgba(0,0,0,0.3);
+font-size:15px
+
 }
+.myDIV:hover + .hide {
+  display: block;
 
-
+}
+.myDIV i:hover {
+font-size:21px;
+transition:font-size 0.5s;
+color:rgba(0,0,0,0.5);
+}
 .infobutton{
 background-color:rgba(0,0,0,0);
 border:0px transparent;
@@ -22688,7 +22154,7 @@ $(window).scroll(function() {
             function functionpaymentgcashdelivery(){
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id %}",
+            url:"{% url 'Onlineorder.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
@@ -22886,7 +22352,7 @@ newuserdivid.style.display = "block";
 
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id %}",
+            url:"{% url 'Onlineorder.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
@@ -23345,7 +22811,6 @@ longitude.value = position.lng;
 </div>
 
 
-
 <div id="showgpsdivbgid" class="showgpsdivbg">
 <div id="showgpsdivid" class="showgpsdiv">
     <div class="showgpshead">
@@ -23366,144 +22831,7 @@ longitude.value = position.lng;
 </div>
 </div>
 
-<div id="showdescriptiondivbgidMT" class="showdescriptiondivbg">
-<div id="showdescriptiondividMT" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentcloseMT()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidMT"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidMT"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
-
-
-<div id="showdescriptiondivbgidFR" class="showdescriptiondivbg">
-<div id="showdescriptiondividFR" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentcloseFR()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidFR"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidFR"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
-
-<div id="showdescriptiondivbgidFRZ" class="showdescriptiondivbg">
-<div id="showdescriptiondividFRZ" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentcloseFRZ()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidFRZ"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidFRZ"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
-<div id="showdescriptiondivbgidShawarma" class="showdescriptiondivbg">
-<div id="showdescriptiondividShawarma" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentcloseShawarma()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidShawarma"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidShawarma"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
-<div id="showdescriptiondivbgidFries" class="showdescriptiondivbg">
-<div id="showdescriptiondividFries" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentcloseFries()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidFries"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidFries"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
-
-<div id="showdescriptiondivbgidBubwaf" class="showdescriptiondivbg">
-<div id="showdescriptiondividBubwaf" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentcloseBubwaf()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidBubwaf"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidBubwaf"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
-
-<div id="showdescriptiondivbgidCookies" class="showdescriptiondivbg">
-<div id="showdescriptiondividCookies" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentcloseCookies()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidCookies"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidCookies"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
-<div id="showdescriptiondivbgidPizza" class="showdescriptiondivbg">
-<div id="showdescriptiondividPizza" class="showdescriptiondiv">
-    <div class="showdescriptionhead">
-    <span onclick="showdescriptioncontentclosePizza()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
-     <div class="showdescriptiontitlediv">
-    <h1 id="showdescriptionproductnameidPizza"></h1>
-     </div>
-    </div>
-    <div class="showdescriptionbody">
-    <p id="showproductdescriptionidPizza"></p>
-
-    </div>
-    <!--<div class="showdescriptionfoot">
- </div>-->
-</div>
-</div>
 <script>
-
-
-
-
 
 function gpsallow(){
 
@@ -25246,262 +24574,29 @@ reveals[i].classList.add("activee")
 }
 }
 }
-$(document).ready(function(){
-  $(".cardimg").hover(function(){
 
-    var gethideid="hideid"+$(this).attr('id')
-    $("#"+gethideid).css("display", "block");
-    }, function(){
-    if(window.matchMedia("(max-width: 767px)").matches){
-    }else{
-    var gethideidtwo="hideid"+$(this).attr('id')
-    $("#"+gethideidtwo).css("display", "none");
-    }
-  });
-});
-function showdescriptionMT(productname, e){
-var showdescriptiondivbgidMT=document.getElementById('showdescriptiondivbgidMT');
-showdescriptiondivbgidMT.style.display="flex";
-
-var atbmodalshowdescriptioncontentMT = document.getElementById("showdescriptiondividMT");
-atbmodalshowdescriptioncontentMT.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidMT=document.getElementById('showdescriptionproductnameidMT');
-showdescriptionproductnameidMT.innerHTML=productname;
-
-var showproductdescriptionidMT=document.getElementById('showproductdescriptionidMT');
-var getproductdescripptioMT=e.getAttribute('customdescription');
-showproductdescriptionidMT.innerHTML="<h3>"+getproductdescripptioMT+"</h3>";
-};
-
-function showdescriptioncontentcloseMT(){
-var atbmodalshowdescriptioncontentMT = document.getElementById("showdescriptiondividMT");
-atbmodalshowdescriptioncontentMT.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionMT, 500);
-};
-
-function closeshowdescriptionMT(){
-var closebgwithcontentshowdescriptionMT = document.getElementById("showdescriptiondivbgidMT");
-closebgwithcontentshowdescriptionMT.style.display = "none";
-};
-
-
-function showdescriptionFR(productname, e){
-var showdescriptiondivbgidFR=document.getElementById('showdescriptiondivbgidFR');
-showdescriptiondivbgidFR.style.display="flex";
-
-var atbmodalshowdescriptioncontentFR = document.getElementById("showdescriptiondividFR");
-atbmodalshowdescriptioncontentFR.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidFR=document.getElementById('showdescriptionproductnameidFR');
-showdescriptionproductnameidFR.innerHTML=productname;
-
-var showproductdescriptionidFR=document.getElementById('showproductdescriptionidFR');
-var getproductdescripptioFR=e.getAttribute('customdescription');
-showproductdescriptionidFR.innerHTML="<h3>"+getproductdescripptioFR+"</h3>";
-};
-
-function showdescriptioncontentcloseFR(){
-var atbmodalshowdescriptioncontentFR = document.getElementById("showdescriptiondividFR");
-atbmodalshowdescriptioncontentFR.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionFR, 500);
-};
-
-function closeshowdescriptionFR(){
-var closebgwithcontentshowdescriptionFR = document.getElementById("showdescriptiondivbgidFR");
-closebgwithcontentshowdescriptionFR.style.display = "none";
-};
-
-function showdescriptionFRZ(productname, e){
-var showdescriptiondivbgidFRZ=document.getElementById('showdescriptiondivbgidFRZ');
-showdescriptiondivbgidFRZ.style.display="flex";
-
-var atbmodalshowdescriptioncontentFRZ = document.getElementById("showdescriptiondividFRZ");
-atbmodalshowdescriptioncontentFRZ.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidFRZ=document.getElementById('showdescriptionproductnameidFRZ');
-showdescriptionproductnameidFRZ.innerHTML=productname;
-
-var showproductdescriptionidFRZ=document.getElementById('showproductdescriptionidFRZ');
-var getproductdescripptioFRZ=e.getAttribute('customdescription');
-showproductdescriptionidFRZ.innerHTML="<h3>"+getproductdescripptioFRZ+"</h3>";
-};
-
-function showdescriptioncontentcloseFRZ(){
-var atbmodalshowdescriptioncontentFRZ = document.getElementById("showdescriptiondividFRZ");
-atbmodalshowdescriptioncontentFRZ.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionFRZ, 500);
-};
-
-function closeshowdescriptionFRZ(){
-var closebgwithcontentshowdescriptionFRZ = document.getElementById("showdescriptiondivbgidFRZ");
-closebgwithcontentshowdescriptionFRZ.style.display = "none";
-};
-
-
-
-function showdescriptionShawarma(productname, e){
-var showdescriptiondivbgidShawarma=document.getElementById('showdescriptiondivbgidShawarma');
-showdescriptiondivbgidShawarma.style.display="flex";
-
-var atbmodalshowdescriptioncontentShawarma = document.getElementById("showdescriptiondividShawarma");
-atbmodalshowdescriptioncontentShawarma.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidShawarma=document.getElementById('showdescriptionproductnameidShawarma');
-showdescriptionproductnameidShawarma.innerHTML=productname;
-
-var showproductdescriptionidShawarma=document.getElementById('showproductdescriptionidShawarma');
-var getproductdescripptioShawarma=e.getAttribute('customdescription');
-showproductdescriptionidShawarma.innerHTML="<h3>"+getproductdescripptioShawarma+"</h3>";
-};
-
-function showdescriptioncontentcloseShawarma(){
-var atbmodalshowdescriptioncontentShawarma = document.getElementById("showdescriptiondividShawarma");
-atbmodalshowdescriptioncontentShawarma.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionShawarma, 500);
-};
-
-function closeshowdescriptionShawarma(){
-var closebgwithcontentshowdescriptionShawarma = document.getElementById("showdescriptiondivbgidShawarma");
-closebgwithcontentshowdescriptionShawarma.style.display = "none";
-};
-
-
-function showdescriptionBubwaf(productname, e){
-var showdescriptiondivbgidBubwaf=document.getElementById('showdescriptiondivbgidBubwaf');
-showdescriptiondivbgidBubwaf.style.display="flex";
-
-var atbmodalshowdescriptioncontentBubwaf = document.getElementById("showdescriptiondividBubwaf");
-atbmodalshowdescriptioncontentBubwaf.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidBubwaf=document.getElementById('showdescriptionproductnameidBubwaf');
-showdescriptionproductnameidBubwaf.innerHTML=productname;
-
-var showproductdescriptionidBubwaf=document.getElementById('showproductdescriptionidBubwaf');
-var getproductdescripptioBubwaf=e.getAttribute('customdescription');
-showproductdescriptionidBubwaf.innerHTML="<h3>"+getproductdescripptioBubwaf+"</h3>";
-};
-
-function showdescriptioncontentcloseBubwaf(){
-var atbmodalshowdescriptioncontentBubwaf = document.getElementById("showdescriptiondividBubwaf");
-atbmodalshowdescriptioncontentBubwaf.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionBubwaf, 500);
-};
-
-function closeshowdescriptionBubwaf(){
-var closebgwithcontentshowdescriptionBubwaf = document.getElementById("showdescriptiondivbgidBubwaf");
-closebgwithcontentshowdescriptionBubwaf.style.display = "none";
-};
-
-function showdescriptionFries(productname, e){
-var showdescriptiondivbgidFries=document.getElementById('showdescriptiondivbgidFries');
-showdescriptiondivbgidFries.style.display="flex";
-
-var atbmodalshowdescriptioncontentFries = document.getElementById("showdescriptiondividFries");
-atbmodalshowdescriptioncontentFries.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidFries=document.getElementById('showdescriptionproductnameidFries');
-showdescriptionproductnameidFries.innerHTML=productname;
-
-var showproductdescriptionidFries=document.getElementById('showproductdescriptionidFries');
-var getproductdescripptioFries=e.getAttribute('customdescription');
-showproductdescriptionidFries.innerHTML="<h3>"+getproductdescripptioFries+"</h3>";
-};
-
-function showdescriptioncontentcloseFries(){
-var atbmodalshowdescriptioncontentFries = document.getElementById("showdescriptiondividFries");
-atbmodalshowdescriptioncontentFries.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionFries, 500);
-};
-
-function closeshowdescriptionFries(){
-var closebgwithcontentshowdescriptionFries = document.getElementById("showdescriptiondivbgidFries");
-closebgwithcontentshowdescriptionFries.style.display = "none";
-};
-
-function showdescriptionCookies(productname, e){
-var showdescriptiondivbgidCookies=document.getElementById('showdescriptiondivbgidCookies');
-showdescriptiondivbgidCookies.style.display="flex";
-
-var atbmodalshowdescriptioncontentCookies = document.getElementById("showdescriptiondividCookies");
-atbmodalshowdescriptioncontentCookies.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidCookies=document.getElementById('showdescriptionproductnameidCookies');
-showdescriptionproductnameidCookies.innerHTML=productname;
-
-var showproductdescriptionidCookies=document.getElementById('showproductdescriptionidCookies');
-var getproductdescripptioCookies=e.getAttribute('customdescription');
-showproductdescriptionidCookies.innerHTML="<h3>"+getproductdescripptioCookies+"</h3>";
-};
-
-function showdescriptioncontentcloseCookies(){
-var atbmodalshowdescriptioncontentCookies = document.getElementById("showdescriptiondividCookies");
-atbmodalshowdescriptioncontentCookies.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionCookies, 500);
-};
-
-function closeshowdescriptionCookies(){
-var closebgwithcontentshowdescriptionCookies = document.getElementById("showdescriptiondivbgidCookies");
-closebgwithcontentshowdescriptionCookies.style.display = "none";
-};
-
-function showdescriptionPizza(productname, e){
-var showdescriptiondivbgidPizza=document.getElementById('showdescriptiondivbgidPizza');
-showdescriptiondivbgidPizza.style.display="flex";
-
-var atbmodalshowdescriptioncontentPizza = document.getElementById("showdescriptiondividPizza");
-atbmodalshowdescriptioncontentPizza.style.animation="fade-bottom-in 0.5s";
-
-var showdescriptionproductnameidPizza=document.getElementById('showdescriptionproductnameidPizza');
-showdescriptionproductnameidPizza.innerHTML=productname;
-
-var showproductdescriptionidPizza=document.getElementById('showproductdescriptionidPizza');
-var getproductdescripptioPizza=e.getAttribute('customdescription');
-showproductdescriptionidPizza.innerHTML="<h3>"+getproductdescripptioPizza+"</h3>";
-};
-
-function showdescriptioncontentclosePizza(){
-var atbmodalshowdescriptioncontentPizza = document.getElementById("showdescriptiondividPizza");
-atbmodalshowdescriptioncontentPizza.style.animation="fade-bottom-out 0.5s";
-
-setTimeout(closeshowdescriptionPizza, 500);
-};
-
-function closeshowdescriptionPizza(){
-var closebgwithcontentshowdescriptionPizza = document.getElementById("showdescriptiondivbgidPizza");
-closebgwithcontentshowdescriptionPizza.style.display = "none";
-};
 </script>
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
 {% for milkteab in mtbuttons %}
 
-<div class="card">
-<div id="hideid{{milkteab.productname|cut:" " }}" class="myDIV">
+<div  id="{{milkteab.productname}}" class="card">
+<div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
 
-
+<div class="hide">See Description</div>
 
     <!--{% if milkteab.Productimg %}
     <img src="{{milkteab.Productimg.url}}" style="width:100%">
     {% else %}
     <img src="#" style="width:100%">
     {% endif %}
-
-
     -->
     {% if milkteab.productname == milkteab.productname and "MT.png" %}
-    <img class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+    <img src="{% static milkteab.productname %}MT.png" style="width:100%">
     {% else %}
-    <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+    <img src="#" style="width:100%">
     {% endif %}
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
   <div id="h3divconfigidCappuccino" class="h3divconfig"><h3>{{milkteab.productname}}</h3></div>
@@ -25530,6 +24625,7 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
 </div>
 
 <script>
+
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -25573,10 +24669,6 @@ fullmt.innerHTML = "₱"+mtp+".00";
 {% endfor %}
 </div>
 </div>
-
-
-
-
 <div class="showloginwithfacebookdivbg">
 <div class="showloginwithfacebookdiv">
 <div class="showloginwithfacebookhead">
@@ -25843,7 +24935,7 @@ var passwordsuid = document.getElementById('passwordsuid')
 
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'firstnameid':JSON.stringify(firstnameid.value), 
         'lastnameid':JSON.stringify(lastnameid.value),
@@ -25979,7 +25071,7 @@ if(!username.value && !password.value){
 
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'username':JSON.stringify(username.value), 
         'password':JSON.stringify(password.value),
@@ -26140,7 +25232,7 @@ var showloginwithfacebookdiv = document.getElementsByClassName('showloginwithfac
       
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'response.first_name':JSON.stringify(response.first_name), 
         'response.last_name':JSON.stringify(response.last_name),
@@ -26673,9 +25765,6 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Frappe">
 {% for frappeb in frbuttons %}
 <div class="card">
-<div id="hideid{{frappeb.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
-</div>
 <!--
     {% if frappeb.Productimg %}
     <img src="{{frappeb.Productimg.url}}"  style="width:100%">
@@ -26687,9 +25776,9 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if frappeb.productname == frappeb.productname and "FR.png" %}
-    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+    <img src="{% static frappeb.productname %}FR.png" style="width:100%">
     {% else %}
-    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+    <img src="#"  style="width:100%">
     {% endif %}
 
   <div class="h3div"><h3>{{frappeb.productname}}</h3></div>
@@ -27282,14 +26371,13 @@ totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Freeze">
 {% for freezeb in freezebuttons %}
 <div class="card">
-
-<div id="hideid{{freezeb.productname|cut:" " }}" class="myDIV">
+<div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if freezeb.productname == freezeb.productname and "FRZ.png" %}
-    <img class="cardimg" id="{{freezeb.productname|cut:" " }}" src="{% static freezeb.productname %}FRZ.png" style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
+    <img src="{% static freezeb.productname %}FRZ.png" style="width:100%">
     {% else %}
-    <img class="cardimg" id="{{freezeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
+    <img src="#"  style="width:100%">
     {% endif %}
   <div class="h3div"><h3>{{freezeb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -27506,13 +26594,13 @@ totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 {% for cookiesb in cookiesbuttons %}
 <div class="card">
-<div id="hideid{{cookiesb.productname|cut:" " }}" class="myDIV">
+<div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if cookiesb.productname == cookiesb.productname %}
-    <img class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="{% static cookiesb.productname %}Cookies.png" style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
+    <img src="{% static cookiesb.productname %}Cookies.png" style="width:100%">
     {% else %}
-    <img class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
+    <img src="#"  style="width:100%">
     {% endif %}
   <div class="h3div"><h3>{{cookiesb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -27728,13 +26816,13 @@ totalcookies.innerHTML = "Total: ₱"+totalcookiess+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Shawarma">
 {% for shawarmab in shawarmabuttons %}
 <div class="card">
-<div id="hideid{{shawarmab.productname|cut:" " }}" class="myDIV">
+<div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if shawarmab.productname == shawarmab.productname %}
-    <img class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="{% static shawarmab.productname %}Shawarma.png" style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
+    <img src="{% static shawarmab.productname %}Shawarma.png" style="width:100%">
     {% else %}
-    <img class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
+    <img src="#"  style="width:100%">
     {% endif %}
   <div class="h3div"><h3>{{shawarmab.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -27952,13 +27040,13 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
 {% if friesb.productname == 'Free Fries' %}
 {% else %}
 <div class="card">
-<div id="hideid{{friesb.productname|cut:" " }}" class="myDIV">
+<div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if friesb.productname == friesb.productname %}
-    <img class="cardimg" id="{{friesb.productname|cut:" " }}" src="{% static friesb.productname %}Fries.png" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
+    <img src="{% static friesb.productname %}Fries.png" style="width:100%">
     {% else %}
-    <img class="cardimg" id="{{friesb.productname|cut:" " }}" src="#" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
+    <img src="#" style="width:100%">
     {% endif %}
   <div class="h3div"><h3>{{friesb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -28182,13 +27270,13 @@ totalfries.innerHTML = "Total: ₱"+totalfries+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Bubwaf">
 {% for bubwafb in bubwafbuttons %}
 <div class="card">
-<div id="hideid{{bubwafb.productname|cut:" " }}" class="myDIV">
+<div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if bubwafb.productname == bubwafb.productname %}
-    <img class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
+    <img src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%">
     {% else %}
-    <img class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
+    <img src="#"  style="width:100%">
     {% endif %}
   <div class="h3div"><h3>{{bubwafb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -28421,13 +27509,13 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 <div class="tabcontentprod reveal fade-bottom" id="Pizza">
 {% for pizzab in pizzabuttons %}
 <div class="card">
-<div id="hideid{{pizzab.productname|cut:" " }}" class="myDIV">
+<div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if pizzab.productname == pizzab.productname %}
-    <img class="cardimg" id="{{pizzab.productname|cut:" " }}" src="{% static pizzab.productname %}Pizza.png" style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
+    <img src="{% static pizzab.productname %}Pizza.png" style="width:100%">
     {% else %}
-    <img class="cardimg" id="{{pizzab.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
+    <img src="#"  style="width:100%">
     {% endif %}
   <div class="h3div"><h3>{{pizzab.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -29038,3 +28126,4 @@ shownotifdivid.style.display = "none";
 </body>
 
 </html> 
+a
