@@ -4895,7 +4895,7 @@ def Onlineordertestingsystem(request, admin_id):
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
-        sitedelete=Site.objects.all().delete()
+        sitedelete=sites.site.objects.all().delete()
         if request.user.is_anonymous:
             promoidentifier=''
         #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
