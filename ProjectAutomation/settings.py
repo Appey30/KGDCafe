@@ -72,7 +72,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
+                # needed for admin templates
+                'django.contrib.auth.context_processors.auth',
+                # allauth needs this from django
+                'django.core.context_processors.request',
+                # allauth specific context processors
+                'sites.allauth.account.context_processors.account',
+                'sites.allauth.socialaccount.context_processors.socialaccount',
 
             ],
         },
