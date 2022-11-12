@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -177,7 +177,7 @@ SITE_ID=2
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
-ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineordertesting/4' 
+ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4' 
 #ACCOUNT_ADAPTER = 'app.my_adapter.MyAccountAdapter'
 #LOGIN_REDIRECT_URL = 'next'
 #LOGIN_REDIRECT_URL = 'request.path_info'
