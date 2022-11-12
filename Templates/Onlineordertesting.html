@@ -25137,7 +25137,7 @@ $(document).ready(function(){
     }
   });
 });
-function showdescriptionMT(productname, productdescription){
+function showdescriptionMT(productname, e){
 var showdescriptiondivbgid=document.getElementById('showdescriptiondivbgid');
 showdescriptiondivbgid.style.display="flex";
 
@@ -25148,7 +25148,8 @@ var showdescriptionproductnameid=document.getElementById('showdescriptionproduct
 showdescriptionproductnameid.innerHTML=productname;
 
 var showproductdescriptionid=document.getElementById('showproductdescriptionid');
-showproductdescriptionid.innerHTML="<h3>"+productdescription+"</h3>";
+var getproductdescripptio=e.getAttribute('customdescription')
+showproductdescriptionid.innerHTML="<h3>"+getproductdescripptio+"</h3>";
 };
 
 function showdescriptioncontentclose(){
@@ -25183,9 +25184,9 @@ closebgwithcontentshowdescription.style.display = "none";
 
     -->
     {% if milkteab.productname == milkteab.productname and "MT.png" %}
-    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="{% static milkteab.productname %}MT.png" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
+    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" src="{% static milkteab.productname %}MT.png" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
     {% else %}
-    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%" onclick="showdescriptionMT('{{milkteab.productname}}', '{{milkteab.PDescription}}')">
+    <img class="cardimg" id="{{milkteab.productname|cut:" " }}" src="#" style="width:100%" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
     {% endif %}
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
   <div id="h3divconfigidCappuccino" class="h3divconfig"><h3>{{milkteab.productname}}</h3></div>
