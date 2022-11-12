@@ -26674,9 +26674,9 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if frappeb.productname == frappeb.productname and "FR.png" %}
-    <img class="cardimg" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
     {% endif %}
 
   <div class="h3div"><h3>{{frappeb.productname}}</h3></div>
@@ -27274,9 +27274,9 @@ totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if freezeb.productname == freezeb.productname and "FRZ.png" %}
-    <img class="cardimg" src="{% static freezeb.productname %}FRZ.png" style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
+    <img class="cardimg" id="{{freezeb.productname|cut:" " }}" src="{% static freezeb.productname %}FRZ.png" style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#"  style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
+    <img class="cardimg" id="{{freezeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
     {% endif %}
   <div class="h3div"><h3>{{freezeb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -27497,9 +27497,9 @@ totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if cookiesb.productname == cookiesb.productname %}
-    <img class="cardimg" src="{% static cookiesb.productname %}Cookies.png" style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
+    <img class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="{% static cookiesb.productname %}Cookies.png" style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#"  style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
+    <img class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
     {% endif %}
   <div class="h3div"><h3>{{cookiesb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -27719,9 +27719,9 @@ totalcookies.innerHTML = "Total: ₱"+totalcookiess+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if shawarmab.productname == shawarmab.productname %}
-    <img class="cardimg" src="{% static shawarmab.productname %}Shawarma.png" style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
+    <img class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="{% static shawarmab.productname %}Shawarma.png" style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#"  style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
+    <img class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
     {% endif %}
   <div class="h3div"><h3>{{shawarmab.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -27943,9 +27943,9 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if friesb.productname == friesb.productname %}
-    <img class="cardimg" src="{% static friesb.productname %}Fries.png" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
+    <img class="cardimg" id="{{friesb.productname|cut:" " }}" src="{% static friesb.productname %}Fries.png" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
+    <img class="cardimg" id="{{friesb.productname|cut:" " }}" src="#" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
     {% endif %}
   <div class="h3div"><h3>{{friesb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -28173,9 +28173,9 @@ totalfries.innerHTML = "Total: ₱"+totalfries+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if bubwafb.productname == bubwafb.productname %}
-    <img class="cardimg" src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
+    <img class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#"  style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
+    <img class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
     {% endif %}
   <div class="h3div"><h3>{{bubwafb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -28412,9 +28412,9 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if pizzab.productname == pizzab.productname %}
-    <img class="cardimg" src="{% static pizzab.productname %}Pizza.png" style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
+    <img class="cardimg" id="{{pizzab.productname|cut:" " }}" src="{% static pizzab.productname %}Pizza.png" style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#"  style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
+    <img class="cardimg" id="{{pizzab.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
     {% endif %}
   <div class="h3div"><h3>{{pizzab.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
