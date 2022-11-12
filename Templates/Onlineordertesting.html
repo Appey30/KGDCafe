@@ -242,7 +242,7 @@ text-align:center;
 }
 .atbmodalshowdescriptioncontentclose {
   color: #aaa;
-  z-index:1;
+  z-index:10;
   font-size: 28px;
   font-weight: bold;
 float:right;
@@ -4512,7 +4512,7 @@ text-align:center;
 }
 .atbmodalshowdescriptioncontentclose {
   color: #aaa;
-  z-index:1;
+  z-index:10;
   font-size: 28px;
   font-weight: bold;
 float:right;
@@ -8756,7 +8756,7 @@ text-align:center;
 }
 .atbmodalshowdescriptioncontentclose {
   color: #aaa;
-  z-index:1;
+  z-index:10;
   font-size: 28px;
   font-weight: bold;
 float:right;
@@ -13008,7 +13008,7 @@ border-radius:15px 15px 0px 0px;
 
 .atbmodalshowdescriptioncontentclose {
   color: #aaa;
-  z-index:1;
+  z-index:10;
   font-size: 28px;
   font-weight: bold;
 float:right;
@@ -17406,7 +17406,7 @@ text-align:center;
 }
 .atbmodalshowdescriptioncontentclose {
   color: #aaa;
-  z-index:1;
+  z-index:10;
   font-size: 28px;
   font-weight: bold;
 float:right;
@@ -25139,13 +25139,14 @@ showproductdescriptionid.innerHTML="<h3>"+productdescription+"</h3>";
 function showdescriptioncontentclose(){
 var atbmodalshowdescriptioncontent = document.getElementById("showdescriptiondivid");
 atbmodalshowdescriptioncontent.style.animation="fade-bottom-out 0.5s";
+alert("triggered showdescriptioncontentclose")
 setTimeout(closeshowdescription, 500);
-}
+};
 
 function closeshowdescription(){
 var closebgwithcontentshowdescription = document.getElementById("showdescriptiondivbgid");
 closebgwithcontentshowdescription.style.display = "none";
-}
+};
 </script>
 <div class="wraptabcontentprod">
 <div class="tabcontentprod default reveal fade-bottom" id="Milktea">
