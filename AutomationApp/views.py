@@ -17,7 +17,7 @@ from django.utils.timezone import localtime
 from django.contrib.auth.decorators import login_required
 #from webpos import settings
 from collections import namedtuple
-
+from django.contrib.sites.models import Site
 import json
 import requests
 from django.core import serializers
@@ -4895,6 +4895,7 @@ def Onlineordertestingsystem(request, admin_id):
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
+        
         if request.user.is_anonymous:
             promoidentifier=''
         #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
