@@ -24705,17 +24705,21 @@ fullmt.innerHTML = "₱"+mtp+".00";
 
 
 </div>
+
 <h3>Login with Social Media</h3>
-<div disabled="disabled" id="fbloginid" class="fb btn">
-<i disabled="disabled" id="fbloginidiii" class="fa fa-facebook fa-fw"></i><h8>Login with Facebook</h8>
+<small style="color:red;">Temporarily Unavailable. We suggest you to create KGD account instead. </small><br>
+<div style="display:none;">
+<div  id="fbloginid" class="fb btn">
+<i  id="fbloginidiii" class="fa fa-facebook fa-fw"></i><h8>Login with Facebook</h8>
 </div><br>
 
 
         <!--?next={{request.path|urlencode}}   onclick='checkLoginState()'    <i class="fa fa-facebook fa-fw">   href="{% provider_login_url 'facebook' method='oauth2' %}" -->
 
 
-        <small style="color:red;">For those who can't login with facebook, we suggest you to create new KGD account instead. To create new KGD account, click "Create New Account" button above. </small><br>
+        <small style="color:red;">For those who can't login with facebook, we suggest you to create new KGD account instead. To create new KGD account, click "Create KGD Account" button above. </small><br>
         <small>By logging-in or signing-up, you agree to our updated <a href="{% url 'TermsandConditions.html' %}">Terms & Conditions</a>  and <a href="{% url 'privacypolicy.html' %}">Privacy Policy</a>.</small>
+</div>
 </div>
 
 </div>
