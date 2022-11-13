@@ -26860,11 +26860,18 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
 <div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
-
-    {% if frappeb.productname == frappeb.productname and "FR.png" %}
-    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+    {% if promoidentifier == "Friesday" %}
+        {% if frappeb.productname == frappeb.productname and "FR.png" %}
+        <img class="cardimg" id="{{frappeb.productname|cut:" " }}FREEFRIESPROMO.png" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        {% else %}
+        <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        {% endif %}
     {% else %}
-    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        {% if frappeb.productname == frappeb.productname and "FR.png" %}
+        <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        {% else %}
+        <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        {% endif %}
     {% endif %}
 
   <div class="h3div"><h3>{{frappeb.productname}}</h3></div>
