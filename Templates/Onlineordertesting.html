@@ -25665,7 +25665,7 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
 
-    {% promoidentifier == "Friesday" %}
+    {% if promoidentifier == "Friesday" %}
         <img class="cardimg" src="{% static milkteab.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
         {% else %}
         <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
