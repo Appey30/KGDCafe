@@ -22248,7 +22248,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 
 
     {% if promob.productname == promob.productname and "Promo.png" %}
-    <img class="cardimg" src="{% static promob.productname %}MT.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
+    <img class="cardimg" src="{% static promob.productname %}Promo.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
     {% else %}
     <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
     {% endif %}
