@@ -22269,6 +22269,8 @@ if(window.matchMedia("(min-width: 1200px)").matches){
 }else if(window.matchMedia("(max-width: 991px)").matches && window.matchMedia("(min-width: 768px)").matches){
     productnameprom.innerHTML = productname
 }else{
+
+
     if(productname.includes('(with Free Fries)')){
     productnameprom.innerHTML = productname.replace(' (with Free Fries)','<br>(with Free Fries)');
     }else{
@@ -25663,11 +25665,16 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
 
-
-    {% if milkteab.productname == milkteab.productname and "MT.png" %}
-    <img class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+    {% promoidentifier == "Friesday" %}
+        <img class="cardimg" src="{% static milkteab.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        {% else %}
+        <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
     {% else %}
-    <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        {% if milkteab.productname == milkteab.productname and "MT.png" %}
+        <img class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        {% else %}
+        <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        {% endif %}
     {% endif %}
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
   <div id="h3divconfigidCappuccino" class="h3divconfig"><h3>{{milkteab.productname}}</h3></div>
@@ -26852,6 +26859,7 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
 <div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
+
     {% if frappeb.productname == frappeb.productname and "FR.png" %}
     <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
     {% else %}
