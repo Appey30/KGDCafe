@@ -31,7 +31,7 @@ class PSizes(models.Model):
 
 class user1 (models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE,blank = False, null = False)
-    productname = models.CharField(max_length = 50, blank = False, null = False, default='')
+    productname = models.CharField(max_length = 100, blank = False, null = False, default='')
     Category = models.ForeignKey(Categories, on_delete=models.CASCADE, default='',blank = True, null = True)
     Subcategory = models.ForeignKey(Subcategories, on_delete=models.CASCADE, default='',blank = True, null = True)
     Size = models.ForeignKey(Sizes, on_delete = models.CASCADE, default = '',blank = True, null = True)
