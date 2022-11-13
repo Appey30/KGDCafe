@@ -22271,8 +22271,8 @@ if(window.matchMedia("(min-width: 1200px)").matches){
 }else{
 
 
-    if(productname.includes('(with Free Fries)')){
-    productnameprom.innerHTML = productname.replace(' (with Free Fries)','<br>(with Free Fries)');
+    if(productname.includes('with Free Fries')){
+    productnameprom.innerHTML = productname.replace(' with Free Fries','<br>with Free Fries');
     }else{
     productnameprom.innerHTML = productname
     }
@@ -24769,7 +24769,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 const d = new Date();
 let day = weekday[d.getDay()]; 
 if(day == 'Sunday'){
-        if(puncheditem.productname.includes('(with Free Fries)')){
+        if(puncheditem.productname.includes(' with Free Fries')){
                     var puncheditemtwo = {
                         index:indexi,
                         productname:'Free Fries',
