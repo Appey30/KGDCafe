@@ -22247,7 +22247,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 </div>
 
 
-    {% if promob.productname == promob.productname and "MT.png" %}
+    {% if promob.productname == promob.productname and "Promo.png" %}
     <img class="cardimg" src="{% static promob.productname %}MT.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
     {% else %}
     <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
@@ -24640,7 +24640,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 const d = new Date();
 let day = weekday[d.getDay()]; 
-if(day == 'Friday'){
+if(day == 'Sunday'){
         if(puncheditem.productname.includes('(with Free Fries)')){
                     var puncheditemtwo = {
                         index:indexi,
