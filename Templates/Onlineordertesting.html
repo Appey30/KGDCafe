@@ -24722,9 +24722,9 @@ modalcartcontenttrigger.classList.add('modalcartcontent');
 opencart();
 }
 //PROMO AREA
-var freefries='False';
-var freefriesmilktea='False';
-var freefriesfrappe='False';
+var freefries='True';
+var freefriesmilktea='True';
+var freefriesfrappe='True';
 //PROMO AREA
 var allpunched = [];
 var clickaddbutton = 0;
@@ -24764,7 +24764,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 const d = new Date();
 let day = weekday[d.getDay()]; 
-if(day == 'Friday'){
+if(day == 'Sunday'){
         if(puncheditem.productname.includes('(with Free Fries)')){
                     var puncheditemtwo = {
                         index:indexi,
