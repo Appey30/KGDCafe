@@ -22242,13 +22242,15 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 </script>
 {% for promob in FreeFriespromobuttons %}
 <div class="card">
-<div class="myDIV">
+<div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
-    {% if promob.Productimg %}
-    <img src="{{promob.Productimg.url}}"  style="width:100%">
+
+
+    {% if promob.productname == promob.productname and "MT.png" %}
+    <img class="cardimg" src="{% static promob.productname %}MT.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
     {% else %}
-    <img src="#" style="width:100%">
+    <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
     {% endif %}
   <div class="h3divpromo"><h3>{{promob.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -23366,6 +23368,24 @@ longitude.value = position.lng;
     </div>
 </div>
 </div>
+
+<div id="showdescriptiondivbgidPromo" class="showdescriptiondivbg">
+<div id="showdescriptiondividPromo" class="showdescriptiondiv">
+    <div class="showdescriptionhead">
+    <span onclick="showdescriptioncontentclosePromo()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
+     <div class="showdescriptiontitlediv">
+    <h1 id="showdescriptionproductnameidPromo"></h1>
+     </div>
+    </div>
+    <div class="showdescriptionbody">
+    <p id="showproductdescriptionidPromo"></p>
+
+    </div>
+    <!--<div class="showdescriptionfoot">
+ </div>-->
+</div>
+</div>
+
 
 <div id="showdescriptiondivbgidMT" class="showdescriptiondivbg">
 <div id="showdescriptiondividMT" class="showdescriptiondiv">
@@ -25260,6 +25280,34 @@ $(document).ready(function(){
     }
   });
 });
+
+function showdescriptionPromo(productname, e){
+var showdescriptiondivbgidPromo=document.getElementById('showdescriptiondivbgidPromo');
+showdescriptiondivbgidPromo.style.display="flex";
+
+var atbmodalshowdescriptioncontentPromo = document.getElementById("showdescriptiondividPromo");
+atbmodalshowdescriptioncontentPromo.style.animation="fade-bottom-in 0.5s";
+
+var showdescriptionproductnameidPromo=document.getElementById('showdescriptionproductnameidPromo');
+showdescriptionproductnameidPromo.innerHTML=productname;
+
+var showproductdescriptionidPromo=document.getElementById('showproductdescriptionidPromo');
+var getproductdescripptioPromo=e.getAttribute('customdescription');
+showproductdescriptionidPromo.innerHTML="<h3>"+getproductdescripptioPromo+"</h3>";
+};
+
+function showdescriptioncontentclosePromo(){
+var atbmodalshowdescriptioncontentPromo = document.getElementById("showdescriptiondividPromo");
+atbmodalshowdescriptioncontentPromo.style.animation="fade-bottom-out 0.5s";
+
+setTimeout(closeshowdescriptionPromo, 500);
+};
+
+function closeshowdescriptionPromo(){
+var closebgwithcontentshowdescriptionPromo = document.getElementById("showdescriptiondivbgidPromo");
+closebgwithcontentshowdescriptionPromo.style.display = "none";
+};
+
 function showdescriptionMT(productname, e){
 var showdescriptiondivbgidMT=document.getElementById('showdescriptiondivbgidMT');
 showdescriptiondivbgidMT.style.display="flex";
@@ -25490,15 +25538,6 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
 </div>
 
 
-
-    <!--{% if milkteab.Productimg %}
-    <img src="{{milkteab.Productimg.url}}" style="width:100%">
-    {% else %}
-    <img src="#" style="width:100%">
-    {% endif %}
-
-
-    -->
     {% if milkteab.productname == milkteab.productname and "MT.png" %}
     <img class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
     {% else %}
