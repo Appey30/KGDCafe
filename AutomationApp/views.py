@@ -2282,7 +2282,7 @@ def Onlineordersystem(request, admin_id):
         #    else:
         #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
-            promoidentifier='FirstTimer'
+            promoidentifier='Friesday'
         else:
             promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
@@ -4908,7 +4908,7 @@ def Onlineordertestingsystem(request, admin_id):
         #        promoidentifier=''
         #    else:
         #        promoidentifier='FirstTimer'
-        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
+        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Sunday':
             promoidentifier='FirstTimer'
         else:
             promoidentifier=''
