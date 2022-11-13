@@ -25666,6 +25666,7 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
 </div>
 
     {% if promoidentifier == "Friesday" %}
+        {% if milkteab.productname == milkteab.productname and "MT.png" %}
         <img class="cardimg" src="{% static milkteab.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
         {% else %}
         <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
