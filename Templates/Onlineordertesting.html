@@ -25197,6 +25197,7 @@ var deleteindex = document.getElementById('delitemid'+indexnum);
 if (allpunched.length > 0 ) {
 
   allpunched.splice(indexnum, 1); // 2nd parameter means remove one item only
+  alert(allpunched.length);
         var tablebody=document.getElementById('punchedtablebody');
         var dataHtml='';
         var totalpunched=0;
@@ -25215,31 +25216,31 @@ if (allpunched.length > 0 ) {
                 dataHtml='';
 
                 allpunched=[];
-                ;
+                
                 cartclose();
             }else{
-            for(let i = 0;i<(allpunched.length);i++){
+                    for(let i = 0;i<(allpunched.length);i++){
             
-                totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
+                        totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
-            }
-            for(let punched of allpunched){
-            var counti = allpunched.indexOf(punched);
-            rightindextwo = punched.index;
-            if(punched.index !== counti){
-            rightindextwo = counti;
-            }
-if(punched.Category=='Snacks'){
-var categoryfinal=punched.Subcategory;
-}else{
-var categoryfinal=punched.Category;
-}
-            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+rightindextwo+')" id="delitemid'+rightindextwo+'" value="'+rightindextwo+'">Delete</button></td></tr>';
-            }
+                    }
+                    for(let punched of allpunched){
+                                var counti = allpunched.indexOf(punched);
+                                rightindextwo = punched.index;
+                                if(punched.index !== counti){
+                                    rightindextwo = counti;
+                                }
+                                if(punched.Category=='Snacks'){
+                                    var categoryfinal=punched.Subcategory;
+                                }else{
+                                    var categoryfinal=punched.Category;
+                                }
+                                dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+rightindextwo+')" id="delitemid'+rightindextwo+'" value="'+rightindextwo+'">Delete</button></td></tr>';
+                    }
 
-            document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
-            totalwithoudevfee = totalpunched;
-            document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
+                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
+                    totalwithoudevfee = totalpunched;
+                    document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             }
 
             
