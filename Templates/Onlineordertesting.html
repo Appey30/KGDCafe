@@ -24743,6 +24743,7 @@ var sukatall = "";
 var psukatall = "";
 var totalwithoudevfee = 0;
 var aonamewithprodname = "";
+var dataHtmlcart='';
 function addpunched() {
 
 
@@ -24830,7 +24831,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
         //alert(allpunched[indexi].Price);
         //document.getElementById('tdItem').innerHTML= allpunched[indexi].milktea;
         var tablebody=document.getElementById('punchedtablebody');
-        var dataHtml='';
+
         let totalpunched=0;
         
             for(let i = 0;i<(allpunched.length);i++){
@@ -24845,10 +24846,10 @@ var categoryfinal=punched.Subcategory;
 }else{
 var categoryfinal=punched.Category;
 }
-            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
+            dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
             };
             
-            tablebody.innerHTML = dataHtml;
+            tablebody.innerHTML = dataHtmlcart;
             document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
             document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             totalwithoudevfee = totalpunched;
@@ -25198,7 +25199,7 @@ function delitem(indexnum){
 
   alert(allpunched.length);
         var tablebody=document.getElementById('punchedtablebody');
-        var dataHtml='';
+
         var totalpunched=0;
         var totalpunchedfordisablecheckout=0;
             for(let i = 0;i<(allpunched.length);i++){
@@ -25212,7 +25213,7 @@ function delitem(indexnum){
                 document.getElementById('checkoutbut').value = 'Payment Setup';
                 document.getElementById("checkoutbut").disabled = true
                 document.getElementById('totalpunched').innerHTML = "";
-                dataHtml='';
+                dataHtmlcart='';
 
                 allpunched=[];
                 
@@ -25234,7 +25235,7 @@ function delitem(indexnum){
                                 }else{
                                     var categoryfinal=punched.Category;
                                 }
-                                dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
+                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
                     }
 
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
@@ -25243,7 +25244,7 @@ function delitem(indexnum){
             }
 
             
-            tablebody.innerHTML = dataHtml;
+            tablebody.innerHTML = dataHtmlcart;
             
             var counterbag = allpunched.length;
             document.getElementsByClassName('circlepositioncount')[0].innerHTML = counterbag;
