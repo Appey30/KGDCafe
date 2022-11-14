@@ -24754,11 +24754,11 @@ aonamewithprodname = "";
 }
 
         //var puncheditem="puncheditemi"+(clickaddbutton-1);
-        var indexi = (clickaddbutton-1);
+        //var indexi = (clickaddbutton-1);
 
         
             var puncheditem = {
-                index:indexi,
+                //index:indexi,
                 productname:itemprodname,
                 Category:category,
                 Subcategory:subcategory,
@@ -24778,7 +24778,7 @@ let day = weekday[d.getDay()];
 if(day == 'Monday'){
         if(puncheditem.productname.includes('with Free Fries')){
                     var puncheditemtwo = {
-                        index:indexi,
+                        //index:indexi,
                         productname:'Free Fries',
                         Category:'Snacks',
                         Subcategory:'Fries',
@@ -24795,7 +24795,7 @@ if(day == 'Monday'){
 if(freefries == 'True' && freefriesmilktea == 'True'){
         if(puncheditem.Category == 'Milktea'){
                     var puncheditemtwo = {
-                        index:indexi,
+                        //index:indexi,
                         productname:'Free Fries',
                         Category:'Snacks',
                         Subcategory:'Fries',
@@ -24813,7 +24813,7 @@ if(freefries == 'True' && freefriesmilktea == 'True'){
 if(freefries == 'True' && freefriesfrappe == 'True'){
         if(puncheditem.Category == 'Frappe'){
                     var puncheditemthree = {
-                        index:indexi,
+                        //index:indexi,
                         productname:'Free Fries',
                         Category:'Snacks',
                         Subcategory:'Fries',
@@ -24845,7 +24845,7 @@ var categoryfinal=punched.Subcategory;
 }else{
 var categoryfinal=punched.Category;
 }
-            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
+            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
             };
             
             tablebody.innerHTML = dataHtml;
@@ -25224,17 +25224,17 @@ function delitem(indexnum){
                 
                     }
                     for(let punched of allpunched){
-                                var counti = allpunched.indexOf(punched);
-                                rightindextwo = punched.index;
-                                if(punched.index !== counti){
-                                    rightindextwo = counti;
-                                }
+                                //var counti = allpunched.indexOf(punched);
+                                //rightindextwo = punched.indexOf(punched.productname);
+                                //if(punched.indexOf(punched.productname) !== counti){
+                                //    rightindextwo = counti;
+                                //}
                                 if(punched.Category=='Snacks'){
                                     var categoryfinal=punched.Subcategory;
                                 }else{
                                     var categoryfinal=punched.Category;
                                 }
-                                dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+rightindextwo+')" id="delitemid'+rightindextwo+'" value="'+rightindextwo+'">Delete</button></td></tr>';
+                                dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
                     }
 
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
