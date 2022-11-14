@@ -24895,7 +24895,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
         //alert(allpunched[indexi].Price);
         //document.getElementById('tdItem').innerHTML= allpunched[indexi].milktea;
         var tablebody=document.getElementById('punchedtablebody');
-
+        var datahtmltest="";
         let totalpunched=0;
         
             for(let i = 0;i<(allpunched.length);i++){
@@ -24921,10 +24921,10 @@ var addonqtydisplaysake=punched.Addonsqty;
 		            return true;
             }); 
 
-            dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
+            datahtmltest = datahtmltest + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
             };
-            tablebody.innerHTML = "";
-            tablebody.innerHTML = dataHtmlcart;
+            
+            tablebody.innerHTML = datahtmltest;
             document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
             document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             totalwithoudevfee = totalpunched;
