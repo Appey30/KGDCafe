@@ -24774,6 +24774,7 @@ aonamewithprodname = "";
 var indexfinder = allpunched.findIndex(function(puncheditem, index) {
 if(puncheditem.productname == itemprodname)
 		return true;
+console.log(indexfinder);
 }); //if puncheditem exist, indexfinder will return the index of the existing item. If not, it will return -1.
 if(indexfinder == -1){
 allpunched.push(puncheditem);
@@ -24813,7 +24814,7 @@ if(day == 'Monday'){
                 if(puncheditemone.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemone exist, indexfinderfreefriesone will return the index of the existing item. If not, it will return -1.
-
+                console.log(indexfinderfreefriesone);
                 if(indexfinderfreefriesone == -1){
                 allpunched.push(puncheditemone);
                 }else{
@@ -24841,7 +24842,7 @@ if(freefries == 'True' && freefriesmilktea == 'True'){
                 if(puncheditemtwo.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemtwo exist, indexfinderfreefriestwo will return the index of the existing item. If not, it will return -1.
-
+                console.log(indexfinderfreefriestwo);
                 if(indexfinderfreefriestwo == -1){
                 allpunched.push(puncheditemtwo);
                 }else{
@@ -24870,7 +24871,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 if(puncheditemthree.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemthree exist, indexfinderfreefriesthree will return the index of the existing item. If not, it will return -1.
-
+                console.log(indexfinderfreefriesthree);
                 if(indexfinderfreefriesthree == -1){
                 allpunched.push(puncheditemthree);
                 }else{
