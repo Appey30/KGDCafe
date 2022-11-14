@@ -24771,7 +24771,26 @@ aonamewithprodname = "";
                 Addonsnamewithprodname:aonamewithprodname,
                 Addonsqty:aoqty,
             };
-        allpunched.push(puncheditem);
+var indexfinder = allpunched.findIndex(function(puncheditem, index) {
+if(puncheditem.productname == itemprodname)
+		return true;
+}); //if puncheditem exist, indexfinder will return the index of the existing item. If not, it will return -1.
+if(indexfinder == -1){
+allpunched.push(puncheditem);
+}else if((allpunched[indexfinder].Category == 'Milktea' || allpunched[indexfinder].Category == 'Frappe') && allpunched[indexfinder].Size == sukatall && allpunched[indexfinder].Addonsname == aoname){
+    
+    allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall);
+    allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty);
+    allpunched[indexfinder].Addonsqty = parseInt(allpunched[indexfinder].Addonsqty) + parseInt(aoqty);
+ }else if((allpunched[indexfinder].Category == 'Snacks' && allpunched[indexfinder].Subcategory == "Pizza" && allpunched[indexfinder].PSize == "psukatall")){
+     allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall);
+    allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty);
+ 
+}else{
+allpunched.push(puncheditem);
+};
+
+        
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 const d = new Date();
@@ -24790,7 +24809,17 @@ if(day == 'Monday'){
                         Addonsname:'',
                         Addonsnamewithprodname:'',
                         Addonsqty:'',            };
+                var indexfinderfreefriesone = allpunched.findIndex(function(puncheditemone, index) {
+                if(puncheditemone.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemone exist, indexfinderfreefriesone will return the index of the existing item. If not, it will return -1.
+
+                if(indexfinderfreefriesone == -1){
                 allpunched.push(puncheditemone);
+                }else{
+                allpunched[indexfinderfreefriesone].Qty = parseInt(allpunched[indexfinderfreefriesone].Qty)+1;
+                }
+                
         }
 }
 if(freefries == 'True' && freefriesmilktea == 'True'){
@@ -24807,7 +24836,18 @@ if(freefries == 'True' && freefriesmilktea == 'True'){
                         Addonsname:'',
                         Addonsnamewithprodname:'',
                         Addonsqty:'',            };
+
+                var indexfinderfreefriestwo = allpunched.findIndex(function(puncheditemtwo, index) {
+                if(puncheditemtwo.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemtwo exist, indexfinderfreefriestwo will return the index of the existing item. If not, it will return -1.
+
+                if(indexfinderfreefriestwo == -1){
                 allpunched.push(puncheditemtwo);
+                }else{
+                allpunched[indexfinderfreefriestwo].Qty = parseInt(allpunched[indexfinderfreefriestwo].Qty)+1;
+                }
+                
         }
 }
 
@@ -24825,7 +24865,18 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                         Addonsname:'',
                         Addonsnamewithprodname:'',
                         Addonsqty:'',            };
+
+                var indexfinderfreefriesthree = allpunched.findIndex(function(puncheditemthree, index) {
+                if(puncheditemthree.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemthree exist, indexfinderfreefriesthree will return the index of the existing item. If not, it will return -1.
+
+                if(indexfinderfreefriesthree == -1){
                 allpunched.push(puncheditemthree);
+                }else{
+                allpunched[indexfinderfreefriesthree].Qty = parseInt(allpunched[indexfinderfreefriesthree].Qty)+1;
+                }
+                
         }
 }
         //alert(allpunched[indexi].Price);
