@@ -2282,7 +2282,7 @@ def Onlineordersystem(request, admin_id):
         #    else:
         #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
-            promoidentifier='FirstTimer'
+            promoidentifier='Friesday'
         else:
             promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
@@ -2666,7 +2666,7 @@ def saletoday(request):
 
         MilkteaFinalBD={}
         MilkteaFinalBD['milkteaSmallbd']=milkteaSmallbd
-        MilkteaFinalBD['milkteaSmallproductnames']=list(milkteaSmallproductnames)
+        MilkteaFinalBD['milkteaFullproductnames']=list(milkteaFullproductnames)
         MilkteaFinalBD['milkteaRegbd']=milkteaRegbd
         MilkteaFinalBD['milkteaFullbd']=milkteaFullbd
 
