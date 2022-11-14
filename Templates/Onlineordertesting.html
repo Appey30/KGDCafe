@@ -24899,8 +24899,11 @@ var categoryfinal=punched.Subcategory;
 var categoryfinal=punched.Category;
 }
 
-var realindex=allpunched.indexOf(punched.productname);
 
+            var realindex = allpunched.findIndex(function(puncheditemtwo, index) {
+            if(puncheditemtwo.productname == punched.productname)
+		            return true;
+            }); 
             dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
             };
             
