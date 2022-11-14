@@ -25194,17 +25194,28 @@ function delitem(indexnum){
 var deleteindex = document.getElementById('delitemid'+indexnum);
 
 
-if (allpunched.length > 0) {
+if (allpunched.length > 0 ) {
 
   allpunched.splice(indexnum, 1); // 2nd parameter means remove one item only
         var tablebody=document.getElementById('punchedtablebody');
         var dataHtml='';
         var totalpunched=0;
-            if(allpunched.length == 0){
+        var totalpunchedfordisablecheckout=0;
+            for(let i = 0;i<(allpunched.length);i++){
+            
+                totalpunchedfordisablecheckout = totalpunchedfordisablecheckout+parseInt(allpunched[i].Subtotal);
+                
+            }
+
+            if(allpunched.length == 0 || totalpunchedfordisablecheckout == 0 ){
                 totalpunched = 0;
                 document.getElementById('checkoutbut').value = 'Payment Setup';
+                document.getElementById("checkoutbut").disabled = true
                 document.getElementById('totalpunched').innerHTML = "";
                 dataHtml='';
+
+                allpunched={};
+
                 
             }else{
             for(let i = 0;i<(allpunched.length);i++){
