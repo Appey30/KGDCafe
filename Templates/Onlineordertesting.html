@@ -24783,7 +24783,18 @@ allpunched.push(puncheditem)
     
     allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall)
     allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty)
-    allpunched[indexfinder].Addonsqty = parseInt(allpunched[indexfinder].Addonsqty) + parseInt(aoqty)
+    var addonsqtyadd = 0;
+    if(allpunched[indexfinder].Addonsqty && aoqty){
+    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty) + parseInt(aoqty)
+    }else if(parseInt(allpunched[indexfinder].Addonsqty) > 0 && parseInt(aoqty) == 0){
+    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty);
+    }else if(parseInt(allpunched[indexfinder].Addonsqty) == 0 && parseInt(aoqty) > 0){
+    addonsqtyadd = parseInt(aoqty);
+    }else{
+    addonsqtyadd=0;
+    }
+    allpunched[indexfinder].Addonsqty = addonsqtyadd
+
  }else if((allpunched[indexfinder].Category == 'Snacks' && allpunched[indexfinder].Subcategory == "Pizza" && allpunched[indexfinder].PSize == "psukatall")){
      allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall)
     allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty)
@@ -24899,13 +24910,17 @@ var categoryfinal=punched.Subcategory;
 }else{
 var categoryfinal=punched.Category;
 }
-
+if(punched.Addonsqty==0){
+var addonqtydisplaysake="";
+}else{
+var addonqtydisplaysake=Addonsqty;
+}
 
             var realindex = allpunched.findIndex(function(puncheditemtwo, index) {
             if(puncheditemtwo.productname == punched.productname)
 		            return true;
             }); 
-            dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
+            dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
             };
             
             tablebody.innerHTML = dataHtmlcart;
