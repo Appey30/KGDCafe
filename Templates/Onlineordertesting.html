@@ -24903,7 +24903,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-            
+            console.log('allpunched.length:  '+allpunched.length);
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
@@ -24920,6 +24920,7 @@ var addonqtydisplaysake=punched.Addonsqty;
             if(puncheditemtwo.productname == punched.productname)
 		            return true;
             }); 
+
             dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
             };
             tablebody.innerHTML = "";
