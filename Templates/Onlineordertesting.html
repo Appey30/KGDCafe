@@ -24846,7 +24846,10 @@ var categoryfinal=punched.Subcategory;
 }else{
 var categoryfinal=punched.Category;
 }
-            dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
+
+var realindex=punched.indexOf(punched.productname);
+
+            dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
             };
             
             tablebody.innerHTML = dataHtmlcart;
@@ -25235,7 +25238,8 @@ function delitem(indexnum){
                                 }else{
                                     var categoryfinal=punched.Category;
                                 }
-                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.indexOf(punched.productname)+')" id="delitemid'+punched.indexOf(punched.productname)+'" value="'+punched.indexOf(punched.productname)+'">Delete</button></td></tr>';
+                                var realindex=punched.indexOf(punched.productname);
+                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
                     }
 
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
