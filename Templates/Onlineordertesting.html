@@ -24945,16 +24945,16 @@ var addonqtydisplaysake=punched.Addonsqty;
 console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
 console.log('indexfinderpizza: '+indexfinderpizza);
 console.log('indexfinderany: '+indexfinderany);
-            var realindex = 0;
+
             if(indexfinderfrappemilktea == -1 && indexfinderpizza == -1 && indexfinderany == -1){
-                realindex = allpunched.length-1;
+                var realindex = allpunched.length-1;
             }else{
                     if(categoryfinal == 'Milktea' || categoryfinal == 'Frappe'){
-                    realindex = indexfinderfrappemilktea;
+                    var realindex = indexfinderfrappemilktea;
                     }else if(categoryfinal == 'Pizza'){
-                    realindex = indexfinderpizza;
+                    var realindex = indexfinderpizza;
                     }else{
-                    realindex = indexfinderany;
+                    var realindex = indexfinderany;
                     };
             }
             datahtmltest = datahtmltest + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
