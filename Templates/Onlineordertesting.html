@@ -25342,8 +25342,12 @@ var indexfinderdeletei = allpunched.findIndex(function(puncheditem, index) {
                                 }else{
                                     var categoryfinal=punched.Category;
                                 }
-
-                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
+                                if(punched.Addonsqty == 0 || punched.Addonsqty == ""){
+                                var Addonsqtyblanker = "";
+                                }else{
+                                var Addonsqtyblanker = punched.Addonsqty;
+                                }
+                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+Addonsqtyblanker+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
                     }
 
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
