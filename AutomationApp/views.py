@@ -4908,10 +4908,10 @@ def Onlineordertestingsystem(request, admin_id):
         #        promoidentifier=''
         #    else:
         #        promoidentifier='FirstTimer'
-        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Tuesday':
+        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
         else:
-            promoidentifier=''
+            promoidentifier='Special Promo'
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
             passwordss=json.loads(request.POST.get('password'))
