@@ -23309,7 +23309,7 @@ class="logo">
               <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
 
             </div>
-{% endif %}
+
 <script>
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{specialpromob.id}}();
@@ -23330,6 +23330,7 @@ specialpromo.innerHTML = "₱"+specialpromop+".00";
 
 </script>
 {% endfor %}
+{% endif %}
 </div>
 </div>
 <div class="atbmodalbackgroundspecialpromo">
