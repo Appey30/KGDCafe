@@ -24771,7 +24771,7 @@ aonamewithprodname = "";
                 Addonsnamewithprodname:aonamewithprodname,
                 Addonsqty:aoqty,
             };
-
+console.log(aoname)
 var indexfinder = allpunched.findIndex(function(puncheditem, index) {
     if(puncheditem.productname == itemprodname)
 	    return true;
@@ -24779,39 +24779,7 @@ var indexfinder = allpunched.findIndex(function(puncheditem, index) {
 console.log('indexfinder: '+indexfinder);
 if(indexfinder == -1){
 allpunched.push(puncheditem);
-}else if((allpunched[indexfinder].Category == 'Milktea' || allpunched[indexfinder].Category == 'Frappe') && allpunched[indexfinder].Size == sukatall && allpunched[indexfinder].Addonsname == "Tapioca"){
-    
-    allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall)
-    allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty)
-    var addonsqtyadd = 0;
-    if(allpunched[indexfinder].Addonsqty && aoqty){
-    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty) + parseInt(aoqty)
-    }else if(parseInt(allpunched[indexfinder].Addonsqty) > 0 && parseInt(aoqty) == 0){
-    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty);
-    }else if(parseInt(allpunched[indexfinder].Addonsqty) == 0 && parseInt(aoqty) > 0){
-    addonsqtyadd = parseInt(aoqty);
-    }else{
-    addonsqtyadd=0;
-    };
-    allpunched[indexfinder].Addonsqty = addonsqtyadd
-
- }else if((allpunched[indexfinder].Category == 'Milktea' || allpunched[indexfinder].Category == 'Frappe') && allpunched[indexfinder].Size == sukatall && allpunched[indexfinder].Addonsname == "Nata"){
-    
-    allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall)
-    allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty)
-    var addonsqtyadd = 0;
-    if(allpunched[indexfinder].Addonsqty && aoqty){
-    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty) + parseInt(aoqty)
-    }else if(parseInt(allpunched[indexfinder].Addonsqty) > 0 && parseInt(aoqty) == 0){
-    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty);
-    }else if(parseInt(allpunched[indexfinder].Addonsqty) == 0 && parseInt(aoqty) > 0){
-    addonsqtyadd = parseInt(aoqty);
-    }else{
-    addonsqtyadd=0;
-    };
-    allpunched[indexfinder].Addonsqty = addonsqtyadd
-
- }else if((allpunched[indexfinder].Category == 'Milktea' || allpunched[indexfinder].Category == 'Frappe') && allpunched[indexfinder].Size == sukatall && allpunched[indexfinder].Addonsname == ""){
+}else if((allpunched[indexfinder].Category == 'Milktea' || allpunched[indexfinder].Category == 'Frappe') && allpunched[indexfinder].Size == sukatall && allpunched[indexfinder].Addonsname == aoname){
     
     allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall)
     allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty)
