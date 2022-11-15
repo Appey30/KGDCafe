@@ -25301,7 +25301,7 @@ function delitem(indexnum){
 
 
         var tablebody=document.getElementById('punchedtablebody');
-
+        var dataHtmlcart='';
         var totalpunched=0;
         var totalpunchedfordisablecheckout=0;
             for(let i = 0;i<(allpunched.length);i++){
@@ -25315,7 +25315,7 @@ function delitem(indexnum){
                 document.getElementById('checkoutbut').value = 'Payment Setup';
                 document.getElementById("checkoutbut").disabled = true
                 document.getElementById('totalpunched').innerHTML = "";
-                var dataHtmlcart='';
+
 
                 allpunched=[];
                 
