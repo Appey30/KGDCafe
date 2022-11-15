@@ -24791,9 +24791,7 @@ var indexfinderany = allpunched.findIndex(function(puncheditem, index) {
 console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
 console.log('indexfinderpizza: '+indexfinderpizza);
 console.log('indexfinderany: '+indexfinderany);
-if(indexfinderfrappemilktea == -1 || indexfinderpizza == -1 || indexfinderany == -1){
-allpunched.push(puncheditem);
-}else if(indexfinderfrappemilktea !== -1){
+if(indexfinderfrappemilktea !== -1){
     
     allpunched[indexfinderfrappemilktea].Subtotal = parseInt(allpunched[indexfinderfrappemilktea].Subtotal)   + parseInt(totalall)
     allpunched[indexfinderfrappemilktea].Qty = parseInt(allpunched[indexfinderfrappemilktea].Qty) + parseInt(allqty)
@@ -24827,7 +24825,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 const d = new Date();
 let day = weekday[d.getDay()]; 
-if(day == 'Monday'){
+if(day == 'Tuesday'){
         if(puncheditem.productname.includes('with Free Fries')){
                     var puncheditemone = {
                         //index:indexi,
