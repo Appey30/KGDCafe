@@ -24846,7 +24846,7 @@ if(day == 'Tuesday'){
                         Size:'',
                         PSize:'',
                         Subtotal:0,
-                        Qty:puncheditem.Qty,
+                        Qty:parseInt(puncheditem.Qty),
                         Addonsname:'',
                         Addonsnamewithprodname:'',
                         Addonsqty:'',            };
@@ -24859,7 +24859,7 @@ if(day == 'Tuesday'){
                 allpunched.push(puncheditemone);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
                 }else{
-                allpunched[indexfinderfreefriesone].Qty = parseInt(allpunched[indexfinderfreefriesone].Qty)+puncheditemone.Qty;
+                allpunched[indexfinderfreefriesone].Qty = parseInt(allpunched[indexfinderfreefriesone].Qty)+parseInt(puncheditemone.Qty);
                 allpunched[indexfinderfreefriesone]['index'] = indexfinderfreefriesone;
                 }
                 
@@ -24889,7 +24889,7 @@ if(freefries == 'True' && freefriesmilktea == 'True'){
                 allpunched.push(puncheditemtwo);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
                 }else{
-                allpunched[indexfinderfreefriestwo].Qty = parseInt(allpunched[indexfinderfreefriestwo].Qty)+puncheditemtwo.Qty;
+                allpunched[indexfinderfreefriestwo].Qty = parseInt(allpunched[indexfinderfreefriestwo].Qty)+parseInt(puncheditemtwo.Qty);
                 allpunched[indexfinderfreefriestwo]['index'] = indexfinderfreefriestwo;
                 }
                 
@@ -24920,7 +24920,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 allpunched.push(puncheditemthree);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
                 }else{
-                allpunched[indexfinderfreefriesthree].Qty = parseInt(allpunched[indexfinderfreefriesthree].Qty)+puncheditemthree.Qty;
+                allpunched[indexfinderfreefriesthree].Qty = parseInt(allpunched[indexfinderfreefriesthree].Qty)+parseInt(puncheditemthree.Qty);
                 allpunched[indexfinderfreefriesthree]['index'] = indexfinderfreefriesthree;
                 }
                 
