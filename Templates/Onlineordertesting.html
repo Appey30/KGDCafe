@@ -24784,9 +24784,22 @@ var indexfinderpizza = allpunched.findIndex(function(puncheditem, index) {
 }); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
 
 var indexfinderany = allpunched.findIndex(function(puncheditem, index) {
-    if(puncheditem.productname == itemprodname && (puncheditem.Category == 'Freeze' || puncheditem.Subcategory == 'Shawarma' || puncheditem.Subcategory == "Bubble Waffle" || puncheditem.Subcategory == "Fries" || puncheditem.Subcategory == "Cookies"))
+    if(puncheditem.productname == itemprodname && puncheditem.Category == 'Freeze'){
+        var trueba=true;
 
-	    return true;
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Shawarma'){
+        var trueba=true;
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Bubble Waffle'){
+        var trueba=true;
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Fries'){
+        var trueba=true;
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Cookies'){
+        var trueba=true;
+    }else{
+        var trueba=-1;
+    };
+
+	    return trueba;
 }); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
 
 console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
