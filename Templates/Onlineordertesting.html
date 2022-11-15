@@ -25365,7 +25365,7 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                                 }else{
                                 var Addonsqtyblanker = punched.Addonsqty;
                                 }
-                                if(punched.productname="Free Fries"){
+                                if(punched.productname=="Free Fries"){
                                 dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+Addonsqtyblanker+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
                                 }else{
                                 dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+Addonsqtyblanker+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
