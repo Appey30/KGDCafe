@@ -26432,7 +26432,25 @@ gtotalfrz = totalfrz;
 totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 
+var closebgwithcontentspecialpromo = document.getElementsByClassName("atbmodalbackgroundspecialpromo");
+var totalspecialpromo = document.getElementById("totalspecialpromo");
 
+
+var specialpromo = document.getElementById("specialpromoid");
+
+
+var atbmodalspecialpromocontent = document.getElementsByClassName("atbmodalspecialpromocontent");
+atbmodalspecialpromocontent[0].style.animation="fade-bottom-out 0.5s";
+setTimeout(closespecialpromo, 500);
+$('#qtynumspecialpromo').val(1)
+
+
+var totalfrz = 0;
+gtotalfrz = totalfrz;
+
+
+
+totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 
 var closebgwithcontentcookies = document.getElementsByClassName("atbmodalbackgroundcookies");
