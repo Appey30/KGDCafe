@@ -25295,9 +25295,14 @@ function delitem(indexnum){
 
 
 
+var indexfinderdeletei = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.index == indexnum)
+	    return true;
+});
 
 
-  allpunched.splice(indexnum, 1); // 2nd parameter means remove one item only
+
+  allpunched.splice(indexfinderdeletei, 1); // 2nd parameter means remove one item only
 
 
         var tablebody=document.getElementById('punchedtablebody');
