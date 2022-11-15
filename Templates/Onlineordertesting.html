@@ -24796,7 +24796,8 @@ var indexfinderany = allpunched.findIndex(function(puncheditem, index) {
     }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Cookies'){
         var trueba=true;
     };
-
+    console.log('puncheditem.Subcategory:'+puncheditem.Subcategory)
+    console.log('puncheditem.Category:'+puncheditem.Category)
 	    return trueba;
 }); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
 
