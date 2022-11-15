@@ -24783,6 +24783,11 @@ var indexfinderpizza = allpunched.findIndex(function(puncheditem, index) {
 	    return true;
 }); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
 
+var indexfinderfreefries = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname )
+	    return true;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
 var indexfinderany = allpunched.findIndex(function(puncheditem, index) {
     if(puncheditem.productname == itemprodname && puncheditem.Category == 'Freeze'){
         var trueba=true;
@@ -24966,7 +24971,7 @@ console.log('indexfinderany: '+indexfinderany);
 		            return true;
             }); 
 
-if(indexfinderfreefriesfinal !== -1){
+if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qty !== 0){
 
 
         if(allpunched[indexfinderfreefriesfinal].Category=='Snacks'){
@@ -24982,7 +24987,7 @@ if(indexfinderfreefriesfinal !== -1){
             tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
            
 }else{
-tablebody.innerHTML = datahtmltest;
+        tablebody.innerHTML = datahtmltest;
 };
  document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
             document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
@@ -25403,7 +25408,7 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
 		            return true;
             }); 
 
-if(indexfinderfreefriesfinals !== -1){
+if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Qty !== 0){
         if(allpunched[indexfinderfreefriesfinals].Category=='Snacks'){
         var categoryfinalfinals=allpunched[indexfinderfreefriesfinals].Subcategory;
         }else{
@@ -25414,10 +25419,11 @@ if(indexfinderfreefriesfinals !== -1){
         }else{
         var addonqtydisplaysakefinals=allpunched[indexfinderfreefriesfinals].Addonsqty;
         }
+
             tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable" ><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
             
 }else{
-tablebody.innerHTML = dataHtmlcart;
+        tablebody.innerHTML = dataHtmlcart;
 };
 
             
