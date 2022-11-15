@@ -24743,7 +24743,7 @@ var sukatall = "";
 var psukatall = "";
 var totalwithoudevfee = 0;
 var aonamewithprodname = "";
-var dataHtmlcart='';
+
 function addpunched() {
 
 
@@ -25315,7 +25315,7 @@ function delitem(indexnum){
                 document.getElementById('checkoutbut').value = 'Payment Setup';
                 document.getElementById("checkoutbut").disabled = true
                 document.getElementById('totalpunched').innerHTML = "";
-                dataHtmlcart='';
+                var dataHtmlcart='';
 
                 allpunched=[];
                 
@@ -25337,8 +25337,8 @@ function delitem(indexnum){
                                 }else{
                                     var categoryfinal=punched.Category;
                                 }
-                                var realindex=allpunched.indexOf(punched.productname);
-                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
+
+                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
                     }
 
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
