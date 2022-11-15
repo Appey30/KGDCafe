@@ -25306,7 +25306,14 @@ var indexfinderdeletei = allpunched.findIndex(function(puncheditem, index) {
 	    return true;
 });
 
-
+if(allpunched[indexfinderdeletei].productname.includes('with Free Fries')){
+var withfreefriesqty=allpunched[indexfinderdeletei].Qty;
+                var indexfinderfreefriesdelete = allpunched.findIndex(function(puncheditemthree, index) {
+                if(puncheditemthree.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemthree exist, indexfinderfreefriesthree will return the index of the existing item. If not, it will return -1.
+allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelete].Qty-withfreefriesqty;  
+}
 
   allpunched.splice(indexfinderdeletei, 1); // 2nd parameter means remove one item only
 
