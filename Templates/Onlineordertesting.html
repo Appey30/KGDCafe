@@ -23284,32 +23284,32 @@ class="logo">
 <div class="tabcontentprodpromo" id="Promo">
 
 
-<!--
-{% for specialpromob in specialpromobuttons %}
-<div class="card">
+{% If promoidentifier == 'Special Promo' %}
+            {% for specialpromob in specialpromobuttons %}
+            <div class="card">
 
-<div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
-</div>
-    {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
-    <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
-    {% else %}
-    <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
-    {% endif %}
-  <div class="h3div"><h3>{{specialpromob.productname}}</h3></div>
-  <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-  <tr>
-    <td id="specialpromo{{specialpromob.id}}" class="price"></td>
-  </tr>
+            <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
+                <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+            </div>
+                {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
+                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                {% else %}
+                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                {% endif %}
+              <div class="h3div"><h3>{{specialpromob.productname}}</h3></div>
+              <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+              <tr>
+                <td id="specialpromo{{specialpromob.id}}" class="price"></td>
+              </tr>
 
-</table>
-    <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
-  <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
+            </table>
+                <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
+              <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
 
-  <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
+              <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
 
-</div>
-
+            </div>
+{% endif %}
 <script>
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{specialpromob.id}}();
@@ -23503,7 +23503,8 @@ totalall = totalspecialpromo;
 totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
 }
 </script>
--->
+
+
 
 
 
