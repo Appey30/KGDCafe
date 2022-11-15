@@ -24955,11 +24955,10 @@ console.log('indexfinderany: '+indexfinderany);
 
 
 
-                                //if(punched.productname == "Free Fries"){
-                                //    datahtmltest = datahtmltest + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
-                                //}else{
+                                if(punched.productname == "Free Fries"){
+                                }else{
                                     datahtmltest = datahtmltest + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
-                                //};
+                                };
             };
 
             var indexfinderfreefriesfinal = allpunched.findIndex(function(puncheditem, index) {
@@ -24976,7 +24975,7 @@ var addonqtydisplaysakefinal="";
 }else{
 var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
 }
-            tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable" style="background-color:#FFBF00;"><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+            tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable" style="background-color:#FFBF00;"><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="z-index:1;opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
             document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
             document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             totalwithoudevfee = totalpunched;
@@ -25379,11 +25378,10 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                                 }else{
                                 var Addonsqtyblanker = punched.Addonsqty;
                                 }
-                                //if(punched.productname=="Free Fries"){
-                               // dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+Addonsqtyblanker+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
-                                //}else{
+                                if(punched.productname=="Free Fries"){
+                                }else{
                                 dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+Addonsqtyblanker+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
-                                //};
+                                };
                     }
 
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
@@ -25406,7 +25404,7 @@ var addonqtydisplaysakefinals="";
 }else{
 var addonqtydisplaysakefinals=allpunched[indexfinderfreefriesfinals].Addonsqty;
 }
-            tablebody.innerHTML = datahtmlcart+'<tr class="trpunchedtable" style="background-color:#FFBF00;"><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+            tablebody.innerHTML = datahtmlcart+'<tr class="trpunchedtable" style="background-color:#FFBF00;"><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="z-index:1;opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
             
             
             var counterbag = allpunched.length;
