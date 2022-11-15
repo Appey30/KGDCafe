@@ -24857,8 +24857,10 @@ if(day == 'Tuesday'){
                 console.log('indexfinderfreefriesone: '+indexfinderfreefriesone);
                 if(indexfinderfreefriesone == -1){
                 allpunched.push(puncheditemone);
+                allpunched[allpunched.length-1]['index'] = allpunched.length-1;
                 }else{
                 allpunched[indexfinderfreefriesone].Qty = parseInt(allpunched[indexfinderfreefriesone].Qty)+1;
+                allpunched[indexfinderfreefriesone]['index'] = indexfinderfreefriesone;
                 }
                 
         }
@@ -24885,8 +24887,10 @@ if(freefries == 'True' && freefriesmilktea == 'True'){
                 console.log(indexfinderfreefriestwo);
                 if(indexfinderfreefriestwo == -1){
                 allpunched.push(puncheditemtwo);
+                allpunched[allpunched.length-1]['index'] = allpunched.length-1;
                 }else{
                 allpunched[indexfinderfreefriestwo].Qty = parseInt(allpunched[indexfinderfreefriestwo].Qty)+1;
+                allpunched[indexfinderfreefriestwo]['index'] = indexfinderfreefriestwo;
                 }
                 
         }
@@ -24914,8 +24918,10 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 console.log(indexfinderfreefriesthree);
                 if(indexfinderfreefriesthree == -1){
                 allpunched.push(puncheditemthree);
+                allpunched[allpunched.length-1;]['index'] = allpunched.length-1;;
                 }else{
                 allpunched[indexfinderfreefriesthree].Qty = parseInt(allpunched[indexfinderfreefriesthree].Qty)+1;
+                allpunched[indexfinderfreefriesthree]['index'] = indexfinderfreefriesthree;
                 }
                 
         }
