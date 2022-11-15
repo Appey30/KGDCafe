@@ -23344,8 +23344,10 @@ specialpromo.innerHTML = "₱"+specialpromop+".00";
             <h3 class="choosesizespecialpromo">Size available</h3>
 
                 <div id="specialpromoid" onclick="functionfocusspecialpromo()" class="specialpromo choicesizespecialpromo">
-                <img src="{% static 'FrappeReg.png' %}" style="width:100%">
-                <h3>(16oz)</h3>
+                <img id='picningspecialpromo' src="" style="width:100%">
+                <h3 id="lagyuningspecialpromo"></h3>
+
+
                 </div>
             <script>
 
@@ -23359,6 +23361,7 @@ specialpromo.innerHTML = "₱"+specialpromop+".00";
             var qtycountspecialpromo = $('#qtynumspecialpromo').val();
 
             var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
+
             gtotalspecialpromo = totalspecialpromo;
             totalall = totalspecialpromo;
             allqty = qtycountspecialpromo;
@@ -23469,7 +23472,11 @@ var totalspecialpromo = document.getElementById("totalspecialpromo");
 var qtycountspecialpromo = $('#qtynumspecialpromo').val();
     
 var totalspecialpromo = specialpromoprice*qtycountspecialpromo;
-                
+
+            var picnaningspecialpromo = document.getElementById("picningspecialpromo");
+            picningspecialpromo.src = '/static/'+productname+'SPECIALPROMO.png';
+            var lagyuningspecialpromo = document.getElementById("lagyuningspecialpromo"); 
+            lagyuningspecialpromo.innerHTML="<h3>productname</h3>";
 gtotalspecialpromo = totalspecialpromo;
 totalall = totalspecialpromo;
 allqty = qtycountspecialpromo;
