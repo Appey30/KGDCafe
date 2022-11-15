@@ -24784,7 +24784,7 @@ var indexfinderpizza = allpunched.findIndex(function(puncheditem, index) {
 }); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
 
 var indexfinderany = allpunched.findIndex(function(puncheditem, index) {
-    if(puncheditem.productname == itemprodname || puncheditem.Category !== 'Milktea' || puncheditem.Category !== 'Frappe' || puncheditem.Subcategory !== "Pizza")
+    if(puncheditem.productname == itemprodname && (puncheditem.Category !== 'Milktea' || puncheditem.Category !== 'Frappe' || puncheditem.Subcategory !== "Pizza"))
 	    return true;
 }); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
 
