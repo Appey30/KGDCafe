@@ -24946,14 +24946,17 @@ console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
 console.log('indexfinderpizza: '+indexfinderpizza);
 console.log('indexfinderany: '+indexfinderany);
             var realindex = 0;
-            if(categoryfinal == 'Milktea' || categoryfinal == 'Frappe'){
-            realindex = indexfinderfrappemilktea;
-            }else if(categoryfinal == 'Pizza'){
-            realindex = indexfinderpizza;
+            if(indexfinderfrappemilktea == -1 && indexfinderpizza == -1 && indexfinderany == -1){
+                realindex = allpunched.length-1;
             }else{
-            realindex = indexfinderany;
-            };
-
+                    if(categoryfinal == 'Milktea' || categoryfinal == 'Frappe'){
+                    realindex = indexfinderfrappemilktea;
+                    }else if(categoryfinal == 'Pizza'){
+                    realindex = indexfinderpizza;
+                    }else{
+                    realindex = indexfinderany;
+                    };
+            }
             datahtmltest = datahtmltest + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+realindex+')" id="delitemid'+realindex+'" value="'+realindex+'">Delete</button></td></tr>';
             };
             
@@ -25305,7 +25308,7 @@ function delitem(indexnum){
 
   allpunched.splice(indexnum, 1); // 2nd parameter means remove one item only
 
-  alert(allpunched.length);
+
         var tablebody=document.getElementById('punchedtablebody');
 
         var totalpunched=0;
