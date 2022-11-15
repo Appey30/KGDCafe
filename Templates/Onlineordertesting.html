@@ -23268,22 +23268,25 @@ class="logo">
 <div class="ourmenutitlepromodiv" style="display:flex;">
 <h2 class="ourmenutitlepromo">Free Fries-day Promo for you, <br><br>{{user.first_name}}!</h2>
 {% elif promoidentifier == 'Special Promo' %}
+<div class="ourmenutitlepromodiv" style="display:flex;">
 <h2 class="ourmenutitlepromo">Special Promo for you, <br><br>{{user.first_name}}!</h2>
 {% else %}
 <div class="ourmenutitlepromodiv" style="display:none;">
 {% endif %}
 
 
+
+
 </div>
 {% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo' %}
-<div class="wraptabcontentprodpromo" style="display:flex;">
+
 <div class="tabcontentprodpromo" id="Promo">
 {% else %}
 <div class="wraptabcontentprodpromo" style="display:none;">
-<div class="tabcontentprodpromo" style="display:none;" id="Promo">
+
 {% endif %}
 
-
+<div class="wraptabcontentprodpromo" style="display:flex;">
 
 {% for specialpromob in specialpromobuttons %}
 <div class="card">
