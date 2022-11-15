@@ -24771,36 +24771,51 @@ aonamewithprodname = "";
                 Addonsnamewithprodname:aonamewithprodname,
                 Addonsqty:aoqty,
             };
-console.log('aoname:'+aoname)
-console.log('sukatall:'+sukatall)
-console.log('isMilktea:'+allpunched[indexfinder].Category == 'Milktea')
-console.log('isFrappe:'+allpunched[indexfinder].Category == 'Frappe')
-var indexfinder = allpunched.findIndex(function(puncheditem, index) {
-    if(puncheditem.productname == itemprodname)
+
+
+var indexfinderfrappemilktea = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname && (puncheditem.Category == 'Milktea' || puncheditem.Category == 'Frappe') && puncheditem.Size == sukatall && puncheditem.Addonsname == aoname)
 	    return true;
-}); //if puncheditem exist, indexfinder will return the index of the existing item. If not, it will return -1.
-console.log('indexfinder: '+indexfinder);
-if(indexfinder == -1){
+}); //if puncheditem exist, indexfinderfrappemilktea will return the index of the existing item. If not, it will return -1.
+
+var indexfinderpizza = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname && puncheditem.Category == 'Snacks' && puncheditem.Subcategory == "Pizza" && puncheditem.PSize == psukatall)
+	    return true;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
+var indexfinderany = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname || puncheditem.Category !== 'Milktea' || puncheditem.Category !== 'Frappe' || puncheditem.Subcategory !== "Pizza")
+	    return true;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
+console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
+console.log('indexfinderpizza: '+indexfinderpizza);
+console.log('indexfinderany: '+indexfinderany);
+if(indexfinderfrappemilktea == -1 || indexfinderpizza == -1 || indexfinderany == -1){
 allpunched.push(puncheditem);
-}else if((allpunched[indexfinder].Category == 'Milktea' || allpunched[indexfinder].Category == 'Frappe') && allpunched[indexfinder].Size == sukatall && allpunched[indexfinder].Addonsname == aoname){
+}else if(indexfinderfrappemilktea !== -1){
     
-    allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall)
-    allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty)
+    allpunched[indexfinderfrappemilktea].Subtotal = parseInt(allpunched[indexfinderfrappemilktea].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderfrappemilktea].Qty = parseInt(allpunched[indexfinderfrappemilktea].Qty) + parseInt(allqty)
     var addonsqtyadd = 0;
-    if(allpunched[indexfinder].Addonsqty && aoqty){
-    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty) + parseInt(aoqty)
-    }else if(parseInt(allpunched[indexfinder].Addonsqty) > 0 && parseInt(aoqty) == 0){
-    addonsqtyadd = parseInt(allpunched[indexfinder].Addonsqty);
-    }else if(parseInt(allpunched[indexfinder].Addonsqty) == 0 && parseInt(aoqty) > 0){
+    if(allpunched[indexfinderfrappemilktea].Addonsqty && aoqty){
+    addonsqtyadd = parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) + parseInt(aoqty)
+    }else if(parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) > 0 && parseInt(aoqty) == 0){
+    addonsqtyadd = parseInt(allpunched[indexfinderfrappemilktea].Addonsqty);
+    }else if(parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) == 0 && parseInt(aoqty) > 0){
     addonsqtyadd = parseInt(aoqty);
     }else{
     addonsqtyadd=0;
     };
-    allpunched[indexfinder].Addonsqty = addonsqtyadd
+    allpunched[indexfinderfrappemilktea].Addonsqty = addonsqtyadd
 
- }else if((allpunched[indexfinder].Category == 'Snacks' && allpunched[indexfinder].Subcategory == "Pizza" && allpunched[indexfinder].PSize == "psukatall")){
-     allpunched[indexfinder].Subtotal = parseInt(allpunched[indexfinder].Subtotal)   + parseInt(totalall)
-    allpunched[indexfinder].Qty = parseInt(allpunched[indexfinder].Qty) + parseInt(allqty)
+ }else if(indexfinderpizza !== -1){
+     allpunched[indexfinderpizza].Subtotal = parseInt(allpunched[indexfinderpizza].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderpizza].Qty = parseInt(allpunched[indexfinderpizza].Qty) + parseInt(allqty)
+ 
+}else if(indexfinderany !== -1){
+     allpunched[indexfinderany].Subtotal = parseInt(allpunched[indexfinderany].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderany].Qty = parseInt(allpunched[indexfinderany].Qty) + parseInt(allqty)
  
 }else{
 allpunched.push(puncheditem)
