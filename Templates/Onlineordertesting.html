@@ -24783,6 +24783,11 @@ var indexfinderpizza = allpunched.findIndex(function(puncheditem, index) {
 	    return true;
 }); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
 
+var indexfinderpromo = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname && puncheditem.Category == 'Promo' && puncheditem.Size == sukatall && puncheditem.Addonsname == aoname)
+	    return true;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
 var indexfinderfreefries = allpunched.findIndex(function(puncheditem, index) {
     if(puncheditem.productname == itemprodname )
 	    return true;
@@ -24816,6 +24821,22 @@ if(indexfinderfrappemilktea !== -1){
     }else if(parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) > 0 && parseInt(aoqty) == 0){
     addonsqtyadd = parseInt(allpunched[indexfinderfrappemilktea].Addonsqty);
     }else if(parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) == 0 && parseInt(aoqty) > 0){
+    addonsqtyadd = parseInt(aoqty);
+    }else{
+    addonsqtyadd=0;
+    };
+    allpunched[indexfinderfrappemilktea].Addonsqty = addonsqtyadd
+    allpunched[indexfinderfrappemilktea]['index'] = indexfinderfrappemilktea;
+ }else if(indexfinderpromo !== -1){
+    
+    allpunched[indexfinderpromo].Subtotal = parseInt(allpunched[indexfinderpromo].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderpromo].Qty = parseInt(allpunched[indexfinderpromo].Qty) + parseInt(allqty)
+    var addonsqtyadd = 0;
+    if(allpunched[indexfinderpromo].Addonsqty && aoqty){
+    addonsqtyadd = parseInt(allpunched[indexfinderpromo].Addonsqty) + parseInt(aoqty)
+    }else if(parseInt(allpunched[indexfinderpromo].Addonsqty) > 0 && parseInt(aoqty) == 0){
+    addonsqtyadd = parseInt(allpunched[indexfinderpromo].Addonsqty);
+    }else if(parseInt(allpunched[indexfinderpromo].Addonsqty) == 0 && parseInt(aoqty) > 0){
     addonsqtyadd = parseInt(aoqty);
     }else{
     addonsqtyadd=0;
@@ -24984,7 +25005,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
         }else{
         var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
         }
-            tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+        tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
            
 }else{
         tablebody.innerHTML = datahtmltest;
