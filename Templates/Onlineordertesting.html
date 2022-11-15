@@ -24773,6 +24773,8 @@ aonamewithprodname = "";
             };
 console.log('aoname:'+aoname)
 console.log('sukatall:'+sukatall)
+console.log('isMilktea:'+allpunched[indexfinder].Category == 'Milktea')
+console.log('isFrappe:'+allpunched[indexfinder].Category == 'Frappe')
 var indexfinder = allpunched.findIndex(function(puncheditem, index) {
     if(puncheditem.productname == itemprodname)
 	    return true;
