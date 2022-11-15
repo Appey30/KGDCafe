@@ -24979,9 +24979,12 @@ if(indexfinderfreefriesfinal !== -1){
         }else{
         var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
         }
-}
             tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
-            document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
+           
+}else{
+tablebody.innerHTML = datahtmltest;
+};
+ document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
             document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             totalwithoudevfee = totalpunched;
             //$("#totalpunched1").val(totalpunched);
@@ -25411,9 +25414,12 @@ if(indexfinderfreefriesfinals !== -1){
         }else{
         var addonqtydisplaysakefinals=allpunched[indexfinderfreefriesfinals].Addonsqty;
         }
-}
             tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable" ><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
             
+}else{
+tablebody.innerHTML = dataHtmlcart;
+};
+
             
             var counterbag = allpunched.length;
             document.getElementsByClassName('circlepositioncount')[0].innerHTML = counterbag;
