@@ -4908,7 +4908,7 @@ def Onlineordertestingsystem(request, admin_id):
         #        promoidentifier=''
         #    else:
         #        promoidentifier='FirstTimer'
-        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Monday':
+        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Tuesday':
             promoidentifier='Friesday'
         else:
             promoidentifier=''
