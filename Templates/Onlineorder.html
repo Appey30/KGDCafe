@@ -33,13 +33,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 body {
-  font-family: "Lato", sans-serif,Beyond_The_Mountains;
+  font-family: "Lato", sans-serif, beyond_the_mountains;
 background-image:url({% static 'bas.jpg'%});
  background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
-@font-face { font-family: Beyond_The_Mountains; font-weight: bold; src: url({% static 'beyond_the_mountains.otf' %});}
+@font-face { 
+font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond_the_mountains.otf' %});
+}
 @media screen and (min-width: 1200px){
  
 .minified{
@@ -202,7 +204,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:10;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -273,13 +275,14 @@ padding-left:20px;
 padding-bottom:20px;
 padding-right:20px;
 }
-.showdescriptionbody p{
+.showproductdescriptionclass{
 position:relative;
 top:0px;
 color:black;
 margin-left:20px;
 margin-right:20px;
 text-align:center;
+font-size:24px;
 }
 .showdescriptionbody h5{
 position:relative;
@@ -1271,7 +1274,7 @@ text-align:center;
 .ourmenutitlepromodiv{
 position:relative;
 top:60px;
-width:900px;
+width:750px;
 height:auto;
 background-color:transparent;
 margin-left:auto;
@@ -1282,15 +1285,15 @@ text-align:center;
 .ourmenutitlepromo{
 position:relative;
 font-weight:bold;
-font-size:70px;
-font-family:Beyond_The_Mountains;
+font-size:60px;
+font-family:beyond_the_mountains;
 
 }
 .ourmenutitle{
 position:relative;
 font-weight:bold;
 font-size:70px;
-font-family:Beyond_The_Mountains;
+font-family:beyond_the_mountains;
 
 }
 .productsmenudiv{
@@ -1533,6 +1536,31 @@ bottom:20px;
 }
 
 #atbbutfrappe:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+#atbbutspecialpromo {
+
+position:absolute;
+left:7.5px;
+bottom:20px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 280px;
+  height:50px;
+  font-size: 18px;
+}
+
+#atbbutspecialpromo:hover {
     
     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
    transition:box-shadow .2s;
@@ -1957,7 +1985,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -1969,7 +1997,7 @@ align-items:center;
 }
 .atbmodalpromocontent{
 position:relative;
-
+z-index:12;
 width:1000px;
 height:600px;
 background-color:white;
@@ -2281,7 +2309,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -2293,7 +2321,7 @@ align-items:center;
 }
 .atbmodalmilkteacontent{
 position:relative;
-
+z-index:12;
 width:1000px;
 height:600px;
 background-color:white;
@@ -2603,7 +2631,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -2619,7 +2647,7 @@ width:1000px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 
 
@@ -2897,13 +2925,191 @@ text-align:center;
 height:30px;
 width:50px;
 }
+.atbmodalbackgroundspecialpromo{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:11;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+}
+.quantityspecialpromo{
+position:relative;
+float:right;
+top:-35px;
+margin-right:10px;
+
+}
+.quantityspecialpromo input{
+text-align:center;
+color:black;
+height:40px;
+}
+.atbmodalspecialpromocontent{
+position:relative;
+width:1000px;
+height:600px;
+background-color:white;
+transition-delay: 2s;
+z-index:12;
+border-radius:15px;
+}
+.itemimage{
+position:relative;
+top:0px;
+background-color:	#DCDCDC;
+}
+.itemimage img{
+}
+
+.atbmodalspecialpromocontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:absolute;
+    top:5px;
+  right:20px;
+}
+
+.atbmodalspecialpromocontentclose:hover,
+.atbmodalspecialpromocontentclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modalheadspecialpromo {
+    position:relative;
+    top:-20px;
+    left:0px;
+  width:100%;
+  height:50px;
+  background-color: #FFBF00;
+  color: white;
+border-radius:15px 15px 0px 0px;
+ 
+}
+.modalheadspecialpromo h1{
+position:relative;
+top:0px;
+margin-left:20px;
+text-align:center;
+
+}
+.modalbodyspecialpromo {
+position:relative;
+width:100%;
+height:400px;
+padding-left:20px;
+padding-top:20px;
+}
+.modalfootspecialpromo {
+
+position:relative;
+bottom:-20px;
+width:100%;
+height:130px;
+  margin-bottom: 0px;
+  margin-top:20px;
+  background-color: white;
+  color: white;
+  border-top:2px solid rgba(192,192,192, 0.5);
+  border-bottom:2px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+.choicesizespecialpromo{
+background-color:#FFBF00;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+}
+.specialpromo{
+position:absolute;
+width:200px;
+height:175px;
+left:30px;
+box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+background-color:;
+border-radius:15px;
+
+}
+.specialpromo:hover{
+background-color:#FFBF00;
+cursor:pointer;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+transform:scale(1.1);
+}
+
+.specialpromo h3{
+text-align:center;
+font-size:20px;
+}
+.modalfootspecialpromo h3{
+margin-left:10px;
+margin-top:10px;
+color:black;
+
+}
+.modalfootspecialpromo h4{
+position:absolute;
+left:740px;
+top:15px;
+color:black;
+
+}
+.modalfootspecialpromo h8{
+position:absolute;
+left:10px;
+top:40px;
+color:grey;
+
+}
+.modalfootspecialpromo button {
+position:relative;
+
+bottom:-10px;
+
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height:50px;
+  font-size: 18px;
+}
+
+.modalfootspecialpromo button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+.minusspecialpromo{
+text-align:center;
+height:30px;
+width:50px;
+}
+.plusspecialpromo{
+text-align:center;
+height:30px;
+width:50px;
+}
 
 .atbmodalbackgroundfreeze{
 display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -2919,7 +3125,7 @@ width:1000px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -3070,7 +3276,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -3086,7 +3292,7 @@ width:1000px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -3236,7 +3442,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -3252,7 +3458,7 @@ width:1000px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -3403,7 +3609,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -3419,7 +3625,7 @@ width:1000px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -3570,7 +3776,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -3586,7 +3792,7 @@ width:1000px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -3752,7 +3958,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -3768,7 +3974,7 @@ width:1000px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -4571,13 +4777,14 @@ padding-left:20px;
 padding-bottom:20px;
 padding-right:20px;
 }
-.showdescriptionbody p{
+.showproductdescriptionclass{
 position:relative;
 top:0px;
 color:black;
 margin-left:20px;
 margin-right:20px;
 text-align:center;
+font-size:24px;
 }
 .showdescriptionbody h5{
 position:relative;
@@ -5552,7 +5759,7 @@ overflow:hidden;
 .ourmenutitlepromodiv{
 position:relative;
 top:60px;
-width:900px;
+width:750px;
 height:auto;
 background-color:transparent;
 margin-left:auto;
@@ -5563,8 +5770,8 @@ text-align:center;
 .ourmenutitlepromo{
 position:relative;
 font-weight:bold;
-font-size:70px;
-font-family:Beyond_The_Mountains;
+font-size:60px;
+font-family:beyond_the_mountains;
 
 }
 .ourmenutitlediv{
@@ -5582,7 +5789,7 @@ text-align:center;
 position:relative;
 font-weight:bold;
 font-size:70px;
-font-family:Beyond_The_Mountains;
+font-family:beyond_the_mountains;
 
 }
 .productsmenudiv{
@@ -5824,6 +6031,31 @@ bottom:20px;
 }
 
 #atbbutfrappe:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+#atbbutspecialpromo {
+
+position:absolute;
+left:7.5px;
+bottom:20px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 280px;
+  height:50px;
+  font-size: 18px;
+}
+
+#atbbutspecialpromo:hover {
     
     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
    transition:box-shadow .2s;
@@ -6248,7 +6480,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -6262,6 +6494,7 @@ align-items:center;
 position:relative;
 width:900px;
 height:600px;
+z-index:12;
 background-color:white;
 transition-delay: 2s;
 border-radius:15px;
@@ -6562,7 +6795,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -6576,6 +6809,7 @@ align-items:center;
 position:relative;
 width:900px;
 height:600px;
+z-index:12;
 background-color:white;
 transition-delay: 2s;
 border-radius:15px;
@@ -6878,7 +7112,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -6890,7 +7124,7 @@ align-items:center;
 }
 .atbmodalfrappecontent{
 position:relative;
-
+z-index:12;
 width:900px;
 height:600px;
 background-color:white;
@@ -7173,12 +7407,192 @@ height:30px;
 width:50px;
 }
 
+.atbmodalbackgroundspecialpromo{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:11;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+}
+.quantityspecialpromo{
+position:relative;
+float:right;
+top:-35px;
+margin-right:10px;
+}
+.quantityspecialpromo input{
+text-align:center;
+color:black;
+height:40px;
+}
+.atbmodalspecialpromocontent{
+position:relative;
+width:900px;
+height:600px;
+background-color:white;
+transition-delay: 2s;
+z-index:12;
+
+border-radius:15px;
+}
+.itemimage{
+position:relative;
+top:0px;
+background-color:	#DCDCDC;
+}
+.itemimage img{
+}
+
+.atbmodalspecialpromocontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:absolute;
+    top:5px;
+  right:20px;
+}
+
+.atbmodalspecialpromocontentclose:hover,
+.atbmodalspecialpromocontentclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modalheadspecialpromo {
+    position:relative;
+    top:-20px;
+    left:0px;
+  width:100%;
+  height:50px;
+  background-color: #FFBF00;
+  color: white;
+border-radius:15px 15px 0px 0px;
+ 
+}
+.modalheadspecialpromo h1{
+position:relative;
+top:0px;
+margin-left:20px;
+text-align:center;
+
+}
+.modalbodyspecialpromo {
+position:relative;
+width:100%;
+height:400px;
+padding-left:20px;
+padding-top:20px;
+}
+.modalfootspecialpromo {
+
+position:relative;
+bottom:-20px;
+width:100%;
+height:130px;
+  margin-bottom: 0px;
+  margin-top:20px;
+  background-color: white;
+  color: white;
+  border-top:2px solid rgba(192,192,192, 0.5);
+  border-bottom:2px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+.choicesizespecialpromo{
+background-color:#FFBF00;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+}
+.specialpromo{
+position:absolute;
+width:200px;
+height:175px;
+left:30px;
+box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+background-color:;
+border-radius:15px;
+
+}
+.specialpromo:hover{
+background-color:#FFBF00;
+cursor:pointer;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+transform:scale(1.1);
+}
+
+.specialpromo h3{
+text-align:center;
+font-size:20px;
+}
+.modalfootspecialpromo h3{
+margin-left:10px;
+margin-top:10px;
+color:black;
+
+}
+.modalfootspecialpromo h4{
+position:absolute;
+left:740px;
+top:15px;
+color:black;
+
+}
+.modalfootspecialpromo h8{
+position:absolute;
+left:10px;
+top:40px;
+color:grey;
+
+}
+.modalfootspecialpromo button {
+position:relative;
+
+bottom:-10px;
+
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height:50px;
+  font-size: 18px;
+}
+
+.modalfootspecialpromo button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+.minusspecialpromo{
+text-align:center;
+height:30px;
+width:50px;
+}
+.plusspecialpromo{
+text-align:center;
+height:30px;
+width:50px;
+}
+
+
 .atbmodalbackgroundfreeze{
 display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -7194,6 +7608,7 @@ width:900px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
+z-index:12;
 
 border-radius:15px;
 }
@@ -7345,7 +7760,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -7361,7 +7776,7 @@ width:900px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -7511,7 +7926,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -7527,7 +7942,7 @@ width:900px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -7678,7 +8093,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -7694,7 +8109,7 @@ width:900px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -7845,7 +8260,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -7861,7 +8276,7 @@ width:900px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -8027,7 +8442,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -8043,7 +8458,7 @@ width:900px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -8844,13 +9259,14 @@ padding-left:20px;
 padding-bottom:20px;
 padding-right:20px;
 }
-.showdescriptionbody p{
+.showproductdescriptionclass{
 position:relative;
 top:0px;
 color:black;
 margin-left:20px;
 margin-right:20px;
 text-align:center;
+font-size:24px;
 }
 .showdescriptionbody h5{
 position:relative;
@@ -9494,9 +9910,9 @@ position:relative;
 background-color:white;
 width:700px; 
 height:500px;
-z-index:11;
-border-radius:10px;
 
+border-radius:10px;
+z-index:11;
 
 }
 .modalheaddetails {
@@ -9828,7 +10244,7 @@ overflow:hidden;
 .ourmenutitlepromodiv{
 position:relative;
 top:60px;
-width:400px;
+width:630px;
 height:auto;
 background-color:transparent;
 margin-left:auto;
@@ -9839,8 +10255,8 @@ text-align:center;
 .ourmenutitlepromo{
 position:relative;
 font-weight:bold;
-font-size:60px;
-font-family:Beyond_The_Mountains;
+font-size:50px;
+font-family:beyond_the_mountains;
 
 }
 .ourmenutitlediv{
@@ -9858,7 +10274,7 @@ text-align:center;
 position:relative;
 font-weight:bold;
 font-size:70px;
-font-family:Beyond_The_Mountains;
+font-family:beyond_the_mountains;
 
 }
 .productsmenudiv{
@@ -10102,6 +10518,31 @@ bottom:20px;
 }
 
 #atbbutfrappe:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+#atbbutspecialpromo {
+
+position:absolute;
+left:7.5px;
+bottom:20px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 280px;
+  height:50px;
+  font-size: 18px;
+}
+
+#atbbutspecialpromo:hover {
     
     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
    transition:box-shadow .2s;
@@ -10527,7 +10968,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -10539,7 +10980,7 @@ align-items:center;
 }
 .atbmodalpromocontent{
 position:relative;
-
+z-index:12;
 width:700px;
 height:600px;
 background-color:white;
@@ -10844,7 +11285,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -10856,7 +11297,7 @@ align-items:center;
 }
 .atbmodalmilkteacontent{
 position:relative;
-
+z-index:12;
 width:700px;
 height:600px;
 background-color:white;
@@ -11160,7 +11601,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -11176,7 +11617,7 @@ width:700px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -11453,13 +11894,190 @@ text-align:center;
 height:30px;
 width:50px;
 }
+.atbmodalbackgroundspecialpromo{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:11;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+}
+.quantityspecialpromo{
+position:relative;
+float:right;
+top:-35px;
+margin-right:10px;
+}
+.quantityspecialpromo input{
+text-align:center;
+color:black;
+height:40px;
+}
+.atbmodalspecialpromocontent{
+position:relative;
+width:700px;
+height:600px;
+background-color:white;
+transition-delay: 2s;
+z-index:12;
+border-radius:15px;
+}
+.itemimage{
+position:relative;
+top:0px;
+background-color:	#DCDCDC;
+}
+.itemimage img{
+}
+
+.atbmodalspecialpromocontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:absolute;
+    top:5px;
+  right:20px;
+}
+
+.atbmodalspecialpromocontentclose:hover,
+.atbmodalspecialpromocontentclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modalheadspecialpromo {
+    position:relative;
+    top:-20px;
+    left:0px;
+  width:100%;
+  height:50px;
+  background-color: #FFBF00;
+  color: white;
+border-radius:15px 15px 0px 0px;
+ 
+}
+.modalheadspecialpromo h1{
+position:relative;
+top:0px;
+margin-left:20px;
+text-align:center;
+
+}
+.modalbodyspecialpromo {
+position:relative;
+width:100%;
+height:400px;
+padding-left:20px;
+padding-top:20px;
+}
+.modalfootspecialpromo {
+
+position:relative;
+bottom:-20px;
+width:100%;
+height:130px;
+  margin-bottom: 0px;
+  margin-top:20px;
+  background-color: white;
+  color: white;
+  border-top:2px solid rgba(192,192,192, 0.5);
+  border-bottom:2px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+.choicesizespecialpromo{
+background-color:#FFBF00;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+}
+.specialpromo{
+position:absolute;
+width:200px;
+height:175px;
+left:30px;
+box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+background-color:;
+border-radius:15px;
+
+}
+.specialpromo:hover{
+background-color:#FFBF00;
+cursor:pointer;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+transform:scale(1.1);
+}
+
+.specialpromo h3{
+text-align:center;
+font-size:20px;
+}
+.modalfootspecialpromo h3{
+margin-left:10px;
+margin-top:10px;
+color:black;
+
+}
+.modalfootspecialpromo h4{
+position:absolute;
+left:740px;
+top:15px;
+color:black;
+
+}
+.modalfootspecialpromo h8{
+position:absolute;
+left:10px;
+top:40px;
+color:grey;
+
+}
+.modalfootspecialpromo button {
+position:relative;
+
+bottom:-10px;
+
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height:50px;
+  font-size: 18px;
+}
+
+.modalfootspecialpromo button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+.minusspecialpromo{
+text-align:center;
+height:30px;
+width:50px;
+}
+.plusspecialpromo{
+text-align:center;
+height:30px;
+width:50px;
+}
 
 .atbmodalbackgroundfreeze{
 display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -11475,7 +12093,7 @@ width:700px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -11626,7 +12244,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -11642,7 +12260,7 @@ width:700px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -11792,7 +12410,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -11809,7 +12427,7 @@ width:700px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -11960,7 +12578,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -11976,7 +12594,7 @@ width:700px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -12127,7 +12745,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -12143,7 +12761,7 @@ width:700px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -12312,7 +12930,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -12328,7 +12946,7 @@ width:700px;
 height:600px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -13132,7 +13750,7 @@ padding-left:20px;
 padding-bottom:20px;
 padding-right:20px;
 }
-.showdescriptionbody p{
+.showproductdescriptionclass{
 position:relative;
 top:0px;
 color:black;
@@ -14115,7 +14733,7 @@ overflow:hidden;
 .ourmenutitlepromodiv{
 position:relative;
 top:60px;
-width:400px;
+width:360px;
 height:auto;
 background-color:transparent;
 margin-left:auto;
@@ -14127,7 +14745,7 @@ text-align:center;
 position:relative;
 font-weight:bold;
 font-size:30px;
-font-family:Beyond_The_Mountains;
+font-family:beyond_the_mountains;
 
 }
 .ourmenutitlediv{
@@ -14145,7 +14763,7 @@ text-align:center;
 position:relative;
 font-weight:bold;
 font-size:30px;
-font-family:Beyond_The_Mountains;
+font-family:beyond_the_mountains;
 
 }
 .productsmenudiv{
@@ -14388,6 +15006,31 @@ bottom:20px;
 }
 
 #atbbutfrappe:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+#atbbutspecialpromo {
+
+position:absolute;
+left:12px;
+bottom:20px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 120px;
+  height:20px;
+  font-size: 8px;
+}
+
+#atbbutspecialpromo:hover {
     
     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
    transition:box-shadow .2s;
@@ -14818,7 +15461,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:10;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -14830,7 +15473,7 @@ align-items:center;
 }
 .atbmodalpromocontent{
 position:relative;
-
+z-index:12;
 width:90%;
 height:530px;
 background-color:white;
@@ -15137,7 +15780,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:10;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -15149,7 +15792,7 @@ align-items:center;
 }
 .atbmodalmilkteacontent{
 position:relative;
-
+z-index:12;
 width:90%;
 height:530px;
 background-color:white;
@@ -15456,7 +16099,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -15472,7 +16115,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -15755,14 +16398,227 @@ height:15px;
 width:30px;
 color:black;
 }
+.atbmodalbackgroundspecialpromo{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:11;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+}
+.quantityspecialpromo{
+position:relative;
+float:right;
+top:-70px;
+margin-right:10px;
+}
+.quantityspecialpromo input{
+text-align:center;
+color:black;
+height:25px;
+width:40px;
+}
+.atbmodalspecialpromocontent{
+position:relative;
+width:90%;
+height:530px;
+background-color:white;
+transition-delay: 2s;
+z-index:12;
+border-radius:15px;
+}
+.itemimage{
+position:relative;
+top:0px;
+background-color:	#DCDCDC;
+}
+.itemimage img{
+}
 
+.atbmodalspecialpromocontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:absolute;
+    top:5px;
+  right:20px;
+}
+
+.atbmodalspecialpromocontentclose:hover,
+.atbmodalspecialpromocontentclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modalheadspecialpromo {
+    position:relative;
+    top:-20px;
+    left:0px;
+  width:100%;
+  height:50px;
+  background-color: #FFBF00;
+  color: white;
+border-radius:15px 15px 0px 0px;
+ 
+}
+.modalheadspecialpromo h1{
+position:relative;
+top:15px;
+margin-left:15px;
+text-align:center;
+font-size:20px;
+
+}
+.modalbodyspecialpromo {
+position:relative;
+width:100%;
+height:360px;
+padding-left:20px;
+padding-top:20px;
+}
+.choosesizespecialpromo{
+position:absolute;
+top:-10px;
+}
+.modalfootspecialpromo {
+
+position:relative;
+bottom:-20px;
+width:100%;
+height:100px;
+  margin-bottom: 0px;
+  margin-top:20px;
+  background-color: white;
+  color: white;
+  border-top:2px solid rgba(192,192,192, 0.5);
+  border-bottom:2px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+.choicesizespecialpromo{
+background-color:#FFBF00;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+}
+.specialpromo{
+position:absolute;
+width:100px;
+height:120px;
+left:15px;
+top:40px;
+box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+background-color:;
+border-radius:15px;
+}
+.specialpromo:hover{
+background-color:#FFBF00;
+cursor:pointer;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+transform:scale(1.1);
+}
+
+.specialpromo h3{
+text-align:center;
+font-size:13px;
+}
+.modalfootspecialpromo h3{
+margin-left:10px;
+margin-top:10px;
+color:black;
+font-size:15px;
+font-weight:bold;
+
+}
+.modalfootspecialpromo h4{
+position:absolute;
+left:740px;
+top:15px;
+color:black;
+
+}
+.modalfootspecialpromo h8{
+position:absolute;
+left:10px;
+top:40px;
+color:grey;
+
+}
+.modalfootspecialpromo button {
+position:relative;
+
+bottom:0px;
+
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height:40px;
+  font-size: 18px;
+}
+
+.modalfootspecialpromo button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+
+.minusspecialpromo{
+text-align:center;
+height:15px;
+width:30px;
+color:black;
+}
+.plusspecialpromo{
+text-align:center;
+height:15px;
+width:30px;
+color:black;
+}
+
+
+.itemimage{
+position:relative;
+top:0px;
+background-color:	#DCDCDC;
+}
+.itemimage img{
+}
+
+.atbmodalspecialpromocontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:absolute;
+    top:5px;
+  right:20px;
+}
+
+.atbmodalspecialpromocontentclose:hover,
+.atbmodalspecialpromocontentclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .atbmodalbackgroundfreeze{
 display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -15778,7 +16634,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -15964,7 +16820,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -15980,7 +16836,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -16165,7 +17021,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -16177,7 +17033,7 @@ align-items:center;
 }
 .atbmodalshawarmacontent{
 position:relative;
-
+z-index:12;
 width:90%;
 height:530px;
 background-color:white;
@@ -16343,7 +17199,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -16359,7 +17215,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -16520,7 +17376,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -16536,7 +17392,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -16712,7 +17568,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -16728,7 +17584,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -17568,7 +18424,7 @@ padding-bottom:20px;
 padding-right:20px;
 background-color:;
 }
-.showdescriptionbody p{
+.showproductdescriptionclass{
 position:relative;
 top:0px;
 color:black;
@@ -17621,8 +18477,8 @@ width:90%;
 height:auto;
 background-color:white;
 transition-delay: 2s;
-border-radius:15px;
 z-index:11;
+border-radius:15px;
 }
 .showgpshead {
     position:relative;
@@ -18553,7 +19409,7 @@ overflow:hidden;
 .ourmenutitlepromodiv{
 position:relative;
 top:60px;
-width:250px;
+width:280px;
 height:auto;
 background-color:transparent;
 margin-left:auto;
@@ -18565,7 +19421,7 @@ text-align:center;
 position:relative;
 font-weight:bold;
 font-size:20px;
-font-family:Beyond_The_Mountains;
+font-family:beyond_the_mountains;
 
 }
 .ourmenutitlediv{
@@ -18583,7 +19439,7 @@ text-align:center;
 position:relative;
 font-weight:bold;
 font-size:30px;
-font-family:Beyond_The_Mountains;
+font-family:beyond_the_mountains;
 
 }
 .productsmenudiv{
@@ -18833,6 +19689,31 @@ bottom:20px;
 }
 
 #atbbutfrappe:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+#atbbutspecialpromo {
+
+position:absolute;
+left:12px;
+bottom:20px;
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 120px;
+  height:20px;
+  font-size: 8px;
+}
+
+#atbbutspecialpromo:hover {
     
     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
    transition:box-shadow .2s;
@@ -19263,7 +20144,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -19279,7 +20160,7 @@ width:90%;
 max-height:550px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -19583,7 +20464,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -19599,7 +20480,7 @@ width:90%;
 max-height:550px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -19903,7 +20784,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -19919,7 +20800,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -20201,14 +21082,241 @@ height:15px;
 width:30px;
 color:black;
 }
+.atbmodalbackgroundspecialpromo{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:11;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+}
+.quantityspecialpromo{
+position:relative;
+float:right;
+top:-70px;
+margin-right:10px;
+}
+.quantityspecialpromo input{
+text-align:center;
+color:black;
+height:25px;
+width:40px;
+}
+.atbmodalspecialpromocontent{
+position:relative;
+width:90%;
+height:530px;
+background-color:white;
+transition-delay: 2s;
+z-index:12;
+border-radius:15px;
+}
+.itemimage{
+position:relative;
+top:0px;
+background-color:	#DCDCDC;
+}
+.itemimage img{
+}
 
+.atbmodalspecialpromocontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:absolute;
+    top:5px;
+  right:20px;
+}
+
+.atbmodalspecialpromocontentclose:hover,
+.atbmodalspecialpromocontentclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modalheadspecialpromo {
+    position:relative;
+    top:-20px;
+    left:0px;
+  width:100%;
+  height:50px;
+  background-color: #FFBF00;
+  color: white;
+border-radius:15px 15px 0px 0px;
+ 
+}
+.modalheadspecialpromo h1{
+position:relative;
+top:15px;
+margin-left:15px;
+text-align:center;
+font-size:20px;
+
+}
+.modalbodyspecialpromo {
+position:relative;
+width:100%;
+height:360px;
+padding-left:20px;
+padding-top:20px;
+}
+.choosesizespecialpromo{
+position:absolute;
+top:-10px;
+}
+.modalfootspecialpromo {
+
+position:relative;
+bottom:-20px;
+width:100%;
+height:100px;
+  margin-bottom: 0px;
+  margin-top:20px;
+  background-color: white;
+  color: white;
+  border-top:2px solid rgba(192,192,192, 0.5);
+  border-bottom:2px solid rgba(192,192,192, 0.5);
+  border-radius:15px;
+}
+.choicesizespecialpromo{
+background-color:#FFBF00;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+}
+.specialpromo{
+position:absolute;
+width:100px;
+height:120px;
+left:15px;
+top:40px;
+box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+background-color:;
+border-radius:15px;
+}
+.specialpromo:hover{
+background-color:#FFBF00;
+cursor:pointer;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+transform:scale(1.1);
+}
+
+.specialpromo h3{
+text-align:center;
+font-size:13px;
+}
+.modalfootspecialpromo h3{
+margin-left:10px;
+margin-top:10px;
+color:black;
+font-size:15px;
+font-weight:bold;
+
+}
+.modalfootspecialpromo h4{
+position:absolute;
+left:740px;
+top:15px;
+color:black;
+
+}
+.modalfootspecialpromo h8{
+position:absolute;
+left:10px;
+top:40px;
+color:grey;
+
+}
+.modalfootspecialpromo button {
+position:relative;
+
+bottom:0px;
+
+  border: 0px solid #FFBF00;
+  border-radius:60px;
+  outline: 0;
+  color: black;
+  background-color: #FFBF00;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height:40px;
+  font-size: 18px;
+}
+
+.modalfootspecialpromo button:hover {
+    
+    box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+   transition:box-shadow .2s;
+
+}
+
+.minusspecialpromo{
+text-align:center;
+height:15px;
+width:30px;
+color:black;
+}
+.plusspecialpromo{
+text-align:center;
+height:15px;
+width:30px;
+color:black;
+}
+.atbmodalbackgroundcookies{
+display:none;
+position:fixed;
+top:0px;
+left:0px;
+z-index:11;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.8);
+flex-direction:row;
+flex-wrap:nowrap;
+align-content:normal;
+justify-content:center;
+align-items:center;
+}
+
+.itemimage{
+position:relative;
+top:0px;
+background-color:	#DCDCDC;
+}
+.itemimage img{
+}
+
+.atbmodalspecialpromocontentclose {
+  color: #aaa;
+  z-index:1;
+  font-size: 28px;
+  font-weight: bold;
+  position:absolute;
+    top:5px;
+  right:20px;
+}
+
+.atbmodalspecialpromocontentclose:hover,
+.atbmodalspecialpromocontentclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .atbmodalbackgroundfreeze{
 display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -20224,7 +21332,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -20384,7 +21492,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -20424,7 +21532,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -20440,7 +21548,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -20600,7 +21708,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -20640,7 +21748,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -20656,7 +21764,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -20817,7 +21925,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -20833,7 +21941,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -20994,7 +22102,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -21010,7 +22118,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -21186,7 +22294,7 @@ display:none;
 position:fixed;
 top:0px;
 left:0px;
-z-index:1;
+z-index:11;
 width:100%;
 height:100%;
 background-color:rgba(0,0,0,0.8);
@@ -21202,7 +22310,7 @@ width:90%;
 height:530px;
 background-color:white;
 transition-delay: 2s;
-
+z-index:12;
 border-radius:15px;
 }
 .itemimage{
@@ -22214,15 +23322,19 @@ class="logo">
 
 <div class="menuproducts">
 
-{% if promoidentifier == 'FirstTimer' %}
+{% if promoidentifier == 'FreeFriesDay' %}
 <div class="ourmenutitlepromodiv" style="display:flex;">
+<h2 class="ourmenutitlepromo">Free Fries-day Promo for you, {{user.first_name}}!</h2>
+{% elif promoidentifier == 'Special Promo' %}
+<div class="ourmenutitlepromodiv" style="display:flex;">
+<h2 class="ourmenutitlepromo">Special Promo for you, {{user.first_name}}!</h2>
 {% else %}
 <div class="ourmenutitlepromodiv" style="display:none;">
 {% endif %}
-<h2 class="ourmenutitlepromo">Fries-day Promo for you, {{user.first_name}}!</h2>
+
 
 </div>
-{% if promoidentifier == 'FirstTimer' %}
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
 <div class="wraptabcontentprodpromo" style="display:flex;">
 {% else %}
 <div class="wraptabcontentprodpromo" style="display:none;">
@@ -22230,12 +23342,244 @@ class="logo">
 <div class="tabcontentprodpromo" id="Promo">
 
 
+{% if promoidentifier == 'Special Promo' %}
+            {% for specialpromob in specialpromobuttons %}
+            <div class="card">
+
+            <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
+                <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+            </div>
+                {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
+                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                {% else %}
+                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                {% endif %}
+              <div class="h3div"><h3>{{specialpromob.productname}}</h3></div>
+              <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+              <tr>
+                <td id="specialpromo{{specialpromob.id}}" class="price"></td>
+              </tr>
+
+            </table>
+                <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
+              <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
+
+              <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
+
+            </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+  functions{{specialpromob.id}}();
+});
+
+
+function functions{{specialpromob.id}}(){
+var specialpromop = parseInt({{specialpromob.Price}});
+
+
+
+var  specialpromo = document.getElementById('specialpromo'+'{{specialpromob.id}}');
+
+var calc1specialpromo = 0;
+var calc2specialpromo = 0;
+specialpromo.innerHTML = "₱"+specialpromop+".00";
+}
+
+</script>
+{% endfor %}
+{% endif %}
+</div>
+</div>
+<div class="atbmodalbackgroundspecialpromo">
+    <div class="atbmodalspecialpromocontent">
+
+        <div class="modalheadspecialpromo">
+            <span onclick="atbspecialpromoclose()" class="atbmodalspecialpromocontentclose" >&times;</span>
+            <h1 id="productspecialpromoname"></h1>
+        </div>
+        <div class="modalbodyspecialpromo">
+            <h3 class="choosesizespecialpromo">Size available</h3>
+
+                <div id="specialpromoid" onclick="functionfocusspecialpromo()" class="specialpromo choicesizespecialpromo">
+                <img id='picningspecialpromo' src="" style="width:100%">
+                <h3 id="lagyuningspecialpromo"></h3>
+
+
+                </div>
+            <script>
+
+            var presyospecialpromo = 0;
+            var gtotalspecialpromo = 0;
+
+            function functionfocusspecialpromo(){
+            var totalspecialpromo = document.getElementById("totalspecialpromo");
+
+
+            var qtycountspecialpromo = $('#qtynumspecialpromo').val();
+
+            var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
+
+            gtotalspecialpromo = totalspecialpromo;
+            totalall = totalspecialpromo;
+            allqty = qtycountspecialpromo;
+            aoname="";
+            sukatall="";
+            psukatall="";
+        if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountspecialpromo;
+        }
+            totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+        
+            }
+            </script>
+        </div>
+        
+        <div class="modalfootspecialpromo">
+
+            <h3 id="totalspecialpromo"></h3>
+        <div class="addtobagbuttondiv">
+            <button onclick="addpunched()">Add to Bag</button>
+            </div>
+            
+        
+            <div class="quantityspecialpromo">
+        <label for="minusidspecialpromo" style="color:black;">Qty:</label>
+	        <input onclick="functionminusspecialpromo()" type="button" value="-" class="minusspecialpromo" id="minusidspecialpromo"><input id="qtynumspecialpromo" inputmode="numeric" readonly="readonly" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern=""><input onclick="functionplusspecialpromo()" type="button" value="+" class="plusspecialpromo">
+            <script>
+                    var qtynumspecialpromo = document.getElementById('qtynumspecialpromo').value;
+                
+                    function functionminusspecialpromo(){
+                    var totalspecialpromo = document.getElementById("totalspecialpromo");
+                    var subtractspecialpromo = parseInt($('#qtynumspecialpromo').val());
+                    var minustwospecialpromo = subtractspecialpromo-1;
+                    if($('#qtynumspecialpromo').val() == 1){
+                    $('#qtynumspecialpromo').val(1);
+                    }else{
+                    $('#qtynumspecialpromo').val(minustwospecialpromo);
+                    }
+
+                    var qtycountspecialpromo = $('#qtynumspecialpromo').val();
+
+                    var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
+                    gtotalspecialpromo = totalspecialpromo;
+                    totalall = totalspecialpromo;
+                    allqty = qtycountspecialpromo;
+                                aoname="";
+            sukatall="";
+            psukatall="";
+        if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountspecialpromo;
+        }
+                    totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+                    }
+
+
+
+
+                    function functionplusspecialpromo(){
+                
+                    var additionspecialpromo = parseInt($('#qtynumspecialpromo').val());
+                    var plustwospecialpromo =  additionspecialpromo + 1;
+                    $('#qtynumspecialpromo').val(plustwospecialpromo);
+                    var totalspecialpromo = document.getElementById("totalspecialpromo");
+                    var qtycountspecialpromo = $('#qtynumspecialpromo').val();
+                
+                    var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
+                
+                    gtotalspecialpromo = totalspecialpromo;
+                    totalall = totalspecialpromo;
+                    allqty = qtycountspecialpromo;
+                                aoname="";
+            sukatall="";
+            psukatall="";
+        if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountspecialpromo;
+        }
+                    totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+                    }
+            </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+function atbspecialpromo(productname, specialpromoprice, specialpromocategory) {
+
+var showbgwithcontentspecialpromo = document.getElementsByClassName("atbmodalbackgroundspecialpromo");
+var productnamespecialpromo = document.getElementById("productspecialpromoname");
+
+showbgwithcontentspecialpromo[0].style.display = "flex";
+var atbmodalspecialpromocontent = document.getElementsByClassName("atbmodalspecialpromocontent");
+atbmodalspecialpromocontent[0].style.animation="fade-bottom-in 0.5s";
+
+productnamespecialpromo.innerHTML = productname;
+itemprodname = productname;
+presyospecialpromo = specialpromoprice;
+category = specialpromocategory;
+var totalspecialpromo = document.getElementById("totalspecialpromo");
+
+var qtycountspecialpromo = $('#qtynumspecialpromo').val();
+    
+var totalspecialpromo = specialpromoprice*qtycountspecialpromo;
+
+            var picnaningspecialpromo = document.getElementById("picningspecialpromo");
+            picningspecialpromo.src = '/static/'+productname+'SPECIALPROMO.png';
+            var lagyuningspecialpromo = document.getElementById("lagyuningspecialpromo"); 
+            lagyuningspecialpromo.innerHTML="<h3>"+productname+"</h3>";
+gtotalspecialpromo = totalspecialpromo;
+totalall = totalspecialpromo;
+allqty = qtycountspecialpromo;
+            aoname="";
+            sukatall="";
+            psukatall="";
+        if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountspecialpromo;
+        }
+totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+
+}
+
+
+function atbspecialpromoclose() {
+var closebgwithcontentspecialpromo = document.getElementsByClassName("atbmodalbackgroundspecialpromo");
+var totalspecialpromo = document.getElementById("totalspecialpromo");
+
+var specialpromo = document.getElementById("specialpromoid");
+
+var atbmodalspecialpromocontent = document.getElementsByClassName("atbmodalspecialpromocontent");
+atbmodalspecialpromocontent[0].style.animation="fade-bottom-out 0.5s";
+setTimeout(closespecialpromo, 500);
+$('#qtynumspecialpromo').val(1)
+
+var totalspecialpromo = 0;
+gtotalspecialpromo = totalspecialpromo;
+totalall = totalspecialpromo;
+
+totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+}
+</script>
+
 
 
 
 
 
 <script>
+
+
+
+
 
 function atbpromo(productname, promprice, promsize, promcateg, frappefullimage, frapperegimage, milkteafullimage, milktearegimage) {
 var promoimagefullsizeid = document.getElementById("promoimagefullsizeid");
@@ -22268,8 +23612,10 @@ if(window.matchMedia("(min-width: 1200px)").matches){
 }else if(window.matchMedia("(max-width: 991px)").matches && window.matchMedia("(min-width: 768px)").matches){
     productnameprom.innerHTML = productname
 }else{
-    if(productname.includes('(with Free Fries)')){
-    productnameprom.innerHTML = productname.replace(' (with Free Fries)','<br>(with Free Fries)');
+
+
+    if(productname.includes('with Free Fries')){
+    productnameprom.innerHTML = productname.replace('with Free Fries','<br>with Free Fries');
     }else{
     productnameprom.innerHTML = productname
     }
@@ -22365,78 +23711,81 @@ regpriceprom = 0;
 totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 }
 </script>
-{% for promob in FreeFriespromobuttons %}
-<div class="card">
-<div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
-</div>
+
+{% if promoidentifier == "FreeFriesDay" %}
+            {% for promob in FreeFriespromobuttons %}
+            <div class="card">
+            <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
+                <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+            </div>
 
 
-    {% if promob.productname == promob.productname and "Promo.png" %}
-    <img class="cardimg" src="{% static promob.productname %}Promo.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
-    {% else %}
-    <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
-    {% endif %}
-  <div class="h3divpromo"><h3>{{promob.productname}}</h3></div>
-  <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-  <tr>
+                {% if promob.productname == promob.productname and "Promo.png" %}
+                <img class="cardimg" src="{% static promob.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
+                {% else %}
+                <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
+                {% endif %}
+              <div class="h3divpromo"><h3>{{promob.productname}}</h3></div>
+              <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+              <tr>
 
-    <th class="priceth">Reg</th>
-    <th class="priceth">Full</th>
-  </tr>
-  <tr>
+                <th class="priceth">Reg</th>
+                <th class="priceth">Full</th>
+              </tr>
+              <tr>
 
-    <td id="Regprom{{promob.id}}" class="price"></td>
-    <td id="Fullprom{{promob.id}}" class="price"></td>
-  </tr>
+                <td id="Regprom{{promob.id}}" class="price"></td>
+                <td id="Fullprom{{promob.id}}" class="price"></td>
+              </tr>
 
-</table>
-    <input type="hidden" value="{{promob.productname}}" id="promoname{{promob.id}}"></input>
-  <input type="hidden" value="{{promob.Price}}" id="promoP{{promob.id}}"></input>
+            </table>
+                <input type="hidden" value="{{promob.productname}}" id="promoname{{promob.id}}"></input>
+              <input type="hidden" value="{{promob.Price}}" id="promoP{{promob.id}}"></input>
 
-  <p><button onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
+              <p><button onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
 
-</div>
+            </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(event) { 
-  functions{{promob.id}}();
-});
+            <script>
+            document.addEventListener("DOMContentLoaded", function(event) { 
+              functions{{promob.id}}();
+            });
 
-function functions{{promob.id}}(){
-var promp = parseInt({{promob.Price}});
-var proms = String('{{promob.Size}}');
+            function functions{{promob.id}}(){
+            var promp = parseInt({{promob.Price}});
+            var proms = String('{{promob.Size}}');
 
 
-var regprom = document.getElementById('Regprom'+'{{promob.id}}');
-var fullprom = document.getElementById('Fullprom'+'{{promob.id}}');
-var calc1prom = 0;
-var calc2prom = 0;
-if(proms == "Small"){
-calc1prom=promp+10;
-calc2prom=promp+20;
+            var regprom = document.getElementById('Regprom'+'{{promob.id}}');
+            var fullprom = document.getElementById('Fullprom'+'{{promob.id}}');
+            var calc1prom = 0;
+            var calc2prom = 0;
+            if(proms == "Small"){
+            calc1prom=promp+10;
+            calc2prom=promp+20;
 
-regprom.innerHTML = "₱"+calc1prom+".00";
-fullprom.innerHTML = "₱"+calc2prom+".00";
-}else if(proms == "Reg"){
-calc1prom=promp-10;
-calc2prom=promp+10;
+            regprom.innerHTML = "₱"+calc1prom+".00";
+            fullprom.innerHTML = "₱"+calc2prom+".00";
+            }else if(proms == "Reg"){
+            calc1prom=promp-10;
+            calc2prom=promp+10;
 
-regprom.innerHTML = "₱"+promp+".00";
-fullprom.innerHTML = "₱"+calc2prom+".00";
-}else{
-calc1prom=promp-20;
-calc2prom=promp-10;
+            regprom.innerHTML = "₱"+promp+".00";
+            fullprom.innerHTML = "₱"+calc2prom+".00";
+            }else{
+            calc1prom=promp-20;
+            calc2prom=promp-10;
 
-regprom.innerHTML = "₱"+calc2prom+".00";
-fullprom.innerHTML = "₱"+promp+".00";
-}
-}
+            regprom.innerHTML = "₱"+calc2prom+".00";
+            fullprom.innerHTML = "₱"+promp+".00";
+            }
+            }
 
-</script>
-{% endfor %}
-</div>
-</div>
+            </script>
+            {% endfor %}
+            </div>
+            </div>
+{% endif %}
 
 
 <div class="ourmenutitlediv reveal fade-left">
@@ -22816,7 +24165,7 @@ $(window).scroll(function() {
             function functionpaymentgcashdelivery(){
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id %}",
+            url:"{% url 'Onlineorder.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
@@ -23014,7 +24363,7 @@ newuserdivid.style.display = "block";
 
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id %}",
+            url:"{% url 'Onlineorder.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
@@ -24733,6 +26082,7 @@ var sukatall = "";
 var psukatall = "";
 var totalwithoudevfee = 0;
 var aonamewithprodname = "";
+
 function addpunched() {
 
 
@@ -24744,11 +26094,11 @@ aonamewithprodname = "";
 }
 
         //var puncheditem="puncheditemi"+(clickaddbutton-1);
-        var indexi = (clickaddbutton-1);
+        //var indexi = (clickaddbutton-1);
 
         
             var puncheditem = {
-                index:indexi,
+                //index:indexi,
                 productname:itemprodname,
                 Category:category,
                 Subcategory:subcategory,
@@ -24760,67 +26110,191 @@ aonamewithprodname = "";
                 Addonsnamewithprodname:aonamewithprodname,
                 Addonsqty:aoqty,
             };
-        allpunched.push(puncheditem);
+
+
+var indexfinderfrappemilktea = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname && (puncheditem.Category == 'Milktea' || puncheditem.Category == 'Frappe') && puncheditem.Size == sukatall && puncheditem.Addonsname == aoname)
+	    return true;
+}); //if puncheditem exist, indexfinderfrappemilktea will return the index of the existing item. If not, it will return -1.
+
+var indexfinderpizza = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname && puncheditem.Category == 'Snacks' && puncheditem.Subcategory == "Pizza" && puncheditem.PSize == psukatall)
+	    return true;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
+var indexfinderpromo = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname && puncheditem.Category == 'Promo' && puncheditem.Size == sukatall && puncheditem.Addonsname == aoname)
+	    return true;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
+var indexfinderfreefries = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname )
+	    return true;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
+var indexfinderany = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.productname == itemprodname && puncheditem.Category == 'Freeze'){
+        var trueba=true;
+
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Shawarma'){
+        var trueba=true;
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Bubble Waffle'){
+        var trueba=true;
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Fries'){
+        var trueba=true;
+    }else if(puncheditem.productname == itemprodname && puncheditem.Subcategory == 'Cookies'){
+        var trueba=true;
+    };
+
+	    return trueba;
+}); //if puncheditem exist, indexfinderpizza will return the index of the existing item. If not, it will return -1.
+
+
+if(indexfinderfrappemilktea !== -1){
+    
+    allpunched[indexfinderfrappemilktea].Subtotal = parseInt(allpunched[indexfinderfrappemilktea].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderfrappemilktea].Qty = parseInt(allpunched[indexfinderfrappemilktea].Qty) + parseInt(allqty)
+    var addonsqtyadd = 0;
+    if(allpunched[indexfinderfrappemilktea].Addonsqty && aoqty){
+    addonsqtyadd = parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) + parseInt(aoqty)
+    }else if(parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) > 0 && parseInt(aoqty) == 0){
+    addonsqtyadd = parseInt(allpunched[indexfinderfrappemilktea].Addonsqty);
+    }else if(parseInt(allpunched[indexfinderfrappemilktea].Addonsqty) == 0 && parseInt(aoqty) > 0){
+    addonsqtyadd = parseInt(aoqty);
+    }else{
+    addonsqtyadd=0;
+    };
+    allpunched[indexfinderfrappemilktea].Addonsqty = addonsqtyadd
+    allpunched[indexfinderfrappemilktea]['index'] = indexfinderfrappemilktea;
+ }else if(indexfinderpromo !== -1){
+    
+    allpunched[indexfinderpromo].Subtotal = parseInt(allpunched[indexfinderpromo].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderpromo].Qty = parseInt(allpunched[indexfinderpromo].Qty) + parseInt(allqty)
+    var addonsqtyadd = 0;
+    if(allpunched[indexfinderpromo].Addonsqty && aoqty){
+    addonsqtyadd = parseInt(allpunched[indexfinderpromo].Addonsqty) + parseInt(aoqty)
+    }else if(parseInt(allpunched[indexfinderpromo].Addonsqty) > 0 && parseInt(aoqty) == 0){
+    addonsqtyadd = parseInt(allpunched[indexfinderpromo].Addonsqty);
+    }else if(parseInt(allpunched[indexfinderpromo].Addonsqty) == 0 && parseInt(aoqty) > 0){
+    addonsqtyadd = parseInt(aoqty);
+    }else{
+    addonsqtyadd=0;
+    };
+    allpunched[indexfinderpromo].Addonsqty = addonsqtyadd
+    allpunched[indexfinderpromo]['index'] = indexfinderpromo;
+ }else if(indexfinderpizza !== -1){
+     allpunched[indexfinderpizza].Subtotal = parseInt(allpunched[indexfinderpizza].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderpizza].Qty = parseInt(allpunched[indexfinderpizza].Qty) + parseInt(allqty)
+ allpunched[indexfinderpizza]['index'] = indexfinderpizza;
+}else if(indexfinderany !== -1){
+     allpunched[indexfinderany].Subtotal = parseInt(allpunched[indexfinderany].Subtotal)   + parseInt(totalall)
+    allpunched[indexfinderany].Qty = parseInt(allpunched[indexfinderany].Qty) + parseInt(allqty)
+ allpunched[indexfinderany]['index'] = indexfinderany;
+}else{
+allpunched.push(puncheditem)
+allpunched[allpunched.length-1]['index'] = allpunched.length-1;
+console.log('pushed')
+};
+
+        
 const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 const d = new Date();
 let day = weekday[d.getDay()]; 
-if(day == 'Friday'){
-        if(puncheditem.productname.includes('(with Free Fries)')){
-                    var puncheditemtwo = {
-                        index:indexi,
+if(day == 'Tuesday'){
+        if(puncheditem.productname.includes('with Free Fries')){
+                    var puncheditemone = {
+                        //index:indexi,
                         productname:'Free Fries',
                         Category:'Snacks',
                         Subcategory:'Fries',
                         Size:'',
                         PSize:'',
                         Subtotal:0,
-                        Qty:1,
+                        Qty:parseInt(puncheditem.Qty),
                         Addonsname:'',
                         Addonsnamewithprodname:'',
                         Addonsqty:'',            };
-                allpunched.push(puncheditemtwo);
+                var indexfinderfreefriesone = allpunched.findIndex(function(puncheditemone, index) {
+                if(puncheditemone.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemone exist, indexfinderfreefriesone will return the index of the existing item. If not, it will return -1.
+                console.log('indexfinderfreefriesone: '+indexfinderfreefriesone);
+                if(indexfinderfreefriesone == -1){
+                allpunched.push(puncheditemone);
+                allpunched[allpunched.length-1]['index'] = allpunched.length-1;
+                }else{
+                allpunched[indexfinderfreefriesone].Qty = parseInt(allpunched[indexfinderfreefriesone].Qty)+parseInt(puncheditemone.Qty);
+                allpunched[indexfinderfreefriesone]['index'] = indexfinderfreefriesone;
+                }
+                
         }
 }
 if(freefries == 'True' && freefriesmilktea == 'True'){
         if(puncheditem.Category == 'Milktea'){
                     var puncheditemtwo = {
-                        index:indexi,
+                        //index:indexi,
                         productname:'Free Fries',
                         Category:'Snacks',
                         Subcategory:'Fries',
                         Size:'',
                         PSize:'',
                         Subtotal:0,
-                        Qty:1,
+                        Qty:puncheditem.Qty,
                         Addonsname:'',
                         Addonsnamewithprodname:'',
                         Addonsqty:'',            };
+
+                var indexfinderfreefriestwo = allpunched.findIndex(function(puncheditemtwo, index) {
+                if(puncheditemtwo.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemtwo exist, indexfinderfreefriestwo will return the index of the existing item. If not, it will return -1.
+                console.log(indexfinderfreefriestwo);
+                if(indexfinderfreefriestwo == -1){
                 allpunched.push(puncheditemtwo);
+                allpunched[allpunched.length-1]['index'] = allpunched.length-1;
+                }else{
+                allpunched[indexfinderfreefriestwo].Qty = parseInt(allpunched[indexfinderfreefriestwo].Qty)+parseInt(puncheditemtwo.Qty);
+                allpunched[indexfinderfreefriestwo]['index'] = indexfinderfreefriestwo;
+                }
+                
         }
 }
 
 if(freefries == 'True' && freefriesfrappe == 'True'){
         if(puncheditem.Category == 'Frappe'){
                     var puncheditemthree = {
-                        index:indexi,
+                        //index:indexi,
                         productname:'Free Fries',
                         Category:'Snacks',
                         Subcategory:'Fries',
                         Size:'',
                         PSize:'',
                         Subtotal:0,
-                        Qty:1,
+                        Qty:puncheditem.Qty,
                         Addonsname:'',
                         Addonsnamewithprodname:'',
                         Addonsqty:'',            };
+
+                var indexfinderfreefriesthree = allpunched.findIndex(function(puncheditemthree, index) {
+                if(puncheditemthree.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemthree exist, indexfinderfreefriesthree will return the index of the existing item. If not, it will return -1.
+                console.log(indexfinderfreefriesthree);
+                if(indexfinderfreefriesthree == -1){
                 allpunched.push(puncheditemthree);
+                allpunched[allpunched.length-1]['index'] = allpunched.length-1;
+                }else{
+                allpunched[indexfinderfreefriesthree].Qty = parseInt(allpunched[indexfinderfreefriesthree].Qty)+parseInt(puncheditemthree.Qty);
+                allpunched[indexfinderfreefriesthree]['index'] = indexfinderfreefriesthree;
+                }
+                
         }
 }
         //alert(allpunched[indexi].Price);
         //document.getElementById('tdItem').innerHTML= allpunched[indexi].milktea;
         var tablebody=document.getElementById('punchedtablebody');
-        var dataHtml='';
+        var datahtmltest="";
         let totalpunched=0;
         
             for(let i = 0;i<(allpunched.length);i++){
@@ -24828,18 +26302,54 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-            
+            console.log('allpunched.length:  '+allpunched.length);
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
 }else{
 var categoryfinal=punched.Category;
 }
-            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
+if(punched.Addonsqty==0){
+var addonqtydisplaysake="";
+}else{
+var addonqtydisplaysake=punched.Addonsqty;
+}
+console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
+console.log('indexfinderpizza: '+indexfinderpizza);
+console.log('indexfinderany: '+indexfinderany);
+
+
+
+                                if(punched.productname == "Free Fries"){
+                                }else{
+                                    datahtmltest = datahtmltest + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+addonqtydisplaysake+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
+                                };
             };
-            
-            tablebody.innerHTML = dataHtml;
-            document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
+
+            var indexfinderfreefriesfinal = allpunched.findIndex(function(puncheditem, index) {
+            if(puncheditem.productname == 'Free Fries')
+		            return true;
+            }); 
+
+if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qty !== 0){
+
+
+        if(allpunched[indexfinderfreefriesfinal].Category=='Snacks'){
+        var categoryfinalfinal=allpunched[indexfinderfreefriesfinal].Subcategory;
+        }else{
+        var categoryfinalfinal=allpunched[indexfinderfreefriesfinal].Category;
+        }
+        if(allpunched[indexfinderfreefriesfinal].Addonsqty==0){
+        var addonqtydisplaysakefinal="";
+        }else{
+        var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
+        }
+        tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+           
+}else{
+        tablebody.innerHTML = datahtmltest;
+};
+ document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
             document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             totalwithoudevfee = totalpunched;
             //$("#totalpunched1").val(totalpunched);
@@ -24980,7 +26490,25 @@ gtotalfrz = totalfrz;
 totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 
+var closebgwithcontentspecialpromo = document.getElementsByClassName("atbmodalbackgroundspecialpromo");
+var totalspecialpromo = document.getElementById("totalspecialpromo");
 
+
+var specialpromo = document.getElementById("specialpromoid");
+
+
+var atbmodalspecialpromocontent = document.getElementsByClassName("atbmodalspecialpromocontent");
+atbmodalspecialpromocontent[0].style.animation="fade-bottom-out 0.5s";
+setTimeout(closespecialpromo, 500);
+$('#qtynumspecialpromo').val(1)
+
+
+var totalfrz = 0;
+gtotalfrz = totalfrz;
+
+
+
+totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 
 
 var closebgwithcontentcookies = document.getElementsByClassName("atbmodalbackgroundcookies");
@@ -25177,59 +26705,112 @@ document.getElementsByClassName('circlepositioncount')[0].style.zIndex = "14";
 document.getElementsByClassName('circlepositioncount')[0].innerHTML = counterbag;
 }
 
-var indexnumtwo="";
 
 function delitem(indexnum){
 
-var deleteindex = document.getElementById('delitemid'+indexnum);
 
 
-if (allpunched.length > 0) {
+var indexfinderdeletei = allpunched.findIndex(function(puncheditem, index) {
+    if(puncheditem.index == indexnum)
+	    return true;
+});
 
-  allpunched.splice(indexnum, 1); // 2nd parameter means remove one item only
+if(allpunched[indexfinderdeletei].productname.includes('with Free Fries')){
+var withfreefriesqty=allpunched[indexfinderdeletei].Qty;
+                var indexfinderfreefriesdelete = allpunched.findIndex(function(puncheditemthree, index) {
+                if(puncheditemthree.productname == 'Free Fries')
+		                return true;
+                }); //if puncheditemthree exist, indexfinderfreefriesthree will return the index of the existing item. If not, it will return -1.
+allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelete].Qty-withfreefriesqty;  
+}
+
+  allpunched.splice(indexfinderdeletei, 1); // 2nd parameter means remove one item only
+
+
         var tablebody=document.getElementById('punchedtablebody');
-        var dataHtml='';
+        var dataHtmlcart='';
         var totalpunched=0;
-            if(allpunched.length == 0){
-                totalpunched = 0;
-                document.getElementById('checkoutbut').value = 'Payment Setup';
-                document.getElementById('totalpunched').innerHTML = "";
-                dataHtml='';
-                
-            }else{
+        var totalpunchedfordisablecheckout=0;
             for(let i = 0;i<(allpunched.length);i++){
             
-                totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
+                totalpunchedfordisablecheckout = totalpunchedfordisablecheckout+parseInt(allpunched[i].Subtotal);
                 
             }
-            for(let punched of allpunched){
-            var counti = allpunched.indexOf(punched);
-            rightindextwo = punched.index;
-            if(punched.index !== counti){
-            rightindextwo = counti;
-            }
-if(punched.Category=='Snacks'){
-var categoryfinal=punched.Subcategory;
-}else{
-var categoryfinal=punched.Category;
-}
-            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+punched.Addonsqty+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+rightindextwo+')" id="delitemid'+rightindextwo+'" value="'+rightindextwo+'">Delete</button></td></tr>';
-            }
 
-            document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
-            totalwithoudevfee = totalpunched;
-            document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
+            if(allpunched.length == 0 || totalpunchedfordisablecheckout == 0 ){
+                totalpunched = 0;
+                document.getElementById('checkoutbut').value = 'Payment Setup';
+                document.getElementById("checkoutbut").disabled = true
+                document.getElementById('totalpunched').innerHTML = "";
+
+
+                allpunched=[];
+                
+                cartclose();
+            }else{
+                    for(let i = 0;i<(allpunched.length);i++){
+            
+                        totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
+                
+                    }
+                    for(let punched of allpunched){
+                                //var counti = allpunched.indexOf(punched);
+                                //rightindextwo = punched.indexOf(punched.productname);
+                                //if(punched.indexOf(punched.productname) !== counti){
+                                //    rightindextwo = counti;
+                                //}
+                                if(punched.Category=='Snacks'){
+                                    var categoryfinal=punched.Subcategory;
+                                }else{
+                                    var categoryfinal=punched.Category;
+                                }
+                                if(punched.Addonsqty == 0 || punched.Addonsqty == ""){
+                                var Addonsqtyblanker = "";
+                                }else{
+                                var Addonsqtyblanker = punched.Addonsqty;
+                                }
+                                if(punched.productname=="Free Fries"){
+                                }else{
+                                dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+Addonsqtyblanker+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
+                                };
+                    }
+
+                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
+                    totalwithoudevfee = totalpunched;
+                    document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             }
 
             
-            tablebody.innerHTML = dataHtml;
+            var indexfinderfreefriesfinals = allpunched.findIndex(function(puncheditem, index) {
+            if(puncheditem.productname == 'Free Fries')
+		            return true;
+            }); 
+
+if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Qty !== 0){
+        if(allpunched[indexfinderfreefriesfinals].Category=='Snacks'){
+        var categoryfinalfinals=allpunched[indexfinderfreefriesfinals].Subcategory;
+        }else{
+        var categoryfinalfinals=allpunched[indexfinderfreefriesfinals].Category;
+        }
+        if(allpunched[indexfinderfreefriesfinals].Addonsqty==0){
+        var addonqtydisplaysakefinals="";
+        }else{
+        var addonqtydisplaysakefinals=allpunched[indexfinderfreefriesfinals].Addonsqty;
+        }
+
+            tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable" ><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+            
+}else{
+        tablebody.innerHTML = dataHtmlcart;
+};
+
             
             var counterbag = allpunched.length;
             document.getElementsByClassName('circlepositioncount')[0].innerHTML = counterbag;
 
             
 
-}
+
 
 }
 
@@ -25265,7 +26846,7 @@ hidecartdivtwo.style.display = "none";
 hidecartdivtwo.style.zIndex = "0";
 hidecartdivtwo.style.opacity = "0";
 modalcartcontentclosetrigger.style.display = "block";
-modalcartcontentclosetrigger.style.zIndex = "12";
+modalcartcontentclosetrigger.style.zIndex = "13";
 modalcartcontentclosetrigger.classList.add('transform');
 setTimeout(removecounter, 200);
    }
@@ -25297,7 +26878,7 @@ modalcartcontentclosethree.style.zIndex = "0";
 modalcartcontentclosethree.style.tranform = "none";
 modalcartcontentclosethree.classList.remove('transform');
 showcartdiv.style.display = "block";
-showcartdiv.style.zIndex = "12";
+showcartdiv.style.zIndex = "13";
 showcartdiv.style.opacity = "1";
 showcartdiv.classList.add('transform');
 modalcartcontentremove.classList.remove('modalcartcontenttrigger');
@@ -25418,7 +26999,7 @@ showdescriptionproductnameidPromo.innerHTML=productname;
 
 var showproductdescriptionidPromo=document.getElementById('showproductdescriptionidPromo');
 var getproductdescripptioPromo=e.getAttribute('customdescription');
-showproductdescriptionidPromo.innerHTML="<h3>"+getproductdescripptioPromo+"</h3>";
+showproductdescriptionidPromo.innerHTML="<p class='showproductdescriptionclass'>"+getproductdescripptioPromo+"</p>";
 };
 
 function showdescriptioncontentclosePromo(){
@@ -25445,7 +27026,7 @@ showdescriptionproductnameidMT.innerHTML=productname;
 
 var showproductdescriptionidMT=document.getElementById('showproductdescriptionidMT');
 var getproductdescripptioMT=e.getAttribute('customdescription');
-showproductdescriptionidMT.innerHTML="<h3>"+getproductdescripptioMT+"</h3>";
+showproductdescriptionidMT.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioMT+"</h3>";
 };
 
 function showdescriptioncontentcloseMT(){
@@ -25473,7 +27054,7 @@ showdescriptionproductnameidFR.innerHTML=productname;
 
 var showproductdescriptionidFR=document.getElementById('showproductdescriptionidFR');
 var getproductdescripptioFR=e.getAttribute('customdescription');
-showproductdescriptionidFR.innerHTML="<h3>"+getproductdescripptioFR+"</h3>";
+showproductdescriptionidFR.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioFR+"</h3>";
 };
 
 function showdescriptioncontentcloseFR(){
@@ -25500,7 +27081,7 @@ showdescriptionproductnameidFRZ.innerHTML=productname;
 
 var showproductdescriptionidFRZ=document.getElementById('showproductdescriptionidFRZ');
 var getproductdescripptioFRZ=e.getAttribute('customdescription');
-showproductdescriptionidFRZ.innerHTML="<h3>"+getproductdescripptioFRZ+"</h3>";
+showproductdescriptionidFRZ.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioFRZ+"</h3>";
 };
 
 function showdescriptioncontentcloseFRZ(){
@@ -25529,7 +27110,7 @@ showdescriptionproductnameidShawarma.innerHTML=productname;
 
 var showproductdescriptionidShawarma=document.getElementById('showproductdescriptionidShawarma');
 var getproductdescripptioShawarma=e.getAttribute('customdescription');
-showproductdescriptionidShawarma.innerHTML="<h3>"+getproductdescripptioShawarma+"</h3>";
+showproductdescriptionidShawarma.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioShawarma+"</h3>";
 };
 
 function showdescriptioncontentcloseShawarma(){
@@ -25557,7 +27138,7 @@ showdescriptionproductnameidBubwaf.innerHTML=productname;
 
 var showproductdescriptionidBubwaf=document.getElementById('showproductdescriptionidBubwaf');
 var getproductdescripptioBubwaf=e.getAttribute('customdescription');
-showproductdescriptionidBubwaf.innerHTML="<h3>"+getproductdescripptioBubwaf+"</h3>";
+showproductdescriptionidBubwaf.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioBubwaf+"</h3>";
 };
 
 function showdescriptioncontentcloseBubwaf(){
@@ -25584,7 +27165,7 @@ showdescriptionproductnameidFries.innerHTML=productname;
 
 var showproductdescriptionidFries=document.getElementById('showproductdescriptionidFries');
 var getproductdescripptioFries=e.getAttribute('customdescription');
-showproductdescriptionidFries.innerHTML="<h3>"+getproductdescripptioFries+"</h3>";
+showproductdescriptionidFries.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioFries+"</h3>";
 };
 
 function showdescriptioncontentcloseFries(){
@@ -25611,7 +27192,7 @@ showdescriptionproductnameidCookies.innerHTML=productname;
 
 var showproductdescriptionidCookies=document.getElementById('showproductdescriptionidCookies');
 var getproductdescripptioCookies=e.getAttribute('customdescription');
-showproductdescriptionidCookies.innerHTML="<h3>"+getproductdescripptioCookies+"</h3>";
+showproductdescriptionidCookies.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioCookies+"</h3>";
 };
 
 function showdescriptioncontentcloseCookies(){
@@ -25638,7 +27219,7 @@ showdescriptionproductnameidPizza.innerHTML=productname;
 
 var showproductdescriptionidPizza=document.getElementById('showproductdescriptionidPizza');
 var getproductdescripptioPizza=e.getAttribute('customdescription');
-showproductdescriptionidPizza.innerHTML="<h3>"+getproductdescripptioPizza+"</h3>";
+showproductdescriptionidPizza.innerHTML="<h3 class='showproductdescriptionclass'>"+getproductdescripptioPizza+"</h3>";
 };
 
 function showdescriptioncontentclosePizza(){
@@ -25663,11 +27244,12 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
 </div>
 
 
-    {% if milkteab.productname == milkteab.productname and "MT.png" %}
-    <img class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
-    {% else %}
-    <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
-    {% endif %}
+        {% if milkteab.productname == milkteab.productname and "MT.png" %}
+        <img class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        {% else %}
+        <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        {% endif %}
+
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
   <div id="h3divconfigidCappuccino" class="h3divconfig"><h3>{{milkteab.productname}}</h3></div>
   {% else %}
@@ -26008,7 +27590,7 @@ var passwordsuid = document.getElementById('passwordsuid')
 
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'firstnameid':JSON.stringify(firstnameid.value), 
         'lastnameid':JSON.stringify(lastnameid.value),
@@ -26144,7 +27726,7 @@ if(!username.value && !password.value){
 
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'username':JSON.stringify(username.value), 
         'password':JSON.stringify(password.value),
@@ -26219,7 +27801,7 @@ $(document).ready(function(){
 //window.fbAsyncInit = function () {
 if(freefries == 'True'){
 var freefriesid = document.getElementById('freefriesid')
-freefriesid.innerHTML = '<h5 style="color:red;">Free Fries for Milktea or Frappe Today!</h5>'
+freefriesid.innerHTML = '<h5 style="color:red;">Free Fries for Milktea and Frappe Today!</h5>'
 }
 var loginfirstdivbg = document.getElementsByClassName("showloginwithfacebookdivbg")[0];
 
@@ -26305,7 +27887,7 @@ var showloginwithfacebookdiv = document.getElementsByClassName('showloginwithfac
       
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'response.first_name':JSON.stringify(response.first_name), 
         'response.last_name':JSON.stringify(response.last_name),
@@ -26851,11 +28433,13 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
 <div class="myDIV">
     <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
 </div>
-    {% if frappeb.productname == frappeb.productname and "FR.png" %}
-    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
-    {% else %}
-    <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
-    {% endif %}
+
+        {% if frappeb.productname == frappeb.productname and "FR.png" %}
+        <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        {% else %}
+        <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        {% endif %}
+
 
   <div class="h3div"><h3>{{frappeb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -27388,6 +28972,10 @@ closebgwithcontentfr[0].style.display = "none";
 function closefreeze(){
 var closebgwithcontentfrz = document.getElementsByClassName("atbmodalbackgroundfreeze");
 closebgwithcontentfrz[0].style.display = "none";
+}
+function closespecialpromo(){
+var closebgwithcontentspecialpromo = document.getElementsByClassName("atbmodalbackgroundspecialpromo");
+closebgwithcontentspecialpromo[0].style.display = "none";
 }
 function closecookies(){
 var closebgwithcontentcookies = document.getElementsByClassName("atbmodalbackgroundcookies");

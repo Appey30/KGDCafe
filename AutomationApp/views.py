@@ -2269,6 +2269,7 @@ def Onlineordersystem(request, admin_id):
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
+
         if request.user.is_anonymous:
             promoidentifier=''
         #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
@@ -2282,9 +2283,9 @@ def Onlineordersystem(request, admin_id):
         #    else:
         #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
-            promoidentifier='Friesday'
+            promoidentifier='FreeFriesDay'
         else:
-            promoidentifier=''
+            promoidentifier='Special Promo'
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
             passwordss=json.loads(request.POST.get('password'))
@@ -2430,6 +2431,7 @@ def Onlineordersystem(request, admin_id):
         shawarmabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Shawarma',user__id=admin_id).distinct('productname')
         bubwafbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Bubble Waffle',user__id=admin_id).distinct('productname')
         pizzabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=admin_id).distinct('productname')
+        specialpromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='Special Promo').distinct('productname')
         FreeFriespromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='FreeFries').distinct('productname')
         i=0
         pizzapricess={}
@@ -2518,7 +2520,7 @@ def Onlineordersystem(request, admin_id):
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
         
-        return render(request, 'Onlineorder.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+        return render(request, 'Onlineorder.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):
         userr=request.user.id
