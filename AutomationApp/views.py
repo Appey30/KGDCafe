@@ -204,17 +204,12 @@ def coupon(request):
           couponss = couponlist.objects.none()
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
-       #submitted = False
-       #if request.method == "POST":
-       #     aprod = editform(request.POST)
-       #     if aprod.is_valid():
-       #         aprod.save()
-       #         
-       #         return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'aprod':aprod,'submitted':submitted,'userr':userr})
-       #     else:
-       #         return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'aprod':aprod,'submitted':submitted,'userr':userr})
-       #else:
-       #aprod = editform
+       #if request.method == 'POST':
+       #   data = request.POST['data']
+       #   img = make(data)
+       #   img_name = 'qr' + str(time.time()) + '.png'
+       #   img.save(settings.MEDIA_ROOT + '/' + img_name)
+       #   return render(request, 'index.html', {'img_name': img_name})
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
