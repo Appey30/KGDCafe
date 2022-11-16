@@ -18,7 +18,7 @@ from django.utils.timezone import localtime
 from django.contrib.auth.decorators import login_required
 #from webpos import settings
 from collections import namedtuple
-
+from qrcode import *
 import json
 import requests
 from django.core import serializers
