@@ -646,17 +646,20 @@ background-color:transparent;
 
 margin:0px 0px 0px 0px;
 }
-
-.percentagediscountspanclass {
-  border: 1px inset #ccc;
+.input-holder {
+  border: 1px solid #cccccc;
+  display: inline-block;
+  padding: 5px;
 }
-.percentagediscountspanclass input {
-  border: none;
-  padding:0px;
-  outline: none;
-  margin-left:5px;
-margin-right:5px;
-width:100%;
+.input-holder > input {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline:none;
+    width:100%;
+}
+.input-holder:after {
+  content: '%';
 }
 /* The Close Button */
 .close {
@@ -1023,16 +1026,22 @@ background-color:transparent;
 
 margin:0px 0px 0px 0px;
 }
+.input-holder {
+  border: 1px solid #cccccc;
+  display: inline-block;
+  padding: 5px;
+}
+.input-holder > input {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline:none;
+    width:100%;
+}
+.input-holder:after {
+  content: '%';
+}
 
-.percentagediscountspanclass {
-  border: 1px inset #ccc;
-}
-.percentagediscountspanclass input {
-  border: none;
-  padding:0px;
-  width:100%;
-  outline: none;
-}
 /* The Close Button */
 .close {
   color: #aaa;
@@ -1271,7 +1280,7 @@ hr {
                                 <br>
 
 
-                               <span class="percentagediscountspanclass"> <input id="discountpercentageid" style="text-align:left;" class="percentagediscountclass clear" type="number" step="1" min="1" max="100" placeholder="Enter Discount Percentage here" name="discountpercentagename">%</span></input>
+                               <span class="input-holder"> <input id="discountpercentageid" style="text-align:left;" class="clear" type="number" step="1" min="1" max="100" placeholder="Enter Discount Percentage here" name="discountpercentagename">%</span>
                                 <br>
                                 
                             </div>
