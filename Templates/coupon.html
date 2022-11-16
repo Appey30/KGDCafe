@@ -1206,14 +1206,14 @@ hr {
                             <div class="fieldWrapper">
                                 <label>Coupon Name:</label>
                                 <br>
-                                <input class="form-control clear" type="text" placeholder="Enter Coupon Name" name="couponnamename"></input>
+                                <input id="couponnameid" class="form-control clear" type="text" placeholder="Enter Coupon Name" name="couponnamename"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Category:</label>
                                 <br>
-                                <select class="form-control clear" id="Category" name="categoryname">
+                                <select id="categoryid" class="form-control clear" id="Category" name="categoryname">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value=""></option>
                                 </select>
@@ -1224,7 +1224,7 @@ hr {
                             <div class="fieldWrapper">
                                 <label>Code</label>
                                 <br>
-                                <input class="form-control clear" type="text" placeholder="Enter Code" name="codename"></input>
+                                <input id="codeid" class="form-control clear" type="text" placeholder="Enter Code" name="codename"></input>
                                 <br>
                                 
                             </div>
@@ -1233,62 +1233,62 @@ hr {
                             <div class="fieldWrapper">
                                 <label>Url:</label>
                                 <br>
-                                <input class="form-control clear" type="text" placeholder="Enter URL here" name="urlname"></input>
+                                <input id="urlid" class="form-control clear" type="text" placeholder="Enter URL here" name="urlname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Pieces:</label>
                                 <br>
-                                <input class="form-control clear" type="number" step="1" min="1" max="" placeholder="Enter Pieces here" name="piecesname"></input>
+                                <input id="piecesid" class="form-control clear" type="number" step="1" min="1" max="" placeholder="Enter Pieces here" name="piecesname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Discount Percentage:</label>
                                 <br>
-                                <input class="form-control clear" type="number" step="1" min="1" max="100" placeholder="Enter Discount Percentage here" name="discountpercentagename"></input>
+                                <input id="discountpercentageid" class="form-control clear" type="number" step="1" min="1" max="100" placeholder="Enter Discount Percentage here" name="discountpercentagename"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Valid From:</label>
                                 <br>
-                                <input class="form-control clear" type="date" placeholder="Enter coupon starting validity here" name="startvalidityname"></input>
+                                <input id="startvalidityid" class="form-control clear" type="date" placeholder="Enter coupon starting validity here" name="startvalidityname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Valid Until:</label>
-                                <input class="form-control clear" type="date" placeholder="Enter coupon expiration validity here" name="expirationname"></input>
+                                <input id="expirationid" class="form-control clear" type="date" placeholder="Enter coupon expiration validity here" name="expirationname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Want to set Minimum Amount?</label>
                                 <br>
-                                <input class="form-control clear" type="checkbox" name="is_withMinimumAmountname" value="Yes">
+                                <input id="is_withMinimumAmountid" class="form-control clear" type="checkbox" name="is_withMinimumAmountname" value="Yes">
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Order's Minimum Amount:</label>
                                 <br>
-                                <input class="clear" type="number" step="1" min="1" max="" placeholder="Set Minimum Amount" name="minimumamountname"></input>
+                                <input id="minimumamountid" class="clear" type="number" step="1" min="1" max="" placeholder="Set Minimum Amount" name="minimumamountname"></input>
                                 
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Is it Active?</label>
-                                <input class="clear" type="checkbox" name="is_activename" value="Yes">
+                                <input id="is_activeid" class="clear" type="checkbox" name="is_activename" value="Yes">
                                 <br>
                                 
                             </div>
 
                                 
                             <div class="fieldWrapper">
-                            <input type = "submit" value = "Add Coupon" class="btn1" >
+                            <input type = "submit" value = "Add Coupon" class="btn1" name="butaddcouponname" id="butaddcouponid">
                             </div>
                 </form>
 
