@@ -1202,19 +1202,7 @@ hr {
                        
                 <form action="" method = "POST" onsubmit="addsubmitclear()" name="addformname"  id="addformid" enctype="multipart/form-data">
                             {% csrf_token %}
-    couponname = models.CharField(max_length = 250, blank = False, null = False, default='')
-    category = models.ForeignKey(CategoriesCoupon, on_delete=models.CASCADE, default='',blank = True, null = True)
-    code = models.CharField(max_length = 250, blank = False, null = False, default='')
-    url = models.CharField(max_length = 1000, blank = False, null = False, default='')
-    qr = models.CharField(max_length = 250, blank = False, null = False, default='')
-    pieces = models.IntegerField(blank = True, null = True, default='')
-    discountamount = models.IntegerField(blank = True, null = True, default='')
-    validfrom = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
-    validuntil = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
-    is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
-    is_consumed = models.BooleanField(default = True, blank = True, null = True)
-    is_active = models.BooleanField(default = True, blank = True, null = True)
-    MinimumAmount = models.IntegerField(blank = True, null = True, default='')      
+   
                             <div class="fieldWrapper">
                                 <label>Coupon Name:</label>
                                 
@@ -1317,23 +1305,19 @@ hr {
 
   <tr>
   
-    <td>{{ product1.productname }}</td>
-    <td>
-    {% if product1.Size %}
-    {{ product1.Size }}
-    {% else %}
-    {{ product1.PSize }}
-    {% endif %}
-    </td>
-    <td>{{ product1.Price }}</td>
-    <td>{{ product1.Cost }}</td>
-    <td>{{ product1.Category }}</td>
-    <td>{{ product1.Subcategory }}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
  
     <td>
-    <button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
-   <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>
-    </td>
+   <!--<button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
+   <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>-->
+<button class="edit">Edit</button>
+   <button class="delete">Delete</button>
+   </td>
        
 {% endfor %}
 </div> 
