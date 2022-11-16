@@ -1200,82 +1200,86 @@ hr {
         <h1> Enter Coupon Details</h1>
            
                        
-                <form action="" method = "POST" onsubmit="addsubmitclear()" name="addformname"  id="addformid" enctype="multipart/form-data">
+                <form action="" method = "POST" onsubmit="addsubmitclear()" name="addcouponname"  id="addcouponid">
                             {% csrf_token %}
    
                             <div class="fieldWrapper">
                                 <label>Coupon Name:</label>
-                                
+                                <input type="text" placeholder="Enter Coupon Name" name="couponnamename"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Category:</label>
-                                
+                                <select id="Category" name="categoryname">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value=""></option>
+                                </select>
                                 <br>
                                 
                             </div>
 
-                            <div class="fieldWrapper" id="subcat">
+                            <div class="fieldWrapper">
                                 <label>Code</label>
-                                
+                                <input type="text" placeholder="Enter Code" name="codename"></input>
                                 <br>
                                 
                             </div>
                           
                             <br>
-                            <div class="fieldWrapper" id="sukats">
+                            <div class="fieldWrapper">
                                 <label>Url:</label>
-                                
+                                <input type="text" placeholder="Enter URL here" name="urlname"></input>
                                 <br>
                                 
                             </div>
-                            <div class="fieldWrapper" id="psukats">
+                            <div class="fieldWrapper">
                                 <label>Pieces:</label>
-                                
+                                <input type="number" step="1" min="1" max="" placeholder="Enter Pieces here" name="piecesname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Discount Percentage:</label>
-                                
+                                <input type="number" step="1" min="1" max="100" placeholder="Enter Discount Percentage here" name="discountpercentagename"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Valid From:</label>
-                                
+                                <input type="date" placeholder="Enter coupon starting validity here" name="startvalidityname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Valid Until:</label>
-                                
+                                <input type="date" placeholder="Enter coupon expiration validity here" name="expirationname"></input>
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
-                                <label>Is it with Minimum Amount?</label>
-                                
+                                <label>Want to set Minimum Amount?</label>
+                                <input type="checkbox" name="is_withMinimumAmountname" value="Yes">
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Minimum Amount:</label>
+                                <input type="number" step="1" min="1" max="" placeholder="Set Minimum Amount" name="minimumamountname"></input>
                                 
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Is it Active?</label>
-                                
+                                <input type="checkbox" name="is_activename" value="Yes">
                                 <br>
                                 
                             </div>
 
                                 
                             <div class="fieldWrapper">
-                            <input type = "submit" value = "Add Product" class="btn1" >
+                            <input type = "submit" value = "Add Coupon" class="btn1" >
                             </div>
                 </form>
 
