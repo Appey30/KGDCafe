@@ -1380,9 +1380,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-</script>
-  
-<script>
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -1410,9 +1408,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-</script>
-  
-<script>
+
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
@@ -1422,10 +1418,7 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
-</script>
 
-
-<script>
 function myFunctioncat() {
     var categor = document.getElementById("Categ");
     var selected = categor.options[categor.selectedIndex].text;
@@ -1460,9 +1453,7 @@ function myFunctioncat() {
     }
 
 }
-</script>
 
-<script>
 function myFunctionsubcat() {
     var subcategor = document.getElementById("subcateg");
     var selected = subcategor.options[subcategor.selectedIndex].text;
@@ -1483,9 +1474,7 @@ function myFunctionsubcat() {
         document.getElementById("sukats").style.display = "none";
     }
 }
-</script>
 
-<script>
 let tid = setInterval(function addsubmitclear(){
     if ( document.readyState !== 'complete' ) return;
     clearInterval( tid );       
@@ -1493,9 +1482,9 @@ let tid = setInterval(function addsubmitclear(){
     
 }, 100 );
 </script>
-
+{% endblock head %}
 </body>
 
 	
-{% endblock head %}
+
 </html> 
