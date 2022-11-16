@@ -192,6 +192,32 @@ def editprod(request, edit_id):
 
 
 @login_required
+def coupon(request):
+
+       userr=request.user.id
+       notifyorder=acknowledgedstockorder.objects.filter(CusName="Notify",user=userr).count()
+       if acknowledgedstockorder.objects.all().count()==0:
+           notifyadmin=submitstockorder.objects.all().count()
+       else:
+           notifyadmin=0
+       
+       productss = user1.objects.all().filter(user__id=userr).exclude(Promo='FreeFries').order_by('-id')
+       submitted = False
+       if request.method == "POST":
+            aprod = editform(request.POST)
+            if aprod.is_valid():
+                aprod.save()
+                
+                return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+            else:
+                return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+       else:
+           aprod = editform
+           return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+
+
+
+@login_required
 def products(request):
 
        userr=request.user.id
