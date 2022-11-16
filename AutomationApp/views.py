@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import auth, User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import timesheet, Acceptorder, Rejectorder,Customer, acknowledgedstockorder,submitstockorder, user1, Categories, Sizes, Subcategories, PSizes, punchedprod,punchedprodso,queue1, queue2, queue3, Sales, Dailysales
+from .models import timesheet, Acceptorder, Rejectorder,Customer, acknowledgedstockorder,submitstockorder, user1, Categories, Sizes, Subcategories, PSizes, punchedprod,punchedprodso,queue1, queue2, queue3, Sales, Dailysales, couponlist
 from .forms import editform, punched,punchedso, stocksandexpenses,stockorderform
 from django.urls import reverse
 import copy, pickle
