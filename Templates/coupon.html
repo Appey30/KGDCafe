@@ -1182,13 +1182,13 @@ hr {
 {% endif %}
 {% endif %}
 <div class="header">
-<h1 class="punchedtext title" style="font-weight:bold;">Product List</h1>
-<p class="subtitle" style="color:lightgrey;">You can add or remove product/s to the table</p>
+<h1 class="punchedtext title" style="font-weight:bold;">Coupon List</h1>
+<p class="subtitle" style="color:lightgrey;">You can add, remove and modify coupon to the table</p>
 </div>
 <div class="myDIV">
     <button id="myBtn" class="btn02 fas fa-plus"></button>
 </div>
-<div class="hide">Add Product</div>
+<div class="hide">Add Coupon</div>
 
 
 <div id="myModal" class="modal" style = "background-color: rgba(0,0,0,0.4)">
@@ -1197,64 +1197,95 @@ hr {
   <div class="modal-content">
          
     <span class="close">&times;</span>
-        <h1> Enter Product Details</h1>
+        <h1> Enter Coupon Details</h1>
            
                        
                 <form action="" method = "POST" onsubmit="addsubmitclear()" name="addformname"  id="addformid" enctype="multipart/form-data">
                             {% csrf_token %}
-                            
+    couponname = models.CharField(max_length = 250, blank = False, null = False, default='')
+    category = models.ForeignKey(CategoriesCoupon, on_delete=models.CASCADE, default='',blank = True, null = True)
+    code = models.CharField(max_length = 250, blank = False, null = False, default='')
+    url = models.CharField(max_length = 1000, blank = False, null = False, default='')
+    qr = models.CharField(max_length = 250, blank = False, null = False, default='')
+    pieces = models.IntegerField(blank = True, null = True, default='')
+    discountamount = models.IntegerField(blank = True, null = True, default='')
+    validfrom = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
+    validuntil = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
+    is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
+    is_consumed = models.BooleanField(default = True, blank = True, null = True)
+    is_active = models.BooleanField(default = True, blank = True, null = True)
+    MinimumAmount = models.IntegerField(blank = True, null = True, default='')      
                             <div class="fieldWrapper">
-                                <label>Product Name:</label>
-                                {{aprod.productname}}
+                                <label>Coupon Name:</label>
+                                
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
                                 <label>Category:</label>
-                                {{aprod.Category}}
+                                
                                 <br>
                                 
                             </div>
 
                             <div class="fieldWrapper" id="subcat">
-                                <label>Subcategory:</label>
-                                {{aprod.Subcategory}}
+                                <label>Codelabel>
+                                
                                 <br>
                                 
                             </div>
                           
                             <br>
                             <div class="fieldWrapper" id="sukats">
-                                <label>Size:</label>
-                                {{aprod.Size}}
+                                <label>url:</label>
+                                
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper" id="psukats">
-                                <label>Pizza Size:</label>
-                                {{aprod.PSize}}
+                                <label>Pieces:</label>
+                                
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
-                                <label>Price:</label>
-                                {{aprod.Price}}
+                                <label>Discount Percentage:</label>
+                                
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
-                                <label>Cost:</label>
-                                {{aprod.Cost}}
+                                <label>Valid From:</label>
+                                
                                 <br>
                                 
                             </div>
                             <div class="fieldWrapper">
-                                <label>Product Description:</label>
-                                {{aprod.PDescription}}
+                                <label>Valid Until:</label>
+                                
                                 <br>
                                 
                             </div>
-                                {{aprod.user}}
+                            <div class="fieldWrapper">
+                                <label>Is it with Minimum Amount?</label>
+                                
+                                <br>
+                                
+                            </div>
+                            <div class="fieldWrapper">
+                                <label>Minimum Amount:</label>
+                                
+                                <br>
+                                
+                            </div>
+                            <div class="fieldWrapper">
+                                <label>Is it Active?</label>
+                                
+                                <br>
+                                
+                            </div>
+
+                                
                             <div class="fieldWrapper">
                             <input type = "submit" value = "Add Product" class="btn1" >
                             </div>
