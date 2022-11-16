@@ -1299,14 +1299,14 @@ hr {
   <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
     <th class="punchedtext">Coupon Name</th>
     <th class="punchedtext">Category</th>
+    <th class="punchedtext">Code</th>
     <th class="punchedtext">Valid From</th>
-    <th class="punchedtext">Valid Until</th>
-     <th class="punchedtext">Category</th>
+     <th class="punchedtext">Valid Until</th>
      <th class="punchedtext">Is it Active</th>
      <th class="punchedtext">Action</th>
   </tr>
   
-{% for product1 in productss %}
+{% for product1 in couponss %}
    {% if messages %}
         {% for message in messages %}
             <script>
@@ -1317,19 +1317,25 @@ hr {
 
   <tr>
   
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>{{ product1.productname }}</td>
+    <td>
+    {% if product1.Size %}
+    {{ product1.Size }}
+    {% else %}
+    {{ product1.PSize }}
+    {% endif %}
+    </td>
+    <td>{{ product1.Price }}</td>
+    <td>{{ product1.Cost }}</td>
+    <td>{{ product1.Category }}</td>
+    <td>{{ product1.Subcategory }}</td>
  
     <td>
-    <button class="edit">Edit</button>
-   <button class="delete">Delete</button>
+    <button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
+   <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>
     </td>
        
-
+{% endfor %}
 </div> 
  
 
@@ -1491,5 +1497,5 @@ let tid = setInterval(function addsubmitclear(){
 </body>
 
 	
-
+{% endblock head %}
 </html> 
