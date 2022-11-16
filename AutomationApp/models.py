@@ -43,8 +43,39 @@ class user1 (models.Model):
     PDescription = models.CharField(max_length = 2000, blank = False, null = False, default='')
     def __str__(self):
         return str(self.productname) +" "+ str(self.Size)
-      
 
+class CategoriesCoupon(models.Model):
+    CategoryCouponchoices = models.CharField(max_length = 50, blank = False, null = False, default='')
+    def __str__(self):
+        return str(self.CategoryCouponchoices)
+
+class couponlist (models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE,blank = False, null = False)
+    couponname = models.CharField(max_length = 250, blank = False, null = False, default='')
+    category = models.ForeignKey(CategoriesCoupon, on_delete=models.CASCADE, default='',blank = True, null = True)
+    code = models.CharField(max_length = 250, blank = False, null = False, default='')
+    url = models.CharField(max_length = 1000, blank = False, null = False, default='')
+    qr = models.CharField(max_length = 250, blank = False, null = False, default='')
+    pieces = models.IntegerField(blank = True, null = True, default='')
+    discountamount = models.IntegerField(blank = True, null = True, default='')
+    validfrom = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
+    validuntil = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
+    is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
+    is_consumed = models.BooleanField(default = True, blank = True, null = True)
+    is_active = models.BooleanField(default = True, blank = True, null = True)
+    MinimumAmount = models.IntegerField(blank = True, null = True, default='')
+
+    def __str__(self):
+        if is_consumed == "True":
+            Consumed = "Consumed"
+        else:
+            Consumed = "Not yet Consumed"
+        if is_active == "True":
+            Active = "Active"
+        else:
+            Active = "Not Active"
+        return str(self.couponname) +" / "+ str(self.category) + " / "+ Consumed + " / "+ Active
+      
 
 
 class punchedprod (models.Model):
