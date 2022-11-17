@@ -5074,7 +5074,7 @@ def Onlineordertestingsystem(request, admin_id):
                     addressuseri = []
                     i=0
                     while i<len(counteruser):
-                        addressuserii=Sales.objects.filter(CusName="KGD Cafe",pinnedlat=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
+                        addressuserii=Sales.objects.filter(CusName="KGD Cafe",pinnedlat__in=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
                         addressuseri.append(addressuserii)
                     
                         i += 1

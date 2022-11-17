@@ -24170,11 +24170,11 @@ $(window).scroll(function() {
             success: function(response){
             var dataHtml='';
             var una=JSON.stringify(response.addressuser);
-            console.log('first olduser address parsed: '+una)
+            
             var pangalawa = JSON.parse(una);
-            console.log('second olduser address parsed: '+pangalawa)
+            
             var pangatlo = JSON.parse(pangalawa);
-            console.log('third olduser address parsed: '+pangatlo)
+            
                 if(pangatlo.length == 0){
                 var pangapat = pangatlo;
                 var bilangan = pangapat.length;

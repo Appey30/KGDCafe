@@ -24162,36 +24162,128 @@ $(window).scroll(function() {
 
 
 
-            function functionpaymentgcashdelivery(){
+             function functionpaymentgcashdelivery(){
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id %}",
+            url:"{% url 'Onlineorder.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
-            console.log('response.addressuser: '+response)
-            //var una=JSON.stringify(response.addressuser);
-            //console.log('first olduser address parsed: '+una)
-            //var pangalawa = JSON.parse(una);
-            //console.log('second olduser address parsed: '+pangalawa)
-            //var pangatlo = JSON.parse(pangalawa);
-            //console.log('third olduser address parsed: '+pangatlo)
-                //if(pangatlo.length == 0){
-                //var pangapat = pangatlo;
-                //var bilangan = pangapat.length;
-                //}else{
-                //var pangapat = pangatlo;
-                //var bilangan = pangapat.length;
+            var una=JSON.stringify(response.addressuser);
+            
+            var pangalawa = JSON.parse(una);
+            
+            var pangatlo = JSON.parse(pangalawa);
+            
+                if(pangatlo.length == 0){
+                var pangapat = pangatlo;
+                var bilangan = pangapat.length;
+                }else{
+                var pangapat = pangatlo;
+                var bilangan = pangapat["features"].length;
 
-                //}
+                }
+
+            var olduserdivid = document.getElementById('olduser');
+            var dataHTML='';
 
 
+            
+            var newuserdivid = document.getElementById('addressdividfirst');
+            var selectedaddress = document.getElementById('selectedaddressid');
+            var arrowdown = document.getElementById('downid');
+            var setlocation = document.getElementById('setlocationid');
+            var guidesetnewlocation = document.getElementById('guidesetnewlocationid');
+            var dataHTML='';
+
+            bilanganfinal = bilangan;
+            
+            $('#olduser').empty();
+            if(bilangan>0){
+            for(let i=0;i<bilangan;i++){
+            
+            dataHTML += "<div class='addressolduser' onclick='inputvalueaddress("+pangapat["features"][i]['properties'].Housenumber+","+JSON.stringify(pangapat["features"][i]['properties'].StreetPurok)+","+JSON.stringify(pangapat["features"][i]['properties'].Barangay)+","+JSON.stringify(pangapat["features"][i]['properties'].MunicipalityCity)+", "+JSON.stringify(pangapat["features"][i]['properties'].Province)+", "+JSON.stringify(pangapat["features"][i]['properties'].CusName)+", "+JSON.stringify(pangapat["features"][i]['properties'].LandmarksnNotes)+", "+pangapat["features"][i]['properties'].contactnumber+", "+pangapat["features"][i]['properties'].pinnedlat+", "+pangapat["features"][i]['properties'].pinnedlng+")'>#"+pangapat["features"][i]['properties'].Housenumber+" "+pangapat["features"][i]['properties'].StreetPurok+", "+pangapat["features"][i]['properties'].Barangay+", "+pangapat["features"][i]['properties'].MunicipalityCity+", "+pangapat["features"][i]['properties'].Province+"</div>";
+            selectedaddress.style.display = "block";
+            arrowdown.style.display = "inline-block";
+            setlocation.style.display = "block";
+            guidesetnewlocation.style.display = "block";
+            }
+            $('#olduser').append(dataHTML);
+            newuserdivid.style.display = "none";
+
+            }else{
+            olduserdivid.style.display = "none";
+            newuserdivid.style.display = "block";
+            }
             },
             error: function(){
             
             }
         });
+            var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
+            var iexclampayment = document.getElementById('iexclampayment');
+            var smallexclampayment = document.getElementById('smallexclampayment');
+            if(smallexclampayment.style.display == 'block'){
+            iexclampayment.style.display = 'none';
+            smallexclampayment.style.display = 'none';
+            smallexclampayment.innerHTML = '';
+            modepaymentdiv.style.borderRadius = '';
+            modepaymentdiv.style.border = '';
+            }
+            var timedivss = document.getElementById('timedivid');
+            timedivss.style.display = "none";
+            var gcash = document.getElementById('gcashpid');
+            var cop = document.getElementById('copid');
+            var cod = document.getElementById('codid');
+            var showdelivery = document.getElementById('addressdivid');
+            var nowsched = document.getElementById('nowsched');
+            var changefor = document.getElementById('changefoor');
+            var newuserdivid = document.getElementById('addressdividfirst');
+            changefor.style.display = "none";
+            showdelivery.style.display = "block";
+            cop.checked = false;
+            cod.checked = false;
+            gcash.checked = false;
+            nowsched.innerHTML='Delivery Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
+
+
+            var fullnamee = document.getElementById('namedetails');
+            fullnamee.required = true;
+            var cpnum = document.getElementById('contactdetails');
+            cpnum.required = true;
+            var mun = document.getElementById('municipality');
+            mun.required = true;
+            var bar = document.getElementById('brgy');
+            bar.required = true;
+            var str = document.getElementById('streetdetails');
+            str.required = false;
+            var lati = document.getElementById('lat');
+            lati.required = true;
+            var lngi = document.getElementById('lng');
+            lngi.required = true;
+            var change = document.getElementById('changedetails');
+            change.required = false;
+
+var hideonebuttongcashdel = document.getElementById('selectedaddressid');
+
+var hidethreeaddressgcashdel = document.getElementById('olduser');
+var setlocationbuttongcashdel = document.getElementById('setlocationid');
+var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
+var downvar = document.getElementById('downid');
+if(bilanganfinal>0){
+downvar.style.display = "inline-block";
+guidesetnewlocationsmall.style.display = "block";
+setlocationbuttongcashdel.style.display = "block";
+hideonebuttongcashdel.style.display = "block";
+
+hidethreeaddressgcashdel.style.display = "block";
+newuserdivid.style.display = "none";
+}else{
+newuserdivid.style.display = "block";
 }
+
+
+            }
 
             function functionpaymentcop(){
             var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
@@ -24273,16 +24365,117 @@ $(window).scroll(function() {
 
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id %}",
+            url:"{% url 'Onlineorder.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
-            console.log('response.addressuser: '+response)
+            var dataHtml='';
+            var una=JSON.stringify(response.addressuser);
+            var pangalawa = JSON.parse(una);
+            var pangatlo = JSON.parse(pangalawa);
+
+                if(pangatlo.length == 0){
+                var pangapat = pangatlo;
+                var bilangan = pangapat.length;
+                }else{
+                var pangapat = pangatlo;
+                var bilangan = pangapat["features"].length;
+
+                }
+
+            var olduserdivid = document.getElementById('olduser');
+            var dataHTML='';
+
+
+            
+            var newuserdivid = document.getElementById('addressdividfirst');
+            var selectedaddress = document.getElementById('selectedaddressid');
+            var arrowdown = document.getElementById('downid');
+            var setlocation = document.getElementById('setlocationid');
+            var guidesetnewlocation = document.getElementById('guidesetnewlocationid');
+            var dataHTML='';
+
+            bilanganfinal = bilangan;
+            
+            $('#olduser').empty();
+            if(bilangan>0){
+            for(let i=0;i<bilangan;i++){
+            
+            dataHTML += "<div class='addressolduser' onclick='inputvalueaddress("+pangapat["features"][i]['properties'].Housenumber+","+JSON.stringify(pangapat["features"][i]['properties'].StreetPurok)+","+JSON.stringify(pangapat["features"][i]['properties'].Barangay)+","+JSON.stringify(pangapat["features"][i]['properties'].MunicipalityCity)+", "+JSON.stringify(pangapat["features"][i]['properties'].Province)+", "+JSON.stringify(pangapat["features"][i]['properties'].CusName)+", "+JSON.stringify(pangapat["features"][i]['properties'].LandmarksnNotes)+", "+pangapat["features"][i]['properties'].contactnumber+", "+pangapat["features"][i]['properties'].pinnedlat+", "+pangapat["features"][i]['properties'].pinnedlng+")'>#"+pangapat["features"][i]['properties'].Housenumber+" "+pangapat["features"][i]['properties'].StreetPurok+", "+pangapat["features"][i]['properties'].Barangay+", "+pangapat["features"][i]['properties'].MunicipalityCity+", "+pangapat["features"][i]['properties'].Province+"</div>";
+            selectedaddress.style.display = "block";
+            arrowdown.style.display = "inline-block";
+            setlocation.style.display = "block";
+            guidesetnewlocation.style.display = "block";
+            }
+            $('#olduser').append(dataHTML);
+            newuserdivid.style.display = "none";
+
+            }else{
+            olduserdivid.style.display = "none";
+            newuserdivid.style.display = "block";
+            }
             },
             error: function(){
             
             }
         });
- 
+            var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
+            var iexclampayment = document.getElementById('iexclampayment');
+            var smallexclampayment = document.getElementById('smallexclampayment');
+            if(smallexclampayment.style.display == 'block'){
+            iexclampayment.style.display = 'none';
+            smallexclampayment.style.display = 'none';
+            smallexclampayment.innerHTML = '';
+            modepaymentdiv.style.borderRadius = '';
+            modepaymentdiv.style.border = '';
+            }
+            var timedivss = document.getElementById('timedivid');
+            timedivss.style.display = "none";
+            var gcashd = document.getElementById('gcashdid');
+            var gcashp = document.getElementById('gcashpid');
+            var cop = document.getElementById('copid');
+            var cod = document.getElementById('codid');
+            var nowsched = document.getElementById('nowsched');
+            var showdelivery = document.getElementById('addressdivid');
+            var changefor = document.getElementById('changefoor');
+            nowsched.innerHTML='Delivery Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
+            changefor.style.display = "block";
+            showdelivery.style.display = "block";
+            gcashp.checked = false;
+            gcashd.checked = false;
+            cop.checked = false;
+            var fullnamee = document.getElementById('namedetails');
+            fullnamee.required = true;
+            var cpnum = document.getElementById('contactdetails');
+            cpnum.required = true;
+            var mun = document.getElementById('municipality');
+            mun.required = true;
+            var bar = document.getElementById('brgy');
+            bar.required = true;
+            var str = document.getElementById('streetdetails');
+            str.required = false;
+            var change = document.getElementById('changedetails');
+            change.required = true;
+            var lati = document.getElementById('lat');
+            lati.required = true;
+            var lngi = document.getElementById('lng');
+            lngi.required = true;
+
+            var hideonebuttongcashdel = document.getElementById('selectedaddressid');
+            var newuserdivid = document.getElementById('addressdividfirst');
+            var hidethreeaddressgcashdel = document.getElementById('olduser');
+            var setlocationbuttongcashdel = document.getElementById('setlocationid');
+            var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
+            var downvar = document.getElementById('downid');
+            if(bilanganfinal>0){
+            downvar.style.display = "inline-block";
+            setlocationbuttongcashdel.style.display = "block";
+            guidesetnewlocationsmall.style.display = "block";
+            hideonebuttongcashdel.style.display = "block";
+            hidethreeaddressgcashdel.style.display = "block";
+            newuserdivid.style.display = "none";
+            }else{
+            newuserdivid.style.display = "block";
+            }
             }
             </script>
             </div>
