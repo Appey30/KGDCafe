@@ -1518,6 +1518,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $( ".showcategoryinfo"  ).css( "display","none" );
     }
 );
+$( ".infobutton" ).click(function() {
+        if(document.getElementsByClassName("infobutton").style.display=="block"){
+          $( ".showcategoryinfo" ).css( "display","none" );
+        }else{
+          $( ".showcategoryinfo" ).css( "display","block" );
+        }
+});
 });
 
 
