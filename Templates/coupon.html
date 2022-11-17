@@ -1655,6 +1655,7 @@ z-index:100;
 
 function functioncategory(){
 var showis_withvalidityiddivinfoid = document.getElementById("showis_withvalidityiddivinfoid");
+var showis_withMinimumAmountiddivinfoid = document.getElementById("showis_withMinimumAmountiddivinfoid");
 var codeiddiv = document.getElementById("codeiddiv");
 var piecesiddiv = document.getElementById("piecesiddiv");
 var categoryid = document.getElementById("categoryid");
@@ -1677,7 +1678,13 @@ if(window.matchMedia("(min-width: 961px)").matches){
     showis_withvalidityiddivinfoid.style.top="445px"
 };
 
-
+if(window.matchMedia("(min-width: 961px)").matches){
+    showis_withMinimumAmountiddivinfoid.style.top="560px"
+}else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
+    showis_withMinimumAmountiddivinfoid.style.top="525px"
+}else{
+    showis_withMinimumAmountiddivinfoid.style.top="525px"
+};
 };
 function is_withvalidityfunction(){
 var showis_withMinimumAmountiddivinfoid = document.getElementById("showis_withMinimumAmountiddivinfoid");
