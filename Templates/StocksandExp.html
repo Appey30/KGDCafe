@@ -1233,11 +1233,11 @@ z-index:-1;
     <td style="color:#A0A0A0;">{{stocks.Categoryaes}}</td>
     <td style="color:#A0A0A0;">{{stocks.Subcategorys}}</td>
     <td style="color:#A0A0A0;">₱{{stocks.Amount}}</td>
-    <!--{% if stocks.Receipt %}-->
+    {% if stocks.Receipt %}
     <td class="punchedtext" style="position:relative;left:-40px;font-size:15px;z-index:0;" ><a href="{{stocks.Receipt.url}}">Click here to view Receipt</a></td>
-    <!--{% else %}-->
-    <!--<td style="color:#A0A0A0;"></td>-->
-    <!--{% endif %}-->
+    {% else %}
+    <td style="color:#A0A0A0;"></td>
+    {% endif %}
   </tr>
   {% endfor %}
 
