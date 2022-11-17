@@ -229,7 +229,7 @@ def coupon(request):
           #
           new_dir_path = os.path.join(settings.MEDIA_ROOT, couponnameid)
           try:
-            os.mkdir(new_dir_path)
+            os.makedirs(new_dir_path)
           except OSError as e:
             if e.errno != errno.EXIST:
                 #directory already exists
