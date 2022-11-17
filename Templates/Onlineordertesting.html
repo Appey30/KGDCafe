@@ -24169,7 +24169,7 @@ $(window).scroll(function() {
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
-            console.log('response.addressuser: '+response.addressuser)
+            console.log('response.addressuser: '+response)
             //var una=JSON.stringify(response.addressuser);
             //console.log('first olduser address parsed: '+una)
             //var pangalawa = JSON.parse(una);
@@ -24339,7 +24339,7 @@ newuserdivid.style.display = "block";
             url:"{% url 'Onlineordertesting.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
-            console.log('response.addressuser: '+response.addressuser)
+            console.log('response.addressuser: '+response)
             },
             error: function(){
             
