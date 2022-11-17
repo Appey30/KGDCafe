@@ -225,7 +225,17 @@ def coupon(request):
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
-          qrimg.save(settings.MEDIA_ROOT + '/'+couponnameid+ "/" + img_name)
+          #
+          new_dir_path = os.path.join(settings.MEDIA_ROOT, couponnameid)
+          try:
+            os.makedir(new_dir_path)
+          except OSError as e:
+            if e.errno != errno.EXIST:
+                #directory already exists
+                pass
+            else:
+                print(e)
+          qrimg.save(settings.MEDIA_ROOT + '/'+couponnameid+"/")
           return JsonResponse({'Success':json.dumps(generateurl)})
 
        #   data = request.POST['data']
