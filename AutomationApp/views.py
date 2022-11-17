@@ -14,6 +14,7 @@ import datetime
 import pytz
 from django.utils import timezone
 from django.conf import settings
+import os, errno
 from django.utils.timezone import localtime 
 from django.contrib.auth.decorators import login_required
 #from webpos import settings
