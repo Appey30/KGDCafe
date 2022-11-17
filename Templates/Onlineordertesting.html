@@ -24185,37 +24185,7 @@ $(window).scroll(function() {
 
                 //}
 
-            var olduserdivid = document.getElementById('olduser');
-            var dataHTML='';
 
-
-            
-            var newuserdivid = document.getElementById('addressdividfirst');
-            var selectedaddress = document.getElementById('selectedaddressid');
-            var arrowdown = document.getElementById('downid');
-            var setlocation = document.getElementById('setlocationid');
-            var guidesetnewlocation = document.getElementById('guidesetnewlocationid');
-            var dataHTML='';
-            var bilangan = 0;
-            bilanganfinal = bilangan;
-            
-            $('#olduser').empty();
-            if(bilangan>0){
-            for(let i=0;i<bilangan;i++){
-            
-            dataHTML += "AWAPIN NI";
-            selectedaddress.style.display = "block";
-            arrowdown.style.display = "inline-block";
-            setlocation.style.display = "block";
-            guidesetnewlocation.style.display = "block";
-            }
-            $('#olduser').append(dataHTML);
-            newuserdivid.style.display = "none";
-
-            }else{
-            olduserdivid.style.display = "none";
-            newuserdivid.style.display = "block";
-            }
             },
             error: function(){
             
@@ -24369,51 +24339,7 @@ newuserdivid.style.display = "block";
             url:"{% url 'Onlineordertesting.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
-            var dataHtml='';
-            //var una=JSON.stringify(response.addressuser);
-            //var pangalawa = JSON.parse(una);
-            //var pangatlo = JSON.parse(pangalawa);
-            console.log('response.addressuser: '+response.addressuser)
-                //if(pangatlo.length == 0){
-                //var pangapat = pangatlo;
-                //var bilangan = pangapat.length;
-               // }else{
-                //var pangapat = pangatlo;
-                //var bilangan = pangapat["features"].length;
-
-                //}
-
-            var olduserdivid = document.getElementById('olduser');
-            var dataHTML='';
-
-
             
-            var newuserdivid = document.getElementById('addressdividfirst');
-            var selectedaddress = document.getElementById('selectedaddressid');
-            var arrowdown = document.getElementById('downid');
-            var setlocation = document.getElementById('setlocationid');
-            var guidesetnewlocation = document.getElementById('guidesetnewlocationid');
-            var dataHTML='';
-            var bilangan=0;
-            bilanganfinal = bilangan;
-            
-            $('#olduser').empty();
-            if(bilangan>0){
-            for(let i=0;i<bilangan;i++){
-            
-            dataHTML += "";
-            selectedaddress.style.display = "block";
-            arrowdown.style.display = "inline-block";
-            setlocation.style.display = "block";
-            guidesetnewlocation.style.display = "block";
-            }
-            $('#olduser').append(dataHTML);
-            newuserdivid.style.display = "none";
-
-            }else{
-            olduserdivid.style.display = "none";
-            newuserdivid.style.display = "block";
-            }
             },
             error: function(){
             
