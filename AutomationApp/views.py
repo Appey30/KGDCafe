@@ -5063,7 +5063,7 @@ def Onlineordertestingsystem(request, admin_id):
             
                 if len(counteruser) == 1 and counteruser[0] != None:
                     addressuseri = []
-                    addressuserii = Sales.objects.filter(CusName="KGD Cafe", pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
+                    addressuserii = Sales.objects.filter(CusName="KGD Cafe", pinnedlat__in=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
                     addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
