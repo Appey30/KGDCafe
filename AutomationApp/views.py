@@ -227,7 +227,7 @@ def coupon(request):
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
           #
-          new_dir_path = os.path.join(settings.MEDIA_ROOT, couponnameid)
+          new_dir_path = os.path.join(settings.MEDIA_ROOT, request.POST.get("couponnameid"))
           try:
             os.makedirs(new_dir_path)
           except OSError as e:
