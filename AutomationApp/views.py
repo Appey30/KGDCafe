@@ -30,7 +30,7 @@ from django.db.models.functions import Lower
 from allauth.socialaccount.models import SocialApp
 from django.contrib.auth.hashers import make_password
 from django.template import *
-
+from PIL import Image
 
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
@@ -238,7 +238,7 @@ def coupon(request):
                 print(e)
           qrimg.save(couponnameid+"/"+img_name)
           
-          return JsonResponse({'Success':json.dumps(qrimg)})
+          return JsonResponse({'Success':Image.open("GS.png")})
 
        #   data = request.POST['data']
        #   img = make(data)
