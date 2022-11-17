@@ -226,6 +226,8 @@ def coupon(request):
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
           qrimg.save(settings.MEDIA_ROOT + '/'+couponnameid+ "/" + img_name)
+          return JsonResponse({'Success':json.dumps(generateurl)})
+
        #   data = request.POST['data']
        #   img = make(data)
        #   img_name = 'qr' + str(time.time()) + '.png'
