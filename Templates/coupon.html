@@ -418,7 +418,51 @@ padding-right:10px;
 padding-top:10px;
 z-index:100;
 }
+.infobuttonvalidity{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+cursor:pointer;
+}
+.infobuttonvalidity:hover{
+color:rgba(0,0,0,0.2);
+}
+.showis_withMinimumAmountiddivinfo{
+display:none;
+position:absolute;
+background-color:white;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 10px;
+top:200px;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+z-index:100;
+}
 
+.infobuttonminimumamount{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+cursor:pointer;
+}
+.infobuttonminimumamount:hover{
+color:rgba(0,0,0,0.2);
+}
+.showis_withMinimumAmountiddivinfo{
+display:none;
+position:absolute;
+background-color:white;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 10px;
+top:200px;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+z-index:100;
+}
 @media screen and (max-width:960px) and (min-width:801px){
 .notify{
 position:absolute;
@@ -846,7 +890,51 @@ padding-right:10px;
 padding-top:10px;
 z-index:100;
 }
+.infobuttonvalidity{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+cursor:pointer;
+}
+.infobuttonvalidity:hover{
+color:rgba(0,0,0,0.2);
+}
+.showis_withMinimumAmountiddivinfo{
+display:none;
+position:absolute;
+background-color:white;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 10px;
+top:200px;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+z-index:100;
+}
 
+.infobuttonminimumamount{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+cursor:pointer;
+}
+.infobuttonminimumamount:hover{
+color:rgba(0,0,0,0.2);
+}
+.showis_withMinimumAmountiddivinfo{
+display:none;
+position:absolute;
+background-color:white;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 10px;
+top:200px;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+z-index:100;
+}
 }
 @media screen and (max-width:800px){
 
@@ -1249,6 +1337,52 @@ padding-top:10px;
 z-index:100;
 }
 
+.infobuttonvalidity{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+cursor:pointer;
+}
+.infobuttonvalidity:hover{
+color:rgba(0,0,0,0.2);
+}
+.showis_withMinimumAmountiddivinfo{
+display:none;
+position:absolute;
+background-color:white;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 10px;
+top:200px;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+z-index:100;
+}
+
+.infobuttonminimumamount{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+cursor:pointer;
+}
+.infobuttonminimumamount:hover{
+color:rgba(0,0,0,0.2);
+}
+.showis_withMinimumAmountiddivinfo{
+display:none;
+position:absolute;
+background-color:white;
+border: 1px solid rgba(0,0,0,0.1);
+border-radius: 10px;
+top:200px;
+padding-left:10px;
+padding-right:10px;
+padding-top:10px;
+z-index:100;
+}
+
 }
 </style>
 </head>
@@ -1371,15 +1505,18 @@ z-index:100;
                             </div>
                             <div class="fieldWrapper"  id="is_withvalidityiddiv">
 
-                                <label>Do you want to set its Date of Validity?  </label>
+                                <label>Do you want to set its Date of Validity? <i class="fa fa-info-circle infobuttonvalidity" ></i> </label>
                                 <select onchange="is_withvalidityfunction()" id="is_withvalidityid" class="form-control clear" name="is_withvalidityname" value="">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                                 </select>
-                                
+
                                 <br>
-                                
+                                <div id="showis_withvalidityiddivinfoid" class="showis_withvalidityiddivinfo">
+                                <small style="color:red; font-weight:bold;">Choose Yes if:</small><br>
+                                <small style="color:red;">-you wanna set the start and expiration date of validation.</small><br>
+                                </div>
 
                             </div>
                             <div class="fieldWrapper" id="startvalidityiddiv" style="display:none;">
@@ -1398,14 +1535,18 @@ z-index:100;
                             <div class="fieldWrapper" id="is_withMinimumAmountiddiv">
 
 
-                                <label>Do you want to set Minimum Amount?  </label>
+                                <label>Do you want to set a Minimum Amount of Purchase? <i class="fa fa-info-circle infobuttonminimumamount" ></i> </label>
                                 <select onchange="is_withMinimumAmountfunction()" id="is_withMinimumAmountid" class="form-control clear" name="is_withMinimumAmountname" value="">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                                 </select>
                                 <br>
-
+ 
+                                <div id="showis_withMinimumAmountiddivinfoid" class="showis_withMinimumAmountiddivinfo">
+                                <small style="color:red; font-weight:bold;">Choose Yes if:</small><br>
+                                <small style="color:red;">-you wanna set the required minimum amount of purchase to validate the promo.</small><br>
+                                </div>
                                 
                             </div>
                             <div class="fieldWrapper" id="minimumamountiddiv" style="display:none;">
@@ -1417,9 +1558,9 @@ z-index:100;
                                 <br>
                                 
                             </div>
-                            <div class="fieldWrapper" id="is_activeiddiv">
+                            <div class="fieldWrapper" id="is_activeiddiv" style="display:none;">
 
-                                <label>Is it Active?  </label>
+                                <label>Do you wanna Activate it now?  </label>
                                 <select id="is_activeid" class="form-control clear" name="is_activename" value="">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Yes">Yes</option>
@@ -1529,14 +1670,17 @@ var selected = categoryid.options[categoryid.selectedIndex].text;
 function is_withvalidityfunction(){
 var startvalidityiddiv = document.getElementById("startvalidityiddiv");
 var expirationiddiv = document.getElementById("expirationiddiv");
+var is_activeiddiv = document.getElementById("is_activeiddiv");
 var is_withvalidityid = document.getElementById("is_withvalidityid");
 var selected = is_withvalidityid.options[is_withvalidityid.selectedIndex].text;
     if(selected=="Yes"){
     startvalidityiddiv.style.display="block";
     expirationiddiv.style.display="block";
+    is_activeiddiv.style.display="none";
     }else{
     startvalidityiddiv.style.display="none";
     expirationiddiv.style.display="none";
+    is_activeiddiv.style.display="block";
     };
 
 };
@@ -1554,6 +1698,8 @@ var selected = is_withMinimumAmountid.options[is_withMinimumAmountid.selectedInd
 
 };
 
+
+
 document.addEventListener("DOMContentLoaded", function(event) { 
   $( ".infobutton" ).hover(
     function() {
@@ -1562,11 +1708,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $( ".showcategoryinfo"  ).css( "display","none" );
     }
 );
+  $( ".infobuttonvalidity" ).hover(
+    function() {
+    $( ".showis_withvalidityiddivinfo" ).css( "display","block" );
+    }, function() {
+    $( ".showis_withvalidityiddivinfo"  ).css( "display","none" );
+    }
+);
+  $( ".infobuttonminimumamount" ).hover(
+    function() {
+    $( ".showis_withMinimumAmountiddivinfo" ).css( "display","block" );
+    }, function() {
+    $( ".showis_withMinimumAmountiddivinfo"  ).css( "display","none" );
+    }
+);
 $( ".infobutton" ).click(function() {
         if($( ".showcategoryinfo" ).css( "display") == "none"){
           $( ".showcategoryinfo" ).css( "display","block" );
         }else{
           $( ".showcategoryinfo" ).css( "display","none" );
+        }
+});
+$( ".infobuttonvalidity" ).click(function() {
+        if($( ".showis_withvalidityiddivinfo" ).css( "display") == "none"){
+          $( ".showis_withvalidityiddivinfo" ).css( "display","block" );
+        }else{
+          $( ".showis_withvalidityiddivinfo" ).css( "display","none" );
+        }
+});
+$( ".infobuttonminimumamount" ).click(function() {
+        if($( ".showis_withMinimumAmountiddivinfo" ).css( "display") == "none"){
+          $( ".showis_withMinimumAmountiddivinfo" ).css( "display","block" );
+        }else{
+          $( ".showis_withMinimumAmountiddivinfo" ).css( "display","none" );
         }
 });
 });
