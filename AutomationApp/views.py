@@ -238,7 +238,7 @@ def coupon(request):
                 print(e)
           qrimg.save(img_name)
           
-          return JsonResponse({'Success':serializers.serialize('json',qrimg, cls=JSONEncoder)})
+          return JsonResponse({'Success':json.dumps(qrimg.img.url)})
 
        #   data = request.POST['data']
        #   img = make(data)
