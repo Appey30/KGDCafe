@@ -24170,9 +24170,11 @@ $(window).scroll(function() {
             success: function(response){
             var dataHtml='';
             var una=JSON.stringify(response.addressuser);
+            console.log('first olduser address parsed: '+una)
             var pangalawa = JSON.parse(una);
+            console.log('second olduser address parsed: '+pangalawa)
             var pangatlo = JSON.parse(pangalawa);
-
+            console.log('third olduser address parsed: '+pangatlo)
                 if(pangatlo.length == 0){
                 var pangapat = pangatlo;
                 var bilangan = pangapat.length;
@@ -24200,7 +24202,7 @@ $(window).scroll(function() {
             if(bilangan>0){
             for(let i=0;i<bilangan;i++){
             
-            dataHTML += "<div class='addressolduser' onclick='inputvalueaddress("+pangapat["features"][i]['properties'].Housenumber+","+JSON.stringify(pangapat["features"][i]['properties'].StreetPurok)+","+JSON.stringify(pangapat["features"][i]['properties'].Barangay)+","+JSON.stringify(pangapat["features"][i]['properties'].MunicipalityCity)+", "+JSON.stringify(pangapat["features"][i]['properties'].Province)+", "+JSON.stringify(pangapat["features"][i]['properties'].CusName)+", "+JSON.stringify(pangapat["features"][i]['properties'].LandmarksnNotes)+", "+pangapat["features"][i]['properties'].contactnumber+", "+pangapat["features"][i]['properties'].pinnedlat+", "+pangapat["features"][i]['properties'].pinnedlng+")'>#"+pangapat["features"][i]['properties'].Housenumber+" "+pangapat["features"][i]['properties'].StreetPurok+", "+pangapat["features"][i]['properties'].Barangay+", "+pangapat["features"][i]['properties'].MunicipalityCity+", "+pangapat["features"][i]['properties'].Province+"</div>";
+            dataHTML += "AWAPIN NI"
             selectedaddress.style.display = "block";
             arrowdown.style.display = "inline-block";
             setlocation.style.display = "block";

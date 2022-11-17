@@ -26188,7 +26188,7 @@ if(indexfinderfrappemilktea !== -1){
 }else{
 allpunched.push(puncheditem)
 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
-console.log('pushed')
+
 };
 
         
@@ -26214,7 +26214,7 @@ if(day == 'Tuesday'){
                 if(puncheditemone.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemone exist, indexfinderfreefriesone will return the index of the existing item. If not, it will return -1.
-                console.log('indexfinderfreefriesone: '+indexfinderfreefriesone);
+                
                 if(indexfinderfreefriesone == -1){
                 allpunched.push(puncheditemone);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
@@ -26244,7 +26244,7 @@ if(freefries == 'True' && freefriesmilktea == 'True'){
                 if(puncheditemtwo.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemtwo exist, indexfinderfreefriestwo will return the index of the existing item. If not, it will return -1.
-                console.log(indexfinderfreefriestwo);
+                
                 if(indexfinderfreefriestwo == -1){
                 allpunched.push(puncheditemtwo);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
@@ -26275,7 +26275,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 if(puncheditemthree.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemthree exist, indexfinderfreefriesthree will return the index of the existing item. If not, it will return -1.
-                console.log(indexfinderfreefriesthree);
+                
                 if(indexfinderfreefriesthree == -1){
                 allpunched.push(puncheditemthree);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
@@ -26297,7 +26297,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-            console.log('allpunched.length:  '+allpunched.length);
+            
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
@@ -26309,9 +26309,7 @@ var addonqtydisplaysake="";
 }else{
 var addonqtydisplaysake=punched.Addonsqty;
 }
-console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
-console.log('indexfinderpizza: '+indexfinderpizza);
-console.log('indexfinderany: '+indexfinderany);
+
 
 
 
