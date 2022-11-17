@@ -394,6 +394,7 @@ hr {
   display: block;
   color: white;
 }
+
 .infobutton{
 background-color:rgba(0,0,0,0);
 border:0px transparent;
@@ -1301,14 +1302,15 @@ display:block;
                                 
                             </div>
                             <div class="fieldWrapper">
-                                <label>Category: <i class="fa fa-info-circle infobutton" ></i></label>
+                                <label>Category: <div class="infobutton"><button class="fa fa-info-circle " ></button></div></label>
                                 <br>
                                 <select id="categoryid" class="form-control clear" id="Category" name="categoryname">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Multiple Different Code Single">Generate Multiple Different Code Single</option>
                                 <option value="One Code Many">One Code Many</option>
                                 </select>
-                                <small id="categoryinformationid"></small>
+
+
                                 <br>
                                 <div id="showcategoryinfoid" class="showcategoryinfo">
                                 <small style="color:red; font-weight:bold;">Generate Multiple Different Code Single</small><br>
