@@ -2435,7 +2435,8 @@ def Onlineordersystem(request, admin_id):
                     addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
-                    addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    #addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    addressuser=json.dumps(addressuseri, cls=JSONEncoder)
                     print('addressuser1:',addressuser)
                 else:
                     addressuseri = []
@@ -2445,11 +2446,13 @@ def Onlineordersystem(request, admin_id):
                         addressuseri.append(addressuserii)
                     
                         i += 1
-                    addressuser=serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    #addressuser=serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    addressuser=json.dumps(addressuseri, cls=JSONEncoder)
                     print('addressuser2:',addressuser)
             else:
                 addressuseri = Sales.objects.none()
-                addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                #addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                addressuser=json.dumps(addressuseri, cls=JSONEncoder)
                 print('addressuser3:',addressuser)
             return JsonResponse({'addressuser':addressuser})
         mtbuttons = user1.objects.filter(Category__Categorychoices='Milktea',user__id=admin_id).distinct('productname')
@@ -5063,7 +5066,9 @@ def Onlineordertestingsystem(request, admin_id):
                     addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
-                    addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    #addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    addressuser=json.dumps(addressuseri, cls=JSONEncoder)
+
                     print('addressuser1:',addressuser)
                 else:
                     addressuseri = []
@@ -5073,11 +5078,13 @@ def Onlineordertestingsystem(request, admin_id):
                         addressuseri.append(addressuserii)
                     
                         i += 1
-                    addressuser=serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    #addressuser=serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                    addressuser=json.dumps(addressuseri, cls=JSONEncoder)
                     print('addressuser2:',addressuser)
             else:
                 addressuseri = Sales.objects.none()
-                addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                #addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
+                addressuser=json.dumps(addressuseri, cls=JSONEncoder)
                 print('addressuser3:',addressuser)
             return JsonResponse({'addressuser':addressuser})
         mtbuttons = user1.objects.filter(Category__Categorychoices='Milktea',user__id=admin_id).distinct('productname')
