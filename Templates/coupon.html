@@ -405,6 +405,12 @@ cursor:pointer;
 .infobutton:hover{
 color:rgba(0,0,0,0.2);
 }
+.showcategoryinfo{
+display:none;
+}
+.inforbutton:hover + .showcategoryinfo{
+display:block;
+}
 @media screen and (max-width:960px) and (min-width:801px){
 .notify{
 position:absolute;
@@ -820,6 +826,12 @@ cursor:pointer;
 .infobutton:hover{
 color:rgba(0,0,0,0.2);
 }
+.showcategoryinfo{
+display:none;
+}
+.inforbutton:hover + .showcategoryinfo{
+display:block;
+}
 }
 @media screen and (max-width:800px){
 
@@ -1209,6 +1221,12 @@ cursor:pointer;
 .infobutton:hover{
 color:rgba(0,0,0,0.2);
 }
+.showcategoryinfo{
+display:none;
+}
+.inforbutton:hover + .showcategoryinfo{
+display:block;
+}
 }
 </style>
 </head>
@@ -1288,12 +1306,19 @@ color:rgba(0,0,0,0.2);
                                 <select id="categoryid" class="form-control clear" id="Category" name="categoryname">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Multiple Different Code Single">Generate Multiple Different Code Single</option>
-                                <option value="One Code Lifetime Many">One Code Lifetime Many</option>
                                 <option value="One Code Many">One Code Many</option>
                                 </select>
                                 <small id="categoryinformationid"></small>
                                 <br>
-                                
+                                <div id="showcategoryinfoid" class="showcategoryinfo">
+                                <small style="color:red; font-weight:bold;">Generate Multiple Different Code Single</small><br>
+                                <small style="color:red;">-Choose this if you wanna auto generate multiple different code, url and qr code.</small><br>
+                                <small style="color:red;">-One code can only be used by one person. If it is consumed, it will be invalidated automatically.</small><br><br>
+                                <small style="color:red; font-weight:bold;">One Code Many</small><br>
+                                <small style="color:red;">-Choose this if you wanna generate url only.</small><br>
+                                <small style="color:red;">-Use the generated url to generate qr code from third party qr code generator.</small><br>
+                                <small style="color:red;">-The code you will provide can be used by multiple people.</small><br><br>
+                                </div>
                             </div>
 
                             <div class="fieldWrapper">
