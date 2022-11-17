@@ -235,7 +235,7 @@ def coupon(request):
                 pass
             else:
                 print(e)
-          qrimg.save(settings.MEDIA_ROOT + '/'+couponnameid+"/")
+          qrimg.save(settings.MEDIA_ROOT + '/'+couponnameid+"/"+img_name)
           return JsonResponse({'Success':json.dumps(generateurl)})
 
        #   data = request.POST['data']
