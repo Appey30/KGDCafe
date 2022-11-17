@@ -31,6 +31,7 @@ from allauth.socialaccount.models import SocialApp
 from django.contrib.auth.hashers import make_password
 from django.template import *
 from PIL import Image
+from io import BytesIO
 
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
