@@ -1519,10 +1519,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 );
 $( ".infobutton" ).click(function() {
-        if(document.getElementsByClassName("infobutton").style.display=="block"){
-          $( ".showcategoryinfo" ).css( "display","none" );
-        }else{
+        if($( ".showcategoryinfo" ).css( "display") == "none"){
           $( ".showcategoryinfo" ).css( "display","block" );
+        }else{
+          $( ".showcategoryinfo" ).css( "display","none" );
         }
 });
 });
