@@ -238,7 +238,7 @@ def coupon(request):
                 print(e)
           qrimg.save(couponnameid+"/"+img_name)
           
-          return JsonResponse({'Success':Image.open("GS.png")})
+          return JsonResponse({'Success':Image.open("qrimg")})
 
        #   data = request.POST['data']
        #   img = make(data)
