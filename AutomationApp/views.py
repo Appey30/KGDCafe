@@ -231,7 +231,7 @@ def coupon(request):
           try:
             os.mkdir(new_dir_path)
           except OSError as e:
-            if e.errno != errno.EXIST:
+            if e.errno != errno.EEXIST:
                 #directory already exists
                 pass
             else:
