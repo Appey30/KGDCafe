@@ -24191,70 +24191,7 @@ $(window).scroll(function() {
             
             }
         });
-            var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
-            var iexclampayment = document.getElementById('iexclampayment');
-            var smallexclampayment = document.getElementById('smallexclampayment');
-            if(smallexclampayment.style.display == 'block'){
-            iexclampayment.style.display = 'none';
-            smallexclampayment.style.display = 'none';
-            smallexclampayment.innerHTML = '';
-            modepaymentdiv.style.borderRadius = '';
-            modepaymentdiv.style.border = '';
-            }
-            var timedivss = document.getElementById('timedivid');
-            timedivss.style.display = "none";
-            var gcash = document.getElementById('gcashpid');
-            var cop = document.getElementById('copid');
-            var cod = document.getElementById('codid');
-            var showdelivery = document.getElementById('addressdivid');
-            var nowsched = document.getElementById('nowsched');
-            var changefor = document.getElementById('changefoor');
-            var newuserdivid = document.getElementById('addressdividfirst');
-            changefor.style.display = "none";
-            showdelivery.style.display = "block";
-            cop.checked = false;
-            cod.checked = false;
-            gcash.checked = false;
-            nowsched.innerHTML='Delivery Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
-
-
-            var fullnamee = document.getElementById('namedetails');
-            fullnamee.required = true;
-            var cpnum = document.getElementById('contactdetails');
-            cpnum.required = true;
-            var mun = document.getElementById('municipality');
-            mun.required = true;
-            var bar = document.getElementById('brgy');
-            bar.required = true;
-            var str = document.getElementById('streetdetails');
-            str.required = false;
-            var lati = document.getElementById('lat');
-            lati.required = true;
-            var lngi = document.getElementById('lng');
-            lngi.required = true;
-            var change = document.getElementById('changedetails');
-            change.required = false;
-
-var hideonebuttongcashdel = document.getElementById('selectedaddressid');
-
-var hidethreeaddressgcashdel = document.getElementById('olduser');
-var setlocationbuttongcashdel = document.getElementById('setlocationid');
-var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
-var downvar = document.getElementById('downid');
-if(bilanganfinal>0){
-downvar.style.display = "inline-block";
-guidesetnewlocationsmall.style.display = "block";
-setlocationbuttongcashdel.style.display = "block";
-hideonebuttongcashdel.style.display = "block";
-
-hidethreeaddressgcashdel.style.display = "block";
-newuserdivid.style.display = "none";
-}else{
-newuserdivid.style.display = "block";
 }
-
-
-            }
 
             function functionpaymentcop(){
             var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
@@ -24345,64 +24282,7 @@ newuserdivid.style.display = "block";
             
             }
         });
-            var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
-            var iexclampayment = document.getElementById('iexclampayment');
-            var smallexclampayment = document.getElementById('smallexclampayment');
-            if(smallexclampayment.style.display == 'block'){
-            iexclampayment.style.display = 'none';
-            smallexclampayment.style.display = 'none';
-            smallexclampayment.innerHTML = '';
-            modepaymentdiv.style.borderRadius = '';
-            modepaymentdiv.style.border = '';
-            }
-            var timedivss = document.getElementById('timedivid');
-            timedivss.style.display = "none";
-            var gcashd = document.getElementById('gcashdid');
-            var gcashp = document.getElementById('gcashpid');
-            var cop = document.getElementById('copid');
-            var cod = document.getElementById('codid');
-            var nowsched = document.getElementById('nowsched');
-            var showdelivery = document.getElementById('addressdivid');
-            var changefor = document.getElementById('changefoor');
-            nowsched.innerHTML='Delivery Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
-            changefor.style.display = "block";
-            showdelivery.style.display = "block";
-            gcashp.checked = false;
-            gcashd.checked = false;
-            cop.checked = false;
-            var fullnamee = document.getElementById('namedetails');
-            fullnamee.required = true;
-            var cpnum = document.getElementById('contactdetails');
-            cpnum.required = true;
-            var mun = document.getElementById('municipality');
-            mun.required = true;
-            var bar = document.getElementById('brgy');
-            bar.required = true;
-            var str = document.getElementById('streetdetails');
-            str.required = false;
-            var change = document.getElementById('changedetails');
-            change.required = true;
-            var lati = document.getElementById('lat');
-            lati.required = true;
-            var lngi = document.getElementById('lng');
-            lngi.required = true;
-
-            var hideonebuttongcashdel = document.getElementById('selectedaddressid');
-            var newuserdivid = document.getElementById('addressdividfirst');
-            var hidethreeaddressgcashdel = document.getElementById('olduser');
-            var setlocationbuttongcashdel = document.getElementById('setlocationid');
-            var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
-            var downvar = document.getElementById('downid');
-            if(bilanganfinal>0){
-            downvar.style.display = "inline-block";
-            setlocationbuttongcashdel.style.display = "block";
-            guidesetnewlocationsmall.style.display = "block";
-            hideonebuttongcashdel.style.display = "block";
-            hidethreeaddressgcashdel.style.display = "block";
-            newuserdivid.style.display = "none";
-            }else{
-            newuserdivid.style.display = "block";
-            }
+ 
             }
             </script>
             </div>
