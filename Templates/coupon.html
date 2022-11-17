@@ -394,6 +394,12 @@ hr {
   display: block;
   color: white;
 }
+.infobutton{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:24px;
+}
 @media screen and (max-width:960px) and (min-width:801px){
 .notify{
 position:absolute;
@@ -798,6 +804,12 @@ hr {
   display: block;
   color: white;
 }
+.infobutton{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+}
 }
 @media screen and (max-width:800px){
 
@@ -1177,7 +1189,12 @@ hr {
   display: block;
   color: white;
 }
-
+.infobutton{
+background-color:rgba(0,0,0,0);
+border:0px transparent;
+color:rgba(0,0,0,0.3);
+font-size:15px;
+}
 }
 </style>
 </head>
@@ -1252,14 +1269,15 @@ hr {
                                 
                             </div>
                             <div class="fieldWrapper">
-                                <label>Category:</label>
+                                <label>Category:</label><button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
                                 <br>
                                 <select id="categoryid" class="form-control clear" id="Category" name="categoryname">
                                 <option value="" selected disabled hidden>Choose here</option>
-                                <option value="Multiple Different Code Single">Multiple Different Code Single</option>
+                                <option value="Multiple Different Code Single">Generate Multiple Different Code Single</option>
                                 <option value="One Code Lifetime Many">One Code Lifetime Many</option>
                                 <option value="One Code Many">One Code Many</option>
                                 </select>
+                                <small id="categoryinformationid"></small>
                                 <br>
                                 
                             </div>
@@ -1291,12 +1309,13 @@ hr {
                             </div>
                             <div class="fieldWrapper">
                             
-                                <label>Do you want to set Validity?  </label>
+                                <label>Do you want to set its Date of Validity?  </label>
                                 <select id="is_withvalidityid" class="form-control clear" name="is_withvalidityname" value="">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                                 </select>
+                                
                                 <br>
                                 
                                 
