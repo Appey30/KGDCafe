@@ -2432,7 +2432,7 @@ def Onlineordersystem(request, admin_id):
             
                 if len(counteruser) == 1 and counteruser[0] != None:
                     addressuseri = []
-                    addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
+                    addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat__in=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
                     addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
@@ -2442,7 +2442,7 @@ def Onlineordersystem(request, admin_id):
                     addressuseri = []
                     i=0
                     while i<len(counteruser):
-                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
+                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat__in=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
                         addressuseri.append(addressuserii)
                     
                         i += 1
