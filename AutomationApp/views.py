@@ -204,7 +204,18 @@ def coupon(request):
           couponss = couponlist.objects.none()
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
-       #if request.method == 'POST':
+       if request.POST.get("couponnameid") and is_ajax(request=request):
+          couponnameid = request.POST.get("couponnameid")
+          categoryid = request.POST.get("categoryid")
+          codeid = request.POST.get("codeid")
+          piecesid = request.POST.get("piecesid")
+          discountpercentageid = request.POST.get("discountpercentageid")
+          is_withvalidityid = request.POST.get("is_withvalidityid")
+          startvalidityid = request.POST.get("startvalidityid")
+          expirationid = request.POST.get("expirationid")
+          is_withMinimumAmountid = request.POST.get("is_withMinimumAmountid")
+          minimumamountid = request.POST.get("minimumamountid")
+          is_activeid = request.POST.get("is_activeid")
        #   data = request.POST['data']
        #   img = make(data)
        #   img_name = 'qr' + str(time.time()) + '.png'

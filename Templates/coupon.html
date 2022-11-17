@@ -1444,10 +1444,7 @@ z-index:100;
          
     <span class="close">&times;</span>
         <h1> Enter Coupon Details</h1>
-           
-                       
-                <form action="" method = "POST" onsubmit="addsubmitclear()" name="addcouponname"  id="addcouponid">
-                            {% csrf_token %}
+
    
                             <div class="fieldWrapper" id="couponnameiddiv">
                                 <label>Coupon Name:</label>
@@ -1542,7 +1539,7 @@ z-index:100;
                                 <option value="No">No</option>
                                 </select>
                                 <br>
- 
+
                                 <div id="showis_withMinimumAmountiddivinfoid" class="showis_withMinimumAmountiddivinfo">
                                 <small style="color:red; font-weight:bold;">Choose Yes if:</small><br>
                                 <small style="color:red;">-you wanna set the required minimum amount of purchase to validate the promo.</small><br>
@@ -1572,9 +1569,9 @@ z-index:100;
 
                                 
                             <div class="fieldWrapper">
-                            <input type = "submit" value = "Add Coupon" class="btn1" name="butaddcouponname" id="butaddcouponid">
+                            <input type = "submit" onclick="addcouponformpost()" value = "Add Coupon" class="btn1" name="butaddcouponname" id="butaddcouponid">
                             </div>
-                </form>
+                
 
   </div>
 
@@ -1649,6 +1646,47 @@ z-index:100;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 <script>
+
+var addcouponformid = document.getElementById('addcouponformid');
+var couponnameid = document.getElementById('couponnameid');
+var categoryid = document.getElementById('categoryid');
+var codeid = document.getElementById('codeid');
+var piecesid = document.getElementById('piecesid');
+var discountpercentageid = document.getElementById('discountpercentageid');
+var is_withvalidityid = document.getElementById('is_withvalidityid');
+var startvalidityid = document.getElementById('startvalidityid');
+var expirationid = document.getElementById('expirationid');
+var is_withMinimumAmountid = document.getElementById('is_withMinimumAmountid');
+var minimumamountid = document.getElementById('minimumamountid');
+var is_activeid = document.getElementById('is_activeid');       
+          
+function addcouponformpost(){   
+
+            $.ajax({
+            type:'POST',
+            url:"{% url 'coupon.html' %}",
+            data:{"couponnameid":JSON.stringify(couponnameid.value),
+            "categoryid":JSON.stringify(categoryid.value),
+            "codeid":JSON.stringify(codeid.value),
+            "piecesid":JSON.stringify(piecesid.value),
+            "discountpercentageid":JSON.stringify(discountpercentageid.value),
+            "is_withvalidityid":JSON.stringify(is_withvalidityid.value),
+            "startvalidityid":JSON.stringify(startvalidityid.value),
+            "expirationid":JSON.stringify(expirationid.value),
+            "is_withMinimumAmountid":JSON.stringify(is_withMinimumAmountid.value),
+            "minimumamountid":JSON.stringify(minimumamountid.value),
+            "is_activeid":JSON.stringify(is_activeid.value),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            success: function(response){
+
+            },
+            error: function(){
+            
+            }
+        });
+}
+
 
 function functioncategory(){
 //var modalcontent = document.getElementsByClassName("model-content")[0];
