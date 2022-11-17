@@ -237,7 +237,7 @@ def coupon(request):
             else:
                 print(e)
           qrimg.save(img_name)
-          return JsonResponse({'Success':json.dumps(generateurl)})
+          return JsonResponse({'Success':json.dumps(qrimg)})
 
        #   data = request.POST['data']
        #   img = make(data)
