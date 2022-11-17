@@ -217,19 +217,15 @@ def coupon(request):
           minimumamountid = request.POST.get("minimumamountid") or 0
           is_activeid = request.POST.get("is_activeid") or None
           if codeid:
-                generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/"+couponnameid+codeid
+                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
           else:
                 allowed_chars = ''.join((string.ascii_letters, string.digits))
                 unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
                 codeid=unique_id
-                generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/"+couponnameid+codeid
+                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
           qrimg.save(settings.MEDIA_ROOT + '/'+couponnameid+ "/" + img_name)
-
-          
-            
-
        #   data = request.POST['data']
        #   img = make(data)
        #   img_name = 'qr' + str(time.time()) + '.png'
@@ -4945,7 +4941,7 @@ def kgddashboard(request):
                     print('readylistcontact1:',readylistcontact)
                     return render(request, 'kgddashboard.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'userr':userr,'monthlysales':monthlysales,'ddaily':ddaily,'totalnet':totalnet,'totalsales':totalsales})
 
-def Onlineordertestingsystem(request, admin_id):
+def Onlineordertestingsystem(request, admin_id, promocode):
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
@@ -5043,7 +5039,10 @@ def Onlineordertestingsystem(request, admin_id):
                 createsocialaccounttwo = User.objects.filter(first_name=first,last_name=last,username=short)
                 user=User.objects.get(first_name=first,last_name=last,username=short)
                 socialaccountsslogin=login(request, user)
-                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                if promocode:
+                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
+                else:
+                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
             else:
                 print('none')
@@ -5054,7 +5053,10 @@ def Onlineordertestingsystem(request, admin_id):
                 user=User.objects.get(id=createsocialaccounttwo.id)
                 createsocialaccount = SocialAccount.objects.create(user=user, provider='facebook', uid=uids, extra_data=responseresponse)
                 authcreatedsocialaccount=login(request, user)
-                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                if promocode:
+                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
+                else:
+                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
         if is_ajax(request=request) and request.GET.get('addressss'):
             userr=request.user.id
@@ -5200,8 +5202,11 @@ def Onlineordertestingsystem(request, admin_id):
             arrayone.append(arrayseparator)
             viewordersi[contactdistincter[i]]=arrayone[i]
             i=i+1
-        settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+        if promocode:
+            settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
+        else:
+            settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-        
+
         return render(request, 'Onlineordertesting.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
