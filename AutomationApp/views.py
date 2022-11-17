@@ -232,9 +232,9 @@ def coupon(request):
          #qrimg.save(response, 'png')
          #response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")s
          #return response
-         image_data = base64.b64encode(qrimg.read()).decode('utf-8')
-         qrcode["image"] = image_data
-         return JsonResponse({'Ready':qrcode})
+          image_data = base64.b64encode(qrimg.read()).decode('utf-8')
+          qrcode["image"] = image_data
+          return JsonResponse({'Ready':qrcode})
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
