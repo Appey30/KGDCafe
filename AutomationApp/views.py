@@ -236,7 +236,7 @@ def coupon(request):
                 pass
             else:
                 print(e)
-          qrimg.save(str(settings.BASE_DIR) + '/'+couponnameid+"/"+img_name)
+          qrimg.save(img_name)
           return JsonResponse({'Success':json.dumps(generateurl)})
 
        #   data = request.POST['data']
