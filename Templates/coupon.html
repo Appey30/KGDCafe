@@ -1679,7 +1679,7 @@ function addcouponformpost(){
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
-            alert(JSON.parse(response.Success));
+            window.open(response.png)
             },
             error: function(){
             alert("ERROR");
