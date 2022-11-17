@@ -205,17 +205,17 @@ def coupon(request):
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
        if request.POST.get("couponnameid") and is_ajax(request=request):
-          couponnameid = request.POST.get("couponnameid")
-          categoryid = request.POST.get("categoryid")
-          codeid = request.POST.get("codeid") or None
-          piecesid = request.POST.get("piecesid") or 0
-          discountpercentageid = request.POST.get("discountpercentageid") or 0
-          is_withvalidityid = request.POST.get("is_withvalidityid") or None
-          startvalidityid = request.POST.get("startvalidityid") or None
-          expirationid = request.POST.get("expirationid") or None
-          is_withMinimumAmountid = request.POST.get("is_withMinimumAmountid") or None
-          minimumamountid = request.POST.get("minimumamountid") or 0
-          is_activeid = request.POST.get("is_activeid") or None
+          couponnameid = json.loads(request.POST.get("couponnameid"))
+          categoryid = json.loads(request.POST.get("categoryid"))
+          codeid = json.loads(request.POST.get("codeid")) or None
+          piecesid = json.loads(request.POST.get("piecesid")) or 0
+          discountpercentageid = json.loads(request.POST.get("discountpercentageid")) or 0
+          is_withvalidityid = json.loads(request.POST.get("is_withvalidityid")) or None
+          startvalidityid = json.loads(request.POST.get("startvalidityid")) or None
+          expirationid = json.loads(request.POST.get("expirationid")) or None
+          is_withMinimumAmountid = json.loads(request.POST.get("is_withMinimumAmountid")) or None
+          minimumamountid = json.loads(request.POST.get("minimumamountid")) or 0
+          is_activeid = json.loads(request.POST.get("is_activeid")) or None
           if codeid:
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
           else:
