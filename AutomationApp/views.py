@@ -7,7 +7,7 @@ from .models import timesheet, Acceptorder, Rejectorder,Customer, acknowledgedst
 from .forms import editform, punched,punchedso, stocksandexpenses,stockorderform
 from django.urls import reverse
 import copy, pickle
-
+import random
 from django.http import JsonResponse
 from django.db.models import Sum, F
 import datetime
@@ -207,15 +207,29 @@ def coupon(request):
        if request.POST.get("couponnameid") and is_ajax(request=request):
           couponnameid = request.POST.get("couponnameid")
           categoryid = request.POST.get("categoryid")
-          codeid = request.POST.get("codeid")
-          piecesid = request.POST.get("piecesid")
-          discountpercentageid = request.POST.get("discountpercentageid")
-          is_withvalidityid = request.POST.get("is_withvalidityid")
-          startvalidityid = request.POST.get("startvalidityid")
-          expirationid = request.POST.get("expirationid")
-          is_withMinimumAmountid = request.POST.get("is_withMinimumAmountid")
-          minimumamountid = request.POST.get("minimumamountid")
-          is_activeid = request.POST.get("is_activeid")
+          codeid = request.POST.get("codeid") or None
+          piecesid = request.POST.get("piecesid") or 0
+          discountpercentageid = request.POST.get("discountpercentageid") or 0
+          is_withvalidityid = request.POST.get("is_withvalidityid") or None
+          startvalidityid = request.POST.get("startvalidityid") or None
+          expirationid = request.POST.get("expirationid") or None
+          is_withMinimumAmountid = request.POST.get("is_withMinimumAmountid") or None
+          minimumamountid = request.POST.get("minimumamountid") or 0
+          is_activeid = request.POST.get("is_activeid") or None
+          if codeid:
+                generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/"+couponnameid+codeid
+          else:
+                allowed_chars = ''.join((string.ascii_letters, string.digits))
+                unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
+                codeid=unique_id
+                generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/"+couponnameid+codeid
+          qrimg=make(generateurl)
+          img_name=couponnameid+codeid+'.png'
+          qrimg.save(settings.MEDIA_ROOT + '/'+couponnameid+ "/" + img_name)
+
+          
+            
+
        #   data = request.POST['data']
        #   img = make(data)
        #   img_name = 'qr' + str(time.time()) + '.png'
