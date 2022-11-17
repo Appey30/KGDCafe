@@ -237,8 +237,10 @@ def coupon(request):
           #      pass
           #  else:
           #      print(e)
-          qrimg.save(HttpResponse(mimetype="image/png"),"PNG")
-          return HttpResponse(mimetype="image/png")
+         response = HttpResponse(content_type='image/png')
+         qrimg.save(response, 'png')
+         response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")s
+         return response
 
        #   data = request.POST['data']
        #   img = make(data)
