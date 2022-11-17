@@ -1315,17 +1315,17 @@ z-index:100;
                 <form action="" method = "POST" onsubmit="addsubmitclear()" name="addcouponname"  id="addcouponid">
                             {% csrf_token %}
    
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="couponnameiddiv">
                                 <label>Coupon Name:</label>
                                 <br>
                                 <input id="couponnameid" class="form-control clear" type="text" placeholder="Enter Coupon Name" name="couponnamename"></input>
                                 <br>
-                                
+
                             </div>
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="categoryiddiv">
                                 <label>Category: <i class="fa fa-info-circle infobutton" ></i></label>
                                 <br>
-                                <select id="categoryid" class="form-control clear" id="Category" name="categoryname">
+                                <select onchange="functioncategory()" id="categoryid" class="form-control clear" id="Category" name="categoryname">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Multiple Different Code Single">Generate Multiple Different Code Single</option>
                                 <option value="One Code Many">One Code Many</option>
@@ -1345,7 +1345,7 @@ z-index:100;
                                 </div>
                             </div>
 
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="codeiddiv">
                                 <label>Code:</label>
                                 <br>
                                 <input id="codeid" class="form-control clear" type="text" placeholder="Enter Code" name="codename"></input>
@@ -1354,26 +1354,25 @@ z-index:100;
                             </div>
                           
                             
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="piecesiddiv">
                                 <label>Pieces:</label>
                                 <br>
                                 <input id="piecesid" class="form-control clear" type="number" step="1" min="1" max="" placeholder="Enter Pieces here" name="piecesname"></input>
                                 <br>
-                                
+
                             </div>
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="discountpercentageiddiv">
                                 <label>Discount Percentage:</label>
                                 <br>
-
 
                                <span class="input-holder"> <input id="discountpercentageid" style="text-align:left;" class="clear" type="number" step="1" min="1" max="100" placeholder="Enter Discount Percentage here" name="discountpercentagename">%</span>
                                 <br>
                                 <br>
                             </div>
-                            <div class="fieldWrapper">
-                            
+                            <div class="fieldWrapper"  id="is_withvalidityiddiv">
+
                                 <label>Do you want to set its Date of Validity?  </label>
-                                <select id="is_withvalidityid" class="form-control clear" name="is_withvalidityname" value="">
+                                <select onchange="is_withvalidityfunction()" id="is_withvalidityid" class="form-control clear" name="is_withvalidityname" value="">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
@@ -1381,43 +1380,45 @@ z-index:100;
                                 
                                 <br>
                                 
-                                
+
                             </div>
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="startvalidityiddiv">
                                 <label>Valid From:</label>
                                 <br>
                                 <input id="startvalidityid" class="form-control clear" type="date" placeholder="Enter coupon starting validity here" name="startvalidityname"></input>
                                 <br>
-                                
+
                             </div>
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="expirationiddiv">
                                 <label>Valid Until:</label>
                                 <input id="expirationid" class="form-control clear" type="date" placeholder="Enter coupon expiration validity here" name="expirationname"></input>
                                 <br>
                                 
                             </div>
-                            <div class="fieldWrapper">
-                            
+                            <div class="fieldWrapper" id="is_withMinimumAmountiddiv">
+
+
                                 <label>Do you want to set Minimum Amount?  </label>
-                                <select id="is_withMinimumAmountid" class="form-control clear" name="is_withMinimumAmountname" value="">
+                                <select onchange="is_withMinimumAmountfunction()" id="is_withMinimumAmountid" class="form-control clear" name="is_withMinimumAmountname" value="">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                                 </select>
                                 <br>
-                                
+
                                 
                             </div>
-                            <div class="fieldWrapper">
+                            <div class="fieldWrapper" id="minimumamountiddiv">
                                 <label>Order's Minimum Amount:</label>
                                 <br>
-                                <input id="minimumamountid" class="form-control clear" type="number" step="1" min="1" max="" placeholder="Set Minimum Amount" name="minimumamountname"></input>
-                                
+                                <input  id="minimumamountid" class="form-control clear" type="number" step="1" min="1" max="" placeholder="Set Minimum Amount" name="minimumamountname"></input>
+
+
                                 <br>
                                 
                             </div>
-                            <div class="fieldWrapper">
-                            
+                            <div class="fieldWrapper" id="is_activeiddiv">
+
                                 <label>Is it Active?  </label>
                                 <select id="is_activeid" class="form-control clear" name="is_activename" value="">
                                 <option value="" selected disabled hidden>Choose here</option>
@@ -1510,6 +1511,69 @@ z-index:100;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 <script>
+
+function functioncategory(){
+var codeiddiv = document.getElementById("codeiddiv");
+var piecesiddiv = document.getElementById("piecesiddiv");
+var discountpercentageiddiv = document.getElementById("discountpercentageiddiv");
+var is_withvalidityiddiv = document.getElementById("is_withvalidityiddiv");
+var startvalidityiddiv = document.getElementById("startvalidityiddiv");
+var expirationiddiv = document.getElementById("expirationiddiv");
+var is_withMinimumAmountiddiv = document.getElementById("is_withMinimumAmountiddiv");
+var minimumamountiddiv = document.getElementById("minimumamountiddiv");
+var categoryid = document.getElementById("categoryid");
+var selected = categoryid.options[categoryid.selectedIndex].text;
+    if(selected == "One Code Many"){
+    codeiddiv.style.display="block";
+    is_withvalidityiddiv.style.display="block";
+    discountpercentageiddiv.style.display="block";
+    is_withMinimumAmountiddiv.style.display="block";
+
+    piecesiddiv.style.display="none";
+    startvalidityiddiv.style.display="none";
+    expirationiddiv.style.display="none";
+    minimumamountiddiv.style.display="none";
+    }else{
+    //Multiple Different Code Single
+    is_withvalidityiddiv.style.display="block";
+    discountpercentageiddiv.style.display="block";
+    is_withMinimumAmountiddiv.style.display="block";
+
+    piecesiddiv.style.display="block";
+    startvalidityiddiv.style.display="none";
+    expirationiddiv.style.display="none";
+    minimumamountiddiv.style.display="none";
+    codeiddiv.style.display="none";
+    };
+};
+function is_withvalidityfunction(){
+var startvalidityiddiv = document.getElementById("startvalidityiddiv");
+var expirationiddiv = document.getElementById("expirationiddiv");
+var is_withvalidityid = document.getElementById("is_withvalidityid");
+var selected = is_withvalidityid.options[is_withvalidityid.selectedIndex].text;
+    if(selected=="Yes"){
+    startvalidityiddiv.style.display="block";
+    expirationiddiv.style.display="block";
+    }else{
+    startvalidityiddiv.style.display="none";
+    expirationiddiv.style.display="none";
+    };
+
+};
+
+function is_withMinimumAmountfunction(){
+
+var minimumamountiddiv = document.getElementById("minimumamountiddiv");
+var is_withMinimumAmountid = document.getElementById("is_withMinimumAmountid");
+var selected = is_withMinimumAmountid.options[is_withMinimumAmountid.selectedIndex].text;
+    if(selected=="Yes"){
+    minimumamountiddiv.style.display="block";
+    }else{
+    minimumamountiddiv.style.display="none";
+    };
+
+};
+
 document.addEventListener("DOMContentLoaded", function(event) { 
   $( ".infobutton" ).hover(
     function() {
