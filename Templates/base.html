@@ -1779,7 +1779,8 @@ for(var showorders of showorder){
             dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
             dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td></tr>';
             if(showorder[0]['gpslat'] && showorder[0]['gpslat'] !== 14.5955){
-            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+
+            +"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
             }else{
             dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
             }
