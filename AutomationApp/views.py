@@ -239,7 +239,7 @@ def coupon(request):
           #      print(e)
           stream=BytesIO()
           qrimg.save(stream)
-          context["png"] = stream.getvalue().decode()
+          context["svg"] = stream.getvalue().decode()
           return JsonResponse({'Success':context})
 
        #   data = request.POST['data']
