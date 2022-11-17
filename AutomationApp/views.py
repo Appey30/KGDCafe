@@ -5058,12 +5058,12 @@ def Onlineordertestingsystem(request, admin_id):
             print(firstname)
             print(lastname)
 
-            if Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
-                counteruser=Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
+            if Sales.objects.filter(CusName="KGD Cafe").exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
+                counteruser=Sales.objects.filter(CusName="KGD Cafe").exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
             
                 if len(counteruser) == 1 and counteruser[0] != None:
                     addressuseri = []
-                    addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
+                    addressuserii = Sales.objects.filter(CusName="KGD Cafe", pinnedlat=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
                     addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
@@ -5074,7 +5074,7 @@ def Onlineordertestingsystem(request, admin_id):
                     addressuseri = []
                     i=0
                     while i<len(counteruser):
-                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
+                        addressuserii=Sales.objects.filter(CusName="KGD Cafe",pinnedlat=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
                         addressuseri.append(addressuserii)
                     
                         i += 1
