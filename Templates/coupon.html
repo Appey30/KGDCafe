@@ -1654,34 +1654,65 @@ z-index:100;
 <script>
 
 function functioncategory(){
+var showis_withvalidityiddivinfoid = document.getElementById("showis_withvalidityiddivinfoid");
 var codeiddiv = document.getElementById("codeiddiv");
 var piecesiddiv = document.getElementById("piecesiddiv");
 var categoryid = document.getElementById("categoryid");
 var selected = categoryid.options[categoryid.selectedIndex].text;
     if(selected == "One Code Many"){
-    codeiddiv.style.display="block";
-    piecesiddiv.style.display="none";
+        codeiddiv.style.display="block";
+        piecesiddiv.style.display="none";
     }else{
     //Multiple Different Code Single
-    piecesiddiv.style.display="block";
-    codeiddiv.style.display="none";
+        piecesiddiv.style.display="block";
+        codeiddiv.style.display="none";
     };
+
+
+if(window.matchMedia("(min-width: 961px)").matches){
+    showis_withvalidityiddivinfoid.style.top="470px"
+}else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
+    showis_withvalidityiddivinfoid.style.top="445px"
+}else{
+    showis_withvalidityiddivinfoid.style.top="445px"
+};
+
+
 };
 function is_withvalidityfunction(){
+var showis_withMinimumAmountiddivinfoid = document.getElementById("showis_withMinimumAmountiddivinfoid");
 var startvalidityiddiv = document.getElementById("startvalidityiddiv");
 var expirationiddiv = document.getElementById("expirationiddiv");
 var is_activeiddiv = document.getElementById("is_activeiddiv");
 var is_withvalidityid = document.getElementById("is_withvalidityid");
 var selected = is_withvalidityid.options[is_withvalidityid.selectedIndex].text;
     if(selected=="Yes"){
-    startvalidityiddiv.style.display="block";
-    expirationiddiv.style.display="block";
-    is_activeiddiv.style.display="none";
+        startvalidityiddiv.style.display="block";
+        expirationiddiv.style.display="block";
+        is_activeiddiv.style.display="none";
+        if(window.matchMedia("(min-width: 961px)").matches){
+            showis_withMinimumAmountiddivinfoid.style.top="750px";
+        }else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
+            showis_withMinimumAmountiddivinfoid.style.top="680px";
+        }else{
+            showis_withMinimumAmountiddivinfoid.style.top="680px";
+        };
+    
     }else{
-    startvalidityiddiv.style.display="none";
-    expirationiddiv.style.display="none";
-    is_activeiddiv.style.display="block";
+        startvalidityiddiv.style.display="none";
+        expirationiddiv.style.display="none";
+        is_activeiddiv.style.display="block";
+        showis_withMinimumAmountiddivinfoid.style.top="";
+        if(window.matchMedia("(min-width: 961px)").matches){
+            showis_withMinimumAmountiddivinfoid.style.top="565px";
+        }else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
+            showis_withMinimumAmountiddivinfoid.style.top="525px";
+        }else{
+            showis_withMinimumAmountiddivinfoid.style.top="525px";
+        };
     };
+
+
 
 };
 
@@ -1794,61 +1825,8 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
 }
 
-function myFunctioncat() {
-    var categor = document.getElementById("Categ");
-    var selected = categor.options[categor.selectedIndex].text;
-    $('#user1id').val('{{userr}}')
-    if(selected == 'Snacks'){
-        document.getElementById("subcat").style.display = "block";
-        document.getElementById("psukats").style.display = "none";
-    }else if(selected == 'Freeze'){
-        document.getElementById("subcat").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-        document.getElementById("psukats").style.display = "none";
-    }else if(selected == 'Add-ons'){
-        document.getElementById("subcat").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-        document.getElementById("psukats").style.display = "none";
-    }else if(selected == 'Milktea'){
-        document.getElementById("subcat").style.display = "none";
-        document.getElementById("sukats").style.display = "block";
-        document.getElementById("psukats").style.display = "none";
-    }else if(selected == 'Frappe'){
-        document.getElementById("subcat").style.display = "none";
-        document.getElementById("sukats").style.display = "block";
-        document.getElementById("psukats").style.display = "none";
-    }else if(selected == 'Stock'){
-        document.getElementById("subcat").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-        document.getElementById("psukats").style.display = "none";
-    }else if(selected == 'Promo'){
-        document.getElementById("subcat").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-        document.getElementById("psukats").style.display = "none";
-    }
 
-}
 
-function myFunctionsubcat() {
-    var subcategor = document.getElementById("subcateg");
-    var selected = subcategor.options[subcategor.selectedIndex].text;
-    if(selected == 'Pizza'){
-        document.getElementById("psukats").style.display = "block";
-        document.getElementById("sukats").style.display = "none";
-    }else if(selected == 'Cookies'){
-        document.getElementById("psukats").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-    }else if(selected == 'Fries'){
-        document.getElementById("psukats").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-    }else if(selected == 'Shawarma'){
-        document.getElementById("psukats").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-    }else if(selected == 'Bubble Waffle'){
-        document.getElementById("psukats").style.display = "none";
-        document.getElementById("sukats").style.display = "none";
-    }
-}
 
 let tiddd = setInterval(function addsubmitclear(){
     if ( document.readyState !== 'complete' ) return;
