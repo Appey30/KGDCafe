@@ -32,6 +32,7 @@ from django.contrib.auth.hashers import make_password
 from django.template import *
 from PIL import Image
 from io import BytesIO
+import base64
 
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
@@ -227,26 +228,13 @@ def coupon(request):
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
-          #
-          #new_dir_path = os.path.join(settings.BASE_DIR, couponnameid)
-          #try:
-          #  os.mkdir(new_dir_path)
-          #except OSError as e:
-          #  if e.errno != errno.EEXIST:
-                #directory already exists
-          #      pass
-          #  else:
-          #      print(e)
-         response = HttpResponse(content_type='image/png')
-         qrimg.save(response, 'png')
-         response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")s
-         return response
-
-       #   data = request.POST['data']
-       #   img = make(data)
-       #   img_name = 'qr' + str(time.time()) + '.png'
-       #   img.save(settings.MEDIA_ROOT + '/' + img_name)
-       #   return render(request, 'index.html', {'img_name': img_name})
+         #response = HttpResponse(content_type='image/png')
+         #qrimg.save(response, 'png')
+         #response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")s
+         #return response
+         image_data = base64.b64encode(qrimg.read()).decode('utf-8')
+         qrcode["image"] = image_data
+         return JsonResponse({'Ready':qrcode})
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
