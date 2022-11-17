@@ -227,16 +227,16 @@ def coupon(request):
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
           #
-          new_dir_path = os.path.join(settings.BASE_DIR, couponnameid)
-          try:
-            os.mkdir(new_dir_path)
-          except OSError as e:
-            if e.errno != errno.EEXIST:
+          #new_dir_path = os.path.join(settings.BASE_DIR, couponnameid)
+          #try:
+          #  os.mkdir(new_dir_path)
+          #except OSError as e:
+          #  if e.errno != errno.EEXIST:
                 #directory already exists
-                pass
-            else:
-                print(e)
-          qrimg.save(couponnameid+"/"+img_name)
+          #      pass
+          #  else:
+          #      print(e)
+          qrimg.save()
           
           return JsonResponse({'Success':Image.open("qrimg")})
 
