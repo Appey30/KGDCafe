@@ -236,7 +236,7 @@ def coupon(request):
           #      pass
           #  else:
           #      print(e)
-          qrimg.save()
+          qrimg.save(BytesIO())
           
           return JsonResponse({'Success':Image.open(qrimg)})
 
