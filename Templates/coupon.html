@@ -1660,6 +1660,8 @@ var codeiddiv = document.getElementById("codeiddiv");
 var piecesiddiv = document.getElementById("piecesiddiv");
 var categoryid = document.getElementById("categoryid");
 var selected = categoryid.options[categoryid.selectedIndex].text;
+var is_withvalidityid = document.getElementById("is_withvalidityid");
+var selectedvalidity = is_withvalidityid.options[is_withvalidityid.selectedIndex].text;
     if(selected == "One Code Many"){
         codeiddiv.style.display="block";
         piecesiddiv.style.display="none";
@@ -1672,18 +1674,26 @@ var selected = categoryid.options[categoryid.selectedIndex].text;
 
 if(window.matchMedia("(min-width: 961px)").matches){
     showis_withvalidityiddivinfoid.style.top="470px"
-}else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
+}else if(window.matchMedia("(max-width: 960px)").matches && window.matchMedia("(min-width: 801px)").matches){
     showis_withvalidityiddivinfoid.style.top="445px"
 }else{
     showis_withvalidityiddivinfoid.style.top="445px"
 };
 
-if(window.matchMedia("(min-width: 961px)").matches){
+if(window.matchMedia("(min-width: 961px)").matches && selectedvalidity == "No"){
     showis_withMinimumAmountiddivinfoid.style.top="560px"
-}else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
+}else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 801px)").matches && selectedvalidity == "No"){
     showis_withMinimumAmountiddivinfoid.style.top="525px"
-}else{
+}else if(window.matchMedia("(max-width: 800px)").matches && selectedvalidity == "No"){
     showis_withMinimumAmountiddivinfoid.style.top="525px"
+
+}else if(window.matchMedia("(min-width: 961px)").matches && selectedvalidity == "Yes"){
+    showis_withMinimumAmountiddivinfoid.style.top="750px"
+}else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 801px)").matches && selectedvalidity == "Yes"){
+    showis_withMinimumAmountiddivinfoid.style.top="685px"
+}else if(window.matchMedia("(max-width: 800px)").matches && selectedvalidity == "Yes"){
+    showis_withMinimumAmountiddivinfoid.style.top="685px"
+
 };
 };
 function is_withvalidityfunction(){
