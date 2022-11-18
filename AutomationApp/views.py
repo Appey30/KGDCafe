@@ -230,7 +230,7 @@ def coupon(request):
           qrimg__name=couponnameid+codeid+'.png'
           response = HttpResponse(qrimg, content_type='image/png')
           qrimg.save(response, qrimg__name)
-          response['Content-Disposition'] = 'attachment; filename="'+qrimg+'"'.format(qrimg__name)
+          response['Content-Disposition'] = 'attachment; filename="'+qrimg__name+'"'.format(qrimg__name)
           return response
           #return JsonResponse({'response':response})
           #return render(request, 'coupon.html',{'response':response,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
