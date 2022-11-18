@@ -239,7 +239,7 @@ def coupon(request):
           qr.save(response, 'png')
           img = qr.make_image(fill_color="black", back_color="white")
           response = HttpResponse(img, content_type='image/png')
-          response['Content-Disposition'] = 'attachment; filename={0}'.format("Export.png")
+          response['Content-Disposition'] = 'attachment; filename={0}'
 
           return response
           #qrimg=make(generateurl)
