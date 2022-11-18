@@ -1678,7 +1678,7 @@ function addcouponformpost(){
             "is_activeid":JSON.stringify(is_activeid.value),
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
-            success: function(response){
+            success: function(){
             },
             error: function(){
             alert("ERROR");
