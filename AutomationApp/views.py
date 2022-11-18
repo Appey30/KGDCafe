@@ -232,7 +232,7 @@ def coupon(request):
           qrimg__name=couponnameid+codeid+'.png'
           response = HttpResponse(qrimg, content_type='image/png')
           qrimg.save(response, 'png')
-          response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(qrimg__name)
+          response['Content-Disposition'] = 'attachment; filename=%s' % qrimg__name
           return response
           #return JsonResponse({'response':response})                   "'+qrimg__name+'"'.format(qrimg__name)
           #return render(request, 'coupon.html',{'response':response,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
