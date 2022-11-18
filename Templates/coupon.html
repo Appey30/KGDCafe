@@ -1639,7 +1639,7 @@ z-index:100;
 </div>
 -->
 
-<img src="data:image/png;base64,{{ image }}">
+
 
 <script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
@@ -1679,7 +1679,6 @@ function addcouponformpost(){
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
-            window.open(response.qrcode)
             },
             error: function(){
             alert("ERROR");

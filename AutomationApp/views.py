@@ -228,14 +228,10 @@ def coupon(request):
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
-          #response = HttpResponse(content_type='image/png')
-          #qrimg.save(response, 'png')
-          #response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")
-          #return response
-          with open(qrimg, "rb") as image_file:
-              image_data = base64.b64encode(qrimg.read()).decode('utf-8')
-              qrcode["image"] = image_data
-          return render(request, 'coupon.html', qrcode)
+          response = HttpResponse(content_type='image/png')
+          qrimg.save(response, 'png')
+          response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")
+          return response
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
