@@ -228,7 +228,7 @@ def coupon(request):
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
           qrimg=make(generateurl)
           img_name=couponnameid+codeid+'.png'
-          response = HttpResponse(content_type='image/png')
+          response = HttpResponse(qrimg,content_type='image/png')
           qrimg.save(response, 'png')
           response['Content-Disposition'] = 'attachment; filename="'+img_name+'"'
           return response
