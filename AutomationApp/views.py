@@ -226,11 +226,11 @@ def coupon(request):
                 unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
                 codeid=unique_id
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
-          qrimg=make(generateurl)
-          img_name=couponnameid+codeid+'.png'
+          qrimg=make(generateurl)qrimg__name
+          qrimg__name=couponnameid+codeid+'.png'
           response = HttpResponse(qrimg,content_type='image/png')
           qrimg.save(response, 'png')
-          response['Content-Disposition'] = 'attachment; filename="'+img_name+'"'
+          response['Content-Disposition'] = 'attachment; filename="'+qrimg__name+'"'
           return response
           #return JsonResponse({'response':response})
           #return render(request, 'coupon.html',{'response':response,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
