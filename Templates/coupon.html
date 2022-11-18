@@ -1598,7 +1598,7 @@ z-index:100;
 
   <tr>
   
-    <td></td>
+    <td><img id="qrcodesample"></img></td>
     <td></td>
     <td></td>
     <td></td>
@@ -1679,7 +1679,10 @@ function addcouponformpost(){
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
-            alert(JSON.stringify(response))
+            var qrcodesampleone = document.getElementById('qrcodesampleone');
+            var qrcodesampletwo = document.getElementById('qrcodesampletwo');
+            qrcodesampleone.src="data:image/png;base64,"+response
+            qrcodesampleone.src=response
             //alert(response.response[0])
             //window.open(response.response[0])
             },
