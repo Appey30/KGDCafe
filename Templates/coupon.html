@@ -1681,8 +1681,8 @@ function addcouponformpost(){
             success: function(response){
             var qrcodesampleone = document.getElementById('qrcodesampleone');
             var qrcodesampletwo = document.getElementById('qrcodesampletwo');
-            qrcodesampleone.src="response:image/png,"+response
-            qrcodesampletwo.src=response;
+            qrcodesampleone.src="response:image/png;"+response
+            qrcodesampleone.src=response;
             //alert(response.response[0])
             //window.open(response.response[0])
             },
