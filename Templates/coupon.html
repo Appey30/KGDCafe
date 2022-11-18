@@ -1444,8 +1444,8 @@ z-index:100;
          
     <span class="close">&times;</span>
         <h1> Enter Coupon Details</h1>
-
-   
+                <form action="" method = "POST" name="addcouponformname"  id="addcouponformid">
+                            {% csrf_token %}
                             <div class="fieldWrapper" id="couponnameiddiv">
                                 <label>Coupon Name:</label>
                                 <br>
@@ -1571,7 +1571,7 @@ z-index:100;
                             <div class="fieldWrapper">
                             <input type = "submit" onclick="addcouponformpost()" value = "Add Coupon" class="btn1" name="butaddcouponname" id="butaddcouponid">
                             </div>
-                
+                </form>
 
   </div>
 
@@ -1662,39 +1662,39 @@ var is_withMinimumAmountid = document.getElementById('is_withMinimumAmountid');
 var minimumamountid = document.getElementById('minimumamountid');
 var is_activeid = document.getElementById('is_activeid');       
           
-function addcouponformpost(){   
-
-            $.ajax({
-            type:'POST',
-            url:"{% url 'coupon.html' %}",
-            data:{"couponnameid":JSON.stringify(couponnameid.value),
-            "categoryid":JSON.stringify(categoryid.value),
-            "codeid":JSON.stringify(codeid.value),
-            "piecesid":JSON.stringify(piecesid.value),
-            "discountpercentageid":JSON.stringify(discountpercentageid.value),
-            "is_withvalidityid":JSON.stringify(is_withvalidityid.value),
-            "startvalidityid":JSON.stringify(startvalidityid.value),
-            "expirationid":JSON.stringify(expirationid.value),
-            "is_withMinimumAmountid":JSON.stringify(is_withMinimumAmountid.value),
-            "minimumamountid":JSON.stringify(minimumamountid.value),
-            "is_activeid":JSON.stringify(is_activeid.value),
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            },
-            success: function(response){
-            var qrcodesampleone = document.getElementById('qrcodesampleone');
-            var qrcodesampletwo = document.getElementById('qrcodesampletwo');
-            qrcodesampleone.src="response:image/png;base64,"+response
-            qrcodesampletwo.src=JSON.parse(response.response)
-            alert(JSON.parse(response))
-            //alert(response.response[0])
-            //window.open(response.response[0])
-            //response.qrcode.image.pil.PilImage;
-            },
-            error: function(){
-            alert("ERROR");
-            }
-        });
-}
+//function addcouponformpost(){   
+//
+//            $.ajax({
+//            type:'POST',
+//            url:"{% url 'coupon.html' %}",
+//            data:{"couponnameid":JSON.stringify(couponnameid.value),
+//            "categoryid":JSON.stringify(categoryid.value),
+//            "codeid":JSON.stringify(codeid.value),
+//            "piecesid":JSON.stringify(piecesid.value),
+//            "discountpercentageid":JSON.stringify(discountpercentageid.value),
+//            "is_withvalidityid":JSON.stringify(is_withvalidityid.value),
+//            "startvalidityid":JSON.stringify(startvalidityid.value),
+//            "expirationid":JSON.stringify(expirationid.value),
+//            "is_withMinimumAmountid":JSON.stringify(is_withMinimumAmountid.value),
+//            "minimumamountid":JSON.stringify(minimumamountid.value),
+//            "is_activeid":JSON.stringify(is_activeid.value),
+//            csrfmiddlewaretoken: '{{ csrf_token }}',
+//            },
+//            success: function(response){
+//            var qrcodesampleone = document.getElementById('qrcodesampleone');
+//            var qrcodesampletwo = document.getElementById('qrcodesampletwo');
+//            qrcodesampleone.src="response:image/png;base64,"+response
+//            qrcodesampletwo.src=JSON.parse(response)
+//            
+//            //alert(response.response[0])
+//            //window.open(response.response[0])
+//            //response.qrcode.image.pil.PilImage;
+//            },
+//            error: function(){
+//            alert("ERROR");
+//            }
+//        });
+//}
 
 
 function functioncategory(){
