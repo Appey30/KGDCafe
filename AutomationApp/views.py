@@ -232,7 +232,8 @@ def coupon(request):
           qrimg.save(response, 'png')
           response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")
           #return response
-       return render(request, 'coupon.html',{'response':response,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
+          return render(request, 'coupon.html',{'response':response,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
+       return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
 
