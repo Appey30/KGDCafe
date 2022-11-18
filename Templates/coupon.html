@@ -1684,9 +1684,10 @@ function addcouponformpost(){
             var qrcodesampleone = document.getElementById('qrcodesampleone');
             var qrcodesampletwo = document.getElementById('qrcodesampletwo');
             qrcodesampleone.src="response:image/png;base64,"+response[0]
-            qrcodesampletwo.src=response.qrcode.image.pil.PilImage;
+            qrcodesampletwo.src=response.qrcode
             //alert(response.response[0])
             //window.open(response.response[0])
+            //response.qrcode.image.pil.PilImage;
             },
             error: function(){
             alert("ERROR");
