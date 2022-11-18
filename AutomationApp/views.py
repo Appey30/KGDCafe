@@ -210,7 +210,7 @@ def coupon(request):
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
        if request.POST.get("couponnameid"):
-          couponnameid = request.POST.get("couponnameid"))
+          couponnameid = request.POST.get("couponnameid")
           categoryid = request.POST.get("categoryid")
           codeid = request.POST.get("codeid") or None
           piecesid = request.POST.get("piecesid") or 0
