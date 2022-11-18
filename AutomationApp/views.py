@@ -33,6 +33,7 @@ from django.template import *
 from PIL import Image
 from io import BytesIO
 import base64
+import string
 
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
