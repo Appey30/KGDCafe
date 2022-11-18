@@ -230,7 +230,7 @@ def coupon(request):
           img_name=couponnameid+codeid+'.png'
           response = HttpResponse(content_type='image/png')
           qrimg.save(response, 'png')
-          response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")s
+          response['Content-Disposition'] = 'attachment; filename=img_name'.format("Export.png")
           return response
           #image_data = base64.b64encode(qrimg.read()).decode('utf-8')
           #qrcode["image"] = image_data
