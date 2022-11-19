@@ -1577,7 +1577,7 @@ z-index:100;
 
 </div>   
 <div class="tablecontainer">
-<img id="qrcodesample" src="" ></img>
+<div id="qrcodesample"></div>
 <table>
   <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
     <th class="punchedtext">Coupon Name</th>
@@ -1686,10 +1686,10 @@ function addcouponformpost(){
                 height: 150,
             });
 
-            var srcqrcode = document.getElementById('qrcodesample').src;
+            var srcqrcode = document.getElementById('qrcodesample');
             var invibutton = document.createElement("a");
             invibutton.style="";
-            invibutton.href=srcqrcode;
+            invibutton.href=srcqrcode.children[1].src;
             invibutton.download=response.filename;
             invibutton.click();
             },
