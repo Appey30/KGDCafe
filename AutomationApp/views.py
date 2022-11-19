@@ -233,7 +233,7 @@ def coupon(request):
           'filename':couponnameid+codeid,
           'format':".png"
           }
-          return JsonResponse({data})
+          return JsonResponse(data)
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
