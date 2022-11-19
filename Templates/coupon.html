@@ -1688,10 +1688,12 @@ function addcouponformpost(){
 
             var srcqrcode = document.getElementById('qrcodesample');
             var invibutton = document.createElement("a");
-            invibutton.style="";
+            invibutton.style="position:absolute;";
             invibutton.href=srcqrcode.children[1].src;
             invibutton.download=response.filename+response.format;
+            document.body.appendChild(invibutton);
             invibutton.click();
+            document.body.removeChild(link);
             },
             error: function(){
             alert("ERROR");
