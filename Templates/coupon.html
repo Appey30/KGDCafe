@@ -1692,7 +1692,7 @@ function addcouponformpost(){
             var srcqrcode = document.getElementById('qrcodesample').children;
             document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
             var getsrcqrcode=srcqrcode[0].src;
-            alert(document.getElementById('qrcodesample').childElementCount);
+            alert(document.getElementById('qrcodesample').children[1].tagName);
             invibutton.href=getsrcqrcode;
             invibutton.download=response.filename+response.format;
             document.body.appendChild(invibutton);
