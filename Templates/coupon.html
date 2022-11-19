@@ -1691,9 +1691,17 @@ function addcouponformpost(){
 
             var srcqrcode = document.getElementById('qrcodesample').children;
             document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-            var getsrcqrcode=srcqrcode[1].src;
-            alert(document.getElementById('qrcodesample').children[1].src);
-            invibutton.href=getsrcqrcode;
+            var elm, source;
+            elm = document.getElementById("date");
+            for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
+            if (elm.nodeName === "IMG") {
+                source = elm.src;
+                break;
+            }
+            }
+            
+            alert(source);
+            invibutton.href=source;
             invibutton.download=response.filename+response.format;
             document.body.appendChild(invibutton);
 
@@ -1703,7 +1711,8 @@ function addcouponformpost(){
             function nextmove(){
             invibutton.click();
             document.body.removeChild(invibutton);
-            
+
+           
             }
             },
             error: function(){
