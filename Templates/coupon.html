@@ -1689,11 +1689,11 @@ function addcouponformpost(){
 
             var srcqrcode = document.getElementById('qrcodesample').src;
             var invibutton = document.createElement("a");
-            invibutton.style="opacity:0;z-index:-100;"
+            invibutton.style="";
             invibutton.href=srcqrcode;
             invibutton.download=response.filename;
+            var linktodownload = document.getElementById('linktodownload').appendChild(invibutton);
             invibutton.click();
-
             },
             error: function(){
             alert("ERROR");
