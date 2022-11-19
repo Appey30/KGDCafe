@@ -1578,7 +1578,6 @@ z-index:100;
 </div>   
 <div class="tablecontainer">
 <img id="qrcodesample" src="" ></img>
-<a id="linktodownload" ></a>
 <table>
   <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
     <th class="punchedtext">Coupon Name</th>
@@ -1692,7 +1691,6 @@ function addcouponformpost(){
             invibutton.style="";
             invibutton.href=srcqrcode;
             invibutton.download=response.filename;
-            var linktodownload = document.getElementById('linktodownload').appendChild(invibutton);
             invibutton.click();
             },
             error: function(){
