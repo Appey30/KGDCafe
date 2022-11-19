@@ -1688,19 +1688,22 @@ function addcouponformpost(){
 
 
             var invibutton = document.createElement("a");
-            invibutton.style="position:absolute;z-index:-100;";
-            setTimeout(nextmove, 1000);
 
-            function nextmove(){
             var srcqrcode = document.getElementById('qrcodesample').children;
+            document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
             var getsrcqrcode=srcqrcode[1].src;
             alert(getsrcqrcode);
             invibutton.href=getsrcqrcode;
             invibutton.download=response.filename+response.format;
             document.body.appendChild(invibutton);
+
+            
+            setTimeout(nextmove, 1000);
+
+            function nextmove(){
             invibutton.click();
             document.body.removeChild(invibutton);
-
+            
             }
             },
             error: function(){
