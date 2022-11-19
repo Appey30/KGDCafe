@@ -1690,7 +1690,7 @@ function addcouponformpost(){
             var invibutton = document.createElement("a");
             invibutton.style="";
             invibutton.href=srcqrcode.children[1].src;
-            invibutton.download=response.filename;
+            invibutton.download=response.filename+response.format;
             invibutton.click();
             },
             error: function(){
