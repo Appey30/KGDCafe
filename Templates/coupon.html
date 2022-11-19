@@ -1691,7 +1691,7 @@ function addcouponformpost(){
 
             var srcqrcode = document.getElementById('qrcodesample').children;
             document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-            var getsrcqrcode=srcqrcode[1].src;
+            var getsrcqrcode=srcqrcode[0].srcqrcode[0].src;
             alert(getsrcqrcode);
             invibutton.href=getsrcqrcode;
             invibutton.download=response.filename+response.format;
