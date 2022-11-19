@@ -1694,7 +1694,7 @@ function addcouponformpost(){
             invibutton.download=response.filename+response.format;
             document.body.appendChild(invibutton);
             invibutton.click();
-            document.body.removeChild(link);
+            document.body.removeChild(invibutton);
             },
             error: function(){
             alert("ERROR");
