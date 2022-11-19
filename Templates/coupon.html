@@ -1680,13 +1680,13 @@ function addcouponformpost(){
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
-            var qrcode = new QRCode("qrcodesamplecanva", {
+            var qrcode = new QRCode(document.getElementById("qrcodesample"), {
                 text: response.generateurl,
                 width: 150,
                 height: 150,
             });
 
-            var srcqrcode = document.getElementById('qrcodesamplecanva').src;
+            var srcqrcode = document.getElementById('qrcodesample').src;
             var invibutton = document.createElement("a");
             invibutton.style="";
             invibutton.href=srcqrcode;
