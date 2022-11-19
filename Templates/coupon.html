@@ -1686,31 +1686,27 @@ function addcouponformpost(){
                 height: 150,
             });
 
+            document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
+            setTimeout(nextmove, 1000);
+
+            function nextmove(){
 
             var invibutton = document.createElement("a");
 
-            var srcqrcode = document.getElementById('qrcodesample').children;
-            document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
+            
             var elm, source;
             elm = document.getElementById("qrcodesample");
             for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
-            alert("nodeName:"+elm.nodeName+"       tagName: "+elm.tagName )
-            if (elm.tagName === "IMG") {
             
+            if (elm.tagName == "IMG") {
                 source = elm.src;
                 break;
             }
             }
             
-            alert(source);
             invibutton.href=source;
             invibutton.download=response.filename+response.format;
             document.body.appendChild(invibutton);
-
-            
-            setTimeout(nextmove, 1000);
-
-            function nextmove(){
             invibutton.click();
             document.body.removeChild(invibutton);
 
