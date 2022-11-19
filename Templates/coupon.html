@@ -1694,7 +1694,9 @@ function addcouponformpost(){
             var elm, source;
             elm = document.getElementById("qrcodesample");
             for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
-            if (elm.nodeName === "IMG") {
+            alert("nodeName:"+elm.nodeName        "tagName: "+elm.tagName )
+            if (elm.tagName === "IMG") {
+            
                 source = elm.src;
                 break;
             }
