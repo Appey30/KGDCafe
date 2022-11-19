@@ -1686,14 +1686,15 @@ function addcouponformpost(){
                 height: 150,
             });
 
-            var srcqrcode = document.getElementById('qrcodesample');
+            var srcqrcode = document.getElementById('qrcodesample').children;
             var invibutton = document.createElement("a");
             invibutton.style="position:absolute;";
-            invibutton.href=srcqrcode.children[1].src;
+            var getsrcqrcode=srcqrcode[1].src;
+            invibutton.href=getsrcqrcode;
             invibutton.download=response.filename+response.format;
-            document.body.appendChild(invibutton);
+            //document.body.appendChild(invibutton);
             invibutton.click();
-            document.body.removeChild(link);
+            //document.body.removeChild(link);
             },
             error: function(){
             alert("ERROR");
