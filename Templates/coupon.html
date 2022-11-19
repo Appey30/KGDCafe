@@ -1686,9 +1686,13 @@ function addcouponformpost(){
                 height: 150,
             });
 
-            var srcqrcode = document.getElementById('qrcodesample').children;
+
             var invibutton = document.createElement("a");
             invibutton.style="position:absolute;z-index:-100;";
+            setTimeout(nextmove, 1000);
+
+            function nextmove(){
+            var srcqrcode = document.getElementById('qrcodesample').children;
             var getsrcqrcode=srcqrcode[1].src;
             alert(getsrcqrcode);
             invibutton.href=getsrcqrcode;
@@ -1696,10 +1700,14 @@ function addcouponformpost(){
             document.body.appendChild(invibutton);
             invibutton.click();
             document.body.removeChild(invibutton);
+
+            }
             },
             error: function(){
             alert("ERROR");
            }
+
+
         });
 }
 
