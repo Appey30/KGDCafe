@@ -1577,8 +1577,7 @@ z-index:100;
 
 </div>   
 <div class="tablecontainer">
-<img id="qrcodesampleone" src="">
-<img id="qrcodesampletwo" src=""></img>
+<img id="qrcodesample" src=""></img>
 <table>
   <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
     <th class="punchedtext">Coupon Name</th>
@@ -1681,8 +1680,19 @@ function addcouponformpost(){
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
-            var url = response.generateurl;
-            alert(url)
+            var qrcode = new QRCode("qrcodesample", {
+                text: response.data.generateurl,
+                width: 150,
+                height: 150,
+            });
+
+            var srcqrcode = document.getElementById('qrcodesample').src;
+            var invibutton = document.createElement("a");
+            invibutton.style="opacity:0;z-index:-100;"
+            invibutton.href=srcqrcode;
+            invibutton.download=response.data.filename+response.data.format;
+            invibutton.click();
+
             },
             error: function(){
             alert("ERROR");

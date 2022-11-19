@@ -228,7 +228,12 @@ def coupon(request):
                 unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
                 codeid=unique_id
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
-          return JsonResponse({'generateurl':generateurl})
+          data={
+          'generateurl':generateurl,
+          'filename':couponnameid+codeid,
+          'format':".png"
+          }
+          return JsonResponse({})
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
