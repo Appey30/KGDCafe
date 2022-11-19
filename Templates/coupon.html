@@ -1681,7 +1681,7 @@ function addcouponformpost(){
             },
             success: function(response){
             var qrcode = new QRCode("qrcodesample", {
-                text: response.data.generateurl,
+                text: response.generateurl,
                 width: 150,
                 height: 150,
             });
@@ -1690,7 +1690,7 @@ function addcouponformpost(){
             var invibutton = document.createElement("a");
             invibutton.style="opacity:0;z-index:-100;"
             invibutton.href=srcqrcode;
-            invibutton.download=response.data.filename+response.data.format;
+            invibutton.download=response.filename+response.format;
             invibutton.click();
 
             },
