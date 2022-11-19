@@ -1706,9 +1706,15 @@ function addcouponformpost(){
             
             invibutton.href=source;
             invibutton.download=response.filename+response.format;
+            
+            if(source){
             document.body.appendChild(invibutton);
             invibutton.click();
             document.body.removeChild(invibutton);
+            }else{
+            setTimeout(nextmove, 1000);
+            }
+
 
            
             }
