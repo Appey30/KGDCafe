@@ -1723,10 +1723,10 @@ function addcouponformpost(){
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
                 function mysecondloop(i){
-                var lengthcodefalse=response.CodeFalse.length;
-                var filename = response.CodeFalse[i].filename;
-                alert('filename:  '+filename+'      i:  '+i+'     length: '+response.CodeFalse.length);
-                myloop(lengthcodefalse, filename, i);
+                    var lengthcodefalse=response.CodeFalse.length;
+                    var filename = response.CodeFalse[i].filename;
+                    alert('filename:  '+filename+'      i:  '+i+'     length: '+response.CodeFalse.length);
+                    myloop(lengthcodefalse, filename, i);
                 }
                 function myloop(lengthcodefalse, filename, i){
                 
