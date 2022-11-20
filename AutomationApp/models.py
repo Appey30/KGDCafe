@@ -67,11 +67,11 @@ class couponlist (models.Model):
     MinimumAmount = models.IntegerField(blank = True, null = True, default='')
 
     def __str__(self):
-        if is_consumed == "True":
+        if self.is_consumed == "True":
             Consumed = "Consumed"
         else:
             Consumed = "Not yet Consumed"
-        if is_active == "True":
+        if self.is_active == "True":
             Active = "Active"
         else:
             Active = "Not Active"
