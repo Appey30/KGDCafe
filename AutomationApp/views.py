@@ -5121,10 +5121,7 @@ def Onlineordertestingsystem(request, admin_id):
                 createsocialaccounttwo = User.objects.filter(first_name=first,last_name=last,username=short)
                 user=User.objects.get(first_name=first,last_name=last,username=short)
                 socialaccountsslogin=login(request, user)
-                if promocode:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
-                else:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
             else:
                 print('none')
@@ -5135,10 +5132,7 @@ def Onlineordertestingsystem(request, admin_id):
                 user=User.objects.get(id=createsocialaccounttwo.id)
                 createsocialaccount = SocialAccount.objects.create(user=user, provider='facebook', uid=uids, extra_data=responseresponse)
                 authcreatedsocialaccount=login(request, user)
-                if promocode:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
-                else:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
         if is_ajax(request=request) and request.GET.get('addressss'):
             userr=request.user.id
@@ -5284,10 +5278,8 @@ def Onlineordertestingsystem(request, admin_id):
             arrayone.append(arrayseparator)
             viewordersi[contactdistincter[i]]=arrayone[i]
             i=i+1
-        if promocode:
-            settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
-        else:
-            settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+
+        settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
 
