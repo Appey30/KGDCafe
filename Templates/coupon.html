@@ -1723,11 +1723,11 @@ function addcouponformpost(){
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
                 var lengthcodefalse=response.CodeFalse.length;
-                
-                
-                function myloop(lengthcodefalse){
                 var filename = response.CodeFalse[i].filename;
-                alert('filename:  '+filename+'      i:  '+i); 
+                alert('filename:  '+filename+'      i:  '+i);
+                function myloop(lengthcodefalse, filename){
+                
+                 
                     var qrcode = new QRCode(document.getElementById("qrcodesample"), {
                         text: response.CodeFalse[i].generateurl,
                         width: 500,
@@ -1761,9 +1761,9 @@ function addcouponformpost(){
                                 document.body.removeChild(invibutton);
                                 while (document.getElementById("qrcodesample").hasChildNodes()) {
                                     document.getElementById("qrcodesample").removeChild(document.getElementById("qrcodesample").firstChild);
-                                }
-                                invibutton.remove()
-                                i++;
+                                };
+                                invibutton.remove();
+                                i=i+1;
                                 if (i < lengthcodefalse) {
                                 myloop();
                                 }
