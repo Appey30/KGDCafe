@@ -1729,9 +1729,9 @@ function addcouponformpost(){
                         });
 
                         document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-                        setTimeout(nextmove, 1000);
+                        setTimeout(nextmove, 1000, i);
 
-                        function nextmove(){
+                        function nextmove(i){
 
                                 var invibutton = document.createElement("a");
 
