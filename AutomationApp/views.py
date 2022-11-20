@@ -211,7 +211,7 @@ def coupon(request):
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
        if request.POST.get("couponnameid") and is_ajax(request=request):
           couponnameid = request.POST.get("couponnameid")
-          categoryid = request.POST.get("categoryid")
+          categoryid = json.loads(request.POST.get("categoryid"))
           codeid = request.POST.get("codeid") or None
           piecesidi = request.POST.get("piecesid") or 0
           if piecesidi:
