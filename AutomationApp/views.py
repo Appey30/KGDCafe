@@ -254,8 +254,8 @@ def coupon(request):
                 CodeFalse=[]
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
                 filename=couponnameid+codeid
-                CodeTrue.append(generateurl)
-                CodeTrue.append(filename)
+                CodeTrue.insert(0,generateurl)
+                CodeTrue.insert(1,filename)
                 couponobjects=couponlist.objects.create(user=userr, couponname=couponnameid, category=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withvalidity=is_withvalidityidTF,validfrom=startvalidityidTF,validuntil=expirationid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
           else:
                 CodeTrue=[]
@@ -271,7 +271,7 @@ def coupon(request):
                     'generateurl':generateurl,
                     'filename':couponnameid+codeid
                     }
-                    CodeFalse[i]=objectappender
+                    CodeFalse=insert(i, objectappender)
                     couponobjects=couponlist.objects.create(user=userr, couponname=couponnameid, category=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withvalidity=is_withvalidityidTF,validfrom=startvalidityidTF,validuntil=expirationid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
                     i += 1
           Codei={}
