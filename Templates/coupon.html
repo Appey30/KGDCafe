@@ -1722,49 +1722,55 @@ function addcouponformpost(){
                     }
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
-                while (i < response.CodeFalse.length) {
-                    alert(i)
-                      var qrcode = new QRCode(document.getElementById("qrcodesample"), {
-                            text: response.CodeFalse[i].generateurl,
-                            width: 500,
-                            height: 500,
-                        });
+                alert(i)
+                function myloop(){
 
-                        document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-                        setTimeout(nextmove, 1000, i);
+                        
+                    var qrcode = new QRCode(document.getElementById("qrcodesample"), {
+                        text: response.CodeFalse[i].generateurl,
+                        width: 500,
+                        height: 500,
+                    });
 
-                        function nextmove(i){
+                    document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
+                    setTimeout(nextmove, 1000, i);
 
-                                var invibutton = document.createElement("a");
+                    function nextmove(i){
+
+                            var invibutton = document.createElement("a");
 
             
-                                var elm, source;
-                                elm = document.getElementById("qrcodesample");
-                                for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
+                            var elm, source;
+                            elm = document.getElementById("qrcodesample");
+                            for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
             
-                                    if (elm.tagName == "IMG") {
-                                        source = elm.src;
-                                        break;
-                                    }
+                                if (elm.tagName == "IMG") {
+                                    source = elm.src;
+                                    break;
                                 }
+                            }
             
-                                invibutton.href=source;
-                                invibutton.download=response.CodeFalse[i].filename+'.png';
+                            invibutton.href=source;
+                            invibutton.download=response.CodeFalse[i].filename+'.png';
             
-                                if(source){
-                                    document.body.appendChild(invibutton);
-                                    invibutton.click();
-                                    document.body.removeChild(invibutton);
-                                    while (document.getElementById("qrcodesample").hasChildNodes()) {
-                                      document.getElementById("qrcodesample").removeChild(document.getElementById("qrcodesample").firstChild);
-                                    }
-                                    invibutton.remove()
-                                    i++;
-                                }else{
-                                    setTimeout(nextmove, 1000, i);
+                            if(source){
+                                document.body.appendChild(invibutton);
+                                invibutton.click();
+                                document.body.removeChild(invibutton);
+                                while (document.getElementById("qrcodesample").hasChildNodes()) {
+                                    document.getElementById("qrcodesample").removeChild(document.getElementById("qrcodesample").firstChild);
                                 }
-                        }
+                                invibutton.remove()
+                                i++;
+                                if (i < response.CodeFalse.length) {
+                                myloop();
+                                }
+                            }else{
+                                setTimeout(nextmove, 1000, i);
+                            }
+                    }
                 
+                    
                 };
 
 
