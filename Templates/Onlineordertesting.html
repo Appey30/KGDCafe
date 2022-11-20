@@ -24165,7 +24165,7 @@ $(window).scroll(function() {
              function functionpaymentgcashdelivery(){
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id promocode %}",
+            url:"{% url 'withoutpromocode:accesspromocode' admin_id promocode %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
@@ -24365,7 +24365,7 @@ newuserdivid.style.display = "block";
 
             $.ajax({
             type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id promocode %}",
+            url:"{% url 'withoutpromocode:accesspromocode' admin_id promocode %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
@@ -27592,7 +27592,7 @@ var passwordsuid = document.getElementById('passwordsuid')
 
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id promocode %}",
+        url:"{% url 'withoutpromocode:accesspromocode' admin_id promocode %}",
         data:{
         'firstnameid':JSON.stringify(firstnameid.value), 
         'lastnameid':JSON.stringify(lastnameid.value),
@@ -27728,7 +27728,7 @@ if(!username.value && !password.value){
 
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id promocode %}",
+        url:"{% url 'withoutpromocode:accesspromocode' admin_id promocode %}",
         data:{
         'username':JSON.stringify(username.value), 
         'password':JSON.stringify(password.value),
@@ -27889,7 +27889,7 @@ var showloginwithfacebookdiv = document.getElementsByClassName('showloginwithfac
       
         $.ajax({
         type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id promocode %}",
+        url:"{% url 'withoutpromocode:accesspromocode' admin_id promocode %}",
         data:{
         'response.first_name':JSON.stringify(response.first_name), 
         'response.last_name':JSON.stringify(response.last_name),
