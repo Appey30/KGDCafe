@@ -213,8 +213,16 @@ def coupon(request):
           couponnameid = json.loads(request.POST.get("couponnameid"))
           categoryid = json.loads(request.POST.get("categoryid"))
           codeid = json.loads(request.POST.get("codeid")) or None
-          piecesid = int(json.loads(request.POST.get("piecesid"))) or 0
-          discountpercentageid = int(json.loads(request.POST.get("discountpercentageid"))) or 0
+          piecesidi = json.loads(request.POST.get("piecesid")) or 0
+          if piecesidi:
+            piecesid=int(piecesidi)
+          else:
+            piecesid=0
+          discountpercentageidi = json.loads(request.POST.get("discountpercentageid")) or 0
+          if discountpercentageidi:
+            discountpercentageid=int(discountpercentageidi)
+          else:
+            discountpercentageid=0
           is_withvalidityid = json.loads(request.POST.get("is_withvalidityid")) or None
           if is_withvalidityid == 'Yes':
             is_withvalidityidTF = True
@@ -231,7 +239,11 @@ def coupon(request):
             is_withMinimumAmountidTF = True
           else:
             is_withMinimumAmountidTF = False
-          minimumamountid = int(json.loads(request.POST.get("minimumamountid"))) or 0
+          minimumamountidi = json.loads(request.POST.get("minimumamountid")) or 0
+          if minimumamountidi:
+            minimumamountid=int(minimumamountidi)
+          else:
+            minimumamountid=0
           is_activeid = json.loads(request.POST.get("is_activeid")) or None
           if is_activeid == 'Yes':
             is_activeidTF = True
