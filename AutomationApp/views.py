@@ -256,8 +256,9 @@ def coupon(request):
           if codeid:
                 CodeTrue=[]
                 CodeFalse=[]
-                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
-                filename=couponnameid+codeid
+                #?prmcd=<code>
+                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4?prmcd="+codeid
+                filename=codeid
                 CodeTrue.insert(0,generateurl)
                 CodeTrue.insert(1,filename)
                 if is_withvalidityidTF == True:
@@ -272,11 +273,12 @@ def coupon(request):
                     allowed_chars = ''.join((string.ascii_letters, string.digits))
                     unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
                     codeid=unique_id
-                    generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
+                    #?prmcd=<code>
+                    generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4?prmcd="+codeid
 
                     objectappender={
                     'generateurl':generateurl,
-                    'filename':couponnameid+codeid
+                    'filename':codeid
                     }
                     CodeFalse.insert(i, objectappender)
                     if is_withvalidityidTF == True:
@@ -5017,7 +5019,11 @@ def kgddashboard(request):
                     print('readylistcontact1:',readylistcontact)
                     return render(request, 'kgddashboard.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'userr':userr,'monthlysales':monthlysales,'ddaily':ddaily,'totalnet':totalnet,'totalsales':totalsales})
 
-def Onlineordertestingsystem(request, admin_id, promocode):
+def Onlineordertestingsystem(request, admin_id):
+        #theurl+?anykeyhere=anyvalue
+        #request.query_params['anykeyhere']
+        #then the result will be ="anyvalue"
+        #?prmcd=<code>
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
