@@ -1722,6 +1722,7 @@ function addcouponformpost(){
                     }
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
+                mysecondloop();
                 function mysecondloop(){
                 var lengthcodefalse=response.CodeFalse.length;
                 var filename = response.CodeFalse[i].filename;
