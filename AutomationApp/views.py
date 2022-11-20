@@ -210,41 +210,41 @@ def coupon(request):
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
        if request.POST.get("couponnameid") and is_ajax(request=request):
-          couponnameid = json.loads(request.POST.get("couponnameid"))
-          categoryid = json.loads(request.POST.get("categoryid"))
-          codeid = json.loads(request.POST.get("codeid")) or None
-          piecesidi = json.loads(request.POST.get("piecesid")) or 0
+          couponnameid = request.POST.get("couponnameid")
+          categoryid = request.POST.get("categoryid")
+          codeid = request.POST.get("codeid") or None
+          piecesidi = request.POST.get("piecesid") or 0
           if piecesidi:
             piecesid=int(piecesidi)
           else:
             piecesid=0
-          discountpercentageidi = json.loads(request.POST.get("discountpercentageid")) or 0
+          discountpercentageidi = request.POST.get("discountpercentageid") or 0
           if discountpercentageidi:
             discountpercentageid=int(discountpercentageidi)
           else:
             discountpercentageid=0
-          is_withvalidityid = json.loads(request.POST.get("is_withvalidityid")) or None
+          is_withvalidityid = request.POST.get("is_withvalidityid") or None
           if is_withvalidityid == 'Yes':
             is_withvalidityidTF = True
           else:
             is_withvalidityidTF = False
-          startvalidityid = json.loads(request.POST.get("startvalidityid")) or None
+          startvalidityid = request.POST.get("startvalidityid") or None
           if startvalidityid == 'Yes':
             startvalidityidTF = True
           else:
             startvalidityidTF = False
-          expirationid = json.loads(request.POST.get("expirationid")) or None
-          is_withMinimumAmountid = json.loads(request.POST.get("is_withMinimumAmountid")) or None
+          expirationid = request.POST.get("expirationid") or None
+          is_withMinimumAmountid = request.POST.get("is_withMinimumAmountid") or None
           if is_withMinimumAmountid == 'Yes':
             is_withMinimumAmountidTF = True
           else:
             is_withMinimumAmountidTF = False
-          minimumamountidi = json.loads(request.POST.get("minimumamountid")) or 0
+          minimumamountidi = request.POST.get("minimumamountid") or 0
           if minimumamountidi:
             minimumamountid=int(minimumamountidi)
           else:
             minimumamountid=0
-          is_activeid = json.loads(request.POST.get("is_activeid")) or None
+          is_activeid = request.POST.get("is_activeid") or None
           if is_activeid == 'Yes':
             is_activeidTF = True
           else:
