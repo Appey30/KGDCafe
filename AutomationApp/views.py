@@ -257,7 +257,7 @@ def coupon(request):
                 CodeTrue=[]
                 CodeFalse=[]
                 #?prmcd=<code>
-                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4?prmcd="+codeid
+                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/?prmcd="+codeid
                 filename=codeid
                 CodeTrue.insert(0,generateurl)
                 CodeTrue.insert(1,filename)
@@ -274,7 +274,7 @@ def coupon(request):
                     unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
                     codeid=unique_id
                     #?prmcd=<code>
-                    generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4?prmcd="+codeid
+                    generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/?prmcd="+codeid
 
                     objectappender={
                     'generateurl':generateurl,
@@ -5020,10 +5020,17 @@ def kgddashboard(request):
                     return render(request, 'kgddashboard.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'userr':userr,'monthlysales':monthlysales,'ddaily':ddaily,'totalnet':totalnet,'totalsales':totalsales})
 
 def Onlineordertestingsystem(request, admin_id):
+        #'domain/search/?q=haha', you would use request.GET.get('q', '')
         #theurl+?anykeyhere=anyvalue
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
+        promocodeget=request.GET.get('prmcd', '')
+        print('promocodeget: ',promocodeget)
+        print('promocodeget: ',promocodeget)
+        print('promocodeget: ',promocodeget)
+        print('promocodeget: ',promocodeget)
+        print('promocodeget: ',promocodeget)
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
