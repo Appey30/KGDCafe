@@ -278,7 +278,7 @@ def coupon(request):
                     'generateurl':generateurl,
                     'filename':couponnameid+codeid
                     }
-                    CodeFalse=insert(i, objectappender)
+                    CodeFalse.insert(i, objectappender)
                     if is_withvalidityidTF == True:
                         couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withvalidity=is_withvalidityidTF,validfrom=startvalidityidTF,validuntil=expirationid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
                     else:
