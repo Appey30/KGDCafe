@@ -1722,8 +1722,9 @@ function addcouponformpost(){
                     }
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
+                var lengthcodefalse=response.CodeFalse.length;
                 alert(i)
-                function myloop(){
+                function myloop(lengthcodefalse){
 
                         
                     var qrcode = new QRCode(document.getElementById("qrcodesample"), {
@@ -1733,9 +1734,9 @@ function addcouponformpost(){
                     });
 
                     document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-                    setTimeout(nextmove, 1000, i);
+                    setTimeout(nextmove, 1000, i,lengthcodefalse);
 
-                    function nextmove(i){
+                    function nextmove(i,lengthcodefalse){
 
                             var invibutton = document.createElement("a");
 
@@ -1762,8 +1763,8 @@ function addcouponformpost(){
                                 }
                                 invibutton.remove()
                                 i++;
-                                if (i < response.CodeFalse.length) {
-                                myloop();
+                                if (i < lengthcodefalse) {
+                                myloop(lengthcodefalse);
                                 }
                             }else{
                                 setTimeout(nextmove, 1000, i);
