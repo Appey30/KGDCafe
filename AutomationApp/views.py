@@ -213,9 +213,9 @@ def coupon(request):
           couponnameid = json.loads(request.POST.get("couponnameid"))
           categoryidi = json.loads(request.POST.get("categoryid"))
           if categoryidi=="One Code Many":
-            categoryid=1
+            categoryid='One Code Many'
           else:
-            categoryid=3
+            categoryid='Multiple Different Code Single'
           codeid = json.loads(request.POST.get("codeid")) or None
           piecesidi = json.loads(request.POST.get("piecesid")) or 0
           if piecesidi:
