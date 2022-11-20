@@ -1723,10 +1723,11 @@ function addcouponformpost(){
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
                 var lengthcodefalse=response.CodeFalse.length;
-                alert(i)
+                
+                
                 function myloop(lengthcodefalse){
-
-                        
+                var filename = response.CodeFalse[i].filename;
+                alert('filename:  '+filename+'      i:  '+i); 
                     var qrcode = new QRCode(document.getElementById("qrcodesample"), {
                         text: response.CodeFalse[i].generateurl,
                         width: 500,
@@ -1734,9 +1735,9 @@ function addcouponformpost(){
                     });
 
                     document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-                    setTimeout(nextmove, 1000, i,lengthcodefalse);
+                    setTimeout(nextmove, 1000, i,lengthcodefalse, filename);
 
-                    function nextmove(i,lengthcodefalse){
+                    function nextmove(i,lengthcodefalse, filename){
 
                             var invibutton = document.createElement("a");
 
@@ -1752,7 +1753,7 @@ function addcouponformpost(){
                             }
             
                             invibutton.href=source;
-                            invibutton.download=response.CodeFalse[i].filename+'.png';
+                            invibutton.download=filename+'.png';
             
                             if(source){
                                 document.body.appendChild(invibutton);
@@ -1764,7 +1765,7 @@ function addcouponformpost(){
                                 invibutton.remove()
                                 i++;
                                 if (i < lengthcodefalse) {
-                                myloop(lengthcodefalse);
+                                myloop();
                                 }
                             }else{
                                 setTimeout(nextmove, 1000, i);
