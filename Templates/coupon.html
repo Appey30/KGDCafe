@@ -1721,7 +1721,9 @@ function addcouponformpost(){
                             }
                     }
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
-                for (i = 0; i < response.CodeFalse.length;) {
+                var i=0;
+                while (i < response.CodeFalse.length) {
+                    alert(i)
                       var qrcode = new QRCode(document.getElementById("qrcodesample"), {
                             text: response.CodeFalse[i].generateurl,
                             width: 500,
