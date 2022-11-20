@@ -260,7 +260,10 @@ def coupon(request):
                 filename=couponnameid+codeid
                 CodeTrue.insert(0,generateurl)
                 CodeTrue.insert(1,filename)
-                couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withvalidity=is_withvalidityidTF, validfrom=startvalidityidTF, validuntil=expirationid, is_withMinimumAmount=is_withMinimumAmountidTF, MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False)
+                if is_withvalidityidTF == True:
+                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withvalidity=is_withvalidityidTF, validfrom=startvalidityidTF, validuntil=expirationid, is_withMinimumAmount=is_withMinimumAmountidTF, MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False)
+                else:
+                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withvalidity=is_withvalidityidTF, is_withMinimumAmount=is_withMinimumAmountidTF, MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False) 
           else:
                 CodeTrue=[]
                 CodeFalse=[]
