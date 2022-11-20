@@ -1722,10 +1722,12 @@ function addcouponformpost(){
                     }
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
+                function mysecondloop(){
                 var lengthcodefalse=response.CodeFalse.length;
                 var filename = response.CodeFalse[i].filename;
                 alert('filename:  '+filename+'      i:  '+i+'     length: '+response.CodeFalse.length);
-                myloop();
+                myloop(lengthcodefalse, filename);
+                };
                 function myloop(lengthcodefalse, filename){
                 
                  
@@ -1766,7 +1768,7 @@ function addcouponformpost(){
                                 invibutton.remove();
                                 i=i+1;
                                 if (i < lengthcodefalse) {
-                                myloop();
+                                mysecondloop();
                                 }
                             }else{
                                 setTimeout(nextmove, 1000, i, lengthcodefalse, filename);
