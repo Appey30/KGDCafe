@@ -1722,14 +1722,13 @@ function addcouponformpost(){
                     }
             }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
                 var i=0;
-                mysecondloop();
-                function mysecondloop(){
+                function mysecondloop(i){
                 var lengthcodefalse=response.CodeFalse.length;
                 var filename = response.CodeFalse[i].filename;
                 alert('filename:  '+filename+'      i:  '+i+'     length: '+response.CodeFalse.length);
-                myloop(lengthcodefalse, filename);
-                };
-                function myloop(lengthcodefalse, filename){
+                myloop(lengthcodefalse, filename, i);
+                }
+                function myloop(lengthcodefalse, filename, i){
                 
                  
                     var qrcode = new QRCode(document.getElementById("qrcodesample"), {
@@ -1739,9 +1738,9 @@ function addcouponformpost(){
                     });
 
                     document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-                    setTimeout(nextmove, 1000, i,lengthcodefalse, filename);
+                    setTimeout(nextmove, 1000, lengthcodefalse, filename, i);
 
-                    function nextmove(i,lengthcodefalse, filename){
+                    function nextmove(lengthcodefalse, filename, i){
 
                             var invibutton = document.createElement("a");
 
@@ -1769,10 +1768,10 @@ function addcouponformpost(){
                                 invibutton.remove();
                                 i=i+1;
                                 if (i < lengthcodefalse) {
-                                mysecondloop();
+                                mysecondloop(i);
                                 }
                             }else{
-                                setTimeout(nextmove, 1000, i, lengthcodefalse, filename);
+                                setTimeout(nextmove, 1000, lengthcodefalse, filename, i);
                             }
                     }
                 
