@@ -1679,45 +1679,94 @@ function addcouponformpost(){
             "is_activeid":JSON.stringify(is_activeid.value),
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
-            success: function(response){
-            var qrcode = new QRCode(document.getElementById("qrcodesample"), {
-                text: response.generateurl,
-                width: 500,
-                height: 500,
-            });
+            success: function(responsei){
+            //responsei.Code.CodeTrue[0 or 1]
+            // responsei.Code.CodeFalse[0...n]
+            var response = JSON.parse(responsei.Code);
+            var response = JSON.parse(responsei.Code);
+            if(response.CodeTrue.length>0 && response.CodeFalse.length==0){
+                    var qrcode = new QRCode(document.getElementById("qrcodesample"), {
+                        text: response.CodeTrue[0],
+                        width: 500,
+                        height: 500,
+                    });
 
-            document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
-            setTimeout(nextmove, 1000);
+                    document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
+                    setTimeout(nextmove, 1000);
 
-            function nextmove(){
+                    function nextmove(){
 
-            var invibutton = document.createElement("a");
+                            var invibutton = document.createElement("a");
 
             
-            var elm, source;
-            elm = document.getElementById("qrcodesample");
-            for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
+                            var elm, source;
+                            elm = document.getElementById("qrcodesample");
+                            for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
             
-            if (elm.tagName == "IMG") {
-                source = elm.src;
-                break;
-            }
-            }
+                                if (elm.tagName == "IMG") {
+                                    source = elm.src;
+                                    break;
+                                }
+                            }
             
-            invibutton.href=source;
-            invibutton.download=response.filename+response.format;
+                            invibutton.href=source;
+                            invibutton.download=response.CodeTrue[1]+'.png';
             
-            if(source){
-            document.body.appendChild(invibutton);
-            invibutton.click();
-            document.body.removeChild(invibutton);
+                            if(source){
+                                document.body.appendChild(invibutton);
+                                invibutton.click();
+                                document.body.removeChild(invibutton);
+                            }else{
+                                setTimeout(nextmove, 1000);
+                            }
+                    }
+            }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
+                for (i = 0; i < response.CodeFalse.length; i++) {
+                      var qrcode = new QRCode(document.getElementById("qrcodesample"), {
+                            text: response.CodeFalse[i].generateurl,
+                            width: 500,
+                            height: 500,
+                        });
+
+                        document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
+                        setTimeout(nextmove, 1000);
+
+                        function nextmove(){
+
+                                var invibutton = document.createElement("a");
+
+            
+                                var elm, source;
+                                elm = document.getElementById("qrcodesample");
+                                for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
+            
+                                    if (elm.tagName == "IMG") {
+                                        source = elm.src;
+                                        break;
+                                    }
+                                }
+            
+                                invibutton.href=source;
+                                invibutton.download=response.CodeFalse[i].filename+'.png';
+            
+                                if(source){
+                                    document.body.appendChild(invibutton);
+                                    invibutton.click();
+                                    document.body.removeChild(invibutton);
+                                    while (document.getElementById("qrcodesample").hasChildNodes()) {
+                                      document.getElementById("qrcodesample").removeChild(document.getElementById("qrcodesample").firstChild);
+                                    }
+                                    invibutton.remove()
+                                }else{
+                                    setTimeout(nextmove, 1000);
+                                }
+                        }
+                };
+
+
             }else{
-            setTimeout(nextmove, 1000);
-            }
-
-
-           
-            }
+                alert("Can't comprehend.")
+            };
             },
             error: function(){
             alert("ERROR");

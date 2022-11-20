@@ -58,6 +58,7 @@ class couponlist (models.Model):
     qr = models.CharField(max_length = 250, blank = False, null = False, default='')
     pieces = models.IntegerField(blank = True, null = True, default='')
     discountamount = models.IntegerField(blank = True, null = True, default='')
+    is_withvalidity=models.CharField(max_length = 250, blank = False, null = False, default='')
     validfrom = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
     validuntil = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
     is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)

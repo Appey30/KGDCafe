@@ -213,25 +213,76 @@ def coupon(request):
           couponnameid = json.loads(request.POST.get("couponnameid"))
           categoryid = json.loads(request.POST.get("categoryid"))
           codeid = json.loads(request.POST.get("codeid")) or None
-          piecesid = json.loads(request.POST.get("piecesid")) or 0
-          discountpercentageid = json.loads(request.POST.get("discountpercentageid")) or 0
+          piecesid = int(json.loads(request.POST.get("piecesid"))) or 0
+          discountpercentageid = int(json.loads(request.POST.get("discountpercentageid"))) or 0
           is_withvalidityid = json.loads(request.POST.get("is_withvalidityid")) or None
+          if is_withvalidityid == 'Yes':
+            is_withvalidityidTF = True
+          else:
+            is_withvalidityidTF = False
           startvalidityid = json.loads(request.POST.get("startvalidityid")) or None
+          if startvalidityid == 'Yes':
+            startvalidityidTF = True
+          else:
+            startvalidityidTF = False
           expirationid = json.loads(request.POST.get("expirationid")) or None
           is_withMinimumAmountid = json.loads(request.POST.get("is_withMinimumAmountid")) or None
-          minimumamountid = json.loads(request.POST.get("minimumamountid")) or 0
-          is_activeid = json.loads(request.POST.get("is_activeid")) or None
-          if codeid:
-                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
+          if is_withMinimumAmountid == 'Yes':
+            is_withMinimumAmountidTF = True
           else:
-                allowed_chars = ''.join((string.ascii_letters, string.digits))
-                unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
-                codeid=unique_id
+            is_withMinimumAmountidTF = False
+          minimumamountid = int(json.loads(request.POST.get("minimumamountid"))) or 0
+          is_activeid = json.loads(request.POST.get("is_activeid")) or None
+          if is_activeid == 'Yes':
+            is_activeidTF = True
+          else:
+            is_activeidTF = False
+          if codeid:
+                CodeTrue=[]
+                CodeFalse=[]
                 generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
+                filename=couponnameid+codeid
+                CodeTrue[0]=generateurl
+                CodeTrue[1]=filename
+                couponobjects=couponlist.objects.create(user=userr, couponname=couponnameid, category=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withvalidity=is_withvalidityidTF,validfrom=startvalidityidTF,validuntil=expirationid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
+          else:
+                CodeTrue=[]
+                CodeFalse=[]
+                i=0
+                while i<piecesid:
+                    allowed_chars = ''.join((string.ascii_letters, string.digits))
+                    unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
+                    codeid=unique_id
+                    generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
+
+                    objectappender={
+                    'generateurl':generateurl,
+                    'filename':couponnameid+codeid
+                    }
+                    CodeFalse[i]=objectappender
+                    couponobjects=couponlist.objects.create(user=userr, couponname=couponnameid, category=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withvalidity=is_withvalidityidTF,validfrom=startvalidityidTF,validuntil=expirationid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
+                    i += 1
+          Codei={}
+          Codei={
+          'CodeTrue':CodeTrue,
+          'CodeFalse':CodeFalse
+          }
+          #Codeo={
+          #'CodeTrue':[]
+          #'CodeFalse':[]
+          #}
+                #CodeTrue
+                #generateurl=0
+                #filename=1
+                #CodeTrue={
+                #'generateurl':generateurl,
+                #'filename':couponnameid+codeid,
+                #}
+                
+
+          Code=json.dumps(Codei)
           data={
-          'generateurl':generateurl,
-          'filename':couponnameid+codeid,
-          'format':".png"
+          'Code':Code
           }
           return JsonResponse(data)
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
