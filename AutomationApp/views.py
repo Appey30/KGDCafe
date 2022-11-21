@@ -5021,20 +5021,16 @@ def Onlineordertestingsystem(request, admin_id):
                 prmcd=promocodegeti
             #this coupon code has been consumed. #without minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=False): 
-                #couponvalidity='Invalid'
-                couponvalidity='Valid'
+                couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code has been consumed.'
-                #discount=''
-                discount='10'
+                discount=''
                 rqrd_minimumamnt=0
                 prmcd=''
             #this coupon code is inactive at this moment. #without minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=False): 
-                #couponvalidity='Invalid'
-                couponvalidity='Valid'
+                couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code is inactive at this moment.'
-                #discount=''
-                discount='10'
+                discount=''
                 rqrd_minimumamnt=0
                 prmcd=''
             #with minimum amount
@@ -5048,37 +5044,35 @@ def Onlineordertestingsystem(request, admin_id):
                 prmcd=promocodegeti
             #this coupon code has been consumed. #with minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=True): 
-                #couponvalidity='Invalid'
-                couponvalidity='Valid'
+                couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code has been consumed.'
-                #discount=''
-                discount='10'
+                discount=''
                 rqrd_minimumamnt=0
                 prmcd=''
             #this coupon code is inactive at this moment. #with minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=True): 
-                #couponvalidity='Invalid'
-                couponvalidity='Valid'
+                couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code is inactive at this moment.'
-                discount='10'
-                #discount=''
+                discount=''
                 rqrd_minimumamnt=0
                 prmcd=''
+            elif promocodegeti == "Testing123": 
+                couponvalidity='Valid'
+                couponvaliditymessage='This coupon code is for testing.'
+                discount='10'
+                rqrd_minimumamnt=0
+                prmcd='Testing123'
             #this coupon code is invalid.
             else:
-                #couponvalidity='Invalid'
-                couponvalidity='Valid'
+                couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code is invalid.'
-                #discount=''
-                discount='10'
+                discount=''
                 rqrd_minimumamnt=0
                 prmcd=''
         else:
-            #couponvalidity='No Coupon'
-            couponvalidity='Valid'
+            couponvalidity='No Coupon'
             couponvaliditymessage='No Coupon'
-            #discount=''
-            discount='10'
+            discount=''
             rqrd_minimumamnt=0
             prmcd=''
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
