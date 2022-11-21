@@ -26111,28 +26111,34 @@ var pickupodelivery = document.getElementsByName("payment")[0];
 if(pickupodelivery.value == 'GcashPickup' || pickupodelivery.value == 'Pickup'){
 df= 0;
 }else{
+var dfi=0;
         if(barangayy == "San Agustin(Murcia)"){
-        df = 10;
+        dfi = 10;
         }else if(barangayy == "Burot"){
-        df = 19;
+        dfi = 19;
         }else if(barangayy == "Santa Rosa"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "Tinang"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "San Juan"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "Estrada"){
-        df = 29;
+        dfi = 29;
 
         }else if(barangayy == "Alfonso"){
-        df = 19;
+        dfi = 19;
         }else if(barangayy == "San Nicolas(Poblacion)"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "Santiago"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "San Jose"){
-        df = 29;
+        dfi = 29;
         }
+if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+df=0;
+}else{
+df=dfi;
+}
 }
 var totalerdevfee = document.getElementById("devfee");
 var gtotaler = document.getElementById("totalwithdevfee");
