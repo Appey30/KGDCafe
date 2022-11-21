@@ -209,6 +209,18 @@ def coupon(request):
           couponss = couponlist.objects.none()
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
+
+
+       if request.POST.get("getcouponlist") and is_ajax(request=request):
+           if couponlist.objects.filter(user__id=userr)==0:
+              couponsajaxi = couponlist.objects.none()
+           else:
+              couponsajaxi = couponlist.objects.filter(user__id=userr).order_by('-id')
+           couponsajax=serializers.serialize('json',couponsajaxi, cls=JSONEncoder)
+           return JsonResponse({'couponsajax':couponsajax})
+
+
+
        if request.POST.get("couponnameid") and is_ajax(request=request):
           couponnameid = json.loads(request.POST.get("couponnameid"))
           categoryidi = json.loads(request.POST.get("categoryid"))
@@ -275,18 +287,6 @@ def coupon(request):
           'CodeTrue':CodeTrue,
           'CodeFalse':CodeFalse
           }
-          #Codeo={
-          #'CodeTrue':[]
-          #'CodeFalse':[]
-          #}
-                #CodeTrue
-                #generateurl=0
-                #filename=1
-                #CodeTrue={
-                #'generateurl':generateurl,
-                #'filename':couponnameid+codeid,
-                #}
-                
 
           Code=json.dumps(Codei)
           data={

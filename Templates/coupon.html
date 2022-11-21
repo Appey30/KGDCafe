@@ -16,7 +16,65 @@ body {
   background-size: cover;
 
 }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 .notify{
 position:absolute;
 right:200px;
@@ -453,6 +511,65 @@ padding-top:10px;
 z-index:100;
 }
 @media screen and (max-width:960px) and (min-width:801px){
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 .notify{
 position:absolute;
 top:-10px;
@@ -914,7 +1031,65 @@ z-index:100;
 }
 }
 @media screen and (max-width:800px){
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 .background{
 position:absolute;
 width:99.8%;
@@ -1535,21 +1710,25 @@ z-index:100;
             </script>
         {% endfor %}
     {% endif %}
-
-  <tr>
-    <td>{{product1.couponname}}</td>
-    <td>{{product1.category}}</td>
-    <td>{{product1.code}}</td>
-    <td>{{product1.url}}</td>
-    <td>{{product1.is_active}}</td>
-    <td>
-   <!--<button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
-   <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>-->
-<button class="edit">Edit</button>
-   <button class="delete">Delete</button>
-   </td>
-  </tr>    
 {% endfor %}
+<tbody style="color:white;" id='couponlisttablebody'></tbody>
+ 
+    
+    
+
+    
+  
+ 
+
+    
+    
+    
+    
+
+   
+   
+   
+
 </div> 
  
 
@@ -1705,7 +1884,7 @@ function addcouponformpost(){
                                 if (i < lengthcodefalse) {
                                 mysecondloop(i);
                                 }else{
-                                window.location.reload();
+                                ajaxthetable();
                                 }
                             }else{
                                 setTimeout(nextmove, 1000, lengthcodefalse, filename, i);
@@ -1728,6 +1907,58 @@ function addcouponformpost(){
         });
 }
 
+function activateornot(id){
+            $.ajax({
+            type:'POST',
+            url:"{% url 'coupon.html' %}",
+            data:{"activateornot":"activateornott",
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            success: function(response){
+            },
+            error: function(){
+            alert("ERROR");
+           }
+
+
+        });
+};
+
+
+function ajaxthetable(){
+
+
+            $.ajax({
+            type:'POST',
+            url:"{% url 'coupon.html' %}",
+            data:{"getcouponlist":"kunancouponlist",
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            success: function(response){
+            var couponlisti=json.parse(response.couponsajax)
+            alert(JSON.stringify(couponlisti));
+            var counter = couponlisti.length
+            var dataHTML; 
+            $('#couponlisttablebody').empty();
+            
+            if(counter>0){
+                for(let i=0;i<counter;i++){
+            
+                    dataHTML +='<tr><td>'+couponlisti[i].couponname+'</td><td>'+couponlisti[i].category+'</td><td>'+couponlisti[i].code+'</td><td>'+couponlisti[i].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i].id)+'" checked> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
+
+                    }
+                }
+            $('#couponlisttablebody').append(dataHTML);
+            
+            },
+            error: function(){
+            alert("ERROR");
+           }
+
+
+        });
+
+}
 
 function functioncategory(){
 //var modalcontent = document.getElementsByClassName("model-content")[0];
@@ -1785,6 +2016,9 @@ var selected = is_withMinimumAmountid.options[is_withMinimumAmountid.selectedInd
 
 
 document.addEventListener("DOMContentLoaded", function(event) { 
+
+
+
   $( ".infobutton" ).hover(
     function() {
     $( ".showcategoryinfo" ).css( "display","block" );
