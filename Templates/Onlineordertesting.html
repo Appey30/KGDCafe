@@ -24716,12 +24716,18 @@ deliveryfee= 0;
   }          
 
 totalwithdevfees = totalwithoudevfee + deliveryfee;
+        if('{{couponvalidity}}' == 'Valid'){
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+"0";
+        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees+"0";
+        }else{
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
+        
+        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees+".00";
+        }
+        totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee+".00";
 
-totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
 
-totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee+".00";
 
-gtotaler.innerHTML = "Total: ₱"+totalwithdevfees+".00";
 $('#totalwithdevfeeid').val(totalwithdevfees);
 $('#devfeeid').val(deliveryfee);
 
@@ -25936,7 +25942,11 @@ var detailscontent = document.getElementById("detailscontent");
 detailscontent.style.animation="fade-bottom-in 0.5s";
 
 var totaler = document.getElementById("totalwithoutdevfee");
-totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
+        if('{{couponvalidity}}' == 'Valid'){
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+"0";
+        }else{
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
+        }
 var dataHtml='';
 var tablebodytwo = document.getElementById('summarytableid');
             for(let punched of allpunched){
@@ -26119,8 +26129,12 @@ var grandtotalwithdevfees = totalwithoudevfee+df
 $('#totalwithdevfeeid').val(grandtotalwithdevfees);
 $('#devfeeid').val(df);
 totalerdevfee.innerHTML = "+Delivery fee: ₱"+df+".00";
+        if('{{couponvalidity}}' == 'Valid'){
+        gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees+".00";
+        }else{
+        gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees+".00";
+        }
 
-gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees+".00";
 pointx=markerX;
 pointy=markerY;
 }

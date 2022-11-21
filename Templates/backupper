@@ -10,3 +10,9 @@
 
 
         totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+
+        if('{{couponvalidity}}' == 'Valid'){
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+"0";
+        }else{
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
+        }
