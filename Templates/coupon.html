@@ -1698,7 +1698,7 @@ z-index:100;
     <th class="punchedtext">Category</th>
     <th class="punchedtext">Code</th>
      <th class="punchedtext">URL</th>
-     <th class="punchedtext">Is it Active</th>
+     <th class="punchedtext">Activate</th>
      <th class="punchedtext">Action</th>
   </tr>
   
@@ -1918,10 +1918,10 @@ function activateornot(id){
             },
             error: function(){
             alert("ERROR");
-           }
+            }
 
 
-        });
+           });
 };
 
 
@@ -1936,7 +1936,7 @@ function ajaxthetable(){
             },
             success: function(response){
             var couponlisti=json.parse(response.couponsajax)
-            alert(JSON.stringify(couponlisti));
+            console.log(JSON.stringify(couponlisti));
             var counter = couponlisti.length
             var dataHTML; 
             $('#couponlisttablebody').empty();
@@ -1944,10 +1944,10 @@ function ajaxthetable(){
             if(counter>0){
                 for(let i=0;i<counter;i++){
             
-                    dataHTML +='<tr><td>'+couponlisti[i].couponname+'</td><td>'+couponlisti[i].category+'</td><td>'+couponlisti[i].code+'</td><td>'+couponlisti[i].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i].id)+'" checked> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
+                    dataHTML +='<tr><td>'+couponlisti[i].couponname+'</td><td>'+couponlisti[i].category+'</td><td>'+couponlisti[i].code+'</td><td>'+couponlisti[i].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i].id+')" checked> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
 
-                    }
                 }
+            }
             $('#couponlisttablebody').append(dataHTML);
             
             },
