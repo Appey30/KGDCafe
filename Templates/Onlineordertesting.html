@@ -26436,7 +26436,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
         }else{
         var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
         }
-        if({{couponvalidity}}=='Valid'){
+        if({{couponvalidity}} == 'Valid'){
         datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
         datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">+totalpunched+</td><td class="tdpunched"></td></tr>';
         var discountedtotalherei = totalpunched*parseInt(String('{{discount}}')+'%');
@@ -30606,7 +30606,7 @@ pampizza = presyopizza;
         </div>
     </div>
 </div>
-{% if couponvalidity=='Valid' %}
+{% if couponvalidity == 'Valid' %}
 <div class="discountdiv">
 <h1 id="discounttext">10</h1>
 <img src="{% static 'discountimage.png' %}" class="discount"></img>
