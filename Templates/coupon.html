@@ -1944,12 +1944,21 @@ function ajaxthetable(){
             
             if(counter>0){
                 for(let i=0;i<counter;i++){
+
                 if(couponlisti[i]["fields"].category == 3){
                 var categ="Multiple Different Code Single";
                 }else if(couponlisti[i]["fields"].category == 1){
                 var categ="One Code Many";
                 }
-                    dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td>'+couponlisti[i]["fields"].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["fields"].id+')" checked> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
+
+                if(couponlisti[i]["fields"].is_active == True){
+                var check = "checked";
+                }else if(couponlisti[i]["fields"].is_active == False){
+                var check = "";
+                }
+
+
+                    dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td>'+couponlisti[i]["fields"].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["fields"].id+')" '+check+'> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
 
                 }
             }
