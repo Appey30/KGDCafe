@@ -5024,12 +5024,19 @@ def Onlineordertestingsystem(request, admin_id):
         if promocodegeti:
         #without minimum amount
             if couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=False): 
-                couponvalidity='Valid'
-                couponvaliditymessage='Valid'
-                discounti=couponlist.objects.get(code=promocodegeti)
-                discount=discounti.discountamount
-                rqrd_minimumamnt=0
-                prmcd=promocodegeti
+                if promocodegeti == "KGDDeliveryFree":
+                    couponvalidity='KGDDeliveryFree'
+                    couponvaliditymessage='Valid Coupon.'
+                    discount='0'
+                    rqrd_minimumamnt=0
+                    prmcd='KGDDeliveryFree'
+                else:
+                    couponvalidity='Valid'
+                    couponvaliditymessage='Valid'
+                    discounti=couponlist.objects.get(code=promocodegeti)
+                    discount=discounti.discountamount
+                    rqrd_minimumamnt=0
+                    prmcd=promocodegeti
             #this coupon code has been consumed. #without minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=False): 
                 couponvalidity='Invalid'
@@ -5076,12 +5083,7 @@ def Onlineordertestingsystem(request, admin_id):
                 rqrd_minimumamnt=0
                 prmcd='Testing123'
             #This coupon code is for testing.
-            elif promocodegeti == "KGDDeliveryFree": 
-                couponvalidity='KGDDeliveryFree'
-                couponvaliditymessage='Valid Coupon.'
-                discount='0'
-                rqrd_minimumamnt=0
-                prmcd='KGDDeliveryFree'
+
             #this coupon code is invalid.
             else:
                 couponvalidity='Invalid'
