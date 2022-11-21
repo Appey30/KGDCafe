@@ -5047,7 +5047,7 @@ def Onlineordertestingsystem(request, admin_id):
             #with minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=True): 
                 couponvalidity='Valid'
-                couponvaliditymessage='Valid'
+                couponvaliditymessage='Valid Coupon'
                 discounti=couponlist.objects.get(code=promocodegeti)
                 discount=discounti.discountamount
                 rqrd_minimumamnti=couponlist.objects.get(code=promocodegeti)
@@ -5075,6 +5075,13 @@ def Onlineordertestingsystem(request, admin_id):
                 discount='10'
                 rqrd_minimumamnt=0
                 prmcd='Testing123'
+            #This coupon code is for testing.
+            elif promocodegeti == "KGDDeliveryFree": 
+                couponvalidity='KGDDeliveryFree'
+                couponvaliditymessage='Valid Coupon.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd='KGDDeliveryFree'
             #this coupon code is invalid.
             else:
                 couponvalidity='Invalid'

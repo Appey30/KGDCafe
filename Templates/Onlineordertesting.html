@@ -24672,47 +24672,53 @@ newuserdivid.style.display = "block";
 if(pickupodelivery.value == 'GcashPickup' || pickupodelivery.value == 'Pickup'){
 deliveryfee= 0;
 }else{
+var deliveryfeei = 0;
             if(pani.value == "San Agustin(Murcia)"){
             PanOnMaplat = 15.403499;
             PanOnMaplng = 120.607607;
-            deliveryfee= 10;
+            deliveryfeei= 10;
             }else if(pani.value == "Burot"){
             PanOnMaplat = 15.41376032544493;
             PanOnMaplng = 120.60001373291017;
-            deliveryfee = 19;
+            deliveryfeei = 19;
             }else if(pani.value == "Santa Rosa"){
             PanOnMaplat = 15.367791234943724;
             PanOnMaplng = 120.61597824096681;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Tinang"){
             PanOnMaplat = 15.37540517891869;
             PanOnMaplng = 120.65271377563478;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "San Juan"){
             PanOnMaplat = 15.35487999878398;
             PanOnMaplng = 120.60499191284181;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Estrada"){
             PanOnMaplat = 15.398990086725632;
             PanOnMaplng = 120.59864044189455;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Alfonso"){
             PanOnMaplat = 15.328951658676157;
             PanOnMaplng = 120.63975334167482;
-            deliveryfee = 19;
+            deliveryfeei = 19;
             }else if(pani.value == "San Nicolas(Poblacion)"){
             PanOnMaplat = 15.322898490305604;
             PanOnMaplng = 120.65457522869112;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Santiago"){
             PanOnMaplat = 15.326985691585381;
             PanOnMaplng = 120.62850952148439;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "San Jose"){
             PanOnMaplat = 15.326054437562847;
             PanOnMaplng = 120.65906524658205;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }
+    if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+    deliveryfee=0
+    }else{
+    deliveryfee=deliveryfeei
+    }
   }          
 
 totalwithdevfees = totalwithoudevfee + deliveryfee;
@@ -24724,7 +24730,12 @@ totalwithdevfees = totalwithoudevfee + deliveryfee;
         
         gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
         }
+        if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+        totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+        }else{
         totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+        }
+        
 
 
 
@@ -26128,7 +26139,12 @@ var gtotaler = document.getElementById("totalwithdevfee");
 var grandtotalwithdevfees = totalwithoudevfee+df
 $('#totalwithdevfeeid').val(grandtotalwithdevfees);
 $('#devfeeid').val(df);
+if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+}else{
 totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
+}
+
         if('{{couponvalidity}}' == 'Valid'){
         gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees.toFixed(2);
         }else{
