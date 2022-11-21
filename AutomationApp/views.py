@@ -227,17 +227,6 @@ def coupon(request):
             discountpercentageid=int(discountpercentageidi)
           else:
             discountpercentageid=0
-          is_withvalidityid = json.loads(request.POST.get("is_withvalidityid")) or None
-          if is_withvalidityid == 'Yes':
-            is_withvalidityidTF = True
-          else:
-            is_withvalidityidTF = False
-          startvalidityid = json.loads(request.POST.get("startvalidityid")) or None
-          if startvalidityid == 'Yes':
-            startvalidityidTF = True
-          else:
-            startvalidityidTF = False
-          expirationid = json.loads(request.POST.get("expirationid")) or None
           is_withMinimumAmountid = json.loads(request.POST.get("is_withMinimumAmountid")) or None
           if is_withMinimumAmountid == 'Yes':
             is_withMinimumAmountidTF = True
@@ -261,10 +250,7 @@ def coupon(request):
                 filename=codeid
                 CodeTrue.insert(0,generateurl)
                 CodeTrue.insert(1,filename)
-                if is_withvalidityidTF == True:
-                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withvalidity=is_withvalidityidTF, validfrom=startvalidityidTF, validuntil=expirationid, is_withMinimumAmount=is_withMinimumAmountidTF, MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False)
-                else:
-                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withvalidity=is_withvalidityidTF, is_withMinimumAmount=is_withMinimumAmountidTF, MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False) 
+                couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withMinimumAmount=is_withMinimumAmountidTF, MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False) 
           else:
                 CodeTrue=[]
                 CodeFalse=[]
@@ -281,10 +267,8 @@ def coupon(request):
                     'filename':codeid
                     }
                     CodeFalse.insert(i, objectappender)
-                    if is_withvalidityidTF == True:
-                        couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withvalidity=is_withvalidityidTF,validfrom=startvalidityidTF,validuntil=expirationid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
-                    else:
-                        couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withvalidity=is_withvalidityidTF,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
+
+                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
                     i += 1
           Codei={}
           Codei={
@@ -5025,7 +5009,66 @@ def Onlineordertestingsystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
-        promocodeget=request.GET.get('prmcd', '')
+        promocodegeti=request.GET.get('prmcd', '')
+        if promocodegeti:
+        #without minimum amount
+            if couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=False): 
+                couponvalidity='Valid'
+                couponvaliditymessage='Valid'
+                discounti=couponlist.objects.get(code=promocodegeti)
+                discount=discounti.discountamount
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code has been consumed. #without minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has been consumed.'
+                discount=''
+                rqrd_minimumamnt=0
+                prmcd=''
+            #this coupon code is inactive at this moment. #without minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount=''
+                rqrd_minimumamnt=0
+                prmcd=''
+            #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Valid'
+                couponvaliditymessage='Valid'
+                discounti=couponlist.objects.get(code=promocodegeti)
+                discount=discounti.discountamount
+                rqrd_minimumamnti=couponlist.objects.get(code=promocodegeti)
+                rqrd_minimumamnt=rqrd_minimumamnti.MinimumAmount
+                prmcd=promocodegeti
+            #this coupon code has been consumed. #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has been consumed.'
+                discount=''
+                rqrd_minimumamnt=0
+                prmcd=''
+            #this coupon code is inactive at this moment. #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount=''
+                rqrd_minimumamnt=0
+                prmcd=''
+            #this coupon code is invalid.
+            else:
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is invalid.'
+                discount=''
+                rqrd_minimumamnt=0
+                prmcd=''
+        else:
+            couponvalidity='No Coupon'
+            couponvaliditymessage='No Coupon'
+            discount=discounti.discountamount
+            rqrd_minimumamnt=0
+            prmcd=''
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
@@ -5044,6 +5087,8 @@ def Onlineordertestingsystem(request, admin_id):
         #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
+        elif promocodeget:
+            promoidentifier='coupondiscount'
         else:
             #promoidentifier='Special Promo'
             promoidentifier=''
@@ -5283,5 +5328,6 @@ def Onlineordertestingsystem(request, admin_id):
         settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-        
-        return render(request, 'Onlineordertesting.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+                    
+
+        return render(request, 'Onlineordertesting.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
