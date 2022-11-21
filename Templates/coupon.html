@@ -1537,12 +1537,11 @@ z-index:100;
     {% endif %}
 
   <tr>
-  
-    <td></td>
-    <td><</td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>{{product1.couponname}}</td>
+    <td>{{product1.category}}<</td>
+    <td>{{product1.code}}</td>
+    <td>{{product1.url}}</td>
+    <td>{{product1.is_active}}</td>
     <td>
    <!--<button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
    <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>-->
@@ -1706,7 +1705,7 @@ function addcouponformpost(){
                                 if (i < lengthcodefalse) {
                                 mysecondloop(i);
                                 }else{
-                                location.reload();
+                                window.location.reload();
                                 }
                             }else{
                                 setTimeout(nextmove, 1000, lengthcodefalse, filename, i);
