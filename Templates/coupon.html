@@ -1938,9 +1938,8 @@ function ajaxthetable(){
             },
             success: function(response){
             var couponlisti=JSON.parse(response.couponsajax)
-            console.log(JSON.stringify(couponlisti));
             var counter = couponlisti.length
-            console.log(counter);
+
             var dataHTML; 
             $('#couponlisttablebody').empty();
             
@@ -1958,7 +1957,8 @@ function ajaxthetable(){
                 }else if(couponlisti[i]["fields"].is_active == "false"){
                 var check = "";
                 }
-
+                console.log("id: "+couponlisti[i]["fields"].id)
+                console.log("is_active: "+couponlisti[i]["fields"].is_active)
 
                     dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td>'+couponlisti[i]["fields"].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["fields"].id+')" '+check+'> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
 
