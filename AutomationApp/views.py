@@ -5066,7 +5066,7 @@ def Onlineordertestingsystem(request, admin_id):
         else:
             couponvalidity='No Coupon'
             couponvaliditymessage='No Coupon'
-            discount=discounti.discountamount
+            discount=''
             rqrd_minimumamnt=0
             prmcd=''
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
