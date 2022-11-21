@@ -1935,7 +1935,7 @@ function ajaxthetable(){
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
-            var couponlisti=json.parse(response)
+            var couponlisti=JSON.parse(response)
             console.log(JSON.stringify(couponlisti));
             var counter = couponlisti.length
             var dataHTML; 
