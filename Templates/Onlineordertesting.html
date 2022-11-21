@@ -26440,8 +26440,8 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
         datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
         datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched+'.00</td><td class="tdpunched"></td></tr>';
         var discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-        var discountedtotalhere = '₱'+String(discountedtotalherei)+'.00';
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;>+discountedtotalhere+</td><td class="tdpunched"></td></tr>';
+        var discountedtotalhere = '₱'+String(discountedtotalherei)+'0';
+        datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;>'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
         
         }else{
         var discountedtotalherei = '';
@@ -26452,7 +26452,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
 
       if('{{couponvalidity}}' == 'Valid'){
         var discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-        var discountedtotalhere = '₱'+String(discountedtotalherei)+'.00';
+        var discountedtotalhere = '₱'+String(discountedtotalherei)+'0';
         datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">'+totalpunched+'</td><td class="tdpunched"></td></tr>';
         datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;>Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;>'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
         tablebody.innerHTML = datahtmltest;
@@ -26467,7 +26467,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
 
 if(discountedtotalherei){
 
-document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+discountedtotalherei+".00";
+document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+discountedtotalherei+"0";
 totalwithoudevfee = discountedtotalherei;
 }else{
  document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
@@ -26897,9 +26897,9 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                                 };
                     }
                     var discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-                    var discountedtotalhere = '₱'+String(discountedtotalherei)+'.00';
+                    var discountedtotalhere = '₱'+String(discountedtotalherei)+'0';
                     if('{{couponvalidity}}' == 'Valid'){
-                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei+".00";
+                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei+"0";
                     totalwithoudevfee = discountedtotalherei;
                     }else{
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
