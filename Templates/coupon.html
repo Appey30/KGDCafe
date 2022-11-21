@@ -1915,7 +1915,7 @@ function activateornot(id){
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
-            console.log(response.activateornotidresult)
+            console.log('checkTorF: '+response.activateornotidresult)
             ajaxthetable();
             },
             error: function(){
