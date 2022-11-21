@@ -55,7 +55,7 @@ class couponlist (models.Model):
     category = models.ForeignKey(CategoriesCoupon, on_delete=models.CASCADE, default='',blank = True, null = True)
     code = models.CharField(max_length = 250, blank = False, null = False, default='')
     url = models.CharField(max_length = 1000, blank = False, null = False, default='')
-    qr = models.CharField(max_length = 250, blank = False, null = False, default='')
+
     pieces = models.IntegerField(blank = True, null = True, default='')
     discountamount = models.IntegerField(blank = True, null = True, default='')
     is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
