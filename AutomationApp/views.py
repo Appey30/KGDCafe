@@ -212,12 +212,12 @@ def coupon(request):
 
        if request.POST.get("activateornotid") and is_ajax(request=request):
           activatecouponid=request.POST.get("activateornotid");
-          if couponlist.objects.filter(user__id=userr,id=activatecouponid).is_active == True:
-              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=False)
-              check="True"
+          if couponlist.objects.filter(user__id=userr,id=activatecouponid).is_active == "true":
+              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active="false")
+              check="true"
           else:
-              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=True)
-              check="False"
+              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active="true")
+              check="false"
           return JsonResponse({'activateornotidresult':check})
 
 
