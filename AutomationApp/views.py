@@ -5056,6 +5056,8 @@ def Onlineordertestingsystem(request, admin_id):
                 discount=''
                 rqrd_minimumamnt=0
                 prmcd=''
+
+            #This coupon code is for testing.
             elif promocodegeti == "Testing123": 
                 couponvalidity='Valid'
                 couponvaliditymessage='This coupon code is for testing.'
