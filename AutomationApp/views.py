@@ -5026,11 +5026,6 @@ def Onlineordertestingsystem(request, admin_id):
         #then the result will be ="anyvalue"
         #?prmcd=<code>
         promocodeget=request.GET.get('prmcd', '')
-        print('promocodeget: ',promocodeget)
-        print('promocodeget: ',promocodeget)
-        print('promocodeget: ',promocodeget)
-        print('promocodeget: ',promocodeget)
-        print('promocodeget: ',promocodeget)
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
@@ -5050,7 +5045,8 @@ def Onlineordertestingsystem(request, admin_id):
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
         else:
-            promoidentifier='Special Promo'
+            #promoidentifier='Special Promo'
+            promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
             passwordss=json.loads(request.POST.get('password'))
@@ -5157,23 +5153,22 @@ def Onlineordertestingsystem(request, admin_id):
             print(firstname)
             print(lastname)
 
-            if Sales.objects.filter(CusName="KGD Cafe").exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
-                counteruser=Sales.objects.filter(CusName="KGD Cafe").exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
+            if Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
+                counteruser=Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
             
                 if len(counteruser) == 1 and counteruser[0] != None:
                     addressuseri = []
-                    addressuserii = Sales.objects.filter(CusName="KGD Cafe", pinnedlat__in=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
+                    addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat__in=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
                     addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
                     #addressuser=json.dumps(addressuseri, cls=JSONEncoder)
-
                     print('addressuser1:',addressuser)
                 else:
                     addressuseri = []
                     i=0
                     while i<len(counteruser):
-                        addressuserii=Sales.objects.filter(CusName="KGD Cafe",pinnedlat__in=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
+                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat__in=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
                         addressuseri.append(addressuserii)
                     
                         i += 1
@@ -5285,9 +5280,8 @@ def Onlineordertestingsystem(request, admin_id):
             arrayone.append(arrayseparator)
             viewordersi[contactdistincter[i]]=arrayone[i]
             i=i+1
-
         settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-
+        
         return render(request, 'Onlineordertesting.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})

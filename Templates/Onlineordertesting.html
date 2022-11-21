@@ -24372,7 +24372,7 @@ newuserdivid.style.display = "block";
             var una=JSON.stringify(response.addressuser);
             var pangalawa = JSON.parse(una);
             var pangatlo = JSON.parse(pangalawa);
-            console.log('pangatlo:'+JSON.stringify(pangatlo))
+            
                 if(pangatlo.length == 0){
                 var pangapat = pangatlo;
                 var bilangan = pangapat.length;
@@ -24803,7 +24803,7 @@ longitude.value = position.lng;
         </form>
     </div>
 </div>
-
+<!--
 <div id="shownotifdivbgid" class="shownotifdivbg">
 <div id="shownotifdivid" class="shownotifdiv">
     <div class="shownotifhead">
@@ -24822,7 +24822,7 @@ longitude.value = position.lng;
     </div>
 </div>
 </div>
-
+-->
 
 
 <div id="showgpsdivbgid" class="showgpsdivbg">
@@ -25037,7 +25037,7 @@ for (i = 0; i < acc.length; i++) {
 
 
 
-function Checkout(permissiongrant){
+function Checkout(){
 var latitude = document.getElementById('lat');
 var longitude = document.getElementById('lng');
 var mapp = document.getElementById('mapwrapperdiv');
@@ -25788,18 +25788,11 @@ if(changedetailspass == "notpass" || housenumdetailspass == "notpass" || streetd
 
 }else if(changedetailspass == "pass" && housenumdetailspass == "pass" && streetdetailspass == "pass" && brgypass == "pass" && municipalitypass == "pass" && checkerschedule == "pass" && checkerdelivery == "pass" && contactcustomer == "pass"){
 
-if(permissiongrant == 'granted'){
+
 
 submitter();
-}else{
-var shownotifdivbgid = document.getElementById('shownotifdivbgid');
-var shownotifdivid = document.getElementById('shownotifdivid');
-shownotifdivbgid.style.display = "flex";
-shownotifdivid.style.display = "block";
-shownotifdivid.style.animation="fade-bottom-in 0.5s";
 
-}
-}
+};
 //});
 
 
@@ -26195,7 +26188,7 @@ if(indexfinderfrappemilktea !== -1){
 }else{
 allpunched.push(puncheditem)
 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
-console.log('pushed')
+
 };
 
         
@@ -26221,7 +26214,7 @@ if(day == 'Tuesday'){
                 if(puncheditemone.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemone exist, indexfinderfreefriesone will return the index of the existing item. If not, it will return -1.
-                console.log('indexfinderfreefriesone: '+indexfinderfreefriesone);
+                
                 if(indexfinderfreefriesone == -1){
                 allpunched.push(puncheditemone);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
@@ -26251,7 +26244,7 @@ if(freefries == 'True' && freefriesmilktea == 'True'){
                 if(puncheditemtwo.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemtwo exist, indexfinderfreefriestwo will return the index of the existing item. If not, it will return -1.
-                console.log(indexfinderfreefriestwo);
+                
                 if(indexfinderfreefriestwo == -1){
                 allpunched.push(puncheditemtwo);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
@@ -26282,7 +26275,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 if(puncheditemthree.productname == 'Free Fries')
 		                return true;
                 }); //if puncheditemthree exist, indexfinderfreefriesthree will return the index of the existing item. If not, it will return -1.
-                console.log(indexfinderfreefriesthree);
+                
                 if(indexfinderfreefriesthree == -1){
                 allpunched.push(puncheditemthree);
                 allpunched[allpunched.length-1]['index'] = allpunched.length-1;
@@ -26304,7 +26297,7 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-            console.log('allpunched.length:  '+allpunched.length);
+            
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
@@ -26316,9 +26309,7 @@ var addonqtydisplaysake="";
 }else{
 var addonqtydisplaysake=punched.Addonsqty;
 }
-console.log('indexfinderfrappemilktea: '+indexfinderfrappemilktea);
-console.log('indexfinderpizza: '+indexfinderpizza);
-console.log('indexfinderany: '+indexfinderany);
+
 
 
 
@@ -30651,7 +30642,7 @@ function openCateg(evtprod, category) {
 <script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-
+ <!--
  <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
@@ -30784,6 +30775,7 @@ shownotifdivid.style.display = "none";
 
 
 </script>
+-->
 </div>
 </div>
 </div>
