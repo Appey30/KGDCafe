@@ -1911,10 +1911,11 @@ function activateornot(id){
             $.ajax({
             type:'POST',
             url:"{% url 'coupon.html' %}",
-            data:{"activateornot":"activateornott",
+            data:{"activateornotid":id,
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(response){
+
             },
             error: function(){
             alert("ERROR");

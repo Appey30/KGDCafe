@@ -210,6 +210,14 @@ def coupon(request):
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
 
+       if request.POST.get("activateornotid") and is_ajax(request=request):
+          activatecouponid=request.POST.get("activateornotid");
+          if couponlist.objects.filter(user__id=userr,id=activatecouponid).is_active == True:
+              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=False)
+          else:
+              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=True)
+          return JsonResponse({'activateornotidresult':success})
+
 
        if request.POST.get("getcouponlist") and is_ajax(request=request):
            if couponlist.objects.filter(user__id=userr)==0:
