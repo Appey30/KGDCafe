@@ -213,6 +213,13 @@ def coupon(request):
        if request.POST.get("activateornotid") and is_ajax(request=request):
           activatecouponid=request.POST.get("activateornotid");
           torf=couponlist.objects.get(user__id=userr,id=activatecouponid)
+          print('torf: ',torf)
+          print('torf: ',torf)
+          print('torf: ',torf)
+          print('torf: ',torf)
+          print('torf: ',torf)
+          print('torf: ',torf)
+          print('torf: ',torf)
           if torf.is_active == True:
               couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=False)
               check="true"
