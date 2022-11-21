@@ -218,7 +218,7 @@ def coupon(request):
           else:
               couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=True)
               check="false"
-          return JsonResponse({'activateornotidresult':json.dumps(check)})
+          return JsonResponse({'check':check})
 
 
        if request.POST.get("getcouponlist") and is_ajax(request=request):
