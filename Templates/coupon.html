@@ -1937,7 +1937,7 @@ function ajaxthetable(){
             success: function(response){
             var couponlisti=JSON.parse(response.couponsajax)
             console.log(JSON.stringify(couponlisti));
-            var counter = couponlisti["fields"].length
+            var counter = couponlisti.length
             console.log(counter);
             var dataHTML; 
             $('#couponlisttablebody').empty();
@@ -1945,7 +1945,7 @@ function ajaxthetable(){
             if(counter>0){
                 for(let i=0;i<counter;i++){
             
-                    dataHTML +='<tr><td>'+couponlisti["fields"][i].couponname+'</td><td>'+couponlisti["fields"][i].category+'</td><td>'+couponlisti["fields"][i].code+'</td><td>'+couponlisti["fields"][i].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti["fields"][i].id+')" checked> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
+                    dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+couponlisti[i]["fields"].category+'</td><td>'+couponlisti[i]["fields"].code+'</td><td>'+couponlisti[i]["fields"].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["fields"].id+')" checked> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
 
                 }
             }
