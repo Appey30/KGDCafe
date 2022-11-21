@@ -1958,6 +1958,7 @@ function ajaxthetable(){
                 var check = "";
                 }
                 console.log("id: "+couponlisti[i]["fields"].pk)
+                console.log("idd: "+couponlisti[i]["pk"])
                 console.log("is_active: "+couponlisti[i]["fields"].is_active)
 
                     dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td>'+couponlisti[i]["fields"].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["fields"].pk+')" '+check+'> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
