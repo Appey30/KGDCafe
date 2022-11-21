@@ -1697,7 +1697,6 @@ z-index:100;
     <th class="punchedtext">Coupon Name</th>
     <th class="punchedtext">Category</th>
     <th class="punchedtext">Code</th>
-     <th class="punchedtext">URL</th>
      <th class="punchedtext">Activate</th>
      <th class="punchedtext">Action</th>
   </tr>
@@ -1960,7 +1959,7 @@ function ajaxthetable(){
                 }
 
 
-                    dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td>'+couponlisti[i]["fields"].url+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["pk"]+')" '+check+'> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
+                    dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["pk"]+')" '+check+'> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
 
                 }
             }
