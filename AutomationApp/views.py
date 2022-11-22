@@ -1620,7 +1620,7 @@ def postwo(request):
             contactnumberdone = contactnumberdonei[0]['contactnumber']
             if contactnumberdonei[0]['codecoupon']:
                 if couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']):
-                    codeconsumereducerii=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon'])
+                    codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
                     if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit > 0:
                         codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
                         codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri)
@@ -3761,7 +3761,7 @@ def kgddashboard(request):
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
                 if contactnumberdonei[0]['codecoupon']:
                     if couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']):
-                        codeconsumereducerii=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon'])
+                        codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
                         if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
                             codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
                             codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri)
@@ -4659,7 +4659,7 @@ def kgddashboard(request):
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
                 if contactnumberdonei[0]['codecoupon']:
                     if couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']):
-                        codeconsumereducerii=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon'])
+                        codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
                         if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
                             codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
                             codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri)
