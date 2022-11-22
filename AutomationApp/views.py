@@ -269,7 +269,7 @@ def coupon(request):
                 CodeTrue=[]
                 CodeFalse=[]
                 #?prmcd=<code>
-                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/?prmcd="+codeid
+                generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/?prmcd="+codeid
                 filename=codeid
                 CodeTrue.insert(0,generateurl)
                 CodeTrue.insert(1,filename)
@@ -283,7 +283,7 @@ def coupon(request):
                     unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
                     codeid=unique_id
                     #?prmcd=<code>
-                    generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/?prmcd="+codeid
+                    generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/?prmcd="+codeid
 
                     objectappender={
                     'generateurl':generateurl,
@@ -2383,26 +2383,98 @@ def inventory(request):
 
 
 def Onlineordersystem(request, admin_id):
+        #'domain/search/?q=haha', you would use request.GET.get('q', '')
+        #theurl+?anykeyhere=anyvalue
+        #request.query_params['anykeyhere']
+        #then the result will be ="anyvalue"
+        #?prmcd=<code>
+        promocodegeti=request.GET.get('prmcd', '')
+        if promocodegeti:
+        #without minimum amount
+            if couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=False): 
+                if promocodegeti == "KGDDeliveryFree":
+                    couponvalidity='KGDDeliveryFree'
+                    couponvaliditymessage='Valid Coupon.'
+                    discount='0'
+                    rqrd_minimumamnt=0
+                    prmcd='KGDDeliveryFree'
+                else:
+                    couponvalidity='Valid'
+                    couponvaliditymessage='Valid'
+                    discounti=couponlist.objects.get(code=promocodegeti)
+                    discount=discounti.discountamount
+                    rqrd_minimumamnt=0
+                    prmcd=promocodegeti
+            #this coupon code has been consumed. #without minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has been consumed.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #without minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Valid'
+                couponvaliditymessage='Valid Coupon'
+                discounti=couponlist.objects.get(code=promocodegeti)
+                discount=discounti.discountamount
+                rqrd_minimumamnti=couponlist.objects.get(code=promocodegeti)
+                rqrd_minimumamnt=rqrd_minimumamnti.MinimumAmount
+                prmcd=promocodegeti
+            #this coupon code has been consumed. #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has been redeemed.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+
+            #This coupon code is for testing.
+            elif promocodegeti == "Testing123": 
+                couponvalidity='Valid'
+                couponvaliditymessage='This coupon code is for testing.'
+                discount='10'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #This coupon code is for testing.
+
+            #this coupon code is invalid.
+            else:
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is invalid.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+        else:
+            couponvalidity='No Coupon'
+            couponvaliditymessage='No Coupon'
+            discount='0'
+            rqrd_minimumamnt=0
+            prmcd='No Coupon'
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
 
         if request.user.is_anonymous:
             promoidentifier=''
-        #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier='FirstTimer'
-        #    else:
-        #        promoidentifier='FirstTimer'
-        #elif request.user.first_name:
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier=''
-        #    else:
-        #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
         else:
-            #promoidentifier='Special Promo'
+            
             promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
@@ -2640,8 +2712,9 @@ def Onlineordersystem(request, admin_id):
         settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-        
-        return render(request, 'Onlineorder.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+                    
+
+        return render(request, 'Onlineorder.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):
         userr=request.user.id
@@ -5063,7 +5136,7 @@ def Onlineordertestingsystem(request, admin_id):
             #this coupon code has been consumed. #with minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=True): 
                 couponvalidity='Invalid'
-                couponvaliditymessage='This coupon code has been consumed.'
+                couponvaliditymessage='This coupon code has been redeemed.'
                 discount='0'
                 rqrd_minimumamnt=0
                 prmcd=promocodegeti
@@ -5103,20 +5176,10 @@ def Onlineordertestingsystem(request, admin_id):
 
         if request.user.is_anonymous:
             promoidentifier=''
-        #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier='FirstTimer'
-        #    else:
-        #        promoidentifier='FirstTimer'
-        #elif request.user.first_name:
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier=''
-        #    else:
-        #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
         else:
-            #promoidentifier='Special Promo'
+            
             promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
