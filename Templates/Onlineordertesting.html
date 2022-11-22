@@ -43,6 +43,31 @@ background-image:url({% static 'bas.jpg'%});
 font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond_the_mountains.otf' %});
 }
 @media screen and (min-width: 1200px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alertcoupon.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
  
 .minified{
 position:relative;
@@ -4611,6 +4636,31 @@ height:100%;
 }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+.alertcoupon {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alertcoupon.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:-20px;
@@ -9151,6 +9201,31 @@ height:100%;
 }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alertcoupon.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:0px;
@@ -13699,6 +13774,31 @@ height:100%;
 }
 }
 @media screen and (min-width: 450px) and (max-width: 767px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alertcoupon.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:0px;
@@ -18419,6 +18519,31 @@ height:100%;
 }
 }
 @media screen and (max-width: 449px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alertcoupon.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:0px;
@@ -30881,7 +31006,7 @@ pampizza = presyopizza;
 <img src="{% static 'freedeliverycompressed.png' %}" class="freedelivery"></img>
 </div>
 {% elif couponvalidity == 'Invalid' %}
-<div class="alert alert-danger">
+<div class="alertcoupon warning">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 {{couponvaliditymessage}}
 </div>
