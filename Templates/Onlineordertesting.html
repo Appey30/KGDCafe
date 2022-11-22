@@ -31037,13 +31037,16 @@ pampizza = presyopizza;
 </div>
 {% elif couponvalidity == 'Invalid' %}
 <div class="alertcoupon warning">
-  <span class="closebtn" onclick="this.parentElement.style.animation='fade-bottom-out 0.5s';">&times;</span>
+  <span class="closebtn" onclick="this.parentElement.style.animation='fade-bottom-out 0.5s';closealertcoupon();">&times;</span>
 {{couponvaliditymessage}}
 </div>
 
 {% endif %}
 <script>
-
+function closealertcoupon(){
+var alertcoupon = document.getElementsByClassName('alertcoupon');
+alertcoupon.style.display = "none";
+}
 function atbpizza(productname, pizzaprice, pizzasize, pizzasubcategory) {
 
 
