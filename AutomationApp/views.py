@@ -1623,7 +1623,7 @@ def postwo(request):
                     codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
                     if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit > 0:
                         codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
-                        codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri
+                        codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri)
             if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
                 deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                 deletethis.delete()
