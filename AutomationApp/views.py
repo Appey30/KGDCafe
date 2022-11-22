@@ -2638,7 +2638,7 @@ def Onlineordersystem(request, admin_id):
                 counteruseriii=counteruserii.values_list('pinnedlat', flat=True).distinct()
                 print('counteruser: ',counteruser)
                 print('counteruser: ',counteruser)
-                print('counteruser: ',counteruser)
+                print('counteruser: ',counteruser[0])
                 print('counteruseri: ',counteruseri)
                 print('counteruseri: ',counteruseri)
                 print('counteruseriii: ',counteruseriii)
