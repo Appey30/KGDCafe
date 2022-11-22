@@ -265,6 +265,17 @@ def coupon(request):
             is_activeidTF = True
           else:
             is_activeidTF = False
+          is_maxredeemid = json.loads(request.POST.get("is_maxredeemid")) or None
+          if is_maxredeemid == 'Yes':
+            is_maxredeemidTF = True
+          else:
+            is_maxredeemidTF = False
+          maxredeemlimitidi = json.loads(request.POST.get("maxredeemlimitid")) or 0
+          if maxredeemlimitidi:
+            maxredeemlimitid=int(maxredeemlimitidi)
+          else:
+            maxredeemlimitid=0
+          
           if codeid:
                 CodeTrue=[]
                 CodeFalse=[]
@@ -273,7 +284,7 @@ def coupon(request):
                 filename=codeid
                 CodeTrue.insert(0,generateurl)
                 CodeTrue.insert(1,filename)
-                couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withMinimumAmount=is_withMinimumAmountidTF, MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False) 
+                couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withMinimumAmount=is_withMinimumAmountidTF, is_consumable=is_maxredeemidTF,numberredeem=maxredeemlimitid,MinimumAmount=minimumamountid, is_active=is_activeidTF, is_consumed=False) 
           else:
                 CodeTrue=[]
                 CodeFalse=[]
@@ -291,7 +302,7 @@ def coupon(request):
                     }
                     CodeFalse.insert(i, objectappender)
 
-                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
+                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_consumable=is_maxredeemidTF,numberredeem=maxredeemlimitid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF,is_consumed=False)
                     i += 1
           Codei={}
           Codei={

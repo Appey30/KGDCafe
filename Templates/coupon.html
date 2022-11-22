@@ -1669,7 +1669,27 @@ z-index:100;
                                 <br>
                                 
                             </div>
-                            <div class="fieldWrapper" id="is_activeiddiv" style="display:none;">
+                            <div class="fieldWrapper" id="is_maxredeemdivid" style="display:block;">
+
+                                <label>Do you wanna set maximum redeem limit?  </label>
+                                <select onchange="maxredeemlimit()" id="is_maxredeemid" class="form-control clear" name="is_maxredeemname" value="">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                </select>
+                                <br>
+                                
+                            </div>
+                            <div class="fieldWrapper" id="maximumredeemdivid" style="display:none;">
+                                <label>Maximum Redeem Limit:</label>
+                                <br>
+                                <input  id="maxredeemlimitid" class="form-control clear" type="number" step="1" min="1" max="" placeholder="Set Maximum Redeem Limit" name="maxredeemlimitname"></input>
+
+
+                                <br>
+                                
+                            </div>
+                            <div class="fieldWrapper" id="is_activeiddiv" style="display:block;">
 
                                 <label>Do you wanna Activate this now?  </label>
                                 <select id="is_activeid" class="form-control clear" name="is_activename" value="">
@@ -1774,8 +1794,21 @@ var discountpercentageid = document.getElementById('discountpercentageid');
 
 var is_withMinimumAmountid = document.getElementById('is_withMinimumAmountid');
 var minimumamountid = document.getElementById('minimumamountid');
-var is_activeid = document.getElementById('is_activeid');       
-          
+var is_activeid = document.getElementById('is_activeid');  
+var maximumredeemdivid = document.getElementById("maximumredeemdivid");
+var maxredeemlimitid = document.getElementById("maxredeemlimitid");
+var is_maxredeemid = document.getElementById("is_maxredeemid");
+
+function maxredeemlimit(){
+
+
+var selected = is_maxredeemid.options[is_maxredeemid.selectedIndex].text;
+    if(selected=="Yes"){
+    maximumredeemdivid.style.display="block";
+    }else{
+    maximumredeemdivid.style.display="none";
+    };
+};
 function addcouponformpost(){   
 
             $.ajax({
@@ -1789,6 +1822,8 @@ function addcouponformpost(){
             "is_withMinimumAmountid":JSON.stringify(is_withMinimumAmountid.value),
             "minimumamountid":JSON.stringify(minimumamountid.value),
             "is_activeid":JSON.stringify(is_activeid.value),
+            "is_maxredeemid":JSON.stringify(is_maxredeemid.value),
+            "maxredeemlimitid":JSON.stringify(maxredeemlimitid.value),
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
             success: function(responsei){

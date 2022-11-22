@@ -59,20 +59,21 @@ class couponlist (models.Model):
     pieces = models.IntegerField(blank = True, null = True, default='')
     discountamount = models.IntegerField(blank = True, null = True, default='')
     is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
-    is_consumed = models.BooleanField(default = False, blank = True, null = True)
+    is_consumable = models.BooleanField(default = False, blank = True, null = True)
+    numberredeem = models.IntegerField(blank = True, null = True, default='')
     is_active = models.BooleanField(default = False, blank = True, null = True)
     MinimumAmount = models.IntegerField(blank = True, null = True, default='')
 
     def __str__(self):
-        if self.is_consumed == "True":
-            Consumed = "Consumed"
+        if self.numberconsume == 0:
+            Redeem = "Redeemed"
         else:
-            Consumed = "Not yet Consumed"
+            Redeem = "Not yet Redeemed"
         if self.is_active == "True":
             Active = "Active"
         else:
             Active = "Not Active"
-        return str(self.couponname) +" / "+ str(self.category) + " / "+ Consumed + " / "+ Active
+        return str(self.couponname) +" / "+ str(self.category) + " / "+ Redeem + " / "+ Active
       
 
 
