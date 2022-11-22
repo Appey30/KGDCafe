@@ -5043,14 +5043,14 @@ def Onlineordertestingsystem(request, admin_id):
                 couponvaliditymessage='This coupon code has been consumed.'
                 discount='0'
                 rqrd_minimumamnt=0
-                prmcd=''
+                prmcd=promocodegeti
             #this coupon code is inactive at this moment. #without minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=False): 
                 couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code is inactive at this moment.'
                 discount='0'
                 rqrd_minimumamnt=0
-                prmcd=''
+                prmcd=promocodegeti
             #with minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=True): 
                 couponvalidity='Valid'
@@ -5066,14 +5066,14 @@ def Onlineordertestingsystem(request, admin_id):
                 couponvaliditymessage='This coupon code has been consumed.'
                 discount='0'
                 rqrd_minimumamnt=0
-                prmcd=''
+                prmcd=promocodegeti
             #this coupon code is inactive at this moment. #with minimum amount
             elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=True): 
                 couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code is inactive at this moment.'
                 discount='0'
                 rqrd_minimumamnt=0
-                prmcd=''
+                prmcd=promocodegeti
 
             #This coupon code is for testing.
             elif promocodegeti == "Testing123": 
@@ -5081,7 +5081,7 @@ def Onlineordertestingsystem(request, admin_id):
                 couponvaliditymessage='This coupon code is for testing.'
                 discount='10'
                 rqrd_minimumamnt=0
-                prmcd='Testing123'
+                prmcd=promocodegeti
             #This coupon code is for testing.
 
             #this coupon code is invalid.
@@ -5090,13 +5090,13 @@ def Onlineordertestingsystem(request, admin_id):
                 couponvaliditymessage='This coupon code is invalid.'
                 discount='0'
                 rqrd_minimumamnt=0
-                prmcd=''
+                prmcd=promocodegeti
         else:
             couponvalidity='No Coupon'
             couponvaliditymessage='No Coupon'
             discount='0'
             rqrd_minimumamnt=0
-            prmcd=''
+            prmcd='No Coupon'
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username

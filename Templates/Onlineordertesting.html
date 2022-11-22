@@ -30880,6 +30880,10 @@ pampizza = presyopizza;
 <div class="freedeliverydiv">
 <img src="{% static 'freedeliverycompressed.png' %}" class="freedelivery"></img>
 </div>
+{% elif couponvalidity == 'Invalid' or couponvalidity == 'No Coupon' %}
+<div class="discountdiv">
+<h2 class="couponinfo2">{{couponvaliditymessage}}</h2>
+</div>
 {% endif %}
 <script>
 
