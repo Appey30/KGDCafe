@@ -25248,7 +25248,11 @@ longitude.value = position.lng;
             <input type="hidden" value="" id="totalwithdevfeeid" name="totalwithdevfeename">
             <input type="hidden" value="" id="devfeeid" name="devfeename">
             <input type="hidden" value="" id="tokensid" name="tokens">
-            
+            {% if couponvalidity == "Valid" or couponvalidity == 'KGDDeliveryFree' %}
+            <input type="hidden" value="{{prmcd}}" id="getpromocodeid" name="getpromocodename">
+            {% else %}
+            <input type="hidden" value="" id="getpromocodeid" name="getpromocodename">
+            {% endif %}
             </div>
             <div class="w3-container summarytablediv">
             <h3>Summary of Orders</h3>
@@ -25278,6 +25282,7 @@ longitude.value = position.lng;
            <button type="button" onclick="Checkout()" id="detailchecker" name="checkout" value="Checkout">Checkout</input>
             </div>
            </div>
+           
         </form>
     </div>
 </div>

@@ -1340,6 +1340,7 @@ def postwo(request):
             objs = [Acceptorder(
                         Admin=Accepted.Admin,
                         Customername=Accepted.Customername,
+                        codecoupon=Accepted.codecoupon,
                         Province=Accepted.Province,
                         MunicipalityCity=Accepted.MunicipalityCity,
                         Barangay=Accepted.Barangay,
@@ -1421,6 +1422,7 @@ def postwo(request):
             objs = [Rejectorder(
                         Admin=userr,
                         Customername=Rejected.Customername,
+                        codecoupon=Rejected.codecoupon,
                         Province=Rejected.Province,
                         MunicipalityCity=Rejected.MunicipalityCity,
                         Barangay=Rejected.Barangay,
@@ -1490,6 +1492,7 @@ def postwo(request):
             objs = [Customer(
                         Admin=userr,
                         Customername=Restored.Customername,
+                        codecoupon=Restored.codecoupon,
                         Province=Restored.Province,
                         MunicipalityCity=Restored.MunicipalityCity,
                         Barangay=Restored.Barangay,
@@ -1559,6 +1562,7 @@ def postwo(request):
             Readyacceptorder=Acceptorder.objects.create(
                         Admin=userr,
                         Customername=Readyadd.Customername,
+                        codecoupon=Readyadd.codecoupon,
                         Province=Readyadd.Province,
                         MunicipalityCity=Readyadd.MunicipalityCity,
                         Barangay=Readyadd.Barangay,
@@ -1614,6 +1618,12 @@ def postwo(request):
         if is_ajax(request=request) and request.POST.get('doneorders'):
             contactnumberdonei = json.loads(request.POST.get('doneorders'))
             contactnumberdone = contactnumberdonei[0]['contactnumber']
+            if contactnumberdonei[0]['codecoupon']:
+                if couponlist.objects.get(code=contactnumberdonei[0]['codecoupon']):
+                    codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
+                    if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
+                        codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
+                        codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri
             if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
                 deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                 deletethis.delete()
@@ -1622,6 +1632,7 @@ def postwo(request):
                 devfeeassales=Sales.objects.create(
                         user=userr,
                         CusName=contactnumberdonei[0]['Customername'],
+                        codecoupon=contactnumberdonei[0]['codecoupon'] or None,
                         Province=contactnumberdonei[0]['Province'],
                         MunicipalityCity=contactnumberdonei[0]['MunicipalityCity'],
                         Barangay=contactnumberdonei[0]['Barangay'],
@@ -1661,6 +1672,7 @@ def postwo(request):
             objs = [Sales(
                         user=userr,
                         CusName=Done.Customername,
+                        codecoupon=Done.codecoupon,
                         Province=Done.Province,
                         MunicipalityCity=Done.MunicipalityCity,
                         Barangay=Done.Barangay,
@@ -2700,6 +2712,7 @@ def Onlineordersystem(request, admin_id):
             objs = [Customer(
                         Admin=admin_id,
                         Customername=request.GET.get('fullname'),
+                        codecoupon=request.GET.get('getpromocodename') or None,
                         Province=request.GET.get('Province'),
                         MunicipalityCity=request.GET.get('Municipality') or None,
                         Barangay=request.GET.get('barangay') or None,
@@ -3461,6 +3474,7 @@ def kgddashboard(request):
                 objs = [Acceptorder(
                             Admin=Accepted.Admin,
                             Customername=Accepted.Customername,
+                            codecoupon=Accepted.codecoupon,
                             Province=Accepted.Province,
                             MunicipalityCity=Accepted.MunicipalityCity,
                             Barangay=Accepted.Barangay,
@@ -3543,6 +3557,7 @@ def kgddashboard(request):
                 objs = [Rejectorder(
                             Admin=userr,
                             Customername=Rejected.Customername,
+                            codecoupon=Rejected.codecoupon,
                             Province=Rejected.Province,
                             MunicipalityCity=Rejected.MunicipalityCity,
                             Barangay=Rejected.Barangay,
@@ -3613,6 +3628,7 @@ def kgddashboard(request):
                 objs = [Customer(
                             Admin=userr,
                             Customername=Restored.Customername,
+                            codecoupon=Restored.codecoupon,
                             Province=Restored.Province,
                             MunicipalityCity=Restored.MunicipalityCity,
                             Barangay=Restored.Barangay,
@@ -3682,6 +3698,7 @@ def kgddashboard(request):
                 Readyacceptorder=Acceptorder.objects.create(
                             Admin=userr,
                             Customername=Readyadd.Customername,
+                            codecoupon=Readyadd.codecoupon,
                             Province=Readyadd.Province,
                             MunicipalityCity=Readyadd.MunicipalityCity,
                             Barangay=Readyadd.Barangay,
@@ -3736,6 +3753,12 @@ def kgddashboard(request):
             if is_ajax(request=request) and request.POST.get('doneorders'):
                 contactnumberdonei = json.loads(request.POST.get('doneorders'))
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
+                if contactnumberdonei[0]['codecoupon']:
+                    if couponlist.objects.get(code=contactnumberdonei[0]['codecoupon']):
+                        codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
+                        if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
+                            codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
+                            codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri
                 if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
                     deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                     deletethis.delete()
@@ -3744,6 +3767,7 @@ def kgddashboard(request):
                     devfeeassales=Sales.objects.create(
                             user=userr,
                             CusName=contactnumberdonei[0]['Customername'],
+                            codecoupon=contactnumberdonei[0]['codecoupon'] or None,
                             Province=contactnumberdonei[0]['Province'],
                             MunicipalityCity=contactnumberdonei[0]['MunicipalityCity'],
                             Barangay=contactnumberdonei[0]['Barangay'],
@@ -3783,6 +3807,7 @@ def kgddashboard(request):
                 objs = [Sales(
                             user=userr,
                             CusName=Done.Customername,
+                            codecoupon=Done.codecoupon,
                             Province=Done.Province,
                             MunicipalityCity=Done.MunicipalityCity,
                             Barangay=Done.Barangay,
@@ -4344,6 +4369,7 @@ def kgddashboard(request):
                 objs = [Acceptorder(
                             Admin=Accepted.Admin,
                             Customername=Accepted.Customername,
+                            codecoupon=Accepted.codecoupon,
                             Province=Accepted.Province,
                             MunicipalityCity=Accepted.MunicipalityCity,
                             Barangay=Accepted.Barangay,
@@ -4426,6 +4452,7 @@ def kgddashboard(request):
                 objs = [Rejectorder(
                             Admin=userr,
                             Customername=Rejected.Customername,
+                            codecoupon=Rejected.codecoupon,
                             Province=Rejected.Province,
                             MunicipalityCity=Rejected.MunicipalityCity,
                             Barangay=Rejected.Barangay,
@@ -4495,6 +4522,7 @@ def kgddashboard(request):
                 objs = [Customer(
                             Admin=userr,
                             Customername=Restored.Customername,
+                            codecoupon=Restored.codecoupon,
                             Province=Restored.Province,
                             MunicipalityCity=Restored.MunicipalityCity,
                             Barangay=Restored.Barangay,
@@ -4563,6 +4591,7 @@ def kgddashboard(request):
                 Readyacceptorder=Acceptorder.objects.create(
                             Admin=userr,
                             Customername=Readyadd.Customername,
+                            codecoupon=Readyadd.codecoupon,
                             Province=Readyadd.Province,
                             MunicipalityCity=Readyadd.MunicipalityCity,
                             Barangay=Readyadd.Barangay,
@@ -4616,6 +4645,12 @@ def kgddashboard(request):
             if is_ajax(request=request) and request.POST.get('doneorders'):
                 contactnumberdonei = json.loads(request.POST.get('doneorders'))
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
+                if contactnumberdonei[0]['codecoupon']:
+                    if couponlist.objects.get(code=contactnumberdonei[0]['codecoupon']):
+                        codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
+                        if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
+                            codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
+                            codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri
                 if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
                     deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                     deletethis.delete()
@@ -4624,6 +4659,7 @@ def kgddashboard(request):
                     devfeeassales=Sales.objects.create(
                             user=userr,
                             CusName=contactnumberdonei[0]['Customername'],
+                            codecoupon=contactnumberdonei[0]['codecoupon'] or None,
                             Province=contactnumberdonei[0]['Province'],
                             MunicipalityCity=contactnumberdonei[0]['MunicipalityCity'],
                             Barangay=contactnumberdonei[0]['Barangay'],
@@ -4662,6 +4698,7 @@ def kgddashboard(request):
                 objs = [Sales(
                             user=userr,
                             CusName=Done.Customername,
+                            codecoupon=Done.codecoupon,
                             Province=Done.Province,
                             MunicipalityCity=Done.MunicipalityCity,
                             Barangay=Done.Barangay,
@@ -5405,6 +5442,7 @@ def Onlineordertestingsystem(request, admin_id):
             objs = [Customer(
                         Admin=admin_id,
                         Customername=request.GET.get('fullname'),
+                        codecoupon=request.GET.get('getpromocodename') or None,,
                         Province=request.GET.get('Province'),
                         MunicipalityCity=request.GET.get('Municipality') or None,
                         Barangay=request.GET.get('barangay') or None,
