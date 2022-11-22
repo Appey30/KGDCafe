@@ -60,12 +60,12 @@ class couponlist (models.Model):
     discountamount = models.IntegerField(blank = True, null = True, default='')
     is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
     is_consumable = models.BooleanField(default = False, blank = True, null = True)
-    numberredeem = models.IntegerField(blank = True, null = True, default=0)
+    redeemlimit = models.IntegerField(blank = True, null = True, default=0)
     is_active = models.BooleanField(default = False, blank = True, null = True)
     MinimumAmount = models.IntegerField(blank = True, null = True, default='')
 
     def __str__(self):
-        if self.numberredeem == 0:
+        if self.redeemlimit == 0:
             Redeem = "Redeemed"
         else:
             Redeem = "Not yet Redeemed"
