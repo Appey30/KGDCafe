@@ -31025,26 +31025,27 @@ pampizza = presyopizza;
     </div>
 </div>
 {% if couponvalidity == 'Valid' %}
-<h2 class="couponinfo1">Upon</h2>
-<h2 class="couponinfo2">Checkout</h2>
-<div class="discountdiv">
+<h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Upon</h2>
+<h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">Checkout</h2>
+<div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
 <h1 id="discounttext">{{discount}}</h1>
 <img src="{% static 'discountimage.png' %}" class="discount"></img>
 </div>
 {% elif couponvalidity == 'KGDDeliveryFree' %}
-<div class="freedeliverydiv">
+<div class="freedeliverydiv" style="animation:fade-bottom-in 0.5s;">
 <img src="{% static 'freedeliverycompressed.png' %}" class="freedelivery"></img>
 </div>
 {% elif couponvalidity == 'Invalid' %}
-<div class="alertcoupon warning">
+<div class="alertcoupon warning" style="animation:fade-bottom-in 0.5s;">
   <span class="closebtn" onclick="this.parentElement.style.animation='fade-bottom-out 0.5s';closealertcoupon();">&times;</span>
 {{couponvaliditymessage}}
 </div>
 
 {% endif %}
 <script>
+
 function closealertcoupon(){
-var alertcoupon = document.getElementsByClassName('alertcoupon');
+var alertcoupon = document.getElementsByClassName('alertcoupon')[0];
 alertcoupon.style.display = "none";
 }
 function atbpizza(productname, pizzaprice, pizzasize, pizzasubcategory) {
