@@ -5442,7 +5442,7 @@ def Onlineordertestingsystem(request, admin_id):
             objs = [Customer(
                         Admin=admin_id,
                         Customername=request.GET.get('fullname'),
-                        codecoupon=request.GET.get('getpromocodename') or None,,
+                        codecoupon=request.GET.get('getpromocodename') or None,
                         Province=request.GET.get('Province'),
                         MunicipalityCity=request.GET.get('Municipality') or None,
                         Barangay=request.GET.get('barangay') or None,
