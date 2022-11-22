@@ -28836,7 +28836,7 @@ var alertvalue=document.getElementById('alertvalueid').value;
   }else if('{{user.first_name}}'){
   alertsuccess.classList.add('alertanimate')
   alertsuccess.style.display = "block";
-  alertsuccess.innerHTML = "<strong>Success!</strong> You have logged-in with Facebook {{user.first_name}}!";
+  alertsuccess.innerHTML = "<strong>Success!</strong> You have logged-in {{user.first_name}}!";
   setTimeout(alertremove, 5000);
   }else{
   alertsuccess.classList.remove('alertanimate')
