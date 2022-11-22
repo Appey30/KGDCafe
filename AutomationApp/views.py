@@ -2632,7 +2632,7 @@ def Onlineordersystem(request, admin_id):
             print(lastname)
 
             if Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
-                counteruser=Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").sorted_by('-id').distinct('pinnedlat').values_list('pinnedlat', flat=True)
+                counteruser=Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True))
                 print('counteruser: ',counteruser)
                 print('counteruser: ',counteruser)
                 print('counteruser: ',counteruser)
