@@ -1623,7 +1623,7 @@ def postwo(request):
                     codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
                     if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit > 0:
                         codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
-                        codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri)
+                        codeconsumereducer=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']).update(redeemlimit=codeconsumereduceri)
                     else:
                         pass
                 else:
@@ -3764,7 +3764,7 @@ def kgddashboard(request):
                         codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
                         if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
                             codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
-                            codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri)
+                            codeconsumereducer=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']).update(redeemlimit=codeconsumereduceri)
                         else:
                             pass
                     else:
@@ -4662,7 +4662,7 @@ def kgddashboard(request):
                         codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
                         if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
                             codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
-                            codeconsumereducer=codeconsumereducerii.update(redeemlimit=codeconsumereduceri)
+                            codeconsumereducer=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']).update(redeemlimit=codeconsumereduceri)
                         else:
                             pass
                     else:
