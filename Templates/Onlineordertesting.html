@@ -1128,7 +1128,7 @@ background-color:;
 z-index:1;
 text-align:center;
 }
-.couponinfo{
+.couponinfo1{
 position:fixed;
 bottom:3px;left:0px;
 margin-left:0px;
@@ -1136,11 +1136,23 @@ margin-right:auto;
 background-color:;
 z-index:1;
 text-align:center;
+font-weight:bold;
+}
+.couponinfo2{
+position:fixed;
+bottom:3px;left:0px;
+margin-left:0px;
+margin-right:auto;
+background-color:;
+z-index:1;
+text-align:center;
+font-weight:bold;
 }
 .discountdiv h1{
 position:fixed;
 left:22px;bottom:5px;font-size:60px;
 font-weight:bold;
+cursor:default;
 }
 .discount{
 
@@ -5678,8 +5690,9 @@ z-index:1;
 position:fixed;
 left:18px;bottom:10px;font-size:70px;
 font-weight:bold;
+cursor:default;
 }
-.couponinfo{
+.couponinfo1{
 position:fixed;
 bottom:3px;left:0px;
 margin-left:0px;
@@ -5687,6 +5700,17 @@ margin-right:auto;
 background-color:;
 z-index:1;
 text-align:center;
+font-weight:bold;
+}
+.couponinfo2{
+position:fixed;
+bottom:3px;left:0px;
+margin-left:0px;
+margin-right:auto;
+background-color:;
+z-index:1;
+text-align:center;
+font-weight:bold;
 }
 .discount{
 width:160px;
@@ -10208,8 +10232,9 @@ text-align:center;
 position:fixed;
 left:20px;bottom:4px;font-size:45px;
 font-weight:bold;
+cursor:default;
 }
-.couponinfo{
+.couponinfo1{
 position:fixed;
 bottom:3px;left:0px;
 margin-left:0px;
@@ -10217,6 +10242,17 @@ margin-right:auto;
 background-color:;
 z-index:1;
 text-align:center;
+font-weight:bold;
+}
+.couponinfo2{
+position:fixed;
+bottom:3px;left:0px;
+margin-left:0px;
+margin-right:auto;
+background-color:;
+z-index:1;
+text-align:center;
+font-weight:bold;
 }
 .discount{
 width:120px;
@@ -14741,8 +14777,9 @@ text-align:center;
 position:fixed;
 left:10px;bottom:1px;
 font-weight:bold;
+cursor:default;
 }
-.couponinfo{
+.couponinfo1{
 position:fixed;
 bottom:3px;left:0px;
 margin-left:0px;
@@ -14750,6 +14787,17 @@ margin-right:auto;
 background-color:;
 z-index:1;
 text-align:center;
+font-weight:bold;
+}
+.couponinfo2{
+position:fixed;
+bottom:3px;left:0px;
+margin-left:0px;
+margin-right:auto;
+background-color:;
+z-index:1;
+text-align:center;
+font-weight:bold;
 }
 .discount{
 width:90px;
@@ -19462,8 +19510,9 @@ text-align:center;
 position:fixed;
 left:10px;bottom:1px;
 font-weight:bold;
+cursor:default;
 }
-.couponinfo{
+.couponinfo1{
 position:fixed;
 bottom:3px;left:0px;
 margin-left:0px;
@@ -19471,6 +19520,17 @@ margin-right:auto;
 background-color:;
 z-index:1;
 text-align:center;
+font-weight:bold;
+}
+.couponinfo2{
+position:fixed;
+bottom:3px;left:0px;
+margin-left:0px;
+margin-right:auto;
+background-color:;
+z-index:1;
+text-align:center;
+font-weight:bold;
 }
 .discount{
 width:90px;
@@ -30790,7 +30850,8 @@ pampizza = presyopizza;
     </div>
 </div>
 {% if couponvalidity == 'Valid' %}
-<h2 class="couponinfo">Upon Checkout</h2>
+<h2 class="couponinfo1">Upon</h2>
+<h2 class="couponinfo2">Checkout</h2>
 <div class="discountdiv">
 <h1 id="discounttext">{{discount}}</h1>
 <img src="{% static 'discountimage.png' %}" class="discount"></img>
