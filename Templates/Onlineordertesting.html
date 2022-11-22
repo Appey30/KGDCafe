@@ -30881,7 +30881,7 @@ pampizza = presyopizza;
 <img src="{% static 'freedeliverycompressed.png' %}" class="freedelivery"></img>
 </div>
 {% elif couponvalidity == 'Invalid' %}
-<div class="alert">
+<div class="alert alert-danger">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 {{couponvaliditymessage}}
 </div>
