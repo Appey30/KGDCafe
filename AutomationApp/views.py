@@ -2401,8 +2401,8 @@ def Onlineordersystem(request, admin_id):
         #?prmcd=<code>
         promocodegeti=request.GET.get('prmcd', '')
         if promocodegeti:
-        #without minimum amount
-            if couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=False): 
+        #without minimum amount #withoutredeemlimit
+            if couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False): 
                 if promocodegeti == "KGDDeliveryFree":
                     couponvalidity='KGDDeliveryFree'
                     couponvaliditymessage='Valid Coupon.'
@@ -2416,22 +2416,53 @@ def Onlineordersystem(request, admin_id):
                     discount=discounti.discountamount
                     rqrd_minimumamnt=0
                     prmcd=promocodegeti
-            #this coupon code has been consumed. #without minimum amount
-            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=False): 
+            #without minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=False).exclude(redeemlimit=0): 
+                if promocodegeti == "KGDDeliveryFree":
+                    couponvalidity='KGDDeliveryFree'
+                    couponvaliditymessage='Valid Coupon.'
+                    discount='0'
+                    rqrd_minimumamnt=0
+                    prmcd='KGDDeliveryFree'
+                else:
+                    couponvalidity='Valid'
+                    couponvaliditymessage='Valid'
+                    discounti=couponlist.objects.get(code=promocodegeti)
+                    discount=discounti.discountamount
+                    rqrd_minimumamnt=0
+                    prmcd=promocodegeti
+            #this coupon code has been consumed. #without minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, redeemlimit=0,is_active=True, is_withMinimumAmount=False): 
                 couponvalidity='Invalid'
-                couponvaliditymessage='This coupon code has been consumed.'
+                couponvaliditymessage='This coupon code has reached maximum redeem limit.'
                 discount='0'
                 rqrd_minimumamnt=0
                 prmcd=promocodegeti
-            #this coupon code is inactive at this moment. #without minimum amount
-            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=False): 
+            #this coupon code is inactive at this moment. #without minimum amount #withoutredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=False, is_withMinimumAmount=False): 
                 couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code is inactive at this moment.'
                 discount='0'
                 rqrd_minimumamnt=0
                 prmcd=promocodegeti
-            #with minimum amount
-            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=True): 
+            #this coupon code is inactive at this moment. #without minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=False, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #with minimum amount #withoutredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Valid'
+                couponvaliditymessage='Valid Coupon'
+                discounti=couponlist.objects.get(code=promocodegeti)
+                discount=discounti.discountamount
+                rqrd_minimumamnti=couponlist.objects.get(code=promocodegeti)
+                rqrd_minimumamnt=rqrd_minimumamnti.MinimumAmount
+                prmcd=promocodegeti
+            #with minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=True).exclude(redeemlimit=0): 
                 couponvalidity='Valid'
                 couponvaliditymessage='Valid Coupon'
                 discounti=couponlist.objects.get(code=promocodegeti)
@@ -2440,14 +2471,21 @@ def Onlineordersystem(request, admin_id):
                 rqrd_minimumamnt=rqrd_minimumamnti.MinimumAmount
                 prmcd=promocodegeti
             #this coupon code has been consumed. #with minimum amount
-            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=True): 
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, redeemlimit=0, is_active=True, is_withMinimumAmount=True): 
                 couponvalidity='Invalid'
-                couponvaliditymessage='This coupon code has been redeemed.'
+                couponvaliditymessage='This coupon code has reached maximum redeem limit.'
                 discount='0'
                 rqrd_minimumamnt=0
                 prmcd=promocodegeti
-            #this coupon code is inactive at this moment. #with minimum amount
-            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=True): 
+            #this coupon code is inactive at this moment. #with minimum amount #withoutredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=False, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #with minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=False, is_withMinimumAmount=True): 
                 couponvalidity='Invalid'
                 couponvaliditymessage='This coupon code is inactive at this moment.'
                 discount='0'

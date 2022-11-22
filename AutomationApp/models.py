@@ -61,6 +61,7 @@ class couponlist (models.Model):
     is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
     is_consumable = models.BooleanField(default = False, blank = True, null = True)
     redeemlimit = models.IntegerField(blank = True, null = True, default=0)
+    #redeemlimit is the same with redeemnumber
     is_active = models.BooleanField(default = False, blank = True, null = True)
     MinimumAmount = models.IntegerField(blank = True, null = True, default='')
 
