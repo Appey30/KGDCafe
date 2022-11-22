@@ -65,7 +65,7 @@ class couponlist (models.Model):
     MinimumAmount = models.IntegerField(blank = True, null = True, default='')
 
     def __str__(self):
-        if self.numberconsume == 0:
+        if self.numberredeem == 0:
             Redeem = "Redeemed"
         else:
             Redeem = "Not yet Redeemed"
