@@ -30667,6 +30667,10 @@ pampizza = presyopizza;
 <h1 id="discounttext">{{discount}}</h1>
 <img src="{% static 'discountimage.png' %}" class="discount"></img>
 </div>
+{% elif couponvalidity == 'KGDDeliveryFree' %}
+<div class="discountdiv">
+<img src="{% static 'freedeliverycompressed.png' %}" class="discount"></img>
+</div>
 {% endif %}
 <script>
 
