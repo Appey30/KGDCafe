@@ -1320,9 +1320,9 @@ text-align:justify;
 </div>
 <div class="gobackbutton">
 {% if request.Get.get['prmcd'] %}
-<a href="../{{admin_id}}/?prmcd={{request.Get.get['prmcd']}}"><button><i class="fa fa-arrow-left"></i> Home</button></a>
+<a href="../{{admin_id}}/?prmcd={{request.Get.get('prmcd')}}"><button><i class="fa fa-arrow-left"></i> Home</button></a>
 {% else %}
-<a href="../{{admin_id}}"><button><i class="fa fa-arrow-left"></i> Home</button></a>
+<a href="../{{admin_id}}/"><button><i class="fa fa-arrow-left"></i> Home</button></a>
 {% endif %}
 </div>
 <div class="progressdiv">
