@@ -1324,11 +1324,16 @@ var addonsfinal='x';
 }
         alert('third: '+showordercounter)
             dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">'+showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
+            if(showorders.gpslat){
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
+            }
+            if(showorders.LocationMarker[0]){
             urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
             };
+            }
+
             alert('urlgps: '+urlgps+'      pinnedpoint: '+pinnedpoint)
             
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Subtotal:</td><td class="tdqueue value"> ₱'+totalpunched+'.00</td></tr>';
