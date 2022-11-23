@@ -31188,11 +31188,19 @@ pampizza = presyopizza;
     </div>
 </div>
 {% if couponvalidity == 'Valid' %}
-<h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Upon</h2>
-<h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">Checkout</h2>
-<div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
-<h1 id="discounttext">{{discount}}</h1>
-<img src="{% static 'discountimage.png' %}" class="discount"></img>
+    {% if rqrd_minimumamnt == 0 %}
+        <h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Upon</h2>
+        <h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">Checkout</h2>
+        <div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
+        <h1 id="discounttext">{{discount}}</h1>
+        <img src="{% static 'discountimage.png' %}" class="discount"></img>
+    {% else %}
+        <h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Min. Purchase</h2>
+        <h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">₱{{rqrd_minimumamnt}}.00</h2>
+        <div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
+        <h1 id="discounttext">{{discount}}</h1>
+        <img src="{% static 'discountimage.png' %}" class="discount"></img>
+    {% endif %}
 </div>
 {% elif couponvalidity == 'KGDDeliveryFree' %}
 <div class="freedeliverydiv" style="animation:fade-bottom-in 0.5s;">
