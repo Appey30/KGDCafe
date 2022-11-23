@@ -1324,19 +1324,24 @@ var addonsfinal='x';
 }
 
             dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">'+showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
-            alert('tr(QTY: '+showorders.Qty+'  Productname: '+showorders.productname+'   Category: '+showorders.Category+'   Size: '+sizefinal+'  addonsfinal: '+addonsfinal+'  Subtotal: '+showorders.Subtotal)
             if(showorders.gpslat){
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
+            }else{
+            urlgps=""
+            gpslink=""
             }
             alert('urlgps: '+urlgps)
             if(showorders.pinnedlng){
             urlpinned='https://www.google.com/maps/place/'+showorders.pinnedlat+','+showorders.pinnedlng+'/@'+showorders.pinnedlat+','+showorders.pinnedlng+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
+            }else{
+            urlpinned="";
+            pinnedpoint=""
             };
             }
 
-            alert('pinnedpoint: '+pinnedpoint)
+            alert('urlpinned: '+urlpinned)
             
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Subtotal:</td><td class="tdqueue value"> ₱'+totalpunched+'.00</td></tr>';
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Delivery Fee:</td><td class="tdqueue value"> ₱'+devfee+'.00</td></tr>';
