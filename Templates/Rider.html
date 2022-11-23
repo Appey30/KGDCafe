@@ -1163,26 +1163,23 @@ var todelivertbodydata = document.getElementById('deliverthis');
             
                 var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
                 var length = todeliverorderffi.length;
-                alert('todeliverorderffi: '+JSON.stringify(todeliverorder.viewordersrider))
-                alert('todeliverorderffi: '+JSON.stringify(todeliverorderffi))
-                //alert('ContactNum:'+todeliverorderffi[0]["fields"].contactnumber+'    Name: '+JSON.stringify(todeliverorderffi[0]["fields"].Customername)+'    GSubtotal: '+todeliverorderffi[0]["fields"].GSubtotal+'     Devfee: '+todeliverorderffi[0]["fields"].DeliveryFee )
                 for(var todeliverorders of todeliverorderffi){
                 var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
                 var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
-                alert('request: '+request)
+                
                 var time = "";
                 var bargy="";
                 var MOPstringify = JSON.stringify(todeliverorders["fields"].MOP)
-                if(todeliverorders["fields"].Timetodeliver == "Now"){
-                time = "now";
-                }else{
-                time = todeliverorders["fields"].ScheduleTime;
-                }
-                if(todeliverorders["fields"].Barangay){
-                bargy = todeliverorders["fields"].Barangay;
-                }else{
-                bargy = "None";
-                }
+                    if(todeliverorders["fields"].Timetodeliver == "Now"){
+                    time = "now";
+                    }else{
+                    time = todeliverorders["fields"].ScheduleTime;
+                    }
+                    if(todeliverorders["fields"].Barangay){
+                    bargy = todeliverorders["fields"].Barangay;
+                    }else{
+                    bargy = "None";
+                    }
 
                 dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td></tr>";
                 
@@ -1296,6 +1293,7 @@ orderbut.classList.remove("focusbutton");
 contactmatch = contactnumber;
         var totalpunched = 0;
         var showordercounter = showorder.length;
+        alert(showordercounter)
             for(let i = 0;i<showordercounter;i++){
         
                 totalpunched = totalpunched+parseInt(showorder[i].Subtotal);
@@ -1328,7 +1326,8 @@ var addonsfinal='x';
             urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
             };
-
+            alert('urlgps: '+urlgps+'      pinnedpoint: '+pinnedpoint)
+            
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Subtotal:</td><td class="tdqueue value"> ₱'+totalpunched+'.00</td></tr>';
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Delivery Fee:</td><td class="tdqueue value"> ₱'+devfee+'.00</td></tr>';
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue totalspecial">Total:</td><td class="tdqueue totalphp">₱'+grandtotal+'.00</td></tr>';
