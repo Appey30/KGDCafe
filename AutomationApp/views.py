@@ -2765,7 +2765,7 @@ def Onlineordersystem(request, admin_id):
             if promocodegeti:
                 return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/?prmcd='+promocodegeti)
             else:
-                return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/)
+                return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/')
         else:
             onlineorder = Customer.objects.none()
         viewordersi={}
