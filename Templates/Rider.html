@@ -1163,6 +1163,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
             
                 var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
                 var length = todeliverorderffi.length;
+                alert('todeliverorderffi: '+JSON.stringify(vieworders))
                 alert('todeliverorderffi: '+JSON.stringify(todeliverorderffi))
                 alert('ContactNum:'+todeliverorderffi[0]["fields"].contactnumber+'    Name: '+JSON.stringify(todeliverorderffi[0]["fields"].Customername)+'    GSubtotal: '+todeliverorderffi[0]["fields"].GSubtotal+'     Devfee: '+todeliverorderffi[0]["fields"].DeliveryFee )
                 for(var todeliverorders of todeliverorderffi){
