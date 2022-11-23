@@ -1064,7 +1064,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 <img src="{% static 'qw1.png' %}" class="background"></img>
-
+<audio id="audioid" style="position:absolute;opacity:0;" controls>
+  <source src="/media/MinionLaughing Ringtone.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
 
 
 
@@ -1163,6 +1166,10 @@ var todelivertbodydata = document.getElementById('deliverthis');
             
                 var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
                 var length = todeliverorderffi.length;
+                if(length>0){
+                var audioid = document.getElementById('audioid')
+                audioid.play();
+                }
                 for(var todeliverorders of todeliverorderffi){
                 var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
                 var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
@@ -1212,6 +1219,10 @@ var todelivertbodydata = document.getElementById('deliverthis');
             
                 var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
                 var length = todeliverorderffi.length;
+                if(length>0){
+                var audioid = document.getElementById('audioid')
+                audioid.play();
+                }
                 for(var todeliverorders of todeliverorderffi){
                 var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
                 var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
