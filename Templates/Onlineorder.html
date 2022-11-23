@@ -24342,7 +24342,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
             <div class="paymentsetupdiv">
             {% if rqrd_minimumamnt == 0 %}
             {% else %}
-            <h8>Min. Amount to apply Promo: ₱ {{rqrd_minimumamnt}}</h8>
+            <h10 style="position:absolute;color:red;">Min. Amount to apply Promo: ₱ {{rqrd_minimumamnt}}</h10>
             {% endif %}
             <input onclick="paydetails()" type="button" value="Payment Setup" id="checkoutbut"></input>
             <div class="paymentsetupdivh8div">
