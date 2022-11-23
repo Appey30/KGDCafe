@@ -1324,6 +1324,7 @@ var addonsfinal='x';
 }
 
             dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">'+showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
+            alert('tr(QTY: '+showorders.Qty+'  Productname: '+showorders.productname+'   Category: '+showorders.Category+'   Size: '+sizefinal+'  addonsfinal: '+addonsfinal+'  Subtotal: '+showorders.Subtotal)
             if(showorders.gpslat){
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
