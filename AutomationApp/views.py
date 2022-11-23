@@ -2728,7 +2728,7 @@ def Onlineordersystem(request, admin_id):
                         DeliveryFee=request.GET.get('devfeename') or 0,
                         contactnumber=request.GET.get('contactno'),
                         Bill=request.GET.get('changefor') or 0,
-                        Change=(changeefor-int(request.GET.get('totalwithdevfeename') or 0)) or 0,
+                        Change=(changeefor-int(request.GET.get('totalwithdevfeename') or 0)) or float(request.GET.get('totalwithdevfeename') or 0,
                         productname=obj['productname'],
                         Category=obj['Category'],
                         Subcategory=obj['Subcategory'] or None,
