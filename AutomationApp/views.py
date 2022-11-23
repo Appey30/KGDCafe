@@ -2842,8 +2842,8 @@ def orderprogress(request, admin_id):
             'vieworderscustomer':vieworderscustomer,
             'Reject':TrueFalse,
             }
-            return JsonResponse(context)
-        return render(request, 'orderprogress.html',{'admin_id':admin_id,'userr':userr})
+            return JsonResponse(context)promocodegeti
+        return render(request, 'orderprogress.html',{'promocodegeti':promocodegeti,'admin_id':admin_id,'userr':userr})
 
 @login_required
 def saletoday(request):
