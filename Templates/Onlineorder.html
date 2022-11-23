@@ -25133,23 +25133,40 @@ var deliveryfeei = 0;
             deliveryfeei = 29;
             }
     if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-    deliveryfee=0
+        if({{rqrd_minimumamnt}} == 0){
+            deliveryfee=0
+        }else{
+            if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                deliveryfee=0
+            
+            }else{
+                deliveryfee=deliveryfeei
+            }
+        }
+    
     }else{
-    deliveryfee=deliveryfeei
+        deliveryfee=deliveryfeei
     }
   }          
 
 totalwithdevfees = totalwithoudevfee + deliveryfee;
-        if('{{couponvalidity}}' == 'Valid'){
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
-        }else{
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        
-        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
-        }
+
+                totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+                gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
+}
         if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-        totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            if({{rqrd_minimumamnt}} == 0){
+               totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            }else{
+                if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                    totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            
+                }else{
+                    totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+                }
+                
+            }
+        
         }else{
         totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
         }
@@ -26556,7 +26573,17 @@ var dfi=0;
         dfi = 29;
         }
 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-df=0;
+        if({{rqrd_minimumamnt}} == 0){
+            df=0;
+        }else{
+            if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                df=0
+            
+            }else{
+                df=dfi;
+            }
+        }
+
 }else{
 df=dfi;
 }
@@ -26567,16 +26594,25 @@ var grandtotalwithdevfees = totalwithoudevfee+df
 $('#totalwithdevfeeid').val(grandtotalwithdevfees);
 $('#devfeeid').val(df);
 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+        if({{rqrd_minimumamnt}} == 0){
+            totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+        }else{
+            if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            
+            }else{
+                totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
+            }
+        }
+
 }else{
 totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
 }
 
-        if('{{couponvalidity}}' == 'Valid'){
+
+       
         gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees.toFixed(2);
-        }else{
-        gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees.toFixed(2);
-        }
+        
 
 pointx=markerX;
 pointy=markerY;
@@ -26894,12 +26930,29 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
         var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
         };
         if('{{couponvalidity}}' == 'Valid'){
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2);+'</td><td class="tdpunched"></td></tr>';
-        discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-        var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+            if({{rqrd_minimumamnt}} == 0){
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2);+'</td><td class="tdpunched"></td></tr>';
+                discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
         
+            }else{
+                if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2);+'</td><td class="tdpunched"></td></tr>';
+                    discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                    var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+        
+            
+                }else{
+                    discountedtotalherei = '';
+                    tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+        
+                }
+            }
+
         }else{
         discountedtotalherei = '';
         tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
@@ -26908,11 +26961,24 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
 
 
       if('{{couponvalidity}}' == 'Valid'){
-        discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-        var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-        tablebody.innerHTML = datahtmltest;
+            if({{rqrd_minimumamnt}} == 0){
+                discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                tablebody.innerHTML = datahtmltest;
+            }else{
+                if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                    discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                    var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                    tablebody.innerHTML = datahtmltest;
+                }else{
+                     discountedtotalherei = '';
+                    tablebody.innerHTML = datahtmltest;
+                }
+
         }else{
          discountedtotalherei = '';
         tablebody.innerHTML = datahtmltest;
@@ -27358,8 +27424,18 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                     var discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
                     var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
                     if('{{couponvalidity}}' == 'Valid'){
-                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
-                    totalwithoudevfee = discountedtotalherei;
+                        if({{rqrd_minimumamnt}} == 0){
+                            document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
+                            totalwithoudevfee = discountedtotalherei;
+                        }else{
+                            if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                                document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
+                                totalwithoudevfee = discountedtotalherei;
+                            }else{
+                                document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched.toFixed(2);
+                                totalwithoudevfee = totalpunched;
+                            }
+
                     }else{
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched.toFixed(2);
                     totalwithoudevfee = totalpunched;
@@ -27385,11 +27461,24 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
         var addonqtydisplaysakefinals=allpunched[indexfinderfreefriesfinals].Addonsqty;
         }
         if('{{couponvalidity}}' == 'Valid'){
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+            if({{rqrd_minimumamnt}} == 0){
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
 
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-        tablebody.innerHTML = dataHtmlcart;
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                tablebody.innerHTML = dataHtmlcart;
+            }else{
+                if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                    tablebody.innerHTML = dataHtmlcart;
+                }else{
+                    tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+        
+                }
+
         }else{
         
         tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
@@ -27398,9 +27487,19 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
             
 }else{
        if('{{couponvalidity}}' == 'Valid'){
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-        tablebody.innerHTML = dataHtmlcart;
+            if({{rqrd_minimumamnt}} == 0){
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                tablebody.innerHTML = dataHtmlcart;
+            }else{
+                if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                    tablebody.innerHTML = dataHtmlcart;
+                }else{
+                    tablebody.innerHTML = dataHtmlcart;
+                }
+
         }else{
         tablebody.innerHTML = dataHtmlcart;
         };
