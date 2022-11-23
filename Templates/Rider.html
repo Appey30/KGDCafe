@@ -1331,7 +1331,7 @@ var addonsfinal='x';
             urlgps=""
             gpslink=""
             }
-            alert('urlgps: '+urlgps)
+            
             if(showorders.pinnedlng){
             urlpinned='https://www.google.com/maps/place/'+showorders.pinnedlat+','+showorders.pinnedlng+'/@'+showorders.pinnedlat+','+showorders.pinnedlng+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
@@ -1341,7 +1341,7 @@ var addonsfinal='x';
             };
             }
 
-            alert('urlpinned: '+urlpinned)
+            
             
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Subtotal:</td><td class="tdqueue value"> ₱'+totalpunched+'.00</td></tr>';
             dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Delivery Fee:</td><td class="tdqueue value"> ₱'+devfee+'.00</td></tr>';
