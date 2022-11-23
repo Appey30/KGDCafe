@@ -23380,9 +23380,26 @@ class="background">
 
 {% else %}
 {% endif %}
+
+
+{% if couponvalidity == 'Valid' %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% elif couponvalidity == 'KGDDeliveryFree' %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% elif couponvalidity == 'Invalid' %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% else %}
 <div class="navbuttontrackerdiv">
 <a href="OrderProgress"><button class="navbuttontracker">Track Order</button></a>
 </div>
+{% endif %}
+
 </div>
 
 <div class="logodiv">
