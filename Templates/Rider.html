@@ -1165,10 +1165,11 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 var length = todeliverorderffi.length;
                 alert('todeliverorderffi: '+JSON.stringify(todeliverorder.viewordersrider))
                 alert('todeliverorderffi: '+JSON.stringify(todeliverorderffi))
-                alert('ContactNum:'+todeliverorderffi[0]["fields"].contactnumber+'    Name: '+JSON.stringify(todeliverorderffi[0]["fields"].Customername)+'    GSubtotal: '+todeliverorderffi[0]["fields"].GSubtotal+'     Devfee: '+todeliverorderffi[0]["fields"].DeliveryFee )
+                //alert('ContactNum:'+todeliverorderffi[0]["fields"].contactnumber+'    Name: '+JSON.stringify(todeliverorderffi[0]["fields"].Customername)+'    GSubtotal: '+todeliverorderffi[0]["fields"].GSubtotal+'     Devfee: '+todeliverorderffi[0]["fields"].DeliveryFee )
                 for(var todeliverorders of todeliverorderffi){
                 var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
                 var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
+                alert('request: '+request)
                 var time = "";
                 var bargy="";
                 var MOPstringify = JSON.stringify(todeliverorders["fields"].MOP)
