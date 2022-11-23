@@ -24340,7 +24340,10 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
             </div>
             <div class="modalfootcart">`
             <div class="paymentsetupdiv">
-
+            {% if rqrd_minimumamnt == 0 %}
+            {% else %}
+            <h8>Min. Amount to apply Promo: ₱ {{rqrd_minimumamnt}}</h8>
+            {% endif %}
             <input onclick="paydetails()" type="button" value="Payment Setup" id="checkoutbut"></input>
             <div class="paymentsetupdivh8div">
             <h8 id="totalpunched" class=""></h8>
@@ -26337,11 +26340,9 @@ var detailscontent = document.getElementById("detailscontent");
 detailscontent.style.animation="fade-bottom-in 0.5s";
 
 var totaler = document.getElementById("totalwithoutdevfee");
-        if('{{couponvalidity}}' == 'Valid'){
+
         totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        }else{
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        }
+
 var dataHtml='';
 var tablebodytwo = document.getElementById('summarytableid');
             for(let punched of allpunched){
@@ -26810,13 +26811,12 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
         var tablebody=document.getElementById('punchedtablebody');
         var datahtmltest="";
         let totalpunched=0;
-        
             for(let i = 0;i<(allpunched.length);i++){
             
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-            
+    
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
@@ -26891,8 +26891,10 @@ if(discountedtotalherei){
 document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+discountedtotalherei.toFixed(2);
 totalwithoudevfee = discountedtotalherei;
 }else{
+
  document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched.toFixed(2);
 totalwithoudevfee = totalpunched;
+
 };
 document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             //$("#totalpunched1").val(totalpunched);
