@@ -2762,7 +2762,10 @@ def Onlineordersystem(request, admin_id):
             messages.success(request, "Your order has been submitted!")
             onlineorder = Customer.objects.filter(Admin=admin_id).distinct('contactnumber')
             submitted(request)
-            return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress')
+            if promocodegeti:
+                return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/?prmcd='+promocodegeti)
+            else:
+                return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/)
         else:
             onlineorder = Customer.objects.none()
         viewordersi={}
@@ -2784,6 +2787,7 @@ def Onlineordersystem(request, admin_id):
         return render(request, 'Onlineorder.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):
+        promocodegeti=request.GET.get('prmcd', '')
         userr=request.user.id
         print('userr:',userr)
         if userr:
@@ -5504,7 +5508,10 @@ def Onlineordertestingsystem(request, admin_id):
             messages.success(request, "Your order has been submitted!")
             onlineorder = Customer.objects.filter(Admin=admin_id).distinct('contactnumber')
             submitted(request)
-            return HttpResponseRedirect('/index/onlineordertesting/'+str(admin_id)+'/OrderProgress')
+            if promocodegeti:
+                return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/?prmcd='+promocodegeti)
+            else:
+                return HttpResponseRedirect('/index/onlineordertesting/'+str(admin_id)+'/OrderProgress/')
         else:
             onlineorder = Customer.objects.none()
         viewordersi={}
