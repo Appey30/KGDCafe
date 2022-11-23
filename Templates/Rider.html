@@ -1298,6 +1298,7 @@ contactmatch = contactnumber;
         
                 totalpunched = totalpunched+parseInt(showorder[i].Subtotal);
             };
+            alert('first: '+showordercounter)
 var grandtotal = 0;
 if(gtotal){
 grandtotal = gtotal;
@@ -1315,12 +1316,13 @@ var sizefinal = showorders.PSize;
 }else{
 var sizefinal = 'x'
 }
+alert('second: '+showordercounter)
 if(showorders.Addons){
 var addonsfinal=showorders.Addons+' x '+showorders.QtyAddons;
 }else{
 var addonsfinal='x';
 }
-        alert(showordercounter)
+        alert('third: '+showordercounter)
             dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">'+showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
