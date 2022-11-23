@@ -16,7 +16,65 @@ body {
   background-size: cover;
 
 }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #009933;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 .notify{
 position:absolute;
 right:200px;
@@ -207,7 +265,7 @@ height:30px;
 .edit{
 margin:0px;
 color:white;
-background-color:#04AA6D;
+background-color:#009933;
 border-radius:15px;
 width:60px;
 height:30px;
@@ -428,18 +486,7 @@ cursor:pointer;
 .infobuttonvalidity:hover{
 color:rgba(0,0,0,0.2);
 }
-.showis_withvalidityiddivinfo{
-display:none;
-position:absolute;
-background-color:white;
-border: 1px solid rgba(0,0,0,0.2);
-border-radius: 10px;
-top:400px;
-padding-left:10px;
-padding-right:10px;
-padding-top:10px;
-z-index:100;
-}
+
 
 .infobuttonminimumamount{
 background-color:rgba(0,0,0,0);
@@ -464,6 +511,65 @@ padding-top:10px;
 z-index:100;
 }
 @media screen and (max-width:960px) and (min-width:801px){
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #009933;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 .notify{
 position:absolute;
 top:-10px;
@@ -663,7 +769,7 @@ left:-20px;
 .edit{
 margin:0px;
 color:white;
-background-color:#04AA6D;
+background-color:#009933;
 border-radius:15px;
 width:60px;
 height:30px;
@@ -900,18 +1006,6 @@ cursor:pointer;
 .infobuttonvalidity:hover{
 color:rgba(0,0,0,0.2);
 }
-.showis_withvalidityiddivinfo{
-display:none;
-position:absolute;
-background-color:white;
-border: 1px solid rgba(0,0,0,0.2);
-border-radius: 10px;
-top:365px;
-padding-left:10px;
-padding-right:10px;
-padding-top:10px;
-z-index:100;
-}
 
 .infobuttonminimumamount{
 background-color:rgba(0,0,0,0);
@@ -937,7 +1031,65 @@ z-index:100;
 }
 }
 @media screen and (max-width:800px){
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
 
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 .background{
 position:absolute;
 width:99.8%;
@@ -1112,7 +1264,7 @@ left:-10px;
 .edit{
 margin:0px;
 color:white;
-background-color:#04AA6D;
+background-color:#009933;
 border-radius:15px;
 width:30px;
 height:15px;
@@ -1347,18 +1499,7 @@ cursor:pointer;
 .infobuttonvalidity:hover{
 color:rgba(0,0,0,0.2);
 }
-.showis_withvalidityiddivinfo{
-display:none;
-position:absolute;
-background-color:white;
-border: 1px solid rgba(0,0,0,0.2);
-border-radius: 10px;
-top:365px;
-padding-left:10px;
-padding-right:10px;
-padding-top:10px;
-z-index:100;
-}
+
 
 .infobuttonminimumamount{
 background-color:rgba(0,0,0,0);
@@ -1500,35 +1641,8 @@ z-index:100;
                                 <br>
                                 <br>
                             </div>
-                            <div class="fieldWrapper"  id="is_withvalidityiddiv">
-
-                                <label>Do you want to set its Date of Validity? <i class="fa fa-info-circle infobuttonvalidity" ></i> </label>
-                                <select onchange="is_withvalidityfunction()" id="is_withvalidityid" class="form-control clear" name="is_withvalidityname" value="">
-                                <option value="" selected disabled hidden>Choose here</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                                </select>
-
-                                <br>
-                                <div id="showis_withvalidityiddivinfoid" class="showis_withvalidityiddivinfo">
-                                <small style="color:red; font-weight:bold;">Choose Yes if:</small><br>
-                                <small style="color:red;">-you wanna set the start and expiration date of validation.</small><br>
-                                </div>
-
-                            </div>
-                            <div class="fieldWrapper" id="startvalidityiddiv" style="display:none;">
-                                <label>Valid From:</label>
-                                <br>
-                                <input id="startvalidityid" class="form-control clear" type="date" placeholder="Enter coupon starting validity here" name="startvalidityname"></input>
-                                <br>
-
-                            </div>
-                            <div class="fieldWrapper" id="expirationiddiv" style="display:none;">
-                                <label>Valid Until:</label>
-                                <input id="expirationid" class="form-control clear" type="date" placeholder="Enter coupon expiration validity here" name="expirationname"></input>
-                                <br>
-                                
-                            </div>
+                            
+ 
                             <div class="fieldWrapper" id="is_withMinimumAmountiddiv">
 
 
@@ -1555,7 +1669,27 @@ z-index:100;
                                 <br>
                                 
                             </div>
-                            <div class="fieldWrapper" id="is_activeiddiv" style="display:none;">
+                            <div class="fieldWrapper" id="is_maxredeemdivid" style="display:block;">
+
+                                <label>Do you wanna set maximum redeem limit?  </label>
+                                <select onchange="maxredeemlimit()" id="is_maxredeemid" class="form-control clear" name="is_maxredeemname" value="">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                                </select>
+                                <br>
+                                
+                            </div>
+                            <div class="fieldWrapper" id="maximumredeemdivid" style="display:none;">
+                                <label>Maximum Redeem Limit:</label>
+                                <br>
+                                <input  id="maxredeemlimitid" class="form-control clear" type="number" step="1" min="1" max="" placeholder="Set Maximum Redeem Limit" name="maxredeemlimitname"></input>
+
+
+                                <br>
+                                
+                            </div>
+                            <div class="fieldWrapper" id="is_activeiddiv" style="display:block;">
 
                                 <label>Do you wanna Activate this now?  </label>
                                 <select id="is_activeid" class="form-control clear" name="is_activename" value="">
@@ -1583,8 +1717,7 @@ z-index:100;
     <th class="punchedtext">Coupon Name</th>
     <th class="punchedtext">Category</th>
     <th class="punchedtext">Code</th>
-     <th class="punchedtext">URL</th>
-     <th class="punchedtext">Is it Active</th>
+     <th class="punchedtext">Activate</th>
      <th class="punchedtext">Action</th>
   </tr>
   
@@ -1596,22 +1729,25 @@ z-index:100;
             </script>
         {% endfor %}
     {% endif %}
-
-  <tr>
-  
-    <td></td>
-    <td><</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>
-   <!--<button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
-   <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>-->
-<button class="edit">Edit</button>
-   <button class="delete">Delete</button>
-   </td>
-       
 {% endfor %}
+<tbody style="color:white;" id='couponlisttablebody'></tbody>
+ 
+    
+    
+
+    
+  
+ 
+
+    
+    
+    
+    
+
+   
+   
+   
+
 </div> 
  
 
@@ -1654,13 +1790,25 @@ var categoryid = document.getElementById('categoryid');
 var codeid = document.getElementById('codeid');
 var piecesid = document.getElementById('piecesid');
 var discountpercentageid = document.getElementById('discountpercentageid');
-var is_withvalidityid = document.getElementById('is_withvalidityid');
-var startvalidityid = document.getElementById('startvalidityid');
-var expirationid = document.getElementById('expirationid');
+
+
 var is_withMinimumAmountid = document.getElementById('is_withMinimumAmountid');
 var minimumamountid = document.getElementById('minimumamountid');
-var is_activeid = document.getElementById('is_activeid');       
-          
+var is_activeid = document.getElementById('is_activeid');  
+var maximumredeemdivid = document.getElementById("maximumredeemdivid");
+var maxredeemlimitid = document.getElementById("maxredeemlimitid");
+var is_maxredeemid = document.getElementById("is_maxredeemid");
+
+function maxredeemlimit(){
+
+
+var selected = is_maxredeemid.options[is_maxredeemid.selectedIndex].text;
+    if(selected=="Yes"){
+    maximumredeemdivid.style.display="block";
+    }else{
+    maximumredeemdivid.style.display="none";
+    };
+};
 function addcouponformpost(){   
 
             $.ajax({
@@ -1671,37 +1819,119 @@ function addcouponformpost(){
             "codeid":JSON.stringify(codeid.value),
             "piecesid":JSON.stringify(piecesid.value),
             "discountpercentageid":JSON.stringify(discountpercentageid.value),
-            "is_withvalidityid":JSON.stringify(is_withvalidityid.value),
-            "startvalidityid":JSON.stringify(startvalidityid.value),
-            "expirationid":JSON.stringify(expirationid.value),
             "is_withMinimumAmountid":JSON.stringify(is_withMinimumAmountid.value),
             "minimumamountid":JSON.stringify(minimumamountid.value),
             "is_activeid":JSON.stringify(is_activeid.value),
+            "is_maxredeemid":JSON.stringify(is_maxredeemid.value),
+            "maxredeemlimitid":JSON.stringify(maxredeemlimitid.value),
             csrfmiddlewaretoken: '{{ csrf_token }}',
             },
-            success: function(response){
-            var qrcode = new QRCode(document.getElementById("qrcodesample"), {
-                text: response.generateurl,
-                width: 150,
-                height: 150,
-            });
+            success: function(responsei){
+            //responsei.Code.CodeTrue[0 or 1]
+            // responsei.Code.CodeFalse[0...n]
+            var response = JSON.parse(responsei.Code);
+            var response = JSON.parse(responsei.Code);
+            if(response.CodeTrue.length>0 && response.CodeFalse.length==0){
+                    var qrcode = new QRCode(document.getElementById("qrcodesample"), {
+                        text: response.CodeTrue[0],
+                        width: 500,
+                        height: 500,
+                    });
+
+                    document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
+                    setTimeout(nextmove, 1000);
+
+                    function nextmove(){
+
+                            var invibutton = document.createElement("a");
+
+            
+                            var elm, source;
+                            elm = document.getElementById("qrcodesample");
+                            for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
+            
+                                if (elm.tagName == "IMG") {
+                                    source = elm.src;
+                                    break;
+                                }
+                            }
+            
+                            invibutton.href=source;
+                            invibutton.download=response.CodeTrue[1]+'.png';
+            
+                            if(source){
+                                document.body.appendChild(invibutton);
+                                invibutton.click();
+                                document.body.removeChild(invibutton);
+                            }else{
+                                setTimeout(nextmove, 1000);
+                            }
+                    }
+            }else if(response.CodeFalse.length>0 && response.CodeTrue.length==0){
+                var i=0;
+                mysecondloop(i);
+                function mysecondloop(i){
+                    var lengthcodefalse=response.CodeFalse.length;
+                    var filename = response.CodeFalse[i].filename;
+                    
+                    myloop(lengthcodefalse, filename, i);
+                }
+                function myloop(lengthcodefalse, filename, i){
+                
+                 
+                    var qrcode = new QRCode(document.getElementById("qrcodesample"), {
+                        text: response.CodeFalse[i].generateurl,
+                        width: 500,
+                        height: 500,
+                    });
+
+                    document.getElementById('qrcodesample').style="position:absolute;z-index:-100;";
+                    setTimeout(nextmove, 1000, lengthcodefalse, filename, i);
+
+                    function nextmove(lengthcodefalse, filename, i){
+
+                            var invibutton = document.createElement("a");
+
+            
+                            var elm, source;
+                            elm = document.getElementById("qrcodesample");
+                            for (elm = elm.firstChild; elm; elm = elm.nextSibling) {
+            
+                                if (elm.tagName == "IMG") {
+                                    source = elm.src;
+                                    break;
+                                }
+                            }
+            
+                            invibutton.href=source;
+                            invibutton.download=filename+'.png';
+            
+                            if(source){
+                                document.body.appendChild(invibutton);
+                                invibutton.click();
+                                document.body.removeChild(invibutton);
+                                while (document.getElementById("qrcodesample").hasChildNodes()) {
+                                    document.getElementById("qrcodesample").removeChild(document.getElementById("qrcodesample").firstChild);
+                                };
+                                invibutton.remove();
+                                i=i+1;
+                                if (i < lengthcodefalse) {
+                                mysecondloop(i);
+                                }else{
+                                ajaxthetable();
+                                }
+                            }else{
+                                setTimeout(nextmove, 1000, lengthcodefalse, filename, i);
+                            }
+                    }
+                
+                    
+                };
 
 
-            var invibutton = document.createElement("a");
-            invibutton.style="position:absolute;z-index:-100;";
-            setTimeout(nextmove, 1000);
-
-            function nextmove(){
-            var srcqrcode = document.getElementById('qrcodesample').children;
-            var getsrcqrcode=srcqrcode[1].src;
-            alert(getsrcqrcode);
-            invibutton.href=getsrcqrcode;
-            invibutton.download=response.filename+response.format;
-            document.body.appendChild(invibutton);
-            invibutton.click();
-            document.body.removeChild(invibutton);
-
-            }
+            }else{
+                alert("Can't comprehend.")
+            };
             },
             error: function(){
             alert("ERROR");
@@ -1711,17 +1941,85 @@ function addcouponformpost(){
         });
 }
 
+function activateornot(id){
+            $.ajax({
+            type:'POST',
+            url:"{% url 'coupon.html' %}",
+            data:{"activateornotid":id,
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            success: function(response){
+            console.log('checkTorF: '+JSON.parse(response.check))
+            ajaxthetable();
+            },
+            error: function(){
+            alert("ERROR");
+            }
+
+
+           });
+};
+
+
+function ajaxthetable(){
+
+
+            $.ajax({
+            type:'POST',
+            url:"{% url 'coupon.html' %}",
+            data:{"getcouponlist":"kunancouponlist",
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            success: function(response){
+            var couponlisti=JSON.parse(response.couponsajax)
+            var counter = couponlisti.length
+
+            var dataHTML; 
+            $('#couponlisttablebody').empty();
+            
+            if(counter>0){
+                for(let i=0;i<counter;i++){
+
+                if(couponlisti[i]["fields"].category == 3){
+                var categ="Multiple Different Code Single";
+                }else if(couponlisti[i]["fields"].category == 1){
+                var categ="One Code Many";
+                }
+                console.log('is_active: '+couponlisti[i]["fields"].is_active)
+
+                if(couponlisti[i]["fields"].is_active == true){
+                var check = "checked";
+                }else if(couponlisti[i]["fields"].is_active == false){
+                var check = "";
+                }
+
+
+                    dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["pk"]+')" '+check+'> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
+
+                }
+            }
+            $('#couponlisttablebody').append(dataHTML);
+            
+            },
+            error: function(){
+            alert("ERROR");
+           }
+
+
+        });
+
+}
 
 function functioncategory(){
 //var modalcontent = document.getElementsByClassName("model-content")[0];
-var showis_withvalidityiddivinfoid = document.getElementById("showis_withvalidityiddivinfoid");
+
 var showis_withMinimumAmountiddivinfoid = document.getElementById("showis_withMinimumAmountiddivinfoid");
 var codeiddiv = document.getElementById("codeiddiv");
 var piecesiddiv = document.getElementById("piecesiddiv");
 var categoryid = document.getElementById("categoryid");
 var selected = categoryid.options[categoryid.selectedIndex].text;
-var is_withvalidityid = document.getElementById("is_withvalidityid");
-var selectedvalidity = is_withvalidityid.options[is_withvalidityid.selectedIndex].text;
+
+
     if(selected == "One Code Many"){
         codeiddiv.style.display="block";
         piecesiddiv.style.display="none";
@@ -1732,15 +2030,7 @@ var selectedvalidity = is_withvalidityid.options[is_withvalidityid.selectedIndex
     };
 
 
-if(window.matchMedia("(min-width: 961px)").matches){
-    showis_withvalidityiddivinfoid.style.top="470px"
-}else if(window.matchMedia("(max-width: 960px)").matches && window.matchMedia("(min-width: 801px)").matches){
-    showis_withvalidityiddivinfoid.style.top="445px"
-    //modalcontent.style.height="900px"
-}else{
-    showis_withvalidityiddivinfoid.style.top="445px"
-    //modalcontent.style.height="900px"
-};
+
 
 if(window.matchMedia("(min-width: 961px)").matches && selectedvalidity == "No"){
     showis_withMinimumAmountiddivinfoid.style.top="560px"
@@ -1758,42 +2048,7 @@ if(window.matchMedia("(min-width: 961px)").matches && selectedvalidity == "No"){
 
 };
 };
-function is_withvalidityfunction(){
-var showis_withMinimumAmountiddivinfoid = document.getElementById("showis_withMinimumAmountiddivinfoid");
-var startvalidityiddiv = document.getElementById("startvalidityiddiv");
-var expirationiddiv = document.getElementById("expirationiddiv");
-var is_activeiddiv = document.getElementById("is_activeiddiv");
-var is_withvalidityid = document.getElementById("is_withvalidityid");
-var selected = is_withvalidityid.options[is_withvalidityid.selectedIndex].text;
-    if(selected=="Yes"){
-        startvalidityiddiv.style.display="block";
-        expirationiddiv.style.display="block";
-        is_activeiddiv.style.display="none";
-        if(window.matchMedia("(min-width: 961px)").matches){
-            showis_withMinimumAmountiddivinfoid.style.top="750px";
-        }else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
-            showis_withMinimumAmountiddivinfoid.style.top="680px";
-        }else{
-            showis_withMinimumAmountiddivinfoid.style.top="680px";
-        };
-    
-    }else{
-        startvalidityiddiv.style.display="none";
-        expirationiddiv.style.display="none";
-        is_activeiddiv.style.display="block";
-        showis_withMinimumAmountiddivinfoid.style.top="";
-        if(window.matchMedia("(min-width: 961px)").matches){
-            showis_withMinimumAmountiddivinfoid.style.top="565px";
-        }else if(window.matchMedia("(max-width: 960px)").matches  && window.matchMedia("(min-width: 800px)").matches){
-            showis_withMinimumAmountiddivinfoid.style.top="525px";
-        }else{
-            showis_withMinimumAmountiddivinfoid.style.top="525px";
-        };
-    };
 
-
-
-};
 
 function is_withMinimumAmountfunction(){
 
@@ -1811,6 +2066,9 @@ var selected = is_withMinimumAmountid.options[is_withMinimumAmountid.selectedInd
 
 
 document.addEventListener("DOMContentLoaded", function(event) { 
+ajaxthetable();
+
+
   $( ".infobutton" ).hover(
     function() {
     $( ".showcategoryinfo" ).css( "display","block" );
@@ -1818,13 +2076,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $( ".showcategoryinfo"  ).css( "display","none" );
     }
 );
-  $( ".infobuttonvalidity" ).hover(
-    function() {
-    $( ".showis_withvalidityiddivinfo" ).css( "display","block" );
-    }, function() {
-    $( ".showis_withvalidityiddivinfo"  ).css( "display","none" );
-    }
-);
+
   $( ".infobuttonminimumamount" ).hover(
     function() {
     $( ".showis_withMinimumAmountiddivinfo" ).css( "display","block" );
@@ -1839,13 +2091,7 @@ $( ".infobutton" ).click(function() {
           $( ".showcategoryinfo" ).css( "display","none" );
         }
 });
-$( ".infobuttonvalidity" ).click(function() {
-        if($( ".showis_withvalidityiddivinfo" ).css( "display") == "none"){
-          $( ".showis_withvalidityiddivinfo" ).css( "display","block" );
-        }else{
-          $( ".showis_withvalidityiddivinfo" ).css( "display","none" );
-        }
-});
+
 $( ".infobuttonminimumamount" ).click(function() {
         if($( ".showis_withMinimumAmountiddivinfo" ).css( "display") == "none"){
           $( ".showis_withMinimumAmountiddivinfo" ).css( "display","block" );

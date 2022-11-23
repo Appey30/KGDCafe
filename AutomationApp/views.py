@@ -209,29 +209,110 @@ def coupon(request):
           couponss = couponlist.objects.none()
        else:
           couponss = couponlist.objects.filter(user__id=userr).order_by('-id')
+
+       if request.POST.get("activateornotid") and is_ajax(request=request):
+          activatecouponid=request.POST.get("activateornotid");
+          torf=couponlist.objects.get(user__id=userr,id=activatecouponid)
+          if torf.is_active == True:
+              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=False)
+              check="true"
+          else:
+              couponlist.objects.filter(user__id=userr,id=activatecouponid).update(is_active=True)
+              check="false"
+          return JsonResponse({'check':check})
+
+
+       if request.POST.get("getcouponlist") and is_ajax(request=request):
+           if couponlist.objects.filter(user__id=userr)==0:
+              couponsajaxi = couponlist.objects.none()
+           else:
+              couponsajaxi = couponlist.objects.filter(user__id=userr).order_by('-id')
+           couponsajax=serializers.serialize('json',couponsajaxi, cls=JSONEncoder)
+           return JsonResponse({'couponsajax':couponsajax})
+
+
+
        if request.POST.get("couponnameid") and is_ajax(request=request):
           couponnameid = json.loads(request.POST.get("couponnameid"))
-          categoryid = json.loads(request.POST.get("categoryid"))
-          codeid = json.loads(request.POST.get("codeid")) or None
-          piecesid = json.loads(request.POST.get("piecesid")) or 0
-          discountpercentageid = json.loads(request.POST.get("discountpercentageid")) or 0
-          is_withvalidityid = json.loads(request.POST.get("is_withvalidityid")) or None
-          startvalidityid = json.loads(request.POST.get("startvalidityid")) or None
-          expirationid = json.loads(request.POST.get("expirationid")) or None
-          is_withMinimumAmountid = json.loads(request.POST.get("is_withMinimumAmountid")) or None
-          minimumamountid = json.loads(request.POST.get("minimumamountid")) or 0
-          is_activeid = json.loads(request.POST.get("is_activeid")) or None
-          if codeid:
-                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
+          categoryidi = json.loads(request.POST.get("categoryid"))
+          if categoryidi=="One Code Many":
+            categoryid=1
           else:
-                allowed_chars = ''.join((string.ascii_letters, string.digits))
-                unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
-                codeid=unique_id
-                generateurl="kgdcafe.herokuapp.com/index/onlineordertesting/4/"+couponnameid+codeid
+            categoryid=3
+          codeid = json.loads(request.POST.get("codeid")) or None
+          piecesidi = json.loads(request.POST.get("piecesid")) or 0
+          if piecesidi:
+            piecesid=int(piecesidi)
+          else:
+            piecesid=0
+          discountpercentageidi = json.loads(request.POST.get("discountpercentageid")) or 0
+          if discountpercentageidi:
+            discountpercentageid=int(discountpercentageidi)
+          else:
+            discountpercentageid=0
+          is_withMinimumAmountid = json.loads(request.POST.get("is_withMinimumAmountid")) or None
+          if is_withMinimumAmountid == 'Yes':
+            is_withMinimumAmountidTF = True
+          else:
+            is_withMinimumAmountidTF = False
+          minimumamountidi = json.loads(request.POST.get("minimumamountid")) or 0
+          if minimumamountidi:
+            minimumamountid=int(minimumamountidi)
+          else:
+            minimumamountid=0
+          is_activeid = json.loads(request.POST.get("is_activeid")) or None
+          if is_activeid == 'Yes':
+            is_activeidTF = True
+          else:
+            is_activeidTF = False
+          is_maxredeemid = json.loads(request.POST.get("is_maxredeemid")) or None
+          if is_maxredeemid == 'Yes':
+            is_maxredeemidTF = True
+          else:
+            is_maxredeemidTF = False
+          maxredeemlimitidi = json.loads(request.POST.get("maxredeemlimitid")) or 0
+          if maxredeemlimitidi:
+            maxredeemlimitid=int(maxredeemlimitidi)
+          else:
+            maxredeemlimitid=0
+          
+          if codeid:
+                CodeTrue=[]
+                CodeFalse=[]
+                #?prmcd=<code>
+                generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/?prmcd="+codeid
+                filename=codeid
+                CodeTrue.insert(0,generateurl)
+                CodeTrue.insert(1,filename)
+                couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid, code=codeid, url=generateurl, pieces=piecesid, discountamount=discountpercentageid, is_withMinimumAmount=is_withMinimumAmountidTF, is_consumable=is_maxredeemidTF,redeemlimit=maxredeemlimitid,MinimumAmount=minimumamountid, is_active=is_activeidTF) 
+          else:
+                CodeTrue=[]
+                CodeFalse=[]
+                i=0
+                while i<piecesid:
+                    allowed_chars = ''.join((string.ascii_letters, string.digits))
+                    unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
+                    codeid=unique_id
+                    #?prmcd=<code>
+                    generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/?prmcd="+codeid
+
+                    objectappender={
+                    'generateurl':generateurl,
+                    'filename':codeid
+                    }
+                    CodeFalse.insert(i, objectappender)
+
+                    couponobjects=couponlist.objects.create(user=request.user, couponname=couponnameid, category_id=categoryid,code=codeid, url=generateurl,pieces=piecesid,discountamount=discountpercentageid,is_consumable=is_maxredeemidTF,redeemlimit=maxredeemlimitid,is_withMinimumAmount=is_withMinimumAmountidTF,MinimumAmount=minimumamountid,is_active=is_activeidTF)
+                    i += 1
+          Codei={}
+          Codei={
+          'CodeTrue':CodeTrue,
+          'CodeFalse':CodeFalse
+          }
+
+          Code=json.dumps(Codei)
           data={
-          'generateurl':generateurl,
-          'filename':couponnameid+codeid,
-          'format':".png"
+          'Code':Code
           }
           return JsonResponse(data)
        return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
@@ -1259,6 +1340,7 @@ def postwo(request):
             objs = [Acceptorder(
                         Admin=Accepted.Admin,
                         Customername=Accepted.Customername,
+                        codecoupon=Accepted.codecoupon,
                         Province=Accepted.Province,
                         MunicipalityCity=Accepted.MunicipalityCity,
                         Barangay=Accepted.Barangay,
@@ -1340,6 +1422,7 @@ def postwo(request):
             objs = [Rejectorder(
                         Admin=userr,
                         Customername=Rejected.Customername,
+                        codecoupon=Rejected.codecoupon,
                         Province=Rejected.Province,
                         MunicipalityCity=Rejected.MunicipalityCity,
                         Barangay=Rejected.Barangay,
@@ -1409,6 +1492,7 @@ def postwo(request):
             objs = [Customer(
                         Admin=userr,
                         Customername=Restored.Customername,
+                        codecoupon=Restored.codecoupon,
                         Province=Restored.Province,
                         MunicipalityCity=Restored.MunicipalityCity,
                         Barangay=Restored.Barangay,
@@ -1478,6 +1562,7 @@ def postwo(request):
             Readyacceptorder=Acceptorder.objects.create(
                         Admin=userr,
                         Customername=Readyadd.Customername,
+                        codecoupon=Readyadd.codecoupon,
                         Province=Readyadd.Province,
                         MunicipalityCity=Readyadd.MunicipalityCity,
                         Barangay=Readyadd.Barangay,
@@ -1533,6 +1618,18 @@ def postwo(request):
         if is_ajax(request=request) and request.POST.get('doneorders'):
             contactnumberdonei = json.loads(request.POST.get('doneorders'))
             contactnumberdone = contactnumberdonei[0]['contactnumber']
+            if contactnumberdonei[0]['codecoupon']:
+                if couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']):
+                    codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
+                    if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit > 0:
+                        codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
+                        codeconsumereducer=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']).update(redeemlimit=codeconsumereduceri)
+                    else:
+                        pass
+                else:
+                    pass
+            else:
+                pass
             if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
                 deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                 deletethis.delete()
@@ -1541,6 +1638,7 @@ def postwo(request):
                 devfeeassales=Sales.objects.create(
                         user=userr,
                         CusName=contactnumberdonei[0]['Customername'],
+                        codecoupon=contactnumberdonei[0]['codecoupon'] or None,
                         Province=contactnumberdonei[0]['Province'],
                         MunicipalityCity=contactnumberdonei[0]['MunicipalityCity'],
                         Barangay=contactnumberdonei[0]['Barangay'],
@@ -1580,6 +1678,7 @@ def postwo(request):
             objs = [Sales(
                         user=userr,
                         CusName=Done.Customername,
+                        codecoupon=Done.codecoupon,
                         Province=Done.Province,
                         MunicipalityCity=Done.MunicipalityCity,
                         Barangay=Done.Barangay,
@@ -2313,26 +2412,136 @@ def inventory(request):
 
 
 def Onlineordersystem(request, admin_id):
+        #'domain/search/?q=haha', you would use request.GET.get('q', '')
+        #theurl+?anykeyhere=anyvalue
+        #request.query_params['anykeyhere']
+        #then the result will be ="anyvalue"
+        #?prmcd=<code>
+        promocodegeti=request.GET.get('prmcd', '')
+        if promocodegeti:
+        #without minimum amount #withoutredeemlimit
+            if couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False): 
+                if promocodegeti == "KGDDeliveryFree":
+                    couponvalidity='KGDDeliveryFree'
+                    couponvaliditymessage='Valid Coupon.'
+                    discount='0'
+                    rqrd_minimumamnt=0
+                    prmcd='KGDDeliveryFree'
+                else:
+                    couponvalidity='Valid'
+                    couponvaliditymessage='Valid'
+                    discounti=couponlist.objects.get(code=promocodegeti)
+                    discount=discounti.discountamount
+                    rqrd_minimumamnt=0
+                    prmcd=promocodegeti
+            #without minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=False).exclude(redeemlimit=0): 
+                if promocodegeti == "KGDDeliveryFree":
+                    couponvalidity='KGDDeliveryFree'
+                    couponvaliditymessage='Valid Coupon.'
+                    discount='0'
+                    rqrd_minimumamnt=0
+                    prmcd='KGDDeliveryFree'
+                else:
+                    couponvalidity='Valid'
+                    couponvaliditymessage='Valid'
+                    discounti=couponlist.objects.get(code=promocodegeti)
+                    discount=discounti.discountamount
+                    rqrd_minimumamnt=0
+                    prmcd=promocodegeti
+            #this coupon code has been consumed. #without minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, redeemlimit=0,is_active=True, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has reached maximum redeem limit.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #without minimum amount #withoutredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=False, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #without minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=False, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #with minimum amount #withoutredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Valid'
+                couponvaliditymessage='Valid Coupon'
+                discounti=couponlist.objects.get(code=promocodegeti)
+                discount=discounti.discountamount
+                rqrd_minimumamnti=couponlist.objects.get(code=promocodegeti)
+                rqrd_minimumamnt=rqrd_minimumamnti.MinimumAmount
+                prmcd=promocodegeti
+            #with minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=True).exclude(redeemlimit=0): 
+                couponvalidity='Valid'
+                couponvaliditymessage='Valid Coupon'
+                discounti=couponlist.objects.get(code=promocodegeti)
+                discount=discounti.discountamount
+                rqrd_minimumamnti=couponlist.objects.get(code=promocodegeti)
+                rqrd_minimumamnt=rqrd_minimumamnti.MinimumAmount
+                prmcd=promocodegeti
+            #this coupon code has been consumed. #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, redeemlimit=0, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has reached maximum redeem limit.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #with minimum amount #withoutredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=False, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #with minimum amount #withredeemlimit
+            elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=False, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+
+            #This coupon code is for testing.
+            elif promocodegeti == "Testing123": 
+                couponvalidity='Valid'
+                couponvaliditymessage='This coupon code is for testing.'
+                discount='10'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #This coupon code is for testing.
+
+            #this coupon code is invalid.
+            else:
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is invalid.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+        else:
+            couponvalidity='No Coupon'
+            couponvaliditymessage='No Coupon'
+            discount='0'
+            rqrd_minimumamnt=0
+            prmcd='No Coupon'
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
 
         if request.user.is_anonymous:
             promoidentifier=''
-        #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier='FirstTimer'
-        #    else:
-        #        promoidentifier='FirstTimer'
-        #elif request.user.first_name:
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier=''
-        #    else:
-        #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
         else:
-            #promoidentifier='Special Promo'
+            
             promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
@@ -2442,7 +2651,6 @@ def Onlineordersystem(request, admin_id):
 
             if Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
                 counteruser=Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
-            
                 if len(counteruser) == 1 and counteruser[0] != None:
                     addressuseri = []
                     addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat__in=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
@@ -2455,7 +2663,7 @@ def Onlineordersystem(request, admin_id):
                     addressuseri = []
                     i=0
                     while i<len(counteruser):
-                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat__in=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
+                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
                         addressuseri.append(addressuserii)
                     
                         i += 1
@@ -2510,6 +2718,7 @@ def Onlineordersystem(request, admin_id):
             objs = [Customer(
                         Admin=admin_id,
                         Customername=request.GET.get('fullname'),
+                        codecoupon=request.GET.get('getpromocodename') or None,
                         Province=request.GET.get('Province'),
                         MunicipalityCity=request.GET.get('Municipality') or None,
                         Barangay=request.GET.get('barangay') or None,
@@ -2570,8 +2779,9 @@ def Onlineordersystem(request, admin_id):
         settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-        
-        return render(request, 'Onlineorder.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+                    
+
+        return render(request, 'Onlineorder.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):
         userr=request.user.id
@@ -3270,6 +3480,7 @@ def kgddashboard(request):
                 objs = [Acceptorder(
                             Admin=Accepted.Admin,
                             Customername=Accepted.Customername,
+                            codecoupon=Accepted.codecoupon,
                             Province=Accepted.Province,
                             MunicipalityCity=Accepted.MunicipalityCity,
                             Barangay=Accepted.Barangay,
@@ -3352,6 +3563,7 @@ def kgddashboard(request):
                 objs = [Rejectorder(
                             Admin=userr,
                             Customername=Rejected.Customername,
+                            codecoupon=Rejected.codecoupon,
                             Province=Rejected.Province,
                             MunicipalityCity=Rejected.MunicipalityCity,
                             Barangay=Rejected.Barangay,
@@ -3422,6 +3634,7 @@ def kgddashboard(request):
                 objs = [Customer(
                             Admin=userr,
                             Customername=Restored.Customername,
+                            codecoupon=Restored.codecoupon,
                             Province=Restored.Province,
                             MunicipalityCity=Restored.MunicipalityCity,
                             Barangay=Restored.Barangay,
@@ -3491,6 +3704,7 @@ def kgddashboard(request):
                 Readyacceptorder=Acceptorder.objects.create(
                             Admin=userr,
                             Customername=Readyadd.Customername,
+                            codecoupon=Readyadd.codecoupon,
                             Province=Readyadd.Province,
                             MunicipalityCity=Readyadd.MunicipalityCity,
                             Barangay=Readyadd.Barangay,
@@ -3545,6 +3759,18 @@ def kgddashboard(request):
             if is_ajax(request=request) and request.POST.get('doneorders'):
                 contactnumberdonei = json.loads(request.POST.get('doneorders'))
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
+                if contactnumberdonei[0]['codecoupon']:
+                    if couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']):
+                        codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
+                        if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
+                            codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
+                            codeconsumereducer=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']).update(redeemlimit=codeconsumereduceri)
+                        else:
+                            pass
+                    else:
+                        pass
+                else:
+                    pass
                 if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
                     deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                     deletethis.delete()
@@ -3553,6 +3779,7 @@ def kgddashboard(request):
                     devfeeassales=Sales.objects.create(
                             user=userr,
                             CusName=contactnumberdonei[0]['Customername'],
+                            codecoupon=contactnumberdonei[0]['codecoupon'] or None,
                             Province=contactnumberdonei[0]['Province'],
                             MunicipalityCity=contactnumberdonei[0]['MunicipalityCity'],
                             Barangay=contactnumberdonei[0]['Barangay'],
@@ -3592,6 +3819,7 @@ def kgddashboard(request):
                 objs = [Sales(
                             user=userr,
                             CusName=Done.Customername,
+                            codecoupon=Done.codecoupon,
                             Province=Done.Province,
                             MunicipalityCity=Done.MunicipalityCity,
                             Barangay=Done.Barangay,
@@ -4153,6 +4381,7 @@ def kgddashboard(request):
                 objs = [Acceptorder(
                             Admin=Accepted.Admin,
                             Customername=Accepted.Customername,
+                            codecoupon=Accepted.codecoupon,
                             Province=Accepted.Province,
                             MunicipalityCity=Accepted.MunicipalityCity,
                             Barangay=Accepted.Barangay,
@@ -4235,6 +4464,7 @@ def kgddashboard(request):
                 objs = [Rejectorder(
                             Admin=userr,
                             Customername=Rejected.Customername,
+                            codecoupon=Rejected.codecoupon,
                             Province=Rejected.Province,
                             MunicipalityCity=Rejected.MunicipalityCity,
                             Barangay=Rejected.Barangay,
@@ -4304,6 +4534,7 @@ def kgddashboard(request):
                 objs = [Customer(
                             Admin=userr,
                             Customername=Restored.Customername,
+                            codecoupon=Restored.codecoupon,
                             Province=Restored.Province,
                             MunicipalityCity=Restored.MunicipalityCity,
                             Barangay=Restored.Barangay,
@@ -4372,6 +4603,7 @@ def kgddashboard(request):
                 Readyacceptorder=Acceptorder.objects.create(
                             Admin=userr,
                             Customername=Readyadd.Customername,
+                            codecoupon=Readyadd.codecoupon,
                             Province=Readyadd.Province,
                             MunicipalityCity=Readyadd.MunicipalityCity,
                             Barangay=Readyadd.Barangay,
@@ -4425,6 +4657,18 @@ def kgddashboard(request):
             if is_ajax(request=request) and request.POST.get('doneorders'):
                 contactnumberdonei = json.loads(request.POST.get('doneorders'))
                 contactnumberdone = contactnumberdonei[0]['contactnumber']
+                if contactnumberdonei[0]['codecoupon']:
+                    if couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']):
+                        codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
+                        if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit>0:
+                            codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
+                            codeconsumereducer=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']).update(redeemlimit=codeconsumereduceri)
+                        else:
+                            pass
+                    else:
+                        pass
+                else:
+                    pass
                 if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
                     deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                     deletethis.delete()
@@ -4433,6 +4677,7 @@ def kgddashboard(request):
                     devfeeassales=Sales.objects.create(
                             user=userr,
                             CusName=contactnumberdonei[0]['Customername'],
+                            codecoupon=contactnumberdonei[0]['codecoupon'] or None,
                             Province=contactnumberdonei[0]['Province'],
                             MunicipalityCity=contactnumberdonei[0]['MunicipalityCity'],
                             Barangay=contactnumberdonei[0]['Barangay'],
@@ -4471,6 +4716,7 @@ def kgddashboard(request):
                 objs = [Sales(
                             user=userr,
                             CusName=Done.Customername,
+                            codecoupon=Done.codecoupon,
                             Province=Done.Province,
                             MunicipalityCity=Done.MunicipalityCity,
                             Barangay=Done.Barangay,
@@ -4944,27 +5190,100 @@ def kgddashboard(request):
                     print('readylistcontact1:',readylistcontact)
                     return render(request, 'kgddashboard.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'userr':userr,'monthlysales':monthlysales,'ddaily':ddaily,'totalnet':totalnet,'totalsales':totalsales})
 
-def Onlineordertestingsystem(request, admin_id, promocode):
+def Onlineordertestingsystem(request, admin_id):
+        #'domain/search/?q=haha', you would use request.GET.get('q', '')
+        #theurl+?anykeyhere=anyvalue
+        #request.query_params['anykeyhere']
+        #then the result will be ="anyvalue"
+        #?prmcd=<code>
+        promocodegeti=request.GET.get('prmcd', '')
+        if promocodegeti:
+        #without minimum amount
+            if couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=False): 
+                if promocodegeti == "KGDDeliveryFree":
+                    couponvalidity='KGDDeliveryFree'
+                    couponvaliditymessage='Valid Coupon.'
+                    discount='0'
+                    rqrd_minimumamnt=0
+                    prmcd='KGDDeliveryFree'
+                else:
+                    couponvalidity='Valid'
+                    couponvaliditymessage='Valid'
+                    discounti=couponlist.objects.get(code=promocodegeti)
+                    discount=discounti.discountamount
+                    rqrd_minimumamnt=0
+                    prmcd=promocodegeti
+            #this coupon code has been consumed. #without minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has been consumed.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #without minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=False): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Valid'
+                couponvaliditymessage='Valid Coupon'
+                discounti=couponlist.objects.get(code=promocodegeti)
+                discount=discounti.discountamount
+                rqrd_minimumamnti=couponlist.objects.get(code=promocodegeti)
+                rqrd_minimumamnt=rqrd_minimumamnti.MinimumAmount
+                prmcd=promocodegeti
+            #this coupon code has been consumed. #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=True, is_active=True, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code has been redeemed.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #this coupon code is inactive at this moment. #with minimum amount
+            elif couponlist.objects.filter(code=promocodegeti, is_consumed=False, is_active=False, is_withMinimumAmount=True): 
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is inactive at this moment.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+
+            #This coupon code is for testing.
+            elif promocodegeti == "Testing123": 
+                couponvalidity='Valid'
+                couponvaliditymessage='This coupon code is for testing.'
+                discount='10'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+            #This coupon code is for testing.
+
+            #this coupon code is invalid.
+            else:
+                couponvalidity='Invalid'
+                couponvaliditymessage='This coupon code is invalid.'
+                discount='0'
+                rqrd_minimumamnt=0
+                prmcd=promocodegeti
+        else:
+            couponvalidity='No Coupon'
+            couponvaliditymessage='No Coupon'
+            discount='0'
+            rqrd_minimumamnt=0
+            prmcd='No Coupon'
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
 
         if request.user.is_anonymous:
             promoidentifier=''
-        #elif request.user.first_name == 'Appey' or request.user.first_name == 'Joy':
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier='FirstTimer'
-        #    else:
-        #        promoidentifier='FirstTimer'
-        #elif request.user.first_name:
-        #    if Sales.objects.filter(CusName=request.user.first_name+' '+request.user.last_name):
-        #        promoidentifier=''
-        #    else:
-        #        promoidentifier='FirstTimer'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
         else:
-            promoidentifier='Special Promo'
+            
+            promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
             passwordss=json.loads(request.POST.get('password'))
@@ -5042,10 +5361,7 @@ def Onlineordertestingsystem(request, admin_id, promocode):
                 createsocialaccounttwo = User.objects.filter(first_name=first,last_name=last,username=short)
                 user=User.objects.get(first_name=first,last_name=last,username=short)
                 socialaccountsslogin=login(request, user)
-                if promocode:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
-                else:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
             else:
                 print('none')
@@ -5056,10 +5372,7 @@ def Onlineordertestingsystem(request, admin_id, promocode):
                 user=User.objects.get(id=createsocialaccounttwo.id)
                 createsocialaccount = SocialAccount.objects.create(user=user, provider='facebook', uid=uids, extra_data=responseresponse)
                 authcreatedsocialaccount=login(request, user)
-                if promocode:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
-                else:
-                    settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
         if is_ajax(request=request) and request.GET.get('addressss'):
             userr=request.user.id
@@ -5077,23 +5390,22 @@ def Onlineordertestingsystem(request, admin_id, promocode):
             print(firstname)
             print(lastname)
 
-            if Sales.objects.filter(CusName="KGD Cafe").exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
-                counteruser=Sales.objects.filter(CusName="KGD Cafe").exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
+            if Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").values_list('pinnedlat').distinct():
+                counteruser=Sales.objects.filter(CusName=firstname+' '+lastname).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct('pinnedlat').values_list('pinnedlat', flat=True)
             
                 if len(counteruser) == 1 and counteruser[0] != None:
                     addressuseri = []
-                    addressuserii = Sales.objects.filter(CusName="KGD Cafe", pinnedlat__in=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
+                    addressuserii = Sales.objects.filter(CusName=firstname+' '+lastname, pinnedlat__in=counteruser).exclude(productname='DeliveryFee').exclude(MOP="Pickup").first()
                     #addressuseri[0] = addressuserii
                     addressuseri.append(addressuserii)
                     addressuser = serializers.serialize('json',addressuseri, cls=JSONEncoder)
                     #addressuser=json.dumps(addressuseri, cls=JSONEncoder)
-
                     print('addressuser1:',addressuser)
                 else:
                     addressuseri = []
                     i=0
                     while i<len(counteruser):
-                        addressuserii=Sales.objects.filter(CusName="KGD Cafe",pinnedlat__in=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
+                        addressuserii=Sales.objects.filter(CusName=firstname+' '+lastname,pinnedlat__in=counteruser[i]).exclude(productname='DeliveryFee').exclude(MOP="Pickup").distinct().first()
                         addressuseri.append(addressuserii)
                     
                         i += 1
@@ -5148,6 +5460,7 @@ def Onlineordertestingsystem(request, admin_id, promocode):
             objs = [Customer(
                         Admin=admin_id,
                         Customername=request.GET.get('fullname'),
+                        codecoupon=request.GET.get('getpromocodename') or None,
                         Province=request.GET.get('Province'),
                         MunicipalityCity=request.GET.get('Municipality') or None,
                         Barangay=request.GET.get('barangay') or None,
@@ -5205,11 +5518,9 @@ def Onlineordertestingsystem(request, admin_id, promocode):
             arrayone.append(arrayseparator)
             viewordersi[contactdistincter[i]]=arrayone[i]
             i=i+1
-        if promocode:
-            settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'/'+promocode
-        else:
-            settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+        settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
+                    
 
-        return render(request, 'Onlineordertesting.html',{'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+        return render(request, 'Onlineordertesting.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})

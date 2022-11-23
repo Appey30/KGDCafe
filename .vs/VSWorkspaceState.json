@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AutomationApp\\migrations",
-    "\\ProjectAutomation"
+    "\\AutomationApp",
+    "\\ProjectAutomation",
+    "\\Templates"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\AutomationApp\\views.py",
   "PreviewInSolutionExplorer": false
 }

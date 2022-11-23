@@ -55,26 +55,26 @@ class couponlist (models.Model):
     category = models.ForeignKey(CategoriesCoupon, on_delete=models.CASCADE, default='',blank = True, null = True)
     code = models.CharField(max_length = 250, blank = False, null = False, default='')
     url = models.CharField(max_length = 1000, blank = False, null = False, default='')
-    qr = models.CharField(max_length = 250, blank = False, null = False, default='')
+
     pieces = models.IntegerField(blank = True, null = True, default='')
     discountamount = models.IntegerField(blank = True, null = True, default='')
-    validfrom = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
-    validuntil = models.DateTimeField(auto_now=False, auto_now_add=False, default = '',blank = True, null = True)
     is_withMinimumAmount = models.BooleanField(default = False, blank = True, null = True)
-    is_consumed = models.BooleanField(default = True, blank = True, null = True)
-    is_active = models.BooleanField(default = True, blank = True, null = True)
+    is_consumable = models.BooleanField(default = False, blank = True, null = True)
+    redeemlimit = models.IntegerField(blank = True, null = True, default=0)
+    #redeemlimit is the same with redeemnumber
+    is_active = models.BooleanField(default = False, blank = True, null = True)
     MinimumAmount = models.IntegerField(blank = True, null = True, default='')
 
     def __str__(self):
-        if is_consumed == "True":
-            Consumed = "Consumed"
+        if self.redeemlimit == 0:
+            Redeem = "Redeemed"
         else:
-            Consumed = "Not yet Consumed"
-        if is_active == "True":
+            Redeem = "Not yet Redeemed"
+        if self.is_active == "True":
             Active = "Active"
         else:
             Active = "Not Active"
-        return str(self.couponname) +" / "+ str(self.category) + " / "+ Consumed + " / "+ Active
+        return str(self.couponname) +" / "+ str(self.category) + " / "+ Redeem + " / "+ Active
       
 
 
@@ -216,6 +216,9 @@ class Sales (models.Model):
     DeliveryFee=models.IntegerField(blank = True, null = True, default='0')
     contactnumber=models.BigIntegerField(blank = True, null = True, default='09000000000')
     CusName=models.CharField(max_length = 50, blank = True, null = True, default='')
+    codecoupon=models.CharField(max_length = 250, blank = True, null = True, default='')
+    discount=models.CharField(max_length = 250, blank = True, null = True, default='')
+    RequiredMinimumAmount=models.IntegerField(blank = True, null = True, default='0')
     Categoryaes = models.ForeignKey(saecat, on_delete = models.CASCADE, default = '',blank = True, null = True)
     Subcategorys = models.ForeignKey(saesubcats, on_delete = models.CASCADE, default = '',blank = True, null = True)
     Subcategorye = models.ForeignKey(saesubcate, on_delete = models.CASCADE, default = '',blank = True, null = True)
@@ -280,6 +283,7 @@ class acknowledgedstockorder (models.Model):
 class Customer(models.Model):
     Admin=models.IntegerField(blank = True, null = True, default='2')
     Customername = models.CharField(max_length = 50, blank = True, null = True, default='')
+    codecoupon=models.CharField(max_length = 250, blank = True, null = True, default='')
     Province = models.CharField(max_length = 50, blank = True, null = True, default='')
     MunicipalityCity = models.CharField(max_length = 50, blank = True, null = True, default='')
     Barangay = models.CharField(max_length = 50, blank = True, null = True, default='')
@@ -320,6 +324,7 @@ class Customer(models.Model):
 class Acceptorder(models.Model):
     Admin=models.IntegerField(blank = True, null = True, default='2')
     Customername = models.CharField(max_length = 50, blank = True, null = True, default='')
+    codecoupon=models.CharField(max_length = 250, blank = True, null = True, default='')
     Province = models.CharField(max_length = 50, blank = True, null = True, default='')
     MunicipalityCity = models.CharField(max_length = 50, blank = True, null = True, default='')
     Barangay = models.CharField(max_length = 50, blank = True, null = True, default='')
@@ -362,6 +367,7 @@ class Acceptorder(models.Model):
 class Rejectorder(models.Model):
     Admin=models.IntegerField(blank = True, null = True, default='2')
     Customername = models.CharField(max_length = 50, blank = True, null = True, default='')
+    codecoupon=models.CharField(max_length = 250, blank = True, null = True, default='')
     Province = models.CharField(max_length = 50, blank = True, null = True, default='')
     MunicipalityCity = models.CharField(max_length = 50, blank = True, null = True, default='')
     Barangay = models.CharField(max_length = 50, blank = True, null = True, default='')

@@ -43,6 +43,37 @@ background-image:url({% static 'bas.jpg'%});
 font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond_the_mountains.otf' %});
 }
 @media screen and (min-width: 1200px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #FFBF00;
+    color: black;
+    opacity: 0.7;
+    transition: opacity 0.6s;
+    /* margin-bottom: 15px; */
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    font-weight: bold;
+    border-radius: 6vw
+}
+
+.alertcoupon.warning {background-color: #FFBF00;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
  
 .minified{
 position:relative;
@@ -1117,7 +1148,71 @@ width:300px;
 height:200px;
 
 }
+.discountdiv{
+position:fixed;
+bottom:-100px;left:-75px;
+width:300px;
+height:200px;
+margin-left:0px;
 
+background-color:;
+z-index:1;
+text-align:center;
+}
+.couponinfo1{
+position:fixed;
+bottom:120px;left:50px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:25px;
+cursor:default;
+}
+.couponinfo2{
+position:fixed;
+bottom:90px;left:25px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:25px;
+cursor:default;
+}
+.discountdiv h1{
+position:fixed;
+left:22px;bottom:5px;font-size:60px;
+font-weight:bold;
+cursor:default;
+}
+.discount{
+
+width:150px;
+height:100px;
+
+}
+.freedeliverydiv{
+position:fixed;
+bottom:-15px;left:-20px;
+width:300px;
+height:200px;
+margin-left:0px;
+
+background-color:;
+z-index:1;
+text-align:center;
+}
+
+.freedelivery{
+
+width:260px;
+height:220px;
+
+}
 #carousel{
 overflow:hidden;
 position:relative;
@@ -4547,6 +4642,37 @@ height:100%;
 }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+.alertcoupon {
+  padding: 20px;
+  background-color: #FFBF00;
+    color: black;
+    opacity: 0.7;
+    transition: opacity 0.6s;
+    /* margin-bottom: 15px; */
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    font-weight: bold;
+    border-radius: 6vw
+}
+
+.alertcoupon.warning {background-color: #FFBF00;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:-20px;
@@ -5614,6 +5740,67 @@ z-index:1;
 .logo{
 width:160px;
 height:120px;
+
+}
+.discountdiv{
+position:fixed;
+bottom:43px;left:0px;
+width:120px;
+height:80px;
+margin-left:0px;
+text-align:center;
+background-color:;
+z-index:1;
+}
+.discountdiv h1{
+position:fixed;
+left:18px;bottom:10px;font-size:70px;
+font-weight:bold;
+cursor:default;
+}
+.couponinfo1{
+position:fixed;
+bottom:140px;left:50px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:30px;
+cursor:default;
+}
+.couponinfo2{
+position:fixed;
+bottom:110px;left:20px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:30px;
+cursor:default;
+}
+.discount{
+width:160px;
+height:120px;
+
+}
+.freedeliverydiv{
+position:fixed;
+bottom:70px;left:0px;
+width:120px;
+height:80px;
+margin-left:0px;
+text-align:center;
+background-color:;
+z-index:1;
+}
+
+.freedelivery{
+width:220px;
+height:180px;
 
 }
 #carousel{
@@ -9026,6 +9213,37 @@ height:100%;
 }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #FFBF00;
+    color: black;
+    opacity: 0.7;
+    transition: opacity 0.6s;
+    /* margin-bottom: 15px; */
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    font-weight: bold;
+    border-radius: 6vw
+}
+
+.alertcoupon.warning {background-color: #FFBF00;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:0px;
@@ -10100,6 +10318,66 @@ z-index:1;
 .logo{
 width:120px;
 height:80px;
+}
+.discountdiv{
+position:fixed;
+bottom:0px;left:0px;
+width:120px;
+height:80px;
+margin-left:0px;
+background-color:;
+z-index:1;
+text-align:center;
+}
+.discountdiv h1{
+position:fixed;
+left:20px;bottom:4px;font-size:45px;
+font-weight:bold;
+cursor:default;
+}
+.couponinfo1{
+position:fixed;
+bottom:100px;left:35px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:25px;
+cursor:default;
+}
+.couponinfo2{
+position:fixed;
+bottom:70px;left:10px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:25px;
+cursor:default;
+}
+.discount{
+width:120px;
+height:80px;
+}
+.freedeliverydiv{
+position:fixed;
+bottom:50px;left:0px;
+width:120px;
+height:80px;
+margin-left:0px;
+text-align:center;
+background-color:;
+z-index:1;
+}
+
+.freedelivery{
+width:180px;
+height:140px;
+
 }
 #carousel{
 overflow:hidden;
@@ -13514,6 +13792,37 @@ height:100%;
 }
 }
 @media screen and (min-width: 450px) and (max-width: 767px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #FFBF00;
+    color: black;
+    opacity: 0.7;
+    transition: opacity 0.6s;
+    /* margin-bottom: 15px; */
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    font-weight: bold;
+    border-radius: 6vw
+}
+
+.alertcoupon.warning {background-color: #FFBF00;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:0px;
@@ -14589,6 +14898,66 @@ z-index:1;
 .logo{
 width:90px;
 height:60px;
+}
+.discountdiv{
+position:fixed;
+bottom:3px;left:0px;
+width:90px;
+height:60px;
+margin-left:0px;
+background-color:;
+z-index:1;
+text-align:center;
+}
+.discountdiv h1{
+position:fixed;
+left:10px;bottom:1px;
+font-weight:bold;
+cursor:default;
+}
+.couponinfo1{
+position:fixed;
+bottom:80px;left:25px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:20px;
+cursor:default;
+}
+.couponinfo2{
+position:fixed;
+bottom:55px;left:5px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:20px;
+cursor:default;
+}
+.discount{
+width:90px;
+height:60px;
+}
+.freedeliverydiv{
+position:fixed;
+bottom:30px;left:0px;
+width:90px;
+height:60px;
+margin-left:0px;
+text-align:center;
+background-color:;
+z-index:1;
+}
+
+.freedelivery{
+width:140px;
+height:100px;
+
 }
 #carousel{
 overflow:hidden;
@@ -18174,6 +18543,37 @@ height:100%;
 }
 }
 @media screen and (max-width: 449px){
+.alertcoupon {
+  padding: 20px;
+  background-color: #FFBF00;
+    color: black;
+    opacity: 0.7;
+    transition: opacity 0.6s;
+    /* margin-bottom: 15px; */
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    font-weight: bold;
+    border-radius: 6vw
+}
+
+.alertcoupon.warning {background-color: #FFBF00;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 .minified{
 position:relative;
 top:0px;
@@ -19265,6 +19665,67 @@ z-index:1;
 .logo{
 width:90px;
 height:60px;
+}
+.discountdiv{
+position:fixed;
+bottom:3px;left:0px;
+width:90px;
+height:60px;
+margin-left:0px;
+margin-right:auto;
+background-color:;
+z-index:1;
+text-align:center;
+}
+.discountdiv h1{
+position:fixed;
+left:10px;bottom:1px;
+font-weight:bold;
+cursor:default;
+}
+.couponinfo1{
+position:fixed;
+bottom:80px;left:25px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:20px;
+cursor:default;
+}
+.couponinfo2{
+position:fixed;
+bottom:55px;left:5px;
+margin-left:0px;
+margin-right:auto;
+background-color:white;
+z-index:1;
+text-align:center;
+font-weight:bold;
+font-size:20px;
+cursor:default;
+}
+.discount{
+width:90px;
+height:60px;
+}
+.freedeliverydiv{
+position:fixed;
+bottom:30px;left:0px;
+width:90px;
+height:60px;
+margin-left:0px;
+text-align:center;
+background-color:;
+z-index:1;
+}
+
+.freedelivery{
+width:140px;
+height:100px;
+
 }
 #carousel{
 overflow:hidden;
@@ -22919,9 +23380,26 @@ class="background">
 
 {% else %}
 {% endif %}
+
+
+{% if couponvalidity == 'Valid' %}
 <div class="navbuttontrackerdiv">
-<a href="{{admin_id}}/OrderProgress"><button class="navbuttontracker">Track Order</button></a>
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
 </div>
+{% elif couponvalidity == 'KGDDeliveryFree' %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% elif couponvalidity == 'Invalid' %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% else %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% endif %}
+
 </div>
 
 <div class="logodiv">
@@ -24573,56 +25051,73 @@ newuserdivid.style.display = "block";
 if(pickupodelivery.value == 'GcashPickup' || pickupodelivery.value == 'Pickup'){
 deliveryfee= 0;
 }else{
+var deliveryfeei = 0;
             if(pani.value == "San Agustin(Murcia)"){
             PanOnMaplat = 15.403499;
             PanOnMaplng = 120.607607;
-            deliveryfee= 10;
+            deliveryfeei= 10;
             }else if(pani.value == "Burot"){
             PanOnMaplat = 15.41376032544493;
             PanOnMaplng = 120.60001373291017;
-            deliveryfee = 19;
+            deliveryfeei = 19;
             }else if(pani.value == "Santa Rosa"){
             PanOnMaplat = 15.367791234943724;
             PanOnMaplng = 120.61597824096681;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Tinang"){
             PanOnMaplat = 15.37540517891869;
             PanOnMaplng = 120.65271377563478;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "San Juan"){
             PanOnMaplat = 15.35487999878398;
             PanOnMaplng = 120.60499191284181;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Estrada"){
             PanOnMaplat = 15.398990086725632;
             PanOnMaplng = 120.59864044189455;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Alfonso"){
             PanOnMaplat = 15.328951658676157;
             PanOnMaplng = 120.63975334167482;
-            deliveryfee = 19;
+            deliveryfeei = 19;
             }else if(pani.value == "San Nicolas(Poblacion)"){
             PanOnMaplat = 15.322898490305604;
             PanOnMaplng = 120.65457522869112;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "Santiago"){
             PanOnMaplat = 15.326985691585381;
             PanOnMaplng = 120.62850952148439;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }else if(pani.value == "San Jose"){
             PanOnMaplat = 15.326054437562847;
             PanOnMaplng = 120.65906524658205;
-            deliveryfee = 29;
+            deliveryfeei = 29;
             }
+    if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+    deliveryfee=0
+    }else{
+    deliveryfee=deliveryfeei
+    }
   }          
 
 totalwithdevfees = totalwithoudevfee + deliveryfee;
+        if('{{couponvalidity}}' == 'Valid'){
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
+        }else{
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+        
+        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
+        }
+        if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+        totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+        }else{
+        totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+        }
+        
 
-totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
 
-totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee+".00";
 
-gtotaler.innerHTML = "Total: ₱"+totalwithdevfees+".00";
 $('#totalwithdevfeeid').val(totalwithdevfees);
 $('#devfeeid').val(deliveryfee);
 
@@ -24770,7 +25265,11 @@ longitude.value = position.lng;
             <input type="hidden" value="" id="totalwithdevfeeid" name="totalwithdevfeename">
             <input type="hidden" value="" id="devfeeid" name="devfeename">
             <input type="hidden" value="" id="tokensid" name="tokens">
-            
+            {% if couponvalidity == "Valid" or couponvalidity == 'KGDDeliveryFree' %}
+            <input type="hidden" value="{{prmcd}}" id="getpromocodeid" name="getpromocodename">
+            {% else %}
+            <input type="hidden" value="" id="getpromocodeid" name="getpromocodename">
+            {% endif %}
             </div>
             <div class="w3-container summarytablediv">
             <h3>Summary of Orders</h3>
@@ -24800,6 +25299,7 @@ longitude.value = position.lng;
            <button type="button" onclick="Checkout()" id="detailchecker" name="checkout" value="Checkout">Checkout</input>
             </div>
            </div>
+           
         </form>
     </div>
 </div>
@@ -25837,7 +26337,11 @@ var detailscontent = document.getElementById("detailscontent");
 detailscontent.style.animation="fade-bottom-in 0.5s";
 
 var totaler = document.getElementById("totalwithoutdevfee");
-totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
+        if('{{couponvalidity}}' == 'Valid'){
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+        }else{
+        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+        }
 var dataHtml='';
 var tablebodytwo = document.getElementById('summarytableid');
             for(let punched of allpunched){
@@ -25991,37 +26495,52 @@ var pickupodelivery = document.getElementsByName("payment")[0];
 if(pickupodelivery.value == 'GcashPickup' || pickupodelivery.value == 'Pickup'){
 df= 0;
 }else{
+var dfi=0;
         if(barangayy == "San Agustin(Murcia)"){
-        df = 10;
+        dfi = 10;
         }else if(barangayy == "Burot"){
-        df = 19;
+        dfi = 19;
         }else if(barangayy == "Santa Rosa"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "Tinang"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "San Juan"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "Estrada"){
-        df = 29;
+        dfi = 29;
 
         }else if(barangayy == "Alfonso"){
-        df = 19;
+        dfi = 19;
         }else if(barangayy == "San Nicolas(Poblacion)"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "Santiago"){
-        df = 29;
+        dfi = 29;
         }else if(barangayy == "San Jose"){
-        df = 29;
+        dfi = 29;
         }
+if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+df=0;
+}else{
+df=dfi;
+}
 }
 var totalerdevfee = document.getElementById("devfee");
 var gtotaler = document.getElementById("totalwithdevfee");
 var grandtotalwithdevfees = totalwithoudevfee+df
 $('#totalwithdevfeeid').val(grandtotalwithdevfees);
 $('#devfeeid').val(df);
-totalerdevfee.innerHTML = "+Delivery fee: ₱"+df+".00";
+if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+}else{
+totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
+}
 
-gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees+".00";
+        if('{{couponvalidity}}' == 'Valid'){
+        gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees.toFixed(2);
+        }else{
+        gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees.toFixed(2);
+        }
+
 pointx=markerX;
 pointy=markerY;
 }
@@ -26323,6 +26842,7 @@ var addonqtydisplaysake=punched.Addonsqty;
             if(puncheditem.productname == 'Free Fries')
 		            return true;
             }); 
+var discountedtotalherei = '';
 
 if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qty !== 0){
 
@@ -26336,15 +26856,45 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
         var addonqtydisplaysakefinal="";
         }else{
         var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
-        }
-        tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
-           
+        };
+        if('{{couponvalidity}}' == 'Valid'){
+        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2);+'</td><td class="tdpunched"></td></tr>';
+        discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+        var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+        
+        }else{
+        discountedtotalherei = '';
+        tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+        } 
 }else{
+
+
+      if('{{couponvalidity}}' == 'Valid'){
+        discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+        var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
         tablebody.innerHTML = datahtmltest;
+        }else{
+         discountedtotalherei = '';
+        tablebody.innerHTML = datahtmltest;
+        };
+
+        
 };
- document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched+".00";
-            document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
-            totalwithoudevfee = totalpunched;
+
+
+if(discountedtotalherei){
+
+document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+discountedtotalherei.toFixed(2);
+totalwithoudevfee = discountedtotalherei;
+}else{
+ document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched.toFixed(2);
+totalwithoudevfee = totalpunched;
+};
+document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             //$("#totalpunched1").val(totalpunched);
             //$("#totalpunched2").val(totalpunched);
             //$("#totalpunched3").val(totalpunched);
@@ -26384,7 +26934,7 @@ var addonsamountprom=0;
 gtotalprom = totalprom;
 fullpriceprom = 0;
 regpriceprom = 0;  
-totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
+totalpromo.innerHTML = "Total: ₱"+totalprom.toFixed(2);
 
 
 var closebgwithcontentmt = document.getElementsByClassName("atbmodalbackgroundmilktea");
@@ -26423,7 +26973,7 @@ aoname="";
 sukatall="";
 fullpricemt = 0;
 regpricemt = 0;  
-totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
+totalmilktea.innerHTML = "Total: ₱"+totalmt.toFixed(2);
 
 
 
@@ -26457,7 +27007,7 @@ var addonsamountfr=0;
 gtotalfr = totalfr;
 fullpricefr = 0;
 regpricefr = 0;  
-totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
+totalfrappe.innerHTML = "Total: ₱"+totalfr.toFixed(2);
 
 
 
@@ -26480,7 +27030,7 @@ gtotalfrz = totalfrz;
 
 
 
-totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
+totalfreeze.innerHTML = "Total: ₱"+totalfrz.toFixed(2);
 
 
 var closebgwithcontentspecialpromo = document.getElementsByClassName("atbmodalbackgroundspecialpromo");
@@ -26501,7 +27051,7 @@ gtotalfrz = totalfrz;
 
 
 
-totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
+totalfreeze.innerHTML = "Total: ₱"+totalfrz.toFixed(2);
 
 
 var closebgwithcontentcookies = document.getElementsByClassName("atbmodalbackgroundcookies");
@@ -26517,7 +27067,7 @@ $('#qtynumcookies').val(1)
 var totalcookies = 0;
 gtotalcookies = totalcookies;
 
-totalcookies.innerHTML = "Total: ₱"+totalcookies+".00";
+totalcookies.innerHTML = "Total: ₱"+totalcookies.toFixed(2);
 
 
 
@@ -26537,7 +27087,7 @@ var totalshawarma = 0;
 gtotalshawarma = totalshawarma;
 
 
-totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
+totalshawarma.innerHTML = "Total: ₱"+totalshawarma.toFixed(2);
 
 
 
@@ -26555,7 +27105,7 @@ var totalfries = 0;
 gtotalfries = totalfries;
 
 
-totalfries.innerHTML = "Total: ₱"+totalfries+".00";
+totalfries.innerHTML = "Total: ₱"+totalfries.toFixed(2);
 
 
 
@@ -26581,7 +27131,7 @@ gtotalbubwaf = totalbubwaf;
 totalall = totalbubwaf;
 
 
-totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
+totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf.toFixed(2);
 
 
 
@@ -26621,7 +27171,7 @@ gtotalpizza = totalpizza;
 
 pampricepizza = 0;
 barpricepizza = 0;  
-totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
+totalpizza.innerHTML = "Total: ₱"+totalpizza.toFixed(2);
 
 var counterbag = allpunched.length;
 if(counterbag == 1){
@@ -26767,9 +27317,15 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                                 dataHtmlcart = dataHtmlcart + '<tr class="trpunchedtable"><td class="tdpunched">'+punched.Qty+'</td><td class="tdpunched">'+punched.productname+'</td><td class="tdpunched">'+categoryfinal+'</td><td class="tdpunched">'+punched.Size+punched.PSize+'</td><td class="tdpunched">'+Addonsqtyblanker+' x '+punched.Addonsname+'</td><td class="tdpunched">'+punched.Subtotal+'</td><td class="tdpunched"><button onclick="delitem('+punched.index+')" id="delitemid'+punched.index+'" value="'+punched.index+'">Delete</button></td></tr>';
                                 };
                     }
-
-                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched+".00";
+                    var discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                    var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                    if('{{couponvalidity}}' == 'Valid'){
+                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
+                    totalwithoudevfee = discountedtotalherei;
+                    }else{
+                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched.toFixed(2);
                     totalwithoudevfee = totalpunched;
+                    }
                     document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             }
 
@@ -26790,11 +27346,26 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
         }else{
         var addonqtydisplaysakefinals=allpunched[indexfinderfreefriesfinals].Addonsqty;
         }
+        if('{{couponvalidity}}' == 'Valid'){
+        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
 
-            tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable" ><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+        tablebody.innerHTML = dataHtmlcart;
+        }else{
+        
+        tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+        }  
+
             
 }else{
+       if('{{couponvalidity}}' == 'Valid'){
+        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
         tablebody.innerHTML = dataHtmlcart;
+        }else{
+        tablebody.innerHTML = dataHtmlcart;
+        };
 };
 
             
@@ -28287,7 +28858,7 @@ var alertvalue=document.getElementById('alertvalueid').value;
   }else if('{{user.first_name}}'){
   alertsuccess.classList.add('alertanimate')
   alertsuccess.style.display = "block";
-  alertsuccess.innerHTML = "<strong>Success!</strong> You have logged-in with Facebook {{user.first_name}}!";
+  alertsuccess.innerHTML = "<strong>Success!</strong> You have logged-in {{user.first_name}}!";
   setTimeout(alertremove, 5000);
   }else{
   alertsuccess.classList.remove('alertanimate')
@@ -30475,9 +31046,30 @@ pampizza = presyopizza;
         </div>
     </div>
 </div>
+{% if couponvalidity == 'Valid' %}
+<h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Upon</h2>
+<h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">Checkout</h2>
+<div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
+<h1 id="discounttext">{{discount}}</h1>
+<img src="{% static 'discountimage.png' %}" class="discount"></img>
+</div>
+{% elif couponvalidity == 'KGDDeliveryFree' %}
+<div class="freedeliverydiv" style="animation:fade-bottom-in 0.5s;">
+<img src="{% static 'freedeliverycompressed.png' %}" class="freedelivery"></img>
+</div>
+{% elif couponvalidity == 'Invalid' %}
+<div class="alertcoupon warning" style="animation:fade-bottom-in 0.5s;">
+  <span class="closebtn" onclick="this.parentElement.style.animation='fade-bottom-out 1s';setTimeout(closealertcoupon, 1000)">&times;</span>
+{{couponvaliditymessage}}
+</div>
 
+{% endif %}
 <script>
 
+function closealertcoupon(){
+var alertcoupon = document.getElementsByClassName('alertcoupon')[0];
+alertcoupon.style.display = "none";
+}
 function atbpizza(productname, pizzaprice, pizzasize, pizzasubcategory) {
 
 
@@ -30776,6 +31368,7 @@ shownotifdivid.style.display = "none";
 
 </script>
 -->
+
 </div>
 </div>
 </div>
