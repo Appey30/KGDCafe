@@ -1328,8 +1328,8 @@ var addonsfinal='x';
             urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
             gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
             }
-            if(showorders.LocationMarker[0]){
-            urlpinned='https://www.google.com/maps/place/'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+'/@'+showorders.LocationMarker[0]+','+showorders.LocationMarker[1]+',17z';
+            if(showorders.pinnedlng){
+            urlpinned='https://www.google.com/maps/place/'+showorders.pinnedlat+','+showorders.pinnedlng+'/@'+showorders.pinnedlat+','+showorders.pinnedlng+',17z';
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
             };
             }
