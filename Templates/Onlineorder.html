@@ -25086,7 +25086,7 @@ $(window).scroll(function() {
             
             var totalwithdevfees = 0;
             var deliveryfee = 0;
-            var pickupodelivery = document.getElementsByName("payment")[0];
+            var pickupodelivery = document.getElementsByName("payment");
             alert('pickupodelivery.value: '+pickupodelivery.value)
 if(pickupodelivery.value == 'Pickup'){
 deliveryfee= 0;
@@ -26333,7 +26333,7 @@ if(cod.checked){
     smallexclamtime.innerHTML = 'Please select time input!';
     wholetimediv.style.borderRadius = '15px';
     wholetimediv.style.border = '1px solid red';
-    document.getElementsByName('payment')[0].focus();
+    document.getElementsByName('payment').focus();
 }
 
 
