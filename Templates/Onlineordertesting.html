@@ -23835,23 +23835,16 @@ class="logo">
 
 <div class="menuproducts">
 
-{% if promoidentifier == 'FreeFriesDay' %}
+
 <div class="ourmenutitlepromodiv" style="display:flex;">
 <h2 class="ourmenutitlepromo">Free Fries-day Promo for you, {{user.first_name}}!</h2>
-{% elif promoidentifier == 'Special Promo' %}
-<div class="ourmenutitlepromodiv" style="display:flex;">
-<h2 class="ourmenutitlepromo">Special Promo for you, {{user.first_name}}!</h2>
-{% else %}
-<div class="ourmenutitlepromodiv" style="display:none;">
-{% endif %}
+
 
 
 </div>
-{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+
 <div class="wraptabcontentprodpromo" style="display:flex;">
-{% else %}
-<div class="wraptabcontentprodpromo" style="display:none;">
-{% endif %}
+
 <div class="tabcontentprodpromo" id="Promo">
 
 
