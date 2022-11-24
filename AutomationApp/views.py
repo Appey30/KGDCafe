@@ -2962,7 +2962,7 @@ def Onlineordersystem(request, admin_id):
         if request.user.is_anonymous:
             promoidentifier=''
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
-            promoidentifier=''
+            promoidentifier='FreeFriesDay'
         else:
             
             promoidentifier=''
