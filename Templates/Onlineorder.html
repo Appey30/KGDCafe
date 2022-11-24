@@ -23848,7 +23848,7 @@ class="logo">
 
 </div>
 {% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
-<div class="wraptabcontentprodpromo" style="display:flex;">
+<div class="wraptabcontentprodpromo" style="display:block;">
 {% else %}
 <div class="wraptabcontentprodpromo" style="display:none;">
 {% endif %}
@@ -23900,10 +23900,11 @@ specialpromo.innerHTML = "₱"+specialpromop+".00";
 }
 
 </script>
+
+</div>
+</div>
 {% endfor %}
 {% endif %}
-</div>
-</div>
 <div class="atbmodalbackgroundspecialpromo">
     <div class="atbmodalspecialpromocontent">
 
