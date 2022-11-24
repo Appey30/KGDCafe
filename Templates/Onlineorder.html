@@ -24818,7 +24818,7 @@ $(window).scroll(function() {
             var totalerdevfee = document.getElementById("devfee");
             var totaler = document.getElementById("totalwithoutdevfee");
             var deliveryfee = parseInt($('#devfeeid').val())
-            totalwithoudevfee=totalwithoudevfee-deliveryfee
+            totalwithoudevfee= parseInt($('#totalwithdevfeeid').val())-deliveryfee
             $('#totalwithdevfeeid').val(totalwithoudevfee);
             totaler.innerHTML = "Total: ₱"+totalwithoudevfee.toFixed(2);
             $('#devfeeid').val(0);
