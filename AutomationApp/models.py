@@ -282,7 +282,7 @@ class acknowledgedstockorder (models.Model):
 
 class Customer(models.Model):
     Admin=models.IntegerField(blank = True, null = True, default='2')
-    Customername = models.CharField(max_length = 50, blank = True, null = True, default='')
+    Customername = models.CharField(max_length = 250, blank = True, null = True, default='')
     codecoupon=models.CharField(max_length = 250, blank = True, null = True, default='')
     Province = models.CharField(max_length = 50, blank = True, null = True, default='')
     MunicipalityCity = models.CharField(max_length = 50, blank = True, null = True, default='')
