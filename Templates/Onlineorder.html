@@ -24814,7 +24814,7 @@ $(window).scroll(function() {
             modepaymentdiv.style.border = '';
             }
 
-            if(totalwithoudevfee){
+            if(totalwithoudevfee != 0){
             var totalerdevfee = document.getElementById("devfee");
             var totaler = document.getElementById("totalwithoutdevfee");
             var deliveryfee = parseInt($('#devfeeid').val())
@@ -24898,7 +24898,7 @@ $(window).scroll(function() {
             }
 
             function functionpaymentcod(){
-            if(totalwithoudevfee){
+            if(totalwithoudevfee != 0){
                 var totalerdevfee = document.getElementById("devfee");
                 var totaler = document.getElementById("totalwithoutdevfee");
                 var deliveryfee = parseInt($('#devfeeid').val());
