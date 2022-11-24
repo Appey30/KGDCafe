@@ -24817,7 +24817,7 @@ $(window).scroll(function() {
             if(totalwithoudevfee){
             var totalerdevfee = document.getElementById("devfee");
             var totaler = document.getElementById("totalwithoutdevfee");
-            var deliveryfee = int($('#devfeeid').val())
+            var deliveryfee = parseInt($('#devfeeid').val())
             totalwithoudevfee=totalwithoudevfee-deliveryfee
             $('#totalwithdevfeeid').val(totalwithoudevfee);
             totaler.innerHTML = "Total: ₱"+totalwithoudevfee.toFixed(2);
@@ -24901,7 +24901,7 @@ $(window).scroll(function() {
             if(totalwithoudevfee){
                 var totalerdevfee = document.getElementById("devfee");
                 var totaler = document.getElementById("totalwithoutdevfee");
-                var deliveryfee = int($('#devfeeid').val());
+                var deliveryfee = parseInt($('#devfeeid').val());
                 var gtotalwithdevfee = totalwithoudevfee+deliveryfee;
 
                 $('#totalwithdevfeeid').val(gtotalwithdevfee);
