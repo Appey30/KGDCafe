@@ -24813,9 +24813,25 @@ $(window).scroll(function() {
             modepaymentdiv.style.borderRadius = '';
             modepaymentdiv.style.border = '';
             }
+
+            if(totalwithoudevfee){
+            var totalerdevfee = document.getElementById("devfee");
+            var totaler = document.getElementById("totalwithoutdevfee");
+            var deliveryfee = int($('#devfeeid').val())
+            totalwithoudevfee=totalwithoudevfee-deliveryfee
             $('#totalwithdevfeeid').val(totalwithoudevfee);
-            
+            totaler.innerHTML = "Total: ₱"+totalwithoudevfee.toFixed(2);
             $('#devfeeid').val(0);
+            totalerdevfee.innerHTML = "";
+            var gtotaler = document.getElementById("totalwithdevfee");
+            gtotaler.innerHTML = "";
+            }
+            
+            
+            
+            
+            
+            
             var timedivss = document.getElementById('timedivid');
             timedivss.style.display = "none";
             var clearone = document.getElementById('namedetails');
@@ -24882,6 +24898,37 @@ $(window).scroll(function() {
             }
 
             function functionpaymentcod(){
+            if(totalwithoudevfee){
+                var totalerdevfee = document.getElementById("devfee");
+                var totaler = document.getElementById("totalwithoutdevfee");
+                var deliveryfee = int($('#devfeeid').val());
+                var gtotalwithdevfee = totalwithoudevfee+deliveryfee;
+
+                $('#totalwithdevfeeid').val(gtotalwithdevfee);
+                totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+                $('#devfeeid').val(0);
+
+
+                if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+                    if({{rqrd_minimumamnt}} == 0){
+                       totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+                    }else{
+                        if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                            totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            
+                        }else{
+                            totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+                        }
+                
+                    }
+        
+                }else{
+                    totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+                }
+
+                var gtotaler = document.getElementById("totalwithdevfee");
+                gtotaler.innerHTML = "Total: ₱"+gtotalwithdevfee.toFixed(2);;
+            }
 
             $.ajax({
             type:'GET',
