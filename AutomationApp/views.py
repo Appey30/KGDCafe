@@ -3114,7 +3114,7 @@ def Onlineordersystem(request, admin_id):
         bubwafbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Bubble Waffle',user__id=admin_id).distinct('productname')
         pizzabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=admin_id).distinct('productname')
         specialpromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='Special Promo').distinct('productname')
-        FreeFriespromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='FreeFries').distinct('productname')
+        FreeFriespromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='FreeFriesDay').distinct('productname')
         i=0
         pizzapricess={}
         pizzapricesii = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=admin_id).values_list('Price',flat=True).order_by('-id')
