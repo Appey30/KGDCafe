@@ -25978,106 +25978,106 @@ var changedetails = document.getElementById('changedetails');
 //    var streetdetailspass = 'pass';
 //    var housenumdetailspass = 'pass';
 //    checkerdelivery = "pass";
-//}else if(cop.checked){
-//    var municipalitypass = 'pass';
-//    var brgypass = 'pass';
-//    var streetdetailspass = 'pass';
-//    var housenumdetailspass = 'pass';
- //   checkerdelivery = "pass";
- //   if(emptysched[0].checked  || emptysched[1].checked){
-
-//        if(later.checked){
- //               if(buttime.value == "00:00pm"){
- //               buttime.focus();
- //               wholetimediv.style.borderRadius = '15px';
- //               wholetimediv.style.border = '1px solid red';
- //               iexclamtime.style.display = 'inline-block';
- //               smallexclamtime.style.display = 'block';
- //               smallexclamtime.innerHTML = 'Please select your prefered schedule!';
- //               buttime.click();
- //               checkerschedule = "notpass";
-            
- //               }else{
-//                iexclamtime.style.display = 'none';
- //               smallexclamtime.style.display = 'none';
- //               smallexclamtime.innerHTML = '';
- //               wholetimediv.style.borderRadius = '0px';
-//                wholetimediv.style.border = '0px solid transparent';
-//                checkerschedule = "pass";
-//                }
-//        }else{
-//        iexclamtime.style.display = 'none';
-//        smallexclamtime.style.display = 'none';
-//        smallexclamtime.innerHTML = '';
-//        wholetimediv.style.borderRadius = '0px';
-//        wholetimediv.style.border = '0px solid transparent';
-//        checkerschedule = "pass";
-//        }
-//
- //   }else{
-//
- //   checkerschedule = "notpass";
- //   iexclamtime.style.display = 'inline-block';
-//    smallexclamtime.style.display = 'block';
- //   smallexclamtime.innerHTML = 'Please select time input!';
- //   wholetimediv.style.borderRadius = '15px';
-//    wholetimediv.style.border = '1px solid red';
-//    document.getElementsByName('deliverytime')[0].focus();
-//    }
-
-//    if(contactrequired.value){
-//    var contactcustomer = "pass";
-//    iexclamcontact.style.display = 'none';
-//    smallexclamcontact.style.display = 'none';
-//    smallexclamcontact.innerHTML = '';
-//    contactrequired.style.borderColor = "";
-//    }else{
-//    var contactcustomer = "notpass";
-//    iexclamcontact.style.display = 'inline-block';
-//    smallexclamcontact.style.display = 'block';
-//    smallexclamcontact.innerHTML = 'Please input your contact number!';
- //   contactrequired.focus();
-//    contactrequired.style.borderColor = "red";
-//    }
- //   if(changedetails.value){
-//    if(document.getElementById('totalwithdevfeeid').value){
- //   var totalmorethani = document.getElementById('totalwithdevfeeid').value;
- //   }else{
- //    var totalmorethani = totalwithoudevfee;
- //   }
-    
- //   var totalmorethan = totalmorethani;
-
-//        if(parseInt(changedetails.value) >= parseInt(totalmorethan)){
-//        var changedetailspass = 'pass';
-//        iexclamchangefoor.style.display = 'none';
-//        smallexclamchangefoor.style.display = 'none';
-//        changedetails.style.borderColor = "";
-//        smallexclamchangefoor.innerHTML = '';
-//        }else{
- //       var changedetailspass = 'notpass';
- //       iexclamchangefoor.style.display = 'inline-block';
- //       smallexclamchangefoor.style.display = 'block';
- //       smallexclamchangefoor.innerHTML = 'Please input enough amount to be changed!'
-//        changedetails.style.borderColor = "red";
- //           if(brgypass == 'pass'){
- //           changedetails.focus();
- //           }
-//        }
-//    }else{
-//    var changedetailspass = 'notpass';
-//
-//    iexclamchangefoor.style.display = 'inline-block';
-//    smallexclamchangefoor.style.display = 'block';
-//    smallexclamchangefoor.innerHTML = 'Please input amount to be changed!'
-//    changedetails.style.borderColor = "red";
-//        if(brgypass == 'pass'){
-//        changedetails.focus();
-//        }
- //   }
-
 //}else 
-if(cod.checked){
+if(cop.checked){
+    var municipalitypass = 'pass';
+    var brgypass = 'pass';
+    var streetdetailspass = 'pass';
+    var housenumdetailspass = 'pass';
+   checkerdelivery = "pass";
+   if(emptysched[0].checked  || emptysched[1].checked){
+
+        if(later.checked){
+               if(buttime.value == "00:00pm"){
+               buttime.focus();
+               wholetimediv.style.borderRadius = '15px';
+               wholetimediv.style.border = '1px solid red';
+               iexclamtime.style.display = 'inline-block';
+               smallexclamtime.style.display = 'block';
+               smallexclamtime.innerHTML = 'Please select your prefered schedule!';
+               buttime.click();
+                checkerschedule = "notpass";
+            
+               }else{
+                iexclamtime.style.display = 'none';
+               smallexclamtime.style.display = 'none';
+               smallexclamtime.innerHTML = '';
+               wholetimediv.style.borderRadius = '0px';
+                wholetimediv.style.border = '0px solid transparent';
+                checkerschedule = "pass";
+                }
+        }else{
+        iexclamtime.style.display = 'none';
+        smallexclamtime.style.display = 'none';
+        smallexclamtime.innerHTML = '';
+        wholetimediv.style.borderRadius = '0px';
+        wholetimediv.style.border = '0px solid transparent';
+        checkerschedule = "pass";
+        }
+
+   }else{
+
+   checkerschedule = "notpass";
+   iexclamtime.style.display = 'inline-block';
+    smallexclamtime.style.display = 'block';
+   smallexclamtime.innerHTML = 'Please select time input!';
+   wholetimediv.style.borderRadius = '15px';
+    wholetimediv.style.border = '1px solid red';
+    document.getElementsByName('deliverytime')[0].focus();
+    }
+
+    if(contactrequired.value){
+    var contactcustomer = "pass";
+    iexclamcontact.style.display = 'none';
+    smallexclamcontact.style.display = 'none';
+    smallexclamcontact.innerHTML = '';
+    contactrequired.style.borderColor = "";
+    }else{
+    var contactcustomer = "notpass";
+    iexclamcontact.style.display = 'inline-block';
+    smallexclamcontact.style.display = 'block';
+    smallexclamcontact.innerHTML = 'Please input your contact number!';
+    contactrequired.focus();
+    contactrequired.style.borderColor = "red";
+    }
+   if(changedetails.value){
+    if(document.getElementById('totalwithdevfeeid').value){
+    var totalmorethani = document.getElementById('totalwithdevfeeid').value;
+    }else{
+     var totalmorethani = totalwithoudevfee;
+    }
+    
+    var totalmorethan = totalmorethani;
+
+        if(parseInt(changedetails.value) >= parseInt(totalmorethan)){
+        var changedetailspass = 'pass';
+        iexclamchangefoor.style.display = 'none';
+        smallexclamchangefoor.style.display = 'none';
+        changedetails.style.borderColor = "";
+        smallexclamchangefoor.innerHTML = '';
+        }else{
+        var changedetailspass = 'notpass';
+        iexclamchangefoor.style.display = 'inline-block';
+        smallexclamchangefoor.style.display = 'block';
+        smallexclamchangefoor.innerHTML = 'Please input enough amount to be changed!'
+        changedetails.style.borderColor = "red";
+            if(brgypass == 'pass'){
+            changedetails.focus();
+            }
+        }
+    }else{
+    var changedetailspass = 'notpass';
+
+    iexclamchangefoor.style.display = 'inline-block';
+    smallexclamchangefoor.style.display = 'block';
+    smallexclamchangefoor.innerHTML = 'Please input amount to be changed!'
+    changedetails.style.borderColor = "red";
+        if(brgypass == 'pass'){
+        changedetails.focus();
+        }
+    }
+
+}else if(cod.checked){
     if(emptysched[0].checked  || emptysched[1].checked){
 
         if(later.checked){
