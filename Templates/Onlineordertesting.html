@@ -903,6 +903,13 @@ margin-right:auto;
 position:relative;
 top:65px;
 }
+.minamnt{
+position:absolute;
+color:red;
+left:10px;
+right:10px;
+font-size:13px;
+}
 .paymentsetupdiv{
 margin-left:auto;
 margin-right:auto;
@@ -5490,6 +5497,13 @@ border-radius:0px 0px 10px 10px;
 .modalfootcart h8{
 color:red;
 }
+.minamnt{
+position:absolute;
+color:red;
+left:10px;
+right:10px;
+font-size:13px;
+}
 .paymentsetupdiv{
 margin-left:auto;
 margin-right:auto;
@@ -10067,6 +10081,13 @@ border-radius:0px 0px 10px 10px;
 
 .modalfootcart h8{
 color:red;
+}
+.minamnt{
+position:absolute;
+color:red;
+left:10px;
+right:10px;
+font-size:10px;
 }
 .paymentsetupdiv{
 margin-left:auto;
@@ -14648,6 +14669,13 @@ border-radius:0px 0px 10px 10px;
 color:red;
 font-size:9px;
 
+}
+.minamnt{
+position:absolute;
+color:red;
+left:1px;
+top:1px;
+font-size:8px;
 }
 .paymentsetupdiv{
 
@@ -19415,6 +19443,13 @@ color:red;
 font-size:9px;
 
 }
+.minamnt{
+position:absolute;
+color:red;
+left:1px;
+top:1px;
+font-size:8px;
+}
 .paymentsetupdiv{
 margin-top:30px;
 float:left;
@@ -23380,9 +23415,26 @@ class="background">
 
 {% else %}
 {% endif %}
+
+
+{% if couponvalidity == 'Valid' %}
 <div class="navbuttontrackerdiv">
-<a href="{{admin_id}}/OrderProgress"><button class="navbuttontracker">Track Order</button></a>
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
 </div>
+{% elif couponvalidity == 'KGDDeliveryFree' %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% elif couponvalidity == 'Invalid' %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress/?prmcd={{prmcd}}"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% else %}
+<div class="navbuttontrackerdiv">
+<a href="OrderProgress"><button class="navbuttontracker">Track Order</button></a>
+</div>
+{% endif %}
+
 </div>
 
 <div class="logodiv">
@@ -24323,7 +24375,11 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
             </div>
             <div class="modalfootcart">`
             <div class="paymentsetupdiv">
-
+            {% if rqrd_minimumamnt == 0 %}
+            <h10 class="minamnt"></h10>
+            {% else %}
+            <h10 class="minamnt">Min. Purchase to apply Promo: ₱ {{rqrd_minimumamnt}}</h10>
+            {% endif %}
             <input onclick="paydetails()" type="button" value="Payment Setup" id="checkoutbut"></input>
             <div class="paymentsetupdivh8div">
             <h8 id="totalpunched" class=""></h8>
@@ -24360,15 +24416,15 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 
             <div class="paymentdiv">
             <div class="modepaymentdiv">
-            <h3>Mode of Payment <i id="iexclampayment" class="fa fa-exclamation-circle" aria-hidden="true"></i></h3>
-            <input onclick="functionpaymentgcashdelivery()" type="radio" id="gcashdid" name="payment" value="GcashDelivery" disabled required>
+            <h3>Service <i id="iexclampayment" class="fa fa-exclamation-circle" aria-hidden="true"></i></h3>
+<!--            <input onclick="functionpaymentgcashdelivery()" type="radio" id="gcashdid" name="payment" value="GcashDelivery" disabled required>
             <label  for="gcashdid"> Gcash on Delivery</label><br>
             <input onclick="functionpaymentgcashpickup()" type="radio" id="gcashpid" name="payment" value="GcashPickup" disabled>
-            <label  for="gcashpid"> Gcash on Pick-up</label><br>
-            <input onclick="functionpaymentcop()"type="radio" id="copid" name="payment" value="Pickup" >
-            <label for="copid"> Cash on Pick-up</label><br>
+            <label  for="gcashpid"> Gcash on Pick-up</label><br>-->
+            <input onclick="functionpaymentcop()"type="radio" id="copid" name="payment" value="Pickup" required>
+            <label for="copid">Pick-up</label><br>
             <input onclick="functionpaymentcod()"type="radio" id="codid" name="payment" value="COD" >
-            <label for="codid"> Cash on Delivery</label><br><br>
+            <label for="codid">Delivery</label><br><br>
             <small id="smallexclampayment">Error</small>
             </div>
             <div class="wholetimediv">
@@ -24522,11 +24578,11 @@ $(window).scroll(function() {
             var eightvar = document.getElementById('eightid');
             var eightthirtyvar = document.getElementById('eightthirtyid');
             var ninevar = document.getElementById('nineid');
-            var gcashd = document.getElementById('gcashdid');
-            var gcashp = document.getElementById('gcashpid');
+            //var gcashd = document.getElementById('gcashdid');
+            //var gcashp = document.getElementById('gcashpid');
             var cop = document.getElementById('copid');
             var cod = document.getElementById('codid');
-            if(gcashp.checked || cop.checked){
+            if(cop.checked){
             sixvar.style.display = "block";
             sixthirtyvar.style.display = "block";
             sevenvar.style.display = "block";
@@ -24545,206 +24601,206 @@ $(window).scroll(function() {
             }
             }
             
-            function functionpaymentgcashpickup(){
+            //function functionpaymentgcashpickup(){
             
-            var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
-            var iexclampayment = document.getElementById('iexclampayment');
-            var smallexclampayment = document.getElementById('smallexclampayment');
-            if(smallexclampayment.style.display == 'block'){
-            iexclampayment.style.display = 'none';
-            smallexclampayment.style.display = 'none';
-            smallexclampayment.innerHTML = '';
-            modepaymentdiv.style.borderRadius = '';
-            modepaymentdiv.style.border = '';
-            }
+            //var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
+            //var iexclampayment = document.getElementById('iexclampayment');
+            //var smallexclampayment = document.getElementById('smallexclampayment');
+            //if(smallexclampayment.style.display == 'block'){
+            //iexclampayment.style.display = 'none';
+            //smallexclampayment.style.display = 'none';
+            //smallexclampayment.innerHTML = '';
+            //modepaymentdiv.style.borderRadius = '';
+            //modepaymentdiv.style.border = '';
+            //}
             
-            var timedivss = document.getElementById('timedivid');
-            timedivss.style.display = "none";
-            var clearone = document.getElementById('namedetails');
-            clearone.value="";
-            var cleartwo = document.getElementById('contactdetails');
-            cleartwo.value="";
-            var clearthree = document.getElementById('municipality');
-            clearthree.value="";
-            var clearfour = document.getElementById('brgy');
-            clearfour.value="";
-            var clearfive = document.getElementById('streetdetails');
-            clearfive.value="";
-            var clearsix = document.getElementById('housenumdetails');
-            clearsix.value="";
-            var clearseven = document.getElementById('Notesdetails');
-            clearseven.value="";
-            var gcash = document.getElementById('gcashdid');
-            var cop = document.getElementById('copid');
-            var cod = document.getElementById('codid');
-            var showdelivery = document.getElementById('addressdivid');
-            var nowsched = document.getElementById('nowsched');
-            var changefor = document.getElementById('changefoor');
-            changefor.style.display = "none";
-            showdelivery.style.display = "none";
-            cop.checked = false;
-            cod.checked = false;
-            gcash.checked = false;
-            nowsched.innerHTML='Pick-up Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
-            var fullnamee = document.getElementById('namedetails');
-            fullnamee.required = true;
-            var cpnum = document.getElementById('contactdetails');
-            cpnum.required = true;
-            var mun = document.getElementById('municipality');
-            mun.required = false;
-            var bar = document.getElementById('brgy');
-            bar.required = false;
-            var str = document.getElementById('streetdetails');
-            str.required = false;
-            var change = document.getElementById('changedetails');
-            change.required = false;
-            var lati = document.getElementById('lat');
-            lati.required = false;
-            var lngi = document.getElementById('lng');
-            lngi.required = false;
+            //var timedivss = document.getElementById('timedivid');
+            //timedivss.style.display = "none";
+            //var clearone = document.getElementById('namedetails');
+            //clearone.value="";
+            //var cleartwo = document.getElementById('contactdetails');
+            //cleartwo.value="";
+            //var clearthree = document.getElementById('municipality');
+            //clearthree.value="";
+            //var clearfour = document.getElementById('brgy');
+            //clearfour.value="";
+            //var clearfive = document.getElementById('streetdetails');
+            //clearfive.value="";
+            //var clearsix = document.getElementById('housenumdetails');
+            //clearsix.value="";
+            //var clearseven = document.getElementById('Notesdetails');
+            //clearseven.value="";
+            //var gcash = document.getElementById('gcashdid');
+ //           var cop = document.getElementById('copid');
+ //           var cod = document.getElementById('codid');
+ //           var showdelivery = document.getElementById('addressdivid');
+  //          var nowsched = document.getElementById('nowsched');
+  //          var changefor = document.getElementById('changefoor');
+  //          changefor.style.display = "none";
+  //          showdelivery.style.display = "none";
+   //         cop.checked = false;
+   //         cod.checked = false;
+            //gcash.checked = false;
+   //         nowsched.innerHTML='Pick-up Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
+  //          var fullnamee = document.getElementById('namedetails');
+   //         fullnamee.required = true;
+  //          var cpnum = document.getElementById('contactdetails');
+   //         cpnum.required = true;
+   //         var mun = document.getElementById('municipality');
+   //         mun.required = false;
+     //       var bar = document.getElementById('brgy');
+       //     bar.required = false;
+         //   var str = document.getElementById('streetdetails');
+           // str.required = false;
+  //          v/ar change = document.getElementById('changedetails');
+  //          change.required = false;
+  //          var lati = document.getElementById('lat');
+  //          lati.required = false;
+  //          var lngi = document.getElementById('lng');
+  //          lngi.required = false;
             
-            var hideonebuttongcashdel = document.getElementById('selectedaddressid');
-            var hidetwooptionsgcashdel = document.getElementById('selectaddresshereid');
-            var hidethreeaddressgcashdel = document.getElementById('olduser');
-            var setlocationbuttongcashdel = document.getElementById('setlocationid');
-            var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
-            var panelmap = document.getElementById('mapolds');
-            var downvar = document.getElementById('downid');
-            downvar.style.display = "none";
-            panelmap.style.display = "none";
-            guidesetnewlocationsmall.style.display = "none";
-            setlocationbuttongcashdel.style.display = "none";
-            hideonebuttongcashdel.style.display = "none";
-            hidetwooptionsgcashdel.style.display = "none";
-            hidethreeaddressgcashdel.style.display = "none";
-
-            }
-
-
+  //          var hideonebuttongcashdel = document.getElementById('selectedaddressid');
+  //          var hidetwooptionsgcashdel = document.getElementById('selectaddresshereid');
+  //          var hidethreeaddressgcashdel = document.getElementById('olduser');
+  //          var setlocationbuttongcashdel = document.getElementById('setlocationid');
+  //          var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
+  //          var panelmap = document.getElementById('mapolds');
+  //          var downvar = document.getElementById('downid');
+  //          downvar.style.display = "none";
+  //          panelmap.style.display = "none";
+  //          guidesetnewlocationsmall.style.display = "none";
+  //          setlocationbuttongcashdel.style.display = "none";
+  //          hideonebuttongcashdel.style.display = "none";
+  //          hidetwooptionsgcashdel.style.display = "none";
+   //         hidethreeaddressgcashdel.style.display = "none";
+//
+    //        }
 
 
-             function functionpaymentgcashdelivery(){
-            $.ajax({
-            type:'GET',
-            url:"{% url 'Onlineordertesting.html' admin_id %}",
-            data:{"addressss":"waaddressyayni"},
-            success: function(response){
-            var dataHtml='';
-            var una=JSON.stringify(response.addressuser);
+
+
+            // function functionpaymentgcashdelivery(){
+            //$.ajax({
+            //type:'GET',
+            //url:"{% url 'Onlineorder.html' admin_id %}",
+            //data:{"addressss":"waaddressyayni"},
+            //success: function(response){
+            //var dataHtml='';
+            //var una=JSON.stringify(response.addressuser);
             
-            var pangalawa = JSON.parse(una);
+            //var pangalawa = JSON.parse(una);
             
-            var pangatlo = JSON.parse(pangalawa);
+            //var pangatlo = JSON.parse(pangalawa);
             
-                if(pangatlo.length == 0){
-                var pangapat = pangatlo;
-                var bilangan = pangapat.length;
-                }else{
-                var pangapat = pangatlo;
-                var bilangan = pangapat.length;
+                //if(pangatlo.length == 0){
+                //var pangapat = pangatlo;
+                //var bilangan = pangapat.length;
+                //}else{
+                //var pangapat = pangatlo;
+                //var bilangan = pangapat.length;
 
-                }
+                //}
 
-            var olduserdivid = document.getElementById('olduser');
-            var dataHTML='';
+            //var olduserdivid = document.getElementById('olduser');
+            //var dataHTML='';
 
 
             
-            var newuserdivid = document.getElementById('addressdividfirst');
-            var selectedaddress = document.getElementById('selectedaddressid');
-            var arrowdown = document.getElementById('downid');
-            var setlocation = document.getElementById('setlocationid');
-            var guidesetnewlocation = document.getElementById('guidesetnewlocationid');
-            var dataHTML='';
+ //           var newuserdivid = document.getElementById('addressdividfirst');
+ //           var selectedaddress = document.getElementById('selectedaddressid');
+ //           var arrowdown = document.getElementById('downid');
+ //           var setlocation = document.getElementById('setlocationid');
+ //           var guidesetnewlocation = document.getElementById('guidesetnewlocationid');
+ //           var dataHTML='';
 
-            bilanganfinal = bilangan;
+ //           bilanganfinal = bilangan;
             
-            $('#olduser').empty();
-            if(bilangan>0){
-            for(let i=0;i<bilangan;i++){
+ //           $('#olduser').empty();
+ //           if(bilangan>0){
+ //           for(let i=0;i<bilangan;i++){
             
-            dataHTML += "<div class='addressolduser' onclick='inputvalueaddress("+pangapat[i]["fields"].Housenumber+","+JSON.stringify(pangapat[i]["fields"].StreetPurok)+","+JSON.stringify(pangapat[i]["fields"].Barangay)+","+JSON.stringify(pangapat[i]["fields"].MunicipalityCity)+", "+JSON.stringify(pangapat[i]["fields"].Province)+", "+JSON.stringify(pangapat[i]["fields"].CusName)+", "+JSON.stringify(pangapat[i]["fields"].LandmarksnNotes)+", "+pangapat[i]["fields"].contactnumber+", "+pangapat[i]["fields"].pinnedlat+", "+pangapat[i]["fields"].pinnedlng+")'>#"+pangapat[i]["fields"].Housenumber+" "+pangapat[i]["fields"].StreetPurok+", "+pangapat[i]["fields"].Barangay+", "+pangapat[i]["fields"].MunicipalityCity+", "+pangapat[i]["fields"].Province+"</div>";
-            selectedaddress.style.display = "block";
-            arrowdown.style.display = "inline-block";
-            setlocation.style.display = "block";
-            guidesetnewlocation.style.display = "block";
-            }
-            $('#olduser').append(dataHTML);
-            newuserdivid.style.display = "none";
+ //           dataHTML += "<div class='addressolduser' onclick='inputvalueaddress("+pangapat[i]["fields"].Housenumber+","+JSON.stringify(pangapat[i]["fields"].StreetPurok)+","+JSON.stringify(pangapat[i]["fields"].Barangay)+","+JSON.stringify(pangapat[i]["fields"].MunicipalityCity)+", "+JSON.stringify(pangapat[i]["fields"].Province)+", "+JSON.stringify(pangapat[i]["fields"].CusName)+", "+JSON.stringify(pangapat[i]["fields"].LandmarksnNotes)+", "+pangapat[i]["fields"].contactnumber+", "+pangapat[i]["fields"].pinnedlat+", "+pangapat[i]["fields"].pinnedlng+")'>#"+pangapat[i]["fields"].Housenumber+" "+pangapat[i]["fields"].StreetPurok+", "+pangapat[i]["fields"].Barangay+", "+pangapat[i]["fields"].MunicipalityCity+", "+pangapat[i]["fields"].Province+"</div>";
+ //           selectedaddress.style.display = "block";
+ //           arrowdown.style.display = "inline-block";
+ //           setlocation.style.display = "block";
+  //          guidesetnewlocation.style.display = "block";
+  //          }
+  //          $('#olduser').append(dataHTML);
+  //          newuserdivid.style.display = "none";
 
-            }else{
-            olduserdivid.style.display = "none";
-            newuserdivid.style.display = "block";
-            }
-            },
-            error: function(){
+  //          }else{
+  //          olduserdivid.style.display = "none";
+   //         newuserdivid.style.display = "block";
+   //         }
+   //         },
+   //         error: function(){
             
-            }
-        });
-            var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
-            var iexclampayment = document.getElementById('iexclampayment');
-            var smallexclampayment = document.getElementById('smallexclampayment');
-            if(smallexclampayment.style.display == 'block'){
-            iexclampayment.style.display = 'none';
-            smallexclampayment.style.display = 'none';
-            smallexclampayment.innerHTML = '';
-            modepaymentdiv.style.borderRadius = '';
-            modepaymentdiv.style.border = '';
-            }
-            var timedivss = document.getElementById('timedivid');
-            timedivss.style.display = "none";
-            var gcash = document.getElementById('gcashpid');
-            var cop = document.getElementById('copid');
-            var cod = document.getElementById('codid');
-            var showdelivery = document.getElementById('addressdivid');
-            var nowsched = document.getElementById('nowsched');
-            var changefor = document.getElementById('changefoor');
-            var newuserdivid = document.getElementById('addressdividfirst');
-            changefor.style.display = "none";
-            showdelivery.style.display = "block";
-            cop.checked = false;
-            cod.checked = false;
-            gcash.checked = false;
-            nowsched.innerHTML='Delivery Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
+  //          }
+  //      });
+   //         var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
+  //          var iexclampayment = document.getElementById('iexclampayment');
+   //         var smallexclampayment = document.getElementById('smallexclampayment');
+   //         if(smallexclampayment.style.display == 'block'){
+   //         iexclampayment.style.display = 'none';
+   //         smallexclampayment.style.display = 'none';
+   //         smallexclampayment.innerHTML = '';
+    //        modepaymentdiv.style.borderRadius = '';
+   //         modepaymentdiv.style.border = '';
+   //         }
+    //        var timedivss = document.getElementById('timedivid');
+    //        timedivss.style.display = "none";
+    //        var gcash = document.getElementById('gcashpid');
+    //        var cop = document.getElementById('copid');
+     //       var cod = document.getElementById('codid');
+     //       var showdelivery = document.getElementById('addressdivid');
+     //       var nowsched = document.getElementById('nowsched');
+     //       var changefor = document.getElementById('changefoor');
+      //      var newuserdivid = document.getElementById('addressdividfirst');
+      //      changefor.style.display = "none";
+      //      showdelivery.style.display = "block";
+     //       cop.checked = false;
+     //       cod.checked = false;
+     //       gcash.checked = false;
+     //       nowsched.innerHTML='Delivery Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
+
+//
+     //       var fullnamee = document.getElementById('namedetails');
+     //       fullnamee.required = true;
+      //      var cpnum = document.getElementById('contactdetails');
+      //      cpnum.required = true;
+      //      var mun = document.getElementById('municipality');
+      //      mun.required = true;
+      //      var bar = document.getElementById('brgy');
+      //      bar.required = true;
+      //      var str = document.getElementById('streetdetails');
+      //      str.required = false;
+      //      var lati = document.getElementById('lat');
+      //      lati.required = true;
+     //       var lngi = document.getElementById('lng');
+     //       lngi.required = true;
+     //       var change = document.getElementById('changedetails');
+     //       change.required = false;
+
+//var hideonebuttongcashdel = document.getElementById('selectedaddressid');
+
+//var hidethreeaddressgcashdel = document.getElementById('olduser');
+//var setlocationbuttongcashdel = document.getElementById('setlocationid');
+//var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
+//var downvar = document.getElementById('downid');
+//if(bilanganfinal>0){
+//downvar.style.display = "inline-block";
+//guidesetnewlocationsmall.style.display = "block";
+//setlocationbuttongcashdel.style.display = "block";
+//hideonebuttongcashdel.style.display = "block";
+
+//hidethreeaddressgcashdel.style.display = "block";
+//newuserdivid.style.display = "none";
+//}else{
+//newuserdivid.style.display = "block";
+//}
 
 
-            var fullnamee = document.getElementById('namedetails');
-            fullnamee.required = true;
-            var cpnum = document.getElementById('contactdetails');
-            cpnum.required = true;
-            var mun = document.getElementById('municipality');
-            mun.required = true;
-            var bar = document.getElementById('brgy');
-            bar.required = true;
-            var str = document.getElementById('streetdetails');
-            str.required = false;
-            var lati = document.getElementById('lat');
-            lati.required = true;
-            var lngi = document.getElementById('lng');
-            lngi.required = true;
-            var change = document.getElementById('changedetails');
-            change.required = false;
-
-var hideonebuttongcashdel = document.getElementById('selectedaddressid');
-
-var hidethreeaddressgcashdel = document.getElementById('olduser');
-var setlocationbuttongcashdel = document.getElementById('setlocationid');
-var guidesetnewlocationsmall = document.getElementById('guidesetnewlocationid');
-var downvar = document.getElementById('downid');
-if(bilanganfinal>0){
-downvar.style.display = "inline-block";
-guidesetnewlocationsmall.style.display = "block";
-setlocationbuttongcashdel.style.display = "block";
-hideonebuttongcashdel.style.display = "block";
-
-hidethreeaddressgcashdel.style.display = "block";
-newuserdivid.style.display = "none";
-}else{
-newuserdivid.style.display = "block";
-}
-
-
-            }
+            //}
 
             function functionpaymentcop(){
             var modepaymentdiv = document.getElementsByClassName('modepaymentdiv')[0];
@@ -24757,6 +24813,25 @@ newuserdivid.style.display = "block";
             modepaymentdiv.style.borderRadius = '';
             modepaymentdiv.style.border = '';
             }
+
+            if(document.getElementById("totalwithdevfee").innerHTML){
+            var totalerdevfee = document.getElementById("devfee");
+            var totaler = document.getElementById("totalwithoutdevfee");
+            var deliveryfee = parseInt($('#devfeeid').val())
+            totalwithoudevfee= parseInt($('#totalwithdevfeeid').val())-deliveryfee
+            $('#totalwithdevfeeid').val(totalwithoudevfee);
+            totaler.innerHTML = "Total: ₱"+totalwithoudevfee.toFixed(2);
+            $('#devfeeid').val(0);
+            totalerdevfee.innerHTML = "";
+            var gtotaler = document.getElementById("totalwithdevfee");
+            gtotaler.innerHTML = "";
+            }
+            
+            
+            
+            
+            
+            
             var timedivss = document.getElementById('timedivid');
             timedivss.style.display = "none";
             var clearone = document.getElementById('namedetails');
@@ -24773,8 +24848,8 @@ newuserdivid.style.display = "block";
             clearsix.value="";
             var clearseven = document.getElementById('Notesdetails');
             clearseven.value="";
-            var gcashd = document.getElementById('gcashdid');
-            var gcashp = document.getElementById('gcashpid');
+    //        var gcashd = document.getElementById('gcashdid');
+    //        var gcashp = document.getElementById('gcashpid');
             var cop = document.getElementById('copid');
             var cod = document.getElementById('codid');
             var nowsched = document.getElementById('nowsched');
@@ -24784,8 +24859,8 @@ newuserdivid.style.display = "block";
             showdelivery.style.display = "none";
             nowsched.innerHTML='Pick-up Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
             cod.checked = false;
-            gcashp.checked = false;
-            gcashd.checked = false;
+    //        gcashp.checked = false;
+    //        gcashd.checked = false;
             
             var fullnamee = document.getElementById('namedetails');
             fullnamee.required = true;
@@ -24823,6 +24898,37 @@ newuserdivid.style.display = "block";
             }
 
             function functionpaymentcod(){
+            if(document.getElementById("totalwithdevfee").innerHTML){
+                var totalerdevfee = document.getElementById("devfee");
+                var totaler = document.getElementById("totalwithoutdevfee");
+                var deliveryfee = parseInt($('#devfeeid').val());
+                var gtotalwithdevfee = totalwithoudevfee+deliveryfee;
+
+                $('#totalwithdevfeeid').val(gtotalwithdevfee);
+                totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+                $('#devfeeid').val(0);
+
+
+                if('{{couponvalidity}}' == 'KGDDeliveryFree'){
+                    if({{rqrd_minimumamnt}} == 0){
+                       totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+                    }else{
+                        if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                            totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            
+                        }else{
+                            totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+                        }
+                
+                    }
+        
+                }else{
+                    totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+                }
+
+                var gtotaler = document.getElementById("totalwithdevfee");
+                gtotaler.innerHTML = "Total: ₱"+gtotalwithdevfee.toFixed(2);;
+            }
 
             $.ajax({
             type:'GET',
@@ -24891,8 +24997,8 @@ newuserdivid.style.display = "block";
             }
             var timedivss = document.getElementById('timedivid');
             timedivss.style.display = "none";
-            var gcashd = document.getElementById('gcashdid');
-            var gcashp = document.getElementById('gcashpid');
+    //        var gcashd = document.getElementById('gcashdid');
+    //        var gcashp = document.getElementById('gcashpid');
             var cop = document.getElementById('copid');
             var cod = document.getElementById('codid');
             var nowsched = document.getElementById('nowsched');
@@ -24901,8 +25007,8 @@ newuserdivid.style.display = "block";
             nowsched.innerHTML='Delivery Time <i id="iexclamtime" class="fa fa-exclamation-circle" aria-hidden="true"></i>';
             changefor.style.display = "block";
             showdelivery.style.display = "block";
-            gcashp.checked = false;
-            gcashd.checked = false;
+     //       gcashp.checked = false;
+     //       gcashd.checked = false;
             cop.checked = false;
             var fullnamee = document.getElementById('namedetails');
             fullnamee.required = true;
@@ -25030,8 +25136,11 @@ newuserdivid.style.display = "block";
             
             var totalwithdevfees = 0;
             var deliveryfee = 0;
-            var pickupodelivery = document.getElementsByName("payment")[0];
-if(pickupodelivery.value == 'GcashPickup' || pickupodelivery.value == 'Pickup'){
+            
+            //var pickupodelivery = document.getElementsByName("payment");
+            var pickupodelivery = document.querySelector('input[name="payment"]:checked');
+            
+if(pickupodelivery.value == 'Pickup'){
 deliveryfee= 0;
 }else{
 var deliveryfeei = 0;
@@ -25077,25 +25186,42 @@ var deliveryfeei = 0;
             deliveryfeei = 29;
             }
     if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-    deliveryfee=0
+        if({{rqrd_minimumamnt}} == 0){
+            deliveryfee=0
+        }else{
+            if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                deliveryfee=0
+            
+            }else{
+                deliveryfee=deliveryfeei
+            }
+        }
+    
     }else{
-    deliveryfee=deliveryfeei
+        deliveryfee=deliveryfeei
     }
   }          
 
 totalwithdevfees = totalwithoudevfee + deliveryfee;
-        if('{{couponvalidity}}' == 'Valid'){
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
-        }else{
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        
-        gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
-        }
+
+                totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+                gtotaler.innerHTML = "Total: ₱"+totalwithdevfees.toFixed(2);
+
         if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-        totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            if({{rqrd_minimumamnt}} == 0){
+               totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            }else{
+                if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                    totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            
+                }else{
+                    totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+                }
+                
+            }
+        
         }else{
-        totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+            totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
         }
         
 
@@ -25136,10 +25262,11 @@ longitude.value = position.lng;
 
 });
 
-
-
-
 }
+
+
+
+
             function municipalitychoice(){
             var municipal = document.getElementById('municipality');
             var iexclammunicipality = document.getElementById('iexclammunicipality');
@@ -25248,7 +25375,11 @@ longitude.value = position.lng;
             <input type="hidden" value="" id="totalwithdevfeeid" name="totalwithdevfeename">
             <input type="hidden" value="" id="devfeeid" name="devfeename">
             <input type="hidden" value="" id="tokensid" name="tokens">
-            
+            {% if couponvalidity == "Valid" or couponvalidity == 'KGDDeliveryFree' %}
+            <input type="hidden" value="{{prmcd}}" id="getpromocodeid" name="getpromocodename">
+            {% else %}
+            <input type="hidden" value="" id="getpromocodeid" name="getpromocodename">
+            {% endif %}
             </div>
             <div class="w3-container summarytablediv">
             <h3>Summary of Orders</h3>
@@ -25278,6 +25409,7 @@ longitude.value = position.lng;
            <button type="button" onclick="Checkout()" id="detailchecker" name="checkout" value="Checkout">Checkout</input>
             </div>
            </div>
+           
         </form>
     </div>
 </div>
@@ -25519,8 +25651,8 @@ function Checkout(){
 var latitude = document.getElementById('lat');
 var longitude = document.getElementById('lng');
 var mapp = document.getElementById('mapwrapperdiv');
-var gcashd = document.getElementById('gcashdid');
-var gcashp = document.getElementById('gcashpid');
+//var gcashd = document.getElementById('gcashdid');
+//var gcashp = document.getElementById('gcashpid');
 var cop = document.getElementById('copid');
 var cod = document.getElementById('codid');
 var now = document.getElementById('nowid');
@@ -25558,251 +25690,319 @@ var housenumdetails = document.getElementById('housenumdetails');
 var changedetails = document.getElementById('changedetails');
 
 
-if(gcashd.checked){
-    if(emptysched[0].checked  || emptysched[1].checked){
+//if(gcashd.checked){
+//    if(emptysched[0].checked  || emptysched[1].checked){
+//
+//        if(later.checked){
+//                if(buttime.value == "00:00pm"){
+//                buttime.focus();
+//                wholetimediv.style.borderRadius = '15px';
+//                wholetimediv.style.border = '1px solid red';
+//                iexclamtime.style.display = 'inline-block';
+//                smallexclamtime.style.display = 'block';
+ //               smallexclamtime.innerHTML = 'Please select your prefered schedule!';
+ //               buttime.click();
+ //               checkerschedule = "notpass";
+ //           
+//                }else{
+ //               iexclamtime.style.display = 'none';
+ //               smallexclamtime.style.display = 'none';
+//                smallexclamtime.innerHTML = '';
+ //               wholetimediv.style.borderRadius = '0px';
+//               wholetimediv.style.border = '0px solid transparent';
+ //               checkerschedule = "pass";
+ //               }
+ //       }else{
+ //       iexclamtime.style.display = 'none';
+ //       smallexclamtime.style.display = 'none';
+  //      smallexclamtime.innerHTML = '';
+  //      wholetimediv.style.borderRadius = '0px';
+  //      wholetimediv.style.border = '0px solid transparent';
+  //      checkerschedule = "pass";
+  //      }
 
-        if(later.checked){
-                if(buttime.value == "00:00pm"){
-                buttime.focus();
-                wholetimediv.style.borderRadius = '15px';
-                wholetimediv.style.border = '1px solid red';
-                iexclamtime.style.display = 'inline-block';
-                smallexclamtime.style.display = 'block';
-                smallexclamtime.innerHTML = 'Please select your prefered schedule!';
-                buttime.click();
-                checkerschedule = "notpass";
-            
-                }else{
-                iexclamtime.style.display = 'none';
-                smallexclamtime.style.display = 'none';
-                smallexclamtime.innerHTML = '';
-                wholetimediv.style.borderRadius = '0px';
-                wholetimediv.style.border = '0px solid transparent';
-                checkerschedule = "pass";
-                }
-        }else{
-        iexclamtime.style.display = 'none';
-        smallexclamtime.style.display = 'none';
-        smallexclamtime.innerHTML = '';
-        wholetimediv.style.borderRadius = '0px';
-        wholetimediv.style.border = '0px solid transparent';
-        checkerschedule = "pass";
-        }
+  //  }else{
 
-    }else{
+  //  checkerschedule = "notpass";
+  //  iexclamtime.style.display = 'inline-block';
+  //  smallexclamtime.style.display = 'block';
+ //  smallexclamtime.innerHTML = 'Please select time!';
+  //  wholetimediv.style.borderRadius = '15px';
+ //  wholetimediv.style.border = '1px solid red';
+ //  document.getElementsByName('deliverytime')[0].focus();
+ //   }
 
-    checkerschedule = "notpass";
-    iexclamtime.style.display = 'inline-block';
-    smallexclamtime.style.display = 'block';
-    smallexclamtime.innerHTML = 'Please select time!';
-    wholetimediv.style.borderRadius = '15px';
-    wholetimediv.style.border = '1px solid red';
-    document.getElementsByName('deliverytime')[0].focus();
-    }
-
-    if(contactrequired.value){
-    var contactcustomer = "pass";
-    iexclamcontact.style.display = 'none';
-    smallexclamcontact.style.display = 'none';
-    smallexclamcontact.innerHTML = '';
-    contactrequired.style.borderColor = "";
-    }else{
-    var contactcustomer = "notpass";
-    iexclamcontact.style.display = 'inline-block';
-    smallexclamcontact.style.display = 'block';
-    smallexclamcontact.innerHTML = 'Please input your contact number!';
-    contactrequired.focus();
-    contactrequired.style.borderColor = "red";
-    }
-    if(municipality.value){
-    var municipalitypass = 'pass';
-    iexclammunicipality.style.display = 'none';
-    smallexclammunicipality.style.display = 'none';
-    smallexclammunicipality.innerHTML = '';
-    municipality.style.borderColor = "";
-    }else{
-    var municipalitypass = 'notpass';
-    iexclammunicipality.style.display = 'inline-block';
-    smallexclammunicipality.style.display = 'block';
-    smallexclammunicipality.innerHTML = 'Please select your Municipality!';
-    municipality.style.borderColor = "red";
-    municipality.focus();
-    }
+ //   if(contactrequired.value){
+  //  var contactcustomer = "pass";
+ //   iexclamcontact.style.display = 'none';
+  //  smallexclamcontact.style.display = 'none';
+  //  smallexclamcontact.innerHTML = '';
+ //   contactrequired.style.borderColor = "";
+ //   }else{
+ //   var contactcustomer = "notpass";
+  //  iexclamcontact.style.display = 'inline-block';
+ //   smallexclamcontact.style.display = 'block';
+ //   smallexclamcontact.innerHTML = 'Please input your contact number!';
+  //  contactrequired.focus();
+  //  contactrequired.style.borderColor = "red";
+ //   }
+  //  if(municipality.value){
+  //  var municipalitypass = 'pass';
+ //   iexclammunicipality.style.display = 'none';
+ //   smallexclammunicipality.style.display = 'none';
+ //   smallexclammunicipality.innerHTML = '';
+  //  municipality.style.borderColor = "";
+ //   }else{
+ //   var municipalitypass = 'notpass';
+ //   iexclammunicipality.style.display = 'inline-block';
+ //   smallexclammunicipality.style.display = 'block';
+ //   smallexclammunicipality.innerHTML = 'Please select your Municipality!';
+ //   municipality.style.borderColor = "red";
+ //   municipality.focus();
+ //   }
 
 
-    if(brgy.value){
-    var brgypass = 'pass';
-    iexclambarangay.style.display = 'none';
-    smallexclambarangay.style.display = 'none';
-    smallexclambarangay.innerHTML = '';
-    brgy.style.borderColor = "";
+ //   if(brgy.value){
+ //   var brgypass = 'pass';
+  //  iexclambarangay.style.display = 'none';
+  //  smallexclambarangay.style.display = 'none';
+ //   smallexclambarangay.innerHTML = '';
+ //   brgy.style.borderColor = "";
 
-    }else{
-    var brgypass = 'notpass';
-    iexclambarangay.style.display = 'inline-block';
-    smallexclambarangay.style.display = 'block';
-    smallexclambarangay.innerHTML = 'Please select your Barangay!';
-    brgy.style.borderColor = "red";
-    brgy.focus();
-    }
+ //   }else{
+ //   var brgypass = 'notpass';
+ //   iexclambarangay.style.display = 'inline-block';
+ //   smallexclambarangay.style.display = 'block';
+  //  smallexclambarangay.innerHTML = 'Please select your Barangay!';
+ //   brgy.style.borderColor = "red";
+  //  brgy.focus();
+ //   }
 
-    if(streetdetails.value){
-    var streetdetailspass = 'pass';
-    iexclamstreet.style.display = 'none';
-    smallexclamstreet.innerHTML = '';
-    smallexclamstreet.style.display = 'none';
-    streetdetails.style.borderColor = "";
-    }else{
-    var streetdetailspass = 'notpass';
-    iexclamstreet.style.display = 'inline-block';
-    smallexclamstreet.style.display = 'block';
-    smallexclamstreet.innerHTML = 'Please input your Street/Purok/Apartment/Bldg./Subdivision!';
-    streetdetails.style.borderColor = "red";
-    streetdetails.focus();
-    }
+ //   if(streetdetails.value){
+ //   var streetdetailspass = 'pass';
+ //   iexclamstreet.style.display = 'none';
+ //   smallexclamstreet.innerHTML = '';
+ //   smallexclamstreet.style.display = 'none';
+ //   streetdetails.style.borderColor = "";
+ //   }else{
+ //   var streetdetailspass = 'notpass';
+ //   iexclamstreet.style.display = 'inline-block';
+ //   smallexclamstreet.style.display = 'block';
+//    smallexclamstreet.innerHTML = 'Please input your Street/Purok/Apartment/Bldg./Subdivision!';
+ //   streetdetails.style.borderColor = "red";
+ //   streetdetails.focus();
+//    }
 
-    if(housenumdetails.value){
-    var housenumdetailspass = 'pass';
-    iexclamhousenum.style.display = 'none';
-    smallexclamhousenum.innerHTML = '';
-    smallexclamhousenum.style.display = 'none';
-    housenumdetails.style.borderColor = "";
-    }else{
-    var housenumdetailspass = 'notpass';
-    iexclamhousenum.style.display = 'inline-block';
-    smallexclamhousenum.style.display = 'block';
-    smallexclamhousenum.innerHTML = 'Please input your House no./Room no.!';
-    housenumdetails.style.borderColor = "red";
-    housenumdetails.focus();
-    }
-    var changedetailspass = 'pass';
+ //   if(housenumdetails.value){
+ //   var housenumdetailspass = 'pass';
+ //   iexclamhousenum.style.display = 'none';
+ //   smallexclamhousenum.innerHTML = '';
+ //   smallexclamhousenum.style.display = 'none';
+ //   housenumdetails.style.borderColor = "";
+ //   }else{
+ //   var housenumdetailspass = 'notpass';
+  //  iexclamhousenum.style.display = 'inline-block';
+  //  smallexclamhousenum.style.display = 'block';
+  //  smallexclamhousenum.innerHTML = 'Please input your House no./Room no.!';
+ //   housenumdetails.style.borderColor = "red";
+ //   housenumdetails.focus();
+ //   }
+ //   var changedetailspass = 'pass';
 
-    if(latitude.value == 15.403499 && longitude.value == 120.607607){
+ //   if(latitude.value == 15.403499 && longitude.value == 120.607607){
     //San Agustin
-    checkerdelivery = "notpass";
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.41376032544493 && longitude.value == 120.60001373291017){
-    //Burot
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.367791234943724 && longitude.value == 120.61597824096681){
+  //  checkerdelivery = "notpass";
+  //  mapp.focus();
+  //  mapp.style.border = '1px solid red';
+   // mapp.style.borderRadius = '15px';
+  //  if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+  //  alert('Please drag the marker and point your exact location on the map!');
+  //  }
+  //  checkerdelivery = "notpass";
+  //  }else if(latitude.value == 15.41376032544493 && longitude.value == 120.60001373291017){
+  //  //Burot
+ //   mapp.focus();
+  //  mapp.style.border = '1px solid red';
+  //  mapp.style.borderRadius = '15px';
+ //   if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+  //  alert('Please drag the marker and point your exact location on the map!');
+  //  }
+  //  checkerdelivery = "notpass";
+  //  }else if(latitude.value == 15.367791234943724 && longitude.value == 120.61597824096681){
     //Sta rosa
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.37540517891869 && longitude.value == 120.65271377563478){
-    //Tinang
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.35487999878398 && longitude.value == 120.60499191284181){
-    //San Juan
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.398990086725632 && longitude.value == 120.59864044189455){
+ //   mapp.focus();
+ //   mapp.style.border = '1px solid red';
+ //   mapp.style.borderRadius = '15px';
+ //   if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+ //   }
+ //   checkerdelivery = "notpass";
+ //   }else if(latitude.value == 15.37540517891869 && longitude.value == 120.65271377563478){
+  //  //Tinang
+  //  mapp.focus();
+ //   mapp.style.border = '1px solid red';
+  //  mapp.style.borderRadius = '15px';
+  //  if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+   // alert('Please drag the marker and point your exact location on the map!');
+   // }
+   // checkerdelivery = "notpass";
+  //  }else if(latitude.value == 15.35487999878398 && longitude.value == 120.60499191284181){
+ //   //San Juan
+//    mapp.focus();
+ //   mapp.style.border = '1px solid red';
+ //   mapp.style.borderRadius = '15px';
+ //   if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+  //  }
+ //   checkerdelivery = "notpass";
+ //   }else if(latitude.value == 15.398990086725632 && longitude.value == 120.59864044189455){
     //Estrada
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.328951658676157 && longitude.value == 120.63975334167482){
+ //   mapp.focus();
+ //   mapp.style.border = '1px solid red';
+ //   mapp.style.borderRadius = '15px';
+ //   if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+ //   }
+ //   checkerdelivery = "notpass";
+ //   }else if(latitude.value == 15.328951658676157 && longitude.value == 120.63975334167482){
     //Alfonso
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.322898490305604 && longitude.value == 120.65457522869112){
+ //   mapp.focus();
+ //   mapp.style.border = '1px solid red';
+ //   mapp.style.borderRadius = '15px';
+//    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+//    }
+ //   checkerdelivery = "notpass";
+//    }else if(latitude.value == 15.322898490305604 && longitude.value == 120.65457522869112){
     //San Nicolas(Poblacion)
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.326985691585381 && longitude.value == 120.62850952148439){
+ //   mapp.focus();
+ //   mapp.style.border = '1px solid red';
+ //   mapp.style.borderRadius = '15px';
+ //   if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+ //   }
+ //   checkerdelivery = "notpass";
+ //   }else if(latitude.value == 15.326985691585381 && longitude.value == 120.62850952148439){
     //Santiago
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(latitude.value == 15.326054437562847 && longitude.value == 120.65906524658205){
+ //   mapp.focus();
+//    mapp.style.border = '1px solid red';
+//    mapp.style.borderRadius = '15px';
+ //   if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+ //   }
+ //   checkerdelivery = "notpass";
+ //   }else if(latitude.value == 15.326054437562847 && longitude.value == 120.65906524658205){
     //San Jose
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    checkerdelivery = "notpass";
-    }else if(!latitude.value && !longitude.value){
+  //  mapp.focus();
+  //  mapp.style.border = '1px solid red';
+ //   mapp.style.borderRadius = '15px';
+//    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+ //   }
+ //   checkerdelivery = "notpass";
+ //   }else if(!latitude.value && !longitude.value){
     //Empty
-    if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
-    alert('Please drag the marker and point your exact location on the map!');
-    }
-    mapp.focus();
-    mapp.style.border = '1px solid red';
-    mapp.style.borderRadius = '15px';
-    checkerdelivery = "notpass";
-    }else{
-    checkerdelivery = "pass";
-    mapp.style.border = '';
-    mapp.style.borderRadius = '';
-    }
+ //   if(housenumdetailspass == 'pass' && streetdetailspass == 'pass' && brgypass == 'pass' && municipalitypass == 'pass' && changedetailspass == 'pass' && contactcustomer == 'pass' && checkerschedule == 'pass'){
+ //   alert('Please drag the marker and point your exact location on the map!');
+ //   }
+ //   mapp.focus();
+ //   mapp.style.border = '1px solid red';
+//    mapp.style.borderRadius = '15px';
+ //   checkerdelivery = "notpass";
+ //   }else{
+ //   checkerdelivery = "pass";
+ //   mapp.style.border = '';
+ //   mapp.style.borderRadius = '';
+ //   }
 
 
-}else if(gcashp.checked){
-    if(emptysched[0].checked  || emptysched[1].checked){
+//}else if(gcashp.checked){
+//    if(emptysched[0].checked  || emptysched[1].checked){
+//
+//        if(later.checked){
+//                if(buttime.value == "00:00pm"){
+//                buttime.focus();
+//                wholetimediv.style.borderRadius = '15px';
+//                wholetimediv.style.border = '1px solid red';
+//                iexclamtime.style.display = 'inline-block';
+//                smallexclamtime.style.display = 'block';
+//                smallexclamtime.innerHTML = 'Please select your prefered schedule!';
+//                buttime.click();
+//                checkerschedule = "notpass";
+//            
+//                }else{
+//                iexclamtime.style.display = 'none';
+//                smallexclamtime.style.display = 'none';
+//                smallexclamtime.innerHTML = '';
+//                wholetimediv.style.borderRadius = '0px';
+//                wholetimediv.style.border = '0px solid transparent';
+//                checkerschedule = "pass";
+//                }
+//        }else{
+//        iexclamtime.style.display = 'none';
+//        smallexclamtime.style.display = 'none';
+//        smallexclamtime.innerHTML = '';
+//        wholetimediv.style.borderRadius = '0px';
+//        wholetimediv.style.border = '0px solid transparent';
+//        checkerschedule = "pass";
+//        }
+
+//    }else{
+
+//    checkerschedule = "notpass";
+//    iexclamtime.style.display = 'inline-block';
+//    smallexclamtime.style.display = 'block';
+//    smallexclamtime.innerHTML = 'Please select time!';
+//    wholetimediv.style.borderRadius = '15px';
+//    wholetimediv.style.border = '1px solid red';
+//    document.getElementsByName('deliverytime')[0].focus();
+//    }
+
+ //   if(contactrequired.value){
+ //   var contactcustomer = "pass";
+ //   iexclamcontact.style.display = 'none';
+//    smallexclamcontact.style.display = 'none';
+//    smallexclamcontact.innerHTML = '';
+//    contactrequired.style.borderColor = "";
+//    }else{
+ //   var contactcustomer = "notpass";
+//    iexclamcontact.style.display = 'inline-block';
+//    smallexclamcontact.style.display = 'block';
+//    smallexclamcontact.innerHTML = 'Please input your contact number!';
+//    contactrequired.focus();
+//    contactrequired.style.borderColor = "red";
+ //   }
+//    var changedetailspass = 'pass';
+//    var municipalitypass = 'pass';
+//    var brgypass = 'pass';
+//    var streetdetailspass = 'pass';
+//    var housenumdetailspass = 'pass';
+//    checkerdelivery = "pass";
+//}else 
+if(cop.checked){
+    var municipalitypass = 'pass';
+    var brgypass = 'pass';
+    var streetdetailspass = 'pass';
+    var housenumdetailspass = 'pass';
+   checkerdelivery = "pass";
+   if(emptysched[0].checked  || emptysched[1].checked){
 
         if(later.checked){
-                if(buttime.value == "00:00pm"){
-                buttime.focus();
-                wholetimediv.style.borderRadius = '15px';
-                wholetimediv.style.border = '1px solid red';
-                iexclamtime.style.display = 'inline-block';
-                smallexclamtime.style.display = 'block';
-                smallexclamtime.innerHTML = 'Please select your prefered schedule!';
-                buttime.click();
+               if(buttime.value == "00:00pm"){
+               buttime.focus();
+               wholetimediv.style.borderRadius = '15px';
+               wholetimediv.style.border = '1px solid red';
+               iexclamtime.style.display = 'inline-block';
+               smallexclamtime.style.display = 'block';
+               smallexclamtime.innerHTML = 'Please select your prefered schedule!';
+               buttime.click();
                 checkerschedule = "notpass";
             
-                }else{
+               }else{
                 iexclamtime.style.display = 'none';
-                smallexclamtime.style.display = 'none';
-                smallexclamtime.innerHTML = '';
-                wholetimediv.style.borderRadius = '0px';
+               smallexclamtime.style.display = 'none';
+               smallexclamtime.innerHTML = '';
+               wholetimediv.style.borderRadius = '0px';
                 wholetimediv.style.border = '0px solid transparent';
                 checkerschedule = "pass";
                 }
@@ -25815,13 +26015,13 @@ if(gcashd.checked){
         checkerschedule = "pass";
         }
 
-    }else{
+   }else{
 
-    checkerschedule = "notpass";
-    iexclamtime.style.display = 'inline-block';
+   checkerschedule = "notpass";
+   iexclamtime.style.display = 'inline-block';
     smallexclamtime.style.display = 'block';
-    smallexclamtime.innerHTML = 'Please select time!';
-    wholetimediv.style.borderRadius = '15px';
+   smallexclamtime.innerHTML = 'Please select time input!';
+   wholetimediv.style.borderRadius = '15px';
     wholetimediv.style.border = '1px solid red';
     document.getElementsByName('deliverytime')[0].focus();
     }
@@ -25840,74 +26040,7 @@ if(gcashd.checked){
     contactrequired.focus();
     contactrequired.style.borderColor = "red";
     }
-    var changedetailspass = 'pass';
-    var municipalitypass = 'pass';
-    var brgypass = 'pass';
-    var streetdetailspass = 'pass';
-    var housenumdetailspass = 'pass';
-    checkerdelivery = "pass";
-}else if(cop.checked){
-    var municipalitypass = 'pass';
-    var brgypass = 'pass';
-    var streetdetailspass = 'pass';
-    var housenumdetailspass = 'pass';
-    checkerdelivery = "pass";
-    if(emptysched[0].checked  || emptysched[1].checked){
-
-        if(later.checked){
-                if(buttime.value == "00:00pm"){
-                buttime.focus();
-                wholetimediv.style.borderRadius = '15px';
-                wholetimediv.style.border = '1px solid red';
-                iexclamtime.style.display = 'inline-block';
-                smallexclamtime.style.display = 'block';
-                smallexclamtime.innerHTML = 'Please select your prefered schedule!';
-                buttime.click();
-                checkerschedule = "notpass";
-            
-                }else{
-                iexclamtime.style.display = 'none';
-                smallexclamtime.style.display = 'none';
-                smallexclamtime.innerHTML = '';
-                wholetimediv.style.borderRadius = '0px';
-                wholetimediv.style.border = '0px solid transparent';
-                checkerschedule = "pass";
-                }
-        }else{
-        iexclamtime.style.display = 'none';
-        smallexclamtime.style.display = 'none';
-        smallexclamtime.innerHTML = '';
-        wholetimediv.style.borderRadius = '0px';
-        wholetimediv.style.border = '0px solid transparent';
-        checkerschedule = "pass";
-        }
-
-    }else{
-
-    checkerschedule = "notpass";
-    iexclamtime.style.display = 'inline-block';
-    smallexclamtime.style.display = 'block';
-    smallexclamtime.innerHTML = 'Please select time input!';
-    wholetimediv.style.borderRadius = '15px';
-    wholetimediv.style.border = '1px solid red';
-    document.getElementsByName('deliverytime')[0].focus();
-    }
-
-    if(contactrequired.value){
-    var contactcustomer = "pass";
-    iexclamcontact.style.display = 'none';
-    smallexclamcontact.style.display = 'none';
-    smallexclamcontact.innerHTML = '';
-    contactrequired.style.borderColor = "";
-    }else{
-    var contactcustomer = "notpass";
-    iexclamcontact.style.display = 'inline-block';
-    smallexclamcontact.style.display = 'block';
-    smallexclamcontact.innerHTML = 'Please input your contact number!';
-    contactrequired.focus();
-    contactrequired.style.borderColor = "red";
-    }
-    if(changedetails.value){
+   if(changedetails.value){
     if(document.getElementById('totalwithdevfeeid').value){
     var totalmorethani = document.getElementById('totalwithdevfeeid').value;
     }else{
@@ -26204,7 +26337,7 @@ if(gcashd.checked){
     checkerdelivery = "notpass";
     iexclampayment.style.display = 'inline-block';
     smallexclampayment.style.display = 'block';
-    smallexclampayment.innerHTML = 'Please select Mode of Payment!';
+    smallexclampayment.innerHTML = 'Please select Service!';
     modepaymentdiv.style.borderRadius = '15px';
     modepaymentdiv.style.border = "1px solid red";
 
@@ -26315,11 +26448,9 @@ var detailscontent = document.getElementById("detailscontent");
 detailscontent.style.animation="fade-bottom-in 0.5s";
 
 var totaler = document.getElementById("totalwithoutdevfee");
-        if('{{couponvalidity}}' == 'Valid'){
+
         totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        }else{
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-        }
+
 var dataHtml='';
 var tablebodytwo = document.getElementById('summarytableid');
             for(let punched of allpunched){
@@ -26469,8 +26600,8 @@ lnginput.value = markerY;
 
 
 var df = 0;
-var pickupodelivery = document.getElementsByName("payment")[0];
-if(pickupodelivery.value == 'GcashPickup' || pickupodelivery.value == 'Pickup'){
+var pickupodelivery = document.querySelector('input[name="payment"]:checked');
+if(pickupodelivery.value == 'Pickup'){
 df= 0;
 }else{
 var dfi=0;
@@ -26497,7 +26628,17 @@ var dfi=0;
         dfi = 29;
         }
 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-df=0;
+        if({{rqrd_minimumamnt}} == 0){
+            df=0;
+        }else{
+            if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                df=0
+            
+            }else{
+                df=dfi;
+            }
+        }
+
 }else{
 df=dfi;
 }
@@ -26508,16 +26649,25 @@ var grandtotalwithdevfees = totalwithoudevfee+df
 $('#totalwithdevfeeid').val(grandtotalwithdevfees);
 $('#devfeeid').val(df);
 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
-totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+        if({{rqrd_minimumamnt}} == 0){
+            totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+        }else{
+            if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+                totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            
+            }else{
+                totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
+            }
+        }
+
 }else{
 totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
 }
 
-        if('{{couponvalidity}}' == 'Valid'){
+
+       
         gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees.toFixed(2);
-        }else{
-        gtotaler.innerHTML = "Total: ₱"+grandtotalwithdevfees.toFixed(2);
-        }
+        
 
 pointx=markerX;
 pointy=markerY;
@@ -26788,13 +26938,12 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
         var tablebody=document.getElementById('punchedtablebody');
         var datahtmltest="";
         let totalpunched=0;
-        
             for(let i = 0;i<(allpunched.length);i++){
             
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-            
+    
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
@@ -26836,12 +26985,29 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
         var addonqtydisplaysakefinal=allpunched[indexfinderfreefriesfinal].Addonsqty;
         };
         if('{{couponvalidity}}' == 'Valid'){
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2);+'</td><td class="tdpunched"></td></tr>';
-        discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-        var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+            if({{rqrd_minimumamnt}} == 0){
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2);+'</td><td class="tdpunched"></td></tr>';
+                discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
         
+            }else{
+                if(totalpunched >= {{rqrd_minimumamnt}}){
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2);+'</td><td class="tdpunched"></td></tr>';
+                    discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                    var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+        
+            
+                }else{
+                    discountedtotalherei = '';
+                    tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
+        
+                }
+            }
+
         }else{
         discountedtotalherei = '';
         tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
@@ -26850,11 +27016,25 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
 
 
       if('{{couponvalidity}}' == 'Valid'){
-        discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-        var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-        tablebody.innerHTML = datahtmltest;
+            if({{rqrd_minimumamnt}} == 0){
+                discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                tablebody.innerHTML = datahtmltest;
+            }else{
+                if(totalpunched >= {{rqrd_minimumamnt}}){
+                    discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
+                    var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                    datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                    tablebody.innerHTML = datahtmltest;
+                }else{
+                     discountedtotalherei = '';
+                    tablebody.innerHTML = datahtmltest;
+                }
+            }
+
         }else{
          discountedtotalherei = '';
         tablebody.innerHTML = datahtmltest;
@@ -26869,8 +27049,10 @@ if(discountedtotalherei){
 document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+discountedtotalherei.toFixed(2);
 totalwithoudevfee = discountedtotalherei;
 }else{
+
  document.getElementById('checkoutbut').value = 'Payment Setup  - Total:  ₱'+totalpunched.toFixed(2);
 totalwithoudevfee = totalpunched;
+
 };
 document.getElementById('totalpunched').innerHTML = "(Delivery fee is not yet included)";
             //$("#totalpunched1").val(totalpunched);
@@ -27298,8 +27480,19 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                     var discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
                     var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
                     if('{{couponvalidity}}' == 'Valid'){
-                    document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
-                    totalwithoudevfee = discountedtotalherei;
+                        if({{rqrd_minimumamnt}} == 0){
+                            document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
+                            totalwithoudevfee = discountedtotalherei;
+                        }else{
+                            if(totalpunched >= {{rqrd_minimumamnt}}){
+                                document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
+                                totalwithoudevfee = discountedtotalherei;
+                            }else{
+                                document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched.toFixed(2);
+                                totalwithoudevfee = totalpunched;
+                            }
+                        }
+
                     }else{
                     document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched.toFixed(2);
                     totalwithoudevfee = totalpunched;
@@ -27325,11 +27518,25 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
         var addonqtydisplaysakefinals=allpunched[indexfinderfreefriesfinals].Addonsqty;
         }
         if('{{couponvalidity}}' == 'Valid'){
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+            if({{rqrd_minimumamnt}} == 0){
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
 
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-        tablebody.innerHTML = dataHtmlcart;
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                tablebody.innerHTML = dataHtmlcart;
+            }else{
+                if(totalpunched >= {{rqrd_minimumamnt}}){
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                    tablebody.innerHTML = dataHtmlcart;
+                }else{
+                    tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
+        
+                }
+            }
+
         }else{
         
         tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
@@ -27338,9 +27545,20 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
             
 }else{
        if('{{couponvalidity}}' == 'Valid'){
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
-        dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-        tablebody.innerHTML = dataHtmlcart;
+            if({{rqrd_minimumamnt}} == 0){
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                tablebody.innerHTML = dataHtmlcart;
+            }else{
+                if(totalpunched >= {{rqrd_minimumamnt}}){
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
+                    dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
+                    tablebody.innerHTML = dataHtmlcart;
+                }else{
+                    tablebody.innerHTML = dataHtmlcart;
+                }
+            }
+
         }else{
         tablebody.innerHTML = dataHtmlcart;
         };
@@ -28836,7 +29054,7 @@ var alertvalue=document.getElementById('alertvalueid').value;
   }else if('{{user.first_name}}'){
   alertsuccess.classList.add('alertanimate')
   alertsuccess.style.display = "block";
-  alertsuccess.innerHTML = "<strong>Success!</strong> You have logged-in with Facebook {{user.first_name}}!";
+  alertsuccess.innerHTML = "<strong>Success!</strong> You have logged-in {{user.first_name}}!";
   setTimeout(alertremove, 5000);
   }else{
   alertsuccess.classList.remove('alertanimate')
@@ -31025,11 +31243,19 @@ pampizza = presyopizza;
     </div>
 </div>
 {% if couponvalidity == 'Valid' %}
-<h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Upon</h2>
-<h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">Checkout</h2>
-<div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
-<h1 id="discounttext">{{discount}}</h1>
-<img src="{% static 'discountimage.png' %}" class="discount"></img>
+    {% if rqrd_minimumamnt == 0 %}
+        <h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Upon</h2>
+        <h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">Checkout</h2>
+        <div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
+        <h1 id="discounttext">{{discount}}</h1>
+        <img src="{% static 'discountimage.png' %}" class="discount"></img>
+    {% else %}
+        <h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;left:1px;">Min. Purchase</h2>
+        <h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;left:30px;">₱{{rqrd_minimumamnt}}.00</h2>
+        <div class="discountdiv" style="animation:fade-bottom-in 0.5s;">
+        <h1 id="discounttext">{{discount}}</h1>
+        <img src="{% static 'discountimage.png' %}" class="discount"></img>
+    {% endif %}
 </div>
 {% elif couponvalidity == 'KGDDeliveryFree' %}
 <div class="freedeliverydiv" style="animation:fade-bottom-in 0.5s;">
