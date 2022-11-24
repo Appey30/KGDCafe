@@ -345,8 +345,425 @@ def products(request):
 
 @login_required
 def posthree(request):
-
         userr=request.user.id
+        #print(Acceptorder.objects.filter(Customername='Ysabelle Caluza').values_list('LocationMarker', flat=True)[0])
+        if request.GET.get('acceptcontactno'):
+            contactnumberaccept = request.GET.get('acceptcontactno')
+            rider = request.GET.get('rider')
+            getETA = request.GET.get('ETA')
+            Accepted = Customer.objects.filter(Admin=userr,contactnumber=contactnumberaccept)
+            
+            objs = [Acceptorder(
+                        Admin=Accepted.Admin,
+                        Customername=Accepted.Customername,
+                        codecoupon=Accepted.codecoupon,
+                        Province=Accepted.Province,
+                        MunicipalityCity=Accepted.MunicipalityCity,
+                        Barangay=Accepted.Barangay,
+                        StreetPurok=Accepted.StreetPurok,
+                        Housenumber=Accepted.Housenumber or None,
+                        LandmarksnNotes=Accepted.LandmarksnNotes or None,
+                        DeliveryFee=Accepted.DeliveryFee or 0,
+                        contactnumber=Accepted.contactnumber,
+                        Rider=rider,
+                        productname=Accepted.productname,
+                        Category=Accepted.Category,
+                        Subcategory=Accepted.Subcategory or None,
+                        Size=Accepted.Size  or None,
+                        PSize=Accepted.PSize or None,
+                        Addons=Accepted.Addons or None,
+                        QtyAddons= Accepted.QtyAddons or 0,
+                        Price=Accepted.Price,
+                        Subtotal = Accepted.Subtotal,
+                        GSubtotal=Accepted.GSubtotal,
+                        Cost=Accepted.Cost,
+                        Qty=Accepted.Qty,
+                        Bill=Accepted.Bill or 0,
+                        Change=Accepted.Change or 0,
+                        ETA=getETA,
+                        MOP=Accepted.MOP,
+                        ordertype='Online',
+                        Timetodeliver=Accepted.Timetodeliver,
+                        ScheduleTime=Accepted.ScheduleTime,
+                        gpslat = Accepted.gpslat,
+                        gpslng = Accepted.gpslng,
+                        gpsaccuracy = Accepted.gpsaccuracy,
+                        pinnedlat = Accepted.pinnedlat,
+                        pinnedlng = Accepted.pinnedlng,
+                        tokens = Accepted.tokens or None,
+                        DateTime=Accepted.DateTime,
+                )
+                for Accepted in Accepted
+            ]
+            Acceptorders = Acceptorder.objects.bulk_create(objs)
+            Accepted.delete()
+            messageacknowledgetokeni=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberaccept).values_list('tokens',flat=True).first()
+            messageacknowledgetoken = ["dHEGNR4YGO8a-AVQWfIE33:APA91bGkNxUcRZEHJQCkUy3k3THUEMxml9q4819bDQw1b8UkD05qThidgXq3Nnr46I1pwQikZgwiGFuBgKwUxHO6kUXI9KId3ZK0fQ0zi83QegTtVimqV18a2pDqBq5qnJf-BK74Z1nL", messageacknowledgetokeni]
+            acknowledge(request, messageacknowledgetoken)
+            MessageRider(request)
+            return HttpResponseRedirect('/index/pos')
+
+        if len(Acceptorder.objects.filter(Admin=userr))>0:
+            acceptedorder = Acceptorder.objects.filter(Admin=userr).distinct('contactnumber')
+            acceptedorderall = Acceptorder.objects.filter(Admin=userr)
+        else:
+            acceptedorder = Acceptorder.objects.none()
+            acceptedorderall = Acceptorder.objects.none()
+        viewordersacceptii={}
+        arrayoneaccept=[]
+        contactdistincteraccepti = Acceptorder.objects.filter(Admin=userr).distinct('contactnumber')
+        contactdistincteraccept=contactdistincteraccepti.values_list('contactnumber',flat=True)
+        i=0
+        for cndistinctaccept in contactdistincteraccept:
+            arrayseparatoracceptiii=Acceptorder.objects.filter(Admin=userr,contactnumber=cndistinctaccept).exclude(productname='Ready').values()
+            arrayseparatoraccepti = list(arrayseparatoracceptiii)
+            arrayseparatoraccept=json.dumps(arrayseparatoraccepti, cls=JSONEncoder)
+            viewordersacceptii[contactdistincteraccept[i]]=arrayseparatoraccept
+            i=i+1
+        viewordersaccepti=viewordersacceptii
+        viewordersaccept=json.dumps(viewordersaccepti, cls=JSONEncoder)
+        
+
+        if (request.GET.get('rider') == "") and (request.GET.get('contactnoreject') or request.GET.get('contactnoaccepted')):
+            if request.GET.get('contactnoreject'):
+                contactnumberreject = request.GET.get('contactnoreject')
+                Rejected = Customer.objects.filter(Admin=userr,contactnumber=contactnumberreject)
+            elif request.GET.get('contactnoaccepted'):
+                contactnumberreject = request.GET.get('contactnoaccepted')
+                if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberreject, productname='Ready'):
+                    deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberreject, productname='Ready')
+                    deletethis.delete()
+                Rejected = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberreject)
+            
+            objs = [Rejectorder(
+                        Admin=userr,
+                        Customername=Rejected.Customername,
+                        codecoupon=Rejected.codecoupon,
+                        Province=Rejected.Province,
+                        MunicipalityCity=Rejected.MunicipalityCity,
+                        Barangay=Rejected.Barangay,
+                        StreetPurok=Rejected.StreetPurok,
+                        Housenumber=Rejected.Housenumber or None,
+                        LandmarksnNotes=Rejected.LandmarksnNotes or None,
+                        DeliveryFee=Rejected.DeliveryFee or 0,
+                        contactnumber=Rejected.contactnumber,
+                        productname=Rejected.productname,
+                        Category=Rejected.Category,
+                        Subcategory=Rejected.Subcategory or None,
+                        Size=Rejected.Size  or None,
+                        PSize=Rejected.PSize or None,
+                        Addons=Rejected.Addons or None,
+                        QtyAddons= Rejected.QtyAddons or 0,
+                        Price=Rejected.Price,
+                        Subtotal = Rejected.Subtotal,
+                        GSubtotal=Rejected.GSubtotal,
+                        Cost=Rejected.Cost,
+                        Qty=Rejected.Qty,
+                        Bill=Rejected.Bill or 0,
+                        Change=Rejected.Change or 0,
+                        MOP=Rejected.MOP,
+                        ordertype='Online',
+                        Timetodeliver=Rejected.Timetodeliver,
+                        ScheduleTime=Rejected.ScheduleTime,
+                        gpslat = Rejected.gpslat,
+                        gpslng = Rejected.gpslng,
+                        gpsaccuracy = Rejected.gpsaccuracy,
+                        pinnedlat = Rejected.pinnedlat,
+                        pinnedlng = Rejected.pinnedlng,
+                        tokens = Rejected.tokens  or None,
+                        DateTime=Rejected.DateTime,
+                )
+                for Rejected in Rejected
+            ]
+            Rejectorders = Rejectorder.objects.bulk_create(objs)
+            Rejected.delete()
+            return HttpResponseRedirect('/index/pos')
+
+        if len(Rejectorder.objects.filter(Admin=userr))>0:
+            rejectedorder = Rejectorder.objects.filter(Admin=userr).distinct('contactnumber')
+            rejectedorderall = Rejectorder.objects.filter(Admin=userr)
+        else:
+            rejectedorder = Rejectorder.objects.none()
+            rejectedorderall = Rejectorder.objects.none()
+        viewordersrejectii={}
+        arrayonereject=[]
+        contactdistincterrejecti = Rejectorder.objects.filter(Admin=userr).distinct('contactnumber')
+        contactdistincterreject=contactdistincterrejecti.values_list('contactnumber',flat=True)
+        i=0
+        for cndistinctreject in contactdistincterreject:
+            arrayseparatorrejectiii=Rejectorder.objects.filter(Admin=userr,contactnumber=cndistinctreject).exclude(productname='Ready').values()
+            arrayseparatorrejecti = list(arrayseparatorrejectiii)
+            arrayseparatorreject=json.dumps(arrayseparatorrejecti, cls=JSONEncoder)
+            viewordersrejectii[contactdistincterreject[i]]=arrayseparatorreject
+            i=i+1
+        viewordersrejecti=viewordersrejectii
+        viewordersreject=json.dumps(viewordersrejecti, cls=JSONEncoder)
+
+        
+
+        if request.GET.get('contactnorestore'):
+            contactnumberrestore = request.GET.get('contactnorestore')
+            Restored = Rejectorder.objects.filter(Admin=userr,contactnumber=contactnumberrestore)
+            
+            objs = [Customer(
+                        Admin=userr,
+                        Customername=Restored.Customername,
+                        codecoupon=Restored.codecoupon,
+                        Province=Restored.Province,
+                        MunicipalityCity=Restored.MunicipalityCity,
+                        Barangay=Restored.Barangay,
+                        StreetPurok=Restored.StreetPurok,
+                        Housenumber=Restored.Housenumber or None,
+                        LandmarksnNotes=Restored.LandmarksnNotes or None,
+                        DeliveryFee=Restored.DeliveryFee or 0,
+                        contactnumber=Restored.contactnumber,
+                        productname=Restored.productname,
+                        Category=Restored.Category,
+                        Subcategory=Restored.Subcategory or None,
+                        Size=Restored.Size  or None,
+                        PSize=Restored.PSize or None,
+                        Addons=Restored.Addons or None,
+                        QtyAddons= Restored.QtyAddons or 0,
+                        Price=Restored.Price,
+                        Subtotal = Restored.Subtotal,
+                        GSubtotal=Restored.GSubtotal,
+                        Cost=Restored.Cost,
+                        Qty=Restored.Qty,
+                        Bill=Restored.Bill or 0,
+                        Change=Restored.Change or 0,
+                        MOP=Restored.MOP,
+                        ordertype='Online',
+                        Timetodeliver=Restored.Timetodeliver,
+                        ScheduleTime=Restored.ScheduleTime,
+                        gpslat = Restored.gpslat,
+                        gpslng = Restored.gpslng,
+                        gpsaccuracy = Restored.gpsaccuracy,
+                        pinnedlat = Restored.pinnedlat,
+                        pinnedlng = Restored.pinnedlng,
+                        
+                        tokens = Restored.tokens  or None,
+                        DateTime=Restored.DateTime,
+                )
+                for Restored in Restored
+            ]
+            Restore = Customer.objects.bulk_create(objs)
+            Restored.delete()
+            return HttpResponseRedirect('/index/pos')
+
+        if len(Customer.objects.filter(Admin=userr))>0:
+            onlineorder = Customer.objects.filter(Admin=userr).distinct('contactnumber')
+            onlineorderall = Customer.objects.filter(Admin=userr)
+        else:
+            onlineorder = Customer.objects.none()
+            onlineorderall = Customer.objects.none()
+        viewordersii={}
+        arrayone=[]
+        contactdistincteri = Customer.objects.filter(Admin=userr).distinct('contactnumber')
+        contactdistincter=contactdistincteri.values_list('contactnumber',flat=True)
+        i=0
+        for cndistinct in contactdistincter:  
+            arrayseparatoriii=Customer.objects.filter(Admin=userr,contactnumber=cndistinct).values()
+            arrayseparatori = list(arrayseparatoriii)
+            arrayseparator=json.dumps(arrayseparatori, cls=JSONEncoder)
+            viewordersii[contactdistincter[i]]=arrayseparator
+            i=i+1
+        viewordersi=viewordersii
+        vieworders=json.dumps(viewordersi, cls=JSONEncoder)
+
+        onlineordercounter = len(Customer.objects.filter(Admin=userr).distinct('contactnumber'))
+
+        if is_ajax(request=request) and request.POST.get("Ready"):
+            contactnumberready = request.POST.get('Ready')
+            Readyadd = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready).first()
+            Readyacceptorder=Acceptorder.objects.create(
+                        Admin=userr,
+                        Customername=Readyadd.Customername,
+                        codecoupon=Readyadd.codecoupon,
+                        Province=Readyadd.Province,
+                        MunicipalityCity=Readyadd.MunicipalityCity,
+                        Barangay=Readyadd.Barangay,
+                        StreetPurok=Readyadd.StreetPurok,
+                        Housenumber=Readyadd.Housenumber or None,
+                        LandmarksnNotes=Readyadd.LandmarksnNotes or None,
+                        DeliveryFee=0,
+                        contactnumber=Readyadd.contactnumber,
+                        productname='Ready',
+                        Category=Readyadd.Category,
+                        Subcategory=None,
+                        Size=None,
+                        PSize=None,
+                        Addons=None,
+                        QtyAddons= 0,
+                        Price=0,
+                        Subtotal = 0,
+                        GSubtotal=Readyadd.GSubtotal,
+                        Cost=0,
+                        Qty=0,
+                        Bill=Readyadd.Bill or 0,
+                        Change=Readyadd.Change or 0,
+                        MOP=Readyadd.MOP,
+                        ordertype='Online',
+                        Timetodeliver=Readyadd.Timetodeliver,
+                        ScheduleTime=Readyadd.ScheduleTime,
+                        gpslat = Readyadd.gpslat,
+                        gpslng = Readyadd.gpslng,
+                        gpsaccuracy = Readyadd.gpsaccuracy,
+                        pinnedlat = Readyadd.pinnedlat,
+                        pinnedlng = Readyadd.pinnedlng,
+                        
+                        tokens = Readyadd.tokens  or None,
+                        DateTime=Readyadd.DateTime,
+                        )
+            Readyacceptorder.save()
+            if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready, MOP='COD'):
+                orderprepared(request)
+            messageacknowledgetokeni=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready).values_list('tokens',flat=True).first()
+            messageacknowledgetoken = ["dHEGNR4YGO8a-AVQWfIE33:APA91bGkNxUcRZEHJQCkUy3k3THUEMxml9q4819bDQw1b8UkD05qThidgXq3Nnr46I1pwQikZgwiGFuBgKwUxHO6kUXI9KId3ZK0fQ0zi83QegTtVimqV18a2pDqBq5qnJf-BK74Z1nL", messageacknowledgetokeni]
+            if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready).values_list('MOP',flat=True).first() == 'COD' or Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberready).values_list('MOP',flat=True).first() == 'GcashDelivery':
+                deliveryotwRider(request)
+                deliveryotwCustomer(request , messageacknowledgetoken)
+            else:
+                pickupCustomer(request , messageacknowledgetoken)
+            return JsonResponse({'Ready':'Ready'})
+        if is_ajax(request=request) and request.GET.get("apini"):
+            onlineordercounterf = onlineordercounter
+            onlineorderf = [serializers.serialize('json',onlineorder, cls=JSONEncoder),vieworders]
+
+            return JsonResponse({'onlineorderf':onlineorderf})
+            
+        if is_ajax(request=request) and request.POST.get('doneorders'):
+            contactnumberdonei = json.loads(request.POST.get('doneorders'))
+            contactnumberdone = contactnumberdonei[0]['contactnumber']
+            if contactnumberdonei[0]['codecoupon']:
+                if couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']):
+                    codeconsumereducerii=couponlist.objects.get(code=contactnumberdonei[0]['codecoupon'])
+                    if codeconsumereducerii.is_consumable == True and codeconsumereducerii.redeemlimit > 0:
+                        codeconsumereduceri=int(codeconsumereducerii.redeemlimit)-1
+                        codeconsumereducer=couponlist.objects.filter(code=contactnumberdonei[0]['codecoupon']).update(redeemlimit=codeconsumereduceri)
+                    else:
+                        pass
+                else:
+                    pass
+            else:
+                pass
+            if Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready'):
+                deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
+                deletethis.delete()
+            Done = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone)
+            if contactnumberdonei[0]['DeliveryFee'] != None:
+                devfeeassales=Sales.objects.create(
+                        user=userr,
+                        CusName=contactnumberdonei[0]['Customername'],
+                        codecoupon=contactnumberdonei[0]['codecoupon'] or None,
+                        Province=contactnumberdonei[0]['Province'],
+                        MunicipalityCity=contactnumberdonei[0]['MunicipalityCity'],
+                        Barangay=contactnumberdonei[0]['Barangay'],
+                        StreetPurok=contactnumberdonei[0]['StreetPurok'],
+                        Housenumber=contactnumberdonei[0]['Housenumber'] or None,
+                        LandmarksnNotes=contactnumberdonei[0]['LandmarksnNotes'] or None,
+                        DeliveryFee=contactnumberdonei[0]['DeliveryFee'] or None,
+                        contactnumber=contactnumberdonei[0]['contactnumber'],
+                        productname='DeliveryFee',
+                        Category='DeliveryFee',
+                        Subcategory='DeliveryFee',
+                        Size=None,
+                        PSize=None,
+                        Addons=None,
+                        QtyAddons=0,
+                        Price=contactnumberdonei[0]['DeliveryFee'],
+                        Subtotal = contactnumberdonei[0]['DeliveryFee'],
+                        GSubtotal=contactnumberdonei[0]['GSubtotal'],
+                        Cost=0,
+                        Qty=1,
+                        Bill=contactnumberdonei[0]['Bill'] or 0,
+                        Change=contactnumberdonei[0]['Change'] or 0,
+                        MOP=contactnumberdonei[0]['MOP'],
+                        ordertype='Online',
+                        Timetodeliver=contactnumberdonei[0]['Timetodeliver'] or None,
+                        ScheduleTime=contactnumberdonei[0]['ScheduleTime'] or None,
+                        gpslat = contactnumberdonei[0]['gpslat'],
+                        gpslng = contactnumberdonei[0]['gpslng'],
+                        gpsaccuracy = contactnumberdonei[0]['gpsaccuracy'],
+                        pinnedlat = contactnumberdonei[0]['pinnedlat'],
+                        pinnedlng = contactnumberdonei[0]['pinnedlng'],
+                        
+                        tokens = contactnumberdonei[0]['tokens'] or None,
+                        DateTime=contactnumberdonei[0]['DateTime'],
+                )
+                devfeeassales.save()
+            objs = [Sales(
+                        user=userr,
+                        CusName=Done.Customername,
+                        codecoupon=Done.codecoupon,
+                        Province=Done.Province,
+                        MunicipalityCity=Done.MunicipalityCity,
+                        Barangay=Done.Barangay,
+                        StreetPurok=Done.StreetPurok,
+                        Housenumber=Done.Housenumber or None,
+                        LandmarksnNotes=Done.LandmarksnNotes or None,
+                        DeliveryFee=Done.DeliveryFee or None,
+                        contactnumber=Done.contactnumber,
+                        productname=Done.productname,
+                        Category=Done.Category,
+                        Subcategory=Done.Subcategory or None,
+                        Size=Done.Size  or None,
+                        PSize=Done.PSize or None,
+                        Addons=Done.Addons or None,
+                        QtyAddons= Done.QtyAddons or 0,
+                        Price=Done.Price,
+                        Subtotal = Done.Subtotal,
+                        GSubtotal=Done.GSubtotal,
+                        Cost=Done.Cost,
+                        Qty=Done.Qty,
+                        Bill=Done.Bill or 0,
+                        Change=Done.Change or 0,
+                        MOP=Done.MOP,
+                        ordertype='Online',
+                        Timetodeliver=Done.Timetodeliver,
+                        ScheduleTime=Done.ScheduleTime,
+                        gpslat = Done.gpslat,
+                        gpslng = Done.gpslng,
+                        gpsaccuracy = Done.gpsaccuracy,
+                        pinnedlat = Done.pinnedlat,
+                        pinnedlng = Done.pinnedlng,
+                       
+                        tokens = Done.tokens or None,
+                        DateTime=Done.DateTime,
+                )
+                for Done in Done
+            ]
+            Salesorders = Sales.objects.bulk_create(objs)
+            Done.delete()
+            datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
+            monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
+            yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
+            try:
+                getdailysales=Dailysales.objects.filter(user=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Sales', flat=True)[0]
+                timesheetupdate=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).update(Sales=getdailysales)
+            except IndexError:
+                timesheetupdate=timesheet.objects.none()
+                getdailysales=0
+            if getdailysales >= 2000:
+                getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
+                getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
+                addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
+                if addbonusornot[0] == 'Added bonus':
+                    pass
+                else:
+                    twokeysalebonus=getinitialsalarytoday[0]+30
+                    if getASLBALANCEtodayi[0] >= 30:
+                        getASLBALANCEtoday=getASLBALANCEtodayi[0]-30
+                        timesheetupdatetwo=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).update(ISalary=twokeysalebonus, ASLbalance=getASLBALANCEtoday,Identifybonus='Added bonus')
+                    else:
+                        getASLBALANCEtoday=0
+                        addtofinalsalaryi=30-getASLBALANCEtodayi[0]
+                        getfinalsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('FSalary', flat=True)
+                        addtofinalsalary=addtofinalsalaryi+getfinalsalarytoday
+                        timesheetupdatetwo=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).update(ISalary=twokeysalebonus, ASLbalance=getASLBALANCEtoday,Identifybonus='Added bonus',FSalary=addtofinalsalary)
+            return HttpResponseRedirect('/index/pos')
+
+
+
         notifyorder=acknowledgedstockorder.objects.filter(CusName="Notify",user=userr).count()
         if acknowledgedstockorder.objects.all().count()==0:
             notifyadmin=submitstockorder.objects.all().count()
@@ -592,7 +1009,7 @@ def posthree(request):
         
         cookieskeyscosts=json.dumps(keyscookies)
         
-        friesbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=userr).distinct('productname')
+        friesbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=userr).distinct('productname').exclude(productname='Free Fries')
 
         
         
@@ -790,7 +1207,7 @@ def posthree(request):
         qq2=queue2.objects.all().filter(user=userr)
         qq3=queue3.objects.all().filter(user=userr)
         mepunched=punched
-        if request.POST.get('done1'):
+        if request.POST.get('done1')=='done1':
             objs = [Sales(
                         user=Sales1pass.user,
                         productname=Sales1pass.productname,
@@ -813,8 +1230,9 @@ def posthree(request):
             Sales1create = Sales.objects.bulk_create(objs)
             qq1.delete()
             messages.success(request,"Orders are done, and saved the record of your transaction! ")
+
             return HttpResponseRedirect('/index/kgddashboard?next=/index/pos')
-        elif request.POST.get('done2')=='done2':
+        elif request.POST.get('done2'):
             objs = [Sales(
                         user=Sales2pass.user,
                         productname=Sales2pass.productname,
@@ -839,7 +1257,7 @@ def posthree(request):
             qq2.delete()
             messages.success(request,"Orders are done, and saved the record of your transaction! ")
             return HttpResponseRedirect('/index/kgddashboard?next=/index/pos')
-        elif request.POST.get('done3'):
+        elif request.POST.get('done3')=='done3':
 
             objs = [Sales(
                         user=Sales3pass.user,
@@ -864,15 +1282,15 @@ def posthree(request):
             qq3.delete()
             messages.success(request,"Orders are done, and saved the record of your transaction! ")
             return HttpResponseRedirect('/index/kgddashboard?next=/index/pos')
-        if request.POST.get('cancel1'):
+        if request.POST.get('cancel1')=='cancel1':
             qq1.delete()
-            return HttpResponseRedirect('/index/posthree')
-        elif request.POST.get('cancel2'):
+            return HttpResponseRedirect('/index/pos')
+        elif request.POST.get('cancel2')=='cancel2':
             qq2.delete()
-            return HttpResponseRedirect('/index/posthree')
-        elif request.POST.get('cancel3'):
+            return HttpResponseRedirect('/index/pos')
+        elif request.POST.get('cancel3')=='cancel3':
             qq3.delete()
-            return HttpResponseRedirect('/index/posthree')
+            return HttpResponseRedirect('/index/pos')
         if request.GET.get('Q1')=="Queue1":
             cuspaymentamount=int(request.GET.get('amountpay'))
             tot1=int(request.GET.get('total1'))
@@ -906,7 +1324,7 @@ def posthree(request):
             q11=queue1.objects.all().filter(user=userr).values_list('CusName','Bill','Change').distinct()
             q111=queue1.objects.filter(user=userr).aggregate(Sum('Subtotal')).get('Subtotal__sum')
             
-            return HttpResponseRedirect('/index/posthree')
+            return HttpResponseRedirect('/index/pos')
         elif request.GET.get('Q2')=="Queue2": 
             cuspaymentamount2=int(request.GET.get('amountpay2'))
             tot2=int(request.GET.get('total2'))
@@ -941,7 +1359,7 @@ def posthree(request):
             q22=queue2.objects.all().filter(user=userr).values_list('CusName','Bill','Change').distinct()
             q222=queue2.objects.filter(user=userr).aggregate(Sum('Subtotal')).get('Subtotal__sum')
             
-            return HttpResponseRedirect('/index/posthree')
+            return HttpResponseRedirect('/index/pos')
         elif request.GET.get('Q3') =="Queue3": 
             cuspaymentamount3=int(request.GET.get('amountpay3'))
             tot3=int(request.GET.get('total3'))
@@ -975,7 +1393,7 @@ def posthree(request):
             q33=queue3.objects.all().filter(user=userr).values_list('CusName','Bill','Change').distinct()
             q333=queue3.objects.filter(user=userr).aggregate(Sum('Subtotal')).get('Subtotal__sum')
             
-            return HttpResponseRedirect('/index/posthree')
+            return HttpResponseRedirect('/index/pos')
         else:
             disable="disabled"
             q1=queue1.objects.all().filter(user=userr)
@@ -987,8 +1405,13 @@ def posthree(request):
             q3=queue3.objects.all().filter(user=userr)
             q33=queue3.objects.all().filter(user=userr).values_list('CusName','Bill','Change').distinct()
             q333=queue3.objects.filter(user=userr).aggregate(Sum('Subtotal')).get('Subtotal__sum')
-            
-            return render(request, 'posthree.html',{'mepunched':mepunched,'pizzakeyscosts':pizzakeyscosts,'pizzacosts':pizzacosts,'pizzaprices':pizzaprices,'bubwafkeyscosts':bubwafkeyscosts,'bubwafcosts':bubwafcosts,'bubwafprices':bubwafprices,'shawarmakeyscosts':shawarmakeyscosts,'shawarmacosts':shawarmacosts,'shawarmaprices':shawarmaprices,'frieskeyscosts':frieskeyscosts,'friescosts':friescosts,'friesprices':friesprices,'cookieskeyscosts':cookieskeyscosts,'cookiescosts':cookiescosts,'cookiesprices':cookiesprices,'aokeyscosts':aokeyscosts,'aocosts':aocosts,'aoprices':aoprices,'frkeyscosts':frkeyscosts,'frzkeyscosts':frzkeyscosts,'frzcosts':frzcosts,'frzprices':frzprices,'frcosts':frcosts,'frprices':frprices,'mtkeyscosts':mtkeyscosts,'mtcosts':mtcosts,'mtprices':mtprices,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal,'userr':userr,'disable':disable,'psizes':psizes,'q1':q1,'q11':q11,'q111':q111,'q2':q2,'q22':q22,'q222':q222,'q3':q3,'q33':q33,'q333':q333,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'Subcategoriess':Subcategoriess,'mtbuttons':mtbuttons,'frbuttons':frbuttons,'snbuttons':snbuttons,'psizes':psizes,'frsizes':frsizes,'mtsizes':mtsizes,'Categoriess':Categoriess})
+            if len(Acceptorder.objects.filter(Admin=userr, productname='Ready'))>0:
+                initial=Acceptorder.objects.filter(Admin=userr, productname='Ready').values_list('contactnumber', flat=True)
+                readylistcontact=list(initial)
+            else:
+                readylistcontact=list(Acceptorder.objects.none())
+            print('readylistcontact1:',readylistcontact)
+            return render(request, 'posthree.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'mepunched':mepunched,'pizzakeyscosts':pizzakeyscosts,'pizzacosts':pizzacosts,'pizzaprices':pizzaprices,'bubwafkeyscosts':bubwafkeyscosts,'bubwafcosts':bubwafcosts,'bubwafprices':bubwafprices,'shawarmakeyscosts':shawarmakeyscosts,'shawarmacosts':shawarmacosts,'shawarmaprices':shawarmaprices,'frieskeyscosts':frieskeyscosts,'friescosts':friescosts,'friesprices':friesprices,'cookieskeyscosts':cookieskeyscosts,'cookiescosts':cookiescosts,'cookiesprices':cookiesprices,'aokeyscosts':aokeyscosts,'aocosts':aocosts,'aoprices':aoprices,'frkeyscosts':frkeyscosts,'frzkeyscosts':frzkeyscosts,'frzcosts':frzcosts,'frzprices':frzprices,'frcosts':frcosts,'frprices':frprices,'mtkeyscosts':mtkeyscosts,'mtcosts':mtcosts,'mtprices':mtprices,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal,'userr':userr,'disable':disable,'psizes':psizes,'q1':q1,'q11':q11,'q111':q111,'q2':q2,'q22':q22,'q222':q222,'q3':q3,'q33':q33,'q333':q333,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'Subcategoriess':Subcategoriess,'mtbuttons':mtbuttons,'frbuttons':frbuttons,'snbuttons':snbuttons,'psizes':psizes,'frsizes':frsizes,'mtsizes':mtsizes,'Categoriess':Categoriess})
 
 
 @login_required
@@ -2750,7 +3173,6 @@ def Onlineordersystem(request, admin_id):
                         gpsaccuracy = request.GET.get('gpsaccuracy') or None,
                         pinnedlat = request.GET.get('latitude') or None,
                         pinnedlng = request.GET.get('longitude') or None,
-
                         tokens = request.GET.get('tokens') or None,
                         DateTime=datetime.datetime.now(pytz.timezone('Asia/Singapore')),
                 )

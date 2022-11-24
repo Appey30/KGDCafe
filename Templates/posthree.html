@@ -127,7 +127,7 @@ z-index:-1;
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   background-color: #111;
@@ -2566,7 +2566,23 @@ z-index:500;
     font-size:20px;
 
     }
-    .queuenamea{
+    .queuenamea1{
+    color:#A0A0A0;
+    position:absolute;
+    left:0px;
+    top:-10px;
+    font-size:25px;
+
+    }
+        .queuenamea2{
+    color:#A0A0A0;
+    position:absolute;
+    left:0px;
+    top:-10px;
+    font-size:25px;
+
+    }
+        .queuenamea3{
     color:#A0A0A0;
     position:absolute;
     left:0px;
@@ -3452,7 +3468,6 @@ z-index:500;
 }
 }
 </style>
-
 <div id="myqSidebar" class="qsidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeQue()">×</a>
 
@@ -3509,7 +3524,7 @@ z-index:500;
         <div class="w3-container divfillupqueue">
                     <label class="punchedtext queuename">Name:</label>
             <div class="qnamediv">
-            <h8 class="queuenamea" >{{q11.0.0}}</h8>
+            <h8 class="queuenamea1" >{{q11.0.0}}</h8>
             </div>
         <label class="punchedtext queuetotal">Total:</label>
         {% if q111 %}
@@ -3533,7 +3548,8 @@ z-index:500;
              {% endif %}
                      <form action="" method="POST" id="queue1form">
                         {% csrf_token %}
-                <button class="prodbut prodbutpositiondone" type="submit" id="done1" name="done1" value="done1" >Done</button>
+                        <input type="hidden" name="done1" id="done1" value=""></input>
+                <button class="prodbut prodbutpositiondone" onclick="confirmdone1()" type="button" >Done</button>
                 <button class="prodbut prodbutpositioncancel" onclick="functioncancel1()" type="" id="cancel1" name="cancel1" value="">Cancel</button>
                </form>
 
@@ -3595,7 +3611,7 @@ z-index:500;
         <div class="w3-container divfillupqueue" >
                             <label class="punchedtext queuename">Name:</label>
             <div class="qnamediv">
-            <h8 class="queuenamea">{{q22.0.0}}</h8>
+            <h8 class="queuenamea2">{{q22.0.0}}</h8>
             </div>
         <label class="punchedtext queuetotal">Total:</label>
         {% if q222 %}
@@ -3619,7 +3635,8 @@ z-index:500;
              {% endif %}
                 <form action="" method="POST" id="queue2form">
                         {% csrf_token %}
-                <button class="prodbut prodbutpositiondone" type="submit" id="done2" name="done2" value="done2" >Done</button>
+                        <input type="hidden" name="done2" id="done2" value=""></input>
+                <button class="prodbut prodbutpositiondone" onclick="confirmdone2()" type="button" id="done2" name="done2" value="done2" >Done</button>
                 <button class="prodbut prodbutpositioncancel" onclick="functioncancel2()" type="" id="cancel2" name="cancel2" value="" >Cancel</button>
                 </form>
         </div>
@@ -3678,7 +3695,7 @@ z-index:500;
         <div class="w3-container divfillupqueue">
                     <label class="punchedtext queuename">Name:</label>
             <div class="qnamediv">
-            <h8 class="queuenamea">{{q33.0.0}}</h8>
+            <h8 class="queuenamea3">{{q33.0.0}}</h8>
             </div>
         <label class="punchedtext queuetotal">Total:</label>
         {% if q333 %}
@@ -3700,9 +3717,10 @@ z-index:500;
              {% else %}
              <h8 class="queuechangea"></h8>
              {% endif %}
-                <form action="" method="POST" id="queue2form">
+                <form action="" method="POST" id="queue3form">
                 {% csrf_token %}
-                <button class="prodbut prodbutpositiondone" type="submit" id="done3" name="done3" value="done3" >Done</button>
+                <input type="hidden" name="done3" id="done3" value=""></input>
+                <button class="prodbut prodbutpositiondone" onclick="confirmdone3()" type="button" id="done3" name="done3" value="done3" >Done</button>
                 <button class="prodbut prodbutpositioncancel" onclick="functioncancel3()" type="" id="cancel3" name="cancel3" value="">Cancel</button>
                 </form>
         </div>
@@ -3801,6 +3819,7 @@ z-index:500;
                         <input name="arrayname" id="array" type="hidden" value=""></input>
                         <input name="total1" id="totalpunched1" type="hidden" value=""></input>
                         <input name="Q1" value="Queue1" type="hidden"></input>
+                        <input name="Cusname1" value="" type="hidden" id="Cusname1id"></input>
                         <button class="sampw" onclick="functionq1()" type="button" id="que1"  style="width:100%;">Queue1</button>
                         </form>
                         <form action="" method="GET" id="hiddenform2">
@@ -3808,6 +3827,7 @@ z-index:500;
                         <input name="arrayname2" id="array2" type="hidden" value=""></input>
                         <input name="total2" id="totalpunched2" type="hidden" value=""></input>
                         <input name="Q2" value="Queue2" type="hidden"></input>
+                        <input name="Cusname2" value="" type="hidden" id="Cusname2id"></input>
                         <button class="sampw" onclick="functionq2()" type="button" id="que2"  style="width:100%;">Queue2</button>
                         </form>
                         </form>
@@ -3815,6 +3835,7 @@ z-index:500;
                         <input name="amountpay3" id="inputamount3" type="hidden" value=""></input>
                         <input name="arrayname3" id="array3" type="hidden" value=""></input>
                         <input name="total3" id="totalpunched3" type="hidden" value=""></input>
+                        <input name="Cusname3" value="" type="hidden" id="Cusname3id"></input>
                         <input name="Q3" value="Queue3" type="hidden"></input>
                         <button class="sampw"onclick="functionq3()"  type="button"  style="width:100%;">Queue3</button>
                         </form>
@@ -3844,7 +3865,7 @@ z-index:500;
 toggle between hiding and showing the dropdown content */
 function myFunctionqueue() {
 var getName = document.getElementById('Customername').value;
-alert(getName);
+
 if(getName){
 document.getElementById("myDropdownqueue").classList.toggle("show");
 }else{
@@ -3877,7 +3898,7 @@ window.onclick = function(event) {
 
 <div class="tab">
 {% for Category in Categoriess %}
-{% if Category.Categorychoices == "Stock" %}
+{% if Category.Categorychoices == "Stock" or Category.Categorychoices == "Promo" %}
 {% else %}
   <button class="tablinks" onclick="openCity(event, '{{Category.Categorychoices}}')">
   <h8 class="forlink">{{Category.Categorychoices}}</h8>
@@ -4841,8 +4862,7 @@ function closeQue() {
   document.getElementById("myqSidebar").style.width = "0";
   document.getElementById("qmain").style.marginLeft= "0";
 }
-</script>
-                <script>
+
                 function functioncancel1() {
                   var r = confirm("Are you sure you want to cancel this queue?");
                   var submit1=document.getElementById('queue1form')
@@ -4851,9 +4871,7 @@ function closeQue() {
                     submit1.submit();
                   }
                 }
-                </script>
 
-                <script>
                 function functioncancel2() {
                   var r = confirm("Are you sure you want to cancel this queue?");
                   var submit2=document.getElementById('queue2form')
@@ -4862,8 +4880,7 @@ function closeQue() {
                     submit2.submit();
                   }
                 }
-                </script>
-                <script>
+
                 function functioncancel3() {
                   var r = confirm("Are you sure you want to cancel this queue?");
                   var submit3=document.getElementById('queue3form')
@@ -4872,8 +4889,31 @@ function closeQue() {
                     submit3.submit();
                   }
                 }
-                </script>
-<script>
+               function confirmdone1(){
+               var r = confirm("Are you sure you want to submit this order to the server?");
+               var submit1=document.getElementById('queue1form')
+               
+                  if (r == true) {
+                  $('#done1').val('done1');
+                    submit1.submit();
+                    }
+                }
+               function confirmdone2(){
+               var r = confirm("Are you sure you want to submit this order to the server?");
+               var submit2=document.getElementById('queue2form')
+                  if (r == true) {
+                  $('#done2').val('done2');
+                    submit2.submit();
+                    }
+               }
+               function confirmdone3(){
+               var r = confirm("Are you sure you want to submit this order to the server?");
+               var submit3=document.getElementById('queue3form')
+                  if (r == true) {
+                  $('#done3').val('done3');
+                    submit3.submit();
+                    }
+               }
 function suspend(){
 
     while (allpunched.length) { 
@@ -4907,6 +4947,7 @@ var clickaddbutton = 0;
 
 function addpunched() {
 var getName = document.getElementById('Customername').value;
+
 var getprice = document.getElementById('presyona').value;
 var getitem = document.getElementById('produktopangalan').value;
 if(getitem){
@@ -4939,7 +4980,7 @@ if(getitem){
                 Subtotal:getsubtotal,
                 Cost:getcost,
                 Qty:getqty,
-                CusName:getNames, 
+                //CusName:getName, 
             };
         allpunched.push(puncheditem);
 
@@ -4989,9 +5030,13 @@ function functionq1() {
     
         var getamount=document.getElementById("Amount").value;
         if(getamount){
+            var getName = document.getElementById('Customername').value;
             var inputarray=document.getElementById("array");
+            var cusname=document.getElementById("array").value;
             var submit=document.getElementById("hiddenform");
             var jsoon=JSON.stringify(allpunched);
+            var getName = document.getElementById('Customername').value;
+            $("#Cusname1id").val(getName)
             $("#array").val(jsoon);
             $("#inputamount").val(getamount);
             
@@ -5017,6 +5062,8 @@ if(allpunched.length != 0){
             var inputarray2=document.getElementById("array2");
             var submit2=document.getElementById("hiddenform2");
             var jsoon2=JSON.stringify(allpunched);
+            var getName = document.getElementById('Customername').value;
+            $("#Cusname2id").val(getName)
             $("#array2").val(jsoon2);
             $("#inputamount2").val(getamount2);
         
@@ -5040,6 +5087,8 @@ if(allpunched.length != 0){
             var inputarray3=document.getElementById("array3");
             var submit3=document.getElementById("hiddenform3");
             var jsoon3=JSON.stringify(allpunched);
+            var getName = document.getElementById('Customername').value;
+            $("#Cusname3id").val(getName)
             $("#array3").val(jsoon3);
             $("#inputamount3").val(getamount3);
         
@@ -5071,6 +5120,66 @@ changeinnerhtml.innerHTML = "₱"+change;
 };
 </script>
 
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+  import { getMessaging, onMessage, getToken } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-messaging.js";
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQ5SNfrKB73oHMgMfIiZnfIXTzvnY_5IA",
+    authDomain: "kgd-cafe.firebaseapp.com",
+    projectId: "kgd-cafe",
+    storageBucket: "kgd-cafe.appspot.com",
+    messagingSenderId: "279897354442",
+    appId: "1:279897354442:web:022b31ee613f3eea7bc433",
+    measurementId: "G-GWT5VVJXBK",
+  };
+   
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+          
+        const messaging = getMessaging();
+        getToken(messaging, { vapidKey: 'BI0QLa4Ex20PkU-txBwF08f5o4xejkwiM-NuUjBLsXsOtxSll6ceuKkHuvXIaS_BwPbwnVog58vn58sPdN50Z2c' }).then((currentToken) => {
+          if (currentToken) {
+            // Send the token to your server and update the UI if necessary
+            // ...
+            
+
+            console.log(currentToken); 
+          } else {
+            // Show permission request UI
+            console.log('No registration token available. Request permission to generate one.');
+            // ...
+          }
+        }).catch((err) => {
+          console.log('An error occurred while retrieving token. ', err);
+          // ...
+        });
+      
+        messaging
+         .requestPermission()
+         .then(function () {
+           console.log("Notification permission granted.");
+           return messaging.getToken()
+         })
+         .catch(function (err) {
+         console.log("Unable to get permission to notify.", err);
+       });
+      
+      
+        messaging.onMessage((payload) => {
+        console.log('Message received. ', payload);
+
+
+      });
+</script>
 </body>
 </html> 
 {% endblock head %}
