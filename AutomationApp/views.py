@@ -329,7 +329,7 @@ def products(request):
        else:
            notifyadmin=0
        
-       productss = user1.objects.all().filter(user__id=userr).exclude(Price=0).order_by('-id')
+       productss = user1.objects.all().filter(user__id=userr).order_by('-id')
        submitted = False
        if request.method == "POST":
             aprod = editform(request.POST)
