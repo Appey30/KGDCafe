@@ -24229,9 +24229,9 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 {% if promoidentifier == "FreeFriesDay" %}
             {% for promob in FreeFriespromobuttons %}
             <div class="card">
-            <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
-                <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
-            </div>
+                <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
+                    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+                </div>
 
 
                 {% if promob.productname == promob.productname and "Promo.png" %}
@@ -24240,23 +24240,23 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
                 <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
                 {% endif %}
               <div class="h3divpromo"><h3>{{promob.productname}}</h3></div>
-              <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-              <tr>
+                  <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                  <tr>
 
-                <th class="priceth">Reg</th>
-                <th class="priceth">Full</th>
-              </tr>
-              <tr>
+                    <th class="priceth">Reg</th>
+                    <th class="priceth">Full</th>
+                  </tr>
+                  <tr>
 
-                <td id="Regprom{{promob.id}}" class="price"></td>
-                <td id="Fullprom{{promob.id}}" class="price"></td>
-              </tr>
+                    <td id="Regprom{{promob.id}}" class="price"></td>
+                    <td id="Fullprom{{promob.id}}" class="price"></td>
+                  </tr>
 
-            </table>
-                <input type="hidden" value="{{promob.productname}}" id="promoname{{promob.id}}"></input>
-              <input type="hidden" value="{{promob.Price}}" id="promoP{{promob.id}}"></input>
+                    </table>
+                        <input type="hidden" value="{{promob.productname}}" id="promoname{{promob.id}}"></input>
+                      <input type="hidden" value="{{promob.Price}}" id="promoP{{promob.id}}"></input>
 
-              <p><button onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
+                      <p><button onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
 
             </div>
 
@@ -24297,7 +24297,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 
             </script>
   
-            </div>
+            
             </div>
 {% endfor %}
 {% endif %}
