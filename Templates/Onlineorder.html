@@ -23856,53 +23856,53 @@ class="logo">
 
 
 {% if promoidentifier == 'Special Promo' %}
-            {% for specialpromob in specialpromobuttons %}
+    {% for specialpromob in specialpromobuttons %}
             <div class="card">
 
-            <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
-                <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+                    <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
+                        <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+                    </div>
+                    {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
+                    <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                    {% else %}
+                    <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                    {% endif %}
+                    <div class="h3div"><h3>{{specialpromob.productname}}</h3>
+                    </div>
+                    <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                        <tr>
+                        <td id="specialpromo{{specialpromob.id}}" class="price"></td>
+                        </tr>
+
+                    </table>
+                    <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
+                    <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
+
+                    <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
+
             </div>
-                {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
-                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
-                {% else %}
-                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
-                {% endif %}
-              <div class="h3div"><h3>{{specialpromob.productname}}</h3></div>
-              <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-              <tr>
-                <td id="specialpromo{{specialpromob.id}}" class="price"></td>
-              </tr>
 
-            </table>
-                <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
-              <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
-
-              <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
-
-            </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function(event) { 
-  functions{{specialpromob.id}}();
-});
+                        <script>
+                        document.addEventListener("DOMContentLoaded", function(event) { 
+                          functions{{specialpromob.id}}();
+                        });
 
 
-function functions{{specialpromob.id}}(){
-var specialpromop = parseInt({{specialpromob.Price}});
+                        function functions{{specialpromob.id}}(){
+                        var specialpromop = parseInt({{specialpromob.Price}});
 
 
 
-var  specialpromo = document.getElementById('specialpromo'+'{{specialpromob.id}}');
+                        var  specialpromo = document.getElementById('specialpromo'+'{{specialpromob.id}}');
 
-var calc1specialpromo = 0;
-var calc2specialpromo = 0;
-specialpromo.innerHTML = "₱"+specialpromop+".00";
-}
+                        var calc1specialpromo = 0;
+                        var calc2specialpromo = 0;
+                        specialpromo.innerHTML = "₱"+specialpromop+".00";
+                        }
 
-</script>
+                        </script>
 
-</div>
-</div>
+
 {% endfor %}
 {% endif %}
 <div class="atbmodalbackgroundspecialpromo">
