@@ -1790,14 +1790,16 @@ for(var showorders of showorder){
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
             
+            var breakline = document.createElement("br");
             var calla = document.createElement("a");
-            //calla.href="tel:0"+contactnumber+"?body=Good Day Ma'am/Sir "+names+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
+            //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
             calla.href="tel:0"+contactnumber;
             var callbutton = document.createElement("button");
             callbutton.class="prodbutbase"
             callbutton.innerHTML = "Call"
             calla.appendChild(callbutton);
-            billllssssid.appendChild(calla);
+            breakline.appendChild(calla);
+            billllssssid.appendChild(breakline);
             
 }
 var contactnumberraccept ="";
@@ -1903,14 +1905,16 @@ for(var showorders of acceptedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notesss;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+            var breakline = document.createElement("br");
             var calla = document.createElement("a");
-            //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+names+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
+            //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
             calla.href="tel:0"+contactnumber;
             var callbutton = document.createElement("button");
             callbutton.class="prodbutbase"
             callbutton.innerHTML = "Call"
             calla.appendChild(callbutton);
-            billllssssid.appendChild(calla);
+            breakline.appendChild(calla);
+            billllssssid.appendChild(breakline);
 }
 
 
@@ -2020,7 +2024,7 @@ for(var showorders of rejectedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notessss;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
-            
+            var breakline = document.createElement("br");
             var calla = document.createElement("a");
             //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
             calla.href="tel:0"+contactnumber;
@@ -2028,7 +2032,8 @@ for(var showorders of rejectedorder){
             callbutton.class="prodbutbase"
             callbutton.innerHTML = "Call"
             calla.appendChild(callbutton);
-            billllssssid.appendChild(calla);
+            breakline.appendChild(calla);
+            billllssssid.appendChild(breakline);
             
 }
 
