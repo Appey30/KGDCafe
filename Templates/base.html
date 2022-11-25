@@ -1412,7 +1412,7 @@ let tid = setInterval(function(){
                 }else{
                 bargy = "None";
                 }
-                dataHtml += "<tr class='trbutton'><td class='tdqueuebase'>"+onlineorders["fields"].Customername+"</td><td class='tdqueuebase'> 0"+onlineorders["fields"].contactnumber+"</td><td class='tdqueuebase'>"+onlineorders["fields"].MOP+"</td><td class='tdqueuebase'>"+bargy+"</td><td class='tdqueuebase'>"+time+"</td><td class='tdqueuebase'><div id='riderselectiddiv"+onlineorders["fields"].contactnumber+"' class='custom-select'><select name='Rider' id='Riderselectid"+onlineorders["fields"].contactnumber+"'><option value='' selected disabled hidden>Choose here</option><option value='Appey'>Appey</option></select></div</td><td class='tdqueuebase'><div class='ETAdiv' id='ETAdivid"+onlineorders["fields"].contactnumber+"'><input type='time' id='ETAid"+onlineorders["fields"].contactnumber+"' ></input></div></td><td class='tdqueuebase tdspecial'><form action='' method='GET' id='acceptrejectbuttonformid"+onlineorders["fields"].contactnumber+"' class='formbut'><button type='button' onclick='view("+request+")' class='prodbutbase' id='orderbutid"+onlineorders["fields"].contactnumber+"'>Orders</button><input type='hidden' value='' name='rider' id='inputidrider"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='ETA' id='inputETA"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='acceptcontactno' id='contactacceptid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='contactnoreject' id='contactrejectid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><button onclick='submitaccept("+onlineorders["fields"].contactnumber+", "+MOPstringify+")' type='button' class='prodbutbase' name='Acceptbutton' value='Accept'>Accept</button><button onclick='submitreject("+onlineorders["fields"].contactnumber+")' type='button' class='prodbutbase' name='Rejectbutton' value='Reject'>Reject</button></form></td></tr>";
+                dataHtml += "<tr class='trbutton'><td class='tdqueuebase'>"+onlineorders["fields"].Customername+"</td><td class='tdqueuebase'> 0"+onlineorders["fields"].contactnumber+"</td><td class='tdqueuebase'>"+onlineorders["fields"].MOP+"</td><td class='tdqueuebase'>"+bargy+"</td><td class='tdqueuebase'>"+time+"</td><td class='tdqueuebase'><div id='riderselectiddiv"+onlineorders["fields"].contactnumber+"' class='custom-select'><select name='Rider' id='Riderselectid"+onlineorders["fields"].contactnumber+"'><option value='' selected disabled hidden>Choose here</option><option value='Appey'>Appey</option></select></div</td><td class='tdqueuebase'><div class='ETAdiv' id='ETAdivid"+onlineorders["fields"].contactnumber+"'><input type='time' id='ETAid"+onlineorders["fields"].contactnumber+"' ></input></div></td><td class='tdqueuebase tdspecial'><form action='' method='GET' id='acceptrejectbuttonformid"+onlineorders["fields"].contactnumber+"' class='formbut'><button type='button' onclick='view("+request+")' class='prodbutbase' id='orderbutid"+onlineorders["fields"].contactnumber+"'>Orders</button><input type='hidden' value='' name='rider' id='inputidrider"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='ETA' id='inputETA"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='acceptcontactno' id='contactacceptid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='contactnoreject' id='contactrejectid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><a href='sms:"+onlineorders["fields"].contactnumber+"?body=Good day Ma'am/Sir "+onlineorders["fields"].Customername+"! We are KGD Cafe! We want you to know that we have been acknowledged your order and we will call you in a minute for confirmation. Thank you.'><button onclick='submitaccept("+onlineorders["fields"].contactnumber+", "+MOPstringify+")' type='button' class='prodbutbase' name='Acceptbutton' value='Accept'>Accept</button></a><button onclick='submitreject("+onlineorders["fields"].contactnumber+")' type='button' class='prodbutbase' name='Rejectbutton' value='Reject'>Reject</button></form></td></tr>";
                 
                 }
                 $('#acknowledgeid').append(dataHtml);
@@ -1779,8 +1779,7 @@ for(var showorders of showorder){
             dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
             dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td></tr>';
             if(showorder[0]['gpslat'] && showorder[0]['gpslat'] !== 14.5955){
-            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+
-            +"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
+            dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
             }else{
             dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
             }
@@ -1790,6 +1789,14 @@ for(var showorders of showorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notess;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+            
+            var calla = document.createElement("a");
+            calla.href="tel:0"+contactnumber+"?body=Good Day Ma'am/Sir "+names+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
+            var callbutton = document.createElement("button");
+            callbutton.class="prodbutbase"
+            callbutton.innerHTML = "Call"
+            calla.appendChild(callbutton);
+            billllssssid.appendChild(calla);
             
 }
 var contactnumberraccept ="";
@@ -1895,7 +1902,13 @@ for(var showorders of acceptedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notesss;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
-
+            var calla = document.createElement("a");
+            calla.href="tel:0"+contactnumber+"?body=Good Day Ma'am/Sir "+names+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
+            var callbutton = document.createElement("button");
+            callbutton.class="prodbutbase"
+            callbutton.innerHTML = "Call"
+            calla.appendChild(callbutton);
+            billllssssid.appendChild(calla);
 }
 
 
@@ -2005,6 +2018,14 @@ for(var showorders of rejectedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notessss;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+            
+            var calla = document.createElement("a");
+            calla.href="tel:0"+contactnumber+"?body=Good Day Ma'am/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
+            var callbutton = document.createElement("button");
+            callbutton.class="prodbutbase"
+            callbutton.innerHTML = "Call"
+            calla.appendChild(callbutton);
+            billllssssid.appendChild(calla);
             
 }
 
