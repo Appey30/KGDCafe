@@ -23903,10 +23903,10 @@ class="logo">
 <img id="garlandleftid" class="garlandleft" src="{% static 'garland2.png'%}">
 <img id="garlandrightid" class="garlandright" src="{% static 'garland2.png'%}">
 
-<audio id="audioid" style="position:absolute;opacity:0;" controls autostart="false" muted="true">
+<!--<audio id="audioid" style="position:absolute;opacity:0;">
   <source src="{% static 'christmasbackgroundaudio.mp3'%}" type="audio/mpeg">
 Your browser does not support the audio element.
-</audio>
+</audio>-->
 
 {% if promoidentifier == 'FreeFriesDay' %}
 <div class="ourmenutitlepromodiv" style="display:block;">
@@ -31081,10 +31081,7 @@ function christmas(){
     if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
         
 
-      var playaudio = document.getElementById('audioid');
-      playaudio.muted=false;
-      
-      playaudio.play();
+
 
         //var playaudio = document.getElementById('audioid');
         //playaudio.play();
