@@ -23900,6 +23900,12 @@ class="logo">
 <img class="garlandleft" src="{% static 'garlandright.png'%}"></img>-->
 <img class="garlandleft" src="{% static 'garland.png'%}">
 <img class="garlandright" src="{% static 'garland.png'%}">
+
+<audio id="audioid" style="position:absolute;opacity:0;" controls>
+  <source src="{% static 'christmasbackgroundaudio.mp3'%}" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
 {% if promoidentifier == 'FreeFriesDay' %}
 <div class="ourmenutitlepromodiv" style="display:block;">
 <h2 class="ourmenutitlepromo">Free Fries-day Promo for you, {{user.first_name}}!</h2>
@@ -31058,6 +31064,8 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{pizzab.id}}();
   snow();
+  var christmasbackgroundmusic = document.getElementById('audioid');
+  christmasbackgroundmusic.play()
 });
 
 function functions{{pizzab.id}}(){
