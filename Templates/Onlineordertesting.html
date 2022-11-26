@@ -27800,6 +27800,10 @@ function reveal() {
 
     if (elementTop < windowHeight - elementVisible) {
       reveals[i].classList.add("activee");
+      if(christmasplayaudio == "True"){
+      var playaudio = document.getElementById('audioid');
+      playaudio.play();
+      }
     } else {
       reveals[i].classList.remove("activee");
     }
@@ -31069,6 +31073,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 });
+var christmasplayaudio = "";
 function christmas(){
     const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
@@ -31077,8 +31082,9 @@ function christmas(){
     let day = d.getDate();
     if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
         document.body.click();
-        var playaudio = document.getElementById('audioid');
-        playaudio.play();
+        christmasplayaudio = "True"
+        //var playaudio = document.getElementById('audioid');
+        //playaudio.play();
         document.getElementById('garlandrightid').style.display='block';
         document.getElementById('garlandleftid').style.display='block';
         snow();
