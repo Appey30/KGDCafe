@@ -27469,19 +27469,13 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
         var dataHtmlcart='';
         var totalpunched=0;
         var totalpunchedfordisablecheckout=0;
-        if(allpunched.length == 1){
-        
-                totalpunchedfordisablecheckout=parseInt(allpunched[0].Subtotal);
 
-        }else if(allpunched.length > 1){
             for(let i = 0;i<(allpunched.length);i++){
             
                 totalpunchedfordisablecheckout = totalpunchedfordisablecheckout+parseInt(allpunched[i].Subtotal);
                 
             }
-        }else{
-        totalpunchedfordisablecheckout = 0
-        }
+
             if(allpunched.length == 0 || totalpunchedfordisablecheckout == 0 ){
                 totalpunched = 0;
                 document.getElementById('checkoutbut').value = 'Payment Setup';
@@ -27491,8 +27485,6 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                 allpunched=[];
                 
                 cartclose();
-            }else if(allpunched.length == 1){
-                        totalpunched=parseInt(allpunched[0].Subtotal);
             }else{
                     for(let i = 0;i<(allpunched.length);i++){
             
