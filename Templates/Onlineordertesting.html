@@ -23903,7 +23903,7 @@ class="logo">
 <img id="garlandleftid" class="garlandleft" src="{% static 'garland2.png'%}">
 <img id="garlandrightid" class="garlandright" src="{% static 'garland2.png'%}">
 
-<audio id="audioid" style="position:absolute;opacity:0;" controls autostart="false">
+<audio id="audioid" style="position:absolute;opacity:0;" controls autostart="false" muted="true">
   <source src="{% static 'christmasbackgroundaudio.mp3'%}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
@@ -27801,11 +27801,7 @@ function reveal() {
     if (elementTop < windowHeight - elementVisible) {
 
       reveals[i].classList.add("activee");
-      if(christmasplayaudio == "True" && christmascount == 0){
-      var playaudio = document.getElementById('audioid');
-      playaudio.play();
-      christmascount = 1;
-      }
+
     } else {
       reveals[i].classList.remove("activee");
     }
@@ -31075,8 +31071,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
 });
-var christmasplayaudio = "";
-var christmascount = 0;
+
 function christmas(){
     const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
@@ -31084,9 +31079,13 @@ function christmas(){
     let name = month[d.getMonth()];
     let day = d.getDate();
     if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
-        document.body.click();
-        christmasplayaudio = "True"
         
+
+      var playaudio = document.getElementById('audioid');
+      playaudio.muted=false;
+      
+      playaudio.play();
+
         //var playaudio = document.getElementById('audioid');
         //playaudio.play();
         document.getElementById('garlandrightid').style.display='block';
