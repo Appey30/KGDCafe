@@ -1355,6 +1355,14 @@ float:left;
     opacity: 1;
   }
 }
+.garlandright{
+position:absolute;
+right:0px;
+}
+.garlandleft{
+position:absolute;
+left:0px;
+}
 .menuproducts{
 position:relative;
 top:-220px;
@@ -5949,6 +5957,14 @@ float:left;
     opacity: 1;
   }
 }
+.garlandright{
+position:absolute;
+right:0px;
+}
+.garlandleft{
+position:absolute;
+left:0px;
+}
 .menuproducts{
 position:relative;
 top:-140px;
@@ -10531,6 +10547,14 @@ float:left;
     transform: translateX(0);
     opacity: 1;
   }
+}
+.garlandright{
+position:absolute;
+right:0px;
+}
+.garlandleft{
+position:absolute;
+left:0px;
 }
 .menuproducts{
 position:relative;
@@ -15118,6 +15142,14 @@ float:left;
     transform: translateX(0);
     opacity: 1;
   }
+}
+.garlandright{
+position:absolute;
+right:0px;
+}
+.garlandleft{
+position:absolute;
+left:0px;
 }
 .menuproducts{
 position:relative;
@@ -19899,6 +19931,14 @@ float:left;
     opacity: 1;
   }
 }
+.garlandright{
+position:absolute;
+right:0px;
+}
+.garlandleft{
+position:absolute;
+left:0px;
+}
 .menuproducts{
 position:relative;
 top:-60px;
@@ -23845,7 +23885,8 @@ class="logo">
 
 
 <div class="menuproducts">
-
+<img class="garlandright" src="{% static 'garlandleft.png'%}"></img>
+<img class="garlandleft" src="{% static 'garlandright.png'%}"></img>
 {% if promoidentifier == 'FreeFriesDay' %}
 <div class="ourmenutitlepromodiv" style="display:block;">
 <h2 class="ourmenutitlepromo">Free Fries-day Promo for you, {{user.first_name}}!</h2>
@@ -31504,8 +31545,7 @@ function snow() {
     }      
   }
   setTimeout(function(){ snow() },200)
-}
-snow()
+
 </script>
 <script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
