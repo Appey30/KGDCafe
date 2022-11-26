@@ -95,7 +95,7 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
 }
 
 .arrowss {
-  position: fixed;
+  position: relative;
   top: 50px;
   left: 50%;
   margin-left: -20px;
@@ -111,7 +111,7 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
   animation: bounce 2s infinite;
 }
 
-.fade {
+.fadess {
   opacity:0;
   transition: 1s all ease-out;
 }
@@ -4783,7 +4783,7 @@ height:100%;
 }
 
 .arrowss {
-  position: fixed;
+  position: relative;
   top: 50px;
   left: 50%;
   margin-left: -20px;
@@ -4799,7 +4799,7 @@ height:100%;
   animation: bounce 2s infinite;
 }
 
-.fade {
+.fadess {
   opacity:0;
   transition: 1s all ease-out;
 }
@@ -9442,7 +9442,7 @@ height:100%;
 }
 
 .arrowss {
-  position: fixed;
+  position: relative;
   top: 50px;
   left: 50%;
   margin-left: -20px;
@@ -9458,7 +9458,7 @@ height:100%;
   animation: bounce 2s infinite;
 }
 
-.fade {
+.fadess {
   opacity:0;
   transition: 1s all ease-out;
 }
@@ -14111,7 +14111,7 @@ height:100%;
 }
 
 .arrowss {
-  position: fixed;
+  position: relative;
   top: 50px;
   left: 50%;
   margin-left: -20px;
@@ -14127,7 +14127,7 @@ height:100%;
   animation: bounce 2s infinite;
 }
 
-.fade {
+.fadess {
   opacity:0;
   transition: 1s all ease-out;
 }
@@ -18954,7 +18954,7 @@ height:100%;
 }
 
 .arrowss {
-  position: fixed;
+  position: relative;
   top: 50px;
   left: 50%;
   margin-left: -20px;
@@ -18970,7 +18970,7 @@ height:100%;
   animation: bounce 2s infinite;
 }
 
-.fade {
+.fadess {
   opacity:0;
   transition: 1s all ease-out;
 }
@@ -29518,9 +29518,10 @@ var alertvalue=document.getElementById('alertvalueid').value;
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
     if (scroll >= 1) {
-      $('.arrowss').addClass('fade');
+      $('.arrowss').addClass('fadess');
+      $('.arrowss').remove();
     } else{
-      $('.arrowss').removeClass('fade');
+      $('.arrowss').removeClass('fadess');
     }
   })
 });
