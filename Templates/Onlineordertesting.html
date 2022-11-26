@@ -32637,9 +32637,9 @@ function Particle(x,y,radius,R,G,B,A){
     this.y += this.yVol;
     
     // Comment out to stop gravity. 
-    //if(this.timer < 200){
-    //    this.yVol += 0.12;
-    //}
+    if(this.timer < 200){
+        this.yVol += 0.12;
+    }
     this.A -= 0.02;
     if(this.A < 0){
       this.fade = true;
