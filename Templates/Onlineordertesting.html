@@ -23415,7 +23415,12 @@ class="background">
 
 {% else %}
 {% endif %}
-
+  <div class="alert alert-success" id="alertsucfcessid">
+    
+  </div>
+    <div class="alert alert-danger" id="alerterrorid">
+    
+  </div>
 
 {% if couponvalidity == 'Valid' %}
 <div class="navbuttontrackerdiv">
@@ -23835,69 +23840,78 @@ class="logo">
 
 <div class="menuproducts">
 
-
-<div class="ourmenutitlepromodiv" style="display:flex;">
+{% if promoidentifier == 'FreeFriesDay' %}
+<div class="ourmenutitlepromodiv" style="display:block;">
 <h2 class="ourmenutitlepromo">Free Fries-day Promo for you, {{user.first_name}}!</h2>
-
-
-
-</div>
-
-<div class="wraptabcontentprodpromo" style="display:flex;">
-
-<div class="tabcontentprodpromo" id="Promo">
-
-
-{% if promoidentifier == 'Special Promo' %}
-            {% for specialpromob in specialpromobuttons %}
-            <div class="card">
-
-            <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
-                <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
-            </div>
-                {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
-                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
-                {% else %}
-                <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
-                {% endif %}
-              <div class="h3div"><h3>{{specialpromob.productname}}</h3></div>
-              <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-              <tr>
-                <td id="specialpromo{{specialpromob.id}}" class="price"></td>
-              </tr>
-
-            </table>
-                <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
-              <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
-
-              <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
-
-            </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function(event) { 
-  functions{{specialpromob.id}}();
-});
-
-
-function functions{{specialpromob.id}}(){
-var specialpromop = parseInt({{specialpromob.Price}});
-
-
-
-var  specialpromo = document.getElementById('specialpromo'+'{{specialpromob.id}}');
-
-var calc1specialpromo = 0;
-var calc2specialpromo = 0;
-specialpromo.innerHTML = "₱"+specialpromop+".00";
-}
-
-</script>
-
-</div>
-</div>
-{% endfor %}
+{% elif promoidentifier == 'Special Promo' %}
+<div class="ourmenutitlepromodiv" style="display:block;">
+<h2 class="ourmenutitlepromo">Special Promo for you, {{user.first_name}}!</h2>
+{% else %}
+<div class="ourmenutitlepromodiv" style="display:none;">
 {% endif %}
+
+
+</div>
+
+<div class="wraptabcontentprodpromo" style="display:block;">
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+<div class="tabcontentprodpromo" id="Promo" style="display:flex;">	
+{% else %}
+<div class="tabcontentprodpromo" id="Promo" style="display:none;">
+{% endif %}
+
+
+
+                    {% if promoidentifier == 'Special Promo' %}
+                        {% for specialpromob in specialpromobuttons %}
+                                <div class="card">
+
+                                        <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
+                                            <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+                                        </div>
+                                        {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
+                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                                        {% else %}
+                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                                        {% endif %}
+                                        <div class="h3div"><h3>{{specialpromob.productname}}</h3>
+                                        </div>
+                                        <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                                            <tr>
+                                            <td id="specialpromo{{specialpromob.id}}" class="price"></td>
+                                            </tr>
+
+                                        </table>
+                                        <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
+                                        <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
+
+                                        <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" id="atbbutspecialpromo">Order</button></p>
+
+                                </div>
+
+                                            <script>
+                                            document.addEventListener("DOMContentLoaded", function(event) { 
+                                              functions{{specialpromob.id}}();
+                                            });
+
+
+                                            function functions{{specialpromob.id}}(){
+                                            var specialpromop = parseInt({{specialpromob.Price}});
+
+
+
+                                            var  specialpromo = document.getElementById('specialpromo'+'{{specialpromob.id}}');
+
+                                            var calc1specialpromo = 0;
+                                            var calc2specialpromo = 0;
+                                            specialpromo.innerHTML = "₱"+specialpromop+".00";
+                                            }
+
+                                            </script>
+
+
+                        {% endfor %}
+                    {% endif %}
 <div class="atbmodalbackgroundspecialpromo">
     <div class="atbmodalspecialpromocontent">
 
@@ -23914,34 +23928,34 @@ specialpromo.innerHTML = "₱"+specialpromop+".00";
 
 
                 </div>
-            <script>
+                                    <script>
 
-            var presyospecialpromo = 0;
-            var gtotalspecialpromo = 0;
+                                    var presyospecialpromo = 0;
+                                    var gtotalspecialpromo = 0;
 
-            function functionfocusspecialpromo(){
-            var totalspecialpromo = document.getElementById("totalspecialpromo");
+                                    function functionfocusspecialpromo(){
+                                    var totalspecialpromo = document.getElementById("totalspecialpromo");
 
 
-            var qtycountspecialpromo = $('#qtynumspecialpromo').val();
+                                    var qtycountspecialpromo = $('#qtynumspecialpromo').val();
 
-            var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
+                                    var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
 
-            gtotalspecialpromo = totalspecialpromo;
-            totalall = totalspecialpromo;
-            allqty = qtycountspecialpromo;
-            aoname="";
-            sukatall="";
-            psukatall="";
-        if(aoname==""){
-        aoqty="";
-        }else{
-        aoqty = qtycountspecialpromo;
-        }
-            totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+                                    gtotalspecialpromo = totalspecialpromo;
+                                    totalall = totalspecialpromo;
+                                    allqty = qtycountspecialpromo;
+                                    aoname="";
+                                    sukatall="";
+                                    psukatall="";
+                                if(aoname==""){
+                                aoqty="";
+                                }else{
+                                aoqty = qtycountspecialpromo;
+                                }
+                                    totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
         
-            }
-            </script>
+                                    }
+                                    </script>
         </div>
         
         <div class="modalfootspecialpromo">
@@ -23955,63 +23969,63 @@ specialpromo.innerHTML = "₱"+specialpromop+".00";
             <div class="quantityspecialpromo">
         <label for="minusidspecialpromo" style="color:black;">Qty:</label>
 	        <input onclick="functionminusspecialpromo()" type="button" value="-" class="minusspecialpromo" id="minusidspecialpromo"><input id="qtynumspecialpromo" inputmode="numeric" readonly="readonly" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern=""><input onclick="functionplusspecialpromo()" type="button" value="+" class="plusspecialpromo">
-            <script>
-                    var qtynumspecialpromo = document.getElementById('qtynumspecialpromo').value;
+                                            <script>
+                                                    var qtynumspecialpromo = document.getElementById('qtynumspecialpromo').value;
                 
-                    function functionminusspecialpromo(){
-                    var totalspecialpromo = document.getElementById("totalspecialpromo");
-                    var subtractspecialpromo = parseInt($('#qtynumspecialpromo').val());
-                    var minustwospecialpromo = subtractspecialpromo-1;
-                    if($('#qtynumspecialpromo').val() == 1){
-                    $('#qtynumspecialpromo').val(1);
-                    }else{
-                    $('#qtynumspecialpromo').val(minustwospecialpromo);
-                    }
+                                                    function functionminusspecialpromo(){
+                                                    var totalspecialpromo = document.getElementById("totalspecialpromo");
+                                                    var subtractspecialpromo = parseInt($('#qtynumspecialpromo').val());
+                                                    var minustwospecialpromo = subtractspecialpromo-1;
+                                                    if($('#qtynumspecialpromo').val() == 1){
+                                                    $('#qtynumspecialpromo').val(1);
+                                                    }else{
+                                                    $('#qtynumspecialpromo').val(minustwospecialpromo);
+                                                    }
 
-                    var qtycountspecialpromo = $('#qtynumspecialpromo').val();
+                                                    var qtycountspecialpromo = $('#qtynumspecialpromo').val();
 
-                    var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
-                    gtotalspecialpromo = totalspecialpromo;
-                    totalall = totalspecialpromo;
-                    allqty = qtycountspecialpromo;
-                                aoname="";
-            sukatall="";
-            psukatall="";
-        if(aoname==""){
-        aoqty="";
-        }else{
-        aoqty = qtycountspecialpromo;
-        }
-                    totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
-                    }
-
-
+                                                    var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
+                                                    gtotalspecialpromo = totalspecialpromo;
+                                                    totalall = totalspecialpromo;
+                                                    allqty = qtycountspecialpromo;
+                                                                aoname="";
+                                            sukatall="";
+                                            psukatall="";
+                                        if(aoname==""){
+                                        aoqty="";
+                                        }else{
+                                        aoqty = qtycountspecialpromo;
+                                        }
+                                                    totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+                                                    }
 
 
-                    function functionplusspecialpromo(){
+
+
+                                                    function functionplusspecialpromo(){
                 
-                    var additionspecialpromo = parseInt($('#qtynumspecialpromo').val());
-                    var plustwospecialpromo =  additionspecialpromo + 1;
-                    $('#qtynumspecialpromo').val(plustwospecialpromo);
-                    var totalspecialpromo = document.getElementById("totalspecialpromo");
-                    var qtycountspecialpromo = $('#qtynumspecialpromo').val();
+                                                    var additionspecialpromo = parseInt($('#qtynumspecialpromo').val());
+                                                    var plustwospecialpromo =  additionspecialpromo + 1;
+                                                    $('#qtynumspecialpromo').val(plustwospecialpromo);
+                                                    var totalspecialpromo = document.getElementById("totalspecialpromo");
+                                                    var qtycountspecialpromo = $('#qtynumspecialpromo').val();
                 
-                    var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
+                                                    var totalspecialpromo = (presyospecialpromo)*qtycountspecialpromo;
                 
-                    gtotalspecialpromo = totalspecialpromo;
-                    totalall = totalspecialpromo;
-                    allqty = qtycountspecialpromo;
-                                aoname="";
-            sukatall="";
-            psukatall="";
-        if(aoname==""){
-        aoqty="";
-        }else{
-        aoqty = qtycountspecialpromo;
-        }
-                    totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
-                    }
-            </script>
+                                                    gtotalspecialpromo = totalspecialpromo;
+                                                    totalall = totalspecialpromo;
+                                                    allqty = qtycountspecialpromo;
+                                                                aoname="";
+                                            sukatall="";
+                                            psukatall="";
+                                        if(aoname==""){
+                                        aoqty="";
+                                        }else{
+                                        aoqty = qtycountspecialpromo;
+                                        }
+                                                    totalspecialpromo.innerHTML = "Total: ₱"+totalspecialpromo+".00";
+                                                    }
+                                            </script>
             </div>
         </div>
     </div>
@@ -24220,81 +24234,88 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 </script>
 
 {% if promoidentifier == "FreeFriesDay" %}
-            {% for promob in FreeFriespromobuttons %}
-            <div class="card">
-            <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
-                <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
-            </div>
+   {% for promob in FreeFriespromobuttons %}
+        <div class="card">
+                        <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
+                            <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+                        </div>
 
 
-                {% if promob.productname == promob.productname and "Promo.png" %}
-                <img class="cardimg" src="{% static promob.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
-                {% else %}
-                <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
-                {% endif %}
-              <div class="h3divpromo"><h3>{{promob.productname}}</h3></div>
-              <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-              <tr>
+                        {% if promob.productname == promob.productname and "Promo.png" %}
+                        <img class="cardimg" src="{% static promob.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
+                        {% else %}
+                        <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
+                        {% endif %}
+                  <div class="h3divpromo"><h3>{{promob.productname}}</h3>
+                  </div>
+                  <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                      <tr>
 
-                <th class="priceth">Reg</th>
-                <th class="priceth">Full</th>
-              </tr>
-              <tr>
+                            <th class="priceth">Reg</th>
+                            <th class="priceth">Full</th>
+                      </tr>
+                      <tr>
 
-                <td id="Regprom{{promob.id}}" class="price"></td>
-                <td id="Fullprom{{promob.id}}" class="price"></td>
-              </tr>
+                            <td id="Regprom{{promob.id}}" class="price"></td>
+                            <td id="Fullprom{{promob.id}}" class="price"></td>
+                      </tr>
 
-            </table>
-                <input type="hidden" value="{{promob.productname}}" id="promoname{{promob.id}}"></input>
-              <input type="hidden" value="{{promob.Price}}" id="promoP{{promob.id}}"></input>
+                  </table>
+                      <input type="hidden" value="{{promob.productname}}" id="promoname{{promob.id}}"></input>
+                      <input type="hidden" value="{{promob.Price}}" id="promoP{{promob.id}}"></input>
 
-              <p><button onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
+                      <p><button onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
 
-            </div>
+              </div>
+                                            <script>
+                                            document.addEventListener("DOMContentLoaded", function(event) { 
+                                              functions{{promob.id}}();
+                                            });
 
-            <script>
-            document.addEventListener("DOMContentLoaded", function(event) { 
-              functions{{promob.id}}();
-            });
-
-            function functions{{promob.id}}(){
-            var promp = parseInt({{promob.Price}});
-            var proms = String('{{promob.Size}}');
+                                            function functions{{promob.id}}(){
+                                            var promp = parseInt({{promob.Price}});
+                                            var proms = String('{{promob.Size}}');
 
 
-            var regprom = document.getElementById('Regprom'+'{{promob.id}}');
-            var fullprom = document.getElementById('Fullprom'+'{{promob.id}}');
-            var calc1prom = 0;
-            var calc2prom = 0;
-            if(proms == "Small"){
-            calc1prom=promp+10;
-            calc2prom=promp+20;
+                                            var regprom = document.getElementById('Regprom'+'{{promob.id}}');
+                                            var fullprom = document.getElementById('Fullprom'+'{{promob.id}}');
+                                            var calc1prom = 0;
+                                            var calc2prom = 0;
+                                            if(proms == "Small"){
+                                            calc1prom=promp+10;
+                                            calc2prom=promp+20;
 
-            regprom.innerHTML = "₱"+calc1prom+".00";
-            fullprom.innerHTML = "₱"+calc2prom+".00";
-            }else if(proms == "Reg"){
-            calc1prom=promp-10;
-            calc2prom=promp+10;
+                                            regprom.innerHTML = "₱"+calc1prom+".00";
+                                            fullprom.innerHTML = "₱"+calc2prom+".00";
+                                            }else if(proms == "Reg"){
+                                            calc1prom=promp-10;
+                                            calc2prom=promp+10;
 
-            regprom.innerHTML = "₱"+promp+".00";
-            fullprom.innerHTML = "₱"+calc2prom+".00";
-            }else{
-            calc1prom=promp-20;
-            calc2prom=promp-10;
+                                            regprom.innerHTML = "₱"+promp+".00";
+                                            fullprom.innerHTML = "₱"+calc2prom+".00";
+                                            }else{
+                                            calc1prom=promp-20;
+                                            calc2prom=promp-10;
 
-            regprom.innerHTML = "₱"+calc2prom+".00";
-            fullprom.innerHTML = "₱"+promp+".00";
-            }
-            }
+                                            regprom.innerHTML = "₱"+calc2prom+".00";
+                                            fullprom.innerHTML = "₱"+promp+".00";
+                                            }
+                                            }
 
-            </script>
+                                            </script>
+  
+            
+         
+    {% endfor %}
+{% endif %}
+</div>
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+      <hr style="width:90%;margin-left:auto;margin-right:auto;height:2px;border-width:0;color:gray;background-color:gray">
+		
+{% else %}
+
+{% endif %}
  
-            </div>
-            </div>
-           {% endfor %}
-            {% endif %}
-
 <div class="ourmenutitlediv reveal fade-left">
 
 <h2 class="ourmenutitle">Our Menu</h2>
@@ -24335,12 +24356,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 <img src="https://img.icons8.com/dotty/80/000000/shopping-bag.png"/>
 
 </div>
-  <div class="alert alert-success" id="alertsucfcessid">
-    
-  </div>
-    <div class="alert alert-danger" id="alerterrorid">
-    
-  </div>
+
 <div class="modalbackgroundcart" id="cartbg">
     <div class="modalcartcontent" id="cartcontent">
         <div class="contentpartdiv" id="contentpartdivid">
