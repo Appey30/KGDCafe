@@ -31070,21 +31070,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 });
 function christmas(){
-const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-const d = new Date();
-let name = month[d.getMonth()];
-if(name == "December"){
-document.getElementById('audioid').play();
-document.getElementById('garlandrightid').style.display='block';
-document.getElementById('garlandleftid').style.display='block';
-snow();
-}else{
-document.getElementById('audioid').pause();
-document.getElementById('audioid').remove();
-document.getElementById('garlandrightid').remove();
-document.getElementById('garlandleftid').remove();
-}
+    const d = new Date();
+    let name = month[d.getMonth()];
+    if(name == "November"){
+        document.getElementById('audioid').play();
+        document.getElementById('garlandrightid').style.display='block';
+        document.getElementById('garlandleftid').style.display='block';
+        snow();
+    }else{
+        document.getElementById('audioid').pause();
+        document.getElementById('audioid').remove();
+        document.getElementById('garlandrightid').remove();
+        document.getElementById('garlandleftid').remove();
+    }
 }
 function functions{{pizzab.id}}(){
 var pizzap = parseInt({{pizzab.Price}});
