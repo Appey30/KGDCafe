@@ -25429,7 +25429,7 @@ longitude.value = position.lng;
             <h3  id="totalwithdevfee"></h3>
 
             <div class="checkoutbuttondiv">
-           <button type="button" onclick="Checkout()" id="detailchecker" name="checkout" value="Checkout">Checkout</input>
+           <button type="button" onclick="Checkout()" id="detailchecker" name="checkout" value="Checkout">Checkout</button>
             </div>
            </div>
            
@@ -26967,12 +26967,17 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
         var tablebody=document.getElementById('punchedtablebody');
         var datahtmltest="";
         let totalpunched=0;
+        if(allpunched.length == 1){
+                totalpunched = parseInt(allpunched[0].Subtotal);
+        }else if(allpunched.length > 1){
             for(let i = 0;i<(allpunched.length);i++){
             
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-    
+        }else{
+        totalpunched = 0
+        }
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
@@ -27463,12 +27468,19 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
         var dataHtmlcart='';
         var totalpunched=0;
         var totalpunchedfordisablecheckout=0;
+        if(allpunched.length == 1){
+        
+                totalpunchedfordisablecheckout=allpunched[0].Subtotal
+
+        }else if(allpunched.length > 1){
             for(let i = 0;i<(allpunched.length);i++){
             
                 totalpunchedfordisablecheckout = totalpunchedfordisablecheckout+parseInt(allpunched[i].Subtotal);
                 
             }
-
+        }else{
+        totalpunchedfordisablecheckout = 0
+        }
             if(allpunched.length == 0 || totalpunchedfordisablecheckout == 0 ){
                 totalpunched = 0;
                 document.getElementById('checkoutbut').value = 'Payment Setup';
@@ -27479,6 +27491,8 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                 allpunched=[];
                 
                 cartclose();
+            }else if(allpunched.length == 1){
+                        totalpunched=parseInt(allpunched[0].Subtotal);
             }else{
                     for(let i = 0;i<(allpunched.length);i++){
             
