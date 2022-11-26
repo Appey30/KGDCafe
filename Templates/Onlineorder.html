@@ -26755,7 +26755,7 @@ var totalwithoudevfee = 0;
 var aonamewithprodname = "";
 
 function addpunched() {
-
+document.getElementById("checkoutbut").disabled = false;
 
         clickaddbutton = clickaddbutton+1; 
 if(aoname){
@@ -26945,7 +26945,8 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                         Qty:puncheditem.Qty,
                         Addonsname:'',
                         Addonsnamewithprodname:'',
-                        Addonsqty:'',            };
+                        Addonsqty:'',            
+                        };
 
                 var indexfinderfreefriesthree = allpunched.findIndex(function(puncheditemthree, index) {
                 if(puncheditemthree.productname == 'Free Fries')
@@ -27486,7 +27487,6 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                 document.getElementById('checkoutbut').value = 'Payment Setup';
                 document.getElementById("checkoutbut").disabled = true
                 document.getElementById('totalpunched').innerHTML = "";
-
 
                 allpunched=[];
                 
