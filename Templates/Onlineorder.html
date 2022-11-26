@@ -23847,11 +23847,9 @@ class="logo">
 
 
 </div>
-{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+
 <div class="wraptabcontentprodpromo" style="display:block;">
-{% else %}
-<div class="wraptabcontentprodpromo" style="display:block;">
-{% endif %}
+
 <div class="tabcontentprodpromo" id="Promo">
 
 
@@ -24301,9 +24299,13 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
          
     {% endfor %}
 {% endif %}
-
-        <hr style="width:90%;margin-left:auto;margin-right:auto;height:2px;border-width:0;color:gray;background-color:gray">
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+      <hr style="width:90%;margin-left:auto;margin-right:auto;height:2px;border-width:0;color:gray;background-color:gray">
 		
+{% else %}
+
+{% endif %}
+  
 <div class="ourmenutitlediv reveal fade-left">
 
 <h2 class="ourmenutitle">Our Menu</h2>
