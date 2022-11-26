@@ -31076,13 +31076,15 @@ function christmas(){
     let name = month[d.getMonth()];
     let day = d.getDate();
     if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
-        document.getElementById('audioid').play();
+        var playaudio = document.getElementById('audioid');
+        playaudio.play();
         document.getElementById('garlandrightid').style.display='block';
         document.getElementById('garlandleftid').style.display='block';
         snow();
     }else{
-        document.getElementById('audioid').pause();
-        document.getElementById('audioid').remove();
+        var pauseaudio = document.getElementById('audioid');
+        pauseaudio.pause();
+        pauseaudio.remove();
         document.getElementById('garlandrightid').remove();
         document.getElementById('garlandleftid').remove();
     }
