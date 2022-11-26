@@ -23900,8 +23900,8 @@ class="logo">
 <div class="menuproducts">
 <!--<img class="garlandright" src="{% static 'garlandleft.png'%}"></img>
 <img class="garlandleft" src="{% static 'garlandright.png'%}"></img>-->
-<img class="garlandleft" src="{% static 'garland2.png'%}">
-<img class="garlandright" src="{% static 'garland2.png'%}">
+<img id="garlandleftid" class="garlandleft" src="{% static 'garland2.png'%}">
+<img id="garlandrightid" class="garlandright" src="{% static 'garland2.png'%}">
 
 <audio id="audioid" style="position:absolute;opacity:0;" controls>
   <source src="{% static 'christmasbackgroundaudio.mp3'%}" type="audio/mpeg">
@@ -31065,12 +31065,26 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 <script>
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{pizzab.id}}();
-document.getElementById('audioid').play();
+  christmas();
 
-  snow();
 
 });
+function christmas(){
+const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
+const d = new Date();
+let name = month[d.getMonth()];
+if(name == "December"){
+document.getElementById('audioid').play();
+document.getElementById('garlandrightid').style.display='block';
+document.getElementById('garlandleftid').style.display='block';
+snow();
+}else{
+document.getElementById('audioid').remove();
+document.getElementById('garlandrightid').remove();
+document.getElementById('garlandleftid').remove();
+}
+}
 function functions{{pizzab.id}}(){
 var pizzap = parseInt({{pizzab.Price}});
 
