@@ -27470,7 +27470,7 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
         var totalpunchedfordisablecheckout=0;
         if(allpunched.length == 1){
         
-                totalpunchedfordisablecheckout=allpunched[0].Subtotal
+                totalpunchedfordisablecheckout=parseInt(allpunched[0].Subtotal);
 
         }else if(allpunched.length > 1){
             for(let i = 0;i<(allpunched.length);i++){
