@@ -48,7 +48,8 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
 #canvas{
   height: 100%;
   width: 100%;
-  background-color: white;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -4953,7 +4954,8 @@ height:100%;
 #canvas{
   height: 100%;
   width: 100%;
-  background-color: white;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -9828,7 +9830,8 @@ height:100%;
 #canvas{
   height: 100%;
   width: 100%;
-  background-color: white;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -14712,7 +14715,8 @@ height:100%;
 #canvas{
   height: 100%;
   width: 100%;
-  background-color: white;
+    background-color: rgba(0,0,0,0);
+  position: absolute;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -19775,7 +19779,8 @@ height:100%;
 #canvas{
   height: 100%;
   width: 100%;
-  background-color: white;
+    background-color: rgba(0,0,0,0);
+  position: absolute;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -32547,7 +32552,7 @@ function Firework(x,y,height,yVol,R,G,B){
   var boomHeight = Math.floor(Math.random() * 200) + 50;
   this.draw = function(){
    
-   ctx.fillStyle = "rgba(" + R + "," + G + "," + B + ")";
+   ctx.fillStyle = "rgba(" + R + "," + G + "," + B + "," + 0)";
     ctx.strokeStyle = "rgba(" + R + "," + G + "," + B + ")";
     ctx.beginPath();
  //   ctx.arc(this.x,boomHeight,this.radius,Math.PI * 2,0,false);
