@@ -29519,13 +29519,16 @@ var alertvalue=document.getElementById('alertvalueid').value;
     var scroll = $(window).scrollTop();
     if (scroll >= 1) {
       $('.arrowss').addClass('fadess');
-      $('.arrowss').remove();
+      etTimeout(arrowssremoveelement, 1500);
+      
     } else{
       $('.arrowss').removeClass('fadess');
     }
   })
 });
-
+function arrowssremoveelement()(){
+$('.arrowss').remove();
+}
 
 function alertremove(){
 var alertsuccess=document.getElementById('alertsucfcessid');
