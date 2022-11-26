@@ -26705,7 +26705,13 @@ container._leaflet_id = null;
 }
 var mapolds = document.getElementById('mapolds');
 var mapold = L.map('mapolds').setView([pointx, pointy], 16);
-var OpenStreetMap_Mapnikold = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: 'Programmed by Appey De Guzman'}).addTo(mapold);
+//var OpenStreetMap_Mapnikold = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: 'Programmed by Appey De Guzman'}).addTo(mapold);
+var OpenStreetMap_Mapnikold = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
+maxZoom: 19, 
+attribution: 'Programmed by Appey De Guzman',
+subdomains:['mt0','mt1','mt2','mt3']
+}).addTo(mapold);
+
 setTimeout(function(){ mapold.invalidateSize()}, 400);
 var defaultmarkerold = L.marker([pointx, pointy]).addTo(mapold);
 defaultmarkerold._icon.classList.add("huechange");
