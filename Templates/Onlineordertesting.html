@@ -4500,7 +4500,7 @@ position:absolute;
 display:none;
 width:98%;
 margin-right:20px;
-top:400px;
+top:350px;
 background:white;
 z-index:99;
 animation: fadeonly 0.5s ease-in;
@@ -9079,7 +9079,7 @@ position:absolute;
 display:none;
 width:98%;
 margin-right:20px;
-top:400px;
+top:350px;
 background:white;
 z-index:99;
 animation: fadeonly 0.5s ease-in;
@@ -13665,7 +13665,7 @@ position:absolute;
 display:none;
 width:95%;
 margin-right:20px;
-top:400px;
+top:350px;
 background:white;
 z-index:99;
 animation: fadeonly 0.5s ease-in;
@@ -18171,6 +18171,11 @@ background-color:#FFBF00;
 box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
 
 }
+.choicesizepizza{
+background-color:#FFBF00;
+box-shadow: 0 4px 15px 8px rgba(0, 0, 0, 0.2);
+
+}
 .addonsdivpizza{
 position:absolute;
 top:180px;
@@ -18425,7 +18430,7 @@ position:absolute;
 display:none;
 width:95%;
 margin-right:20px;
-top:360px;
+top:300px;
 background:white;
 z-index:99;
 animation: fadeonly 0.5s ease-in;
@@ -23254,7 +23259,7 @@ display:none;
 width:95%;
 margin-right:10px;
 font-size:12px;
-top:380px;
+top:300px;
 background:white;
 z-index:99;
 animation: fadeonly 0.5s ease-in;
@@ -25241,16 +25246,15 @@ $('#totalwithdevfeeid').val(totalwithdevfees);
 $('#devfeeid').val(deliveryfee);
 
 var map = L.map('map').setView([PanOnMaplat, PanOnMaplng], 16);
-//var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
-//    maxZoom: 20,
-//    subdomains:['mt0','mt1','mt2','mt3']
-//});
+
 //var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: 'Programmed by Appey De Guzman'}).addTo(map);
 var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
 maxZoom: 19, 
 attribution: 'Programmed by Appey De Guzman',
 subdomains:['mt0','mt1','mt2','mt3']
 }).addTo(map);
+
+
 
 var defaultmarker = L.marker([PanOnMaplat, PanOnMaplng],{draggable:'true' }).addTo(map);
 
@@ -25425,7 +25429,7 @@ longitude.value = position.lng;
             <h3  id="totalwithdevfee"></h3>
 
             <div class="checkoutbuttondiv">
-           <button type="button" onclick="Checkout()" id="detailchecker" name="checkout" value="Checkout">Checkout</input>
+           <button type="button" onclick="Checkout()" id="detailchecker" name="checkout" value="Checkout">Checkout</button>
             </div>
            </div>
            
@@ -26707,6 +26711,12 @@ container._leaflet_id = null;
 var mapolds = document.getElementById('mapolds');
 var mapold = L.map('mapolds').setView([pointx, pointy], 16);
 var OpenStreetMap_Mapnikold = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: 'Programmed by Appey De Guzman'}).addTo(mapold);
+//var OpenStreetMap_Mapnikold = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
+//maxZoom: 19, 
+//attribution: 'Programmed by Appey De Guzman',
+//subdomains:['mt0','mt1','mt2','mt3']
+//}).addTo(mapold);
+
 setTimeout(function(){ mapold.invalidateSize()}, 400);
 var defaultmarkerold = L.marker([pointx, pointy]).addTo(mapold);
 defaultmarkerold._icon.classList.add("huechange");
@@ -26745,7 +26755,7 @@ var totalwithoudevfee = 0;
 var aonamewithprodname = "";
 
 function addpunched() {
-
+document.getElementById("checkoutbut").disabled = false;
 
         clickaddbutton = clickaddbutton+1; 
 if(aoname){
@@ -26935,7 +26945,8 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
                         Qty:puncheditem.Qty,
                         Addonsname:'',
                         Addonsnamewithprodname:'',
-                        Addonsqty:'',            };
+                        Addonsqty:'',            
+                        };
 
                 var indexfinderfreefriesthree = allpunched.findIndex(function(puncheditemthree, index) {
                 if(puncheditemthree.productname == 'Free Fries')
@@ -26957,12 +26968,17 @@ if(freefries == 'True' && freefriesfrappe == 'True'){
         var tablebody=document.getElementById('punchedtablebody');
         var datahtmltest="";
         let totalpunched=0;
+        if(allpunched.length == 1){
+                totalpunched = parseInt(allpunched[0].Subtotal);
+        }else if(allpunched.length > 1){
             for(let i = 0;i<(allpunched.length);i++){
             
                 totalpunched = totalpunched+parseInt(allpunched[i].Subtotal);
                 
             }
-    
+        }else{
+        totalpunched = 0
+        }
             for(let punched of allpunched){
 if(punched.Category=='Snacks'){
 var categoryfinal=punched.Subcategory;
@@ -27453,6 +27469,7 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
         var dataHtmlcart='';
         var totalpunched=0;
         var totalpunchedfordisablecheckout=0;
+
             for(let i = 0;i<(allpunched.length);i++){
             
                 totalpunchedfordisablecheckout = totalpunchedfordisablecheckout+parseInt(allpunched[i].Subtotal);
@@ -27464,7 +27481,6 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                 document.getElementById('checkoutbut').value = 'Payment Setup';
                 document.getElementById("checkoutbut").disabled = true
                 document.getElementById('totalpunched').innerHTML = "";
-
 
                 allpunched=[];
                 
@@ -31394,7 +31410,7 @@ var totalpizza = 0;
 var sizeamountpizza=0;
 psukatall="";
 gtotalpizza = totalpizza;
-totalall = totalpizzaa;
+totalall = totalpizza;
 
 pampricepizza = 0;
 barpricepizza = 0;  
