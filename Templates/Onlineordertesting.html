@@ -50,7 +50,7 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
   width: 100%;
   background-color: rgba(0,0,0,0);
   position: absolute;
-  z-index:999;
+  z-index:0;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -4957,7 +4957,7 @@ height:100%;
   width: 100%;
   background-color: rgba(0,0,0,0);
   position: absolute;
-  z-index:999;
+  z-index:0;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -9834,7 +9834,7 @@ height:100%;
   width: 100%;
   background-color: rgba(0,0,0,0);
   position: absolute;
-  z-index:999;
+  z-index:0;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -14720,7 +14720,7 @@ height:100%;
   width: 100%;
     background-color: rgba(0,0,0,0);
   position: absolute;
-  z-index:999;
+  z-index:0;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -19785,7 +19785,7 @@ height:100%;
   width: 100%;
     background-color: rgba(0,0,0,0);
   position: absolute;
-  z-index:999;
+  z-index:0;
 }
 .pyro > .before, .pyro > .after {
   position: absolute;
@@ -25355,10 +25355,10 @@ class="logo">
 <img id="garlandleftid" class="garlandleft" src="{% static 'garlandtry3compressed.png'%}">
 <img id="garlandrightid" class="garlandright" src="{% static 'garlandtry3compressed.png'%}">
 <canvas id="canvas"></canvas>
-<div id="pyroid" class="pyro">
+<!--<div id="pyroid" class="pyro">
   <div class="before"></div>
   <div class="after"></div>
-</div>
+</div>-->
 <div class="arrowss animated bounce"><h8 style="position:relative;top:-50px;left:-8px;">Scroll Down</h8></div>
 <!--<audio id="audioid" style="position:absolute;opacity:0;">
   <source src="{% static 'christmasbackgroundaudio.mp3'%}" type="audio/mpeg">
@@ -32700,25 +32700,25 @@ function christmas(){
     const d = new Date();
     let name = month[d.getMonth()];
     let day = d.getDate();
-    //if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
+    if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
         
 
-        //document.getElementById('garlandrightid').style.display='block';
-        //document.getElementById('garlandleftid').style.display='block';
+        document.getElementById('garlandrightid').style.display='block';
+        document.getElementById('garlandleftid').style.display='block';
         //document.getElementById('pyroid').remove();
-        //document.getElementById('canvas').remove();
-        //snow();
-    //}else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
-    if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
+        document.getElementById('canvas').remove();
+        snow();
+    }else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
+    //if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
         document.getElementById('garlandrightid').remove();
         document.getElementById('garlandleftid').remove();
         //document.getElementById('pyroid').style.display = "block";
-        document.getElementById('pyroid').remove();
+        //document.getElementById('pyroid').remove();
         document.getElementById('canvas').style.display = "block";
     }else{
         document.getElementById('garlandrightid').remove();
         document.getElementById('garlandleftid').remove();
-        document.getElementById('pyroid').remove();
+        //document.getElementById('pyroid').remove();
         document.getElementById('canvas').remove();
     }
 }
