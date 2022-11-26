@@ -25246,7 +25246,7 @@ var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{
 var defaultmarker = L.marker([PanOnMaplat, PanOnMaplng],{draggable:'true' }).addTo(map);
 
 defaultmarker._icon.classList.add("huechange");
-defaultmarker.bindPopup("<b>Drag me to your location!").openPopup();
+defaultmarker.bindPopup("<b>Drag me to your location!</b>").openPopup();
 $(document).on('change', '#brgy', function(){
 
 defaultmarker.setLatLng(new L.LatLng(PanOnMaplat, PanOnMaplng),{draggable:'true'});
