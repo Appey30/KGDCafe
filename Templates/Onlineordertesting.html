@@ -39,6 +39,7 @@ background-image:url({% static 'bas.jpg'%});
   background-attachment: fixed;
   background-size: cover;
 }
+
 @font-face { 
 font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond_the_mountains.otf' %});
 }
@@ -31557,8 +31558,9 @@ function snow() {
       flakes[i].remove()
     }      
   }
+  
   setTimeout(function(){ snow() },200)
-
+  }
 </script>
 <script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
