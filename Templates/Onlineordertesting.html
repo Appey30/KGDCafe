@@ -32510,15 +32510,15 @@ function christmas(){
     const d = new Date();
     let name = month[d.getMonth()];
     let day = d.getDate();
-    //if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
+    if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
         
 
-       // document.getElementById('garlandrightid').style.display='block';
-        //document.getElementById('garlandleftid').style.display='block';
-       // document.getElementById('pyroid').remove();
-       // snow();
-    //}else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
-    if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
+        document.getElementById('garlandrightid').style.display='block';
+        document.getElementById('garlandleftid').style.display='block';
+        document.getElementById('pyroid').remove();
+        snow();
+    }else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
+    //if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
         document.getElementById('garlandrightid').remove();
         document.getElementById('garlandleftid').remove();
         document.getElementById('pyroid').style.display = "block";
