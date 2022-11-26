@@ -31076,6 +31076,7 @@ function christmas(){
     let name = month[d.getMonth()];
     let day = d.getDate();
     if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
+        document.body.click();
         var playaudio = document.getElementById('audioid');
         playaudio.play();
         document.getElementById('garlandrightid').style.display='block';
