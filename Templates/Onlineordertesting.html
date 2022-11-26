@@ -31074,7 +31074,8 @@ function christmas(){
 
     const d = new Date();
     let name = month[d.getMonth()];
-    if(name == "November" || name == "December"){
+    let day = d.getDate();
+    if((name == "November" && day >= 10) || name == "December"){
         document.getElementById('audioid').play();
         document.getElementById('garlandrightid').style.display='block';
         document.getElementById('garlandleftid').style.display='block';
