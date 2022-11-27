@@ -2844,12 +2844,13 @@ def Onlineordersystem(request, admin_id):
         if promocodegeti:
         #without minimum amount #withoutredeemlimit
             if couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False): 
-                if promocodegeti == "KGDDeliveryFree":
+                if couponlist.objects.filter(couponname='KGDDeliveryFree',code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False): 
+                #if promocodegeti == "KGDDeliveryFree":
                     couponvalidity='KGDDeliveryFree'
                     couponvaliditymessage='Valid Coupon.'
                     discount='0'
                     rqrd_minimumamnt=0
-                    prmcd='KGDDeliveryFree'
+                    prmcd=promocodegeti
                 else:
                     couponvalidity='Valid'
                     couponvaliditymessage='Valid'
@@ -2859,12 +2860,13 @@ def Onlineordersystem(request, admin_id):
                     prmcd=promocodegeti
             #without minimum amount #withredeemlimit
             elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=False).exclude(redeemlimit=0): 
-                if promocodegeti == "KGDDeliveryFree":
+                if couponlist.objects.filter(couponname='KGDDeliveryFree',  code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=False).exclude(redeemlimit=0): 
+                #if promocodegeti == "KGDDeliveryFree":
                     couponvalidity='KGDDeliveryFree'
                     couponvaliditymessage='Valid Coupon.'
                     discount='0'
                     rqrd_minimumamnt=0
-                    prmcd='KGDDeliveryFree'
+                    prmcd=promocodegeti
                 else:
                     couponvalidity='Valid'
                     couponvaliditymessage='Valid'
@@ -5626,7 +5628,8 @@ def Onlineordertestingsystem(request, admin_id):
         if promocodegeti:
         #without minimum amount #withoutredeemlimit
             if couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False): 
-                if promocodegeti == "KGDDeliveryFree":
+                if couponlist.objects.filter(couponname='KGDDeliveryFree', code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False):
+                #if promocodegeti == "KGDDeliveryFree":
                     couponvalidity='KGDDeliveryFree'
                     couponvaliditymessage='Valid Coupon.'
                     discount='0'
@@ -5641,12 +5644,13 @@ def Onlineordertestingsystem(request, admin_id):
                     prmcd=promocodegeti
             #without minimum amount #withredeemlimit
             elif couponlist.objects.filter(code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=False).exclude(redeemlimit=0): 
-                if promocodegeti == "KGDDeliveryFree":
+                if couponlist.objects.filter(couponname='KGDDeliveryFree', code=promocodegeti, is_consumable=True, is_active=True, is_withMinimumAmount=False).exclude(redeemlimit=0):
+                #if promocodegeti == "KGDDeliveryFree":
                     couponvalidity='KGDDeliveryFree'
                     couponvaliditymessage='Valid Coupon.'
                     discount='0'
                     rqrd_minimumamnt=0
-                    prmcd='KGDDeliveryFree'
+                    prmcd=promocodegeti
                 else:
                     couponvalidity='Valid'
                     couponvaliditymessage='Valid'
