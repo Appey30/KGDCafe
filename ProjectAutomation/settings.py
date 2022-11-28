@@ -92,15 +92,15 @@ import dj_database_url
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'firstapp',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '0918382947kJ',
-        'HOST': '0.0.0.0',
-        'PORT': '5432',
+        'PASSWORD': 'MyRKbNRuLN9bBsnnETFN',
+        'HOST': 'containers-us-west-41.railway.app',
+        'PORT': '6661',
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse('postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}', conn_max_age=600)
 #DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@0.0.0.0:5432/firstapp', conn_max_age=600)
 
 DATABASES['default'].update(db_from_env)
