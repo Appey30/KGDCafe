@@ -89,7 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
-Identifierdb = "Rail"
+Identifierdb = "Heroku"
 #Rail or Heroku
 if Identifierdb == "Rail":
     DATABASES = {
