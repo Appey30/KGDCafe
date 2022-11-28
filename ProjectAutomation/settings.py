@@ -89,7 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
-Identifierdb = "Heroku"
+Identifierdb = "Rail"
 #Rail or Heroku
 if Identifierdb == "Rail":
     DATABASES = {
@@ -104,7 +104,6 @@ if Identifierdb == "Rail":
     }
     db_from_env = dj_database_url.config(conn_max_age=600)
     DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
-    #DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
 
     DATABASES['default'].update(db_from_env)
 
@@ -120,7 +119,6 @@ elif Identifierdb == "Heroku":
         }
     }
     db_from_env = dj_database_url.config(conn_max_age=600)
-    #DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
     DATABASES['default'] = dj_database_url.parse('postgres://skcxlyichpsdoh:ad2bfe7b2000a03803ef1b8dd48b6c903afbfd2ec4959056b57c9e2f1021da06@ec2-52-203-99-122.compute-1.amazonaws.com:5432/d3sthqr8n69tio', conn_max_age=600)
 
     DATABASES['default'].update(db_from_env)
