@@ -89,29 +89,29 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'railway',
-#        'USER': 'postgres',
-#        'PASSWORD': 'MyRKbNRuLN9bBsnnETFN',
-#        'HOST': 'containers-us-west-41.railway.app',
-#        'PORT': '6661',
-#    }
-#}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'firstapp',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '0918382947kJ',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': 'MyRKbNRuLN9bBsnnETFN',
+        'HOST': 'containers-us-west-41.railway.app',
+        'PORT': '6661',
     }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'firstapp',
+#        'USER': 'postgres',
+#        'PASSWORD': '0918382947kJ',
+#        'HOST': 'localhost',
+#        'PORT': '5432',
+#    }
+#}
 db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
-DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
+#DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
 
 DATABASES['default'].update(db_from_env)
 
