@@ -95,8 +95,8 @@ DATABASES = {
         'NAME': 'firstapp',
         'USER': 'postgres',
         'PASSWORD': '0918382947kJ',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'HOST': '0.0.0.0',
+        'PORT': '8000',
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
