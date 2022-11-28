@@ -100,7 +100,7 @@ DATABASES = {
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'] = dj_database_url.parse('postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}', conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
 #DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@0.0.0.0:5432/firstapp', conn_max_age=600)
 
 DATABASES['default'].update(db_from_env)
