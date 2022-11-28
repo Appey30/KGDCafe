@@ -1872,8 +1872,8 @@ function addcouponformpost(){
                 mysecondloop(i);
                 function mysecondloop(i){
                     var lengthcodefalse=response.CodeFalse.length;
-                    var filename = response.CodeFalse[i].filename;
-                    
+                    //var filename = response.CodeFalse[i].filename;
+                    var filename = i+1;
                     myloop(lengthcodefalse, filename, i);
                 }
                 function myloop(lengthcodefalse, filename, i){
@@ -1904,7 +1904,7 @@ function addcouponformpost(){
                             }
             
                             invibutton.href=source;
-                            invibutton.download=filename+'.png';
+                            invibutton.download=filename.toString()+'.png';
             
                             if(source){
                                 document.body.appendChild(invibutton);
