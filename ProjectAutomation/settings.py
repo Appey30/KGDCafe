@@ -96,12 +96,12 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': '0918382947kJ',
         'HOST': '0.0.0.0',
-        'PORT': '8000',
+        'PORT': '5432',
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
 #DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
-DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@0.0.0.0:8000/firstapp', conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@0.0.0.0:5432/firstapp', conn_max_age=600)
 
 DATABASES['default'].update(db_from_env)
 
