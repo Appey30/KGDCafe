@@ -99,10 +99,10 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-#db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
 
-#DATABASES['default'].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
