@@ -91,7 +91,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 import dj_database_url
 Identifierdb = "Heroku"
 #Rail or Heroku
-if(Identifierdb == "Rail"){
+if Identifierdb == "Rail":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -108,7 +108,7 @@ if(Identifierdb == "Rail"){
 
     DATABASES['default'].update(db_from_env)
 
-}elif(Identifierdb == "Heroku"){
+elif Identifierdb == "Heroku":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -124,7 +124,7 @@ if(Identifierdb == "Rail"){
     DATABASES['default'] = dj_database_url.parse('postgres://postgres:0918382947kJ@localhost:5432/firstapp', conn_max_age=600)
 
     DATABASES['default'].update(db_from_env)
-}
+
 
 
 
