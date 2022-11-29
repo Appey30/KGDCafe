@@ -280,7 +280,7 @@ def coupon(request):
                 CodeTrue=[]
                 CodeFalse=[]
                 #?prmcd=<code>
-                generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/?prmcd="+codeid
+                generateurl="https://kgdcafe.com/index/onlineorder/4/?prmcd="+codeid
                 filename=codeid
                 CodeTrue.insert(0,generateurl)
                 CodeTrue.insert(1,filename)
@@ -294,7 +294,7 @@ def coupon(request):
                     unique_id = ''.join(random.choice(allowed_chars) for _ in range(6))
                     codeid=unique_id
                     #?prmcd=<code>
-                    generateurl="kgdcafe.herokuapp.com/index/onlineorder/4/?prmcd="+codeid
+                    generateurl="https://kgdcafe.com/index/onlineorder/4/?prmcd="+codeid
 
                     objectappender={
                     'generateurl':generateurl,
