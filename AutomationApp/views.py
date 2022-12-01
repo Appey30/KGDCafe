@@ -3238,7 +3238,7 @@ def orderprogress(request, admin_id):
             #lastname=''
         
         if is_ajax(request=request) and request.GET.get('progressETA'):
-            completenamefinal=request.GET.get('completename')
+            completenamefinal=json.loads(request.GET.get('completename') or '')
             print('completenamefinal:',completenamefinal)
             if Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal):
                 ETAi=Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal).values_list('ETA', flat=True).first()
