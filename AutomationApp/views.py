@@ -3238,8 +3238,9 @@ def orderprogress(request, admin_id):
             #lastname=''
         print('completename:',completename)
         if is_ajax(request=request) and request.GET.get('progressETA'):
-            if Acceptorder.objects.filter(Admin=admin_id, Customername=completename):
-                ETAi=Acceptorder.objects.filter(Admin=admin_id, Customername=completename).values_list('ETA', flat=True).first()
+            completenamefinal=request.GET.get('completename')
+            if Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal):
+                ETAi=Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal).values_list('ETA', flat=True).first()
             else:
                 ETAi=list(Acceptorder.objects.none())
 
@@ -3247,30 +3248,30 @@ def orderprogress(request, admin_id):
             datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
             monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
             yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
-            if Acceptorder.objects.filter(Admin=admin_id, Customername=completename).exclude(productname='Ready'):
-                vieworderscustomeri = Acceptorder.objects.filter(Admin=admin_id, Customername=completename).exclude(productname='Ready')
-            elif Customer.objects.filter(Admin=admin_id, Customername=completename).exclude(productname='Ready'):
-                vieworderscustomeri = Customer.objects.filter(Admin=admin_id, Customername=completename)
-            elif Sales.objects.filter(DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, CusName=completename):
-                vieworderscustomeri = Sales.objects.filter(DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, CusName=completename).exclude(productname='DeliveryFee')
+            if Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal).exclude(productname='Ready'):
+                vieworderscustomeri = Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal).exclude(productname='Ready')
+            elif Customer.objects.filter(Admin=admin_id, Customername=completenamefinal).exclude(productname='Ready'):
+                vieworderscustomeri = Customer.objects.filter(Admin=admin_id, Customername=completenamefinal)
+            elif Sales.objects.filter(DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, CusName=completenamefinal):
+                vieworderscustomeri = Sales.objects.filter(DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, CusName=completenamefinal).exclude(productname='DeliveryFee')
             else:
                 vieworderscustomeri = Customer.objects.none()
             vieworderscustomer=serializers.serialize('json',vieworderscustomeri, cls=JSONEncoder)
             print('admin_id: ', admin_id)
-            if Customer.objects.filter(Admin=admin_id, Customername=completename):
+            if Customer.objects.filter(Admin=admin_id, Customername=completenamefinal):
                 progressi='zero'
-            elif Acceptorder.objects.filter(Admin=admin_id, Customername=completename):
-                if Acceptorder.objects.filter(Admin=admin_id, Customername=completename, productname='Ready'):
+            elif Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal):
+                if Acceptorder.objects.filter(Admin=admin_id, Customername=completenamefinal, productname='Ready'):
                     progressi='seventyfive'
                 else:
                     progressi='twentyfive'
-            elif Sales.objects.filter(DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, CusName=completename):
+            elif Sales.objects.filter(DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, CusName=completenamefinal):
                 progressi='onehundred'
             else:
                 progressi='wala'
             print(progressi)
             progress=json.dumps(progressi, cls=JSONEncoder )
-            if Rejectorder.objects.filter(Admin=admin_id,DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, Customername=completename):
+            if Rejectorder.objects.filter(Admin=admin_id,DateTime__day=datetoday, DateTime__month=monthtoday, DateTime__year=yeartoday, Customername=completenamefinal):
                 TrueFalsei='Rejected'
             else:
                 TrueFalsei='NotRejected'
@@ -3282,7 +3283,7 @@ def orderprogress(request, admin_id):
             'Reject':TrueFalse,
             }
             return JsonResponse(context)
-        return render(request, 'orderprogress.html',{'promocodegeti':promocodegeti,'admin_id':admin_id})
+        return render(request, 'orderprogress.html',{'completename':completename,'promocodegeti':promocodegeti,'admin_id':admin_id})
 
 @login_required
 def saletoday(request):

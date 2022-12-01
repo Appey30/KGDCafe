@@ -1514,7 +1514,9 @@ var todelivertbodydata = document.getElementById('deliverthis');
             $.ajax({
             type:'GET',
             url:"{% url 'orderprogress.html' admin_id %}",
-            data:{"progressETA":"progressETA"},
+            data:{"progressETA":"progressETA",
+            "completename":{{completename}}
+            },
             success: function(customercontext){
             $('#summarytableid').empty();
             var dataHtml='';
