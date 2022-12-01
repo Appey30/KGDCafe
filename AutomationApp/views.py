@@ -3282,7 +3282,7 @@ def orderprogress(request, admin_id):
             'Reject':TrueFalse,
             }
             return JsonResponse(context)
-        return render(request, 'orderprogress.html',{'promocodegeti':promocodegeti,'admin_id':admin_id,'userr':userr})
+        return render(request, 'orderprogress.html',{'promocodegeti':promocodegeti,'admin_id':admin_id})
 
 @login_required
 def saletoday(request):
