@@ -1183,14 +1183,14 @@ Your browser does not support the audio element.
                                       <form action="" method="GET" id="buttonformidaccepted{{acceptedorder.contactnumber}}" class="formbut">
                                       <input type="hidden" value="" name="contactnoaccepted" id="contactidaccepted{{acceptedorder.contactnumber}}" style="position:absolute;">
                                       <input type="hidden" value="" name="rider" id="riderinputidaccepted{{acceptedorder.contactnumber}}" style="position:absolute;">
-                                      <a href="sms:0{{acceptedorder.contactnumber}}?body=Good day Maam/Sir {{acceptedorder.Customername}}! We are KGD Cafe! We want to let you know that we have been acknowledged your order and we will call you in a minute for confirmation. Otherwise, we will let you know once the store starts preparing your order. Thank you!">
-                                      <button type="button" onclick="return viewaccept('{{acceptedorder.contactnumber}}', '{{acceptedorder.Customername}}',{{acceptedorder.GSubtotal}},{{acceptedorder.DeliveryFee}},'{{acceptedorder.LandmarksnNotes}}', {{acceptedorder.Bill}});" class="prodbutbase" id="orderbutid{{acceptedorder.contactnumber}}">Orders</button>
-                                      <a href="sms:0{{acceptedorder.contactnumber}}?body=We regret to inform you that your order has been rejected/cancelled. Please, consider ordering again. Thank you!">
-                                      <button onclick="return rejectsubmitaccepted({{acceptedorder.contactnumber}});" type="button" class="prodbutbase" name="Rejectbutton" value="Reject">Reject</button>
-                                      </a>
-                                      <a href="sms:0{{acceptedorder.contactnumber}}?body=Good day Maam/Sir {{acceptedorder.Customername}}! Your KGD order is on the way! Enjoy your KGD Favs! Thank you!">
-                                      <button onclick="return readyaccepted({{acceptedorder.contactnumber}});" type="button" class="prodbutbase" id="readybuttonid{{acceptedorder.contactnumber}}" name="Ready" value="Ready">Ready</button>
-                                      </a>
+
+                                      <button type="button" onclick="viewaccept('{{acceptedorder.contactnumber}}', '{{acceptedorder.Customername}}',{{acceptedorder.GSubtotal}},{{acceptedorder.DeliveryFee}},'{{acceptedorder.LandmarksnNotes}}', {{acceptedorder.Bill}})" class="prodbutbase" id="orderbutid{{acceptedorder.contactnumber}}">Orders</button>
+                                      
+                                      <button onclick="rejectsubmitaccepted({{acceptedorder.contactnumber}}, '{{acceptedorder.Customername}}')" type="button" class="prodbutbase" name="Rejectbutton" value="Reject">Reject</button>
+                                      
+                                      
+                                      <button onclick="readyaccepted({{acceptedorder.contactnumber}}, '{{acceptedorder.Customername}}')" type="button" class="prodbutbase" id="readybuttonid{{acceptedorder.contactnumber}}" name="Ready" value="Ready">Ready</button>
+                                      
                                       </form>
                                       <form action="" method="POST" class="formpost">
                                       {% csrf_token %}
@@ -1278,7 +1278,9 @@ Your browser does not support the audio element.
 <script>
 
 
-function readyaccepted(contact){
+function readyaccepted(contact, lagyusms){
+ window.open("sms:0+"contact"+?body=Good day Maam/Sir +"lagyusms"+! Your KGD order is on the way! Enjoy your KGD Favs! Thank you!")
+  
         $.ajax({
         type:'POST',
         url:"{% url 'postwo.html' %}",
@@ -1536,7 +1538,7 @@ $.ajax({
                 }else{
                 bargy = "None";
                 }
-                dataHtml += "<tr class='trbutton'><td class='tdqueuebase'>"+onlineorders["fields"].Customername+"</td><td class='tdqueuebase'> 0"+onlineorders["fields"].contactnumber+"</td><td class='tdqueuebase'>"+onlineorders["fields"].MOP+"</td><td class='tdqueuebase'>"+bargy+"</td><td class='tdqueuebase'>"+time+"</td><td class='tdqueuebase'><div id='riderselectiddiv"+onlineorders["fields"].contactnumber+"' class='custom-select' ><select name='Rider' id='Riderselectid"+onlineorders["fields"].contactnumber+"' value=''><option value='' selected disabled hidden>Choose here</option><option value='Appey'>Appey</option></select></div</td><td class='tdqueuebase'><div class='ETAdiv' id='ETAdivid"+onlineorders["fields"].contactnumber+"'><input type='time' id='ETAid"+onlineorders["fields"].contactnumber+"'></input></div></td><td class='tdqueuebase tdspecial'><form action='' method='GET' id='acceptrejectbuttonformid"+onlineorders["fields"].contactnumber+"' class='formbut'><a href='sms:0"+onlineorders["fields"].contactnumber+"?body=Good day Maam/Sir "+onlineorders["fields"].Customername+"! We are KGD Cafe! We want to let you know that we have been acknowledged your order and we will call you in a minute for confirmation. Otherwise, we will let you know once the store starts preparing your order. Thank you!'><button type='button' onclick='view("+request+")' class='prodbutbase' id='orderbutid"+onlineorders["fields"].contactnumber+"'>Orders</button></a><input type='hidden' value='' name='rider' id='inputidrider"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='ETA' id='inputETA"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='acceptcontactno' id='contactacceptid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='contactnoreject' id='contactrejectid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><button onclick='submitaccept("+onlineorders["fields"].contactnumber+", "+MOPstringify+", "+onlineorders["fields"].Customername+")' type='button' class='prodbutbase' name='Acceptbutton' value='Accept'>Accept</button><a href='sms:0"+onlineorders["fields"].contactnumber+"?body=We regret to inform you that your order has been rejected/cancelled. Please, consider ordering again. Thank you!'><button onclick='submitreject("+onlineorders["fields"].contactnumber+")' type='button' class='prodbutbase' name='Rejectbutton' value='Reject'>Reject</button></a></form></td></tr>";
+                dataHtml += "<tr class='trbutton'><td class='tdqueuebase'>"+onlineorders["fields"].Customername+"</td><td class='tdqueuebase'> 0"+onlineorders["fields"].contactnumber+"</td><td class='tdqueuebase'>"+onlineorders["fields"].MOP+"</td><td class='tdqueuebase'>"+bargy+"</td><td class='tdqueuebase'>"+time+"</td><td class='tdqueuebase'><div id='riderselectiddiv"+onlineorders["fields"].contactnumber+"' class='custom-select' ><select name='Rider' id='Riderselectid"+onlineorders["fields"].contactnumber+"' value=''><option value='' selected disabled hidden>Choose here</option><option value='Appey'>Appey</option></select></div</td><td class='tdqueuebase'><div class='ETAdiv' id='ETAdivid"+onlineorders["fields"].contactnumber+"'><input type='time' id='ETAid"+onlineorders["fields"].contactnumber+"'></input></div></td><td class='tdqueuebase tdspecial'><form action='' method='GET' id='acceptrejectbuttonformid"+onlineorders["fields"].contactnumber+"' class='formbut'><a href='sms:0"+onlineorders["fields"].contactnumber+"?body=Good day Maam/Sir "+onlineorders["fields"].Customername+"! We are KGD Cafe! We want to let you know that we have been acknowledged your order and we will call you in a minute for confirmation. Otherwise, we will let you know once the store starts preparing your order. Thank you!'><button type='button' onclick='view("+request+")' class='prodbutbase' id='orderbutid"+onlineorders["fields"].contactnumber+"'>Orders</button></a><input type='hidden' value='' name='rider' id='inputidrider"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='ETA' id='inputETA"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='acceptcontactno' id='contactacceptid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><input type='hidden' value='' name='contactnoreject' id='contactrejectid"+onlineorders["fields"].contactnumber+"' style='position:absolute;'><button onclick='submitaccept("+onlineorders["fields"].contactnumber+", "+MOPstringify+", "+onlineorders["fields"].Customername+")' type='button' class='prodbutbase' name='Acceptbutton' value='Accept'>Accept</button><button onclick='submitreject("+onlineorders["fields"].contactnumber+", "+onlineorders["fields"].Customername+")' type='button' class='prodbutbase' name='Rejectbutton' value='Reject'>Reject</button></form></td></tr>";
                 
                 }
                 $('#acknowledgeid').append(dataHtml);
@@ -1635,7 +1637,9 @@ var formacceptrejectid = document.getElementById('acceptrejectbuttonformid'+cont
 formacceptrejectid.submit();
 };
 
-function submitreject(contact){
+function submitreject(contact, lagyusms){
+ window.open("sms:0"+contact+"?body=We regret to inform you that your order has been rejected/cancelled. Please, consider ordering again. Thank you!")
+  
 
 var contactrejectvalue = document.getElementById('contactrejectid'+contact);
 $('#contactrejectid'+contact).val(contact);
@@ -1648,9 +1652,8 @@ function submitterreject(contact){
 var formreject = document.getElementById('acceptrejectbuttonformid'+contact);
 formreject.submit();
 };
-function rejectsubmitaccepted(contactaccepted){
-
-
+function rejectsubmitaccepted(contactaccepted, lagyusms){
+window.open("sms:0+"contactaccepted"+?body=We regret to inform you that your order has been rejected/cancelled. Please, consider ordering again. Thank you!");
 var contactvalueaccepted = document.getElementById('contactidaccepted'+contactaccepted);
 //contactvalueaccepted.value = contactaccepted;
 $('#contactidaccepted'+contactaccepted).val(contactaccepted);
@@ -1815,7 +1818,7 @@ for(var showorders of showorder){
 var contactnumberraccept ="";
 var contactmatchaccept="";
 function viewaccept(contactnumber, name, gtotal, devfee, notesss, bill){
-
+window.open("sms:0"+contactnumber+"?body=Good day Maam/Sir "+name+"! We are KGD Cafe! We want to let you know that we have been acknowledged your order and we will call you in a minute for confirmation. Otherwise, we will let you know once the store starts preparing your order. Thank you!")
 var contactnummmid = document.getElementById('contactnummmid');
 var landmarknotessssid = document.getElementById('landmarknotessssid');
 contactnumberraccept = contactnumber;
