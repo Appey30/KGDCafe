@@ -1839,7 +1839,9 @@ $(document).ready(function(){
             $.ajax({
             type:'GET',
             url:"{% url 'orderprogress.html' admin_id %}",
-            data:{"progressETA":"progressETA"},
+            data:{"progressETA":"progressETA",
+            "completename":JSON.stringify(completenamevar.value)
+            },
             success: function(customercontext){
             $('#summarytableid').empty();
             var dataHtml='';
