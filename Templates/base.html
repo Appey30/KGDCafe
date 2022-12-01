@@ -1655,7 +1655,7 @@ var formreject = document.getElementById('acceptrejectbuttonformid'+contact);
 formreject.submit();
 };
 function rejectsubmitaccepted(contactaccepted, lagyusms){
-window.open("sms:0+"contactaccepted"+?body=We regret to inform you that your order has been rejected/cancelled. Please, consider ordering again. Thank you!");
+window.open("sms:0"+contactaccepted+"?body=We regret to inform you that your order has been rejected/cancelled. Please, consider ordering again. Thank you!");
 var contactvalueaccepted = document.getElementById('contactidaccepted'+contactaccepted);
 //contactvalueaccepted.value = contactaccepted;
 $('#contactidaccepted'+contactaccepted).val(contactaccepted);
