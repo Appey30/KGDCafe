@@ -55,7 +55,7 @@ def redirecttoonlineorder(request):
     if promocodegeti:
         return HttpResponseRedirect('/index/onlineorder/4/?prmcd='+promocodegeti)
     else:
-        return HttpResponseRedirect('/index/onlineorder/4/)
+        return HttpResponseRedirect('/index/onlineorder/4/')
 
 @login_required
 def totalboughtappey(request):
