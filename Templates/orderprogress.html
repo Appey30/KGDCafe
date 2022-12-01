@@ -1467,6 +1467,7 @@ text-align:justify;
         <h5>Bank Transfer</h5>
         <img src="{% static 'bdopaymentcompressed.png' %}" class="imgbag2"></img>
 		</div>
+<input type="hidden" id="completenameid" value="{{completename}}"></input>
 </div>
 </div>
 <div class="estTimewholediv">
@@ -1503,19 +1504,22 @@ text-align:justify;
 <h5 id="paymentmethod"></h5><br>
 <h3 id="changefortitle">Change For</h3>
 <h5 id="changefor"></h5><br>
+
 </div>
+
 <script>
 
 
 let tid = setInterval(function(){
 var todelivertbodydata = document.getElementById('deliverthis');
+var completenamevar = document.getElementById('completenameid');
     if ( document.readyState !== 'complete' ) return;
     clearInterval( tid );       
             $.ajax({
             type:'GET',
             url:"{% url 'orderprogress.html' admin_id %}",
             data:{"progressETA":"progressETA",
-            "completename":JSON.stringify({{completename}})
+            "completename":JSON.stringify(completenamevar.value)
             },
             success: function(customercontext){
             $('#summarytableid').empty();
