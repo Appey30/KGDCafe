@@ -3222,27 +3222,22 @@ def Onlineordersystem(request, admin_id):
 
 def orderprogress(request, admin_id):
         promocodegeti=request.GET.get('prmcd', '')
+        completenamei=request.GET.get('progressuser', '')
         userr=request.user.id
         print('userr:',userr)
-        
+        print('completenamei:',completenamei)
         if userr:
             #firstname=request.user.first_name
             #lastname=request.user.last_name
-            completenamei=request.user.first_name+' '+request.user.last_name
+            completename=request.user.first_name+' '+request.user.last_name
+        elif completenamei:
+            completename=completenamei
         else:
-            completenamei=''
+            completename=''
             #firstname=''
             #lastname=''
-        
+        print('completename:',completename)
         if is_ajax(request=request) and request.GET.get('progressETA'):
-            completenameget=request.GET.get('progressuser', '')
-            print('completenameget:',completenameget)
-            if completenamei:
-                completename=completenamei
-            else:
-                completename=completenameget
-
-            print('completename:',completenamei)
             if Acceptorder.objects.filter(Admin=admin_id, Customername=completename):
                 ETAi=Acceptorder.objects.filter(Admin=admin_id, Customername=completename).values_list('ETA', flat=True).first()
             else:
