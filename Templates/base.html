@@ -1605,7 +1605,8 @@ showordersid.style.display = "none";
 
 
 function submitaccept(contact, mop, lagyusms){
- window.open("sms:0"+contact+"?body=Good day Maam/Sir "+lagyusms+"! Your KGD order is confirmed and is now being prepared by the store. We'll let you know once our rider is on his way to you. Conveniently track your order: kgdcafe.com/index/onlineorder/4/OrderProgress/?progressuser="+lagyusms.replace(" ","_"))
+var lagyusmstwo=lagyusms.toString()
+ window.open("sms:0"+contact+"?body=Good day Maam/Sir "+lagyusms+"! Your KGD order is confirmed and is now being prepared by the store. We'll let you know once our rider is on his way to you. Conveniently track your order: kgdcafe.com/index/onlineorder/4/OrderProgress/?progressuser="+lagyusmstwo.replace(" ","_"))
   
 var rider = document.getElementById('Riderselectid'+contact).value;
 var ETA = document.getElementById('ETAid'+contact).value;
