@@ -3222,7 +3222,7 @@ def Onlineordersystem(request, admin_id):
 
 def orderprogress(request, admin_id):
         promocodegeti=request.GET.get('prmcd', '')
-        completenamei=json.loads((request.GET.get('progressuser', '')))
+        completenamei=json.loads((request.GET.get('progressuser'))) or ''
         userr=request.user.id
         print('userr:',userr)
         print('completenamei:',completenamei)
