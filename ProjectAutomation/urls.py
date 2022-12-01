@@ -28,6 +28,7 @@ urlpatterns = [
 
       path('admin/',admin.site.urls),
       path('index/',views.login_user,name='index.html'),
+      path('',views.redirecttoonlineorder,name='Onlineorder.html'),
 	  path('index/kgdlog', views.login_user,name='kgdlog'),
 	  path('index/products',views.products,name='Products.html'),
       path('index/coupon',views.coupon,name='coupon.html'),

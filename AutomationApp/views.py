@@ -47,6 +47,16 @@ def TermsandConditions(request):
     userr=request.user.id
     return render(request, 'TermsandConditions.html')
 
+
+def redirecttoonlineorder(request):
+    userr=request.user.id
+    promocodegeti=request.GET.get('prmcd', '')
+    
+    if promocodegeti:
+        return HttpResponseRedirect('/index/onlineorder/4/?prmcd='+promocodegeti)
+    else:
+        return HttpResponseRedirect('/index/onlineorder/4/)
+
 @login_required
 def totalboughtappey(request):
     userr=request.user.id
