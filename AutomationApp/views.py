@@ -3225,6 +3225,7 @@ def orderprogress(request, admin_id):
         completenamei=request.GET.get('progressuser', '')
         userr=request.user.id
         print('userr:',userr)
+        print('completenamei:',completenamei)
         if userr:
             #firstname=request.user.first_name
             #lastname=request.user.last_name
