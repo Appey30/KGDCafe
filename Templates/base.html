@@ -1189,7 +1189,7 @@ Your browser does not support the audio element.
                                       <button onclick="rejectsubmitaccepted({{acceptedorder.contactnumber}}, '{{acceptedorder.Customername}}')" type="button" class="prodbutbase" name="Rejectbutton" value="Reject">Reject</button>
                                       
                                       
-                                      <button onclick="readyaccepted({{acceptedorder.contactnumber}}, '{{acceptedorder.Customername}}')" type="button" class="prodbutbase" id="readybuttonid{{acceptedorder.contactnumber}}" name="Ready" value="Ready">Ready</button>
+                                      <button onclick="readyaccepted({{acceptedorder.contactnumber}}, '{{acceptedorder.Customername}}', '{{acceptedorder.MOP}}')" type="button" class="prodbutbase" id="readybuttonid{{acceptedorder.contactnumber}}" name="Ready" value="Ready">Ready</button>
                                       
                                       </form>
                                       <form action="" method="POST" class="formpost">
@@ -1278,9 +1278,12 @@ Your browser does not support the audio element.
 <script>
 
 
-function readyaccepted(contact, lagyusms){
+function readyaccepted(contact, lagyusms, MOP){
+if(MOP == "COD"){
  window.open("sms:0"+contact+"?body=Good day Maam/Sir "+lagyusms+"! Your KGD order is on the way! Enjoy your KGD Favs! Thank you!")
-  
+}else if(MOP == "Pickup"){
+ window.open("sms:0"+contact+"?body=Good day Maam/Sir "+lagyusms+"! Your KGD order is ready for pick-up! Enjoy your KGD Favs! Thank you!")
+};
         $.ajax({
         type:'POST',
         url:"{% url 'postwo.html' %}",
@@ -1606,8 +1609,11 @@ showordersid.style.display = "none";
 
 function submitaccept(contact, mop, lagyusms){
 var lagyusmstwo=lagyusms.toString()
- window.open("sms:0"+contact+"?body=Good day Maam/Sir "+lagyusms+"! Your KGD order is confirmed and is now being prepared by the store. We'll let you know once our rider is on his way to you. You can also conviniently track your order via KGD website: kgdcafe.com/index/onlineorder/4/OrderProgress/?progressuser="+lagyusmstwo.split(' ').join('_'))
-  
+if(mop == "COD"){
+ window.open("sms:0"+contact+"?body=Good day Maam/Sir "+lagyusms+"! Your KGD order is confirmed and is now being prepared by the store. We will let you know once our rider is on his way to you. You can also conviniently track your order via KGD website: kgdcafe.com/index/onlineorder/4/OrderProgress/?progressuser="+lagyusmstwo.split(' ').join('_'))
+}else if(mop == "Pickup"){
+window.open("sms:0"+contact+"?body=Good day Maam/Sir "+lagyusms+"! Your KGD order is confirmed and is now being prepared by the store. We will let you know once your order is ready to pick-up. You can also conviniently track your order via KGD website: kgdcafe.com/index/onlineorder/4/OrderProgress/?progressuser="+lagyusmstwo.split(' ').join('_'))
+};
 var rider = document.getElementById('Riderselectid'+contact).value;
 var ETA = document.getElementById('ETAid'+contact).value;
 var contactvalue = document.getElementById('contactacceptid'+contact);
