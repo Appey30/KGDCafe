@@ -33031,7 +33031,7 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
 
 <script>
     let tidee = setInterval(function(){
-    if ( document.readyState !== 'interactive' ) return;
+    if ( document.readyState !== 'complete' ) return;
     clearInterval( tidee ); 
   $('#preloaderid').fadeOut(1000);
   $('#preloaderid').hide();
