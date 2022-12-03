@@ -33030,15 +33030,18 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
 
 
 <script>
-    let tidee = setInterval(function(){
+    let loadeeeer = setInterval(function(){
     if ( document.readyState !== 'complete' ) return;
-    clearInterval( tidee ); 
-  $('#preloaderid').fadeOut(1000);
-  $('#preloaderid').hide();
-    $('#preloaderid').remove();
+    clearInterval( loadeeeer ); 
+    
+    document.getElementById("preloaderid").style.animation = "fade-bottom-out 1s";
+    setTimeout(removepreloader, 1000);
+
 }, 100 );
 
-
+function removepreloader(){
+document.getElementById("preloaderid").remove();
+};
 function openCateg(evtprod, category) {
   // Declare all variables
   var i, tabcontentprod, tablinksprod;
