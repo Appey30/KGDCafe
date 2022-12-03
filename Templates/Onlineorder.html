@@ -33030,10 +33030,14 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
 
 
 <script>
-
-  $(window).load(function() {
+    let tidee = setInterval(function(){
+    if ( document.readyState !== 'interactive' ) return;
+    clearInterval( tidee ); 
+  $('#preloaderid').fadeOut(1000);
+  $('#preloaderid').hide();
     $('#preloaderid').remove();
-  });
+}, 100 );
+
 
 function openCateg(evtprod, category) {
   // Declare all variables
