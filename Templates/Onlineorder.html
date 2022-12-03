@@ -48,6 +48,36 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
 }
 
 @media screen and (min-width: 1200px){
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height:100%;
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+	font-family: Helvetica, sans-serif, Arial;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:black;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -4966,6 +4996,36 @@ background-color:white;
 }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height:100%;
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+	font-family: Helvetica, sans-serif, Arial;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:black;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -9853,6 +9913,36 @@ background-color:white;
 }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height:100%;
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+	font-family: Helvetica, sans-serif, Arial;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:black;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -14749,6 +14839,36 @@ background-color:white;
 }
 }
 @media screen and (min-width: 450px) and (max-width: 767px){
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height:100%;
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+	font-family: Helvetica, sans-serif, Arial;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:black;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -19824,6 +19944,36 @@ background-color:white;
 }
 }
 @media screen and (max-width: 449px){
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height:100%;
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+	font-family: Helvetica, sans-serif, Arial;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:black;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -24969,7 +25119,11 @@ background-color:white;
 
 <body style="background-color:white;position:relative;display:block;">
 <div id="preloaderid" style="position:fixed;z-index:9999;background-color:white;width:100%;height:100%;">
+<img src="{% static 'kgdcloudlight.png' %}"
+class="logo">
+</img>
 <lottie-player src="https://lottie.host/71727153-ed88-42bc-a1a7-2013768cb871/mOqeqNEYS0.json" background="white" speed="1" style="width: 100%;" loop autoplay></lottie-player>
+<h2 class="animate">Loading</h2>
 </div>
 <div class="wrapper">
 <div class="navibar" id="navibarid">
