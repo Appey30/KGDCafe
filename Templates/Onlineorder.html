@@ -1497,6 +1497,13 @@ width:300px;
 height:200px;
 
 }
+.logopreloader{
+width:300px;
+height:200px;
+
+
+position:relative;margin-left: auto;margin-right: auto;
+}
 .discountdiv{
 position:fixed;
 bottom:-100px;left:-75px;
@@ -6452,6 +6459,12 @@ width:160px;
 height:120px;
 
 }
+.logopreloader{
+width:160px;
+height:120px;
+
+position:relative;margin-left: auto;margin-right: auto;
+}
 .discountdiv{
 position:fixed;
 bottom:43px;left:0px;
@@ -11390,6 +11403,11 @@ z-index:1;
 .logo{
 width:120px;
 height:80px;
+}
+.logopreloader{
+width:120px;
+height:80px;
+position:relative;margin-left: auto;margin-right: auto;
 }
 .discountdiv{
 position:fixed;
@@ -16334,6 +16352,11 @@ z-index:1;
 .logo{
 width:90px;
 height:60px;
+}
+.logopreloader{
+width:90px;
+height:60px;
+position:relative;margin-left: auto;margin-right: auto;
 }
 .discountdiv{
 position:fixed;
@@ -21469,6 +21492,12 @@ z-index:1;
 width:90px;
 height:60px;
 }
+.logopreloader{
+width:90px;
+height:60px;
+position:relative;margin-left: auto;margin-right: auto;
+}
+
 .discountdiv{
 position:fixed;
 bottom:3px;left:0px;
@@ -25193,12 +25222,12 @@ background-color:white;
 </head>
 
 <body style="background-color:white;position:relative;display:block;">
-<div id="preloaderid" style="display: inline;position:fixed;z-index:9999;background-color:white;width:100%;height:100%;justify-content:center;align-items: center;">
-<div style="position:relative;margin:auto;width:auto;vertical-align: middle;">
+<div id="preloaderid" style="display: block;position:fixed;z-index:9999;background-color:white;width:100%;height:100%;justify-content:center;align-items: center;">
+
 <img src="{% static 'kgdcloudlight.png' %}"
-class="logo" style="position:relative;">
+class="logopreloader">
 </img>
-</div>
+
 <div style="position:relative;margin:auto;width:auto;vertical-align: middle;">
 <h2 class="animate">Loading</h2>
 </div>
