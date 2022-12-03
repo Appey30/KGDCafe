@@ -48,6 +48,21 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
 }
 
 @media screen and (min-width: 1200px){
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
 @keyframes load {
     0%{
         opacity: 0.08;
@@ -4996,6 +5011,21 @@ background-color:white;
 }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
 @keyframes load {
     0%{
         opacity: 0.08;
@@ -9913,6 +9943,21 @@ background-color:white;
 }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
 @keyframes load {
     0%{
         opacity: 0.08;
@@ -14839,6 +14884,21 @@ background-color:white;
 }
 }
 @media screen and (min-width: 450px) and (max-width: 767px){
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
 @keyframes load {
     0%{
         opacity: 0.08;
@@ -19944,6 +20004,21 @@ background-color:white;
 }
 }
 @media screen and (max-width: 449px){
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
 @keyframes load {
     0%{
         opacity: 0.08;
@@ -33188,7 +33263,7 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
     if ( document.readyState !== 'complete' ) return;
     clearInterval( loadeeeer ); 
     var fadeit = document.getElementById("preloaderid");
-    fadeit.style.animation = "fade-bottom-out 1s";
+    fadeit.style.animation = "loadforhidingpreloader 1s";
     setTimeout(removepreloader, 1000);
 
 }, 100 );
