@@ -33033,14 +33033,16 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
     let loadeeeer = setInterval(function(){
     if ( document.readyState !== 'complete' ) return;
     clearInterval( loadeeeer ); 
-    
-    document.getElementById("preloaderid").style.animation = "fade-bottom-out 1s";
+    var fadeit = document.getElementById("preloaderid");
+    fadeit.style.animation = "fade-bottom-out 1s";
     setTimeout(removepreloader, 1000);
 
 }, 100 );
 
 function removepreloader(){
-document.getElementById("preloaderid").remove();
+var remove = document.getElementById("preloaderid")
+remove.style.display = "none";
+remove.remove();
 };
 function openCateg(evtprod, category) {
   // Declare all variables
