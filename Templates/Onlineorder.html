@@ -33481,8 +33481,8 @@ var animate = document.getElementsByClassName("animate")[0];
     finishloading.innerHTML = "FINISH LOADING! "
     var preloaderid = document.getElementById("preloaderid")
     var checkitag=document.createElement("i");
-    checkitag.setAttribute('style','color:green;display:inline-block;');
-    checkitag.setAttribute('class','fa-solid fa-circle-check');
+    checkitag.setAttribute('style','color:green;display:inline-block;font-size:18px;');
+    checkitag.setAttribute('class','fas fa-check-circle');
     finishloading.appendChild(checkitag);
     var countchild = preloaderid.childElementCount;
     preloaderid.replaceChild(finishloading, preloaderid.children[parseInt(countchild)-1])
