@@ -30572,11 +30572,11 @@ if(!username.value && !password.value){
 }
   document.getElementById('fbloginid').addEventListener("click", function() {
 
-  checkLoginState()
+ // checkLoginState()
   });
  document.getElementById('fbloginidiii').addEventListener("click", function() {
 
-  checkLoginState()
+ // checkLoginState()
   });
 
 //$(document).ready(function(){
@@ -30618,13 +30618,13 @@ var showloginwithfacebookdiv = document.getElementsByClassName('showloginwithfac
     showloginwithfacebookdiv.style.height = "100%";
     }
 
-        FB.init({
-            appId: '322226503290078',
-          cookie     : true,                     // Enable cookies to allow the server to access the session.
-          xfbml      : true,                     // Parse social plugins on this webpage.
-          version    : 'v13.0',          // Use this Graph API version for this call.
-          status     : true,
-        });
+//        FB.init({
+//            appId: '322226503290078',
+//          cookie     : true,                     // Enable cookies to allow the server to access the session.
+//          xfbml      : true,                     // Parse social plugins on this webpage.
+//          version    : 'v13.0',          // Use this Graph API version for this call.
+//          status     : true,
+//        });
 
 
         //FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
@@ -30635,77 +30635,77 @@ var showloginwithfacebookdiv = document.getElementsByClassName('showloginwithfac
 //};
 });
 
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    FB.init({
-        appId: '322226503290078',
-      cookie     : true,                     // Enable cookies to allow the server to access the session.
-      xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : 'v13.0',          // Use this Graph API version for this call.
-      status     : true,
-    });
+//  function checkLoginState() {               // Called when a person is finished with the Login Button.
+//    FB.init({
+//        appId: '322226503290078',
+//      cookie     : true,                     // Enable cookies to allow the server to access the session.
+//      xfbml      : true,                     // Parse social plugins on this webpage.
+//      version    : 'v13.0',          // Use this Graph API version for this call.
+//      status     : true,
+//    });
 
 
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-    statusChangeCallback(response);
-    }, true);
-  }
+//    FB.getLoginStatus(function(response) {   // See the onlogin handler
+//    statusChangeCallback(response);
+//    }, true);
+//  }
 
-  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(response); 
+//  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+//    console.log('statusChangeCallback');
+//    console.log(response); 
     
     
     // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-        testAPI(); 
-    }else if(response.status === 'not_authorized'){
-        FB.login(function(response){
-            if(response.authResponse){
-                testAPI(); 
-            }else{
-                checkLoginState();
-            };
-        },{scope: 'public_profile, email'});
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-        FB.login(function(response){
-            if(response.authResponse){
-                testAPI(); 
-            }else{
-                checkLoginState();
-            };
-        },{scope: 'public_profile, email'});
-    }
-  }
+ //   if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+//        testAPI(); 
+//    }else if(response.status === 'not_authorized'){
+//        FB.login(function(response){
+ //           if(response.authResponse){
+ //               testAPI(); 
+ //           }else{
+ //               checkLoginState();
+//            };
+ //       },{scope: 'public_profile, email'});
+ //   } else {                                 // Not logged into your webpage or we are unable to tell.
+ //       FB.login(function(response){
+ //           if(response.authResponse){
+ //               testAPI(); 
+ //           }else{
+//                checkLoginState();
+//            };
+//        },{scope: 'public_profile, email'});
+//    }
+//  }
 
-    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me',{fields: 'name, last_name, first_name, email, short_name'}, function(response) {
-      console.log('Successful login for: ' + response.name);
-      console.log('Successful login for: ' + JSON.stringify(response));
+//    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+//    console.log('Welcome!  Fetching your information.... ');
+//    FB.api('/me',{fields: 'name, last_name, first_name, email, short_name'}, function(response) {
+//      console.log('Successful login for: ' + response.name);
+//      console.log('Successful login for: ' + JSON.stringify(response));
 
       
-        $.ajax({
-        type:'POST',
-        url:"{% url 'Onlineorder.html' admin_id %}",
-        data:{
-        'response.first_name':JSON.stringify(response.first_name), 
-        'response.last_name':JSON.stringify(response.last_name),
-        'response.short_name':JSON.stringify(response.short_name),
-        'response.id':JSON.stringify(response.id),
-        'response.response':JSON.stringify(response),
-        csrfmiddlewaretoken: '{{ csrf_token }}'
-        },
-        success: function(reload){
+//        $.ajax({
+//        type:'POST',
+//        url:"{% url 'Onlineorder.html' admin_id %}",
+//        data:{
+//        'response.first_name':JSON.stringify(response.first_name), 
+//        'response.last_name':JSON.stringify(response.last_name),
+//        'response.short_name':JSON.stringify(response.short_name),
+//        'response.id':JSON.stringify(response.id),
+//        'response.response':JSON.stringify(response),
+//        csrfmiddlewaretoken: '{{ csrf_token }}'
+//        },
+//        success: function(reload){
         
-        window.location.reload();
-        },
-        error: function(){
-        window.location.reload();
+//        window.location.reload();
+//        },
+//        error: function(){
+//        window.location.reload();
         
-        }
-    });
-    });
-  }
+//        }
+ //   });
+ //   });
+//  }
 
 function fbclose(){
 var bgfb = document.getElementsByClassName("showloginwithfacebookdivbg")[0];
