@@ -33478,8 +33478,9 @@ var animate = document.getElementsByClassName("animate")[0];
     animate.remove();
     var finishloading=document.createElement("h8");
     finishloading.setAttribute('style','position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);display:flex;justify-content: center;align-items: center;margin: auto;font-weight: bold;font-size: 18px;animation: load 1s ease-in;text-shadow: 0 0 1px #BEBEBE;color:#818181;');
-    finishloading.textContent = "FINISH LOADING!"
+    finishloading.innerHTML = "FINISH LOADING! <i style='color:green;' class='fa-solid fa-circle-check'></i>"
     var preloaderid = document.getElementById("preloaderid")
+    
     var countchild = preloaderid.childElementCount;
     preloaderid.replaceChild(finishloading, preloaderid.children[parseInt(countchild)-1])
     //setTimeout(removepreloader, 3000);
