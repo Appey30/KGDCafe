@@ -33486,14 +33486,22 @@ var animate = document.getElementsByClassName("animate")[0];
     finishloading.appendChild(checkitag);
     var countchild = preloaderid.childElementCount;
     preloaderid.replaceChild(finishloading, preloaderid.children[parseInt(countchild)-1])
+    
     setTimeout(removepreloader, 3000);
 };
 
 function removepreloader(){
+var preloaderid = document.getElementById("preloaderid")
+preloaderid.style.animation = "loadforhidingpreloader 1s";
+setTimeout(removepreloaderfinal, 1000);
+
+};
+function removepreloaderfinal(){
 var remove = document.getElementById("preloaderid")
 remove.style.display = "none";
 remove.remove();
 };
+
 function openCateg(evtprod, category) {
   // Declare all variables
   var i, tabcontentprod, tablinksprod;
