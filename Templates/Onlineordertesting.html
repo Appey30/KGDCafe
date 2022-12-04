@@ -1,12 +1,12 @@
 ﻿{% load static %}
-{% load socialaccount %}
-{% providers_media_js %}
+<!--{% load socialaccount %}}-->
+<!--{% providers_media_js %}-->
 <!DOCTYPE html>
 <html>
 <head>
     
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+ <!--<script fetchpriority="high" src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" ></script>-->
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
@@ -21,6 +21,8 @@
     
 
     <title>KGD E-Cafe</title>
+    <link rel="icon" type="image/png" href="{% static 'kgdlogolatest.png' %}"/>
+    <!--<link rel="icon" type="image/x-icon" href="{% static 'kgdcloudlight.ico' %}">-->
 	    <!-- Required meta tags -->
     <meta charset="utf-8">
     <!-- Bootstrap CSS -->
@@ -38,6 +40,7 @@ background-image:url({% static 'bas.jpg'%});
  background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  background-color: white;
 }
 
 @font-face { 
@@ -45,6 +48,88 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
 }
 
 @media screen and (min-width: 1200px){
+
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+
+position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+	display:flex;
+	justify-content: center;
+	align-items: center;
+/*	height:100%;*/
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+font-weight: bold;
+    font-size: 25px;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:#818181;
+}
+.logopreloader{
+width:15%;
+height:auto;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: auto;
+position:relative;
+top:10%;
+z-index:9;
+}
+
+.preloadermain{
+width: 75%;
+position:absolute;
+transform: translate(20%, -15%);
+-moz-transform: translate(20%, -15%);
+-webkit-transform: translate(20%, -15%);
+-o-transform: translate(20%, -15%);
+-ms-transform: translate(20%, -15%);
+display:flex;
+justify-content: center;
+align-items: center;
+margin: auto;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -370,12 +455,12 @@ font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond
  
 .minified{
 position:relative;
-top:-30px;
+top:0px;
 transform:scale(0.75);
 transition: transform .2s;
 }
 .navibar{
-position:sticky;
+position:fixed;
 top:0px;
 z-index:1;
 width:100%;
@@ -880,10 +965,11 @@ display:none;
   cursor: pointer;
 }
 .background{
-position:absolute;
-width:99.5%;
-height:94%;
-z-index:-1;
+    position: absolute;
+    width: 100%;
+    height: 94%;
+    z-index: -1;
+    background-color: white;
 }
 @keyframes show {
   0%   {bottom:-100px;}
@@ -1433,13 +1519,22 @@ background-color:transparent;
 display:none;
 }
 .logodiv{
-position:sticky;
-top:-3vh;
+position:fixed;
+    left: 50%;
+    top: 4vh;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 width:300px;
 height:200px;
-margin-left:auto;
-margin-right:auto;
-background-color:;
+
 z-index:1;
 }
 .logo{
@@ -1448,6 +1543,7 @@ width:300px;
 height:200px;
 
 }
+
 .discountdiv{
 position:fixed;
 bottom:-100px;left:-75px;
@@ -1516,7 +1612,8 @@ height:220px;
 #carousel{
 overflow:hidden;
 position:relative;
-top:-197px;
+top:0px;
+background-color: white;
 }
 #carousel figure{
 position:relative;
@@ -1524,10 +1621,12 @@ width:600%;
 margin:0;
 left:0;
 animation:25s slider infinite;
+background-color: white;
 }
 #carousel figure img{
 width:16.66%;
 float:left;
+background-color: white;
 }
 @keyframes slider{
     0% {
@@ -1665,7 +1764,7 @@ width:20%;
 }
 .menuproducts{
 position:relative;
-top:-220px;
+top:0px;
 width:100%;
 background-color: white;
 height:auto;
@@ -4955,9 +5054,92 @@ animation: fadeinandouterror 15s ease-in;
 position:relative;
 width:100%;
 height:100%;
+background-color:white;
+
 }
+
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+	display:flex;
+	justify-content: center;
+	align-items: center;
+/*	height:100%;*/
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+font-weight: bold;
+    font-size: 25px;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:#818181;
+}
+.logopreloader{
+width:250px;
+height:180px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: auto;
+position:relative;
+top:10%;
+z-index:9;
+}
+
+.preloadermain{
+width: 75%;
+position:absolute;
+transform: translate(20%, -15%);
+-moz-transform: translate(20%, -15%);
+-webkit-transform: translate(20%, -15%);
+-o-transform: translate(20%, -15%);
+-ms-transform: translate(20%, -15%);
+display:flex;
+justify-content: center;
+align-items: center;
+margin: auto;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -5280,12 +5462,12 @@ height:100%;
 }
 .minified{
 position:relative;
-top:-20px;
+top:0px;
 transform:scale(1);
 transition: transform .2s;
 }
 .navibar{
-position:sticky;
+position:fixed;
 top:0px;
 z-index:1;
 width:100%;
@@ -6340,13 +6522,22 @@ background-color:transparent;
 display:none;
 }
 .logodiv{
-position:sticky;
-top:-1vh;
+position:fixed;
+    left: 50%;
+    top: 4vh;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 width:160px;
 height:120px;
-margin-left:auto;
-margin-right:auto;
-background-color:;
+
 z-index:1;
 }
 .logo{
@@ -6354,6 +6545,7 @@ width:160px;
 height:120px;
 
 }
+
 .discountdiv{
 position:fixed;
 bottom:43px;left:0px;
@@ -6418,7 +6610,8 @@ height:180px;
 #carousel{
 overflow:hidden;
 position:relative;
-top:-118px;
+top:0px;
+background-color: white;
 }
 #carousel figure{
 position:relative;
@@ -6426,10 +6619,12 @@ width:600%;
 margin:0;
 left:0;
 animation:25s slider infinite;
+background-color: white;
 }
 #carousel figure img{
 width:16.66%;
 float:left;
+background-color: white;
 }
 @keyframes slider{
     0% {
@@ -6564,7 +6759,7 @@ position:absolute;
 }
 .menuproducts{
 position:relative;
-top:-140px;
+top:0px;
 width:100%;
 background-color: white;
 height:auto;
@@ -9838,9 +10033,91 @@ animation: fadeinandouterror 15s ease-in;
 position:relative;
 width:100%;
 height:100%;
+background-color:white;
 }
+
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+	display:flex;
+	justify-content: center;
+	align-items: center;
+/*	height:100%;*/
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+font-weight: bold;
+    font-size: 25px;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:#818181;
+}
+.logopreloader{
+width:250px;
+height:150px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: auto;
+position:relative;
+top:15%;
+z-index:9;
+}
+
+.preloadermain{
+width: 75%;
+position:absolute;
+transform: translate(20%, -15%);
+-moz-transform: translate(20%, -15%);
+-webkit-transform: translate(20%, -15%);
+-o-transform: translate(20%, -15%);
+-ms-transform: translate(20%, -15%);
+display:flex;
+justify-content: center;
+align-items: center;
+margin: auto;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -10169,7 +10446,7 @@ transform:scale(1.5);
 transition: transform .2s;
 }
 .navibar{
-position:sticky;
+position:fixed;
 top:0px;
 z-index:1;
 width:100%;
@@ -11231,19 +11508,29 @@ background-color:transparent;
 display:none;
 }
 .logodiv{
-position:sticky;
-top:-1vh;
+position:fixed;
+    left: 50%;
+    top: 4vh;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 width:120px;
 height:80px;
-margin-left:auto;
-margin-right:auto;
-background-color:;
+
 z-index:1;
 }
 .logo{
 width:120px;
 height:80px;
 }
+
 .discountdiv{
 position:fixed;
 bottom:0px;left:0px;
@@ -11307,7 +11594,8 @@ height:140px;
 #carousel{
 overflow:hidden;
 position:relative;
-top:-80px;
+top:0px;
+background-color: white;
 }
 #carousel figure{
 position:relative;
@@ -11315,10 +11603,12 @@ width:600%;
 margin:0;
 left:0;
 animation:25s slider infinite;
+background-color: white;
 }
 #carousel figure img{
 width:16.66%;
 float:left;
+background-color: white;
 }
 @keyframes slider{
      0% {
@@ -11453,7 +11743,7 @@ position:absolute;
 }
 .menuproducts{
 position:relative;
-top:-100px;
+top:0px;
 width:100%;
 background-color: white;
 height:auto;
@@ -14730,9 +15020,91 @@ animation: fadeinandouterror 15s ease-in;
 position:relative;
 width:100%;
 height:100%;
+background-color:white;
 }
+
 }
 @media screen and (min-width: 450px) and (max-width: 767px){
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+	display:flex;
+	justify-content: center;
+	align-items: center;
+/*	height:100%;*/
+	margin: auto;
+/* 	width: 350px; */
+/* 	font-size:26px; */
+font-weight: bold;
+    font-size: 20px;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:#818181;
+}
+.logopreloader{
+width:200px;
+height:120px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: auto;
+position:relative;
+top:20%;
+z-index:9;
+}
+
+.preloadermain{
+width: 75%;
+position:absolute;
+transform: translate(20%, -15%);
+-moz-transform: translate(20%, -15%);
+-webkit-transform: translate(20%, -15%);
+-o-transform: translate(20%, -15%);
+-ms-transform: translate(20%, -15%);
+display:flex;
+justify-content: center;
+align-items: center;
+margin: auto;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -15063,7 +15435,7 @@ transform:scale(1.5);
 transition: transform .2s;
 }
 .navibar{
-position:sticky;
+position:fixed;
 top:0px;
 z-index:1;
 width:100%;
@@ -16126,19 +16498,29 @@ background-color:transparent;
 display:none;
 }
 .logodiv{
-position:sticky;
-top:-1vh;
+position:fixed;
+    left: 50%;
+    top: 3vh;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 width:90px;
 height:60px;
-margin-left:auto;
-margin-right:auto;
-background-color:;
+
 z-index:1;
 }
 .logo{
 width:90px;
 height:60px;
 }
+
 .discountdiv{
 position:fixed;
 bottom:3px;left:0px;
@@ -16202,7 +16584,8 @@ height:100px;
 #carousel{
 overflow:hidden;
 position:relative;
-top:-60px;
+top:0px;
+background-color: white;
 }
 #carousel figure{
 position:relative;
@@ -16210,10 +16593,12 @@ width:600%;
 margin:0;
 left:0;
 animation:25s slider infinite;
+background-color: white;
 }
 #carousel figure img{
 width:16.66%;
 float:left;
+background-color: white;
 }
 @keyframes slider{
      0% {
@@ -16348,7 +16733,7 @@ position:absolute;
 }
 .menuproducts{
 position:relative;
-top:-80px;
+top:0px;
 width:100%;
 background-color: white;
 height:auto;
@@ -19801,9 +20186,91 @@ animation: fadeinandouterror 15s ease-in;
 position:relative;
 width:100%;
 height:100%;
+background-color:white;
 }
+
 }
 @media screen and (max-width: 449px){
+@keyframes loadforhidingpreloader {
+    0%{
+        opacity: 1;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+         opacity: 0; 
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+@keyframes load {
+    0%{
+        opacity: 0.08;
+/*         font-size: 10px; */
+/* 				font-weight: 400; */
+				filter: blur(5px);
+				letter-spacing: 3px;
+        }
+    100%{
+/*         opacity: 1; */
+/*         font-size: 12px; */
+/* 				font-weight:600; */
+/* 				filter: blur(0); */
+        }
+}
+
+.animate {
+position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+	display:flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: auto;
+
+font-weight: bold;
+    font-size: 18px;
+	animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px #BEBEBE;
+	color:#818181;
+}
+.logopreloader{
+width:125px;
+height:90px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: auto;
+position:relative;
+top:20%;
+z-index:9;
+}
+
+.preloadermain{
+width: 75%;
+position:absolute;
+transform: translate(20%, -15%);
+-moz-transform: translate(20%, -15%);
+-webkit-transform: translate(20%, -15%);
+-o-transform: translate(20%, -15%);
+-ms-transform: translate(20%, -15%);
+display:flex;
+justify-content: center;
+align-items: center;
+margin: auto;
+}
 #canvas{
   height: 100%;
   width: 100%;
@@ -20025,28 +20492,41 @@ height:100%;
 
 @-moz-keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
     transform: translateY(0);
   }
   40% {
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
     -moz-transform: translateY(-30px);
     transform: translateY(-30px);
   }
   60% {
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
     -moz-transform: translateY(-15px);
     transform: translateY(-15px);
   }
 }
 @-webkit-keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
+      -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
   40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
     -webkit-transform: translateY(-30px);
     transform: translateY(-30px);
   }
   60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+
     -webkit-transform: translateY(-15px);
     transform: translateY(-15px);
   }
@@ -20132,7 +20612,7 @@ transform:scale(1.5);
 transition: transform .2s;
 }
 .navibar{
-position:sticky;
+position:fixed;
 top:0px;
 z-index:1;
 width:100%;
@@ -21211,19 +21691,28 @@ background-color:transparent;
 display:none;
 }
 .logodiv{
-position:sticky;
-top:-1vh;
-width:90px;
-height:60px;
-margin-left:auto;
-margin-right:auto;
-background-color:;
+position:fixed;
+
+    left: 50%;
+    top: 3vh;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 z-index:1;
 }
 .logo{
 width:90px;
 height:60px;
 }
+
+
 .discountdiv{
 position:fixed;
 bottom:3px;left:0px;
@@ -21288,7 +21777,8 @@ height:100px;
 #carousel{
 overflow:hidden;
 position:relative;
-top:-55px;
+top:0px;
+background-color: white;
 }
 #carousel figure{
 position:relative;
@@ -21296,10 +21786,12 @@ width:600%;
 margin:0;
 left:0;
 animation:25s slider infinite;
+background-color: white;
 }
 #carousel figure img{
 width:16.66%;
 float:left;
+background-color: white;
 }
 @keyframes slider{
      0% {
@@ -21436,7 +21928,7 @@ position:absolute;
 }
 .menuproducts{
 position:relative;
-top:-60px;
+top:0px;
 width:100%;
 background-color: white;
 height:auto;
@@ -24937,18 +25429,27 @@ animation: fadeinandouterror 15s ease-in;
 position:relative;
 width:100%;
 height:100%;
+background-color:white;
 }
 
 }
+
 </style>
 </head>
 
-<body style="background-color:#131312;position:relative;display:block;">
-<div class="wrapper">
+<body style="background-color:white;position:relative;display:block;">
+<!--<div id="preloaderid" fetchpriority="high" style="display: block;position:fixed;z-index:9999;background-color:white;width:100%;height:100%;justify-content:center;align-items: center;">
 
-<img src="{% static 'qw1.png' %}"
-class="background">
+<img src="{% static 'kgdcloudlight.png' %}"
+class="logopreloader">
 </img>
+
+<lottie-player class="preloadermain" src="{% static 'preloader.json' %}" fetchpriority="high" background="white" speed="1"  loop autoplay></lottie-player>
+<h8 class="animate">Loading</h8>
+<div></div>
+</div>
+-->
+<div class="wrapper">
 <div class="navibar" id="navibarid">
 {% if user.first_name %}
 
@@ -24984,7 +25485,7 @@ class="background">
 </div>
 
 <div class="logodiv">
-<img src="{% static 'kgdcloudlight.png' %}"
+<img src="{% static 'kgdlogolatest.png' %}"
 class="logo">
 </img>
 </div>
@@ -24992,12 +25493,12 @@ class="logo">
 
 <div id="carousel">
 <figure>
- <img src="{% static 'advmerrychristmas2022compressed.png' %}"  alt="MerryChristmas">
+ <img src="{% static 'christmasresizecompressedpng.png' %}"  alt="MerryChristmas">
  <img src="{% static 'pizzaplainn.jpg' %}"  alt="Pizza">
  <img src="{% static 'javachipssssss.jpg' %}"  alt="Javachips">
  <img src="{% static 'freezefinal.jpg' %}"  alt="Freeze">
  <img src="{% static 'shawarma.jpg' %}"  alt="Shawarma">
- <img src="{% static 'pizzaplainn.jpg' %}"  alt="Pizza">
+ <img src="{% static 'christmasresizecompressedpng.png' %}"  alt="MerryChristmas">
 </figure>
 </div>
 
@@ -26248,7 +26749,7 @@ $(window).scroll(function() {
             // function functionpaymentgcashdelivery(){
             //$.ajax({
             //type:'GET',
-            //url:"{% url 'Onlineorder.html' admin_id %}",
+            //url:"{% url 'Onlineordertesting.html' admin_id %}",
             //data:{"addressss":"waaddressyayni"},
             //success: function(response){
             //var dataHtml='';
@@ -30121,11 +30622,11 @@ if(!username.value && !password.value){
 }
   document.getElementById('fbloginid').addEventListener("click", function() {
 
-  checkLoginState()
+ // checkLoginState()
   });
  document.getElementById('fbloginidiii').addEventListener("click", function() {
 
-  checkLoginState()
+ // checkLoginState()
   });
 
 //$(document).ready(function(){
@@ -30167,13 +30668,13 @@ var showloginwithfacebookdiv = document.getElementsByClassName('showloginwithfac
     showloginwithfacebookdiv.style.height = "100%";
     }
 
-        FB.init({
-            appId: '322226503290078',
-          cookie     : true,                     // Enable cookies to allow the server to access the session.
-          xfbml      : true,                     // Parse social plugins on this webpage.
-          version    : 'v13.0',          // Use this Graph API version for this call.
-          status     : true,
-        });
+//        FB.init({
+//            appId: '322226503290078',
+//          cookie     : true,                     // Enable cookies to allow the server to access the session.
+//          xfbml      : true,                     // Parse social plugins on this webpage.
+//          version    : 'v13.0',          // Use this Graph API version for this call.
+//          status     : true,
+//        });
 
 
         //FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
@@ -30184,77 +30685,77 @@ var showloginwithfacebookdiv = document.getElementsByClassName('showloginwithfac
 //};
 });
 
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    FB.init({
-        appId: '322226503290078',
-      cookie     : true,                     // Enable cookies to allow the server to access the session.
-      xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : 'v13.0',          // Use this Graph API version for this call.
-      status     : true,
-    });
+//  function checkLoginState() {               // Called when a person is finished with the Login Button.
+//    FB.init({
+//        appId: '322226503290078',
+//      cookie     : true,                     // Enable cookies to allow the server to access the session.
+//      xfbml      : true,                     // Parse social plugins on this webpage.
+//      version    : 'v13.0',          // Use this Graph API version for this call.
+//      status     : true,
+//    });
 
 
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-    statusChangeCallback(response);
-    }, true);
-  }
+//    FB.getLoginStatus(function(response) {   // See the onlogin handler
+//    statusChangeCallback(response);
+//    }, true);
+//  }
 
-  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(response); 
+//  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+//    console.log('statusChangeCallback');
+//    console.log(response); 
     
     
     // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-        testAPI(); 
-    }else if(response.status === 'not_authorized'){
-        FB.login(function(response){
-            if(response.authResponse){
-                testAPI(); 
-            }else{
-                checkLoginState();
-            };
-        },{scope: 'public_profile, email'});
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-        FB.login(function(response){
-            if(response.authResponse){
-                testAPI(); 
-            }else{
-                checkLoginState();
-            };
-        },{scope: 'public_profile, email'});
-    }
-  }
+ //   if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+//        testAPI(); 
+//    }else if(response.status === 'not_authorized'){
+//        FB.login(function(response){
+ //           if(response.authResponse){
+ //               testAPI(); 
+ //           }else{
+ //               checkLoginState();
+//            };
+ //       },{scope: 'public_profile, email'});
+ //   } else {                                 // Not logged into your webpage or we are unable to tell.
+ //       FB.login(function(response){
+ //           if(response.authResponse){
+ //               testAPI(); 
+ //           }else{
+//                checkLoginState();
+//            };
+//        },{scope: 'public_profile, email'});
+//    }
+//  }
 
-    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me',{fields: 'name, last_name, first_name, email, short_name'}, function(response) {
-      console.log('Successful login for: ' + response.name);
-      console.log('Successful login for: ' + JSON.stringify(response));
+//    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+//    console.log('Welcome!  Fetching your information.... ');
+//    FB.api('/me',{fields: 'name, last_name, first_name, email, short_name'}, function(response) {
+//      console.log('Successful login for: ' + response.name);
+//      console.log('Successful login for: ' + JSON.stringify(response));
 
       
-        $.ajax({
-        type:'POST',
-        url:"{% url 'Onlineordertesting.html' admin_id %}",
-        data:{
-        'response.first_name':JSON.stringify(response.first_name), 
-        'response.last_name':JSON.stringify(response.last_name),
-        'response.short_name':JSON.stringify(response.short_name),
-        'response.id':JSON.stringify(response.id),
-        'response.response':JSON.stringify(response),
-        csrfmiddlewaretoken: '{{ csrf_token }}'
-        },
-        success: function(reload){
+//        $.ajax({
+//        type:'POST',
+//        url:"{% url 'Onlineordertesting.html' admin_id %}",
+//        data:{
+//        'response.first_name':JSON.stringify(response.first_name), 
+//        'response.last_name':JSON.stringify(response.last_name),
+//        'response.short_name':JSON.stringify(response.short_name),
+//        'response.id':JSON.stringify(response.id),
+//        'response.response':JSON.stringify(response),
+//        csrfmiddlewaretoken: '{{ csrf_token }}'
+//        },
+//        success: function(reload){
         
-        window.location.reload();
-        },
-        error: function(){
-        window.location.reload();
+//        window.location.reload();
+//        },
+//        error: function(){
+//        window.location.reload();
         
-        }
-    });
-    });
-  }
+//        }
+ //   });
+ //   });
+//  }
 
 function fbclose(){
 var bgfb = document.getElementsByClassName("showloginwithfacebookdivbg")[0];
@@ -32356,7 +32857,7 @@ bubwaf.innerHTML = "₱"+bubwafp+".00";
             <h3 class="choosesizebubwaf">Available</h3>
 
                 <div id="bubwafid" onclick="functionfocusbubwaf()" class="bubwaf choicesizebubwaf">
-                <img id="" src="{% static 'bubwafsmall.png'  %}" style="width:100%">
+                <img id="" src="{% static 'Bubble Waffle SmallBubwaf.png'  %}" style="width:100%">
                 <h3>2x Small Waffle</h3>
                 </div>
                 <div id="bubwafid" onclick="" class="bubwafdisable" >
@@ -32567,192 +33068,9 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 <script>
 document.addEventListener("DOMContentLoaded", function(event) { 
   functions{{pizzab.id}}();
-  
-
 
 });
-const canvas = document.getElementById("canvas");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-var ctx = canvas.getContext("2d");
-function Firework(x,y,height,yVol,R,G,B){
-  this.x = x;
-  this.y = y;
-  this.yVol = yVol;
-  this.height = height;
-  this.R = R;
-  this.G = G;
-  this.B = B;
-  this.radius = 2;
-  this.boom = false;
-  var boomHeight = Math.floor(Math.random() * 200) + 50;
-  this.draw = function(){
-   
-   ctx.fillStyle = "rgba(" + R + "," + G + "," + B + ")";
-    ctx.strokeStyle = "rgba(" + R + "," + G + "," + B + ")";
-    ctx.beginPath();
- //   ctx.arc(this.x,boomHeight,this.radius,Math.PI * 2,0,false);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,3,Math.PI * 2,0,false);
-    ctx.fill();
-  }
-  this.update = function(){
-    this.y -= this.yVol;
-    if(this.radius < 20){
-      this.radius += 0.35;
-    }
-    if(this.y < boomHeight){
-      this.boom = true;
-      
-      for(var i = 0; i < 120; i++){
-        particleArray.push(new Particle(
-          this.x,
-          this.y,
-          // (Math.random() * 2) + 0.5//
-          (Math.random() * 2) + 1,
-          this.R,
-          this.G,
-          this.B,
-          1,
-        ))
 
-      }
-    }
-    this.draw();
-  }
-  this.update()
-}
-
-window.addEventListener("click", (e)=>{
-    var x = e.clientX;
-  var y = canvas.height;
-  var R = Math.floor(Math.random() * 255)
-  var G = Math.floor(Math.random() * 255)
-  var B = Math.floor(Math.random() * 255)
-  var height = (Math.floor(Math.random() * 20)) + 10;
-  fireworkArray.push(new Firework(x,y,height,5,R,G,B))
-})
-
-function Particle(x,y,radius,R,G,B,A){
-  this.x = x;
-  this.y = y;
-  this.radius = radius;
-  this.R = R;
-  this.G = G;
-  this.B = B;
-  this.A = A;
-  this.timer = 0;
-  this.fade = false;
- 
-  // Change random spread
-  this.xVol = (Math.random() * 10) - 4
-  this.yVol = (Math.random() * 10) - 4
-  
-  
-  console.log(this.xVol,this.yVol)
-  this.draw = function(){
- //   ctx.globalCompositeOperation = "lighter"
-    ctx.fillStyle = "rgba(" + R + "," + G + "," + B + "," + this.A + ")";
-    ctx.save();
-    ctx.beginPath(); 
-   // ctx.fillStyle = "white"
-    ctx.globalCompositeOperation = "screen"
-    ctx.arc(this.x,this.y,this.radius,Math.PI * 2,0,false);
-    ctx.fill();
-   
-    ctx.restore();
-  }
-  this.update = function(){
-    this.x += this.xVol;
-    this.y += this.yVol;
-    
-    // Comment out to stop gravity. 
-    if(this.timer < 200){
-        this.yVol += 0.12;
-    }
-    this.A -= 0.02;
-    if(this.A < 0){
-      this.fade = true;
-    }
-    this.draw();
-  }
-  this.update();
-}
-
-var fireworkArray = [];
-var particleArray = [];
-for(var i = 0; i < 6; i++){
-  var x = Math.random() * canvas.width;
-  var y = canvas.height;
-  var R = Math.floor(Math.random() * 255)
-  var G = Math.floor(Math.random() * 255)
-  var B = Math.floor(Math.random() * 255)
-  var height = (Math.floor(Math.random() * 20)) + 10;
-  fireworkArray.push(new Firework(x,y,height,5,R,G,B))
-}
-
-
-function animate(){
-  requestAnimationFrame(animate);
-  ctx.clearRect(0,0,canvas.width,canvas.height)
-  ctx.fillStyle = "rgba(0,0,0,0)"
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  for(var i = 0; i < fireworkArray.length; i++){
-    fireworkArray[i].update();
-  }
-  for(var j = 0; j < particleArray.length; j++){
-    particleArray[j].update();
-  }
-  if(fireworkArray.length < 4){
-      var x = Math.random() * canvas.width;
-      var y = canvas.height;
-      var height = Math.floor(Math.random() * 20);
-      var yVol = 5;
-      var R = Math.floor(Math.random() * 255);
-      var G = Math.floor(Math.random() * 255);          
-      var B = Math.floor(Math.random() * 255);
-      fireworkArray.push(new Firework(x,y,height,yVol,R,G,B));
-  }
- 
-  
-  fireworkArray = fireworkArray.filter(obj => !obj.boom);
-  particleArray = particleArray.filter(obj => !obj.fade);
-}
-
-
-window.addEventListener("resize", (e) => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-})
-function christmas(){
-    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-
-    const d = new Date();
-    let name = month[d.getMonth()];
-    let day = d.getDate();
-    if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
-        
-
-        document.getElementById('garlandrightid').style.display='block';
-        document.getElementById('garlandleftid').style.display='block';
-        //document.getElementById('pyroid').remove();
-        document.getElementById('canvas').remove();
-        snow();
-    }else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
-    //if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
-        document.getElementById('garlandrightid').remove();
-        document.getElementById('garlandleftid').remove();
-        //document.getElementById('pyroid').style.display = "block";
-        //document.getElementById('pyroid').remove();
-        document.getElementById('canvas').style.display = "block";
-    }else{
-        document.getElementById('garlandrightid').remove();
-        document.getElementById('garlandleftid').remove();
-        //document.getElementById('pyroid').remove();
-        document.getElementById('canvas').remove();
-    }
-}
 function functions{{pizzab.id}}(){
 var pizzap = parseInt({{pizzab.Price}});
 
@@ -33190,6 +33508,49 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
 
 
 <script>
+//    let loadeeeer = setInterval(function(){
+//    if ( document.readyState !== 'complete' ) return;
+//    clearInterval( loadeeeer ); 
+//    var fadedelivery = document.getElementsByClassName("preloadermain")[0];
+    
+//    fadedelivery.style.animation = "loadforhidingpreloader 1s";
+
+//    setTimeout(removepreloadermain, 1000);
+
+//    }, 3000 );
+//function removepreloadermain(){
+//var fadedelivery = document.getElementsByClassName("preloadermain")[0];
+//var animate = document.getElementsByClassName("animate")[0];
+
+//    fadedelivery.innerHTML = '';
+//    fadedelivery.remove();
+//    animate.innerHTML = '';
+//    animate.remove();
+//    var finishloading=document.createElement("h8");
+//    finishloading.setAttribute('style','position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);display:flex;justify-content: center;align-items: center;margin: auto;font-weight: bold;font-size: 18px;animation: loadforhidingpreloader 1s;animation-direction: reverse;text-shadow: 0 0 1px #BEBEBE;color:#818181;');
+//    finishloading.innerHTML = "FINISH LOADING! "
+//    var preloaderid = document.getElementById("preloaderid")
+//    var checkitag=document.createElement("i");
+//    checkitag.setAttribute('style','color:green;display:inline-block;font-size:18px;margin-left:5px;');
+//    checkitag.setAttribute('class','fas fa-check-circle');
+//    finishloading.appendChild(checkitag);
+//    var countchild = preloaderid.childElementCount;
+//    preloaderid.replaceChild(finishloading, preloaderid.children[parseInt(countchild)-1])
+    
+//    setTimeout(removepreloader, 3000);
+//};
+
+//function removepreloader(){
+//var preloaderid = document.getElementById("preloaderid")
+//preloaderid.style.animation = "loadforhidingpreloader 1s";
+//setTimeout(removepreloaderfinal, 1000);
+
+//};
+//function removepreloaderfinal(){
+//var remove = document.getElementById("preloaderid")
+//remove.style.display = "none";
+//remove.remove();
+//};
 
 function openCateg(evtprod, category) {
   // Declare all variables
@@ -33254,7 +33615,200 @@ function snow() {
   
   setTimeout(function(){ snow() },200)
   }
+
+
+
+
+  const canvas = document.getElementById("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var ctx = canvas.getContext("2d");
+function Firework(x,y,height,yVol,R,G,B){
+  this.x = x;
+  this.y = y;
+  this.yVol = yVol;
+  this.height = height;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.radius = 2;
+  this.boom = false;
+  var boomHeight = Math.floor(Math.random() * 200) + 50;
+  this.draw = function(){
+   
+   ctx.fillStyle = "rgba(" + R + "," + G + "," + B + ")";
+    ctx.strokeStyle = "rgba(" + R + "," + G + "," + B + ")";
+    ctx.beginPath();
+ //   ctx.arc(this.x,boomHeight,this.radius,Math.PI * 2,0,false);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,3,Math.PI * 2,0,false);
+    ctx.fill();
+  }
+  this.update = function(){
+    this.y -= this.yVol;
+    if(this.radius < 20){
+      this.radius += 0.35;
+    }
+    if(this.y < boomHeight){
+      this.boom = true;
+      
+      for(var i = 0; i < 120; i++){
+        particleArray.push(new Particle(
+          this.x,
+          this.y,
+          // (Math.random() * 2) + 0.5//
+          (Math.random() * 2) + 1,
+          this.R,
+          this.G,
+          this.B,
+          1,
+        ))
+
+      }
+    }
+    this.draw();
+  }
+  this.update()
+}
+
+window.addEventListener("click", (e)=>{
+    var x = e.clientX;
+  var y = canvas.height;
+  var R = Math.floor(Math.random() * 255)
+  var G = Math.floor(Math.random() * 255)
+  var B = Math.floor(Math.random() * 255)
+  var height = (Math.floor(Math.random() * 20)) + 10;
+  fireworkArray.push(new Firework(x,y,height,5,R,G,B))
+})
+
+function Particle(x,y,radius,R,G,B,A){
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.R = R;
+  this.G = G;
+  this.B = B;
+  this.A = A;
+  this.timer = 0;
+  this.fade = false;
+ 
+  // Change random spread
+  this.xVol = (Math.random() * 10) - 4
+  this.yVol = (Math.random() * 10) - 4
+  
+  
+  console.log(this.xVol,this.yVol)
+  this.draw = function(){
+ //   ctx.globalCompositeOperation = "lighter"
+    ctx.fillStyle = "rgba(" + R + "," + G + "," + B + "," + this.A + ")";
+    ctx.save();
+    ctx.beginPath(); 
+   // ctx.fillStyle = "white"
+    ctx.globalCompositeOperation = "screen"
+    ctx.arc(this.x,this.y,this.radius,Math.PI * 2,0,false);
+    ctx.fill();
+   
+    ctx.restore();
+  }
+  this.update = function(){
+    this.x += this.xVol;
+    this.y += this.yVol;
+    
+    // Comment out to stop gravity. 
+    if(this.timer < 200){
+        this.yVol += 0.12;
+    }
+    this.A -= 0.02;
+    if(this.A < 0){
+      this.fade = true;
+    }
+    this.draw();
+  }
+  this.update();
+}
+
+var fireworkArray = [];
+var particleArray = [];
+for(var i = 0; i < 6; i++){
+  var x = Math.random() * canvas.width;
+  var y = canvas.height;
+  var R = Math.floor(Math.random() * 255)
+  var G = Math.floor(Math.random() * 255)
+  var B = Math.floor(Math.random() * 255)
+  var height = (Math.floor(Math.random() * 20)) + 10;
+  fireworkArray.push(new Firework(x,y,height,5,R,G,B))
+}
+
+
+function animate(){
+  requestAnimationFrame(animate);
+  ctx.clearRect(0,0,canvas.width,canvas.height)
+  ctx.fillStyle = "rgba(0,0,0,0)"
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  for(var i = 0; i < fireworkArray.length; i++){
+    fireworkArray[i].update();
+  }
+  for(var j = 0; j < particleArray.length; j++){
+    particleArray[j].update();
+  }
+  if(fireworkArray.length < 4){
+      var x = Math.random() * canvas.width;
+      var y = canvas.height;
+      var height = Math.floor(Math.random() * 20);
+      var yVol = 5;
+      var R = Math.floor(Math.random() * 255);
+      var G = Math.floor(Math.random() * 255);          
+      var B = Math.floor(Math.random() * 255);
+      fireworkArray.push(new Firework(x,y,height,yVol,R,G,B));
+  }
+ 
+  
+  fireworkArray = fireworkArray.filter(obj => !obj.boom);
+  particleArray = particleArray.filter(obj => !obj.fade);
+}
+
+
+window.addEventListener("resize", (e) => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+})
+function christmas(){
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    const d = new Date();
+    let name = month[d.getMonth()];
+    let day = d.getDate();
+    if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
+        
+        //var wrapper = document.getElementsByClassName('wrapper')[0];
+        //var menuproducts = document.getElementsByClassName('menuproducts')[0];
+        //wrapper.style.overflow = 'hidden';
+        //menuproducts.style.overflow = 'visible';
+        document.getElementById('garlandrightid').style.display='block';
+        document.getElementById('garlandleftid').style.display='block';
+        //document.getElementById('pyroid').remove();
+        document.getElementById('canvas').remove();
+        snow();
+    }else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
+    //if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
+        document.getElementById('garlandrightid').remove();
+        document.getElementById('garlandleftid').remove();
+        //document.getElementById('pyroid').style.display = "block";
+        //document.getElementById('pyroid').remove();
+        document.getElementById('canvas').style.display = "block";
+    }else{
+        document.getElementById('garlandrightid').remove();
+        document.getElementById('garlandleftid').remove();
+        //document.getElementById('pyroid').remove();
+        document.getElementById('canvas').remove();
+    }
+}
 </script>
+
+
+
+
 <script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
