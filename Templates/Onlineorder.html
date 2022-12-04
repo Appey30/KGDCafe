@@ -25388,7 +25388,7 @@ background-color:white;
 </head>
 
 <body style="background-color:white;position:relative;display:block;">
-<div id="preloaderid" fetchpriority="high" style="display: block;position:fixed;z-index:9999;background-color:white;width:100%;height:100%;justify-content:center;align-items: center;">
+<!--<div id="preloaderid" fetchpriority="high" style="display: block;position:fixed;z-index:9999;background-color:white;width:100%;height:100%;justify-content:center;align-items: center;">
 
 <img src="{% static 'kgdcloudlight.png' %}"
 class="logopreloader">
@@ -25398,7 +25398,7 @@ class="logopreloader">
 <h8 class="animate">Loading</h8>
 <div></div>
 </div>
-
+-->
 <div class="wrapper">
 <div class="navibar" id="navibarid">
 {% if user.first_name %}
@@ -33458,49 +33458,49 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
 
 
 <script>
-    let loadeeeer = setInterval(function(){
-    if ( document.readyState !== 'complete' ) return;
-    clearInterval( loadeeeer ); 
-    var fadedelivery = document.getElementsByClassName("preloadermain")[0];
+//    let loadeeeer = setInterval(function(){
+//    if ( document.readyState !== 'complete' ) return;
+//    clearInterval( loadeeeer ); 
+//    var fadedelivery = document.getElementsByClassName("preloadermain")[0];
     
-    fadedelivery.style.animation = "loadforhidingpreloader 1s";
+//    fadedelivery.style.animation = "loadforhidingpreloader 1s";
 
-    setTimeout(removepreloadermain, 1000);
+//    setTimeout(removepreloadermain, 1000);
 
-    }, 3000 );
-function removepreloadermain(){
-var fadedelivery = document.getElementsByClassName("preloadermain")[0];
-var animate = document.getElementsByClassName("animate")[0];
+//    }, 3000 );
+//function removepreloadermain(){
+//var fadedelivery = document.getElementsByClassName("preloadermain")[0];
+//var animate = document.getElementsByClassName("animate")[0];
 
-    fadedelivery.innerHTML = '';
-    fadedelivery.remove();
-    animate.innerHTML = '';
-    animate.remove();
-    var finishloading=document.createElement("h8");
-    finishloading.setAttribute('style','position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);display:flex;justify-content: center;align-items: center;margin: auto;font-weight: bold;font-size: 18px;animation: loadforhidingpreloader 1s;animation-direction: reverse;text-shadow: 0 0 1px #BEBEBE;color:#818181;');
-    finishloading.innerHTML = "FINISH LOADING! "
-    var preloaderid = document.getElementById("preloaderid")
-    var checkitag=document.createElement("i");
-    checkitag.setAttribute('style','color:green;display:inline-block;font-size:18px;margin-left:5px;');
-    checkitag.setAttribute('class','fas fa-check-circle');
-    finishloading.appendChild(checkitag);
-    var countchild = preloaderid.childElementCount;
-    preloaderid.replaceChild(finishloading, preloaderid.children[parseInt(countchild)-1])
+//    fadedelivery.innerHTML = '';
+//    fadedelivery.remove();
+//    animate.innerHTML = '';
+//    animate.remove();
+//    var finishloading=document.createElement("h8");
+//    finishloading.setAttribute('style','position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);display:flex;justify-content: center;align-items: center;margin: auto;font-weight: bold;font-size: 18px;animation: loadforhidingpreloader 1s;animation-direction: reverse;text-shadow: 0 0 1px #BEBEBE;color:#818181;');
+//    finishloading.innerHTML = "FINISH LOADING! "
+//    var preloaderid = document.getElementById("preloaderid")
+//    var checkitag=document.createElement("i");
+//    checkitag.setAttribute('style','color:green;display:inline-block;font-size:18px;margin-left:5px;');
+//    checkitag.setAttribute('class','fas fa-check-circle');
+//    finishloading.appendChild(checkitag);
+//    var countchild = preloaderid.childElementCount;
+//    preloaderid.replaceChild(finishloading, preloaderid.children[parseInt(countchild)-1])
     
-    setTimeout(removepreloader, 3000);
-};
+//    setTimeout(removepreloader, 3000);
+//};
 
-function removepreloader(){
-var preloaderid = document.getElementById("preloaderid")
-preloaderid.style.animation = "loadforhidingpreloader 1s";
-setTimeout(removepreloaderfinal, 1000);
+//function removepreloader(){
+//var preloaderid = document.getElementById("preloaderid")
+//preloaderid.style.animation = "loadforhidingpreloader 1s";
+//setTimeout(removepreloaderfinal, 1000);
 
-};
-function removepreloaderfinal(){
-var remove = document.getElementById("preloaderid")
-remove.style.display = "none";
-remove.remove();
-};
+//};
+//function removepreloaderfinal(){
+//var remove = document.getElementById("preloaderid")
+//remove.style.display = "none";
+//remove.remove();
+//};
 
 function openCateg(evtprod, category) {
   // Declare all variables
