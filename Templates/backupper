@@ -1,18 +1,1 @@
-﻿        if('{{couponvalidity}}' == 'Valid'){
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">+totalpunched+</td><td class="tdpunched"></td></tr>';
-        var discountedtotalherei = totalpunched*parseInt(String('{{discount}}')+'%');
-        var discountedtotalhere = '₱'+String(discountedtotalherei)+'.00';
-        datahtmltest = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Less Discount:'+{{discount}}+'% </td><td class="tdpunched">+discountedtotalhere+</td><td class="tdpunched"></td></tr>';
-        }else{
-        tablebody.innerHTML = datahtmltest+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
-        }  
-
-
-        totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
-
-        if('{{couponvalidity}}' == 'Valid'){
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+"0";
-        }else{
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee+".00";
-        }
+﻿git add . && git commit -m "refine" && git push origin main
