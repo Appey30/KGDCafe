@@ -33464,14 +33464,17 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
     var fadedelivery = document.getElementsByClassName("preloadermain")[0];
     
     fadedelivery.style.animation = "loadforhidingpreloader 1s";
+
     setTimeout(removepreloadermain, 1000);
 
     }, 3000 );
 function removepreloadermain(){
 var fadedelivery = document.getElementsByClassName("preloadermain")[0];
+var animate = document.getElementsByClassName("animate")[0];
+
     fadedelivery.innerHTML = '';
-    fadedelivery.innerHTML = "<h8  style='bottom: 30%;left: 50%;transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);display:flex;	justify-content: center;align-items: center;margin: auto;'>FINISH LOADING!</h8>"
-    fadedelivery.style.animation = "load 1s  ease-in-out;"
+    fadedelivery.remove();
+    animate.innerHTML = "<h8  style='animation:load 1s  ease-in-out;bottom: 30%;left: 50%;transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-webkit-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);display:flex;	justify-content: center;align-items: center;margin: auto;'>FINISH LOADING!</h8>"
     setTimeout(removepreloader, 1000);
 };
 
