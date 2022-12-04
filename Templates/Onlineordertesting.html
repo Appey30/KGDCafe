@@ -25894,8 +25894,7 @@ class="logo">
 <div class="menuproducts">
 <!--<img class="garlandright" src="{% static 'garlandleft.png'%}"></img>
 <img class="garlandleft" src="{% static 'garlandright.png'%}"></img>-->
-<img id="garlandleftid" class="garlandleft" src="{% static 'garlandtry3compressed.png'%}">
-<img id="garlandrightid" class="garlandright" src="{% static 'garlandtry3compressed.png'%}">
+
 <canvas id="canvas"></canvas>
 <!--<div id="pyroid" class="pyro">
   <div class="before"></div>
@@ -33795,23 +33794,18 @@ function christmas(){
         //var menuproducts = document.getElementsByClassName('menuproducts')[0];
         //wrapper.style.overflow = 'hidden';
         //menuproducts.style.overflow = 'visible';
-        document.getElementById('garlandrightid').style.display='none';
-        document.getElementById('garlandleftid').style.display='none';
-        document.getElementById('garlandrightid').remove();
-        document.getElementById('garlandleftid').remove();
+
         //document.getElementById('pyroid').remove();
         document.getElementById('canvas').remove();
         snow();
     }else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
     //if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
-        document.getElementById('garlandrightid').remove();
-        document.getElementById('garlandleftid').remove();
+
         //document.getElementById('pyroid').style.display = "block";
         //document.getElementById('pyroid').remove();
         document.getElementById('canvas').style.display = "block";
     }else{
-        document.getElementById('garlandrightid').remove();
-        document.getElementById('garlandleftid').remove();
+
         //document.getElementById('pyroid').remove();
         document.getElementById('canvas').remove();
     }
