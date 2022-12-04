@@ -20164,6 +20164,7 @@ background-color:white;
 /* 				filter: blur(0); */
         }
 }
+
 @keyframes load {
     0%{
         opacity: 0.08;
@@ -33460,9 +33461,13 @@ totalpizza.innerHTML = "Total: ₱"+totalpizza+".00";
     let loadeeeer = setInterval(function(){
     if ( document.readyState !== 'complete' ) return;
     clearInterval( loadeeeer ); 
-    var fadeit = document.getElementById("preloaderid");
-    fadeit.style.animation = "loadforhidingpreloader 1s";
-    setTimeout(removepreloader, 1000);
+    var fadedelivery = document.getElementsByClassName("preloadermain")[0];
+    
+    fadedelivery.style.animation = "loadforhidingpreloader 1s";
+    fadedelivery.empty();
+    fadedelivery.innerHTML = "<h8>FINISH LOADING!</h8>"
+    fadedelivery.style.animation = "load 1s  ease-in-out;"
+    setTimeout(removepreloader, 2000);
 
     }, 3000 );
     
