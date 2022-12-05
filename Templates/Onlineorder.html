@@ -27008,7 +27008,7 @@ $(window).scroll(function() {
 
             $.ajax({
             type:'GET',
-            url:"{% url 'onlineorder.html' admin_id %}",
+            url:"{% url 'Onlineorder.html' admin_id %}",
             data:{"addressss":"waaddressyayni"},
             success: function(response){
             var dataHtml='';
@@ -30448,7 +30448,7 @@ var passwordsuid = document.getElementById('passwordsuid')
 
         $.ajax({
         type:'POST',
-        url:"{% url 'onlineorder.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'firstnameid':JSON.stringify(firstnameid.value), 
         'lastnameid':JSON.stringify(lastnameid.value),
@@ -30584,7 +30584,7 @@ if(!username.value && !password.value){
 
         $.ajax({
         type:'POST',
-        url:"{% url 'onlineorder.html' admin_id %}",
+        url:"{% url 'Onlineorder.html' admin_id %}",
         data:{
         'username':JSON.stringify(username.value), 
         'password':JSON.stringify(password.value),
