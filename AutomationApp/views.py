@@ -3152,12 +3152,12 @@ def Onlineordersystem(request, admin_id):
             print('arraypunched:',arraypunched)
             try:
                 intorfloat = int(request.GET.get('totalwithdevfeename'))
-                print "this number is an int"
+                
             except ValueError:
                 pass
             try:
                 intorfloat = float(request.GET.get('totalwithdevfeename'))
-                print "this number is an int"
+                
             except ValueError:
                 pass
             objs = [Customer(
@@ -5953,12 +5953,12 @@ def Onlineordertestingsystem(request, admin_id):
             changeefor=int(json.loads(request.GET.get('changefor') or '0'))
             try:
                 intorfloat = int(request.GET.get('totalwithdevfeename'))
-                print "this number is an int"
+                
             except ValueError:
                 pass
             try:
                 intorfloat = float(request.GET.get('totalwithdevfeename'))
-                print "this number is an int"
+                
             except ValueError:
                 pass
             print('arraypunched:',arraypunched)
