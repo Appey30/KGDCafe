@@ -1885,22 +1885,32 @@ $(document).ready(function(){
                 
                 var devfee = customercontextffi[0]["fields"].DeliveryFee;
                 
+                var totalpunchedfromviews=customercontextffi[0]["fields"].Subtotal;
+                var totalpunchedi=0;
                 var totalpunched=0;
-                
-                
                 for(let i = 0;i<(customercontextffi.length);i++){
             
-                    totalpunched = totalpunched+parseInt(customercontextffi[i]["fields"].Subtotal);
+                    totalpunchedi = totalpunched+parseInt(customercontextffi[i]["fields"].Subtotal);
                 
                 }
-                
+                if(totalpunchedfromviews){
+                totalpunched=totalpunchedfromviews;
+                }else{
+                totalpunched=totalpunchedi;
+                }
                 //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
                 if(devfee>0){
-                var grandtotal = totalpunched+devfee;
-                dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                var grandtotal = customercontextffi[0]["fields"].GSubtotal;
+                if(totalpunchedfromviews){
+                    dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal(Discounted):</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                    dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
                 }else{
-                var grandtotal = totalpunched;
+                    dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                    dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                }
+
+                }else{
+                var grandtotal = customercontextffi[0]["fields"].GSubtotal;;
                 }
 
                 dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
@@ -2165,7 +2175,7 @@ circle5.style.color = "#d6c6ba";
 });
 
 </script>
-
+<!--
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
@@ -2225,5 +2235,6 @@ circle5.style.color = "#d6c6ba";
 
       });
 </script>
+-->
 </body>
 </html>
