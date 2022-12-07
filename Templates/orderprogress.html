@@ -1559,24 +1559,37 @@ var completenamevar = document.getElementById('completenameid');
 
                 dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td data-label="Qty" class="tdqueuebase">'+todeliverorders["fields"].Qty+'</td><td data-label="Item" class="tdqueuebase">'+todeliverorders["fields"].productname+'</td><td data-label="Category" class="tdqueuebase">'+Categoryfinal+'</td><td data-label="Size" class="tdqueuebase">'+Sizefinal+'</td><td data-label="Additional Add-ons" class="tdqueuebase">'+addonsfinal+'</td><td data-label="Subtotal" class="tdqueuebase">₱'+todeliverorders["fields"].Subtotal+'.00 </td></tr>';
                 }
+                var totalpunchedi=0;
                 var totalpunched=0;
-                
-                
+                var totalpunchedfromviews=customercontextffi[0]["fields"].Subtotal;
+
                 var devfee = customercontextffi[0]["fields"].DeliveryFee;
                 
                 for(let i = 0;i<(customercontextffi.length);i++){
             
-                    totalpunched = totalpunched+parseInt(customercontextffi[i]["fields"].Subtotal);
+                    totalpunchedi = totalpunchedi+parseInt(customercontextffi[i]["fields"].Subtotal);
                     
                     
                 }
+                if(totalpunchedfromviews){
+                totalpunched=totalpunchedfromviews;
+                }else{
+                totalpunched=totalpunchedi;
+                }
+                
                 //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
                 if(devfee>0){
-                var grandtotal = totalpunched+devfee;
-                dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                var grandtotal = customercontextffi[0]["fields"].GSubtotal;
+                    if(totalpunchedfromviews){
+                
+                        dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                        dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee(Discounted):</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                    else{
+                        dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                        dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                    }
                 }else{
-                var grandtotal = totalpunched;
+                var grandtotal = customercontextffi[0]["fields"].GSubtotal;
                 }
                 console.log('grandtotal: '+grandtotal)
                 console.log('totalpunched: '+totalpunched)
