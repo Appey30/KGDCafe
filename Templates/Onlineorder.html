@@ -27295,6 +27295,9 @@ $(window).scroll(function() {
             totalerdevfee.innerHTML = "";
             var gtotaler = document.getElementById("totalwithdevfee");
             gtotaler.innerHTML = "";
+            }else{
+            $('#devfeeid').val(0);
+            $('#totalwithdevfeeid').val(totalwithoudevfee);
             }
             
             
@@ -28908,7 +28911,6 @@ function paydetails(){
 var initialaddress = document.getElementById('selectedaddressid');
 initialaddress.innerHTML = "<p>Please select your address here! <span class='arrow down' id='downid'></span></p>";
 
-        
 
 
 
