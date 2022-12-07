@@ -1571,7 +1571,7 @@ var completenamevar = document.getElementById('completenameid');
                     
                     
                 }
-                if(totalpunchedfromviews){
+                if(customercontextffi[0]["fields"].codecoupon){
                 totalpunched=totalpunchedfromviews;
                 }else{
                 totalpunched=totalpunchedi;
@@ -1580,10 +1580,10 @@ var completenamevar = document.getElementById('completenameid');
                 //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
                 if(devfee>0){
                 var grandtotal = customercontextffi[0]["fields"].GSubtotal;
-                    if(totalpunchedfromviews){
+                    if(customercontextffi[0]["fields"].codecoupon){
                 
-                        dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                        dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee(Discounted):</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                        dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal(Coupon Applied):</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                        dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
                     else{
                         dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
                         dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
@@ -1906,7 +1906,7 @@ $(document).ready(function(){
                     totalpunchedi = totalpunched+parseInt(customercontextffi[i]["fields"].Subtotal);
                 
                 }
-                if(totalpunchedfromviews){
+                if(customercontextffi[i]["fields"].codecoupon){
                 totalpunched=totalpunchedfromviews;
                 }else{
                 totalpunched=totalpunchedi;
@@ -1914,8 +1914,8 @@ $(document).ready(function(){
                 //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
                 if(devfee>0){
                 var grandtotal = customercontextffi[0]["fields"].GSubtotal;
-                if(totalpunchedfromviews){
-                    dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal(Discounted):</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                if(customercontextffi[i]["fields"].codecoupon){
+                    dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal(Coupon Applied):</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
                     dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
                 }else{
                     dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
