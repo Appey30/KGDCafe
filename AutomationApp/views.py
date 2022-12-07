@@ -3150,6 +3150,10 @@ def Onlineordersystem(request, admin_id):
             arraypunched=arraypunchedi
             changeefor=int(json.loads(request.GET.get('changefor') or '0'))
             print('arraypunched:',arraypunched)
+            if isinstance((request.GET.get('totalwithdevfeename'), float):
+                converttedtotalwithdevfeename=float(request.GET.get('totalwithdevfeename')
+            else: 
+                converttedtotalwithdevfeename=int(request.GET.get('totalwithdevfeename')
             objs = [Customer(
                         Admin=admin_id,
                         Customername=request.GET.get('fullname'),
@@ -3163,7 +3167,7 @@ def Onlineordersystem(request, admin_id):
                         DeliveryFee=request.GET.get('devfeename') or 0,
                         contactnumber=request.GET.get('contactno'),
                         Bill=request.GET.get('changefor') or 0,
-                        Change=(changeefor-(int(request.GET.get('totalwithdevfeename') or 0) or float(request.GET.get('totalwithdevfeename') or 0))),
+                        Change=(changeefor-converttedtotalwithdevfeename),
                         productname=obj['productname'],
                         Category=obj['Category'],
                         Subcategory=obj['Subcategory'] or None,
@@ -5941,6 +5945,10 @@ def Onlineordertestingsystem(request, admin_id):
             arraypunchedi=json.loads(request.GET.get('array'))
             arraypunched=arraypunchedi
             changeefor=int(json.loads(request.GET.get('changefor') or '0'))
+            if isinstance((request.GET.get('totalwithdevfeename'), float):
+                converttedtotalwithdevfeename=float(request.GET.get('totalwithdevfeename')
+            else: 
+                converttedtotalwithdevfeename=int(request.GET.get('totalwithdevfeename')
             print('arraypunched:',arraypunched)
             objs = [Customer(
                         Admin=admin_id,
@@ -5955,7 +5963,7 @@ def Onlineordertestingsystem(request, admin_id):
                         DeliveryFee=request.GET.get('devfeename') or 0,
                         contactnumber=request.GET.get('contactno'),
                         Bill=request.GET.get('changefor') or 0,
-                        Change=(changeefor-(int(request.GET.get('totalwithdevfeename') or 0) or float(request.GET.get('totalwithdevfeename') or 0))),
+                        Change=(changeefor-converttedtotalwithdevfeename),
                         productname=obj['productname'],
                         Category=obj['Category'],
                         Subcategory=obj['Subcategory'] or None,
