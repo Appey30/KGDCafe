@@ -1580,22 +1580,22 @@ var completenamevar = document.getElementById('completenameid');
                 //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
                 if(devfee>0){
                 var grandtotal = customercontextffi[0]["fields"].GSubtotal;
-                    if(customercontextffi[0]["fields"].codecoupon){
-                
-                        dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal(Coupon Applied):</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                        dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                    }else{
+
                         dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
                         dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                    }
+                    
                 }else{
                 var grandtotal = customercontextffi[0]["fields"].GSubtotal;
                 }
                 console.log('grandtotal: '+grandtotal)
                 console.log('totalpunched: '+totalpunched)
                 console.log('length: '+customercontextffi.length)
-                
+                if(customercontextffi[0]["fields"].codecoupon){
+                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total(Coupon Applied):</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                }else{
                 dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                }
+                
                 $('#summarytableid').append(dataHtml);
                 var estTime=document.getElementById('estTime')
                 var EOAT = document.getElementById('EOAT')
@@ -1914,19 +1914,20 @@ $(document).ready(function(){
                 //var totalpunched = customercontextffi[0]["fields"].GSubtotal-customercontextffi[0]["fields"].DeliveryFee;
                 if(devfee>0){
                 var grandtotal = customercontextffi[0]["fields"].GSubtotal;
-                if(customercontextffi[i]["fields"].codecoupon){
-                    dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal(Coupon Applied):</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                    dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                }else{
+
                     dataHtml = dataHtml + '<tr class="" style="border-top: 2px solid rgba(192,192,192, 0.5);"><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
                     dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
-                }
+                
 
                 }else{
                 var grandtotal = customercontextffi[0]["fields"].GSubtotal;;
                 }
-
+                if(customercontextffi[0]["fields"].codecoupon){
+                dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total(Coupon Applied):</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                }else{
                 dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td><td class="tdqueuebase"></td><td class="tdqueuebase"></td></tr>';
+                
+                }
                 $('#summarytableid').append(dataHtml);
                 var estTime=document.getElementById('estTime')
                 var EOAT = document.getElementById('EOAT')
