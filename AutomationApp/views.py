@@ -3151,12 +3151,12 @@ def Onlineordersystem(request, admin_id):
             changeefor=int(json.loads(request.GET.get('changefor') or '0'))
             print('arraypunched:',arraypunched)
             try:
-                intorfloat = int(inNumber)
+                intorfloat = int(request.GET.get('totalwithdevfeename'))
                 print "this number is an int"
             except ValueError:
                 pass
             try:
-                intorfloat = float(inNumber)
+                intorfloat = float(request.GET.get('totalwithdevfeename'))
                 print "this number is an int"
             except ValueError:
                 pass
