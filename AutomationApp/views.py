@@ -5952,12 +5952,12 @@ def Onlineordertestingsystem(request, admin_id):
             arraypunched=arraypunchedi
             changeefor=int(json.loads(request.GET.get('changefor') or '0'))
             try:
-                intorfloat = int(inNumber)
+                intorfloat = int(request.GET.get('totalwithdevfeename'))
                 print "this number is an int"
             except ValueError:
                 pass
             try:
-                intorfloat = float(inNumber)
+                intorfloat = float(request.GET.get('totalwithdevfeename'))
                 print "this number is an int"
             except ValueError:
                 pass
