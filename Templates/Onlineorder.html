@@ -28928,8 +28928,24 @@ var detailscontent = document.getElementById("detailscontent");
 detailscontent.style.animation="fade-bottom-in 0.5s";
 
 var totaler = document.getElementById("totalwithoutdevfee");
+var cod = document.getElementById('codid');
+var cop = document.getElementById('copid');
+var devfee = document.getElementById('devfee');
+var devfeeid = document.getElementById('devfeeid');
 
-        totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+var totalwithdevfeeid = document.getElementById('totalwithdevfeeid');
+if(cop.checked){
+totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+devfee.innerHTML="";
+totalwithdevfee.innerHTML="";
+}else if(cod.checked){
+totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+devfee.innerHTML = devfeeid.value;
+totalwithdevfee.innerHTML="Total: ₱"+(totalwithdevfeeid.value).toFixed(2);
+}else{
+totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+}
+        
 
 var dataHtml='';
 var tablebodytwo = document.getElementById('summarytableid');
