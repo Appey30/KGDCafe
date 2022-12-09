@@ -28935,11 +28935,11 @@ var devfeeid = document.getElementById('devfeeid');
 
 var totalwithdevfeeid = document.getElementById('totalwithdevfeeid');
 if(cop.checked){
-totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-devfee.innerHTML="";
-totalwithdevfee.innerHTML="";
+    totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+    devfee.innerHTML="";
+    totalwithdevfee.innerHTML="";
 }else if(cod.checked){
-totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+    totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
 
                 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
                     if({{rqrd_minimumamnt}} == 0){
@@ -28958,13 +28958,13 @@ totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
                     devfee.innerHTML = "+Delivery fee: "+(devfeeid.value).toFixed(2);
                 }
 
-var totalwithdevfeeidi=parseInt(totalwithoudevfee)+parseInt(devfeeid.value);
-$('#totalwithdevfeeid').val(totalwithdevfeeidi);
-totalwithdevfee.innerHTML="Total: ₱"+totalwithdevfeeidi.toFixed(2);
+    var totalwithdevfeeidi=parseInt(totalwithoudevfee)+parseInt(devfeeid.value);
+    $('#totalwithdevfeeid').val(totalwithdevfeeidi);
+    totalwithdevfee.innerHTML="Total: ₱"+totalwithdevfeeidi.toFixed(2);
 }else{
-totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-devfee.innerHTML="";
-totalwithdevfee.innerHTML="";
+    totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
+    devfee.innerHTML="";
+    totalwithdevfee.innerHTML="";
 }
         
 
