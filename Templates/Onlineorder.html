@@ -28946,11 +28946,12 @@ if(cop.checked){
                     if({{rqrd_minimumamnt}} == 0){
                        totalwithdevfeeidi=parseInt(totalwithoudevfee);
                        devfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+                       devfeeid.value = 0;
                     }else{
                         if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
                             totalwithdevfeeidi=parseInt(totalwithoudevfee);
                             devfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
-            
+                            devfeeid.value = 0;
                         }else{
                             totalwithdevfeeidi=parseInt(totalwithoudevfee)+devfeevalue;
                             devfee.innerHTML = "+Delivery fee: ₱"+devfeevalue.toFixed(2);
