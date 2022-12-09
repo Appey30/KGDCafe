@@ -33765,6 +33765,14 @@ pampizza = presyopizza;
     {% endif %}
 </div>
 {% elif couponvalidity == 'KGDDeliveryFree' %}
+    {% if rqrd_minimumamnt == 0 %}
+        <h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;">Upon</h2>
+        <h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;">Checkout</h2>
+
+    {% else %}
+        <h2 class="couponinfo1" style="animation:fade-bottom-in 0.5s;left:1px;">Min. Purchase</h2>
+        <h2 class="couponinfo2" style="animation:fade-bottom-in 0.5s;left:30px;">₱{{rqrd_minimumamnt}}.00</h2>
+    {% endif %}
 <div class="freedeliverydiv" style="animation:fade-bottom-in 0.5s;">
 <img src="{% static 'freedeliverycompressed.png' %}" class="freedelivery"></img>
 </div>
