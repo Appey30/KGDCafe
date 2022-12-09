@@ -27379,15 +27379,17 @@ $(window).scroll(function() {
 
                 $('#totalwithdevfeeid').val(gtotalwithdevfee);
                 totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
-                $('#devfeeid').val(0);
+                
 
 
                 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
                     if({{rqrd_minimumamnt}} == 0){
                        totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+                       $('#devfeeid').val(0);
                     }else{
                         if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
                             totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+                            $('#devfeeid').val(0);
             
                         }else{
                             totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
@@ -27683,25 +27685,30 @@ totalwithdevfees = totalwithoudevfee + deliveryfee;
         if('{{couponvalidity}}' == 'KGDDeliveryFree'){
             if({{rqrd_minimumamnt}} == 0){
                totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+               $('#devfeeid').val(0);
             }else{
                 if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
+
                     totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+                    $('#devfeeid').val(0);
             
                 }else{
                     totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+                    $('#devfeeid').val(deliveryfee);
                 }
                 
             }
         
         }else{
             totalerdevfee.innerHTML = "+Delivery fee: ₱"+deliveryfee.toFixed(2);
+            $('#devfeeid').val(deliveryfee);
         }
         
 
 
 
 $('#totalwithdevfeeid').val(totalwithdevfees);
-$('#devfeeid').val(deliveryfee);
+
 
 var map = L.map('map').setView([PanOnMaplat, PanOnMaplng], 16);
 
@@ -29170,20 +29177,23 @@ var totalerdevfee = document.getElementById("devfee");
 var gtotaler = document.getElementById("totalwithdevfee");
 var grandtotalwithdevfees = totalwithoudevfee+df
 $('#totalwithdevfeeid').val(grandtotalwithdevfees);
-$('#devfeeid').val(df);
+
 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
         if({{rqrd_minimumamnt}} == 0){
             totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
+            $('#devfeeid').val(0);
         }else{
             if(totalwithoudevfee >= {{rqrd_minimumamnt}}){
                 totalerdevfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
-            
+                $('#devfeeid').val(0);
             }else{
+                $('#devfeeid').val(df);
                 totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
             }
         }
 
 }else{
+$('#devfeeid').val(df);
 totalerdevfee.innerHTML = "+Delivery fee: ₱"+df.toFixed(2);
 }
 
