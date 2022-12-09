@@ -5781,12 +5781,14 @@ def Onlineordertestingsystem(request, admin_id):
                 discount='0'
                 rqrd_minimumamnt=0
                 prmcd=promocodegeti
+            print('couponvalidity:  ',couponvalidity)
         else:
             couponvalidity='No Coupon'
             couponvaliditymessage='No Coupon'
             discount='0'
             rqrd_minimumamnt=0
             prmcd='No Coupon'
+            print('couponvalidity:  ',couponvalidity)
         print('QTY Sold for five months: ',Sales.objects.filter(user=4).aggregate(Sum('Qty')).get('Qty__sum'))
         userr=request.user.id
         username=request.user.username
