@@ -28941,7 +28941,7 @@ if(cop.checked){
 }else if(cod.checked){
     totaler.innerHTML = "Subtotal: ₱"+totalwithoudevfee.toFixed(2);
     console.log(devfeeid.value);
-    var devfeevalue = devfeeid.value;
+    var devfeevalue = parseInt(devfeeid.value);
                 if('{{couponvalidity}}' == 'KGDDeliveryFree'){
                     if({{rqrd_minimumamnt}} == 0){
                        devfee.innerHTML = "+Delivery fee: FREE(Coupon Applied)";
@@ -28959,7 +28959,7 @@ if(cop.checked){
                     devfee.innerHTML = "+Delivery fee: "+devfeevalue.toFixed(2);
                 }
 
-    var totalwithdevfeeidi=parseInt(totalwithoudevfee)+parseInt(devfeeid.value);
+    var totalwithdevfeeidi=parseInt(totalwithoudevfee)+devfeevalue;
     $('#totalwithdevfeeid').val(totalwithdevfeeidi);
     totalwithdevfee.innerHTML="Total: ₱"+totalwithdevfeeidi.toFixed(2);
 }else{
