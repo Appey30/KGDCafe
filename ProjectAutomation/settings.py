@@ -98,39 +98,27 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
-Identifierdb = "Rail"
+#Identifierdb = "Rail"
 #Rail or Heroku
-if Identifierdb == "Rail":
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'railway',
-            'USER': 'postgres',
-            'PASSWORD': 'MyRKbNRuLN9bBsnnETFN',
-            'HOST': 'containers-us-west-41.railway.app',
-            'PORT': '6661',
-        }
-    }
+#if Identifierdb == "Rail":
+    #DATABASES = {
+    #    'default': {
+    #        'ENGINE': 'django.db.backends.postgresql',
+    #        'NAME': 'railway',
+    #        'USER': 'postgres',
+    #        'PASSWORD': 'MyRKbNRuLN9bBsnnETFN',
+    #        'HOST': 'containers-us-west-41.railway.app',
+    #        'PORT': '6661',
+    #    }
+    #}
+    #DATABASES = {'default': dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)}
+    DATABASES = os.environ.get('DATABASES')
     db_from_env = dj_database_url.config(conn_max_age=600)
-    DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
+    #DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
 
     DATABASES['default'].update(db_from_env)
 
-elif Identifierdb == "Heroku":
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'd3sthqr8n69tio',
-            'USER': 'skcxlyichpsdoh',
-            'PASSWORD': 'ad2bfe7b2000a03803ef1b8dd48b6c903afbfd2ec4959056b57c9e2f1021da06',
-            'HOST': 'ec2-52-203-99-122.compute-1.amazonaws.com',
-            'PORT': '5432',
-        }
-    }
-    db_from_env = dj_database_url.config(conn_max_age=600)
-    DATABASES['default'] = dj_database_url.parse('postgres://skcxlyichpsdoh:ad2bfe7b2000a03803ef1b8dd48b6c903afbfd2ec4959056b57c9e2f1021da06@ec2-52-203-99-122.compute-1.amazonaws.com:5432/d3sthqr8n69tio', conn_max_age=600)
 
-    DATABASES['default'].update(db_from_env)
 
 
 
@@ -209,8 +197,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
 ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4'
-SOCIAL_AUTH_FACEBOOK_KEY = '322226503290078'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'cfeae2459eb01edf42b550b9048b9e43'  # App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
 #ACCOUNT_ADAPTER = 'app.my_adapter.MyAccountAdapter'
 #LOGIN_REDIRECT_URL = 'next'
 #LOGIN_REDIRECT_URL = 'request.path_info'
