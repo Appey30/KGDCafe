@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 
 ]
 
@@ -73,14 +74,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
+                'social_django.context_processors.backends',  # <-- Here
+                'social_django.context_processors.login_redirect', # <-- Here
 
             ],
         },
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.github.GithubOAuth2',
 
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'ProjectAutomation.wsgi.application'
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -200,7 +208,9 @@ SITE_ID=2
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
-ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4' 
+ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4'
+SOCIAL_AUTH_FACEBOOK_KEY = '322226503290078'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'cfeae2459eb01edf42b550b9048b9e43'  # App Secret
 #ACCOUNT_ADAPTER = 'app.my_adapter.MyAccountAdapter'
 #LOGIN_REDIRECT_URL = 'next'
 #LOGIN_REDIRECT_URL = 'request.path_info'
