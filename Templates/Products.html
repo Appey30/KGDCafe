@@ -1248,6 +1248,12 @@ hr {
                                 <br>
                                 
                             </div>
+                            <div class="fieldWrapper" id="promoid">
+                                <label>Promo Identifer:</label>
+                                {{aprod.Promo}}
+                                <br>
+                                
+                            </div>
                             <div class="fieldWrapper">
                                 <label>Product Description:</label>
                                 {{aprod.PDescription}}
@@ -1402,30 +1408,37 @@ function myFunctioncat() {
     if(selected == 'Snacks'){
         document.getElementById("subcat").style.display = "block";
         document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
     }else if(selected == 'Freeze'){
         document.getElementById("subcat").style.display = "none";
         document.getElementById("sukats").style.display = "none";
         document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
     }else if(selected == 'Add-ons'){
         document.getElementById("subcat").style.display = "none";
         document.getElementById("sukats").style.display = "none";
         document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
     }else if(selected == 'Milktea'){
         document.getElementById("subcat").style.display = "none";
         document.getElementById("sukats").style.display = "block";
         document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
     }else if(selected == 'Frappe'){
         document.getElementById("subcat").style.display = "none";
         document.getElementById("sukats").style.display = "block";
         document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
     }else if(selected == 'Stock'){
         document.getElementById("subcat").style.display = "none";
         document.getElementById("sukats").style.display = "none";
         document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
     }else if(selected == 'Promo'){
         document.getElementById("subcat").style.display = "none";
         document.getElementById("sukats").style.display = "block";
         document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "block";
     }
 
 }

@@ -16,6 +16,7 @@ class editform(ModelForm):
 				'PSize' : 'PSize',
 				'Price' : 'Price',
 				'Cost' : 'Cost',
+				'Promo' : 'Promo',
 				'PDescription':'PDescription',
 		}
 		widgets = {
@@ -27,6 +28,7 @@ class editform(ModelForm):
 				'PSize' : forms.Select(attrs={'class':'form-control clear','placeholder':'Enter Size here...'}),
 				'Price' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Price here...'}),
 				'Cost' : forms.NumberInput(attrs={'class':'form-control clear','placeholder':'Enter Cost here...'}),
+				'Promo' : forms.TextInput(attrs={'class':'form-control clear','placeholder':'Enter Promo Identifier here...'}),
 				'PDescription' : forms.TextInput(attrs={'class':'form-control clear','placeholder':'Enter Description here...'}),
 		}
 

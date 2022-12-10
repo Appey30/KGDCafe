@@ -3002,8 +3002,9 @@ def Onlineordersystem(request, admin_id):
             promoidentifier=''
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
+        elif user1.objects.filter(user__id=admin_id, Promo='Special Promo'):
+            promoidentifier='Special Promo'
         else:
-            
             promoidentifier=''
         if is_ajax(request=request) and request.POST.get('username'):
             usernamess=json.loads(request.POST.get('username'))
