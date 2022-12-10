@@ -2850,6 +2850,7 @@ def Onlineordersystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
+        
         promocodegeti=request.GET.get('prmcd', '')
         if promocodegeti:
         #without minimum amount #withoutredeemlimit
@@ -5672,6 +5673,7 @@ def Onlineordertestingsystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
+        settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
         promocodegeti=request.GET.get('prmcd', '')
         if promocodegeti:
         #without minimum amount #withoutredeemlimit
