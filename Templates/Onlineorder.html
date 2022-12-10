@@ -26298,8 +26298,10 @@ class="logo">
   <source src="{% static 'christmasbackgroundaudio.mp3'%}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>-->
-
-{% if promoidentifier == 'FreeFriesDay' %}
+{% if promoidentifier == 'FreeFriesDayandSpecialPromo' %}
+<div class="ourmenutitlepromodiv" style="display:block;">
+<h2 class="ourmenutitlepromo">Free Fries-day Promo and Special Promo for you, {{user.first_name}}!</h2>
+{% elif promoidentifier == 'FreeFriesDay' %}
 <div class="ourmenutitlepromodiv" style="display:block;">
 <h2 class="ourmenutitlepromo">Free Fries-day Promo for you, {{user.first_name}}!</h2>
 {% elif promoidentifier == 'Special Promo' %}
@@ -26313,7 +26315,7 @@ Your browser does not support the audio element.
 </div>
 
 <div class="wraptabcontentprodpromo" style="display:block;">
-{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo' or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
 <div class="tabcontentprodpromo" id="Promo" style="display:flex;">	
 {% else %}
 <div class="tabcontentprodpromo" id="Promo" style="display:none;">
@@ -26321,7 +26323,7 @@ Your browser does not support the audio element.
 
 
 
-                    {% if promoidentifier == 'Special Promo' %}
+                    {% if promoidentifier == 'Special Promo' or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
                         {% for specialpromob in specialpromobuttons %}
                                 <div class="card">
 
@@ -26692,7 +26694,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 }
 </script>
 
-{% if promoidentifier == "FreeFriesDay" %}
+{% if promoidentifier == "FreeFriesDay" or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
    {% for promob in FreeFriespromobuttons %}
         <div class="card">
                         <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
