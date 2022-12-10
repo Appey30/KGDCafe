@@ -3000,6 +3000,8 @@ def Onlineordersystem(request, admin_id):
 
         if request.user.is_anonymous:
             promoidentifier=''
+        elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday' and user1.objects.filter(user__id=admin_id, Promo='Special Promo'):
+            promoidentifier='FreeFriesDayandSpecialPromo'
         elif datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
             promoidentifier='FreeFriesDay'
         elif user1.objects.filter(user__id=admin_id, Promo='Special Promo'):
