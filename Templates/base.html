@@ -1272,7 +1272,8 @@ Your browser does not support the audio element.
 <small id="landmarknotessssid" class="landmarknotessssclass"></small>  
 <br>
 <small id="billllssssid" class="billllssssclass"></small> 
-
+<br>
+<small id="susuklianid" class="billllssssclass"></small>
 </div>
 
 <script>
@@ -1811,7 +1812,10 @@ for(var showorders of showorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notess;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
-            
+            var susuklianid = document.getElementById('susuklianid');
+            var susuklianvar = 0;
+            susuklianvar = parseInt(grandtotal)-parseInt(bill);
+            susuklianid.innerHTML = 'Change: ₱'+susuklianvar+'.00';
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
             //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
@@ -1927,6 +1931,10 @@ for(var showorders of acceptedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notesss;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+            var susuklianid = document.getElementById('susuklianid');
+            var susuklianvar = 0;
+            susuklianvar = parseInt(grandtotal)-parseInt(bill);
+            susuklianid.innerHTML = 'Change: ₱'+susuklianvar+'.00';
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
             //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
@@ -2046,6 +2054,10 @@ for(var showorders of rejectedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notessss;
             var billllssssid = document.getElementById('billllssssid');
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
+            var susuklianid = document.getElementById('susuklianid');
+            var susuklianvar = 0;
+            susuklianvar = parseInt(grandtotal)-parseInt(bill);
+            susuklianid.innerHTML = 'Change: ₱'+susuklianvar+'.00';
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
             //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
