@@ -98,9 +98,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
-#Identifierdb = "Rail"
-#Rail or Heroku
-#if Identifierdb == "Rail":
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -111,13 +109,7 @@ import dj_database_url
             'PORT': os.environ["PGPORT"],
             }
     }
-    #DATABASES = {'default': dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)}
-#db_from_env = dj_database_url.config(conn_max_age=600)
-#DATABASES = os.environ.get('DATABASES')
 
-    #DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
-
-#DATABASES['default'].update(db_from_env)
 
 
 
