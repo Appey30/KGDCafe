@@ -5667,7 +5667,7 @@ def kgddashboard(request):
                     return render(request, 'kgddashboard.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'userr':userr,'monthlysales':monthlysales,'ddaily':ddaily,'totalnet':totalnet,'totalsales':totalsales})
 
 def Onlineordertestingsystem(request, admin_id):
-         #'domain/search/?q=haha', you would use request.GET.get('q', '')
+        #'domain/search/?q=haha', you would use request.GET.get('q', '')
         #theurl+?anykeyhere=anyvalue
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
@@ -5789,7 +5789,7 @@ def Onlineordertestingsystem(request, admin_id):
             elif promocodegeti == "Testing123": 
                 couponvalidity='Valid'
                 couponvaliditymessage='This coupon code is for testing.'
-                discount='10'
+                discount='0'
                 rqrd_minimumamnt=0
                 prmcd=promocodegeti
             #This coupon code is for testing.
@@ -5897,7 +5897,7 @@ def Onlineordertestingsystem(request, admin_id):
                 createsocialaccounttwo = User.objects.filter(first_name=first,last_name=last,username=short)
                 user=User.objects.get(first_name=first,last_name=last,username=short)
                 socialaccountsslogin=login(request, user)
-                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
             else:
                 print('none')
@@ -5908,7 +5908,7 @@ def Onlineordertestingsystem(request, admin_id):
                 user=User.objects.get(id=createsocialaccounttwo.id)
                 createsocialaccount = SocialAccount.objects.create(user=user, provider='facebook', uid=uids, extra_data=responseresponse)
                 authcreatedsocialaccount=login(request, user)
-                settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+                settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
         if is_ajax(request=request) and request.GET.get('addressss'):
             userr=request.user.id
@@ -5991,6 +5991,7 @@ def Onlineordertestingsystem(request, admin_id):
             arraypunchedi=json.loads(request.GET.get('array'))
             arraypunched=arraypunchedi
             changeefor=int(json.loads(request.GET.get('changefor') or '0'))
+            print('arraypunched:',arraypunched)
             try:
                 intorfloat = int(request.GET.get('totalwithdevfeename'))
                 
@@ -6001,7 +6002,6 @@ def Onlineordertestingsystem(request, admin_id):
                 
             except ValueError:
                 pass
-            print('arraypunched:',arraypunched)
             objs = [Customer(
                         Admin=admin_id,
                         Customername=request.GET.get('fullname'),
@@ -6049,9 +6049,9 @@ def Onlineordertestingsystem(request, admin_id):
             onlineorder = Customer.objects.filter(Admin=admin_id).distinct('contactnumber')
             submitted(request)
             if promocodegeti:
-                return HttpResponseRedirect('/index/onlineordertesting/'+str(admin_id)+'/OrderProgress/?prmcd='+promocodegeti)
+                return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/?prmcd='+promocodegeti)
             else:
-                return HttpResponseRedirect('/index/onlineordertesting/'+str(admin_id)+'/OrderProgress/')
+                return HttpResponseRedirect('/index/onlineorder/'+str(admin_id)+'/OrderProgress/')
         else:
             onlineorder = Customer.objects.none()
         viewordersi={}
@@ -6065,10 +6065,8 @@ def Onlineordertestingsystem(request, admin_id):
             arrayone.append(arrayseparator)
             viewordersi[contactdistincter[i]]=arrayone[i]
             i=i+1
-        settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+        settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-                    
-
         return render(request, 'Onlineordertesting.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
