@@ -6,7 +6,7 @@ from .models import user1, punchedprod, queue1, Sales,punchedprodso,submitstocko
 class editform(ModelForm):
 	class Meta:
 		model = user1
-		fields = ['user','productname','Category','Subcategory','Size','PSize' ,'Price','Cost','PDescription']
+		fields = ['user','productname','Category','Subcategory','Size','PSize' ,'Price','Cost','Promo','PDescription']
 		labels = {
 				'user':'user',
 				'productname' : 'Prouct Name',
