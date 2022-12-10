@@ -30675,10 +30675,12 @@ fullmt.innerHTML = "₱"+mtp+".00";
 <h3>Login with Social Media</h3>
 <small style="color:red;text-align:center;display:none">Login with Social Media is Temporarily Unavailable. We suggest you to create KGD account instead. </small><br>
 <div style="display:block;">
-{% if prmcd %}
-<a href="{% url 'social:begin' 'facebook' %}?next='index/onlineordertesting/4/?prmcd={{prmcd}}'" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
+{% if prmcd == 'No coupon' %}
+<a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
+
 {% else %}
-<a href="{% url 'social:begin' 'facebook' %}?next=index/onlineordertesting/4/" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
+    
+<a href="{% url 'social:begin' 'facebook' %}?prmcd={{prmcd}}'" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
 {% endif %}
 <!--<div  id="fbloginid" class="fb btn">
 <i  id="fbloginidiii" class="fa fa-facebook fa-fw"></i><h8>Login with Facebook</h8>
