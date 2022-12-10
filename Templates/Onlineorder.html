@@ -26328,8 +26328,8 @@ Your browser does not support the audio element.
                                         <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
                                             <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
                                         </div>
-                                        {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
-                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                                        {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.jpg" %}
+                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
                                         {% else %}
                                         <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
                                         {% endif %}
