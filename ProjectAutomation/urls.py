@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 from AutomationApp import views
-from django.contrib.auth import auth_views 
+from django.contrib.auth import views as auth_views 
 
 
 urlpatterns = [
@@ -58,7 +58,7 @@ urlpatterns = [
       #path('accounts/', include('allauth.urls')),
       #FIREBASE AREA
       path('index/onlineorder/<int:admin_id>/submitted' , views.submitted, name="submittedorder"),
-      path('firebase-messaging-sw.js',views.showFirebaseJS,name="show_firebase_js"),
+      #path('firebase-messaging-sw.js',views.showFirebaseJS,name="show_firebase_js"),
       
               ]
 if settings.DEBUG: # new
