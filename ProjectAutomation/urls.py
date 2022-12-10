@@ -52,6 +52,7 @@ urlpatterns = [
       path('index/staff',views.staff,name='staff.html'),
       path('index/appeybought',views.totalboughtappey,name='totalboughtappey.html'),
       path('oauth/', include('social_django.urls', namespace='social')),
+      path('logout/', views.LogoutView.as_view(next_page='home'),name='logout'),
       #path('accounts/', include('allauth.urls')),
       #FIREBASE AREA
       path('index/onlineorder/<int:admin_id>/submitted' , views.submitted, name="submittedorder"),
