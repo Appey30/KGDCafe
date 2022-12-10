@@ -26770,7 +26770,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
     {% endfor %}
 {% endif %}
 </div>
-{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo' or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
       <hr style="width:90%;margin-left:auto;margin-right:auto;height:2px;border-width:0;color:gray;background-color:gray">
 		
 {% else %}
@@ -27965,7 +27965,22 @@ longitude.value = position.lng;
  </div>-->
 </div>
 </div>
+<div id="showdescriptiondivbgidSpecialPromo" class="showdescriptiondivbg">
+<div id="showdescriptiondividSpecialPromo" class="showdescriptiondiv">
+    <div class="showdescriptionhead">
+    <span onclick="showdescriptioncontentcloseSpecialPromo()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
+     <div class="showdescriptiontitlediv">
+    <h1 id="showdescriptionproductnameidSpecialPromo"></h1>
+     </div>
+    </div>
+    <div class="showdescriptionbody">
+    <p id="showproductdescriptionidSpecialPromo"></p>
 
+    </div>
+    <!--<div class="showdescriptionfoot">
+ </div>-->
+</div>
+</div>
 
 <div id="showdescriptiondivbgidMT" class="showdescriptiondivbg">
 <div id="showdescriptiondividMT" class="showdescriptiondiv">
@@ -30300,6 +30315,31 @@ $(document).ready(function(){
   });
 });
 
+function showdescriptionSpecialPromo(productname, e){
+var showdescriptiondivbgidPromo=document.getElementById('showdescriptiondivbgidSpecialPromo');
+showdescriptiondivbgidPromo.style.display="flex";
+
+var atbmodalshowdescriptioncontentPromo = document.getElementById("showdescriptiondividSpecialPromo");
+atbmodalshowdescriptioncontentPromo.style.animation="fade-bottom-in 0.5s";
+
+var showdescriptionproductnameidPromo=document.getElementById('showdescriptionproductnameidSpecialPromo');
+showdescriptionproductnameidPromo.innerHTML=productname;
+
+var showproductdescriptionidPromo=document.getElementById('showproductdescriptionidSpecialPromo');
+var getproductdescripptioPromo=e.getAttribute('customdescription');
+showproductdescriptionidPromo.innerHTML="<p class='showproductdescriptionclass'>"+getproductdescripptioPromo+"</p>";
+};
+
+function showdescriptioncontentcloseSpecialPromo(){
+var atbmodalshowdescriptioncontentPromo = document.getElementById("showdescriptiondividSpecialPromo");
+atbmodalshowdescriptioncontentPromo.style.animation="fade-bottom-out 0.5s";
+
+setTimeout(closeshowdescriptionSpecialPromo, 500);
+};
+function closeshowdescriptionSpecialPromo(){
+var closebgwithcontentshowdescriptionPromo = document.getElementById("showdescriptiondivbgidSpecialPromo");
+closebgwithcontentshowdescriptionPromo.style.display = "none";
+};
 function showdescriptionPromo(productname, e){
 var showdescriptiondivbgidPromo=document.getElementById('showdescriptiondivbgidPromo');
 showdescriptiondivbgidPromo.style.display="flex";
