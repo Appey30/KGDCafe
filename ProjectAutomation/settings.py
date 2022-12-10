@@ -101,19 +101,19 @@ import dj_database_url
 #Identifierdb = "Rail"
 #Rail or Heroku
 #if Identifierdb == "Rail":
-    #DATABASES = {
-    #    'default': {
-    #        'ENGINE': 'django.db.backends.postgresql',
-    #        'NAME': 'railway',
-    #        'USER': 'postgres',
-    #        'PASSWORD': 'MyRKbNRuLN9bBsnnETFN',
-    #        'HOST': 'containers-us-west-41.railway.app',
-    #        'PORT': '6661',
-    #    }
-    #}
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ["PGDATABASE"],
+            'USER': os.environ["PGUSER"],
+            'PASSWORD': os.environ["PGPASSWORD"],
+            'HOST': os.environ["PGHOST"],
+            'PORT': os.environ["PGPORT"],
+            }
+    }
     #DATABASES = {'default': dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)}
 #db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES = os.environ.get('DATABASES')
+#DATABASES = os.environ.get('DATABASES')
 
     #DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
 
