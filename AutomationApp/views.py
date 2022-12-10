@@ -2853,6 +2853,9 @@ def Onlineordersystem(request, admin_id):
         
         promocodegeti=request.GET.get('prmcd', '')
         if promocodegeti:
+            settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+            settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+            settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
         #without minimum amount #withoutredeemlimit
             if couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False): 
                 if couponlist.objects.filter(couponname='KGDDeliveryFree', code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False):
@@ -2982,6 +2985,9 @@ def Onlineordersystem(request, admin_id):
                 prmcd=promocodegeti
             print('couponvalidity:  ',couponvalidity)
         else:
+            settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
+            settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)
+            settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)
             couponvalidity='No Coupon'
             couponvaliditymessage='No Coupon'
             discount='0'
@@ -3076,7 +3082,14 @@ def Onlineordersystem(request, admin_id):
                 createsocialaccounttwo = User.objects.filter(first_name=first,last_name=last,username=short)
                 user=User.objects.get(first_name=first,last_name=last,username=short)
                 socialaccountsslogin=login(request, user)
-                settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
+                if promocodegeti:
+                    settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+                    settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+                    settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+                else:
+                    settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)
+                    settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)
+                    settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
             else:
                 print('none')
@@ -3087,7 +3100,15 @@ def Onlineordersystem(request, admin_id):
                 user=User.objects.get(id=createsocialaccounttwo.id)
                 createsocialaccount = SocialAccount.objects.create(user=user, provider='facebook', uid=uids, extra_data=responseresponse)
                 authcreatedsocialaccount=login(request, user)
-                settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
+
+                if promocodegeti:
+                    settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+                    settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+                    settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+                else:
+                    settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)
+                    settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)
+                    settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
                 return JsonResponse({'reload':'reload'})
         if is_ajax(request=request) and request.GET.get('addressss'):
             userr=request.user.id
@@ -3244,11 +3265,16 @@ def Onlineordersystem(request, admin_id):
             arrayone.append(arrayseparator)
             viewordersi[contactdistincter[i]]=arrayone[i]
             i=i+1
-        settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
+        if promocodegeti:
+            settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+            settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+            settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
+        else:
+            settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)
+            settings.LOGOUT_URL='/index/onlineorder/'+str(admin_id)
+            settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-                    
-
         return render(request, 'Onlineorder.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):

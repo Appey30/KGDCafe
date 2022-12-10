@@ -1,6 +1,5 @@
 ﻿{% load static %}
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -30674,11 +30673,19 @@ fullmt.innerHTML = "₱"+mtp+".00";
 </div>
 
 <h3>Login with Social Media</h3>
-<small style="color:red;text-align:center;">Login with Social Media is Temporarily Unavailable. We suggest you to create KGD account instead. </small><br>
-<div style="display:none;">
-<div  id="fbloginid" class="fb btn">
-<i  id="fbloginidiii" class="fa fa-facebook fa-fw"></i><h8>Login with Facebook</h8>
-</div><br>
+<small style="color:red;text-align:center;display:none">Login with Social Media is Temporarily Unavailable. We suggest you to create KGD account instead. </small><br>
+<div style="display:block;">
+{% if prmcd == 'No coupon' %}
+<a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
+
+{% else %}
+    
+<a href="{% url 'social:begin' 'facebook' %}?prmcd={{prmcd}}" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+{% endif %}
+<!--<div  id="fbloginid" class="fb btn">
+<i  id="fbloginidiii" class="fa fa-facebook fa-fw"></i><h8>Login with Facebook</h8>(for a tag)class='btn btn-facebook btn-user btn-block'
+</div>-->
+<br>
 </div>
 
 <small>By logging-in or signing-up, you agree to our updated <a href="{% url 'TermsandConditions.html' %}">Terms & Conditions</a>  and <a href="{% url 'privacypolicy.html' %}">Privacy Policy</a>.</small>
@@ -31079,14 +31086,14 @@ if(!username.value && !password.value){
     });
 }
 }
-  document.getElementById('fbloginid').addEventListener("click", function() {
+  //document.getElementById('fbloginid').addEventListener("click", function() {
 
  // checkLoginState()
-  });
- document.getElementById('fbloginidiii').addEventListener("click", function() {
+ // });
+ //document.getElementById('fbloginidiii').addEventListener("click", function() {
 
  // checkLoginState()
-  });
+  //});
 
 //$(document).ready(function(){
 
