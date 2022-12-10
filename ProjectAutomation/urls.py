@@ -51,7 +51,7 @@ urlpatterns = [
       path('index/saletoday',views.saletoday,name='saletoday.html'),
       path('index/staff',views.staff,name='staff.html'),
       path('index/appeybought',views.totalboughtappey,name='totalboughtappey.html'),
-      path('accounts/', include('allauth.urls')),
+      #path('accounts/', include('allauth.urls')),
       #FIREBASE AREA
       path('index/onlineorder/<int:admin_id>/submitted' , views.submitted, name="submittedorder"),
       path('firebase-messaging-sw.js',views.showFirebaseJS,name="show_firebase_js"),

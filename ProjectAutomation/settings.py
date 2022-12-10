@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AutomationApp',
     'whitenoise.runserver_nostatic',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+    #'allauth',
+    #'allauth.account',
+    #'allauth.socialaccount',
+    #'allauth.socialaccount.providers.facebook',
     'django_extensions',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -204,24 +205,24 @@ ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4'
 #LOGIN_REDIRECT_URL = 'next'
 #LOGIN_REDIRECT_URL = 'request.path_info'
 
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'METHOD': 'js_sdk',
-        'SCOPE': ['public_profile, email'],
-        'AUTH_PARAMS': {'auth_type': 'reauthorize'},
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'name',
-            'email',
-            'short_name',
-            'first_name',
-            'last_name',
-        ],
-        'EXCHANGE_TOKEN': True,
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v13.0',
-    }
-}
+#SOCIALACCOUNT_PROVIDERS = {
+#    'facebook': {
+#        'METHOD': 'js_sdk',
+#        'SCOPE': ['public_profile, email'],
+#        'AUTH_PARAMS': {'auth_type': 'reauthorize'},
+#        'INIT_PARAMS': {'cookie': True},
+#        'FIELDS': [
+#            'id',
+#            'name',
+#            'email',
+#            'short_name',
+#            'first_name',
+#            'last_name',
+#        ],
+#        'EXCHANGE_TOKEN': True,
+#        'VERIFIED_EMAIL': False,
+#        'VERSION': 'v13.0',
+#    }
+#}
 
 

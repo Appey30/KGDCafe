@@ -25,9 +25,9 @@ import requests
 from django.core import serializers
 from decimal import Decimal
 from pyfcm import FCMNotification
-from allauth.socialaccount.models import SocialAccount
+#from allauth.socialaccount.models import SocialAccount
 from django.db.models.functions import Lower
-from allauth.socialaccount.models import SocialApp
+#from allauth.socialaccount.models import SocialApp
 from django.contrib.auth.hashers import make_password
 from django.template import *
 from PIL import Image
