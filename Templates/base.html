@@ -1814,7 +1814,7 @@ for(var showorders of showorder){
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
             var susuklianid = document.getElementById('susuklianid');
             var susuklianvar = 0;
-            susuklianvar = parseInt(grandtotal)-parseInt(bill);
+            susuklianvar = parseInt(bill)-parseInt(grandtotal);
             susuklianid.innerHTML = 'Change: ₱'+susuklianvar+'.00';
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
@@ -1933,7 +1933,7 @@ for(var showorders of acceptedorder){
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
             var susuklianid = document.getElementById('susuklianid');
             var susuklianvar = 0;
-            susuklianvar = parseInt(grandtotal)-parseInt(bill);
+            susuklianvar = parseInt(bill)-parseInt(grandtotal);
             susuklianid.innerHTML = 'Change: ₱'+susuklianvar+'.00';
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
@@ -2056,7 +2056,7 @@ for(var showorders of rejectedorder){
             billllssssid.innerHTML = 'Change For: ₱'+bill+'.00';
             var susuklianid = document.getElementById('susuklianid');
             var susuklianvar = 0;
-            susuklianvar = parseInt(grandtotal)-parseInt(bill);
+            susuklianvar = parseInt(bill)-parseInt(grandtotal);
             susuklianid.innerHTML = 'Change: ₱'+susuklianvar+'.00';
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
