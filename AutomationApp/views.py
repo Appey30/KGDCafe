@@ -5673,9 +5673,10 @@ def Onlineordertestingsystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
-        settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
+        
         promocodegeti=request.GET.get('prmcd', '')
         if promocodegeti:
+        settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)+'?prmcd='+promocodegeti
         #without minimum amount #withoutredeemlimit
             if couponlist.objects.filter(code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False): 
                 if couponlist.objects.filter(couponname='KGDDeliveryFree', code=promocodegeti, is_consumable=False, is_active=True, is_withMinimumAmount=False):
@@ -5805,6 +5806,7 @@ def Onlineordertestingsystem(request, admin_id):
                 prmcd=promocodegeti
             print('couponvalidity:  ',couponvalidity)
         else:
+            settings.LOGIN_REDIRECT_URL='/index/onlineordertesting/'+str(admin_id)
             couponvalidity='No Coupon'
             couponvaliditymessage='No Coupon'
             discount='0'
