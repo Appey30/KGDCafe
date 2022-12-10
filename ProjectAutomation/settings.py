@@ -116,7 +116,7 @@ DATABASES = os.environ.get('DATABASES')
 db_from_env = dj_database_url.config(conn_max_age=600)
     #DATABASES['default'] = dj_database_url.parse('postgresql://postgres:MyRKbNRuLN9bBsnnETFN@containers-us-west-41.railway.app:6661/railway', conn_max_age=600)
 
-DATABASES[0].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 
 
