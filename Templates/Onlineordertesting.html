@@ -26298,8 +26298,10 @@ class="logo">
   <source src="{% static 'christmasbackgroundaudio.mp3'%}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>-->
-
-{% if promoidentifier == 'FreeFriesDay' %}
+{% if promoidentifier == 'FreeFriesDayandSpecialPromo' %}
+<div class="ourmenutitlepromodiv" style="display:block;">
+<h2 class="ourmenutitlepromo">Free Fries-day Promo and Special Promo for you, {{user.first_name}}!</h2>
+{% elif promoidentifier == 'FreeFriesDay' %}
 <div class="ourmenutitlepromodiv" style="display:block;">
 <h2 class="ourmenutitlepromo">Free Fries-day Promo for you, {{user.first_name}}!</h2>
 {% elif promoidentifier == 'Special Promo' %}
@@ -26313,7 +26315,7 @@ Your browser does not support the audio element.
 </div>
 
 <div class="wraptabcontentprodpromo" style="display:block;">
-{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo' or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
 <div class="tabcontentprodpromo" id="Promo" style="display:flex;">	
 {% else %}
 <div class="tabcontentprodpromo" id="Promo" style="display:none;">
@@ -26321,15 +26323,15 @@ Your browser does not support the audio element.
 
 
 
-                    {% if promoidentifier == 'Special Promo' %}
+                    {% if promoidentifier == 'Special Promo' or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
                         {% for specialpromob in specialpromobuttons %}
                                 <div class="card">
 
                                         <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
                                             <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
                                         </div>
-                                        {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
-                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.png" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                                        {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.jpg" %}
+                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
                                         {% else %}
                                         <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
                                         {% endif %}
@@ -26692,7 +26694,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 }
 </script>
 
-{% if promoidentifier == "FreeFriesDay" %}
+{% if promoidentifier == "FreeFriesDay" or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
    {% for promob in FreeFriespromobuttons %}
         <div class="card">
                         <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
@@ -26768,7 +26770,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
     {% endfor %}
 {% endif %}
 </div>
-{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo'%}
+{% if promoidentifier == 'FreeFriesDay' or promoidentifier == 'Special Promo' or promoidentifier == 'FreeFriesDayandSpecialPromo' %}
       <hr style="width:90%;margin-left:auto;margin-right:auto;height:2px;border-width:0;color:gray;background-color:gray">
 		
 {% else %}
@@ -27963,7 +27965,22 @@ longitude.value = position.lng;
  </div>-->
 </div>
 </div>
+<div id="showdescriptiondivbgidSpecialPromo" class="showdescriptiondivbg">
+<div id="showdescriptiondividSpecialPromo" class="showdescriptiondiv">
+    <div class="showdescriptionhead">
+    <span onclick="showdescriptioncontentcloseSpecialPromo()" class="atbmodalshowdescriptioncontentclose" >&times;</span>
+     <div class="showdescriptiontitlediv">
+    <h1 id="showdescriptionproductnameidSpecialPromo"></h1>
+     </div>
+    </div>
+    <div class="showdescriptionbody">
+    <p id="showproductdescriptionidSpecialPromo"></p>
 
+    </div>
+    <!--<div class="showdescriptionfoot">
+ </div>-->
+</div>
+</div>
 
 <div id="showdescriptiondivbgidMT" class="showdescriptiondivbg">
 <div id="showdescriptiondividMT" class="showdescriptiondiv">
@@ -30298,6 +30315,31 @@ $(document).ready(function(){
   });
 });
 
+function showdescriptionSPECIALPROMO(productname, e){
+var showdescriptiondivbgidPromo=document.getElementById('showdescriptiondivbgidSpecialPromo');
+showdescriptiondivbgidPromo.style.display="flex";
+
+var atbmodalshowdescriptioncontentPromo = document.getElementById("showdescriptiondividSpecialPromo");
+atbmodalshowdescriptioncontentPromo.style.animation="fade-bottom-in 0.5s";
+
+var showdescriptionproductnameidPromo=document.getElementById('showdescriptionproductnameidSpecialPromo');
+showdescriptionproductnameidPromo.innerHTML=productname;
+
+var showproductdescriptionidPromo=document.getElementById('showproductdescriptionidSpecialPromo');
+var getproductdescripptioPromo=e.getAttribute('customdescription');
+showproductdescriptionidPromo.innerHTML="<p class='showproductdescriptionclass'>"+getproductdescripptioPromo+"</p>";
+};
+
+function showdescriptioncontentcloseSpecialPromo(){
+var atbmodalshowdescriptioncontentPromo = document.getElementById("showdescriptiondividSpecialPromo");
+atbmodalshowdescriptioncontentPromo.style.animation="fade-bottom-out 0.5s";
+
+setTimeout(closeshowdescriptionSpecialPromo, 500);
+};
+function closeshowdescriptionSpecialPromo(){
+var closebgwithcontentshowdescriptionPromo = document.getElementById("showdescriptiondivbgidSpecialPromo");
+closebgwithcontentshowdescriptionPromo.style.display = "none";
+};
 function showdescriptionPromo(productname, e){
 var showdescriptiondivbgidPromo=document.getElementById('showdescriptiondivbgidPromo');
 showdescriptiondivbgidPromo.style.display="flex";
