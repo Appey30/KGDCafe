@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
 from AutomationApp import views
 from django.contrib.auth.views import LogoutView
-
+from django.contrib.auth.views import LoginView
 
 
 urlpatterns = [
@@ -54,6 +54,7 @@ urlpatterns = [
       path('index/appeybought',views.totalboughtappey,name='totalboughtappey.html'),
       path('oauth/', include('social_django.urls', namespace='social')),
       path('logout/', views.LogoutView.as_view(next_page=''),name='logout'),
+      path('login/', views.LoginView.as_view(next_page=''),name='login'),
       #path('logout/', views.logout.as_view(next_page='home'),name='logout'),
       #path('accounts/', include('allauth.urls')),
       #FIREBASE AREA
