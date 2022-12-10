@@ -197,6 +197,7 @@ SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # A
 #LOGIN_REDIRECT_URL = 'request.path_info'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 #LOGIN_REDIRECT_URL = 'home'
 #SOCIALACCOUNT_PROVIDERS = {
 #    'facebook': {
