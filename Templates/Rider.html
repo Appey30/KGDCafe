@@ -1227,9 +1227,6 @@ Your browser does not support the audio element.
 <script>
 var sound='';
 function acknowledgerider(){
-var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
-acknowledgeriderbuttonid.removeAttribute("disabled", "");
-acknowledgeriderbuttonid.setAttribute('disabled', '');
 var audioid = document.getElementById('audioid')
 audioid.pause();
 sound='pause';
@@ -1277,12 +1274,9 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 if(length>0){
                 var audioid = document.getElementById('audioid')
                     if(sound=='pause'){
-                        var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
-                        acknowledgeriderbuttonid.setAttribute('disabled', '');
-                        
                         audioid.pause();
                     }else{
-                    audioid.play();
+                        audioid.play();
                     }
                 
                 }
@@ -1339,10 +1333,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 if(length>0){
                 var audioid = document.getElementById('audioid')
                     if(sound=='pause'){
-                        var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
-                        acknowledgeriderbuttonid.removeAttribute("disabled", "");
-                        acknowledgeriderbuttonid.setAttribute('disabled', '');
-                        audioid.pause();
+                    audioid.pause();
                     }else{
                     audioid.play();
                     }
