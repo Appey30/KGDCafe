@@ -1129,6 +1129,7 @@ Your browser does not support the audio element.
 var sound='play';
 function acknowledgerider(){
 var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
+acknowledgeriderbuttonid.style.display='none';
 var audioid = document.getElementById('audioid')
 audioid.pause();
 sound='pause';
@@ -1195,7 +1196,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
                     bargy = "None";
                     }
 
-                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbut' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'></button></td></tr>";
+                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbut' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
                 
                 }
                 $('#deliverthis').append(dataHtml);
@@ -1248,7 +1249,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 bargy = "None";
                 }
 
-                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbut' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'></button></td></tr>";
+                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbut' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
                 
                 }
                 $('#deliverthis').append(dataHtml);
