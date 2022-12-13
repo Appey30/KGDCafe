@@ -1138,7 +1138,7 @@ def products(request):
             if aprod.is_valid():
                 aprod.save()
                 
-                return render(request, 'Products.html',{'readylistcontact':readylistcontact,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+                return render(request, 'Products.html',{'readylistcontact':readylistcontact,'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
             else:
                 return render(request, 'Products.html',{'readylistcontact':readylistcontact,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
         else:
