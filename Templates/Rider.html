@@ -1225,7 +1225,7 @@ Your browser does not support the audio element.
 </div>
 
 <script>
-var sound='play';
+var sound='';
 function acknowledgerider(){
 var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
 acknowledgeriderbuttonid.style.display='none';
@@ -1273,7 +1273,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
             
                 var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
                 var length = todeliverorderffi.length;
-                if(length>0 && sound=='play'){
+                if(length>0){
                 var audioid = document.getElementById('audioid')
                 audioid.play();
                 }else if(sound=='pause'){
@@ -1332,7 +1332,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
             
                 var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
                 var length = todeliverorderffi.length;
-                if(length>0 && sound=='play'){
+                if(length>0){
                 var audioid = document.getElementById('audioid')
                 audioid.play();
                 
