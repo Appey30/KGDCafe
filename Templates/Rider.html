@@ -245,6 +245,31 @@ color:#A0A0A0;
 font-weight:bold;
 text-align:justify;
 }
+
+.prodbutacknowledge{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:auto;
+
+}
+.prodbutacknowledge:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
 .prodbut{
     background-color: rgba(249, 216, 105,0);
     font-size: 16px;
@@ -499,6 +524,32 @@ color:#A0A0A0;
 font-weight:bold;
 text-align:justify;
 }
+
+.prodbutacknowledge{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:auto;
+
+}
+.prodbutacknowledge:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
+
 .prodbut{
     background-color: rgba(249, 216, 105,0);
     font-size: 16px;
@@ -752,6 +803,31 @@ color:#A0A0A0;
 font-weight:bold;
 text-align:justify;
 }
+
+.prodbutacknowledge{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:auto;
+
+}
+.prodbutacknowledge:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
 .prodbut{
     background-color: rgba(249, 216, 105,0);
     font-size: 16px;
@@ -776,7 +852,6 @@ text-align:justify;
     background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
     background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
 }
-
 .focusbutton{
     color:black;
     font-weight:bold;
@@ -1007,6 +1082,29 @@ color:#A0A0A0;
 font-weight:bold;
 text-align:justify;
 }
+.prodbutacknowledge{
+    background-color: rgba(249, 216, 105,0);
+    font-size: 16px;
+    color: rgb(252, 220, 109);
+    position:relative;
+    top:0px;
+    display:inline-block;
+    border-radius: 30px;
+    border-color:rgb(249, 216, 105);
+    height:30px;
+    width:auto;
+}
+.prodbutacknowledge:hover {
+    transform: scale(1.1);
+    transition: transform .2s;
+    font-weight:bold;
+    cursor:pointer;
+    color: #121212;
+    background: rgb(249, 216, 105);
+    background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+    background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+}
 .prodbut{
     background-color: rgba(249, 216, 105,0);
     font-size: 16px;
@@ -1197,7 +1295,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
                     bargy = "None";
                     }
 
-                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbut' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
+                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbutacknowledge' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
                 
                 }
                 $('#deliverthis').append(dataHtml);
