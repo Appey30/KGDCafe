@@ -1315,6 +1315,8 @@ if(MOP == "COD"){
 }
 
 function done(contact){
+var donebuttondisappear = document.getElementById('donebuttonid'+contact);
+donebuttondisappear.style.display = 'none';
 var viewordersdone = document.getElementById('viewordersacceptid').value;
 var doneorderiii = JSON.parse(viewordersdone);
 var doneorderii = doneorderiii;
