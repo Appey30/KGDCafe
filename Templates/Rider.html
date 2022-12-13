@@ -1276,7 +1276,13 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 if(length>0 && sound=='play'){
                 var audioid = document.getElementById('audioid')
                 audioid.play();
+                }else if(sound=='pause'){
+                var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
+                acknowledgeriderbuttonid.style.display='none';
+                var audioid = document.getElementById('audioid')
+                audioid.pause();
                 }
+
                 for(var todeliverorders of todeliverorderffi){
                 var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
                 var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
@@ -1330,6 +1336,11 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 var audioid = document.getElementById('audioid')
                 audioid.play();
                 
+                }else if(sound=='pause'){
+                var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
+                acknowledgeriderbuttonid.style.display='none';
+                var audioid = document.getElementById('audioid')
+                audioid.pause();
                 }
                 for(var todeliverorders of todeliverorderffi){
                 var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
