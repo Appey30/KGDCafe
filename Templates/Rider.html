@@ -1275,12 +1275,14 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 var length = todeliverorderffi.length;
                 if(length>0){
                 var audioid = document.getElementById('audioid')
-                audioid.play();
-                }else if(sound=='pause'){
-                var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
-                acknowledgeriderbuttonid.style.display='none';
-                var audioid = document.getElementById('audioid')
-                audioid.pause();
+                    if(sound=='pause'){
+                        var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
+                        acknowledgeriderbuttonid.style.display='none';
+                        audioid.pause();
+                    }else{
+                    audioid.play();
+                    }
+                
                 }
 
                 for(var todeliverorders of todeliverorderffi){
@@ -1334,13 +1336,14 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 var length = todeliverorderffi.length;
                 if(length>0){
                 var audioid = document.getElementById('audioid')
-                audioid.play();
+                    if(sound=='pause'){
+                        var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
+                        acknowledgeriderbuttonid.style.display='none';
+                        audioid.pause();
+                    }else{
+                    audioid.play();
+                    }
                 
-                }else if(sound=='pause'){
-                var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
-                acknowledgeriderbuttonid.style.display='none';
-                var audioid = document.getElementById('audioid')
-                audioid.pause();
                 }
                 for(var todeliverorders of todeliverorderffi){
                 var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
@@ -1359,7 +1362,7 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 bargy = "None";
                 }
 
-                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbut' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
+                dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbutacknowledge' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
                 
                 }
                 $('#deliverthis').append(dataHtml);
