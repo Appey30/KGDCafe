@@ -660,7 +660,7 @@ def posthree(request):
                 deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                 deletethis.delete()
             Done = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone)
-            if contactnumberdonei[0]['DeliveryFee'] != None:
+            if contactnumberdonei[0]['DeliveryFee'] != None and Sales.objects.filter(contactnumber=contactnumberdonei[0]['contactnumber'], CusName=contactnumberdonei[0]['Customername'], productname='DeliveryFee', DateTime=contactnumberdonei[0]['DateTime']):
                 devfeeassales=Sales.objects.create(
                         user=userr,
                         CusName=contactnumberdonei[0]['Customername'],
@@ -2067,7 +2067,7 @@ def postwo(request):
                 deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                 deletethis.delete()
             Done = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone)
-            if contactnumberdonei[0]['DeliveryFee'] != None:
+            if contactnumberdonei[0]['DeliveryFee'] != None and  and Sales.objects.filter(contactnumber=contactnumberdonei[0]['contactnumber'], CusName=contactnumberdonei[0]['Customername'], productname='DeliveryFee', DateTime=contactnumberdonei[0]['DateTime']:
                 devfeeassales=Sales.objects.create(
                         user=userr,
                         CusName=contactnumberdonei[0]['Customername'],
@@ -4281,7 +4281,7 @@ def kgddashboard(request):
                     deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                     deletethis.delete()
                 Done = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone)
-                if contactnumberdonei[0]['DeliveryFee'] != None:
+                if contactnumberdonei[0]['DeliveryFee'] != None  and Sales.objects.filter(contactnumber=contactnumberdonei[0]['contactnumber'], CusName=contactnumberdonei[0]['Customername'], productname='DeliveryFee', DateTime=contactnumberdonei[0]['DateTime']:
                     devfeeassales=Sales.objects.create(
                             user=userr,
                             CusName=contactnumberdonei[0]['Customername'],
@@ -5179,7 +5179,7 @@ def kgddashboard(request):
                     deletethis=Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone, productname='Ready')
                     deletethis.delete()
                 Done = Acceptorder.objects.filter(Admin=userr,contactnumber=contactnumberdone)
-                if contactnumberdonei[0]['DeliveryFee'] != None:
+                if contactnumberdonei[0]['DeliveryFee'] != None  and Sales.objects.filter(contactnumber=contactnumberdonei[0]['contactnumber'], CusName=contactnumberdonei[0]['Customername'], productname='DeliveryFee', DateTime=contactnumberdonei[0]['DateTime']:
                     devfeeassales=Sales.objects.create(
                             user=userr,
                             CusName=contactnumberdonei[0]['Customername'],
