@@ -2920,17 +2920,22 @@ def StocksandExp(request):
         stock = Sales.objects.all().filter(user=userr, Categoryaes__saecatchoices='Stock', DateTime__month = datetoday)
        
         expenses= Sales.objects.all().filter(user=userr, Categoryaes__saecatchoices='Expenses', DateTime__month = datetoday)
-       
+        if len(Acceptorder.objects.filter(Admin=userr, productname='Ready'))>0:
+            initial=Acceptorder.objects.filter(Admin=userr, productname='Ready').values_list('contactnumber', flat=True)
+            readylistcontact=list(initial)
+        else:
+            readylistcontact=list(Acceptorder.objects.none())
+        print('readylistcontact1:',readylistcontact)
         if request.method == "POST":
             sae = stocksandexpenses(request.POST, request.FILES)
             if sae.is_valid():
                 sae.save()
                 return HttpResponseRedirect('/index/kgddashboard')
             else:
-                return render(request, 'StocksandExp.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'sae':sae,'userr':userr, 'stock':stock,'expenses':expenses})
+                return render(request, 'StocksandExp.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'sae':sae,'userr':userr, 'stock':stock,'expenses':expenses})
         else:
            sae = stocksandexpenses
-           return render(request, 'StocksandExp.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'sae':sae,'userr':userr, 'stock':stock,'expenses':expenses})
+           return render(request, 'StocksandExp.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'sae':sae,'userr':userr, 'stock':stock,'expenses':expenses})
         return render(request, 'StocksandExp.html')
 
 #@login_required
