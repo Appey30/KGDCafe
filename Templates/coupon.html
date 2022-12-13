@@ -1193,7 +1193,7 @@ border-radius: 30px;
 border: 2px solid #615632;
 }
 
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 740px;
@@ -1204,14 +1204,14 @@ table {
 
 
 }
-th{
+.mainth{
   text-align: left;
   padding: 10px;
   color:white;
   font-size:15px;
   font-weight:bold;
 }
-td {
+.maintd {
     font-size:10px;
   text-align: left;
   padding: 10px;
@@ -1219,7 +1219,7 @@ td {
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -1712,13 +1712,13 @@ z-index:100;
 </div>   
 <div class="tablecontainer">
 <div id="qrcodesample"></div>
-<table>
-  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
-    <th class="punchedtext">Coupon Name</th>
-    <th class="punchedtext">Category</th>
-    <th class="punchedtext">Code</th>
-     <th class="punchedtext">Activate</th>
-     <th class="punchedtext">Action</th>
+<table class="maintable">
+  <tr class="maintr" style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
+    <th class="punchedtext mainth">Coupon Name</th>
+    <th class="punchedtext mainth">Category</th>
+    <th class="punchedtext mainth">Code</th>
+     <th class="punchedtext mainth">Activate</th>
+     <th class="punchedtext mainth">Action</th>
   </tr>
   
 {% for product1 in couponss %}
@@ -1994,7 +1994,7 @@ function ajaxthetable(){
                 }
 
 
-                    dataHTML +='<tr><td>'+couponlisti[i]["fields"].couponname+'</td><td>'+categ+'</td><td>'+couponlisti[i]["fields"].code+'</td><td><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["pk"]+')" '+check+'> <span class="slider round"></span></label></td><td><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
+                    dataHTML +='<tr class="maintr"><td class="maintd">'+couponlisti[i]["fields"].couponname+'</td><td "class="maintd">'+categ+'</td><td "class="maintd">'+couponlisti[i]["fields"].code+'</td><td "class="maintd"><label class="switch"><input type="checkbox" onchange="activateornot('+couponlisti[i]["pk"]+')" '+check+'> <span class="slider round"></span></label></td><td "class="maintd"><button class="edit">Edit</button><button class="delete">Delete</button></td></tr>';
 
                 }
             }
