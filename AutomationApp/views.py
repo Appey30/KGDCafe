@@ -1146,10 +1146,10 @@ def products(request):
                 
                 return render(request, 'Products.html',{'readylistcontact':readylistcontact,'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
             else:
-                return render(request, 'Products.html',{'readylistcontact':readylistcontact,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+                return render(request, 'Products.html',{'readylistcontact':readylistcontact,'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
         else:
            aprod = editform
-           return render(request, 'Products.html',{'readylistcontact':readylistcontact,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+           return render(request, 'Products.html',{'readylistcontact':readylistcontact,'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
 
 @login_required
 def posthree(request):
@@ -5317,7 +5317,7 @@ def saletoday(request):
     else:
         readylistcontact=list(Acceptorder.objects.none())
     print('readylistcontact1:',readylistcontact)
-    return render(request, 'saletoday.html',{'readylistcontact':readylistcontact, 'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
+    return render(request, 'saletoday.html',{'readylistcontact':readylistcontact,'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
 
 
 @login_required
