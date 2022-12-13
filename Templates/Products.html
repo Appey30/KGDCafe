@@ -143,7 +143,7 @@ overflow:auto;
 border-radius: 30px;
 border: 2px solid #615632;
 }
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 1830px;
@@ -154,21 +154,21 @@ table {
 
 
 }
-th{
+.mainth{
   text-align: left;
   padding: 16px;
   color:white;
   font-size:30px;
   font-weight:bold;
 }
-td {
+.maintd {
   text-align: left;
   padding: 16px;
   color:#A0A0A0
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -203,6 +203,7 @@ background-color:#f44336;
 border-radius:15px;
 width:60px;
 height:30px;
+border: 0;
 }
 .edit{
 margin:0px;
@@ -211,6 +212,7 @@ background-color:#04AA6D;
 border-radius:15px;
 width:60px;
 height:30px;
+border: 0;
 }
 .btn02 {
 
@@ -272,7 +274,7 @@ height:30px;
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-/* Set a style for all buttons */
+/* Set a style for all buttons 
 button {
   background-color: #04AA6D;
   color: white;
@@ -287,7 +289,7 @@ button {
 button:hover {
   opacity:1;
 }
-
+*/
 /* Float cancel and delete buttons and add an equal width */
 .cancelbtn, .deletebtn {
   float: left;
@@ -512,7 +514,7 @@ overflow:auto;
 border-radius: 30px;
 border: 2px solid #615632;
 }
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 870px;
@@ -523,21 +525,21 @@ table {
 
 
 }
-th{
+.mainth{
   text-align: left;
   padding: 10px;
   color:white;
   font-size:20px;
   font-weight:bold;
 }
-td {
+.maintd {
   text-align: left;
   padding: 15px;
   color:#A0A0A0
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -578,6 +580,7 @@ width:60px;
 height:30px;
 position:relative;
 left:-20px;
+border: 0;
 }
 .edit{
 margin:0px;
@@ -588,6 +591,7 @@ width:60px;
 height:30px;
 position:relative;
 left:-20px;
+border: 0;
 }
 .btn02 {
 
@@ -663,7 +667,7 @@ margin:0px 0px 0px 0px;
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-/* Set a style for all buttons */
+/* Set a style for all buttons 
 button {
   background-color: #04AA6D;
   color: white;
@@ -678,7 +682,7 @@ button {
 button:hover {
   opacity:1;
 }
-
+*/
 /* Float cancel and delete buttons and add an equal width */
 .cancelbtn, .deletebtn {
   float: left;
@@ -878,7 +882,7 @@ border-radius: 30px;
 border: 2px solid #615632;
 }
 
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 740px;
@@ -889,14 +893,14 @@ table {
 
 
 }
-th{
+.mainth{
   text-align: left;
   padding: 10px;
   color:white;
   font-size:15px;
   font-weight:bold;
 }
-td {
+.maintd {
     font-size:10px;
   text-align: left;
   padding: 10px;
@@ -904,7 +908,7 @@ td {
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -945,6 +949,7 @@ width:30px;
 height:15px;
 position:relative;
 left:-10px;
+border: 0;
 }
 .edit{
 margin:0px;
@@ -955,6 +960,7 @@ width:30px;
 height:15px;
 position:relative;
 left:-10px;
+border: 0;
 }
 .btn02 {
 
@@ -1028,7 +1034,7 @@ margin:0px 0px 0px 0px;
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
-/* Set a style for all buttons */
+/* Set a style for all buttons 
 button {
   background-color: #04AA6D;
   color: white;
@@ -1043,7 +1049,7 @@ button {
 button:hover {
   opacity:1;
 }
-
+*/
 
 
 /* Add a color to the cancel button */
@@ -1271,14 +1277,14 @@ hr {
 </div>   
 <div class="tablecontainer">
 <table>
-  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
-    <th class="punchedtext">Item Name</th>
-    <th class="punchedtext">Size</th>
-    <th class="punchedtext">SRP</th>
-    <th class="punchedtext">Cost</th>
-     <th class="punchedtext">Category</th>
-     <th class="punchedtext">Subcategory</th>
-     <th class="punchedtext">Action</th>
+  <tr class="maintr" style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
+    <th class="punchedtext mainth">Item Name</th>
+    <th class="punchedtext mainth">Size</th>
+    <th class="punchedtext mainth">SRP</th>
+    <th class="punchedtext mainth">Cost</th>
+     <th class="punchedtext mainth">Category</th>
+     <th class="punchedtext mainth">Subcategory</th>
+     <th class="punchedtext mainth">Action</th>
   </tr>
   
 {% for product1 in productss %}
@@ -1290,22 +1296,22 @@ hr {
         {% endfor %}
     {% endif %}
 
-  <tr>
+  <tr class="maintr">
   
-    <td>{{ product1.productname }}</td>
-    <td>
+    <td class="maintd">{{ product1.productname }}</td>
+    <td class="maintd">
     {% if product1.Size %}
     {{ product1.Size }}
     {% else %}
     {{ product1.PSize }}
     {% endif %}
     </td>
-    <td>{{ product1.Price }}</td>
-    <td>{{ product1.Cost }}</td>
-    <td>{{ product1.Category }}</td>
-    <td>{{ product1.Subcategory }}</td>
+    <td class="maintd">{{ product1.Price }}</td>
+    <td class="maintd">{{ product1.Cost }}</td>
+    <td class="maintd">{{ product1.Category }}</td>
+    <td class="maintd">{{ product1.Subcategory }}</td>
  
-    <td>
+    <td class="maintd">
     <button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
    <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>
     </td>

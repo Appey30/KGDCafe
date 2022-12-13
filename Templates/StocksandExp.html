@@ -313,7 +313,7 @@ overflow:auto;
   border-radius: 15px;
   border: 2px solid #615632;
 }
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 99%;
@@ -322,14 +322,14 @@ table {
 
 }
 
-th, td {
+.mainth, .maintd {
   text-align: left;
   padding: 16px;
   color:white;
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -562,7 +562,7 @@ overflow:auto;
   border: 2px solid #615632;
 }
 /* TABLE */
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
@@ -570,14 +570,14 @@ table {
 
 }
 
-th, td {
+.mainth, .maintd {
   text-align: left;
   padding: 16px;
   color:white;
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -846,7 +846,7 @@ z-index:-1;
   border: 2px solid #615632;
 }
 /* TABLE */
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
@@ -854,14 +854,14 @@ table {
 
 }
 
-th, td {
+.mainth, .maintd {
   text-align: left;
   padding: 16px;
   color:white;
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -1098,7 +1098,7 @@ z-index:-1;
   border: 2px solid #615632;
 }
 /* TABLE */
-table {
+.maintable {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
@@ -1106,14 +1106,14 @@ table {
 
 }
 
-th, td {
+.mainth, .maintd {
   text-align: left;
   padding: 16px;
   color:white;
 
 }
 
-tr:nth-child(even) {
+.maintr:nth-child(even) {
   background-color: #1a1915;
   color:white;
 }
@@ -1219,24 +1219,24 @@ z-index:-1;
 <div id="Stocks" class="tabcontent">
   <h8 class="punchedtext">Stocks</h8>
   <div class="tablecontainer">
-  <table style="border:transparent;">
-  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:1;">
-    <th >Date</th>
-    <th >Category</th>
-    <th >Subcategory</th>
-    <th >Amount</th>
-    <th >Receipt</th>
+  <table class="maintable" style="border:transparent;">
+  <tr class="maintr" style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:1;">
+    <th class="mainth">Date</th>
+    <th class="mainth">Category</th>
+    <th class="mainth">Subcategory</th>
+    <th class="mainth">Amount</th>
+    <th class="mainth">Receipt</th>
   </tr>
   {% for stocks in stock %}
-  <tr >
-    <td style="color:#A0A0A0;">{{stocks.DateTime|date:'N d, Y'}}</td>
-    <td style="color:#A0A0A0;">{{stocks.Categoryaes}}</td>
-    <td style="color:#A0A0A0;">{{stocks.Subcategorys}}</td>
-    <td style="color:#A0A0A0;">₱{{stocks.Amount}}</td>
+  <tr class="maintr">
+    <td class="maintd" style="color:#A0A0A0;">{{stocks.DateTime|date:'N d, Y'}}</td>
+    <td class="maintd" style="color:#A0A0A0;">{{stocks.Categoryaes}}</td>
+    <td class="maintd" style="color:#A0A0A0;">{{stocks.Subcategorys}}</td>
+    <td class="maintd" style="color:#A0A0A0;">₱{{stocks.Amount}}</td>
     {% if stocks.Receipt %}
-    <td class="punchedtext" style="position:relative;left:-40px;font-size:15px;z-index:0;" ><a href="{{stocks.Receipt.url}}">Click here to view Receipt</a></td>
+    <td class="punchedtext maintd" style="position:relative;left:-40px;font-size:15px;z-index:0;" ><a href="{{stocks.Receipt.url}}">Click here to view Receipt</a></td>
     {% else %}
-    <td style="color:#A0A0A0;"></td>
+    <td class="maintd" style="color:#A0A0A0;"></td>
     {% endif %}
   </tr>
   {% endfor %}
@@ -1249,21 +1249,21 @@ z-index:-1;
 <div id="Expenses" class="tabcontent">
   <h8 class="punchedtext">Expenses</h8>
   <div class="tablecontainer">
-  <table style="border:transparent;">
-  <tr style="position:absolute;position:sticky;top:0;background-color:#2d2c29;">
-    <th >Date</th>
-    <th >Category</th>
-    <th >Subcategory</th>
-    <th >Amount</th>
-    <th>Description</th>
+  <table class="maintable" style="border:transparent;">
+  <tr class="maintr" style="position:absolute;position:sticky;top:0;background-color:#2d2c29;">
+    <th class="mainth">Date</th>
+    <th class="mainth">Category</th>
+    <th class="mainth">Subcategory</th>
+    <th class="mainth">Amount</th>
+    <th class="mainth">Description</th>
   </tr>
   {% for expense in expenses %}
-  <tr >
-    <td style="color:#A0A0A0;">{{expense.DateTime|date:'N d, Y'}}</td>
-    <td style="color:#A0A0A0;">{{expense.Categoryaes}}</td>
-    <td style="color:#A0A0A0;">{{expense.Subcategorye}}</td>
-    <td style="color:#A0A0A0;">₱{{expense.Amount}}</td>
-    <td style="color:#A0A0A0;">{{expense.Description}}</td>
+  <tr class="maintr" >
+    <td class="maintd" style="color:#A0A0A0;">{{expense.DateTime|date:'N d, Y'}}</td>
+    <td class="maintd" style="color:#A0A0A0;">{{expense.Categoryaes}}</td>
+    <td class="maintd" style="color:#A0A0A0;">{{expense.Subcategorye}}</td>
+    <td class="maintd" style="color:#A0A0A0;">₱{{expense.Amount}}</td>
+    <td class="maintd" style="color:#A0A0A0;">{{expense.Description}}</td>
   </tr>
   {% endfor %}
 </table>
