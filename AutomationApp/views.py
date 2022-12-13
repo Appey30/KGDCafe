@@ -718,7 +718,13 @@ def coupon(request):
           'Code':Code
           }
           return JsonResponse(data)
-       return render(request, 'coupon.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
+       if len(Acceptorder.objects.filter(Admin=userr, productname='Ready'))>0:
+            initial=Acceptorder.objects.filter(Admin=userr, productname='Ready').values_list('contactnumber', flat=True)
+            readylistcontact=list(initial)
+       else:
+            readylistcontact=list(Acceptorder.objects.none())
+       print('readylistcontact1:',readylistcontact)
+       return render(request, 'coupon.html',{'readylistcontact':readylistcontact, 'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'couponss':couponss,'userr':userr})
 
 
 
