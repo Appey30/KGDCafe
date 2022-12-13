@@ -1125,7 +1125,12 @@ def products(request):
            notifyadmin=submitstockorder.objects.all().count()
         else:
            notifyadmin=0
-       
+        if len(Acceptorder.objects.filter(Admin=userr, productname='Ready'))>0:
+            initial=Acceptorder.objects.filter(Admin=userr, productname='Ready').values_list('contactnumber', flat=True)
+            readylistcontact=list(initial)
+        else:
+            readylistcontact=list(Acceptorder.objects.none())
+        print('readylistcontact1:',readylistcontact)
         productss = user1.objects.all().filter(user__id=userr).order_by('-id')
         submitted = False
         if request.method == "POST":
@@ -1133,12 +1138,12 @@ def products(request):
             if aprod.is_valid():
                 aprod.save()
                 
-                return render(request, 'Products.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+                return render(request, 'Products.html',{'readylistcontact':readylistcontact,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
             else:
-                return render(request, 'Products.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+                return render(request, 'Products.html',{'readylistcontact':readylistcontact,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
         else:
            aprod = editform
-           return render(request, 'Products.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
+           return render(request, 'Products.html',{'readylistcontact':readylistcontact,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
 
 @login_required
 def posthree(request):
