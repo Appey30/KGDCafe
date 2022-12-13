@@ -1277,7 +1277,8 @@ var todelivertbodydata = document.getElementById('deliverthis');
                 var audioid = document.getElementById('audioid')
                     if(sound=='pause'){
                         var acknowledgeriderbuttonid = document.getElementById('acknowledgeriderbuttonid');
-                        acknowledgeriderbuttonid.style.display='none';
+                        acknowledgeriderbuttonid.setAttribute('disabled', '');
+                        
                         audioid.pause();
                     }else{
                     audioid.play();
