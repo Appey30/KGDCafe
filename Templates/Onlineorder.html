@@ -27869,6 +27869,7 @@ longitude.value = position.lng;
             <input type="hidden" value="" id="totalwithdevfeeid" name="totalwithdevfeename">
             <input type="hidden" value="" id="devfeeid" name="devfeename">
             <input type="hidden" value="" id="tokensid" name="tokens">
+            <input type="hidden" value="" id="discountid" name="discount">
             {% if couponvalidity == "Valid" or couponvalidity == 'KGDDeliveryFree' %}
             <input type="hidden" value="{{prmcd}}" id="getpromocodeid" name="getpromocodename">
             {% else %}
@@ -29557,7 +29558,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
                 discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
                 var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
                 datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-                
+                document.getElementById('discountid').value = {{discount}};
             }else{
                 if(totalpunched >= {{rqrd_minimumamnt}}){
                     datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinal].productname+'</td><td class="tdpunched">'+categoryfinalfinal+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Size+allpunched[indexfinderfreefriesfinal].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinal+' x '+allpunched[indexfinderfreefriesfinal].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinal].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinal].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinal].index+'" value="'+allpunched[indexfinderfreefriesfinal].index+'">Delete</button></td></tr>';
@@ -29565,7 +29566,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
                     discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
                     var discountedtotalhere = '₱'+String(discountedtotalherei.toFixed(2));
                     datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
-        
+                    document.getElementById('discountid').value = {{discount}};
             
                 }else{
                     discountedtotalherei = '';
@@ -29588,6 +29589,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
                 datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
                 datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
                 tablebody.innerHTML = datahtmltest;
+                document.getElementById('discountid').value = {{discount}};
             }else{
                 if(totalpunched >= {{rqrd_minimumamnt}}){
                     discountedtotalherei = totalpunched-(totalpunched*(parseInt('{{discount}}')/100));
@@ -29595,6 +29597,7 @@ if(indexfinderfreefriesfinal !== -1  && allpunched[indexfinderfreefriesfinal].Qt
                     datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
                     datahtmltest = datahtmltest+'<tr class="trpunchedtable"><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"  style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched"  style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
                     tablebody.innerHTML = datahtmltest;
+                    document.getElementById('discountid').value = {{discount}};
                 }else{
                      discountedtotalherei = '';
                     tablebody.innerHTML = datahtmltest;
@@ -30049,10 +30052,12 @@ allpunched[indexfinderfreefriesdelete].Qty =allpunched[indexfinderfreefriesdelet
                         if({{rqrd_minimumamnt}} == 0){
                             document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
                             totalwithoudevfee = discountedtotalherei;
+                            document.getElementById('discountid').value = {{discount}};
                         }else{
                             if(totalpunched >= {{rqrd_minimumamnt}}){
                                 document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+discountedtotalherei.toFixed(2);
                                 totalwithoudevfee = discountedtotalherei;
+                                document.getElementById('discountid').value = {{discount}};
                             }else{
                                 document.getElementById('checkoutbut').value = 'Checkout - Total:  ₱'+totalpunched.toFixed(2);
                                 totalwithoudevfee = totalpunched;
@@ -30090,6 +30095,7 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
 
                 dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
                 tablebody.innerHTML = dataHtmlcart;
+                document.getElementById('discountid').value = {{discount}};
             }else{
                 if(totalpunched >= {{rqrd_minimumamnt}}){
                     dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
@@ -30097,6 +30103,7 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
 
                     dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
                     tablebody.innerHTML = dataHtmlcart;
+                    document.getElementById('discountid').value = {{discount}};
                 }else{
                     tablebody.innerHTML = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].Qty+'</td><td class="tdpunched" style="font-weight:bold;">'+allpunched[indexfinderfreefriesfinals].productname+'</td><td class="tdpunched">'+categoryfinalfinals+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Size+allpunched[indexfinderfreefriesfinals].PSize+'</td><td class="tdpunched">'+addonqtydisplaysakefinals+' x '+allpunched[indexfinderfreefriesfinals].Addonsname+'</td><td class="tdpunched">'+allpunched[indexfinderfreefriesfinals].Subtotal+'</td><td class="tdpunched"><button disabled="disabled" style="opacity:0.5;cursor:not-allowed;" onclick="delitem('+allpunched[indexfinderfreefriesfinals].index+')" id="delitemid'+allpunched[indexfinderfreefriesfinals].index+'" value="'+allpunched[indexfinderfreefriesfinals].index+'">Delete</button></td></tr>';
         
@@ -30115,11 +30122,13 @@ if(indexfinderfreefriesfinals !== -1 && allpunched[indexfinderfreefriesfinals].Q
                 dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
                 dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
                 tablebody.innerHTML = dataHtmlcart;
+                document.getElementById('discountid').value = {{discount}};
             }else{
                 if(totalpunched >= {{rqrd_minimumamnt}}){
                     dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Total: </td><td class="tdpunched">₱'+totalpunched.toFixed(2)+'</td><td class="tdpunched"></td></tr>';
                     dataHtmlcart = dataHtmlcart+'<tr class="trpunchedtable""><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched" style="font-weight:bold;"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched" style="color:red;font-weight:bold;">Discount:'+{{discount}}+'% </td><td class="tdpunched" style="color:red;font-weight:bold;">'+discountedtotalhere+'</td><td class="tdpunched"></td></tr>';
                     tablebody.innerHTML = dataHtmlcart;
+                    document.getElementById('discountid').value = {{discount}};
                 }else{
                     tablebody.innerHTML = dataHtmlcart;
                 }
