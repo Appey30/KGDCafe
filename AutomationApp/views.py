@@ -3163,7 +3163,7 @@ class JSONEncoder(json.JSONEncoder):
 
 @login_required
 def postwo(request):
-        print(Sales.objects.filter(codecoupon='mZfXKc').values())
+        print(Sales.objects.filter(codecoupon='mZfXKc').values('CusName'))
         userr=request.user.id
         #print(Acceptorder.objects.filter(Customername='Ysabelle Caluza').values_list('LocationMarker', flat=True)[0])
         if request.GET.get('acceptcontactno'):
