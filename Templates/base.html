@@ -1799,9 +1799,9 @@ for(var showorders of showorder){
             pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
             };
 
-            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+parseFloat(totalpunched).toFixed(2)+'</td></tr>';
             dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
-            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+grandtotal+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp">₱'+parseFloat(grandtotal).toFixed(2)+'</td></tr>';
             if(showorder[0]['gpslat'] && showorder[0]['gpslat'] !== 14.5955){
             dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
             }else{
@@ -1913,11 +1913,11 @@ for(var showorders of acceptedorder){
             dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase"> ₱'+showorders.Subtotal+'.00</td></tr>';
             };
             
-            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+parseFloat(totalpunched).toFixed(2)+'</td></tr>';
             
             dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
             
-            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp"> ₱'+grandtotal+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp"> ₱'+parseFloat(grandtotal).toFixed(2)+'</td></tr>';
             if(acceptedorder[0]['gpslat'] && acceptedorder[0]['gpslat'] !== 14.5955 ){
             dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
             }else{
@@ -2035,11 +2035,11 @@ for(var showorders of rejectedorder){
             dataHtml = dataHtml + '<tr class="trpunchedtablebase"><td class="tdqueuebase">'+showorders.Qty+'</td><td class="tdqueuebase">'+showorders.productname+'</td><td class="tdqueuebase">'+Categoryfinal+'</td><td class="tdqueuebase">'+Sizefinal+'</td><td class="tdqueuebase">'+addonsfinal+'</td><td class="tdqueuebase">₱'+showorders.Subtotal+'.00</td></tr>';
             };
             
-            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+totalpunched+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Subtotal:</td><td class="tdqueuebase value"> ₱'+parseFloat(totalpunched).toFixed(2)+'</td></tr>';
             
             dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="key">Delivery Fee:</td><td class="tdqueuebase value"> ₱'+devfee+'.00</td></tr>';
             
-            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp"> ₱'+grandtotal+'.00</td></tr>';
+            dataHtml = dataHtml + '<tr class=""><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase"></td><td class="tdqueuebase totalspecial">Total:</td><td class="tdqueuebase totalphp"> ₱'+parseFloat(grandtotal).toFixed(2)+'</td></tr>';
             if(rejectedorder[0]['gpslat'] && rejectedorder[0]['gpslat'] !== 14.5955){
             dataHtml = dataHtml + "<tr class=''><td class='tdqueuebase'></td><td class='tdqueuebase'></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueuebase'><button class='prodbutbase' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueuebase totalspecial'></td><td class='tdqueuebase totalphp'></td></tr>";
             }else{
