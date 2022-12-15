@@ -6478,7 +6478,7 @@ def kgddashboard(request):
                     ]
                 ddailyi = Dailysales.objects.bulk_create(objs)
                 ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                 totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                 #FOR MONTH
                 monthly={}
@@ -6560,7 +6560,7 @@ def kgddashboard(request):
                         ]
                     ddailyi = Dailysales.objects.bulk_create(objs)
                     ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                     totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                     #for month 2 Dailysales
                     monthdistinct0=Dailysales.objects.filter(user=userr).values('DateTime__month').distinct()
@@ -6703,7 +6703,7 @@ def kgddashboard(request):
                     deletelatest=getobjdate.delete()
                     ddailyi = Dailysales.objects.bulk_create(objs)
                     ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                     totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                     #for month 2 Dailysales
                     monthdistinct0=Dailysales.objects.filter(user=userr).values('DateTime__month').distinct()
@@ -6811,7 +6811,7 @@ def kgddashboard(request):
                     return HttpResponseRedirect(str(request.GET.get('next')))
                 else:
                     ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                     totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                     #FOR MONTH
                     monthlysales=Dailysales.objects.filter(user=userr).order_by('DateTime')
@@ -7428,7 +7428,7 @@ def kgddashboard(request):
                     ]
                 ddailyi = Dailysales.objects.bulk_create(objs)
                 ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                 totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                 #FOR MONTH
                 monthly={}
@@ -7484,7 +7484,7 @@ def kgddashboard(request):
                         ]
                     ddailyi = Dailysales.objects.bulk_create(objs)
                     ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                     totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                     #for month 2 Dailysales
                     monthdistinct0=Dailysales.objects.filter(user=userr).values('DateTime__month').distinct()
@@ -7601,7 +7601,7 @@ def kgddashboard(request):
                     deletelatest=getobjdate.delete()
                     ddailyi = Dailysales.objects.bulk_create(objs)
                     ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                     totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                     #for month 2 Dailysales
                     monthdistinct0=Dailysales.objects.filter(user=userr).values('DateTime__month').distinct()
@@ -7684,7 +7684,7 @@ def kgddashboard(request):
 
                 else:
                     ddaily = Dailysales.objects.filter(user=userr).order_by('DateTime')
-                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum')
+                    totalsales = ddaily.aggregate(Sum('Sales')).get('Sales__sum',0.00)
                     totalnet = ddaily.aggregate(Sum('Net')).get('Net__sum')
                     #FOR MONTH
                     monthlysales=Dailysales.objects.filter(user=userr).order_by('DateTime')
