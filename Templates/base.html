@@ -1813,8 +1813,8 @@ for(var showorders of showorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notess;
             var billllssssid = document.getElementById('billllssssid');
             var susuklianvar = 0;
-            susuklianvar = parseInt(bill)-parseInt(grandtotal);
-            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00     Change: ₱'+susuklianvar+'.00';
+            susuklianvar = parseInt(bill)-parseFloat(grandtotal);
+            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00     Change: ₱'+parseFloat(susuklianvar).toFixed(2);
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
             //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
@@ -1930,8 +1930,8 @@ for(var showorders of acceptedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notesss;
             var billllssssid = document.getElementById('billllssssid');
             var susuklianvar = 0;
-            susuklianvar = parseInt(bill)-parseInt(grandtotal);
-            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00     Change: ₱'+susuklianvar+'.00';
+            susuklianvar = parseInt(bill)-parseFloat(grandtotal);
+            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00     Change: ₱'+parseFloat(susuklianvar).toFixed(2);
 
 
 
@@ -2054,8 +2054,8 @@ for(var showorders of rejectedorder){
             landmarknotessssid.innerHTML = 'Notes/Landmarks: '+notessss;
             var billllssssid = document.getElementById('billllssssid');
             var susuklianvar = 0;
-            susuklianvar = parseInt(bill)-parseInt(grandtotal);
-            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00     Change: ₱'+susuklianvar+'.00';
+            susuklianvar = parseInt(bill)-parseFloat(grandtotal);
+            billllssssid.innerHTML = 'Change For: ₱'+bill+'.00     Change: ₱'+parseFloat(susuklianvar).toFixed(2);
             var breakline = document.createElement("br");
             var calla = document.createElement("a");
             //calla.href="tel:0"+contactnumber+"?body=Good Day Maam/Sir "+name+"! We just want to let you know that we have been aknowledged your order/s. Please be prepared for a call in a minute for confirmation. Thank you!";
