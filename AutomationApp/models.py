@@ -190,7 +190,7 @@ class Sales (models.Model):
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
     PSize = models.CharField(max_length = 50, default = '',blank = True, null = True)
     Price = models.IntegerField(blank = True, null = True, default='0')
-    models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
+    Subtotal=models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
     GSubtotal = models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
     Cost = models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
     Qty = models.IntegerField(blank = True, null = True, default='0')
