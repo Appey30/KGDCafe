@@ -235,7 +235,7 @@ class Sales (models.Model):
 class Dailysales (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
     DateTime= models.DateTimeField(default=timezone.now)
-    Sales= models.IntegerField(blank = True, null = True, default='0')
+    Sales= models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
     Expenses= models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
     Startstocks=models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
     Endstocks=models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default='0.00')
