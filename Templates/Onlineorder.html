@@ -26328,12 +26328,12 @@ Your browser does not support the audio element.
                                 <div class="card">
 
                                         <div id="hideid{{specialpromob.productname|cut:" " }}" class="myDIV">
-                                            <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+                                            <button id="myBtn" class="infobutton" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
                                         </div>
                                         {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.jpg" %}
-                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%" >
                                         {% else %}
-                                        <img class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)">
+                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" >
                                         {% endif %}
                                         <div class="h3div"><h3>{{specialpromob.productname}}</h3>
                                         </div>
@@ -26698,14 +26698,14 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
    {% for promob in FreeFriespromobuttons %}
         <div class="card">
                         <div id="hideid{{promob.productname|cut:" " }}" class="myDIV">
-                            <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+                            <button id="myBtn" class="infobutton" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
                         </div>
 
 
                         {% if promob.productname == promob.productname and "Promo.png" %}
-                        <img class="cardimg" src="{% static promob.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
+                        <img onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" class="cardimg" src="{% static promob.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{promob.productname|cut:" " }}" >
                         {% else %}
-                        <img class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" customdescription="{{promob.PDescription}}" onclick="showdescriptionPromo('{{promob.productname}}', this)">
+                        <img onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" >
                         {% endif %}
                   <div class="h3divpromo"><h3>{{promob.productname}}</h3>
                   </div>
@@ -30593,14 +30593,14 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
 
 <div class="card">
 <div id="hideid{{milkteab.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)"></i></button>
 </div>
 
 
         {% if milkteab.productname == milkteab.productname and "MT.png" %}
-        <img class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        <img onclick="atbmilktea('{{milkteab.productname}}', {{milkteab.Price}},'{{milkteab.Size}}', '{{milkteab.Category}}')" class="cardimg" src="{% static milkteab.productname %}MT.png" style="width:100%" id="{{milkteab.productname|cut:" " }}" >
         {% else %}
-        <img class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" customdescription="{{milkteab.PDescription}}" onclick="showdescriptionMT('{{milkteab.productname}}', this)">
+        <img onclick="atbmilktea('{{milkteab.productname}}', {{milkteab.Price}},'{{milkteab.Size}}', '{{milkteab.Category}}')" class="cardimg" src="#" style="width:100%" id="{{milkteab.productname|cut:" " }}" >
         {% endif %}
 
   {% if milkteab.productname == "Cappuccino Caramel Macchiato" %}
@@ -31800,13 +31800,13 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
     {% endif %}
     -->
 <div class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
 </div>
 
         {% if frappeb.productname == frappeb.productname and "FR.png" %}
-        <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        <img onclick="atbfrappe('{{frappeb.productname}}', {{frappeb.Price}},'{{frappeb.Size}}','{{frappeb.Category}}')" class="cardimg" id="{{frappeb.productname|cut:" " }}" src="{% static frappeb.productname %}FR.png" style="width:100%" >
         {% else %}
-        <img class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{frappeb.PDescription}}" onclick="showdescriptionFR('{{frappeb.productname}}', this)">
+        <img onclick="atbfrappe('{{frappeb.productname}}', {{frappeb.Price}},'{{frappeb.Size}}','{{frappeb.Category}}')" class="cardimg" id="{{frappeb.productname|cut:" " }}" src="#"  style="width:100%" >
         {% endif %}
 
 
@@ -32406,12 +32406,12 @@ totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
 <div class="card">
 
 <div id="hideid{{freezeb.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if freezeb.productname == freezeb.productname and "FRZ.png" %}
-    <img class="cardimg" id="{{freezeb.productname|cut:" " }}" src="{% static freezeb.productname %}FRZ.png" style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
+    <img onclick="atbfreeze('{{freezeb.productname}}',{{freezeb.Price}},'{{freezeb.Category}}')" class="cardimg" id="{{freezeb.productname|cut:" " }}" src="{% static freezeb.productname %}FRZ.png" style="width:100%" >
     {% else %}
-    <img class="cardimg" id="{{freezeb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{freezeb.PDescription}}" onclick="showdescriptionFRZ('{{freezeb.productname}}', this)">
+    <img onclick="atbfreeze('{{freezeb.productname}}',{{freezeb.Price}},'{{freezeb.Category}}')" class="cardimg" id="{{freezeb.productname|cut:" " }}" src="#"  style="width:100%" >
     {% endif %}
   <div class="h3div"><h3>{{freezeb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -32629,12 +32629,12 @@ totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
 {% for cookiesb in cookiesbuttons %}
 <div class="card">
 <div id="hideid{{cookiesb.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if cookiesb.productname == cookiesb.productname %}
-    <img class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="{% static cookiesb.productname %}Cookies.png" style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
+    <img onclick="atbcookies('{{cookiesb.productname}}',{{cookiesb.Price}}, '{{cookiesb.Subcategory}}')" class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="{% static cookiesb.productname %}Cookies.png" style="width:100%" >
     {% else %}
-    <img class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{cookiesb.PDescription}}" onclick="showdescriptionCookies('{{cookiesb.productname}}', this)">
+    <img onclick="atbcookies('{{cookiesb.productname}}',{{cookiesb.Price}}, '{{cookiesb.Subcategory}}')" class="cardimg" id="{{cookiesb.productname|cut:" " }}" src="#"  style="width:100%" >
     {% endif %}
   <div class="h3div"><h3>{{cookiesb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -32851,12 +32851,12 @@ totalcookies.innerHTML = "Total: ₱"+totalcookiess+".00";
 {% for shawarmab in shawarmabuttons %}
 <div class="card">
 <div id="hideid{{shawarmab.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if shawarmab.productname == shawarmab.productname %}
-    <img class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="{% static shawarmab.productname %}Shawarma.png" style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
+    <img onclick="atbshawarma('{{shawarmab.productname}}', {{shawarmab.Price}}, '{{shawarmab.Subcategory}}')" class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="{% static shawarmab.productname %}Shawarma.png" style="width:100%" >
     {% else %}
-    <img class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{shawarmab.PDescription}}" onclick="showdescriptionShawarma('{{shawarmab.productname}}', this)">
+    <img onclick="atbshawarma('{{shawarmab.productname}}', {{shawarmab.Price}}, '{{shawarmab.Subcategory}}')" class="cardimg" id="{{shawarmab.productname|cut:" " }}" src="#"  style="width:100%" >
     {% endif %}
   <div class="h3div"><h3>{{shawarmab.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -33075,12 +33075,12 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
 {% else %}
 <div class="card">
 <div id="hideid{{friesb.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if friesb.productname == friesb.productname %}
-    <img class="cardimg" id="{{friesb.productname|cut:" " }}" src="{% static friesb.productname %}Fries.png" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
+    <img onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '{{friesb.productname }}', '{{friesb.Subcategory}}')" class="cardimg" id="{{friesb.productname|cut:" " }}" src="{% static friesb.productname %}Fries.png" style="width:100%" >
     {% else %}
-    <img class="cardimg" id="{{friesb.productname|cut:" " }}" src="#" style="width:100%" customdescription="{{friesb.PDescription}}" onclick="showdescriptionFries('{{friesb.productname}}', this)">
+    <img onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '{{friesb.productname }}', '{{friesb.Subcategory}}')" class="cardimg" id="{{friesb.productname|cut:" " }}" src="#" style="width:100%">
     {% endif %}
   <div class="h3div"><h3>{{friesb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -33305,12 +33305,12 @@ totalfries.innerHTML = "Total: ₱"+totalfries+".00";
 {% for bubwafb in bubwafbuttons %}
 <div class="card">
 <div id="hideid{{bubwafb.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if bubwafb.productname == bubwafb.productname %}
-    <img class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
+    <img onclick="atbbubwaf('{{bubwafb.productname}}', {{bubwafb.Price}}, '{{bubwafb.Productimg.url}}','{{bubwafb.Subcategory}}')" class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="{% static bubwafb.productname %}Bubwaf.png" style="width:100%" >
     {% else %}
-    <img class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{bubwafb.PDescription}}" onclick="showdescriptionBubwaf('{{bubwafb.productname}}', this)">
+    <img onclick="atbbubwaf('{{bubwafb.productname}}', {{bubwafb.Price}}, '{{bubwafb.Productimg.url}}','{{bubwafb.Subcategory}}')" class="cardimg" id="{{bubwafb.productname|cut:" " }}" src="#"  style="width:100%" >
     {% endif %}
   <div class="h3div"><h3>{{bubwafb.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
@@ -33544,12 +33544,12 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
 {% for pizzab in pizzabuttons %}
 <div class="card">
 <div id="hideid{{pizzab.productname|cut:" " }}" class="myDIV">
-    <button id="myBtn" class="infobutton"><i class="fa fa-info-circle" ></i></button>
+    <button id="myBtn" class="infobutton" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
 </div>
     {% if pizzab.productname == pizzab.productname %}
-    <img class="cardimg" id="{{pizzab.productname|cut:" " }}" src="{% static pizzab.productname %}Pizza.png" style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
+    <img onclick="atbpizza('{{pizzab.productname}}', {{pizzab.Price}},'{{pizzab.PSize}}','{{pizzab.Subcategory}}')" class="cardimg" id="{{pizzab.productname|cut:" " }}" src="{% static pizzab.productname %}Pizza.png" style="width:100%" >
     {% else %}
-    <img class="cardimg" id="{{pizzab.productname|cut:" " }}" src="#"  style="width:100%" customdescription="{{pizzab.PDescription}}" onclick="showdescriptionPizza('{{pizzab.productname}}', this)">
+    <img onclick="atbpizza('{{pizzab.productname}}', {{pizzab.Price}},'{{pizzab.PSize}}','{{pizzab.Subcategory}}')" class="cardimg" id="{{pizzab.productname|cut:" " }}" src="#"  style="width:100%" >
     {% endif %}
   <div class="h3div"><h3>{{pizzab.productname}}</h3></div>
   <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
