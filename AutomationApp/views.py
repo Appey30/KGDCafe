@@ -6424,7 +6424,7 @@ def kgddashboard(request):
                     subtotalcosti=Sales.objects.filter(user=userr,DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values('DateTime__day').annotate(subtotalCosti=F('Qty')*F('Cost'))
                     subtotalcost=subtotalcosti.aggregate(Sum('subtotalCosti')).get('subtotalCosti__sum')
                     
-                    salescalc=da1daily.aggregate(Sum('Subtotal')).get("Subtotal__sum")
+                    salescalc=da1daily.aggregate(Sum('Subtotal')).get("Subtotal__sum",0.00)
                     
                     Neto=salescalc-subtotalcost
                     
