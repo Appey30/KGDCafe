@@ -1545,9 +1545,9 @@ $(document).ready(function(){
             var psize = punched["fields"].PSize;
             }
             dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched">'+punched["fields"].CusName+'</td><td class="tdpunched">'+dateTimefinal+'</td><td class="tdpunched">'+punched["fields"].productname+'</td><td class="tdpunched">'+punched["fields"].Qty+'</td><td class="tdpunched">'+size+psize+'</td><td class="tdpunched">'+category+'</td><td class="tdpunched">₱'+punched["fields"].Subtotal+'.00</td></tr>';
-            gtotal = (gtotal+punched["fields"].Subtotal).tofixed(2);
+            gtotal = gtotal+punched["fields"].Subtotal;
             };
-            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Grandtotal: </td><td class="tdpunchedspecial">₱'+gtotal+'</td></tr>';
+            dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched"></td><td class="tdpunched">Grandtotal: </td><td class="tdpunchedspecial">₱'+gtotal.tofixed(2)+'</td></tr>';
             listtbody.innerHTML = dataHtml;
         
 //breakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreakbreak
