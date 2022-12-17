@@ -243,7 +243,7 @@ def marketingaspect(request):
         novcountRO=0
         MAINnovROcounts=0
         while novcountRO<novemberROii.count():
-            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='10' and DateTime__month__lte='11',CusName=novemberROii[novcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='10',  DateTime__month__lte='11',CusName=novemberROii[novcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if novemberROi==2:
                 MAINnovROcounts+=1
             novcountRO+=1
