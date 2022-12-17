@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import timesheet, Acceptorder, Rejectorder,Customer, acknowledgedstockorder,submitstockorder, user1, Categories, Sizes, Subcategories, PSizes, punchedprod,punchedprodso,queue1, queue2, queue3, Sales, Dailysales, couponlist
 from .forms import editform, punched,punchedso, stocksandexpenses,stockorderform
-from django.db.models.functions import Trunc  
+from django.db.models.functions import (TruncDate, TruncDay, TruncHour, TruncMinute, TruncSecond)
 from django.urls import reverse
 import copy, pickle
 import random
