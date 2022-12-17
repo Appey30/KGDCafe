@@ -72,6 +72,14 @@ def totalboughtappey(request):
     return render(request, 'totalboughtappey.html',{'boughtappey':boughtappey})
 
 @login_required
+def marketingaspect(request):
+    userr=request.user.id
+    datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
+    monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
+    yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
+    return render(request, 'Marketing.html',{'userr':userr})
+
+@login_required
 def RiderPOV(request):
     userr=request.user.id
     if is_ajax(request=request) and request.GET.get('riderni'):
