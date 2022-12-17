@@ -133,7 +133,7 @@ def marketingaspect(request):
         jancountRO=0
         MAINjanROcounts=0
         while jancountRO<januaryROii.count():
-            januaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='01',CusName=januaryROii[jancountRO]).annotate(Count('DateTime', distinct=True))
+            januaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='01',CusName=januaryROii[jancountRO]).count('DateTime', distinct=True)
             if januaryROi==2:
                 MAINjanROcounts+=1
             jancountRO+=1
@@ -144,7 +144,7 @@ def marketingaspect(request):
         febcountRO=0
         MAINfebROcounts=0
         while febcountRO<februaryROii.count():
-            febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01',CusName=febuaryROii[febcountRO]).annotate(Count('DateTime', distinct=True))
+            febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01',CusName=febuaryROii[febcountRO]).count('DateTime', distinct=True)
             if febuaryROi==2:
                 MAINfebROcounts+=1
             febcountRO+=1
@@ -155,7 +155,7 @@ def marketingaspect(request):
         marcountRO=0
         MAINmarROcounts=0
         while marcountRO<marchROii.count():
-            marchROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02',CusName=marchROii[marcountRO]).annotate(Count('DateTime', distinct=True))
+            marchROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02',CusName=marchROii[marcountRO]).count('DateTime', distinct=True)
             if marchROi==2:
                 MAINmarROcounts+=1
             marcountRO+=1
@@ -166,7 +166,7 @@ def marketingaspect(request):
         aprcountRO=0
         MAINaprROcounts=0
         while aprcountRO<aprilROii.count():
-            aprilROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03',CusName=aprilROii[aprcountRO]).annotate(Count('DateTime', distinct=True))
+            aprilROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03',CusName=aprilROii[aprcountRO]).count('DateTime', distinct=True)
             if aprilROi==2:
                 MAINaprROcounts+=1
             aprcountRO+=1
@@ -177,7 +177,7 @@ def marketingaspect(request):
         maycountRO=0
         MAINmayROcounts=0
         while maycountRO<mayROii.count():
-            mayROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04',CusName=mayROii[maycountRO]).annotate(Count('DateTime', distinct=True))
+            mayROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04',CusName=mayROii[maycountRO]).count('DateTime', distinct=True)
             if mayROi==2:
                 MAINmayROcounts+=1
             maycountRO+=1
@@ -188,7 +188,7 @@ def marketingaspect(request):
         juncountRO=0
         MAINjunROcounts=0
         while juncountRO<juneROii.count():
-            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05',CusName=juneROii[juncountRO]).annotate(Count('DateTime', distinct=True))
+            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05',CusName=juneROii[juncountRO]).count('DateTime', distinct=True)
             if juneROi==2:
                 MAINjunROcounts+=1
             juncountRO+=1
@@ -199,7 +199,7 @@ def marketingaspect(request):
         julcountRO=0
         MAINjulROcounts=0
         while julcountRO<julyROii.count():
-            julyROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06',CusName=julyROii[julcountRO]).annotate(Count('DateTime', distinct=True))
+            julyROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06',CusName=julyROii[julcountRO]).count('DateTime', distinct=True)
             if julyROi==2:
                 MAINjulROcounts+=1
             julcountRO+=1
@@ -210,7 +210,7 @@ def marketingaspect(request):
         augcountRO=0
         MAINaugROcounts=0
         while augcountRO<augustROii.count():
-            augustROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07',CusName=augustROii[augcountRO]).annotate(Count('DateTime', distinct=True))
+            augustROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07',CusName=augustROii[augcountRO]).count('DateTime', distinct=True)
             if augustROi==2:
                 MAINaugROcounts+=1
             augcountRO+=1
@@ -221,7 +221,7 @@ def marketingaspect(request):
         septcountRO=0
         MAINseptROcounts=0
         while septcountRO<septemberROii.count():
-            septemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08',CusName=septemberROii[septcountRO]).annotate(Count('DateTime', distinct=True))
+            septemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08',CusName=septemberROii[septcountRO]).count('DateTime', distinct=True)
             if septemberROi==2:
                 MAINseptROcounts+=1
             septcountRO+=1
@@ -232,7 +232,7 @@ def marketingaspect(request):
         octcountRO=0
         MAINoctROcounts=0
         while octcountRO<octoberROii.count():
-            octoberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09',CusName=octoberROii[octcountRO]).annotate(Count('DateTime', distinct=True))
+            octoberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09',CusName=octoberROii[octcountRO]).count('DateTime', distinct=True)
             if octoberROi==2:
                 MAINoctROcounts+=1
             octcountRO+=1
@@ -243,7 +243,7 @@ def marketingaspect(request):
         novcountRO=0
         MAINnovROcounts=0
         while novcountRO<novemberROii.count():
-            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='11' or '10',CusName=novemberROii[novcountRO]).annotate(Count('DateTime', distinct=True))
+            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='11' or '10',CusName=novemberROii[novcountRO]).count('DateTime', distinct=True)
             if novemberROi==2:
                 MAINnovROcounts+=1
             novcountRO+=1
@@ -256,7 +256,7 @@ def marketingaspect(request):
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
-            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='12' or '11',CusName=decemberROii[deccountRO]).annotate(Count('DateTime', distinct=True))
+            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='12' or '11',CusName=decemberROii[deccountRO]).count('DateTime', distinct=True)
             if decemberROi==2:
                 MAINdecROcounts+=1
             deccountRO+=1
