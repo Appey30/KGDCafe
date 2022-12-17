@@ -126,7 +126,17 @@ def marketingaspect(request):
     except User.DoesNotExist:
         december=0
     total=int(january)+int(february)+int(march)+int(april)+int(may)+int(june)+int(july)+int(august)+int(september)+int(october)+int(november)+int(december)
-    return render(request, 'Marketing.html',{'userr':userr,'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
+    #########Repeat Orders############
+    januaryROii=Sales.objects.filter(DateTime__month='01').values_list('CusName',flat=True)
+    jancountRO=0
+    MAINjanROcounts=0
+    while jancountRO<januaryROii.count():
+        januaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='01',CusName=januaryROii[jancountRO]).count()
+        if januaryROi==2:
+            MAINjanROcounts+=1
+        jancountRO+=1
+
+    return render(request, 'Marketing.html',{'userr':userr,'MAINjanROcounts':MAINjanROcounts'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
 
 @login_required
 def RiderPOV(request):
