@@ -259,7 +259,7 @@ def marketingaspect(request):
             deccountRO+=1
     except Sales.DoesNotExist:
         MAINdecROcounts=0
-    totalRO=int(MAINjanROcounts)+int(MAINfebROcounts)+int(MAINmarROcounts)+int(MAINaprROcounts)+int(MAINmayROcounts)+int(MAINjunROcounts)+int(MAINjulROcounts)+int(MAINaugROcounts)+int(MAINseptROcounts)+int(MAINoctROcounts)+int(MAINnovROcounts)+int(MAINdecROcounts)+
+    totalRO=int(MAINjanROcounts)+int(MAINfebROcounts)+int(MAINmarROcounts)+int(MAINaprROcounts)+int(MAINmayROcounts)+int(MAINjunROcounts)+int(MAINjulROcounts)+int(MAINaugROcounts)+int(MAINseptROcounts)+int(MAINoctROcounts)+int(MAINnovROcounts)+int(MAINdecROcounts)
     return render(request, 'Marketing.html',{'userr':userr,'totalRO':totalRO,'MAINdecROcounts':MAINdecROcounts,'MAINnovROcounts':MAINnovROcounts,'MAINoctROcounts':MAINoctROcounts,'MAINseptROcounts':MAINseptROcounts,'MAINaugROcounts':MAINaugROcounts,'MAINjulROcounts':MAINjulROcounts,'MAINjunROcounts':MAINjunROcounts,'MAINmayROcounts':MAINmayROcounts,'MAINaprROcounts':MAINaprROcounts,'MAINmarROcounts':MAINmarROcounts,'MAINfebROcounts':MAINfebROcounts,'MAINjanROcounts':MAINjanROcounts,'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
 
 @login_required
