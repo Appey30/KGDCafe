@@ -129,121 +129,121 @@ def marketingaspect(request):
     total=int(january)+int(february)+int(march)+int(april)+int(may)+int(june)+int(july)+int(august)+int(september)+int(october)+int(november)+int(december)
     #########Repeat Orders############
     try:
-        januaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='01').values_list('CusName',flat=True)
+        januaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='01').values_list('contactnumber',flat=True)
         jancountRO=0
         MAINjanROcounts=0
         while jancountRO<januaryROii.count():
-            januaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='01',CusName=januaryROii[jancountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            januaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='01',contactnumber=januaryROii[jancountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if januaryROi==2:
                 MAINjanROcounts+=1
             jancountRO+=1
     except Sales.DoesNotExist:
         MAINjanROcounts=0
     try:
-        februaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01').values_list('CusName',flat=True)
+        februaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01').values_list('contactnumber',flat=True)
         febcountRO=0
         MAINfebROcounts=0
         while febcountRO<februaryROii.count():
-            febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01',CusName=febuaryROii[febcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01',contactnumber=febuaryROii[febcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if febuaryROi==2:
                 MAINfebROcounts+=1
             febcountRO+=1
     except Sales.DoesNotExist:
         MAINfebROcounts=0
     try:
-        marchROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02').values_list('CusName',flat=True)
+        marchROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02').values_list('contactnumber',flat=True)
         marcountRO=0
         MAINmarROcounts=0
         while marcountRO<marchROii.count():
-            marchROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02',CusName=marchROii[marcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            marchROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02',contactnumber=marchROii[marcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if marchROi==2:
                 MAINmarROcounts+=1
             marcountRO+=1
     except Sales.DoesNotExist:
         MAINmarROcounts=0
     try:
-        aprilROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03').values_list('CusName',flat=True)
+        aprilROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03').values_list('contactnumber',flat=True)
         aprcountRO=0
         MAINaprROcounts=0
         while aprcountRO<aprilROii.count():
-            aprilROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03',CusName=aprilROii[aprcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            aprilROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03',contactnumber=aprilROii[aprcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if aprilROi==2:
                 MAINaprROcounts+=1
             aprcountRO+=1
     except Sales.DoesNotExist:
         MAINaprROcounts=0
     try:
-        mayROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04').values_list('CusName',flat=True)
+        mayROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04').values_list('contactnumber',flat=True)
         maycountRO=0
         MAINmayROcounts=0
         while maycountRO<mayROii.count():
-            mayROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04',CusName=mayROii[maycountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            mayROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04',contactnumber=mayROii[maycountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if mayROi==2:
                 MAINmayROcounts+=1
             maycountRO+=1
     except Sales.DoesNotExist:
         MAINmayROcounts=0
     try:
-        juneROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05').values_list('CusName',flat=True)
+        juneROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05').values_list('contactnumber',flat=True)
         juncountRO=0
         MAINjunROcounts=0
         while juncountRO<juneROii.count():
-            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05',CusName=juneROii[juncountRO]).annotate(date=TruncDate('DateTime')).values_list('date', flat=True).distinct().count()
+            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05',contactnumber=juneROii[juncountRO]).annotate(date=TruncDate('DateTime')).values_list('date', flat=True).distinct().count()
             if juneROi==2:
                 MAINjunROcounts+=1
             juncountRO+=1
     except Sales.DoesNotExist:
         MAINjunROcounts=0
     try:
-        julyROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06').values_list('CusName',flat=True)
+        julyROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06').values_list('contactnumber',flat=True)
         julcountRO=0
         MAINjulROcounts=0
         while julcountRO<julyROii.count():
-            julyROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06',CusName=julyROii[julcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            julyROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06',contactnumber=julyROii[julcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if julyROi==2:
                 MAINjulROcounts+=1
             julcountRO+=1
     except Sales.DoesNotExist:
         MAINjulROcounts=0
     try:
-        augustROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07').values_list('CusName',flat=True)
+        augustROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07').values_list('contactnumber',flat=True)
         augcountRO=0
         MAINaugROcounts=0
         while augcountRO<augustROii.count():
-            augustROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07',CusName=augustROii[augcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            augustROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07',contactnumber=augustROii[augcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if augustROi==2:
                 MAINaugROcounts+=1
             augcountRO+=1
     except Sales.DoesNotExist:
         MAINaugROcounts=0
     try:
-        septemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08').values_list('CusName',flat=True)
+        septemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08').values_list('contactnumber',flat=True)
         septcountRO=0
         MAINseptROcounts=0
         while septcountRO<septemberROii.count():
-            septemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08',CusName=septemberROii[septcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            septemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08',contactnumber=septemberROii[septcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if septemberROi==2:
                 MAINseptROcounts+=1
             septcountRO+=1
     except Sales.DoesNotExist:
         MAINseptROcounts=0
     try:
-        octoberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09').values_list('CusName',flat=True)
+        octoberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09').values_list('contactnumber',flat=True)
         octcountRO=0
         MAINoctROcounts=0
         while octcountRO<octoberROii.count():
-            octoberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09',CusName=octoberROii[octcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            octoberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09',contactnumber=octoberROii[octcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if octoberROi==2:
                 MAINoctROcounts+=1
             octcountRO+=1
     except Sales.DoesNotExist:
         MAINoctROcounts=0
     try:
-        novemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='11' or '10').values_list('CusName',flat=True)
+        novemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='11' or '10').values_list('contactnumber',flat=True)
         novcountRO=0
         MAINnovROcounts=0
         while novcountRO<novemberROii.count():
-            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='10',  DateTime__month__lte='11',CusName=novemberROii[novcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='10',  DateTime__month__lte='11',contactnumber=novemberROii[novcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if novemberROi==2:
                 MAINnovROcounts+=1
             novcountRO+=1
@@ -252,13 +252,13 @@ def marketingaspect(request):
         print('Does not exist on nov')
         MAINnovROcounts=0
     try:
-        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').values_list('CusName',flat=True)
+        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').values_list('contactnumber',flat=True)
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
-            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',CusName=decemberROii[deccountRO]).distinct("DateTime__day").count()
+            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).distinct("DateTime__day").count()
             print('dec i count: ',decemberROi)
-            decdec=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',CusName=decemberROii[deccountRO]).distinct("DateTime__day")
+            decdec=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).distinct("DateTime__day")
             print('dec:  ',decdec)
             if decemberROi==2:
                 MAINdecROcounts+=1
