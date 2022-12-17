@@ -126,7 +126,7 @@ def marketingaspect(request):
     except User.DoesNotExist:
         december=0
     total=int(january)+int(february)+int(march)+int(april)+int(may)+int(june)+int(july)+int(august)+int(september)+int(october)+int(november)+int(december)
-    return render(request, 'Marketing.html',{'userr':userr,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
+    return render(request, 'Marketing.html',{'userr':userr,'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
 
 @login_required
 def RiderPOV(request):
