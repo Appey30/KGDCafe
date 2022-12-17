@@ -247,6 +247,7 @@ def marketingaspect(request):
             if novemberROi==2:
                 MAINnovROcounts+=1
             novcountRO+=1
+        print('nov count: ',MAINnovROcounts)
     except Sales.DoesNotExist:
         print('Does not exist on nov')
         MAINnovROcounts=0
@@ -259,6 +260,7 @@ def marketingaspect(request):
             if decemberROi==2:
                 MAINdecROcounts+=1
             deccountRO+=1
+        print('dec count: ',MAINdecROcounts)
     except Sales.DoesNotExist:
         print('Does not exist on dec')
         MAINdecROcounts=0
