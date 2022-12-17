@@ -50,7 +50,7 @@ urlpatterns = [
       path('index/PrivacyPolicy',views.PrivacyPolicy,name='privacypolicy.html'),
       path('index/saletoday',views.saletoday,name='saletoday.html'),
       path('index/staff',views.staff,name='staff.html'),
-      path('index/marketing',views.staff,name='Marketing.html'),
+      path('index/marketing',views.marketingaspect,name='Marketing.html'),
       path('index/appeybought',views.totalboughtappey,name='totalboughtappey.html'),
       path('oauth/', include('social_django.urls', namespace='social')),
       path('logout/', auth_views.LogoutView.as_view(next_page='../index/onlineorder/4/'),name='logout'),
