@@ -110,9 +110,9 @@ def marketingaspect(request):
     except:
         august=User.objects.none()
     try:
-        September=User.objects.filter(date_joined__year='2022',date_joined__month='09')
+        september=User.objects.filter(date_joined__year='2022',date_joined__month='09')
     except:
-        September=User.objects.none()
+        september=User.objects.none()
     try:
         october=User.objects.filter(date_joined__year='2022',date_joined__month='10')
     except:
