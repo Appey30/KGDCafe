@@ -79,47 +79,47 @@ def marketingaspect(request):
     yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
     try:
         january=User.objects.filter(date_joined__year='2022',date_joined__month='01').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         january=0
     try:
         february=User.objects.filter(date_joined__year='2022',date_joined__month='02').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         february=0
     try:
         march=User.objects.filter(date_joined__year='2022',date_joined__month='03').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         march=0
     try:
         april=User.objects.filter(date_joined__year='2022',date_joined__month='04').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         april=0
     try:
         may=User.objects.filter(date_joined__year='2022',date_joined__month='05').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         may=0
     try:
         june=User.objects.filter(date_joined__year='2022',date_joined__month='06').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         june=0
     try:
         july=User.objects.filter(date_joined__year='2022',date_joined__month='07').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         july=0
     try:
         august=User.objects.filter(date_joined__year='2022',date_joined__month='08').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         august=0
     try:
         september=User.objects.filter(date_joined__year='2022',date_joined__month='09').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         september=0
     try:
         october=User.objects.filter(date_joined__year='2022',date_joined__month='10').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         october=0
     try:
         november=User.objects.filter(date_joined__year='2022',date_joined__month='11').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
-    except User.DoesNotExist::
+    except User.DoesNotExist:
         november=0
     try:
         december=User.objects.filter(date_joined__year='2022',date_joined__month='12').exclude(username='kylie12').exclude(username='kylie ROSE').exclude(username='kylie').exclude(username='appey30').exclude(username='Moneth50!').exclude(username='Moneth50').exclude(username='Moneth').exclude(username='Mjmacapinlac').exclude(username='MaryJoyMacapinlac').exclude(username='MJMacapinlac').exclude(username='MJAraezMacapinlac').exclude(username='MJ24').exclude(username='Kylie Rose').exclude(username='Kimjasper30').exclude(username='KimJasperDeGuzman').exclude(username='KGDCafe28').exclude(username='AppeyGDeGuzman').distinct('username').count()
