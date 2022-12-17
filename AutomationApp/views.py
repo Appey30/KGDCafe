@@ -260,7 +260,7 @@ def marketingaspect(request):
         while deccountRO<decemberROii.count():
             decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
            
-            decdec=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).distinct("DateTime__day")
+            decdec=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct()
             print('decdec: ',decdec)
             if decemberROi==2:
                 MAINdecROcounts+=1
