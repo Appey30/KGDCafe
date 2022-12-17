@@ -138,7 +138,129 @@ def marketingaspect(request):
             jancountRO+=1
     except Sales.DoesNotExist:
         MAINjanROcounts=0
-    return render(request, 'Marketing.html',{'userr':userr,'MAINjanROcounts':MAINjanROcounts,'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
+    try:
+        februaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='02').values_list('CusName',flat=True)
+        febcountRO=0
+        MAINfebROcounts=0
+        while febcountRO<febuaryROii.count():
+            febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02',CusName=febuaryROii[febcountRO]).count()
+            if febuaryROi==2:
+                MAINfebROcounts+=1
+            febcountRO+=1
+    except Sales.DoesNotExist:
+        MAINfebROcounts=0
+    try:
+        marchROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='03').values_list('CusName',flat=True)
+        marcountRO=0
+        MAINmarROcounts=0
+        while marcountRO<marchROii.count():
+            marchROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='03',CusName=marchROii[marcountRO]).count()
+            if marchROi==2:
+                MAINmarROcounts+=1
+            marcountRO+=1
+    except Sales.DoesNotExist:
+        MAINmarROcounts=0
+    try:
+        aprilROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='04').values_list('CusName',flat=True)
+        aprcountRO=0
+        MAINaprROcounts=0
+        while aprcountRO<aprilROii.count():
+            aprilROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='04',CusName=aprilROii[aprcountRO]).count()
+            if aprilROi==2:
+                MAINaprROcounts+=1
+            aprcountRO+=1
+    except Sales.DoesNotExist:
+        MAINaprROcounts=0
+    try:
+        mayROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='05').values_list('CusName',flat=True)
+        maycountRO=0
+        MAINmayROcounts=0
+        while maycountRO<mayROii.count():
+            mayROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='05',CusName=mayROii[maycountRO]).count()
+            if mayROi==2:
+                MAINmayROcounts+=1
+            maycountRO+=1
+    except Sales.DoesNotExist:
+        MAINmayROcounts=0
+    try:
+        juneROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='06').values_list('CusName',flat=True)
+        juncountRO=0
+        MAINjunROcounts=0
+        while juncountRO<juneROii.count():
+            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06',CusName=juneROii[juncountRO]).count()
+            if juneROi==2:
+                MAINjunROcounts+=1
+            juncountRO+=1
+    except Sales.DoesNotExist:
+        MAINjunROcounts=0
+    try:
+        julyROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='07').values_list('CusName',flat=True)
+        julcountRO=0
+        MAINjulROcounts=0
+        while julcountRO<julyROii.count():
+            julyROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='07',CusName=julyROii[julcountRO]).count()
+            if julyROi==2:
+                MAINjulROcounts+=1
+            julcountRO+=1
+    except Sales.DoesNotExist:
+        MAINjulROcounts=0
+    try:
+        augustROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='08').values_list('CusName',flat=True)
+        augcountRO=0
+        MAINaugROcounts=0
+        while augcountRO<augustROii.count():
+            augustROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='08',CusName=augustROii[augcountRO]).count()
+            if augustROi==2:
+                MAINaugROcounts+=1
+            augcountRO+=1
+    except Sales.DoesNotExist:
+        MAINaugROcounts=0
+    try:
+        septemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='09').values_list('CusName',flat=True)
+        septcountRO=0
+        MAINseptROcounts=0
+        while septcountRO<septemberROii.count():
+            septemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='09',CusName=septemberROii[septcountRO]).count()
+            if septemberROi==2:
+                MAINseptROcounts+=1
+            septcountRO+=1
+    except Sales.DoesNotExist:
+        MAINseptROcounts=0
+    try:
+        octoberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='10').values_list('CusName',flat=True)
+        octcountRO=0
+        MAINoctROcounts=0
+        while octcountRO<octoberROii.count():
+            octoberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='10',CusName=octoberROii[octcountRO]).count()
+            if octoberROi==2:
+                MAINoctROcounts+=1
+            octcountRO+=1
+    except Sales.DoesNotExist:
+        MAINoctROcounts=0
+    try:
+        novemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='11').values_list('CusName',flat=True)
+        novcountRO=0
+        MAINnovROcounts=0
+        while novcountRO<novemberROii.count():
+            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='11',CusName=novemberROii[novcountRO]).count()
+            if novemberROi==2:
+                MAINnovROcounts+=1
+            novcountRO+=1
+    except Sales.DoesNotExist:
+        MAINnovROcounts=0
+    try:
+        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='12').values_list('CusName',flat=True)
+        deccountRO=0
+        MAINdecROcounts=0
+        while deccountRO<decemberROii.count():
+            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='12',CusName=decemberROii[deccountRO]).count()
+            if decemberROi==2:
+                MAINdecROcounts+=1
+            deccountRO+=1
+    except Sales.DoesNotExist:
+        MAINdecROcounts=0
+    totalRO=int(MAINjanROcounts)+int(MAINfebROcounts)+int(MAINmarROcounts)+int(MAINaprROcounts)+int(MAINmayROcounts)+int(MAINjunROcounts)+int(MAINjulROcounts)+int(MAINaugROcounts)+int(MAINseptROcounts)+int(MAINoctROcounts)+int(MAINnovROcounts)+int(MAINdecROcounts)+
+    return render(request, 'Marketing.html',{'userr':userr,'totalRO':totalRO,'MAINdecROcounts':MAINdecROcounts,'MAINnovROcounts':MAINnovROcounts,'MAINoctROcounts':MAINoctROcounts,'MAINseptROcounts':MAINseptROcounts,'MAINaugROcounts':MAINaugROcounts,'MAINjulROcounts':MAINjulROcounts,'MAINjunROcounts':MAINjunROcounts,'MAINmayROcounts':MAINmayROcounts,'MAINaprROcounts':MAINaprROcounts,'MAINmarROcounts':MAINmarROcounts,'MAINfebROcounts':MAINfebROcounts,'MAINjanROcounts':MAINjanROcounts,'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
 
 @login_required
 def RiderPOV(request):
