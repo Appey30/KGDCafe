@@ -256,16 +256,16 @@ def marketingaspect(request):
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
-            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).distinct("DateTime__day").count()
-            print('dec i count: ',decemberROi)
+            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+           
             decdec=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',contactnumber=decemberROii[deccountRO]).distinct("DateTime__day")
-            print('dec:  ',decdec)
+            
             if decemberROi==2:
                 MAINdecROcounts+=1
             deccountRO+=1
-        print('dec main count: ',MAINdecROcounts)
+        
     except Sales.DoesNotExist:
-        print('Does not exist on dec')
+        
         MAINdecROcounts=0
     totalRO=int(MAINjanROcounts)+int(MAINfebROcounts)+int(MAINmarROcounts)+int(MAINaprROcounts)+int(MAINmayROcounts)+int(MAINjunROcounts)+int(MAINjulROcounts)+int(MAINaugROcounts)+int(MAINseptROcounts)+int(MAINoctROcounts)+int(MAINnovROcounts)+int(MAINdecROcounts)
     return render(request, 'Marketing.html',{'userr':userr,'totalRO':totalRO,'MAINdecROcounts':MAINdecROcounts,'MAINnovROcounts':MAINnovROcounts,'MAINoctROcounts':MAINoctROcounts,'MAINseptROcounts':MAINseptROcounts,'MAINaugROcounts':MAINaugROcounts,'MAINjulROcounts':MAINjulROcounts,'MAINjunROcounts':MAINjunROcounts,'MAINmayROcounts':MAINmayROcounts,'MAINaprROcounts':MAINaprROcounts,'MAINmarROcounts':MAINmarROcounts,'MAINfebROcounts':MAINfebROcounts,'MAINjanROcounts':MAINjanROcounts,'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
