@@ -248,6 +248,7 @@ def marketingaspect(request):
                 MAINnovROcounts+=1
             novcountRO+=1
     except Sales.DoesNotExist:
+        print('Does not exist on nov')
         MAINnovROcounts=0
     try:
         decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='12' or '11').values_list('CusName',flat=True)
@@ -259,6 +260,7 @@ def marketingaspect(request):
                 MAINdecROcounts+=1
             deccountRO+=1
     except Sales.DoesNotExist:
+    print('Does not exist on dec')
         MAINdecROcounts=0
     totalRO=int(MAINjanROcounts)+int(MAINfebROcounts)+int(MAINmarROcounts)+int(MAINaprROcounts)+int(MAINmayROcounts)+int(MAINjunROcounts)+int(MAINjulROcounts)+int(MAINaugROcounts)+int(MAINseptROcounts)+int(MAINoctROcounts)+int(MAINnovROcounts)+int(MAINdecROcounts)
     return render(request, 'Marketing.html',{'userr':userr,'totalRO':totalRO,'MAINdecROcounts':MAINdecROcounts,'MAINnovROcounts':MAINnovROcounts,'MAINoctROcounts':MAINoctROcounts,'MAINseptROcounts':MAINseptROcounts,'MAINaugROcounts':MAINaugROcounts,'MAINjulROcounts':MAINjulROcounts,'MAINjunROcounts':MAINjunROcounts,'MAINmayROcounts':MAINmayROcounts,'MAINaprROcounts':MAINaprROcounts,'MAINmarROcounts':MAINmarROcounts,'MAINfebROcounts':MAINfebROcounts,'MAINjanROcounts':MAINjanROcounts,'total':total,'january':january,'february':february,'march':march,'april':april,'may':may,'june':june,'july':july,'august':august,'september':september,'october':october,'november':november,'december':december})
