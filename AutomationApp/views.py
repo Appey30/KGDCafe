@@ -188,7 +188,7 @@ def marketingaspect(request):
         juncountRO=0
         MAINjunROcounts=0
         while juncountRO<juneROii.count():
-            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05',CusName=juneROii[juncountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05',CusName=juneROii[juncountRO]).annotate(date=TruncDate('DateTime')).values_list('date', flat=True).distinct().count()
             if juneROi==2:
                 MAINjunROcounts+=1
             juncountRO+=1
@@ -243,7 +243,7 @@ def marketingaspect(request):
         novcountRO=0
         MAINnovROcounts=0
         while novcountRO<novemberROii.count():
-            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='11' or '10',CusName=novemberROii[novcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__mte='10' and DateTime__month__lte='11',CusName=novemberROii[novcountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
             if novemberROi==2:
                 MAINnovROcounts+=1
             novcountRO+=1
@@ -252,11 +252,11 @@ def marketingaspect(request):
         print('Does not exist on nov')
         MAINnovROcounts=0
     try:
-        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='12' or '11').values_list('CusName',flat=True)
+        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__mte='11' and DateTime__month__lte='12').values_list('CusName',flat=True)
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
-            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='12' or '11',CusName=decemberROii[deccountRO]).annotate(date=TruncDate('DateTime'),day=TruncDay('DateTime'),hour=TruncHour('DateTime'),minute=TruncMinute('DateTime')).values_list('date', flat=True).distinct().count()
+            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__mte='11' and DateTime__month__lte='12',CusName=decemberROii[deccountRO]).distinct("DateTime__day").count()
             if decemberROi==2:
                 MAINdecROcounts+=1
             deccountRO+=1
