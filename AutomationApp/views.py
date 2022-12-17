@@ -258,6 +258,8 @@ def marketingaspect(request):
         while deccountRO<decemberROii.count():
             decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',CusName=decemberROii[deccountRO]).distinct("DateTime__day").count()
             print('dec i count: ',decemberROi)
+            decdec=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12',CusName=decemberROii[deccountRO]).distinct("DateTime__day")
+            print('dec:  ',decdec)
             if decemberROi==2:
                 MAINdecROcounts+=1
             deccountRO+=1
