@@ -132,7 +132,7 @@ def marketingaspect(request):
         jancountRO=0
         MAINjanROcounts=0
         while jancountRO<januaryROii.count():
-            januaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='01',CusName=januaryROii[jancountRO]).count()
+            januaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='01',CusName=januaryROii[jancountRO]).distinct('DateTime').count()
             if januaryROi==2:
                 MAINjanROcounts+=1
             jancountRO+=1
@@ -143,7 +143,7 @@ def marketingaspect(request):
         febcountRO=0
         MAINfebROcounts=0
         while febcountRO<februaryROii.count():
-            febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02',CusName=febuaryROii[febcountRO]).count()
+            febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02',CusName=febuaryROii[febcountRO]).distinct('DateTime').count()
             if febuaryROi==2:
                 MAINfebROcounts+=1
             febcountRO+=1
@@ -154,7 +154,7 @@ def marketingaspect(request):
         marcountRO=0
         MAINmarROcounts=0
         while marcountRO<marchROii.count():
-            marchROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='03',CusName=marchROii[marcountRO]).count()
+            marchROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='03',CusName=marchROii[marcountRO]).distinct('DateTime').count()
             if marchROi==2:
                 MAINmarROcounts+=1
             marcountRO+=1
@@ -165,7 +165,7 @@ def marketingaspect(request):
         aprcountRO=0
         MAINaprROcounts=0
         while aprcountRO<aprilROii.count():
-            aprilROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='04',CusName=aprilROii[aprcountRO]).count()
+            aprilROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='04',CusName=aprilROii[aprcountRO]).distinct('DateTime').count()
             if aprilROi==2:
                 MAINaprROcounts+=1
             aprcountRO+=1
@@ -176,7 +176,7 @@ def marketingaspect(request):
         maycountRO=0
         MAINmayROcounts=0
         while maycountRO<mayROii.count():
-            mayROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='05',CusName=mayROii[maycountRO]).count()
+            mayROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='05',CusName=mayROii[maycountRO]).distinct('DateTime').count()
             if mayROi==2:
                 MAINmayROcounts+=1
             maycountRO+=1
@@ -187,7 +187,7 @@ def marketingaspect(request):
         juncountRO=0
         MAINjunROcounts=0
         while juncountRO<juneROii.count():
-            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06',CusName=juneROii[juncountRO]).count()
+            juneROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='06',CusName=juneROii[juncountRO]).distinct('DateTime').count()
             if juneROi==2:
                 MAINjunROcounts+=1
             juncountRO+=1
@@ -198,7 +198,7 @@ def marketingaspect(request):
         julcountRO=0
         MAINjulROcounts=0
         while julcountRO<julyROii.count():
-            julyROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='07',CusName=julyROii[julcountRO]).count()
+            julyROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='07',CusName=julyROii[julcountRO]).distinct('DateTime').count()
             if julyROi==2:
                 MAINjulROcounts+=1
             julcountRO+=1
@@ -209,7 +209,7 @@ def marketingaspect(request):
         augcountRO=0
         MAINaugROcounts=0
         while augcountRO<augustROii.count():
-            augustROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='08',CusName=augustROii[augcountRO]).count()
+            augustROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='08',CusName=augustROii[augcountRO]).distinct('DateTime').count()
             if augustROi==2:
                 MAINaugROcounts+=1
             augcountRO+=1
@@ -220,7 +220,7 @@ def marketingaspect(request):
         septcountRO=0
         MAINseptROcounts=0
         while septcountRO<septemberROii.count():
-            septemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='09',CusName=septemberROii[septcountRO]).count()
+            septemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='09',CusName=septemberROii[septcountRO]).distinct('DateTime').count()
             if septemberROi==2:
                 MAINseptROcounts+=1
             septcountRO+=1
@@ -231,7 +231,7 @@ def marketingaspect(request):
         octcountRO=0
         MAINoctROcounts=0
         while octcountRO<octoberROii.count():
-            octoberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='10',CusName=octoberROii[octcountRO]).count()
+            octoberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='10',CusName=octoberROii[octcountRO]).distinct('DateTime').count()
             if octoberROi==2:
                 MAINoctROcounts+=1
             octcountRO+=1
@@ -242,7 +242,7 @@ def marketingaspect(request):
         novcountRO=0
         MAINnovROcounts=0
         while novcountRO<novemberROii.count():
-            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='11',CusName=novemberROii[novcountRO]).count()
+            novemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='11',CusName=novemberROii[novcountRO]).distinct('DateTime').count()
             if novemberROi==2:
                 MAINnovROcounts+=1
             novcountRO+=1
@@ -253,7 +253,7 @@ def marketingaspect(request):
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
-            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='12',CusName=decemberROii[deccountRO]).count()
+            decemberROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='12',CusName=decemberROii[deccountRO]).distinct('DateTime').count()
             if decemberROi==2:
                 MAINdecROcounts+=1
             deccountRO+=1
