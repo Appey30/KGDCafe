@@ -142,7 +142,7 @@ def marketingaspect(request):
         februaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='02').values_list('CusName',flat=True)
         febcountRO=0
         MAINfebROcounts=0
-        while febcountRO<febuaryROii.count():
+        while febcountRO<februaryROii.count():
             febuaryROi=Sales.objects.filter(DateTime__year='2022',DateTime__month='02',CusName=febuaryROii[febcountRO]).count()
             if febuaryROi==2:
                 MAINfebROcounts+=1
