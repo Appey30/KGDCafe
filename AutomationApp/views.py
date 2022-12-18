@@ -129,7 +129,7 @@ def marketingaspect(request):
     total=int(january)+int(february)+int(march)+int(april)+int(may)+int(june)+int(july)+int(august)+int(september)+int(october)+int(november)+int(december)
     #########Repeat Orders############
     try:
-        januaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='01').values_list('contactnumber',flat=True)
+        januaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='01').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         jancountRO=0
         MAINjanROcounts=0
         while jancountRO<januaryROii.count():
@@ -140,7 +140,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINjanROcounts=0
     try:
-        februaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01').values_list('contactnumber',flat=True)
+        februaryROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='02' or '01').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         febcountRO=0
         MAINfebROcounts=0
         while febcountRO<februaryROii.count():
@@ -151,7 +151,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINfebROcounts=0
     try:
-        marchROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02').values_list('contactnumber',flat=True)
+        marchROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='03' or '02').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         marcountRO=0
         MAINmarROcounts=0
         while marcountRO<marchROii.count():
@@ -162,7 +162,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINmarROcounts=0
     try:
-        aprilROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03').values_list('contactnumber',flat=True)
+        aprilROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='04' or '03').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         aprcountRO=0
         MAINaprROcounts=0
         while aprcountRO<aprilROii.count():
@@ -173,7 +173,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINaprROcounts=0
     try:
-        mayROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04').values_list('contactnumber',flat=True)
+        mayROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='05' or '04').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         maycountRO=0
         MAINmayROcounts=0
         while maycountRO<mayROii.count():
@@ -184,7 +184,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINmayROcounts=0
     try:
-        juneROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05').values_list('contactnumber',flat=True)
+        juneROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='06' or '05').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         juncountRO=0
         MAINjunROcounts=0
         while juncountRO<juneROii.count():
@@ -195,7 +195,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINjunROcounts=0
     try:
-        julyROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06').values_list('contactnumber',flat=True)
+        julyROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='07' or '06').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         julcountRO=0
         MAINjulROcounts=0
         while julcountRO<julyROii.count():
@@ -206,7 +206,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINjulROcounts=0
     try:
-        augustROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07').values_list('contactnumber',flat=True)
+        augustROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='08' or '07').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         augcountRO=0
         MAINaugROcounts=0
         while augcountRO<augustROii.count():
@@ -217,7 +217,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINaugROcounts=0
     try:
-        septemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08').values_list('contactnumber',flat=True)
+        septemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='09' or '08').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         septcountRO=0
         MAINseptROcounts=0
         while septcountRO<septemberROii.count():
@@ -228,7 +228,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINseptROcounts=0
     try:
-        octoberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09').values_list('contactnumber',flat=True)
+        octoberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='10' or '09').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         octcountRO=0
         MAINoctROcounts=0
         while octcountRO<octoberROii.count():
@@ -239,7 +239,7 @@ def marketingaspect(request):
     except Sales.DoesNotExist:
         MAINoctROcounts=0
     try:
-        novemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='11' or '10').values_list('contactnumber',flat=True)
+        novemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month='11' or '10').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         novcountRO=0
         MAINnovROcounts=0
         while novcountRO<novemberROii.count():
@@ -254,7 +254,7 @@ def marketingaspect(request):
        
         MAINnovROcounts=0
     try:
-        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').values_list('contactnumber',flat=True)
+        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
