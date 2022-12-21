@@ -39,6 +39,7 @@ from django.utils.encoding import smart_str
 from django.views.generic import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from .logic import LOGIC_RESPONSES
 
 VERIFY_TOKEN = "d73bc7b16eea1c4799d632e3c3362658f5cab2cb065b8c94da" # generated above
 
