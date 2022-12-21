@@ -58,7 +58,7 @@ def parse_and_send_fb_message(fbid, recevied_message):
     if 'Discount' in LOGIC_RESPONSES:
         #msg = random.choice(LOGIC_RESPONSES[token])
         msg = LOGIC_RESPONSES['Discount']
-        break
+        
 
     if msg is not None: 
         
