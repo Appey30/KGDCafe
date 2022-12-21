@@ -80,10 +80,13 @@ class FacebookWebhookView(View):
 
     def get(self, request, *args, **kwargs):
         hub_mode   = request.GET.get('hub.mode')
+        print('hub_mode: ', hub_mode)
         hub_token = request.GET.get('hub.verify_token')
         print('hub_token: ', hub_token)
         hub_challenge = request.GET.get('hub.challenge')
+        print('hub_challenge: ', hub_challenge)
         if hub_token != VERIFY_TOKEN:
+            print('VERIFY_TOKEN: ', VERIFY_TOKEN)
             return HttpResponse('Error, invalid token', status=403)
         return HttpResponse(hub_challenge)
 
@@ -1971,7 +1974,7 @@ def posthree(request):
             except IndexError:
                 timesheetupdate=timesheet.objects.none()
                 getdailysales=0
-            if getdailysales >= 2000:
+            if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                 getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                 getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                 addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
@@ -3882,7 +3885,7 @@ def postwo(request):
             except IndexError:
                 timesheetupdate=timesheet.objects.none()
                 getdailysales=0
-            if getdailysales >= 2000:
+            if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                 getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                 getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                 addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
@@ -5914,7 +5917,7 @@ def staff(request):
             except IndexError:
                 timesheetupdate=timesheet.objects.none()
                 getdailysales=0
-            if getdailysales >= 2000:
+            if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                 getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                 getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                 addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
@@ -6594,7 +6597,7 @@ def kgddashboard(request):
                 except IndexError:
                     timesheetupdate=timesheet.objects.none()
                     getdailysales=0
-                if getdailysales >= 2000:
+                if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                     getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                     getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                     addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
@@ -6774,7 +6777,7 @@ def kgddashboard(request):
                 except IndexError:
                     timesheetupdate=timesheet.objects.none()
                     getdailysales=0
-                if getdailysales >= 2000:
+                if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                     getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                     getASLBALANCEtodayi[0]=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                     addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
@@ -6922,7 +6925,7 @@ def kgddashboard(request):
                     except IndexError:
                         timesheetupdate=timesheet.objects.none()
                         getdailysales=0
-                    if getdailysales >= 2000:
+                    if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                         getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                         getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                         addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
@@ -7057,7 +7060,7 @@ def kgddashboard(request):
                     except IndexError:
                         timesheetupdate=timesheet.objects.none()
                         getdailysales=0
-                    if getdailysales >= 2000:
+                    if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                         getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                         getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                         addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
@@ -7544,7 +7547,7 @@ def kgddashboard(request):
                 except IndexError:
                     timesheetupdate=timesheet.objects.none()
                     getdailysales=0
-                if getdailysales >= 2000:
+                if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
                     getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
                     getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
                     addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
