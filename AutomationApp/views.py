@@ -62,7 +62,7 @@ def parse_and_send_fb_message(fbid, recevied_message):
             break
 
     if msg is not None:                 
-        endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
+        endpoint = f"https://graph.facebook.com/v15.0//me/messages?access_token=EAAKoAbMblTsBAA67nDiONcRDmu2g12x3ZA3dyu8q4tKlZBIDAS1AzynoZBC6cJEGGsz6Ybw0ByYB9y6AkGZB7D7Af74O51XK2RBh4EDz9BU6trcKFrxBFuXYsFYC2JsHCyiTrSR8pWHNAnrxNzYJurKiW6MgINzfoLpCzZAQT5FUmsofIaBIEnvbUhyHcdUXh6t5cf3yQZBQZDZD"
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":msg}})
         status = requests.post(
             endpoint, 
