@@ -81,6 +81,7 @@ class FacebookWebhookView(View):
     def get(self, request, *args, **kwargs):
         hub_mode   = request.GET.get('hub.mode')
         hub_token = request.GET.get('hub.verify_token')
+        print('hub_token: ', hub_token)
         hub_challenge = request.GET.get('hub.challenge')
         if hub_token != VERIFY_TOKEN:
             return HttpResponse('Error, invalid token', status=403)
