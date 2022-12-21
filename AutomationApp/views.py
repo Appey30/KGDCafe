@@ -41,15 +41,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .logic import LOGIC_RESPONSES
 
-VERIFY_TOKEN = "d73bc7b16eea1c4799d632e3c3362658f5cab2cb065b8c94da" # generated above
+VERIFY_TOKEN =  os.environ.get('VERIFY_TOKEN') # generated above
 
 """
 FB_ENDPOINT & PAGE_ACCESS_TOKEN
 Come from the next step.
 """
-FB_ENDPOINT = 'https://graph.facebook.com/v15.0/'
-PAGE_ACCESS_TOKEN = "EAAKoAbMblTsBAA67nDiONcRDmu2g12x3ZA3dyu8q4tKlZBIDAS1AzynoZBC6cJEGGsz6Ybw0ByYB9y6AkGZB7D7Af74O51XK2RBh4EDz9BU6trcKFrxBFuXYsFYC2JsHCyiTrSR8pWHNAnrxNzYJurKiW6MgINzfoLpCzZAQT5FUmsofIaBIEnvbUhyHcdUXh6t5cf3yQZBQZDZD"  
-
 
 
 
@@ -62,8 +59,9 @@ def parse_and_send_fb_message(fbid, recevied_message):
             msg = random.choice(LOGIC_RESPONSES[token])
             break
 
-    if msg is not None:                 
-        endpoint = f"https://graph.facebook.com/v15.0//me/messages?access_token=EAAKoAbMblTsBAA67nDiONcRDmu2g12x3ZA3dyu8q4tKlZBIDAS1AzynoZBC6cJEGGsz6Ybw0ByYB9y6AkGZB7D7Af74O51XK2RBh4EDz9BU6trcKFrxBFuXYsFYC2JsHCyiTrSR8pWHNAnrxNzYJurKiW6MgINzfoLpCzZAQT5FUmsofIaBIEnvbUhyHcdUXh6t5cf3yQZBQZDZD"
+    if msg is not None: 
+        
+        endpoint = os.environ.get('endpoint')
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":msg}})
         status = requests.post(
             endpoint, 
