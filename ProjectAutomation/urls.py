@@ -16,7 +16,7 @@ Including another URLconf
 
 
 from django.contrib import admin
-from django.urls import path, include 
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
@@ -59,6 +59,7 @@ urlpatterns = [
       #path('accounts/', include('allauth.urls')),
       #FIREBASE AREA
       path('index/onlineorder/<int:admin_id>/submitted' , views.submitted, name="submittedorder"),
+      re_path(r'^85f449d37a9f01958ed52ed4b0491315f6fbbf7b7bebba424f96b9f23bc9/$', views.FacebookWebhookView.as_view(), name='webhook'),
       #path('firebase-messaging-sw.js',views.showFirebaseJS,name="show_firebase_js"),
       
               ]

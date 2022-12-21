@@ -22,7 +22,7 @@ from django.contrib.auth.decorators import login_required
 from collections import namedtuple
 from qrcode import *
 import json
-import requests
+import requests, re
 from django.core import serializers
 from decimal import Decimal
 from pyfcm import FCMNotification
@@ -36,6 +36,75 @@ from io import BytesIO
 import base64
 import string
 from django.utils.encoding import smart_str
+from django.views.generic import View
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+VERIFY_TOKEN = "d73bc7b16eea1c4799d632e3c3362658f5cab2cb065b8c94da" # generated above
+
+"""
+FB_ENDPOINT & PAGE_ACCESS_TOKEN
+Come from the next step.
+"""
+FB_ENDPOINT = 'https://graph.facebook.com/v15.0/'
+PAGE_ACCESS_TOKEN = "EAAKoAbMblTsBAA67nDiONcRDmu2g12x3ZA3dyu8q4tKlZBIDAS1AzynoZBC6cJEGGsz6Ybw0ByYB9y6AkGZB7D7Af74O51XK2RBh4EDz9BU6trcKFrxBFuXYsFYC2JsHCyiTrSR8pWHNAnrxNzYJurKiW6MgINzfoLpCzZAQT5FUmsofIaBIEnvbUhyHcdUXh6t5cf3yQZBQZDZD"  
+
+
+
+
+def parse_and_send_fb_message(fbid, recevied_message):
+    # Remove all punctuations, lower case the text and split it based on space
+    tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message).lower().split()
+    msg = None
+    for token in tokens:
+        if token in LOGIC_RESPONSES:
+            msg = random.choice(LOGIC_RESPONSES[token])
+            break
+
+    if msg is not None:                 
+        endpoint = f"{FB_ENDPOINT}/me/messages?access_token={PAGE_ACCESS_TOKEN}"
+        response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":msg}})
+        status = requests.post(
+            endpoint, 
+            headers={"Content-Type": "application/json"},
+            data=response_msg)
+        print(status.json())
+        return stats.json()
+    return None
+
+
+class FacebookWebhookView(View):
+    @method_decorator(csrf_exempt) # required
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs) #python3.6+ syntax
+
+    '''
+    hub.mode
+    hub.verify_token
+    hub.challenge
+    Are all from facebook. We'll discuss soon.
+    '''
+    def get(self, request, *args, **kwargs):
+        hub_mode   = request.GET.get('hub.mode')
+        hub_token = request.GET.get('hub.verify_token')
+        hub_challenge = request.GET.get('hub.challenge')
+        if hub_token != VERIFY_TOKEN:
+            return HttpResponse('Error, invalid token', status_code=403)
+        return HttpResponse(hub_challenge)
+
+
+    def post(self, request, *args, **kwargs):
+        incoming_message = json.loads(request.body.decode('utf-8'))
+        for entry in incoming_message['entry']:
+            for message in entry['messaging']:
+                if 'message' in message:
+                    fb_user_id = message['sender']['id'] # sweet!
+                    fb_user_txt = message['message'].get('text')
+                    if fb_user_txt:
+                        parse_and_send_fb_message(fb_user_id, fb_user_txt)
+        return HttpResponse("Success", status=200)
+
+
 
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
@@ -254,7 +323,8 @@ def marketingaspect(request):
        
         MAINnovROcounts=0
     try:
-        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
+        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart')
+        .values_list('contactnumber',flat=True)
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
