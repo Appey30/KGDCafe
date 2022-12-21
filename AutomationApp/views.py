@@ -78,12 +78,6 @@ class FacebookWebhookView(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs) #python3.6+ syntax
 
-    '''
-    hub.mode
-    hub.verify_token
-    hub.challenge
-    Are all from facebook. We'll discuss soon.
-    '''
     def get(self, request, *args, **kwargs):
         hub_mode   = request.GET.get('hub.mode')
         hub_token = request.GET.get('hub.verify_token')
