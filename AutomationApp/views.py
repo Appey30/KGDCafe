@@ -323,8 +323,7 @@ def marketingaspect(request):
        
         MAINnovROcounts=0
     try:
-        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart')
-        .values_list('contactnumber',flat=True)
+        decemberROii=Sales.objects.filter(DateTime__year='2022',DateTime__month__gte='11', DateTime__month__lte='12').exclude(CusName__contains='Appey').exclude(CusName__contains='KGD').exclude(CusName__contains='Kim Jasper').exclude(CusName__contains='Kylie').exclude(CusName__contains='MJ Arañez Macapinlac').exclude(CusName__contains='Maryjoy Macapinlac').exclude(CusName__contains='Mary Joy Macapinlac').exclude(CusName__contains='MJ Macapinlac').exclude(CusName__contains='Moneth	De guzman').exclude(CusName__contains='Ramonita	De Guzman').exclude(CusName__contains='Monet De Guzman').exclude(CusName__contains='kylie rose Deguzman').exclude(CusName__contains='kylie Rose G De GUZMAN').exclude(CusName__contains='kylie heart').exclude(CusName__contains='kylie heart').values_list('contactnumber',flat=True)
         deccountRO=0
         MAINdecROcounts=0
         while deccountRO<decemberROii.count():
