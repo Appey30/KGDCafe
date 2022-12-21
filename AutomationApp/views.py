@@ -52,12 +52,13 @@ Come from the next step.
 
 def parse_and_send_fb_message(fbid, recevied_message):
     # Remove all punctuations, lower case the text and split it based on space
-    tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message).lower().split()
+    #tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message).lower().split()
     msg = None
-    for token in tokens:
-        if token in LOGIC_RESPONSES:
-            msg = random.choice(LOGIC_RESPONSES[token])
-            break
+    #for token in tokens:
+    if 'Discount' in LOGIC_RESPONSES:
+        #msg = random.choice(LOGIC_RESPONSES[token])
+        msg = LOGIC_RESPONSES['Discount']
+        break
 
     if msg is not None: 
         
