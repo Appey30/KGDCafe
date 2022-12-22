@@ -78,10 +78,14 @@ def post_facebook_message(fbid, recevied_message):
 # Create your views here.
 class FacebookWebhookView(View):
     def get(self, request, *args, **kwargs):
-        if request.GET['hub.verify_token'] == VERIFY_TOKEN:
+        try:
+            token=self.request.GET['hub.verify_token']
+        except MultiValueDictKeyError:
+            token=False
+        if token == VERIFY_TOKEN:
             return HttpResponse(request.GET['hub.challenge'])
         else:
-            print('hub.verify_token: ',request.GET['hub.verify_token'])
+            print('hub.verify_token: ',token)
             return HttpResponse('Error, invalid token')
         
     @method_decorator(csrf_exempt)
