@@ -60,8 +60,8 @@ urlpatterns = [
       #FIREBASE AREA
       path('index/onlineorder/<int:admin_id>/submitted' , views.submitted, name="submittedorder"),
       #path('api/fb/webhook/85f449d37a9f01958ed52ed4b0491315f6fbbf7b7bebba424f96b9f23bc9/', views.FacebookWebhookView.as_view(), name='webhook'),
-      path('api/fb/', include ('AutomationApp.urls', namespace = 'bot')),
-
+      path('api/fb/webhook/', include ('AutomationApp.urls', namespace = 'bot')),
+      
       #path('firebase-messaging-sw.js',views.showFirebaseJS,name="show_firebase_js"),
       
               ]
