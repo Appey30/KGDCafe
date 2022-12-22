@@ -68,7 +68,7 @@ def post_facebook_message(fbid, recevied_message):
     user_details = requests.get(user_details_url, user_details_params).json() 
     joke_text = 'Yo '+user_details['first_name']+'..! ' + joke_text
                    
-    post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    post_message_url = 'https://graph.facebook.com/v15.0/108263670554729/conversations/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     pprint(status.json())
