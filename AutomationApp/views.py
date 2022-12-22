@@ -78,7 +78,7 @@ class FacebookWebhookView(View):
     def dispatch(self, request, *args, **kwargs):
         print('Dispatched self:',self)
         print('Dispatched request:',request)
-        return super(FacebookWebhookView, self).dispatch(request, *args, **kwargs) #python3.6+ syntax
+        return super().dispatch(request, *args, **kwargs) #python3.6+ syntax
 
     def get(self, request, *args, **kwargs):
         print('get self:',self)
