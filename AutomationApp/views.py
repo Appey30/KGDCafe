@@ -79,6 +79,7 @@ class FacebookWebhookView(View):
         if request.GET.get('hub.verify_token') == VERIFY_TOKEN:
             return HttpResponse(request.GET.get('hub.challenge'))
         else:
+            print('hub.verify_token: ',request.GET.get('hub.verify_token'))
             return HttpResponse('Error, invalid token')
         
     @method_decorator(csrf_exempt)
