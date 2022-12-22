@@ -76,6 +76,7 @@ def parse_and_send_fb_message(fbid, recevied_message):
 class FacebookWebhookView(View):
     @method_decorator(csrf_exempt) # required
     def dispatch(self, request, *args, **kwargs):
+        print('Dispatched')
         return super().dispatch(request, *args, **kwargs) #python3.6+ syntax
 
     def get(self, request, *args, **kwargs):
