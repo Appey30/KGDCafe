@@ -66,7 +66,8 @@ def post_facebook_message(fbid, recevied_message):
         joke_text = "I didn't understand!!" 
 
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid 
-    user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN} 
+    #user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
     try:
         userdetailsfirstname=user_details['first_name']
@@ -87,7 +88,7 @@ class FacebookWebhookView(View):
         except MultiValueDictKeyError:
             token=False
         if token == VERIFY_TOKEN:
-            return HttpResponse(request.GET['hub.challenge'])
+            return HttpResponse(self.request.GET['hub.challenge'])
         else:
             print('hub.verify_token: ',token)
             return HttpResponse('Error, invalid token')
