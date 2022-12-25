@@ -26331,7 +26331,7 @@ Your browser does not support the audio element.
                                             <button id="myBtn" class="infobutton" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
                                         </div>
                                         {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.jpg" %}
-                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','jpg')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%" >
+                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','.jpg')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%" >
                                         {% else %}
                                         <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" >
                                         {% endif %}
@@ -26345,13 +26345,8 @@ Your browser does not support the audio element.
                                         </table>
                                         <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
                                         <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
-                                        {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.jpg" %}
-                                        <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','jpg')" id="atbbutspecialpromo">Order</button></p>
-                                        {% elif specialpromob.productname == specialpromob.productname and "SPECIALPROMO.png" %}
-                                        <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','png')" id="atbbutspecialpromo">Order</button></p>
-                                        {% else %}
-                                        <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','')" id="atbbutspecialpromo">Order</button></p>
-                                        {% endif %}
+                                        <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','.jpg')" id="atbbutspecialpromo">Order</button></p>
+
                                         
 
                                 </div>
