@@ -4918,7 +4918,7 @@ def Onlineordersystem(request, admin_id):
         shawarmabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Shawarma',user__id=admin_id).distinct('productname')
         bubwafbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Bubble Waffle',user__id=admin_id).distinct('productname')
         pizzabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=admin_id).distinct('productname')
-        specialpromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='Special Promo').distinct('productname')
+        specialpromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='Special Promo').distinct('productname').order_by('-id')
         FreeFriespromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='FreeFriesDay').distinct('productname')
         i=0
         pizzapricess={}
@@ -8323,7 +8323,7 @@ def Onlineordertestingsystem(request, admin_id):
         shawarmabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Shawarma',user__id=admin_id).distinct('productname')
         bubwafbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Bubble Waffle',user__id=admin_id).distinct('productname')
         pizzabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=admin_id).distinct('productname')
-        specialpromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='Special Promo').distinct('productname')
+        specialpromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='Special Promo').distinct('productname').order_by('-id')
         FreeFriespromobuttons = user1.objects.filter(Category__Categorychoices='Promo',user__id=admin_id,Promo='FreeFriesDay').distinct('productname')
         i=0
         pizzapricess={}
