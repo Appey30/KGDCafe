@@ -87,6 +87,7 @@ def post_facebook_message(fbid, recevied_message):
     print('5')
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print('6')
+    print(status)
     print(status.json())
 
 # Create your views here.
