@@ -78,7 +78,7 @@ def post_facebook_message(fbid, recevied_message):
     post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message}&recipient&access_token=%s'%PAGE_ACCESS_TOKEN
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    pprint(status.json())
+    print(status.json())
 
 # Create your views here.
 class FacebookWebhookView(View):
@@ -106,22 +106,21 @@ class FacebookWebhookView(View):
     def post(self, request, *args, **kwargs):
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
-        print('1')
+        
         # Facebook recommends going through every entry since they might send
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
             for message in entry['messaging']:
                 # Check to make sure the received call is a message call
                 # This might be delivery, optin, postback for other events 
-                print('2')
+                
                 if 'message' in message:
-                    print('3')
+                    
                     # Print the message to the terminal
-                    pprint(message)    
+                    print(message)    
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly. 
                     post_facebook_message(message['sender']['id'], message['message']['text'])    
-        print('5')
         return HttpResponse()    
 
 
