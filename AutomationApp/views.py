@@ -80,16 +80,15 @@ def post_facebook_message(fbid, recevied_message):
         userdetailsfirstname="Ma'am/Sir"
         print('userdetailsfirstname: ',userdetailsfirstname)
     joke_text = 'Yo '+userdetailsfirstname+'..! ' + joke_text
-    print('3')           
+              
     #post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     #post_message_url = 'https://graph.facebook.com/v15.0/me/?fields=conversations{messages,senders,name,participants,id},id,name&access_token=%s'%PAGE_ACCESS_TOKEN
-    post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message,id,from,to},id,senders,name,participants&access_token=%s'%PAGE_ACCESS_TOKEN
-    print('4')
+    #post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message,id,from,to},id,senders,name,participants&access_token=%s'%PAGE_ACCESS_TOKEN
+    post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message,id,from,to},id,senders,name&access_token=%s'%PAGE_ACCESS_TOKEN
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
-    print('5')
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    print('6')
-    print(status)
+    print(status.error.message)
+    print(status.error)
     print(status.json())
 
 # Create your views here.
