@@ -73,8 +73,10 @@ def post_facebook_message(fbid, recevied_message):
     user_details = requests.get(user_details_url, user_details_params).json() 
     try:
         userdetailsfirstname=user_details['first_name']
+        print('userdetailsfirstname: ',userdetailsfirstname)
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
+        print('userdetailsfirstname: ',userdetailsfirstname)
     joke_text = 'Yo '+userdetailsfirstname+'..! ' + joke_text
     print('3')           
     post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?access_token=%s'%PAGE_ACCESS_TOKEN
