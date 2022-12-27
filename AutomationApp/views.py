@@ -122,7 +122,9 @@ class FacebookWebhookView(View):
                 if 'message' in message:
                     
                     # Print the message to the terminal
-                    print(message)    
+                    print(message) 
+                    print('MESSAGE_SENDER_ID: ',message['sender']['id'])
+                    print('MESSAGE_text: ',message['message']['text'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly. 
                     post_facebook_message(message['sender']['id'], message['message']['text'])    
