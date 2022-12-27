@@ -88,11 +88,11 @@ def post_facebook_message(fbid, recevied_message):
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     try:
-        print(status.error.message)
+        print(status['error']['message'])
     except AttributeError:
         print(status)
     try:
-        print(status.error)
+        print(status['error'])
     except AttributeError:
         print(status)
     print(status.json())
