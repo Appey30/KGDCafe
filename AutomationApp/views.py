@@ -71,6 +71,7 @@ def post_facebook_message(fbid, recevied_message):
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     #user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
+    print('user_details(.json): ',requests.get(user_details_url, user_details_params).json() )
     try:
         userdetailsfirstname=user_details['first_name']
         print('userdetailsfirstname: ',userdetailsfirstname)
