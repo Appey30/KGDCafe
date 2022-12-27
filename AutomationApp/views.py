@@ -67,8 +67,8 @@ def post_facebook_message(fbid, recevied_message):
         print('2')
         joke_text = "I didn't understand!!" 
 
-    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid 
-    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name,public_profile&access_token=%s'%PAGE_ACCESS_TOKEN
+    user_details_params = {'fields':'first_name,last_name,public_profile', 'access_token':PAGE_ACCESS_TOKEN} 
     #user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
     print('user_details(.json): ',requests.get(user_details_url, user_details_params).json() )
