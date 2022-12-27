@@ -91,9 +91,13 @@ def post_facebook_message(fbid, recevied_message):
         print(status['error']['message'])
     except AttributeError:
         print(status)
+    except TypeError:
+        print(status)
     try:
         print(status['error'])
     except AttributeError:
+        print(status)
+    except TypeError:
         print(status)
     print(status.json())
 
