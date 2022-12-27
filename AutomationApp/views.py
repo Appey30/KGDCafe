@@ -67,39 +67,27 @@ def post_facebook_message(fbid, recevied_message):
         print('2')
         joke_text = "I didn't understand!!" 
 
-    #user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name,public_profile&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
-    #user_details_params = {'fields':'first_name,last_name,public_profile', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
     print('user_details(.json): ',requests.get(user_details_url, user_details_params).json() )
     try:
         userdetailsfirstname=user_details['first_name']
         print('userdetailsfirstname: ',userdetailsfirstname)
+
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
         print('userdetailsfirstname: ',userdetailsfirstname)
     joke_text = 'Yo '+userdetailsfirstname+'..! ' + joke_text
-              
-    #post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    #post_message_url = 'https://graph.facebook.com/v15.0/me/?fields=conversations{messages,senders,name,participants,id},id,name&access_token=%s'%PAGE_ACCESS_TOKEN
-    #post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message,id,from,to},id,senders,name,participants&access_token=%s'%PAGE_ACCESS_TOKEN
+    
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    try:
-        print(status['error']['message'])
-    except AttributeError:
-        print(status)
-    except TypeError:
-        print(status)
-    try:
-        print(status['error'])
-    except AttributeError:
-        print(status)
-    except TypeError:
-        print(status)
-    print(status.json())
+    if userdetailsfirstname == 'Appey':
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
+    else:
+        pass
+    
 
 # Create your views here.
 class FacebookWebhookView(View):
