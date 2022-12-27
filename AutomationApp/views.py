@@ -87,7 +87,12 @@ class FacebookWebhookView(View):
             token=self.request.GET['hub.verify_token']
         except MultiValueDictKeyError:
             token=False
-        if token == VERIFY_TOKEN:
+        try:
+            mode=self.request.GET['hub.mode']
+        except MultiValueDictKeyError:
+            mode=False
+        if token == VERIFY_TOKEN and mode=='subscribe':
+            print('Congrats! Webhook_verified')
             return HttpResponse(self.request.GET['hub.challenge'])
         else:
             print('hub.verify_token: ',token)
