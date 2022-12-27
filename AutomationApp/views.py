@@ -87,8 +87,14 @@ def post_facebook_message(fbid, recevied_message):
     post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message,id,from,to},id,name&access_token=%s'%PAGE_ACCESS_TOKEN
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    print(status.error.message)
-    print(status.error)
+    try:
+        print(status.error.message)
+    except AttributeError:
+        print(status)
+    try:
+        print(status.error)
+    except AttributeError:
+        print(status)
     print(status.json())
 
 # Create your views here.
