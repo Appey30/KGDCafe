@@ -68,7 +68,7 @@ def post_facebook_message(fbid, recevied_message):
         joke_text = "I didn't understand!!" 
 
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid 
-    user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     #user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
     try:
@@ -77,7 +77,7 @@ def post_facebook_message(fbid, recevied_message):
         userdetailsfirstname="Ma'am/Sir"
     joke_text = 'Yo '+userdetailsfirstname+'..! ' + joke_text
     print('3')           
-    post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message}&recipient&access_token=%s'%PAGE_ACCESS_TOKEN
+    post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     print('4')
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
     print('5')
