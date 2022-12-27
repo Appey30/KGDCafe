@@ -55,6 +55,7 @@ jokes = { 'yahoo': ["""reply yahoo""",
 
 # Helper function
 def post_facebook_message(fbid, recevied_message):
+    print('1')
     # Remove all punctuations, lower case the text and split it based on space
     tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message).lower().split()
     joke_text = ''
@@ -63,6 +64,7 @@ def post_facebook_message(fbid, recevied_message):
             joke_text = random.choice(jokes[token])
             break
     if not joke_text:
+        print('2')
         joke_text = "I didn't understand!!" 
 
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid 
@@ -74,10 +76,13 @@ def post_facebook_message(fbid, recevied_message):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
     joke_text = 'Yo '+userdetailsfirstname+'..! ' + joke_text
-                   
+    print('3')           
     post_message_url = 'https://graph.facebook.com/v15.0/me/conversations/messages?fields=messages{message}&recipient&access_token=%s'%PAGE_ACCESS_TOKEN
+    print('4')
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
+    print('5')
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    print('6')
     print(status.json())
 
 # Create your views here.
