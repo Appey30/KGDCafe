@@ -46,48 +46,103 @@ from django.utils.datastructures import MultiValueDictKeyError
 PAGE_ACCESS_TOKEN = os.environ.get('PAGE_ACCESS_TOKEN')
 VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
 
-jokes = { 'yahoo': ["""reply yahoo""", 
-                     """reply yahoo two"""], 
-         'discount':      ["""reply discount""", 
-                      """ reply discount two" """], 
-         'discountdiscount': ["""reply discountdiscount""", 
-                  """reply discountdiscount two"""] }
 
 # Helper function
-def post_facebook_message(fbid, recevied_message):
-    print('1')
-    # Remove all punctuations, lower case the text and split it based on space
-    tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message).lower().split()
-    joke_text = ''
-    for token in tokens:
-        if token in jokes:
-            joke_text = random.choice(jokes[token])
-            break
-    if not joke_text:
-        print('2')
-        joke_text = "I didn't understand!!" 
+def handleMessage(fbid, response):
+    if response['text']:
+        jokes = { 'hi': ["""hello """, 
+                             """hello!"""], 
+                 'hello':      ["""hi """, 
+                              """ hi!"""], 
+                 }
 
-    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
-    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
-    user_details = requests.get(user_details_url, user_details_params).json() 
-    print('user_details(.json): ',requests.get(user_details_url, user_details_params).json() )
-    try:
-        userdetailsfirstname=user_details['first_name']
-        print('userdetailsfirstname: ',userdetailsfirstname)
+        # Remove all punctuations, lower case the text and split it based on space
+        tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',response['text']).lower().split()
+        joke_text = ''
+        for token in tokens:
+            if token in jokes:
+                joke_text = random.choice(jokes[token])
+                break
+        if not joke_text:
+        
+            joke_text = "I didn't understand!!" 
 
-    except KeyError:
-        userdetailsfirstname="Ma'am/Sir"
-        print('userdetailsfirstname: ',userdetailsfirstname)
-    joke_text = 'Yo '+userdetailsfirstname+'..! ' + joke_text
+        user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+        user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+        user_details = requests.get(user_details_url, user_details_params).json() 
     
-    post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
+        try:
+            userdetailsfirstname=user_details['first_name']
+        
+
+        except KeyError:
+            userdetailsfirstname="Ma'am/Sir"
+        
+        joke_text = joke_text+', '+userdetailsfirstname+'..! '
+    
+        post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":{"text":joke_text}
+        })
+    elif response['attachments']:
+        for attachments in response['attachments']:
+        attachment_url=attachments.payload.url
+            response_msg = json.dumps({
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "generic",
+                  "elements": [{
+                    "title": "Did you send this pic?",
+                    "subtitle": "Tap a button to answer.",
+                    "image_url": attachment_url,
+                    "buttons": [
+                      {
+                        "type": "postback",
+                        "title": "Yes!",
+                        "payload": "yes",
+                      },
+                      {
+                        "type": "postback",
+                        "title": "No!",
+                        "payload": "no",
+                      }
+                    ],
+                  }]
+                }
+              }
+            })
+       
+  
+
+        if userdetailsfirstname == 'Appey':
+            status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+            print(status.json())
+        else:
+            pass
+
+def handlePostback(fbid, received_postback):
+    print('handlepostback called received_postback value is: ',received_postback)
+        
+
+def set_get_started_button():
+    post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
+    payload = {
+        "get_started": {
+            "payload": "GET_STARTED"
+        }
+    }
+
+    #params = {
+    #"access_token": ACCESS_TOKEN
+    #}
     if userdetailsfirstname == 'Appey':
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
         print(status.json())
     else:
         pass
-    
+    #requests.post(url, json=payload, headers=headers)
 
 # Create your views here.
 class FacebookWebhookView(View):
@@ -111,8 +166,10 @@ class FacebookWebhookView(View):
     def dispatch(self, request, *args, **kwargs):
         return View.dispatch(self, request, *args, **kwargs)
 
+
     # Post function to handle Facebook messages
     def post(self, request, *args, **kwargs):
+
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
         
@@ -128,10 +185,18 @@ class FacebookWebhookView(View):
                     # Print the message to the terminal
                     print(message) 
                     print('MESSAGE_SENDER_ID: ',message['sender']['id'])
-                    print('MESSAGE_text: ',message['message']['text'])
+                    print('MESSAGE_text: ',message['message'])
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly. 
-                    post_facebook_message(message['sender']['id'], message['message']['text'])    
+
+                    handleMessage(message['sender']['id'], message['message'])
+                elif 'postback' in message:
+                    handlePostback(message['sender']['id'], message['postback'])
+    
+        
+                    
+
+                
         return HttpResponse()    
 
 
