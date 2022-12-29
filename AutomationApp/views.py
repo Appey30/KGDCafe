@@ -50,7 +50,7 @@ VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
 # Helper function
 def handleMessage(fbid, response):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    if response['text']:
+    try:
         jokes = { 'hi': ["""hello """, 
                              """hello!"""], 
                  'hello':      ["""hi """, 
@@ -86,7 +86,7 @@ def handleMessage(fbid, response):
         "recipient":{"id":fbid}, 
         "message":{"text":joke_text}
         })
-    elif response['attachments']:
+    except KeyError:
         for attachments in response['attachments']:
             attachment_url=attachments.payload.url
             response_msg = json.dumps({
