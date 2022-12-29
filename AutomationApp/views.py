@@ -126,7 +126,7 @@ def handleMessage(fbid, response):
                 }
                 response_msg = json.dumps({
                 "recipient":{"id":fbid}, 
-                "message"::messageattachment
+                "message":messageattachment
                 })
                 if userdetailsfirstname == 'Appey':
                     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
@@ -159,20 +159,41 @@ def handleMessage(fbid, response):
 
 def handlePostback(fbid, received_postback):
     print('handlepostback called received_postback value is: ',received_postback)
-    payload = received_postback['payload']
+    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details = requests.get(user_details_url, user_details_params).json() 
+    try:
+        userdetailsfirstname=user_details['first_name']
+        
 
-    if payload == 'yes':
+    except KeyError:
+        userdetailsfirstname="Ma'am/Sir"
+        
+    payload = received_postback['payload']
+    if payload == "GET_STARTED":
+        response_msg = { "text": "You have pressed GET_Started button!" }
+    elif payload == 'yes':
         response_msg = { "text": "Your answer is YES!" }
     elif payload == 'no':
         response_msg = { "text": "Your answer is No!" }
-
+    
     if userdetailsfirstname == 'Appey':
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print(status.json())
     else:
         pass
 
-def set_get_started_button():
+def set_get_started_button(fbid):
+    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details = requests.get(user_details_url, user_details_params).json() 
+    try:
+        userdetailsfirstname=user_details['first_name']
+        
+
+    except KeyError:
+        userdetailsfirstname="Ma'am/Sir"
+        
     post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
     payload = {
         "get_started": {
@@ -237,6 +258,7 @@ class FacebookWebhookView(View):
 
                     handleMessage(message['sender']['id'], message['message'])
                 elif 'postback' in message:
+                    set_get_started_button(message['sender']['id'], message['postback'])
                     handlePostback(message['sender']['id'], message['postback'])
     
         
