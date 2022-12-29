@@ -94,7 +94,7 @@ def handleMessage(fbid, response):
         for attachmentsfinal in attachments:
             if attachmentsfinal['type'] == 'image':
                 attachment_url = attachmentsfinal['payload']['url']
-                response_msg = json.dumps({
+                messageattachment = json.dumps({
                     "attachment": {
                     "type": "template",
                     "payload": {
@@ -119,6 +119,10 @@ def handleMessage(fbid, response):
                     }
                     }
                 })
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":messageattachment
+        })
     else:
         pass
     if userdetailsfirstname == 'Appey':
