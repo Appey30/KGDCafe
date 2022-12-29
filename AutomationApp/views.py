@@ -224,7 +224,7 @@ def loginmessenger(fbid, received_postback):
     "recipient":{"id":fbid}, 
     "message":messageattachment
     })
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=response_msg)
     print(status.json())
 
 def set_get_started_button(fbid, received_postback):
