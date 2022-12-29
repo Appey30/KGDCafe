@@ -156,6 +156,49 @@ def handleMessage(fbid, response):
         print(status.json())
         #else:
         #    pass
+def selectplatform(fbid, received_postback):
+    post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    print('handlepostback called received_postback value is: ',received_postback)
+    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details = requests.get(user_details_url, user_details_params).json() 
+    try:
+        userdetailsfirstname=user_details['first_name']
+    except KeyError:
+        userdetailsfirstname="Ma'am/Sir"
+
+        messageattachment = {
+            "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "elements": [{
+                "text": "Where do you want to order? n/ Tap a button to answer",
+                "buttons": [
+                    {
+                    "type":"web_url",
+                    "url":"https://kgdcafe.com",
+                    "title":"Website"
+                    },
+                    {
+                    "type": "postback",
+                    "title": "Here in Messenger",
+                    "payload": "Here_Messenger",
+                    }
+                ],
+                }]
+            }
+            }
+        }
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":messageattachment
+        })
+
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
+
+
 
 def handlePostback(fbid, received_postback):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
@@ -165,75 +208,29 @@ def handlePostback(fbid, received_postback):
     user_details = requests.get(user_details_url, user_details_params).json() 
     try:
         userdetailsfirstname=user_details['first_name']
-        
-
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
         
     payload = received_postback['payload']
     
     if payload == "GET_STARTED":
-        loginmessenger(fbid, received_postback)
-    elif payload == 'yes':
+        selectplatform(fbid, received_postback)
+    elif payload == 'Here_Messenger':
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
-        "message":{"text": "Your answer is YES!" }
+        "message":{"text": "Your answer is Here_Messenger!" }
         })
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print(status.json())
-    elif payload == 'no':
-        response_msg = json.dumps({
-        "recipient":{"id":fbid}, 
-        "message":{"text": "Your answer is No!"}
-        })
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-        print(status.json())
-       
-    
-    #if userdetailsfirstname == 'Appey':
+#    elif payload == 'Website':
+#        response_msg = json.dumps({
+#        "recipient":{"id":fbid}, 
+#        "message":{"text": "Your answer is Website!"}
+#        })
+#        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+#        print(status.json())
 
-    #else:
-    #    pass
 
-def loginmessenger(fbid, received_postback):
-    print('loginwithmessenger has been reached')
-    print('fbid: ',fbid)
-    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
-    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
-    user_details = requests.get(user_details_url, user_details_params).json() 
-    print('1')
-    try:
-        userdetailsfirstname=user_details['first_name']
-    except KeyError:
-        userdetailsfirstname="Ma'am/Sir"
-    print('2')
-    post_message_url='https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    print('3')
-    messageattachment = {  
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "button",
-                "text": "Welcome to the KGD E-Cafe "+userdetailsfirstname+"! Kindly, allow us to register your account by just clicking the button below.",
-                "buttons": [
-                {
-                    "type": "account_link",
-                    "url": "https://kgdcafe.com/",
-                }
-                ]
-            }
-        }
-    }
-    print('4')
-    response_msg = json.dumps({
-    "recipient":{"id":fbid}, 
-    "message":messageattachment
-    })
-    print('5')
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    print('6')
-    print(status.json())
-    print('7')
 
 def set_get_started_button(fbid, received_postback):
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
@@ -253,8 +250,82 @@ def set_get_started_button(fbid, received_postback):
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
     
     print(status.json())
-    
 
+
+#def loginmessenger(fbid, received_postback):
+#    print('loginwithmessenger has been reached')
+#    print('fbid: ',fbid)
+#    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+#    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+#    user_details = requests.get(user_details_url, user_details_params).json() 
+#    print('1')
+#    try:
+#        userdetailsfirstname=user_details['first_name']
+#    except KeyError:
+#        userdetailsfirstname="Ma'am/Sir"
+    
+#    post_message_url='https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    
+#    messageattachment = {  
+#        "attachment": {
+#            "type": "template",
+#            "payload": {
+#                "template_type": "button",
+#                "text": "Welcome to the KGD E-Cafe "+userdetailsfirstname+"! Kindly, allow us to register your account by just clicking the button below.",
+#                "buttons": [
+#                {
+#                    "type": "account_link",
+#                    "url": "https://kgdcafe.com/",
+#                }
+#                ]
+#            }
+#        }
+#    }
+#    print('4')
+#    response_msg = json.dumps({
+#    "recipient":{"id":fbid}, 
+#    "message":messageattachment
+#    })
+#    print('5')
+#    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+#    print('6')
+#    print(status.json())
+#    print('7')
+
+
+#def link_account(account_linking_token, email, password):
+#  url = "https://graph.facebook.com/v15.0/me/account_linking"
+#  payload = {
+#    "account_linking_token": account_linking_token,
+#    "authorization_code": generate_authorization_code(email, password)
+#  }
+#  headers = {
+#    "Content-Type": "application/json"
+#  }
+#  params = {
+#    "access_token": ACCESS_TOKEN
+#  }
+#  requests.post(url, json=payload, headers=headers, params=params)
+
+#def generate_authorization_code(email, password):
+  # Verify the email and password provided
+#  user = authenticate(email=email, password=password)
+#  if user is not None:
+#    # Generate a unique authorization code for the customer's account
+#    authorization_code = generate_unique_code()
+#    # Save the authorization code to the database
+#    save_authorization_code(user, authorization_code)
+#    return authorization_code
+#  else:
+#    # Return an error if the email and password are invalid
+#    return "ERROR"
+
+#def generate_unique_code():
+#  # Generate a unique code using a random number generator or other method
+#  ...
+
+#def save_authorization_code(user, authorization_code):
+#  # Save the authorization code to the database for the user
 
 # Create your views here.
 class FacebookWebhookView(View):
@@ -304,6 +375,9 @@ class FacebookWebhookView(View):
                     handleMessage(message['sender']['id'], message['message'])
                 elif 'postback' in message:
                     handlePostback(message['sender']['id'], message['postback'])
+                #elif message.get('account_linking'):
+                #    account_linking_token=message['account_linking']['account_linking_token']
+                #    link_account(account_linking_token, )
                 else:
                 # elif 'postback' in message:
                     set_get_started_button(message['sender']['id'], message['postback'])
