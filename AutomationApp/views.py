@@ -232,7 +232,7 @@ def set_get_started_button(fbid, received_postback):
                 }
               ]
             }
-          }
+          
         }
     }
     #params = {
