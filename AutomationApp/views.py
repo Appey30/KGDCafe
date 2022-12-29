@@ -255,7 +255,7 @@ def set_get_started_button(fbid, received_postback):
     #"access_token": ACCESS_TOKEN
     #}
     if userdetailsfirstname == 'Appey':
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
         print(status.json())
     else:
         pass
