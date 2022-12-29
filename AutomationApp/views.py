@@ -126,7 +126,7 @@ def handlePostback(fbid, received_postback):
 
     if payload == 'yes':
         response_msg = { "text": "Your answer is YES!" }
-    elif payload == 'no'
+    elif payload == 'no':
         response_msg = { "text": "Your answer is No!" }
 
     if userdetailsfirstname == 'Appey':
