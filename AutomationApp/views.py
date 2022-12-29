@@ -273,6 +273,8 @@ class FacebookWebhookView(View):
                     # are sent as attachments and must be handled accordingly. 
 
                     handleMessage(message['sender']['id'], message['message'])
+                elif 'postback' in message:
+                    handlePostback(message['sender']['id'], message['postback'])
                 else:
                 # elif 'postback' in message:
                     set_get_started_button(message['sender']['id'], message['postback'])
