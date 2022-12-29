@@ -214,7 +214,7 @@ def loginmessenger(fbid, received_postback):
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text": "Welcome to the KGD E-Cafe! Kindly, allow us to register your account by just clicking the button below.",
+                "text": "Welcome to the KGD E-Cafe "+userdetailsfirstname+"! Kindly, allow us to register your account by just clicking the button below.",
                 "buttons": [
                 {
                     "type": "account_link",
