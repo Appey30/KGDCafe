@@ -200,11 +200,15 @@ def set_get_started_button(fbid, received_postback):
             "payload": "GET_STARTED"
         }
     }
-    handlePostback(fbid, received_postback)
+
     #params = {
     #"access_token": ACCESS_TOKEN
     #}
-    
+    if userdetailsfirstname == 'Appey':
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
+        print(status.json())
+    else:
+        pass
     #requests.post(url, json=payload, headers=headers)
 
 # Create your views here.
