@@ -50,7 +50,8 @@ VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
 # Helper function
 def handleMessage(fbid, response):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    try:
+    textorattachment=response.get('text',[]);
+    if textorattachment:
         jokes = { 'hi': ["""hello """, 
                              """hello!"""], 
                  'hello':      ["""hi """, 
@@ -86,34 +87,37 @@ def handleMessage(fbid, response):
         "recipient":{"id":fbid}, 
         "message":{"text":joke_text}
         })
-    except KeyError:
-
-        attachment_url=response['attachments'][0].payload.url
-        response_msg = json.dumps({
-            "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                "title": "Did you send this pic?",
-                "subtitle": "Tap a button to answer.",
-                "image_url": attachment_url,
-                "buttons": [
-                    {
-                    "type": "postback",
-                    "title": "Yes!",
-                    "payload": "yes",
-                    },
-                    {
-                    "type": "postback",
-                    "title": "No!",
-                    "payload": "no",
+    elif response.get('attachments'):
+        
+        attachments=response.get('attachments',[])
+        for attachmentsfinal in attachments:
+            if attachmentsfinal['type'] == 'image':
+                attachment_url = attachmentsfinal['payload']['url']
+                response_msg = json.dumps({
+                    "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": [{
+                        "title": "Did you send this pic?",
+                        "subtitle": "Tap a button to answer.",
+                        "image_url": attachment_url,
+                        "buttons": [
+                            {
+                            "type": "postback",
+                            "title": "Yes!",
+                            "payload": "yes",
+                            },
+                            {
+                            "type": "postback",
+                            "title": "No!",
+                            "payload": "no",
+                            }
+                        ],
+                        }]
                     }
-                ],
-                }]
-            }
-            }
-        })
+                    }
+                })
     if userdetailsfirstname == 'Appey':
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print(status.json())
