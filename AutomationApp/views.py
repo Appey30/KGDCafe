@@ -173,11 +173,7 @@ def handlePostback(fbid, received_postback):
     payload = received_postback['payload']
     print('payload:',payload)
     if payload == "GET_STARTED":
-        response_msg = json.dumps({
-        "recipient":{"id":fbid}, 
-        "message":{"text": "You have pressed GET_Started button!" }
-        })
-
+        loginmessenger(fbid,received_postback)
     elif payload == 'yes':
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
@@ -197,33 +193,24 @@ def handlePostback(fbid, received_postback):
     #else:
     #    pass
 
-    
 
-def set_get_started_button(fbid, received_postback):
+ def loginmessenger(fbid, received_postback):
+    print('loginwithmessenger has been reached')
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
     try:
         userdetailsfirstname=user_details['first_name']
-        
-
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
         
- #  post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
- #   payload = {
- #       "get_started": {
- #           "payload": "GET_STARTED"
- #       }
- #   }
-#{
     post_message_url='https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     messageattachment = {  
         "attachment": {
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": "Welcome to the shop! To log in to your account, click the button below.",
+              "text": "Welcome to the shop! To log-in to your account, click the button below.",
               "buttons": [
                 {
                   "type": "account_link",
@@ -238,11 +225,35 @@ def set_get_started_button(fbid, received_postback):
     "recipient":{"id":fbid}, 
     "message":messageattachment
     })
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
+    print(status.json())
+
+def set_get_started_button(fbid, received_postback):
+    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details = requests.get(user_details_url, user_details_params).json() 
+    try:
+        userdetailsfirstname=user_details['first_name']
+    except KeyError:
+        userdetailsfirstname="Ma'am/Sir"
+        
+   post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
+    payload = {
+        "get_started": {
+            "payload": "GET_STARTED"
+        }
+    }
+{
+
+    #response_msg = json.dumps({
+    #"recipient":{"id":fbid}, 
+    #"message":messageattachment
+    #})
     #params = {
     #"access_token": ACCESS_TOKEN
     #}
     #if userdetailsfirstname == 'Appey':
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=response_msg)
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
     print(status.json())
     #else:
     #    pass
