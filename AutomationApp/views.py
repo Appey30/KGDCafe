@@ -197,6 +197,7 @@ def handlePostback(fbid, received_postback):
 
 def loginmessenger(fbid, received_postback):
     print('loginwithmessenger has been reached')
+    print('fbid: ',fbid)
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
@@ -233,6 +234,7 @@ def loginmessenger(fbid, received_postback):
     print('6')
     print(status.json())
     print('7')
+
 def set_get_started_button(fbid, received_postback):
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
