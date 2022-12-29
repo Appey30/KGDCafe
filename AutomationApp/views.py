@@ -88,31 +88,31 @@ def handleMessage(fbid, response):
     elif response['attachments']:
         for attachments in response['attachments']:
             attachment_url=attachments.payload.url
-                response_msg = json.dumps({
-                  "attachment": {
-                    "type": "template",
-                    "payload": {
-                      "template_type": "generic",
-                      "elements": [{
-                        "title": "Did you send this pic?",
-                        "subtitle": "Tap a button to answer.",
-                        "image_url": attachment_url,
-                        "buttons": [
-                          {
-                            "type": "postback",
-                            "title": "Yes!",
-                            "payload": "yes",
-                          },
-                          {
-                            "type": "postback",
-                            "title": "No!",
-                            "payload": "no",
-                          }
-                        ],
-                      }]
-                    }
-                  }
-                })
+            response_msg = json.dumps({
+                "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                    "title": "Did you send this pic?",
+                    "subtitle": "Tap a button to answer.",
+                    "image_url": attachment_url,
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Yes!",
+                        "payload": "yes",
+                        },
+                        {
+                        "type": "postback",
+                        "title": "No!",
+                        "payload": "no",
+                        }
+                    ],
+                    }]
+                }
+                }
+            })
        
   
 
@@ -125,11 +125,11 @@ def handleMessage(fbid, response):
 def handlePostback(fbid, received_postback):
     print('handlepostback called received_postback value is: ',received_postback)
     payload = received_postback.payload;
-  if (payload === 'yes') {
+    if (payload === 'yes') {
     response = { "text": "Thanks!" }
-  } else if (payload === 'no') {
+    } else if (payload === 'no') {
     response = { "text": "Oops, try sending another image." }
-  }
+    }
     if payload == 'yes':
         response_msg = { "text": "Your answer is YES!" }
     elif payload == 'no'
