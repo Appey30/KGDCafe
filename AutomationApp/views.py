@@ -246,7 +246,7 @@ def set_get_started_button(fbid, received_postback):
         
     post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
     payload = {
-        "get_Started": {
+        "get_started": {
             "payload": "GET_STARTED"
         }
     }
