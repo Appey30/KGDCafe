@@ -195,7 +195,7 @@ def set_persistent_menu(fbid, received_postback):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
         
-    url = "https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
+    url = "https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s"%PAGE_ACCESS_TOKEN
     payload = {
     "persistent_menu": [
         {
