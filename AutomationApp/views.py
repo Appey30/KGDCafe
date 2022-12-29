@@ -183,7 +183,7 @@ def handlePostback(fbid, received_postback):
     else:
         pass
 
-def set_get_started_button(fbid):
+def set_get_started_button(fbid, received_postback):
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
@@ -259,7 +259,7 @@ class FacebookWebhookView(View):
                     handleMessage(message['sender']['id'], message['message'])
                 elif 'postback' in message:
                     set_get_started_button(message['sender']['id'], message['postback'])
-                    handlePostback(message['sender']['id'], message['postback'])
+                    #handlePostback(message['sender']['id'], message['postback'])
     
         
                     
