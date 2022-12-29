@@ -236,12 +236,15 @@ def set_get_started_button(fbid, received_postback):
           
         }
     }
-
+    response_msg = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachment
+    })
     #params = {
     #"access_token": ACCESS_TOKEN
     #}
     #if userdetailsfirstname == 'Appey':
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=messageattachment)
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=response_msg)
     print(status.json())
     #else:
     #    pass
