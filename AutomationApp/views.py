@@ -87,32 +87,32 @@ def handleMessage(fbid, response):
         })
     elif response['attachments']:
         for attachments in response['attachments']:
-        attachment_url=attachments.payload.url
-            response_msg = json.dumps({
-              "attachment": {
-                "type": "template",
-                "payload": {
-                  "template_type": "generic",
-                  "elements": [{
-                    "title": "Did you send this pic?",
-                    "subtitle": "Tap a button to answer.",
-                    "image_url": attachment_url,
-                    "buttons": [
-                      {
-                        "type": "postback",
-                        "title": "Yes!",
-                        "payload": "yes",
-                      },
-                      {
-                        "type": "postback",
-                        "title": "No!",
-                        "payload": "no",
-                      }
-                    ],
-                  }]
-                }
-              }
-            })
+            attachment_url=attachments.payload.url
+                response_msg = json.dumps({
+                  "attachment": {
+                    "type": "template",
+                    "payload": {
+                      "template_type": "generic",
+                      "elements": [{
+                        "title": "Did you send this pic?",
+                        "subtitle": "Tap a button to answer.",
+                        "image_url": attachment_url,
+                        "buttons": [
+                          {
+                            "type": "postback",
+                            "title": "Yes!",
+                            "payload": "yes",
+                          },
+                          {
+                            "type": "postback",
+                            "title": "No!",
+                            "payload": "no",
+                          }
+                        ],
+                      }]
+                    }
+                  }
+                })
        
   
 
