@@ -211,17 +211,33 @@ def set_get_started_button(fbid, received_postback):
         userdetailsfirstname="Ma'am/Sir"
         
     post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
-    payload = {
-        "get_started": {
-            "payload": "GET_STARTED"
+ #   payload = {
+ #       "get_started": {
+ #           "payload": "GET_STARTED"
+ #       }
+ #   }
+#{
+    messageattachment = {  
+        "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": "Welcome to the shop! To log in to your account, click the button below.",
+              "buttons": [
+                {
+                  "type": "account_link",
+                  "url": "https://kgdcafe.com/oauth/login/facebook/"
+                }
+              ]
+            }
+          }
         }
     }
-
     #params = {
     #"access_token": ACCESS_TOKEN
     #}
     #if userdetailsfirstname == 'Appey':
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=messageattachment)
     print(status.json())
     #else:
     #    pass
