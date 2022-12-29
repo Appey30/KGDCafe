@@ -87,33 +87,33 @@ def handleMessage(fbid, response):
         "message":{"text":joke_text}
         })
     except KeyError:
-        for attachments in response['attachments']:
-            attachment_url=attachments.payload.url
-            response_msg = json.dumps({
-                "attachment": {
-                "type": "template",
-                "payload": {
-                    "template_type": "generic",
-                    "elements": [{
-                    "title": "Did you send this pic?",
-                    "subtitle": "Tap a button to answer.",
-                    "image_url": attachment_url,
-                    "buttons": [
-                        {
-                        "type": "postback",
-                        "title": "Yes!",
-                        "payload": "yes",
-                        },
-                        {
-                        "type": "postback",
-                        "title": "No!",
-                        "payload": "no",
-                        }
-                    ],
-                    }]
-                }
-                }
-            })
+
+        attachment_url=attachments[0].payload.url
+        response_msg = json.dumps({
+            "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                "title": "Did you send this pic?",
+                "subtitle": "Tap a button to answer.",
+                "image_url": attachment_url,
+                "buttons": [
+                    {
+                    "type": "postback",
+                    "title": "Yes!",
+                    "payload": "yes",
+                    },
+                    {
+                    "type": "postback",
+                    "title": "No!",
+                    "payload": "no",
+                    }
+                ],
+                }]
+            }
+            }
+        })
     if userdetailsfirstname == 'Appey':
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print(status.json())
