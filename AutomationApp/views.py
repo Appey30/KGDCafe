@@ -88,7 +88,7 @@ def handleMessage(fbid, response):
         })
     except KeyError:
 
-        attachment_url=attachments[0].payload.url
+        attachment_url=response['attachments'][0].payload.url
         response_msg = json.dumps({
             "attachment": {
             "type": "template",
