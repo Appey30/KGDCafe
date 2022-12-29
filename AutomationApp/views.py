@@ -126,9 +126,9 @@ def handlePostback(fbid, received_postback):
     print('handlepostback called received_postback value is: ',received_postback)
     payload = received_postback.payload;
     if (payload === 'yes') {
-    response = { "text": "Thanks!" }
+        response = { "text": "Thanks!" }
     } else if (payload === 'no') {
-    response = { "text": "Oops, try sending another image." }
+        response = { "text": "Oops, try sending another image." }
     }
     if payload == 'yes':
         response_msg = { "text": "Your answer is YES!" }
