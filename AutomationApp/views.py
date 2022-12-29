@@ -217,7 +217,7 @@ def set_get_started_button(fbid, received_postback):
  #       }
  #   }
 #{
-    post_message_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    post_message_url='https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     messageattachment = {  
         "attachment": {
             "type": "template",
