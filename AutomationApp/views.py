@@ -230,7 +230,7 @@ def loginmessenger(fbid, received_postback):
     "message":messageattachment
     })
     print('5')
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=response_msg)
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print('6')
     print(status.json())
     print('7')
