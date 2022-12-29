@@ -171,9 +171,9 @@ def handlePostback(fbid, received_postback):
         userdetailsfirstname="Ma'am/Sir"
         
     payload = received_postback['payload']
-    print('payload:',payload)
+    
     if payload == "GET_STARTED":
-        loginmessenger(fbid,received_postback)
+        loginmessenger(fbid, received_postback)
     elif payload == 'yes':
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
@@ -211,15 +211,14 @@ def loginmessenger(fbid, received_postback):
             "type": "template",
             "payload": {
                 "template_type": "button",
-                "text": "Welcome to the shop! To log-in to your account, click the button below.",
+                "text": "Welcome to the KGD E-Cafe! Kindly, allow us to register your account by just clicking the button below.",
                 "buttons": [
                 {
                     "type": "account_link",
-                    "url": "https://kgdcafe.com/oauth/login/facebook/",
+                    "url": "https://kgdcafe.com/",
                 }
                 ]
             }
-          
         }
     }
     response_msg = json.dumps({
