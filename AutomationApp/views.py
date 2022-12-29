@@ -243,7 +243,7 @@ def set_get_started_button(fbid, received_postback):
             "payload": "GET_STARTED"
         }
     }
-{
+    
 
     #response_msg = json.dumps({
     #"recipient":{"id":fbid}, 
