@@ -179,17 +179,19 @@ def handlePostback(fbid, received_postback):
         "recipient":{"id":fbid}, 
         "message":{"text": "Your answer is YES!" }
         })
-
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
     elif payload == 'no':
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
         "message":{"text": "Your answer is No!"}
         })
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
        
     
     #if userdetailsfirstname == 'Appey':
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    print(status.json())
+
     #else:
     #    pass
 
