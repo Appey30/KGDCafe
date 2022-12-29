@@ -121,14 +121,14 @@ def handleMessage(fbid, response):
                 }
                 response_msg = json.dumps({
                 "recipient":{"id":fbid}, 
-                "message":messageattachment
+                "message":{'attachments':messageattachment}
                 })
             else:
                 attachment_url = ''
                 messageattachment = ''
                 response_msg = json.dumps({
                 "recipient":{"id":fbid}, 
-                "message":messageattachment
+                "message":{'text':'I do not understand the attachment or what you have said.'}
                 })
 
     else:
