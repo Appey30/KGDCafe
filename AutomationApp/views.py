@@ -124,7 +124,22 @@ def handleMessage(fbid, response):
 
 def handlePostback(fbid, received_postback):
     print('handlepostback called received_postback value is: ',received_postback)
-        
+    payload = received_postback.payload;
+  if (payload === 'yes') {
+    response = { "text": "Thanks!" }
+  } else if (payload === 'no') {
+    response = { "text": "Oops, try sending another image." }
+  }
+    if payload == 'yes':
+        response_msg = { "text": "Your answer is YES!" }
+    elif payload == 'no'
+        response_msg = { "text": "Your answer is No!" }
+
+    if userdetailsfirstname == 'Appey':
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
+    else:
+        pass
 
 def set_get_started_button():
     post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
