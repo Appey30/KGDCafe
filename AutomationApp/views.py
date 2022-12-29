@@ -171,11 +171,23 @@ def handlePostback(fbid, received_postback):
         
     payload = received_postback['payload']
     if payload == "GET_STARTED":
-        response_msg = json.dumps({ "text": "You have pressed GET_Started button!" })
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":{"text": "You have pressed GET_Started button!" }
+        })
+
     elif payload == 'yes':
-        response_msg = json.dumps({ "text": "Your answer is YES!" })
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":{"text": "Your answer is YES!" }
+        })
+
     elif payload == 'no':
-        response_msg = json.dumps({ "text": "Your answer is No!" })
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":{"text": "Your answer is No!"}
+        })
+       
     
     if userdetailsfirstname == 'Appey':
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
