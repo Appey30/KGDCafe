@@ -49,6 +49,7 @@ VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
 
 # Helper function
 def handleMessage(fbid, response):
+    post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     if response['text']:
         jokes = { 'hi': ["""hello """, 
                              """hello!"""], 
@@ -80,7 +81,7 @@ def handleMessage(fbid, response):
         
         joke_text = joke_text+', '+userdetailsfirstname+'..! '
     
-        post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+        
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
         "message":{"text":joke_text}
@@ -113,14 +114,11 @@ def handleMessage(fbid, response):
                 }
                 }
             })
-       
-  
-
-        if userdetailsfirstname == 'Appey':
-            status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-            print(status.json())
-        else:
-            pass
+    if userdetailsfirstname == 'Appey':
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
+    else:
+        pass
 
 def handlePostback(fbid, received_postback):
     print('handlepostback called received_postback value is: ',received_postback)
