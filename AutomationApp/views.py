@@ -200,15 +200,11 @@ def set_get_started_button(fbid, received_postback):
             "payload": "GET_STARTED"
         }
     }
-
+    handlePostback(fbid, received_postback)
     #params = {
     #"access_token": ACCESS_TOKEN
     #}
-    if userdetailsfirstname == 'Appey':
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
-        print(status.json())
-    else:
-        pass
+    
     #requests.post(url, json=payload, headers=headers)
 
 # Create your views here.
@@ -253,7 +249,7 @@ class FacebookWebhookView(View):
                     print(message) 
                     print('MESSAGE_SENDER_ID: ',message['sender']['id'])
                     print('MESSAGE_text: ',message['message'])
-                    # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
+                    
                     # are sent as attachments and must be handled accordingly. 
 
                     handleMessage(message['sender']['id'], message['message'])
