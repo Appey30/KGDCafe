@@ -118,6 +118,8 @@ def handleMessage(fbid, response):
                     }
                     }
                 })
+    else:
+        pass
     if userdetailsfirstname == 'Appey':
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print(status.json())
