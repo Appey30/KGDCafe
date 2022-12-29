@@ -228,8 +228,6 @@ def set_get_started_button(fbid, received_postback):
                 {
                   "type": "account_link",
                   "url": "https://kgdcafe.com/oauth/login/facebook/",
-                  "title":"Get Started",
-                  "payload":"GET_STARTED",
                 }
               ]
             }
