@@ -295,7 +295,8 @@ class FacebookWebhookView(View):
                     # are sent as attachments and must be handled accordingly. 
 
                     handleMessage(message['sender']['id'], message['message'])
-                elif 'postback' in message:
+                else:
+                # elif 'postback' in message:
                     #set_get_started_button(message['sender']['id'], message['postback'])
                     #handlePostback(message['sender']['id'], message['postback'])
                     set_persistent_menu(message['sender']['id'], message['postback'])
