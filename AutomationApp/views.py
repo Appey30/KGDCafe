@@ -167,36 +167,36 @@ def selectplatform(fbid, received_postback):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
 
-        messageattachment = {
-            "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "button",
-                "elements": [{
-                "text": "Where do you want to order? n/ Tap a button to answer",
-                "buttons": [
-                    {
-                    "type":"web_url",
-                    "url":"https://kgdcafe.com",
-                    "title":"Website"
-                    },
-                    {
-                    "type": "postback",
-                    "title": "Here in Messenger",
-                    "payload": "Here_Messenger",
-                    }
-                ],
-                }]
-            }
-            }
+    messageattachment = {
+        "attachment": {
+        "type": "template",
+        "payload": {
+            "template_type": "button",
+            "elements": [{
+            "text": "Where do you want to order? n/ Tap a button to answer",
+            "buttons": [
+                {
+                "type":"web_url",
+                "url":"https://kgdcafe.com",
+                "title":"Website"
+                },
+                {
+                "type": "postback",
+                "title": "Here in Messenger",
+                "payload": "Here_Messenger",
+                }
+            ],
+            }]
         }
-        response_msg = json.dumps({
-        "recipient":{"id":fbid}, 
-        "message":messageattachment
-        })
+        }
+    }
+    response_msg = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachment
+    })
 
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-        print(status.json())
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    print(status.json())
 
 
 
