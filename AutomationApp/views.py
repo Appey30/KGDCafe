@@ -88,11 +88,11 @@ def handleMessage(fbid, response):
         "recipient":{"id":fbid}, 
         "message":{"text":joke_text}
         })
-        if userdetailsfirstname == 'Appey':
-            status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-            print(status.json())
-        else:
-            pass
+        #if userdetailsfirstname == 'Appey':
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
+        #else:
+        #    pass
     elif response.get('attachments'):
         
         attachments=response.get('attachments',[])
@@ -128,11 +128,11 @@ def handleMessage(fbid, response):
                 "recipient":{"id":fbid}, 
                 "message":messageattachment
                 })
-                if userdetailsfirstname == 'Appey':
-                    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-                    print(status.json())
-                else:
-                    pass
+                #if userdetailsfirstname == 'Appey':
+                status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+                print(status.json())
+                #else:
+                #    pass
             else:
                 attachment_url = ''
                 messageattachment = ''
@@ -140,22 +140,22 @@ def handleMessage(fbid, response):
                 "recipient":{"id":fbid}, 
                 "message":{'text':'I do not understand what is that.'}
                 })
-                if userdetailsfirstname == 'Appey':
-                    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-                    print(status.json())
-                else:
-                    pass
+                #if userdetailsfirstname == 'Appey':
+                status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+                print(status.json())
+                #else:
+                #    pass
 
     else:
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
         "message":{'text':'I do not understand what is that.'}
         })
-        if userdetailsfirstname == 'Appey':
-            status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-            print(status.json())
-        else:
-            pass
+        #if userdetailsfirstname == 'Appey':
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
+        #else:
+        #    pass
 
 def handlePostback(fbid, received_postback):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
@@ -191,11 +191,11 @@ def handlePostback(fbid, received_postback):
         })
        
     
-    if userdetailsfirstname == 'Appey':
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-        print(status.json())
-    else:
-        pass
+    #if userdetailsfirstname == 'Appey':
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    print(status.json())
+    #else:
+    #    pass
 
     
 
@@ -220,11 +220,11 @@ def set_get_started_button(fbid, received_postback):
     #params = {
     #"access_token": ACCESS_TOKEN
     #}
-    if userdetailsfirstname == 'Appey':
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
-        print(status.json())
-    else:
-        pass
+    #if userdetailsfirstname == 'Appey':
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
+    print(status.json())
+    #else:
+    #    pass
     #requests.post(url, json=payload, headers=headers)
 
 # Create your views here.
