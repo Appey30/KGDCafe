@@ -200,12 +200,14 @@ def loginmessenger(fbid, received_postback):
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
+    print('1')
     try:
         userdetailsfirstname=user_details['first_name']
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
-        
+    print('2')
     post_message_url='https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    print('3')
     messageattachment = {  
         "attachment": {
             "type": "template",
@@ -221,13 +223,16 @@ def loginmessenger(fbid, received_postback):
             }
         }
     }
+    print('4')
     response_msg = json.dumps({
     "recipient":{"id":fbid}, 
     "message":messageattachment
     })
+    print('5')
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=response_msg)
+    print('6')
     print(status.json())
-
+    print('7')
 def set_get_started_button(fbid, received_postback):
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
@@ -236,28 +241,18 @@ def set_get_started_button(fbid, received_postback):
         userdetailsfirstname=user_details['first_name']
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
-        
     post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
     payload = {
         "get_started": {
             "payload": "GET_STARTED"
         }
     }
+
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
+    
+    print(status.json())
     
 
-    #response_msg = json.dumps({
-    #"recipient":{"id":fbid}, 
-    #"message":messageattachment
-    #})
-    #params = {
-    #"access_token": ACCESS_TOKEN
-    #}
-    #if userdetailsfirstname == 'Appey':
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
-    print(status.json())
-    #else:
-    #    pass
-    #requests.post(url, json=payload, headers=headers)
 
 # Create your views here.
 class FacebookWebhookView(View):
