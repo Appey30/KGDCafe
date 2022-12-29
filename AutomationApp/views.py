@@ -172,7 +172,6 @@ def selectplatform(fbid, received_postback):
         "type": "template",
         "payload": {
             "template_type": "button",
-            "elements": [{
             "text": "Where do you want to order? n/ Tap a button to answer",
             "buttons": [
                 {
@@ -186,7 +185,6 @@ def selectplatform(fbid, received_postback):
                 "payload": "Here_Messenger",
                 }
             ],
-            }]
         }
         }
     }
