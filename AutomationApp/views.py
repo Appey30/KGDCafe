@@ -193,8 +193,7 @@ def handlePostback(fbid, received_postback):
     #else:
     #    pass
 
-
- def loginmessenger(fbid, received_postback):
+def loginmessenger(fbid, received_postback):
     print('loginwithmessenger has been reached')
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
@@ -209,14 +208,14 @@ def handlePostback(fbid, received_postback):
         "attachment": {
             "type": "template",
             "payload": {
-              "template_type": "button",
-              "text": "Welcome to the shop! To log-in to your account, click the button below.",
-              "buttons": [
+                "template_type": "button",
+                "text": "Welcome to the shop! To log-in to your account, click the button below.",
+                "buttons": [
                 {
-                  "type": "account_link",
-                  "url": "https://kgdcafe.com/oauth/login/facebook/",
+                    "type": "account_link",
+                    "url": "https://kgdcafe.com/oauth/login/facebook/",
                 }
-              ]
+                ]
             }
           
         }
@@ -237,7 +236,7 @@ def set_get_started_button(fbid, received_postback):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
         
-   post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
+    post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
     payload = {
         "get_started": {
             "payload": "GET_STARTED"
