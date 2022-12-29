@@ -197,42 +197,6 @@ def handlePostback(fbid, received_postback):
     else:
         pass
 
-
-def set_persistent_menu(fbid, received_postback):
-    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
-    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
-    user_details = requests.get(user_details_url, user_details_params).json() 
-    try:
-        userdetailsfirstname=user_details['first_name']
-        
-
-    except KeyError:
-        userdetailsfirstname="Ma'am/Sir"
-        
-    url = "https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s"%PAGE_ACCESS_TOKEN
-    payload = {
-    "persistent_menu": [
-        {
-        "locale": "default",
-        "composer_input_disabled": false,
-        "call_to_actions": [
-            {
-            "title": "Get Started",
-            "type": "postback",
-            "payload": "GET_STARTED"
-            }
-        ]
-        }
-    ]
-    }
-    headers = {
-    "Content-Type": "application/json"
-    }
-    if userdetailsfirstname == 'Appey':
-        status = requests.post(url, json=payload, headers=headers)
-        print(status.json())
-    else:
-        pass
     
 
 def set_get_started_button(fbid, received_postback):
@@ -249,6 +213,8 @@ def set_get_started_button(fbid, received_postback):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
     payload = {
         "get_started": {
+            "type": "postback",
+            "title": "GET STARTED",
             "payload": "GET_STARTED"
         }
     }
