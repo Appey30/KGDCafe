@@ -88,6 +88,11 @@ def handleMessage(fbid, response):
         "recipient":{"id":fbid}, 
         "message":{"text":joke_text}
         })
+        if userdetailsfirstname == 'Appey':
+            status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+            print(status.json())
+        else:
+            pass
     elif response.get('attachments'):
         
         attachments=response.get('attachments',[])
@@ -121,30 +126,40 @@ def handleMessage(fbid, response):
                 }
                 response_msg = json.dumps({
                 "recipient":{"id":fbid}, 
-                "message":{'attachments':messageattachment}
+                "message"::messageattachment
                 })
+                if userdetailsfirstname == 'Appey':
+                    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+                    print(status.json())
+                else:
+                    pass
             else:
                 attachment_url = ''
                 messageattachment = ''
                 response_msg = json.dumps({
                 "recipient":{"id":fbid}, 
-                "message":{'text':'I do not understand the attachment or what you have said.'}
+                "message":{'text':'I do not understand what is that.'}
                 })
+                if userdetailsfirstname == 'Appey':
+                    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+                    print(status.json())
+                else:
+                    pass
 
     else:
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
-        "message":{'text':'I do not understand the attachment or what you have said.'}
+        "message":{'text':'I do not understand what is that.'}
         })
-    if userdetailsfirstname == 'Appey':
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-        print(status.json())
-    else:
-        pass
+        if userdetailsfirstname == 'Appey':
+            status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+            print(status.json())
+        else:
+            pass
 
 def handlePostback(fbid, received_postback):
     print('handlepostback called received_postback value is: ',received_postback)
-    payload = received_postback.payload;
+    payload = received_postback['payload']
 
     if payload == 'yes':
         response_msg = { "text": "Your answer is YES!" }
