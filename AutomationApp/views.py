@@ -170,6 +170,7 @@ def handlePostback(fbid, received_postback):
         userdetailsfirstname="Ma'am/Sir"
         
     payload = received_postback['payload']
+    print('payload:',payload)
     if payload == "GET_STARTED":
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
