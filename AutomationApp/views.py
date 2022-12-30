@@ -165,14 +165,14 @@ def selectplatform(fbid, received_postback):
     try:
         userdetailsfirstname=user_details['first_name']
     except KeyError:
-        userdetailsfirstname="Ma'am/Sir"
+        userdetailsfirstname=""
 
     messageattachment = {
         "attachment": {
         "type": "template",
         "payload": {
             "template_type": "button",
-            "text": "Where do you want to order? \n Tap a button to answer",
+            "text": "Good Day Ma'am/Sir "+userdetailsfirstname+", where do you prefer to order? \n Tap a button to answer",
             "buttons": [
                 {
                 "type":"web_url",
