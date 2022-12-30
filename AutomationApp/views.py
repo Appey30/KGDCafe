@@ -197,8 +197,7 @@ def selectplatform(fbid, received_postback):
 
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print(status.json())
-def sendmilkteacategory(fbid, received_postback):
-    selectorder(fbid, received_postback)
+
         
 def selectorder(fbid, received_postback):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
@@ -744,7 +743,7 @@ def handlePostback(fbid, received_postback):
     if payload == "GET_STARTED":
         selectplatform(fbid, received_postback)
     elif payload == 'Here_Messenger':
-        sendmilkteacategory(fbid, received_postback)
+        selectorder(fbid, received_postback)
         
 #    elif payload == 'Website':
 #        response_msg = json.dumps({
