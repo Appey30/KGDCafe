@@ -901,21 +901,21 @@ class FacebookWebhookView(View):
                     #handlePostback(message['sender']['id'], message['postback'])
                     #set_persistent_menu(message['sender']['id'], message['postback'])
 
-    def set_get_started_button():
-        post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
-        payload = {
-            "get_started": {
-                "payload": "GET_STARTED"
-            }
-        }
+    #def set_get_started_button():
+    #    post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
+    #    payload = {
+    #        "get_started": {
+    #            "payload": "GET_STARTED"
+    #        }
+    #    }
 
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
+    #    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
     
-        print(status.json())
+    #    print(status.json())
                     
 
                 
-        return HttpResponse()    
+    #    return HttpResponse()    
 
 
 
