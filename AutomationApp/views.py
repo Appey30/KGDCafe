@@ -269,7 +269,7 @@ def selectorder(fbid, received_postback):
         elementpromtwo =   {
                     "title": prombuttonstwo.productname,
                     "subtitle": "Price: ₱"+str(prompricessstwo[prombuttonstwo.productname]),
-                    "image_url": 'https://kgdcafe.com/static/'+prombuttonstwo.productname+'SPECIALPROMO.png',
+                    "image_url": 'https://kgdcafe.com/static/'+prombuttonstwo.productname+'SPECIALPROMO.jpg',
                     "buttons": [
                         {
                         "type": "postback",
