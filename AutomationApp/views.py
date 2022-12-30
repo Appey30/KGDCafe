@@ -209,6 +209,7 @@ def selectorder(fbid, received_postback):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
     ####################
+    ######  MILKTEA  #######
     mtbuttons = user1.objects.filter(Category__Categorychoices='Milktea',user__id=4).distinct('productname')
     i=0
     mtpricess={}
@@ -225,52 +226,23 @@ def selectorder(fbid, received_postback):
     mtpricesss=mtpricess
         
     mtprices=json.dumps(mtpricesss)
-        
-    ii=0
-    mtcostss={}
-    mtcostsii = user1.objects.filter(Category__Categorychoices='Milktea',user__id=4).values_list('Cost',flat=True).order_by('-id')
-        
-    mtproductnameii=mtcostsii.values_list('productname',flat=True)
-        
-    mtsizeii=mtcostsii.values_list('Size__Sizechoices',flat=True)
-        
-    while ii<mtcostsii.count():
-        mtcostss[mtproductnameii[ii]+mtsizeii[ii]]=mtcostsii[ii]
+    
 
-        ii += 1
-    counter=len(mtcostss)
-        
-    iii=0
-    keys=[]
-    mtcostaaai=[]
-    for key, mtcostaaa in mtcostss.items():
-        keys.append(key)
-        mtcostaaai.append(float(mtcostaaa))
-        
-        
-    mtcostsss=mtcostss.values()
-    mtcostsi=mtcostaaai
-    mtcosts=json.dumps(mtcostsi)
-
-    mtkeyscosts=json.dumps(keys)
-
-    mtsizes = Sizes.objects.all()
-    Categoriess = Categories.objects.all()
-    Subcategoriess = Subcategories.objects.all()
+    
     ###################
-    response_msgcateg = json.dumps({
+    response_msgcategmt = json.dumps({
     "recipient":{"id":fbid}, 
-    "message":{"text": "Milktea Category!"}
+    "message":{"text": "MILKTEA"}
     })
-    statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
-    print(statuscateg.json())
+    statuscategmt = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategmt)
+    print(statuscategmt.json())
 
-    elements=[]
-    for milkteabuttons in mtbuttons:
-        element =   {
-                    "title": milkteabuttons.productname,
-                    "subtitle": "Reg: ₱"+str(mtpricesss[milkteabuttons.productname+"Reg"])+"   Full: ₱"+str(mtpricesss[milkteabuttons.productname+"Full"]),
-                    "image_url": 'https://kgdcafe.com/static/'+milkteabuttons.productname+'MT.png',
+    elementsmt=[]
+    for mtbuttons in mtbuttons:
+        elementmt =   {
+                    "title": mtbuttons.productname,
+                    "subtitle": "Reg: ₱"+str(mtpricesss[mtbuttons.productname+"Reg"])+"   Full: ₱"+str(mtpricesss[mtbuttons.productname+"Full"]),
+                    "image_url": 'https://kgdcafe.com/static/'+mtbuttons.productname+'MT.png',
                     "buttons": [
                         {
                         "type": "postback",
@@ -280,25 +252,329 @@ def selectorder(fbid, received_postback):
                         }
                     ]
                     }
-        elements.append(element)
+        elementsmt.append(elementmt)
 
-    messageattachment = {
+    messageattachmentmt = {
         "attachment": {
           "type": "template",
           "payload": {
             "template_type": "generic",
-            "elements": elements
+            "elements": elementsmt
           }
         }
     }
-    response_msg = json.dumps({
+    response_msgmt = json.dumps({
     "recipient":{"id":fbid}, 
-    "message":messageattachment
+    "message":messageattachmentmt
     })
 
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    print(status.json())
+    statusmt = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgmt)
+    print(statusmt.json())
+    ######  MILKTEA  #######
 
+    ####################
+    ######  FRAPPE  #######
+    frbuttons = user1.objects.filter(Category__Categorychoices='Frappe',user__id=4).distinct('productname')
+    fr=0
+    frpricess={}
+    frpricesii = user1.objects.filter(Category__Categorychoices='Frappe',user__id=4).values_list('Price',flat=True).order_by('-id')
+        
+    frproductnameii=frpricesii.values_list('productname',flat=True)
+        
+    frsizeii=frpricesii.values_list('Size__Sizechoices',flat=True)
+        
+    while fr<frpricesii.count():
+        frpricess[frproductnameii[fr]+frsizeii[fr]]=frpricesii[fr]
+
+        fr += 1
+    frpricesss=frpricess
+        
+    frprices=json.dumps(frpricesss)
+    
+
+    
+    ###################
+    response_msgcategfr = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":{"text": "FRAPPE"}
+    })
+    statuscategfr = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategfr)
+    print(statuscategfr.json())
+
+    elementsfr=[]
+    for frbuttons in frbuttons:
+        elementfr =   {
+                    "title": frbuttons.productname,
+                    "subtitle": "Reg: ₱"+str(frpricesss[frbuttons.productname+"Reg"])+"   Full: ₱"+str(frpricesss[frbuttons.productname+"Full"]),
+                    "image_url": 'https://kgdcafe.com/static/'+frbuttons.productname+'FR.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Order",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": "ORDER"
+                        }
+                    ]
+                    }
+        elementsfr.append(elementfr)
+
+    messageattachmentfr = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": elementsfr
+          }
+        }
+    }
+    response_msgfr = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachmentfr
+    })
+
+    statusfr = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgfr)
+    print(statusfr.json())
+    ######  FRAPPE  #######
+
+    ######  FREEZE  #######
+    frZbuttons = user1.objects.filter(Category__Categorychoices='Freeze',user__id=4).distinct('productname')
+        
+    frz=0
+    frzpricess={}
+    frzpricesii = user1.objects.filter(Category__Categorychoices='Freeze',user__id=4).values_list('Price',flat=True).order_by('-id')
+        
+    frzproductnameii=frzpricesii.values_list('productname',flat=True)
+        
+    #frzsizeii=frzpricesii.values_list('Size__Sizechoices',flat=True)
+        
+    while frz<frzpricesii.count():
+        frzpricess[frzproductnameii[frz]]=frzpricesii[frz]
+
+        frz += 1
+    frzpricesss=frzpricess
+    #######################
+    response_msgcategfrz = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":{"text": "FREEZE"}
+    })
+    statuscategfrz = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategfrz)
+    print(statuscategfrz.json())
+
+    elementsfrz=[]
+    for frzbuttons in frzbuttons:
+        elementfrz =   {
+                    "title": frzbuttons.productname,
+                    "subtitle": "Price: ₱"+str(frzpricesss[frzbuttons.productname]),,
+                    "image_url": 'https://kgdcafe.com/static/'+frzbuttons.productname+'FRZ.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Order",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": "ORDER"
+                        }
+                    ]
+                    }
+        elementsfrz.append(elementfrz)
+
+    messageattachmentfrz = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": elementsfrz
+          }
+        }
+    }
+    response_msgfrz = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachmentfrz
+    })
+
+    statusfrz = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgfrz)
+    print(statusfrz.json())
+    ######  FREEZE  #######
+
+    ######  SHAWARMA  #######
+    shabuttons = user1.objects.filter(Subcategory__Subcategorychoices='Shawarma',user__id=4).distinct('productname')
+        
+    sha=0
+    shapricess={}
+    shapricesii = user1.objects.filter(Subcategory__Subcategorychoices='Shawarma',user__id=4).values_list('Price',flat=True).order_by('-id')
+        
+    shaproductnameii=shapricesii.values_list('productname',flat=True)
+        
+
+        
+    while sha<shapricesii.count():
+        shapricess[shaproductnameii[sha]]=shapricesii[sha]
+
+        sha += 1
+    shapricesss=shapricess
+    #######################
+    response_msgcategsha = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":{"text": "SHAWARMA"}
+    })
+    statuscategsha = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategsha)
+    print(statuscategsha.json())
+
+    elementssha=[]
+    for shabuttons in shabuttons:
+        elementsha =   {
+                    "title": shabuttons.productname,
+                    "subtitle": "Price: ₱"+str(shapricesss[shabuttons.productname]),
+                    "image_url": 'https://kgdcafe.com/static/'+shabuttons.productname+'Shawarma.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Order",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": "ORDER"
+                        }
+                    ]
+                    }
+        elementssha.append(elementsha)
+
+    messageattachmentsha = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": elementssha
+          }
+        }
+    }
+    response_msgsha = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachmentsha
+    })
+
+    statussha = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgsha)
+    print(statussha.json())
+    ######  SHAWARMA  #######
+
+    ######  FRIES  #######
+    friebuttons = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=4).distinct('productname')
+        
+    frie=0
+    friepricess={}
+    friepricesii = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=4).values_list('Price',flat=True).order_by('-id')
+        
+    frieproductnameii=friepricesii.values_list('productname',flat=True)
+        
+
+        
+    while frie<friepricesii.count():
+        friepricess[frieproductnameii[frie]]=friepricesii[frie]
+
+        frie += 1
+    friepricesss=friepricess
+    #######################
+    response_msgcategfrie = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":{"text": "FRIES"}
+    })
+    statuscategfrie = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategfrie)
+    print(statuscategfrie.json())
+
+    elementsfrie=[]
+    for friebuttons in friebuttons:
+        elementfrie =   {
+                    "title": friebuttons.productname,
+                    "subtitle": "Price: ₱"+str(friepricesss[friebuttons.productname]),
+                    "image_url": 'https://kgdcafe.com/static/'+friebuttons.productname+'Fries.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Order",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": "ORDER"
+                        }
+                    ]
+                    }
+        elementsfrie.append(elementfrie)
+
+    messageattachmentfrie = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": elementsfrie
+          }
+        }
+    }
+    response_msgfrie = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachmentfrie
+    })
+
+    statusfrie = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgfrie)
+    print(statusfrie.json())
+    ######  FRIES  #######
+
+    ######  PIZZA  #######
+    pizbuttons = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=4).distinct('productname')
+    piz=0
+    pizpricess={}
+    pizpricesii = user1.objects.filter(Subcategory__Subcategorychoices='Pizza',user__id=4).values_list('Price',flat=True).order_by('-id')
+        
+    pizproductnameii=pizpricesii.values_list('productname',flat=True)
+        
+    pizsizeii=pizpricesii.values_list('PSize__PSizechoices',flat=True)
+        
+    while piz<pizpricesii.count():
+        pizpricess[pizproductnameii[piz]+pizsizeii[piz]]=pizpricesii[piz]
+
+        piz += 1
+    pizpricesss=pizpricess
+        
+    pizprices=json.dumps(pizpricesss)
+    
+
+    
+    ###################
+    response_msgcategpiz = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":{"text": "PIZZA"}
+    })
+    statuscategpiz = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategpiz)
+    print(statuscategpiz.json())
+
+    elementspiz=[]
+    for pizbuttons in pizbuttons:
+        elementpiz =   {
+                    "title": pizbuttons.productname,
+                    "subtitle": 'Barkada: ₱'+str(pizpricesss[pizbuttons.productname+'Barkada(10")'])+'   Pamilya: ₱'+str(pizpricesss[pizbuttons.productname+'Pamilya(12")']),
+                    "image_url": 'https://kgdcafe.com/static/'+pizbuttons.productname+'Pizza.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Order",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": "ORDER"
+                        }
+                    ]
+                    }
+        elementspiz.append(elementpiz)
+
+    messageattachmentpiz = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": elementspiz
+          }
+        }
+    }
+    response_msgpiz = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachmentpiz
+    })
+
+    statuspiz = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgpiz)
+    print(statuspiz.json())
+    ######  PIZZA  #######
 
   # Send the message using the
 def handlePostback(fbid, received_postback):
