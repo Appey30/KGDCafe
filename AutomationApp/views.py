@@ -272,12 +272,12 @@ def selectorder(fbid, received_postback):
           "payload": {
             "template_type": "generic",
             "elements": [
-            for milkteabuttons in mtbuttons.productname:
+            for milkteabuttons in mtbuttons:
                 {
               
-                "title": milkteabuttons,
-                "subtitle": f"Reg: {mtpricesss["+milkteabuttons+"Reg]} Full: {mtpricesss["+milkteabuttons+"Full]}",
-                "image_url": 'https://kgdcafe.com/static/'+milkteabuttons+'MT.png',
+                "title": milkteabuttons.productname,
+                "subtitle": f"Reg: {mtpricesss["+milkteabuttons.productname+"Reg]} Full: {mtpricesss["+milkteabuttons.productname+"Full]}",
+                "image_url": 'https://kgdcafe.com/static/'+milkteabuttons.productname+'MT.png',
                 "buttons": [
                     {
                     "type": "postback",
