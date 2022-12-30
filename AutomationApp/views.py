@@ -217,7 +217,7 @@ def selectorder(fbid, received_postback):
         
     prom=0
     prompricess={}
-    prompricesii = user1.objects.filter(Category__Categorychoices='Promo',user__id=4, Promo='FreeFriesDay' or'Special Promo')).values_list('Price',flat=True).order_by('-id')
+    prompricesii = user1.objects.filter(Category__Categorychoices='Promo',user__id=4, Promo='FreeFriesDay' or 'Special Promo')).values_list('Price',flat=True).order_by('-id')
         
     promproductnameii=prompricesii.values_list('productname',flat=True)
         
