@@ -264,32 +264,29 @@ def selectorder(fbid, received_postback):
     })
     statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
     print(statuscateg.json())
-
+    elements=[]
+    for milkteabuttons in mtbuttons.productname:
+        element =   {
+                    "title": milkteabuttons,
+                    "subtitle": f"Reg: {mtpricesss["+milkteabuttons+"Reg]} Full: {mtpricesss["+milkteabuttons+"Full]}",
+                    "image_url": 'https://kgdcafe.com/static/'+milkteabuttons+'MT.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Add to Bag",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": f"ADD_TO_BAG"
+                        }
+                    ]
+                    }
+        elements.append(element)
 
     milkteaattachment = {
         "attachment": {
           "type": "template",
           "payload": {
             "template_type": "generic",
-            "elements": [
-            for milkteabuttons in mtbuttons:
-                {
-              
-                "title": milkteabuttons.productname,
-                "subtitle": f"Reg: {mtpricesss["+milkteabuttons.productname+"Reg]} Full: {mtpricesss["+milkteabuttons.productname+"Full]}",
-                "image_url": 'https://kgdcafe.com/static/'+milkteabuttons.productname+'MT.png',
-                "buttons": [
-                    {
-                    "type": "postback",
-                    "title": "Add to Bag",
-                    #"payload": f"ADD_TO_CART_{product.id}"
-                    "payload": f"ADD_TO_BAG"
-                    }
-                ]
-                }
-              # Add more products to the carousel
-              ...
-            ]
+            "elements": elements
           }
         }
     }
