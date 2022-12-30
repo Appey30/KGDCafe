@@ -891,6 +891,8 @@ class FacebookWebhookView(View):
                 elif 'postback' in message:
                     handlePostback(message['sender']['id'], message['postback'])
                     print('postback')
+
+        return HttpResponse()
                 #elif message.get('account_linking'):
                 #    account_linking_token=message['account_linking']['account_linking_token']
                 #    link_account(account_linking_token, )
@@ -915,7 +917,7 @@ class FacebookWebhookView(View):
                     
 
                 
-    #    return HttpResponse()    
+    
 
 
 
