@@ -890,7 +890,7 @@ class FacebookWebhookView(View):
                     handleMessage(message['sender']['id'], message['message'])
                 elif 'postback' in message:
                     handlePostback(message['sender']['id'], message['postback'])
-                    print('postback')
+                    print('postback: ',message['postback'])
 
         return HttpResponse()
                 #elif message.get('account_linking'):
