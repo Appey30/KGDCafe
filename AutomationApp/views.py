@@ -258,12 +258,12 @@ def selectorder(fbid, received_postback):
     ###################
 
 
-    response_msgcateg = json.dumps({
-    "recipient":{"id":fbid}, 
-    "message":{"text": "Milktea Category!"}
-    })
-    statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
-    print(statuscateg.json())
+    #response_msgcateg = json.dumps({
+    #"recipient":{"id":fbid}, 
+    #"message":{"text": "Milktea Category!"}
+    #})
+    #statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
+    #print(statuscateg.json())
     elements=[]
     for milkteabuttons in mtbuttons:
         element =   {
