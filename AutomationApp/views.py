@@ -744,6 +744,13 @@ def handlePostback(fbid, received_postback):
         selectplatform(fbid, received_postback)
     elif payload == 'Here_Messenger':
         selectorder(fbid, received_postback)
+    elif payload == 'ORDER':
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":{"text": 'You have tapped "ORDER" Button!'}
+        })
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+        print(status.json())
         
 #    elif payload == 'Website':
 #        response_msg = json.dumps({
