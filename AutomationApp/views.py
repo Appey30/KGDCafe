@@ -455,11 +455,11 @@ def selectorder(fbid, received_postback):
     ######  SHAWARMA  #######
 
     ######  FRIES  #######
-    friebuttons = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=4).distinct('productname')
+    friebuttons = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=4).exclude(productname='Free Fries').distinct('productname')
         
     frie=0
     friepricess={}
-    friepricesii = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=4).values_list('Price',flat=True).order_by('-id')
+    friepricesii = user1.objects.filter(Subcategory__Subcategorychoices='Fries',user__id=4).exclude(productname='Free Fries').values_list('Price',flat=True).order_by('-id')
         
     frieproductnameii=friepricesii.values_list('productname',flat=True)
         
