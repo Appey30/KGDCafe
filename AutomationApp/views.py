@@ -267,7 +267,7 @@ def selectorder(fbid, received_postback):
     for milkteabuttons in mtbuttons:
         element =   {
                     "title": milkteabuttons.productname,
-                    "subtitle": "Reg: "+mtpricesss[milkteabuttons.productname+"Reg"]+"   Full: "+mtpricesss[milkteabuttons.productname+"Full"],
+                    "subtitle": "Reg: "+str(mtpricesss[milkteabuttons.productname+"Reg"])+"   Full: "+str(mtpricesss[milkteabuttons.productname+"Full"]),
                     "image_url": 'https://kgdcafe.com/static/'+milkteabuttons.productname+'MT.png',
                     "buttons": [
                         {
