@@ -911,10 +911,10 @@ class FacebookWebhookView(View):
                 #elif message.get('account_linking'):
                 #    account_linking_token=message['account_linking']['account_linking_token']
                 #    link_account(account_linking_token, )
-                else:
+                #else:
                 # elif 'postback' in message:
-                    set_get_started_button(message['sender']['id'])
-                    print('else')
+                    #set_get_started_button(message['sender']['id'])
+                    #print('else')
                     #handlePostback(message['sender']['id'], message['postback'])
                     #set_persistent_menu(message['sender']['id'], message['postback'])
         
