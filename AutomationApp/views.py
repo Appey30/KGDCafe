@@ -213,7 +213,7 @@ def selectorder(fbid, received_postback):
     ####################
 
     ######  PROMO  #######
-    prombuttons = user1.objects.filter(Category__Categorychoices='Promo', user__id=4, Promo='FreeFriesDay' or'Special Promo')).distinct('productname')
+    prombuttons = user1.objects.filter(Category__Categorychoices='Promo', user__id=4, Promo='FreeFriesDay' or 'Special Promo')).distinct('productname')
         
     prom=0
     prompricess={}
