@@ -747,10 +747,12 @@ def handlePostback(fbid, received_postback):
     elif payload == 'ORDER':
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
-        "message":{"text": 'You have tapped "ORDER" Button!'}
+        "message":{"text": 'You have tapped "ORDER" Button.'}
         })
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
         print(status.json())
+    else:
+        pass
         
 #    elif payload == 'Website':
 #        response_msg = json.dumps({
@@ -905,12 +907,14 @@ class FacebookWebhookView(View):
                     handleMessage(message['sender']['id'], message['message'])
                 elif 'postback' in message:
                     handlePostback(message['sender']['id'], message['postback'])
+                    print('postback')
                 #elif message.get('account_linking'):
                 #    account_linking_token=message['account_linking']['account_linking_token']
                 #    link_account(account_linking_token, )
                 else:
                 # elif 'postback' in message:
                     set_get_started_button(message['sender']['id'])
+                    print('else')
                     #handlePostback(message['sender']['id'], message['postback'])
                     #set_persistent_menu(message['sender']['id'], message['postback'])
         
