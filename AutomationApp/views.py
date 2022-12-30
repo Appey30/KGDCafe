@@ -273,11 +273,11 @@ def selectorder(fbid, received_postback):
     ######  MILKTEA  #######
 
     ####################
-    ######  FRAPPE  #######
-    frbuttons = user1.objects.filter(Category__Categorychoices='Frappe',user__id=4).distinct('productname')
+    ######  FRAPPE1  #######
+    frbuttons = user1.objects.filter(Category__Categorychoices='Frappe',user__id=4).exclude(productname='Matcha').distinct('productname')
     fr=0
     frpricess={}
-    frpricesii = user1.objects.filter(Category__Categorychoices='Frappe',user__id=4).values_list('Price',flat=True).order_by('-id')
+    frpricesii = user1.objects.filter(Category__Categorychoices='Frappe',user__id=4).exclude(productname='Matcha').values_list('Price',flat=True).order_by('-id')
         
     frproductnameii=frpricesii.values_list('productname',flat=True)
         
@@ -334,7 +334,67 @@ def selectorder(fbid, received_postback):
 
     statusfr = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgfr)
     print(statusfr.json())
-    ######  FRAPPE  #######
+    ######  FRAPPE1  #######
+
+
+    ######  FRAPPE2  #######
+    frtwobuttons = user1.objects.filter(Category__Categorychoices='Frappe',productname='Matcha',user__id=4).distinct('productname')
+    frtwo=0
+    frtwopricess={}
+    frtwopricesii = user1.objects.filter(Category__Categorychoices='Frappe',productname='Matcha',user__id=4).values_list('Price',flat=True).order_by('-id')
+        
+    frtwoproductnameii=frtwopricesii.values_list('productname',flat=True)
+        
+    frtwosizeii=frtwopricesii.values_list('Size__Sizechoices',flat=True)
+        
+    while frtwo<frtwopricesii.count():
+        frtwopricess[frtwoproductnameii[frtwo]+frtwosizeii[frtwo]]=frtwopricesii[frtwo]
+
+        frtwo += 1
+    frtwopricesss=frtwopricess
+        
+    frtwoprices=json.dumps(frtwopricesss)
+    
+
+    
+    ###################
+
+    elementsfrtwo=[]
+    for frtwobuttons in frtwobuttons:
+        elementfrtwo =   {
+                    "title": frtwobuttons.productname,
+                    "subtitle": "Reg: ₱"+str(frtwopricesss[frtwobuttons.productname+"Reg"])+"   Full: ₱"+str(frtwopricesss[frtwobuttons.productname+"Full"]),
+                    "image_url": 'https://kgdcafe.com/static/'+frtwobuttons.productname+'FR.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Order",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": "ORDER"
+                        }
+                    ]
+                    }
+        elementsfrtwo.append(elementfrtwo)
+
+    messageattachmentfrtwo = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": elementsfrtwo
+          }
+        }
+    }
+    response_msgfrtwo = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachmentfrtwo
+    })
+
+    statusfrtwo = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgfrtwo)
+    print(statusfrtwo.json())
+    ######  FRAPPE2  #######
+
+
 
     ######  FREEZE  #######
     frzbuttons = user1.objects.filter(Category__Categorychoices='Freeze',user__id=4).distinct('productname')
