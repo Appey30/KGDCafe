@@ -272,7 +272,7 @@ def selectorder(fbid, received_postback):
           "payload": {
             "template_type": "generic",
             "elements": [
-            for milkteabuttons in mtbuttons['productname']:
+            for milkteabuttons in mtbuttons.productname:
                 {
               
                 "title": milkteabuttons,
