@@ -337,7 +337,7 @@ def selectorder(fbid, received_postback):
     ######  FRAPPE  #######
 
     ######  FREEZE  #######
-    frZbuttons = user1.objects.filter(Category__Categorychoices='Freeze',user__id=4).distinct('productname')
+    frzbuttons = user1.objects.filter(Category__Categorychoices='Freeze',user__id=4).distinct('productname')
         
     frz=0
     frzpricess={}
