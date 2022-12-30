@@ -231,7 +231,7 @@ def selectorder(fbid, received_postback):
     #######################
     response_msgcategprom = json.dumps({
     "recipient":{"id":fbid}, 
-    "message":{"text": "PROMO FOR YOU, "+userdetailsfirstname}
+    "message":{"text": "PROMO"}
     })
     statuscategprom = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategprom)
     print(statuscategprom.json())
