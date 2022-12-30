@@ -364,7 +364,7 @@ def selectorder(fbid, received_postback):
     for frzbuttons in frzbuttons:
         elementfrz =   {
                     "title": frzbuttons.productname,
-                    "subtitle": "Price: ₱"+str(frzpricesss[frzbuttons.productname]),,
+                    "subtitle": "Price: ₱"+str(frzpricesss[frzbuttons.productname]),
                     "image_url": 'https://kgdcafe.com/static/'+frzbuttons.productname+'FRZ.png',
                     "buttons": [
                         {
