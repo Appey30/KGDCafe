@@ -207,10 +207,10 @@ def selectorder(fbid, received_postback):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
     ####################
-    mtbuttons = user1.objects.filter(Category__Categorychoices='Milktea',user__id=userr).distinct('productname')
+    mtbuttons = user1.objects.filter(Category__Categorychoices='Milktea',user__id=4).distinct('productname')
     i=0
     mtpricess={}
-    mtpricesii = user1.objects.filter(Category__Categorychoices='Milktea',user__id=userr).values_list('Price',flat=True).order_by('-id')
+    mtpricesii = user1.objects.filter(Category__Categorychoices='Milktea',user__id=4).values_list('Price',flat=True).order_by('-id')
         
     mtproductnameii=mtpricesii.values_list('productname',flat=True)
         
@@ -226,7 +226,7 @@ def selectorder(fbid, received_postback):
         
     ii=0
     mtcostss={}
-    mtcostsii = user1.objects.filter(Category__Categorychoices='Milktea',user__id=userr).values_list('Cost',flat=True).order_by('-id')
+    mtcostsii = user1.objects.filter(Category__Categorychoices='Milktea',user__id=4).values_list('Cost',flat=True).order_by('-id')
         
     mtproductnameii=mtcostsii.values_list('productname',flat=True)
         
@@ -268,7 +268,7 @@ def selectorder(fbid, received_postback):
     for milkteabuttons in mtbuttons.productname:
         element =   {
                     "title": milkteabuttons,
-                    "subtitle": "Reg: "+mtpricesss[milkteabuttons+"Reg"]+"Full: "+mtpricesss[milkteabuttons+"Full"],
+                    "subtitle": "Reg: "+mtpricesss[milkteabuttons+"Reg"]+"   Full: "+mtpricesss[milkteabuttons+"Full"],
                     "image_url": 'https://kgdcafe.com/static/'+milkteabuttons+'MT.png',
                     "buttons": [
                         {
