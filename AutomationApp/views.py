@@ -239,7 +239,7 @@ def selectorder(fbid, received_postback):
         
 
        
-    while prom<prompricesiitwo.count():
+    while promtwo<prompricesiitwo.count():
         prompricesstwo[promproductnameiitwo[promtwo]]=prompricesiitwo[promtwo]
 
         promtwo += 1
