@@ -280,7 +280,7 @@ def selectorder(fbid, received_postback):
                     }
         elements.append(element)
 
-    milkteaattachment = {
+    messageattachment = {
         "attachment": {
           "type": "template",
           "payload": {
