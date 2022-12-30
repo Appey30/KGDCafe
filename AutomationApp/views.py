@@ -172,7 +172,7 @@ def selectplatform(fbid, received_postback):
         "type": "template",
         "payload": {
             "template_type": "button",
-            "text": "Where do you want to order? n/ Tap a button to answer",
+            "text": "Where do you want to order? \n Tap a button to answer",
             "buttons": [
                 {
                 "type":"web_url",
@@ -196,8 +196,106 @@ def selectplatform(fbid, received_postback):
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print(status.json())
 
+def selectorder(fbid, received_postback):
+    post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    print('handlepostback called received_postback value is: ',received_postback)
+    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details = requests.get(user_details_url, user_details_params).json() 
+    try:
+        userdetailsfirstname=user_details['first_name']
+    except KeyError:
+        userdetailsfirstname="Ma'am/Sir"
+    ####################
+    mtbuttons = user1.objects.filter(Category__Categorychoices='Milktea',user__id=userr).distinct('productname')
+    i=0
+    mtpricess={}
+    mtpricesii = user1.objects.filter(Category__Categorychoices='Milktea',user__id=userr).values_list('Price',flat=True).order_by('-id')
+        
+    mtproductnameii=mtpricesii.values_list('productname',flat=True)
+        
+    mtsizeii=mtpricesii.values_list('Size__Sizechoices',flat=True)
+        
+    while i<mtpricesii.count():
+        mtpricess[mtproductnameii[i]+mtsizeii[i]]=mtpricesii[i]
+
+        i += 1
+    mtpricesss=mtpricess
+        
+    mtprices=json.dumps(mtpricesss)
+        
+    ii=0
+    mtcostss={}
+    mtcostsii = user1.objects.filter(Category__Categorychoices='Milktea',user__id=userr).values_list('Cost',flat=True).order_by('-id')
+        
+    mtproductnameii=mtcostsii.values_list('productname',flat=True)
+        
+    mtsizeii=mtcostsii.values_list('Size__Sizechoices',flat=True)
+        
+    while ii<mtcostsii.count():
+        mtcostss[mtproductnameii[ii]+mtsizeii[ii]]=mtcostsii[ii]
+
+        ii += 1
+    counter=len(mtcostss)
+        
+    iii=0
+    keys=[]
+    mtcostaaai=[]
+    for key, mtcostaaa in mtcostss.items():
+        keys.append(key)
+        mtcostaaai.append(float(mtcostaaa))
+        
+        
+    mtcostsss=mtcostss.values()
+    mtcostsi=mtcostaaai
+    mtcosts=json.dumps(mtcostsi)
+
+    mtkeyscosts=json.dumps(keys)
+
+    mtsizes = Sizes.objects.all()
+    Categoriess = Categories.objects.all()
+    Subcategoriess = Subcategories.objects.all()
+    ###################
 
 
+
+    milkteaattachment = {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": [
+            for milkteabuttons in mtbuttons['productname']:
+                {
+              
+                "title": milkteabuttons,
+                "subtitle": f"Reg: {mtpricesss["+milkteabuttons+"Reg]} Full: {mtpricesss["+milkteabuttons+"Full]}",
+                "image_url": 'https://kgdcafe.com/static/'+milkteabuttons+'MT.png',
+                "buttons": [
+                    {
+                    "type": "postback",
+                    "title": "Add to Bag",
+                    #"payload": f"ADD_TO_CART_{product.id}"
+                    "payload": f"ADD_TO_BAG"
+                    }
+                ]
+                }
+              # Add more products to the carousel
+              ...
+            ]
+          }
+        }
+    }
+    response_msg = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":messageattachment
+    })
+
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    print(status.json())
+
+
+  # Send the message using the
 def handlePostback(fbid, received_postback):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     print('handlepostback called received_postback value is: ',received_postback)
@@ -214,12 +312,7 @@ def handlePostback(fbid, received_postback):
     if payload == "GET_STARTED":
         selectplatform(fbid, received_postback)
     elif payload == 'Here_Messenger':
-        response_msg = json.dumps({
-        "recipient":{"id":fbid}, 
-        "message":{"text": "Your answer is Here_Messenger!" }
-        })
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-        print(status.json())
+        selectorder(fbid, received_postback)
 #    elif payload == 'Website':
 #        response_msg = json.dumps({
 #        "recipient":{"id":fbid}, 
