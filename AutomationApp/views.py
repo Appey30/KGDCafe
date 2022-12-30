@@ -213,39 +213,47 @@ def selectorder(fbid, received_postback):
     ####################
 
     ######  PROMO  #######
-    prombuttons = user1.objects.filter(Category__Categorychoices='Promo', user__id=4, Promo='FreeFriesDay' or 'Special Promo').distinct('productname')
+    prombuttons = user1.objects.filter(Category__Categorychoices='Promo', user__id=4, Promo='FreeFriesDay').distinct('productname')
         
     prom=0
     prompricess={}
-    prompricesii = user1.objects.filter(Category__Categorychoices='Promo',user__id=4, Promo='FreeFriesDay' or 'Special Promo').values_list('Price',flat=True).order_by('-id')
-        
+    prompricesii = user1.objects.filter(Category__Categorychoices='Promo',user__id=4, Promo='FreeFriesDay').values_list('Price',flat=True).order_by('-id')
+    
     promproductnameii=prompricesii.values_list('productname',flat=True)
         
 
-        
+       
     while prom<prompricesii.count():
         prompricess[promproductnameii[prom]]=prompricesii[prom]
 
         prom += 1
     prompricesss=prompricess
+    ### second promo ###
+    prombuttonstwo = user1.objects.filter(Category__Categorychoices='Promo', user__id=4, Promo='Special Promo').distinct('productname')
+        
+    promtwo=0
+    prompricesstwo={}
+    prompricesiitwo = user1.objects.filter(Category__Categorychoices='Promo',user__id=4, Promo='Special Promo').values_list('Price',flat=True).order_by('-id')
+    
+    promproductnameiitwo=prompricesiitwo.values_list('productname',flat=True)
+        
+
+       
+    while prom<prompricesiitwo.count():
+        prompricesstwo[promproductnameiitwo[promtwo]]=prompricesiitwo[promtwo]
+
+        promtwo += 1
+    prompricessstwo=prompricesstwo
+    
     #######################
-    response_msgcategprom = json.dumps({
-    "recipient":{"id":fbid}, 
-    "message":{"text": "PROMO"}
-    })
-    statuscategprom = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategprom)
-    print(statuscategprom.json())
 
     elementsprom=[]
     for prombuttons in prombuttons:
-        if prombuttons.Promo=='FreeFriesDay':
-            image_link='https://kgdcafe.com/static/'+prombuttons.productname+'FREEFRIESPROMO.png'
-        else:
-            image_link='https://kgdcafe.com/static/'+prombuttons.productname+'SPECIALPROMO.png'
+
         elementprom =   {
                     "title": prombuttons.productname,
                     "subtitle": "Price: ₱"+str(prompricesss[prombuttons.productname]),
-                    "image_url": image_link,
+                    "image_url": 'https://kgdcafe.com/static/'+prombuttons.productname+'FREEFRIESPROMO.png',
                     "buttons": [
                         {
                         "type": "postback",
@@ -255,7 +263,24 @@ def selectorder(fbid, received_postback):
                         }
                     ]
                     }
+
         elementsprom.append(elementprom)
+    for prombuttonstwo in prombuttonstwo:
+        elementpromtwo =   {
+                    "title": prombuttonstwo.productname,
+                    "subtitle": "Price: ₱"+str(prompricessstwo[prombuttonstwo.productname]),
+                    "image_url": 'https://kgdcafe.com/static/'+prombuttonstwo.productname+'SPECIALPROMO.png',
+                    "buttons": [
+                        {
+                        "type": "postback",
+                        "title": "Order",
+                        #"payload": f"ADD_TO_CART_{product.id}"
+                        "payload": "ORDER"
+                        }
+                    ]
+                    }
+
+        elementsprom.append(elementpromtwo)
 
     messageattachmentprom = {
         "attachment": {
