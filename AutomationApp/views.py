@@ -268,14 +268,14 @@ def selectorder(fbid, received_postback):
     for milkteabuttons in mtbuttons.productname:
         element =   {
                     "title": milkteabuttons,
-                    "subtitle": f"Reg: {mtpricesss["+milkteabuttons+"Reg]} Full: {mtpricesss["+milkteabuttons+"Full]}",
+                    "subtitle": "Reg: "+mtpricesss[milkteabuttons+"Reg"]+"Full: "+mtpricesss[milkteabuttons+"Full"],
                     "image_url": 'https://kgdcafe.com/static/'+milkteabuttons+'MT.png',
                     "buttons": [
                         {
                         "type": "postback",
-                        "title": "Add to Bag",
+                        "title": "Order",
                         #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": f"ADD_TO_BAG"
+                        "payload": "ORDER"
                         }
                     ]
                     }
