@@ -265,11 +265,11 @@ def selectorder(fbid, received_postback):
     statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
     print(statuscateg.json())
     elements=[]
-    for milkteabuttons in mtbuttons.productname:
+    for milkteabuttons in mtbuttons:
         element =   {
-                    "title": milkteabuttons,
-                    "subtitle": "Reg: "+mtpricesss[milkteabuttons+"Reg"]+"   Full: "+mtpricesss[milkteabuttons+"Full"],
-                    "image_url": 'https://kgdcafe.com/static/'+milkteabuttons+'MT.png',
+                    "title": milkteabuttons.productname,
+                    "subtitle": "Reg: "+mtpricesss[milkteabuttons.productname+"Reg"]+"   Full: "+mtpricesss[milkteabuttons.productname+"Full"],
+                    "image_url": 'https://kgdcafe.com/static/'+milkteabuttons.productname+'MT.png',
                     "buttons": [
                         {
                         "type": "postback",
