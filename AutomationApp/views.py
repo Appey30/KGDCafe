@@ -256,14 +256,13 @@ def selectorder(fbid, received_postback):
     Categoriess = Categories.objects.all()
     Subcategoriess = Subcategories.objects.all()
     ###################
-
-
     #response_msgcateg = json.dumps({
     #"recipient":{"id":fbid}, 
     #"message":{"text": "Milktea Category!"}
     #})
     #statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
     #print(statuscateg.json())
+
     elements=[]
     for milkteabuttons in mtbuttons:
         element =   {
@@ -316,6 +315,7 @@ def handlePostback(fbid, received_postback):
     if payload == "GET_STARTED":
         selectplatform(fbid, received_postback)
     elif payload == 'Here_Messenger':
+
         selectorder(fbid, received_postback)
 #    elif payload == 'Website':
 #        response_msg = json.dumps({
@@ -327,7 +327,7 @@ def handlePostback(fbid, received_postback):
 
 
 
-def set_get_started_button(fbid, received_postback):
+def set_get_started_button(fbid):
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
     user_details = requests.get(user_details_url, user_details_params).json() 
@@ -475,7 +475,7 @@ class FacebookWebhookView(View):
                 #    link_account(account_linking_token, )
                 else:
                 # elif 'postback' in message:
-                    set_get_started_button(message['sender']['id'], message['postback'])
+                    set_get_started_button(message['sender']['id'])
                     #handlePostback(message['sender']['id'], message['postback'])
                     #set_persistent_menu(message['sender']['id'], message['postback'])
         
