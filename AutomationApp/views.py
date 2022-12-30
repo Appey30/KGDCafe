@@ -195,7 +195,9 @@ def selectplatform(fbid, received_postback):
 
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print(status.json())
-
+def sendmilkteacategory(fbid, received_postback):
+    electorder(fbid, received_postback)
+        
 def selectorder(fbid, received_postback):
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     print('handlepostback called received_postback value is: ',received_postback)
@@ -256,18 +258,18 @@ def selectorder(fbid, received_postback):
     Categoriess = Categories.objects.all()
     Subcategoriess = Subcategories.objects.all()
     ###################
-    #response_msgcateg = json.dumps({
-    #"recipient":{"id":fbid}, 
-    #"message":{"text": "Milktea Category!"}
-    #})
-    #statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
-    #print(statuscateg.json())
+    response_msgcateg = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":{"text": "Milktea Category!"}
+    })
+    statuscateg = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcateg)
+    print(statuscateg.json())
 
     elements=[]
     for milkteabuttons in mtbuttons:
         element =   {
                     "title": milkteabuttons.productname,
-                    "subtitle": "Reg: "+str(mtpricesss[milkteabuttons.productname+"Reg"])+"   Full: "+str(mtpricesss[milkteabuttons.productname+"Full"]),
+                    "subtitle": "Reg: ₱"+str(mtpricesss[milkteabuttons.productname+"Reg"])+"   Full: ₱"+str(mtpricesss[milkteabuttons.productname+"Full"]),
                     "image_url": 'https://kgdcafe.com/static/'+milkteabuttons.productname+'MT.png',
                     "buttons": [
                         {
@@ -315,8 +317,8 @@ def handlePostback(fbid, received_postback):
     if payload == "GET_STARTED":
         selectplatform(fbid, received_postback)
     elif payload == 'Here_Messenger':
-
-        selectorder(fbid, received_postback)
+        sendmilkteacategory(fbid, received_postback)
+        
 #    elif payload == 'Website':
 #        response_msg = json.dumps({
 #        "recipient":{"id":fbid}, 
