@@ -1311,34 +1311,15 @@ font-weight:bold;
                 var sizeamountmt = regpricemt;
                 sukatall="Reg";
                 }
-                var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
-                if(milkteaaddons){
-                    if(milkteaaddons.classList == "mtpearl choiceaddons"){
-                    var addonsamountmt = 15;
-                    aoname="Tapioca";
-                    }else if(milkteaaddons.classList == "mtnata choiceaddons"){
-                    var addonsamountmt = 10;
-                    aoname="Nata";
-                    }else{
-                    var addonsamountmt = 0;
-                    aoname="";
-                    }
-                }else{
-                var addonsamountmt = 0;
-                aoname="";
-                }
+
                 var qtycountmt = $('#qtynummt').val();
 
-                var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+                var totalmt = (sizeamountmt)*qtycountmt;
                 gtotalmt = totalmt;
                 totalall = totalmt;
                 allqty = qtycountmt;
-         if(aoname==""){
-        aoqty="";
-        }else{
-        aoqty = qtycountmt;
-        }
-                totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
+
+                totalmilktea.innerHTML = "₱"+totalmt+".00";
                 }
 
 
@@ -1360,34 +1341,15 @@ font-weight:bold;
                 sukatall="Reg";
                 }
                 var totalmilktea = document.getElementById("totalmt");
-                var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
-                if(milkteaaddons){
-                    if(milkteaaddons.classList == "mtpearl choiceaddons"){
-                    var addonsamountmt = 15;
-                    aoname="Tapioca";
-                    }else if(milkteaaddons.classList == "mtnata choiceaddons"){
-                    var addonsamountmt = 10;
-                    aoname="Nata";
-                    }else{
-                    var addonsamountmt = 0;
-                    aoname="";
-                    }
-                }else{
-                var addonsamountmt = 0;
-                aoname="";
-                }
+
                 var qtycountmt = $('#qtynummt').val();
                 
-                var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+                var totalmt = (sizeamountmt)*qtycountmt;
                 allqty = qtycountmt;
-        if(aoname==""){
-        aoqty="";
-        }else{
-        aoqty = qtycountmt;
-        }
+
                 gtotalmt = totalmt;
                 totalall = totalmt;
-                totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
+                totalmilktea.innerHTML = "₱"+totalmt+".00";
                 }
 
 
