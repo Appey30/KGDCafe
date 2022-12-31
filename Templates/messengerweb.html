@@ -241,6 +241,18 @@ background-color:#aa5c31;
 .plus:hover{
 background-color:#aa5c31;
 }
+.totalh8{
+position:relative;
+color:#d4ad98;
+}
+            
+.totalmt{
+position:relative;
+margin-left:10px;
+margin-top:10px;
+color: #aa5c31;
+font-weight:bold;
+}
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px){
@@ -473,6 +485,18 @@ background-color:#aa5c31;
 .plus:hover{
 background-color:#aa5c31;
 }
+.totalh8{
+position:relative;
+color:#d4ad98;
+}
+            
+.totalmt{
+position:relative;
+margin-left:10px;
+margin-top:10px;
+color: #aa5c31;
+font-weight:bold;
+}
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
 .imagecontainer{
@@ -701,6 +725,18 @@ background-color:#aa5c31;
 .plus:hover{
 background-color:#aa5c31;
 }
+.totalh8{
+position:relative;
+color:#d4ad98;
+}
+            
+.totalmt{
+position:relative;
+margin-left:10px;
+margin-top:10px;
+color: #aa5c31;
+font-weight:bold;
+}
 }
 @media screen and (min-width: 450px) and (max-width: 767px){
 .imagecontainer{
@@ -928,6 +964,19 @@ background-color:#aa5c31;
 }
 .plus:hover{
 background-color:#aa5c31;
+}
+.totalh8{
+position:relative;
+color:#d4ad98;
+}
+            
+.totalmt{
+position:relative;
+margin-left:10px;
+margin-top:10px;
+color: #aa5c31;
+font-size:15px;
+font-weight:bold;
 }
 }
 @media screen and (max-width: 449px){
@@ -1158,6 +1207,19 @@ background-color:#aa5c31;
 .plus:hover{
 background-color:#aa5c31;
 }
+.totalh8{
+position:relative;
+color:#d4ad98;
+}
+            
+.totalmt{
+position:relative;
+margin-left:10px;
+margin-top:10px;
+color: #aa5c31;
+font-size:15px;
+font-weight:bold;
+}
 }
 </style>
 </head>
@@ -1199,6 +1261,21 @@ background-color:#aa5c31;
                     <div class="fixqtyclass" style="display:block;">
                         <div class="quantity" style="box-shadow: 0 4px 8px 2px rgb(0 0 0 / 20%);border-radius:7.5px;">
 	                        <input onclick="functionminusmt()" type="button" value="-" class="minus"><input id="qtynummt" inputmode="numeric" readonly="readonly" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern=""><input onclick="functionplusmt()" type="button" value="+" class="plus">
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="totalwrapper" id="qtywrapperid">
+            <div class="picksizecontainer" id="qtycontainerid" style="display:flex;">
+
+                    <div class="fixtotalclass" style="display:flex;width:100%;">
+                        <div id="totaldivid"  class="totaldivclass">
+                        <h8 class="totalh8">Total</h8>
+                        <h1 id="totalmt" class="totalh1">₱</h1>
+                        </div>
+                        <div id="addtobagdivid" class="addtobagdivclass">
+
                         </div>
                     </div>
             </div>
