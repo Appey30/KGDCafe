@@ -1411,6 +1411,11 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     var picksizewrapperid = document.getElementById("picksizewrapperid");
     var fullh3= document.getElementById("fullh3");
     var regh3= document.getElementById("regh3");
+    presyomt=itempriceid;
+    sukatmt=itemsizeid;
+    sukatmtpizza=itempsizeid;
+    withsizeprice=itemwithsizepriceid;
+    productname=itemnameid;
     if('{{itembuttons.Category}}' == 'Milktea'){
         
         picksizewrapperid.style.display='block';
@@ -1464,10 +1469,14 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
 
 
         var sukatmt = "";
+        var sukatmtpizza = '';
         var presyomt = 0;
+        var categ = '';
         var gtotalmt = 0;
         var fullpricemt = 0;
         var regpricemt = 0;
+        var withsizeprice;
+        var productname='';
         function functionfocusregmt(){
         
         var totalmilktea = document.getElementById("totalmt");
@@ -1475,15 +1484,36 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         var unchosenmt = document.getElementById('mtfullid');
         var fullmt = 0;
         var regmt = 0;
-        if(sukatmt == "Reg"){
-        fullmt = presyomt+10;
-        regmt = presyomt;
-        }else if(sukatmt == "Small"){
-        fullmt= presyomt+20;
-        regmt = presyomt+10;
+        if(sukatmt){
+            if(sukatmt == "Reg"){
+                fullmt = presyomt+10;
+                regmt = presyomt;
+            }else if(sukatmt == "Small"){
+                fullmt= presyomt+20;
+                regmt = presyomt+10;
+            }else{
+                fullmt = presyomt;
+                regmt = presyomt-10;
+            }
+        }else if(sukatmtpizza){
+            if(sukatmtpizza == 'Barkada(10")'){
+                var pizzastwo = 'Pamilya(12")';
+                var Priceipizzaf = withsizeprice[productname+pizzastwo];
+
+                regmt = presyomt;
+                fullmt = Priceipizzaf;
+
+            }else if(sukatmtpizza == 'Pamilya(12")'){
+                var pizzastwo = 'Barkada(10")';
+                var Priceipizzaf = withsizeprice[productname+pizzastwo];
+
+                regmt = Priceipizzaf;
+                fullmt = presyomt;
+
+            }
         }else{
-        fullmt = presyomt;
-        regmt = presyomt-10;
+            fullmt=presyomt
+            regmt=presyomt
         }
         fullpricemt = fullmt;
         regpricemt = regmt;
@@ -1493,39 +1523,34 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         
         if(milkteasize.classList == "mtfull choicesize"){
         var sizeamountmt = fullmt;
-        sukatall="Full";
+        if(sukatmt){
+            sukatall="Full";
+        }else if(sukatmtpizza){
+            sukatall='Pamilya(12")'
         }else{
-        var sizeamountmt = regmt;
-        sukatall="Reg";
+            sukatall=''
         }
         
-        var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
-        if(milkteaaddons){
-            if(milkteaaddons.classList == "mtpearl choiceaddons"){
-            var addonsamountmt = 15;
-            aoname="Tapioca";
-            }else if(milkteaaddons.classList == "mtnata choiceaddons"){
-            var addonsamountmt = 10;
-            aoname="Nata";
-            }else{
-            var addonsamountmt = 0;
-            aoname="";
-            }
+        }else if(milkteasize.classList == "mtreg choicesize"){
+        var sizeamountmt = regmt;
+        if(sukatmt){
+            sukatall="Reg";
+        }else if(sukatmtpizza){
+            sukatall='Barkada(10")'
         }else{
-        var addonsamountmt = 0;
-        aoname="";
+            sukatall=''
         }
+        }else{
+        var sizeamountmt = presyomt;
+        sukatall="";
+        }
+        
         var qtycountmt = $('#qtynummt').val();
 
-        var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+        var totalmt = (sizeamountmt)*qtycountmt;
         gtotalmt = totalmt;
         totalall = totalmt;
         allqty = qtycountmt;
-        if(aoname==""){
-        aoqty="";
-        }else{
-        aoqty = qtycountmt;
-        }
         totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
         
         }
@@ -1537,55 +1562,72 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         var totalmilktea = document.getElementById("totalmt");
         var fullmt = 0;
         var regmt = 0;
-        if(sukatmt == "Reg"){
-        fullmt = presyomt+10;
-        regmt = presyomt;
-        }else if(sukatmt == "Small"){
-        fullmt= presyomt+20;
-        regmt = presyomt+10;
+        if(sukatmt){
+            if(sukatmt == "Reg"){
+                fullmt = presyomt+10;
+                regmt = presyomt;
+            }else if(sukatmt == "Small"){
+                fullmt= presyomt+20;
+                regmt = presyomt+10;
+            }else{
+                fullmt = presyomt;
+                regmt = presyomt-10;
+            }
+        }else if(sukatmtpizza){
+            if(sukatmtpizza == 'Barkada(10")'){
+                var pizzastwo = 'Pamilya(12")';
+                var Priceipizzaf = withsizeprice[productname+pizzastwo];
+
+                regmt = presyomt;
+                fullmt = Priceipizzaf;
+
+            }else if(sukatmtpizza == 'Pamilya(12")'){
+                var pizzastwo = 'Barkada(10")';
+                var Priceipizzaf = withsizeprice[productname+pizzastwo];
+
+                regmt = Priceipizzaf;
+                fullmt = presyomt;
+
+            }
         }else{
-        fullmt = presyomt;
-        regmt = presyomt-10;
+            fullmt=presyomt
+            regmt=presyomt
         }
         fullpricemt = fullmt;
         regpricemt = regmt;
         unchosentwomt.classList.remove('choicesize');
         chosentwomt.classList.add('choicesize');
         var milkteasize = document.getElementsByClassName("choicesize")[0];
+        
         if(milkteasize.classList == "mtfull choicesize"){
         var sizeamountmt = fullmt;
-        sukatall="Full";
+        if(sukatmt){
+            sukatall="Full";
+        }else if(sukatmtpizza){
+            sukatall='Pamilya(12")'
         }else{
-        var sizeamountmt = regmt;
-        sukatall="Reg";
+            sukatall=''
         }
-        var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
-        if(milkteaaddons){
-            if(milkteaaddons.classList == "mtpearl choiceaddons"){
-            var addonsamountmt = 15;
-            aoname="Tapioca";
-            }else if(milkteaaddons.classList == "mtnata choiceaddons"){
-            var addonsamountmt = 10;
-            aoname="Nata";
-            }else{
-            var addonsamountmt = 0;
-            aoname="";
-            }
+        
+        }else if(milkteasize.classList == "mtreg choicesize"){
+        var sizeamountmt = regmt;
+        if(sukatmt){
+            sukatall="Reg";
+        }else if(sukatmtpizza){
+            sukatall='Barkada(10")'
         }else{
-        var addonsamountmt= 0;
-        aoname="";
+            sukatall=''
+        }
+        }else{
+            var sizeamountmt = presyomt;
+            sukatall="";
         }
         var qtycountmt = $('#qtynummt').val();
 
-        var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+        var totalmt = (sizeamountmt)*qtycountmt;
         gtotalmt = totalmt;
         totalall = totalmt;
         allqty = qtycountmt;
-        if(aoname==""){
-        aoqty="";
-        }else{
-        aoqty = qtycountmt;
-        }
         totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
         }
 </script>
