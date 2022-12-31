@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +69,9 @@ background-color:;
   background-color:#d4ad98;
   border-radius: 20px;
 }
+.picksizecontainer{
+
+}
 .h3divconfig{
 position:relative;
 text-align:center;
@@ -87,6 +90,16 @@ background-color:;
   <div class="h3divconfig" id="h3divconfigid"></div>
   <img class="itemimageclass" src="" style="width:100%" id="itemimageid" >
 
+  </div>
+  <div class="picksizecontainer" id="picksizecontainerid">
+        <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
+        <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
+        <h3>Full(22oz)</h3>
+        </div>
+        <div id="mtRegid" onclick="functionfocusregmt()" class="mtreg">
+        <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
+        <h3>Reg(16oz)</h3>
+        </div>
   </div>
 <input type="hidden" value="{{itembuttons.productname}}" id="itemnameid"></input>
 <input type="hidden" value="{{itembuttons.Size}}" id="itemsizeid"></input>
@@ -117,35 +130,179 @@ documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepric
 function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepriceid){
     var itemimageid = document.getElementById("itemimageid");
     var h3divconfigid = document.getElementById("h3divconfigid");
-    
+    var imgreg = document.getElementById("imgreg");
+    var imgfull = document.getElementById("imgfull");
+    var picksizecontainerid = document.getElementById("picksizecontainerid");
     if('{{itembuttons.Category}}' == 'Milktea'){
+        picksizecontainerid.style.display='block';
+        imgfull.src="{% static 'MilkteaFull.png' %}";
+        imgreg.src="{% static 'MilkteaReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'MT.png';
     }else if('{{itembuttons.Category}}' == 'Frappe'){
+        picksizecontainerid.style.display='block';
+        imgfull.src="{% static 'FrappeFull.png' %}";
+        imgreg.src="{% static 'FrappeReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FR.png';
     }else if('{{itembuttons.Category}}' == 'Freeze'){
+        picksizecontainerid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FRZ.png';
     }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
+        picksizecontainerid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Shawarma.png';
     }else if('{{itembuttons.Subcategory}}' == 'Fries'){
+        picksizecontainerid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
+        picksizecontainerid.style.display='block';
+        imgfull.src="{% static 'pamilyasize.png' %}";
+        imgreg.src="{% static 'barkadasize.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Pizza.png';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
+        picksizecontainerid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'SPECIALPROMO.jpg';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
+        picksizecontainerid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FREEFRIESPROMO.png';
     }
 
 
 }
+
+
+
+        var sukatmt = "";
+        var presyomt = 0;
+        var gtotalmt = 0;
+        var fullpricemt = 0;
+        var regpricemt = 0;
+        function functionfocusregmt(){
+        
+        var totalmilktea = document.getElementById("totalmt");
+        var chosenmt = document.getElementById('mtregid');
+        var unchosenmt = document.getElementById('mtfullid');
+        var fullmt = 0;
+        var regmt = 0;
+        if(sukatmt == "Reg"){
+        fullmt = presyomt+10;
+        regmt = presyomt;
+        }else if(sukatmt == "Small"){
+        fullmt= presyomt+20;
+        regmt = presyomt+10;
+        }else{
+        fullmt = presyomt;
+        regmt = presyomt-10;
+        }
+        fullpricemt = fullmt;
+        regpricemt = regmt;
+        chosenmt.classList.add('choicesize');
+        unchosenmt.classList.remove('choicesize');
+        var milkteasize = document.getElementsByClassName("choicesize")[0];
+        
+        if(milkteasize.classList == "mtfull choicesize"){
+        var sizeamountmt = fullmt;
+        sukatall="Full";
+        }else{
+        var sizeamountmt = regmt;
+        sukatall="Reg";
+        }
+        
+        var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
+        if(milkteaaddons){
+            if(milkteaaddons.classList == "mtpearl choiceaddons"){
+            var addonsamountmt = 15;
+            aoname="Tapioca";
+            }else if(milkteaaddons.classList == "mtnata choiceaddons"){
+            var addonsamountmt = 10;
+            aoname="Nata";
+            }else{
+            var addonsamountmt = 0;
+            aoname="";
+            }
+        }else{
+        var addonsamountmt = 0;
+        aoname="";
+        }
+        var qtycountmt = $('#qtynummt').val();
+
+        var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+        gtotalmt = totalmt;
+        totalall = totalmt;
+        allqty = qtycountmt;
+        if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountmt;
+        }
+        totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
+        
+        }
+
+
+       function functionfocusfullmt(){
+        var unchosentwomt = document.getElementById('mtregid');
+        var chosentwomt = document.getElementById('mtfullid');
+        var totalmilktea = document.getElementById("totalmt");
+        var fullmt = 0;
+        var regmt = 0;
+        if(sukatmt == "Reg"){
+        fullmt = presyomt+10;
+        regmt = presyomt;
+        }else if(sukatmt == "Small"){
+        fullmt= presyomt+20;
+        regmt = presyomt+10;
+        }else{
+        fullmt = presyomt;
+        regmt = presyomt-10;
+        }
+        fullpricemt = fullmt;
+        regpricemt = regmt;
+        unchosentwomt.classList.remove('choicesize');
+        chosentwomt.classList.add('choicesize');
+        var milkteasize = document.getElementsByClassName("choicesize")[0];
+        if(milkteasize.classList == "mtfull choicesize"){
+        var sizeamountmt = fullmt;
+        sukatall="Full";
+        }else{
+        var sizeamountmt = regmt;
+        sukatall="Reg";
+        }
+        var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
+        if(milkteaaddons){
+            if(milkteaaddons.classList == "mtpearl choiceaddons"){
+            var addonsamountmt = 15;
+            aoname="Tapioca";
+            }else if(milkteaaddons.classList == "mtnata choiceaddons"){
+            var addonsamountmt = 10;
+            aoname="Nata";
+            }else{
+            var addonsamountmt = 0;
+            aoname="";
+            }
+        }else{
+        var addonsamountmt= 0;
+        aoname="";
+        }
+        var qtycountmt = $('#qtynummt').val();
+
+        var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+        gtotalmt = totalmt;
+        totalall = totalmt;
+        allqty = qtycountmt;
+        if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountmt;
+        }
+        totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
+        }
 </script>
 
 </body>
