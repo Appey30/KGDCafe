@@ -51,19 +51,19 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     var itemimageid = document.getElementById("itemimageid");
 
     if('{{itembuttons.Category}}' == 'Milktea'){
-        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'MT.png';
+        itemimageid.src='/static/'+itemnameid+'MT.png';
     }else if('{{itembuttons.Category}}' == 'Frappe'){
-        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'FR.png';
+        itemimageid.src='/static/'+itemnameid+'FR.png';
     }else if('{{itembuttons.Category}}' == 'Freeze'){
-        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'FRZ.png';
+        itemimageid.src='/static/'+itemnameid+'FRZ.png';
     }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
-        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'Shawarma.png';
+        itemimageid.src='/static/'+itemnameid+'Shawarma.png';
     }else if('{{itembuttons.Subcategory}}' == 'Fries'){
-        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'Fries.png';
+        itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
-        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'SPECIALPROMO.jpg';
+        itemimageid.src='/static/'+itemnameid+'SPECIALPROMO.jpg';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
-        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'FREEFRIESPROMO.png';
+        itemimageid.src='/static/'+itemnameid+'FREEFRIESPROMO.png';
     }
 
 
