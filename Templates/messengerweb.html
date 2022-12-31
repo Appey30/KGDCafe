@@ -114,28 +114,28 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     var h3divconfigid = document.getElementById("h3divconfigid");
     
     if('{{itembuttons.Category}}' == 'Milktea'){
-        h3divconfigid.innerHtml = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'MT.png';
     }else if('{{itembuttons.Category}}' == 'Frappe'){
-        h3divconfigid.innerHtml = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FR.png';
     }else if('{{itembuttons.Category}}' == 'Freeze'){
-        h3divconfigid.innerHtml = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FRZ.png';
     }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
-        h3divconfigid.innerHtml = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Shawarma.png';
     }else if('{{itembuttons.Subcategory}}' == 'Fries'){
-        h3divconfigid.innerHtml = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
-        h3divconfigid.innerHtml = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Pizza.png';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
-        h3divconfigid.innerHtml = '<h3>'+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'SPECIALPROMO.jpg';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
-        h3divconfigid.innerHtml = '<h3>'+itemnameid+'</h3>'
+        h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FREEFRIESPROMO.png';
     }
 
