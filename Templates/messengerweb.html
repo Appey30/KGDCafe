@@ -67,6 +67,8 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         itemimageid.src='/static/'+itemnameid+'Shawarma.png';
     }else if('{{itembuttons.Subcategory}}' == 'Fries'){
         itemimageid.src='/static/'+itemnameid+'Fries.png';
+    }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
+        itemimageid.src='/static/'+itemnameid+'Pizza.png';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
         itemimageid.src='/static/'+itemnameid+'SPECIALPROMO.jpg';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
