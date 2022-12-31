@@ -966,30 +966,33 @@ left:-10px;
 <body>
 
 <div id="wrapper" style="display:block;">
-  <div class="imagecontainer" >
-  <div class="h3divconfig" id="h3divconfigid"></div>
-  <img class="itemimageclass" src="" style="width:100%" id="itemimageid" >
-
-  </div>
-
-  <div class="picksizewrapper" id="picksizewrapperid">
-        <div class="choosesizetext" id="choosesizetextid"><h3>Choose Size</h3></div>
-    <div class="picksizecontainer" id="picksizecontainerid" style="display:flex;">
-
-
-              <div class="fixsizeclass" style="display:flex;">
-                    <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
-                    <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
-                    <h3 id="fullh3"></h3>
-                    </div>
-                    <div id="mtregid" onclick="functionfocusregmt()" class="mtreg">
-                    <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
-                    <h3 id="regh3"></h3>
-                    </div>
+    <div style="display:flex;flex-direction:row;flex-wrap:nowrap;align-content:normal;justify-content:center;align-items:center;">
+          <div class="imagecontainer" >
+              <div class="h3divconfig" id="h3divconfigid">
               </div>
+              <img class="itemimageclass" src="" style="width:100%" id="itemimageid" >
+
+          </div>
+    </div>
+
+    <div class="picksizewrapper" id="picksizewrapperid">
+        <div class="choosesizetext" id="choosesizetextid"><h3>Choose Size</h3></div>
+            <div class="picksizecontainer" id="picksizecontainerid" style="display:flex;">
+
+
+                    <div class="fixsizeclass" style="display:flex;">
+                        <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
+                            <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
+                            <h3 id="fullh3"></h3>
+                        </div>
+                        <div id="mtregid" onclick="functionfocusregmt()" class="mtreg">
+                            <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
+                            <h3 id="regh3"></h3>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
-  </div>
 <input type="hidden" value="{{itembuttons.productname}}" id="itemnameid"></input>
 <input type="hidden" value="{{itembuttons.Size}}" id="itemsizeid"></input>
 <input type="hidden" value="{{itembuttons.PSize}}" id="itempsizeid"></input>
