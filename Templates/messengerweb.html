@@ -871,14 +871,16 @@ left:-10px;
 
   </div>
   <div class="picksizecontainer" id="picksizecontainerid">
-        <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
-        <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
-        <h3>Full(22oz)</h3>
-        </div>
-        <div id="mtRegid" onclick="functionfocusregmt()" class="mtreg">
-        <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
-        <h3>Reg(16oz)</h3>
-        </div>
+      <div class="fixsizeclass">
+            <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
+            <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
+            <h3>Full(22oz)</h3>
+            </div>
+            <div id="mtRegid" onclick="functionfocusregmt()" class="mtreg">
+            <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
+            <h3>Reg(16oz)</h3>
+            </div>
+      </div>
   </div>
 <input type="hidden" value="{{itembuttons.productname}}" id="itemnameid"></input>
 <input type="hidden" value="{{itembuttons.Size}}" id="itemsizeid"></input>
