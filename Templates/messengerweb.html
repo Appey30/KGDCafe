@@ -993,6 +993,20 @@ left:-10px;
             </div>
         </div>
     </div>
+    <div class="qtywrapper" id="qtywrapperid">
+        <div class="choosesizetext" id="choosesizetextid"><h3>Quantity</h3></div>
+            <div class="qtycontainer" id="qtycontainerid" style="display:flex;">
+
+
+                    <div class="fixqtyclass" style="display:block;">
+                        <div class="quantity">
+                            <label for="qtynummt" style="color: #2c170c;">Qty:</label>
+	                            <input onclick="functionminusmt()" type="button" value="-" class="minus"><input id="qtynummt" inputmode="numeric" readonly="readonly" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern=""><input onclick="functionplusmt()" type="button" value="+" class="plus">
+
+                    </div>
+            </div>
+        </div>
+    </div>
 <input type="hidden" value="{{itembuttons.productname}}" id="itemnameid"></input>
 <input type="hidden" value="{{itembuttons.Size}}" id="itemsizeid"></input>
 <input type="hidden" value="{{itembuttons.PSize}}" id="itempsizeid"></input>
@@ -1003,8 +1017,104 @@ left:-10px;
 
 <script>
 
+                var qtynummt = document.getElementById('qtynummt').value;
+                
+                function functionminusmt(){
+                var totalmilktea = document.getElementById("totalmt");
+                var subtractmt = parseInt($('#qtynummt').val());
+                var minustwomt = subtractmt-1;
+                if($('#qtynummt').val() == 1){
+                $('#qtynummt').val(1);
+                }else{
+                $('#qtynummt').val(minustwomt);
+                }
+
+                var milkteasize = document.getElementsByClassName("choicesize")[0];
+                if(milkteasize.classList == "mtfull choicesize"){
+                var sizeamountmt = fullpricemt;
+                sukatall="Full";
+                }else{
+                var sizeamountmt = regpricemt;
+                sukatall="Reg";
+                }
+                var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
+                if(milkteaaddons){
+                    if(milkteaaddons.classList == "mtpearl choiceaddons"){
+                    var addonsamountmt = 15;
+                    aoname="Tapioca";
+                    }else if(milkteaaddons.classList == "mtnata choiceaddons"){
+                    var addonsamountmt = 10;
+                    aoname="Nata";
+                    }else{
+                    var addonsamountmt = 0;
+                    aoname="";
+                    }
+                }else{
+                var addonsamountmt = 0;
+                aoname="";
+                }
+                var qtycountmt = $('#qtynummt').val();
+
+                var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+                gtotalmt = totalmt;
+                totalall = totalmt;
+                allqty = qtycountmt;
+         if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountmt;
+        }
+                totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
+                }
 
 
+
+
+
+
+                function functionplusmt(){
+                
+                var additionmt = parseInt($('#qtynummt').val());
+                var plustwomt =  additionmt + 1;
+                $('#qtynummt').val(plustwomt);
+                var milkteasize = document.getElementsByClassName("choicesize")[0];
+                if(milkteasize.classList == "mtfull choicesize"){
+                var sizeamountmt = fullpricemt;
+                sukatall="Full";
+                }else{
+                var sizeamountmt = regpricemt;
+                sukatall="Reg";
+                }
+                var totalmilktea = document.getElementById("totalmt");
+                var milkteaaddons = document.getElementsByClassName("choiceaddons")[0];
+                if(milkteaaddons){
+                    if(milkteaaddons.classList == "mtpearl choiceaddons"){
+                    var addonsamountmt = 15;
+                    aoname="Tapioca";
+                    }else if(milkteaaddons.classList == "mtnata choiceaddons"){
+                    var addonsamountmt = 10;
+                    aoname="Nata";
+                    }else{
+                    var addonsamountmt = 0;
+                    aoname="";
+                    }
+                }else{
+                var addonsamountmt = 0;
+                aoname="";
+                }
+                var qtycountmt = $('#qtynummt').val();
+                
+                var totalmt = (sizeamountmt+addonsamountmt)*qtycountmt;
+                allqty = qtycountmt;
+        if(aoname==""){
+        aoqty="";
+        }else{
+        aoqty = qtycountmt;
+        }
+                gtotalmt = totalmt;
+                totalall = totalmt;
+                totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
+                }
 
 
 
