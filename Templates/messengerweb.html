@@ -15,6 +15,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 @media screen and (min-width: 1200px){
+.picksizewrapper{
+position:relative;
+margin-top:10px;
+}
 .picksizecontainer{
 position:relative;
 margin-top:10px;
@@ -192,6 +196,10 @@ left:-10px;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px){
+.picksizewrapper{
+position:relative;
+margin-top:10px;
+}
 .picksizecontainer{
 position:relative;
 margin-top:10px;
@@ -377,6 +385,10 @@ left:-10px;
   background-color:#d4ad98;
   border-radius: 20px;
 }
+.picksizewrapper{
+position:relative;
+margin-top:10px;
+}
 .picksizecontainer{
 flex-direction:row;
 flex-wrap:nowrap;
@@ -561,6 +573,10 @@ left:-10px;
   background-color:#d4ad98;
   border-radius: 20px;
 }
+.picksizewrapper{
+position:relative;
+margin-top:10px;
+}
 .picksizecontainer{
 flex-direction:row;
 flex-wrap:nowrap;
@@ -742,6 +758,10 @@ left:-10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color:#d4ad98;
   border-radius: 20px;
+}
+.picksizewrapper{
+position:relative;
+margin-top:10px;
 }
 .picksizecontainer{
 flex-direction:row;
@@ -938,19 +958,23 @@ left:-10px;
   <img class="itemimageclass" src="" style="width:100%" id="itemimageid" >
 
   </div>
-  <div class="picksizecontainer" id="picksizecontainerid">
 
-<div class="choosesizetext" id="choosesizetextid"><h3>Choose Size</h3></div>
-      <div class="fixsizeclass" style="display:flex;">
-            <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
-            <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
-            <h3>Full(22oz)</h3>
-            </div>
-            <div id="mtRegid" onclick="functionfocusregmt()" class="mtreg">
-            <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
-            <h3>Reg(16oz)</h3>
-            </div>
-      </div>
+  <div class="picksizewrapper" id="picksizewrapperid">
+    <div class="picksizecontainer" id="picksizecontainerid">
+
+        <div class="choosesizetext" id="choosesizetextid"><h3>Choose Size</h3></div>
+              <div class="fixsizeclass" style="display:flex;">
+                    <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
+                    <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
+                    <h3>Full(22oz)</h3>
+                    </div>
+                    <div id="mtRegid" onclick="functionfocusregmt()" class="mtreg">
+                    <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
+                    <h3>Reg(16oz)</h3>
+                    </div>
+              </div>
+        </div>
+    </div>
   </div>
 <input type="hidden" value="{{itembuttons.productname}}" id="itemnameid"></input>
 <input type="hidden" value="{{itembuttons.Size}}" id="itemsizeid"></input>
