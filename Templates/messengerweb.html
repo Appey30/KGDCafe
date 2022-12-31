@@ -198,7 +198,25 @@ position:relative;
 top:-18px;
 left:-10px;
 }
-
+.quantity input{
+text-align:center;
+color: #2c170c;
+height:40px;
+}
+.minus{
+text-align:center;
+height:30px;
+width:50px;
+color: #2c170c;
+background-color:#d4ad98;
+}
+.plus{
+text-align:center;
+height:30px;
+width:50px;
+color: #2c170c;
+background-color:#d4ad98;
+}
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px){
@@ -389,7 +407,23 @@ position:relative;
 top:-18px;
 left:-10px;
 }
-
+.quantity input{
+text-align:center;
+color: #2c170c;
+height:40px;
+}
+.minus{
+text-align:center;
+height:30px;
+width:50px;
+color: #2c170c;
+}
+.plus{
+text-align:center;
+height:30px;
+width:50px;
+color: #2c170c;
+}
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
 .imagecontainer{
@@ -577,7 +611,23 @@ position:relative;
 top:-18px;
 left:-10px;
 }
-
+.quantity input{
+text-align:center;
+color: #2c170c;
+height:40px;
+}
+.minus{
+text-align:center;
+height:30px;
+width:50px;
+color: #2c170c;
+}
+.plus{
+text-align:center;
+height:30px;
+width:50px;
+color: #2c170c;
+}
 }
 @media screen and (min-width: 450px) and (max-width: 767px){
 .imagecontainer{
@@ -764,6 +814,24 @@ left:-10px;
 position:relative;
 top:-18px;
 left:-10px;
+}
+.quantity input{
+text-align:center;
+color: #2c170c;
+height:25px;
+width:40px;
+}
+.minus{
+text-align:center;
+height:15px;
+width:30px;
+color: #2c170c;
+}
+.plus{
+text-align:center;
+height:15px;
+width:30px;
+color: #2c170c;
 }
 }
 @media screen and (max-width: 449px){
@@ -959,7 +1027,24 @@ position:relative;
 top:-18px;
 left:-10px;
 }
-
+.quantity input{
+text-align:center;
+color: #2c170c;
+height:25px;
+width:40px;
+}
+.minus{
+text-align:center;
+height:15px;
+width:30px;
+color: #2c170c;
+}
+.plus{
+text-align:center;
+height:15px;
+width:30px;
+color: #2c170c;
+}
 }
 </style>
 </head>
@@ -995,14 +1080,13 @@ left:-10px;
     </div>
     <div class="qtywrapper" id="qtywrapperid">
         <div class="choosesizetext" id="choosesizetextid"><h3>Quantity</h3></div>
-            <div class="qtycontainer" id="qtycontainerid" style="display:flex;">
+            <div class="picksizecontainer" id="qtycontainerid" style="display:flex;">
 
 
                     <div class="fixqtyclass" style="display:block;">
                         <div class="quantity">
-                            <label for="qtynummt" style="color: #2c170c;">Qty:</label>
-	                            <input onclick="functionminusmt()" type="button" value="-" class="minus"><input id="qtynummt" inputmode="numeric" readonly="readonly" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern=""><input onclick="functionplusmt()" type="button" value="+" class="plus">
-
+	                        <input onclick="functionminusmt()" type="button" value="-" class="minus"><input id="qtynummt" inputmode="numeric" readonly="readonly" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern=""><input onclick="functionplusmt()" type="button" value="+" class="plus">
+                        </div>
                     </div>
             </div>
         </div>
