@@ -907,13 +907,13 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     var imgfull = document.getElementById("imgfull");
     var picksizecontainerid = document.getElementById("picksizecontainerid");
     if('{{itembuttons.Category}}' == 'Milktea'){
-        picksizecontainerid.style.display='block';
+        picksizecontainerid.style.display='flex';
         imgfull.src="{% static 'MilkteaFull.png' %}";
         imgreg.src="{% static 'MilkteaReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'MT.png';
     }else if('{{itembuttons.Category}}' == 'Frappe'){
-        picksizecontainerid.style.display='block';
+        picksizecontainerid.style.display='flex';
         imgfull.src="{% static 'FrappeFull.png' %}";
         imgreg.src="{% static 'FrappeReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
@@ -931,7 +931,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
-        picksizecontainerid.style.display='block';
+        picksizecontainerid.style.display='flex';
         imgfull.src="{% static 'pamilyasize.png' %}";
         imgreg.src="{% static 'barkadasize.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
