@@ -957,6 +957,36 @@ def redirecttoonlineorder(request):
     else:
         return HttpResponseRedirect('/index/onlineorder/4/')
 
+def messengercafe(request, product_id):
+    itembuttons = user1.objects.filter(id=product_id)
+    item=0
+    itempricess={}
+    itempricesii = user1.objects.filter(productname=itembuttons.productname).values_list('Price',flat=True).order_by('-id')
+    itemproductnameii=itempricesii.values_list('productname',flat=True)
+    if itembuttons.Category == 'Milktea' or itembuttons.Category == 'Frappe':
+        itemsizeii=itempricesii.values_list('Size__Sizechoices',flat=True)
+        while item<itempricesii.count():
+            itempricess[itemproductnameii[item]+itemsizeii[item]]=itempricesii[item]
+            item += 1
+        itempricesss=itempricess
+        itemprices=json.dumps(itempricesss)
+    elif itembuttons.Subcategory == 'Pizza':
+        itemsizeii=itempricesii.values_list('PSize__PSizechoices',flat=True)
+        while item<itempricesii.count():
+            itempricess[itemproductnameii[item]+itemsizeii[item]]=itempricesii[item]
+            item += 1
+        itempricesss=itempricess
+        itemprices=json.dumps(itempricesss)
+    else:
+        itemproductnameii=itempricesii.values_list('productname',flat=True)
+        while item<itempricesii.count():
+            itempricess[itemproductnameii[item]]=itempricesii[item]
+            item += 1
+        itempricesss=itempricess
+        itemprices=json.dumps(itempricesss)
+    return render(request, 'messengerweb.html',{'itembuttons':itembuttons,'itempricesss':itempricesss})
+
+    
 @login_required
 def totalboughtappey(request):
     userr=request.user.id

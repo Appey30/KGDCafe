@@ -41,6 +41,7 @@ urlpatterns = [
       path('index/kgddashboard',views.kgddashboard,name='kgddashboard.html'),
       path('index/products/delete/', include ('AutomationApp.urls', namespace = 'modaldel')),
       path('index/products/', include ('AutomationApp.urls', namespace = 'modaledit')),
+      path('messengershop/', include ('AutomationApp.urls', namespace = 'messenger')),
       path('index/StocksandExp',views.StocksandExp,name='StocksandExp.html'),
       path('index/Stocksorder',views.StocksOrder,name='StockOrder.html'),
       path('index/Stocksorderadmin',views.stockorderad,name='stockorderadmin.html'),
