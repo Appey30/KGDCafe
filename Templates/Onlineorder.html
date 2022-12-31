@@ -26331,9 +26331,9 @@ Your browser does not support the audio element.
                                             <button id="myBtn" class="infobutton" customdescription="{{specialpromob.PDescription}}" onclick="showdescriptionSPECIALPROMO('{{specialpromob.productname}}', this)"><i class="fa fa-info-circle" ></i></button>
                                         </div>
                                         {% if specialpromob.productname == specialpromob.productname and "SPECIALPROMO.jpg" %}
-                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','.jpg')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%" >
+                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','.jpg')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%;border-radius:10px;" >
                                         {% else %}
-                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%" >
+                                        <img onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','')" class="cardimg" id="{{specialpromob.productname|cut:" " }}" src="#"  style="width:100%;border-radius:10px;" >
                                         {% endif %}
                                         <div class="h3div"><h3>{{specialpromob.productname}}</h3>
                                         </div>
