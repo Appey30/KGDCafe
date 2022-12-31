@@ -1292,7 +1292,7 @@ font-weight:bold;
 <script>
 
                 var qtynummt = document.getElementById('qtynummt').value;
-                
+
                 function functionminusmt(){
                 var totalmilktea = document.getElementById("totalmt");
                 var subtractmt = parseInt($('#qtynummt').val());
@@ -1404,18 +1404,25 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         fullh3.innerHTML='Full(22oz)'
         regh3.innerHTML='Reg(16oz)'
     }else if('{{itembuttons.Category}}' == 'Freeze'){
+        functionplusmt();
+        functionminusmt();
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FRZ.png';
     }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
+        functionplusmt();
+        functionminusmt()
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Shawarma.png';
     }else if('{{itembuttons.Subcategory}}' == 'Fries'){
+        functionplusmt();
+        functionminusmt()
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
+
         functionfocusfullmt();
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'pamilyasize.png' %}";
@@ -1426,10 +1433,14 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         fullh3.innerHTML='Pamilya(12")'
         regh3.innerHTML='Barkada(10")'
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
+        functionplusmt();
+        functionminusmt()
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'SPECIALPROMO.jpg';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
+        functionplusmt();
+        functionminusmt()
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FREEFRIESPROMO.png';
