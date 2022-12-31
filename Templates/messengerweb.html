@@ -1302,10 +1302,40 @@ font-weight:bold;
                 }else{
                 $('#qtynummt').val(minustwomt);
                 }
+                if(sukatmt){
+                    if(sukatmt == "Reg"){
+                        fullmt = presyomt+10;
+                        regmt = presyomt;
+                    }else if(sukatmt == "Small"){
+                        fullmt= presyomt+20;
+                        regmt = presyomt+10;
+                    }else{
+                        fullmt = presyomt;
+                        regmt = presyomt-10;
+                    }
+                }else if(sukatmtpizza){
+                    if(sukatmtpizza == 'Barkada(10")'){
+                        var pizzastwo = 'Pamilya(12")';
+                        var Priceipizzaf = withsizeprice[productname+pizzastwo];
 
+                        regmt = presyomt;
+                        fullmt = Priceipizzaf;
+
+                    }else if(sukatmtpizza == 'Pamilya(12")'){
+                        var pizzastwo = 'Barkada(10")';
+                        var Priceipizzaf = withsizeprice[productname+pizzastwo];
+
+                        regmt = Priceipizzaf;
+                        fullmt = presyomt;
+
+                    }
+                }else{
+                    fullmt=presyomt
+                    regmt=presyomt
+                }
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
-                    var sizeamountmt = fullpricemt;
+                    var sizeamountmt = fullmt;
                     if(sukatmt){
                         sukatall="Full";
                     }else if(sukatmtpizza){
@@ -1315,7 +1345,7 @@ font-weight:bold;
                     }
         
                 }else if(milkteasize.classList == "mtreg choicesize"){
-                    var sizeamountmt = regpricemt;
+                    var sizeamountmt = regmt;
                     if(sukatmt){
                         sukatall="Reg";
                     }else if(sukatmtpizza){
@@ -1348,9 +1378,40 @@ font-weight:bold;
                 var additionmt = parseInt($('#qtynummt').val());
                 var plustwomt =  additionmt + 1;
                 $('#qtynummt').val(plustwomt);
+                if(sukatmt){
+                    if(sukatmt == "Reg"){
+                        fullmt = presyomt+10;
+                        regmt = presyomt;
+                    }else if(sukatmt == "Small"){
+                        fullmt= presyomt+20;
+                        regmt = presyomt+10;
+                    }else{
+                        fullmt = presyomt;
+                        regmt = presyomt-10;
+                    }
+                }else if(sukatmtpizza){
+                    if(sukatmtpizza == 'Barkada(10")'){
+                        var pizzastwo = 'Pamilya(12")';
+                        var Priceipizzaf = withsizeprice[productname+pizzastwo];
+
+                        regmt = presyomt;
+                        fullmt = Priceipizzaf;
+
+                    }else if(sukatmtpizza == 'Pamilya(12")'){
+                        var pizzastwo = 'Barkada(10")';
+                        var Priceipizzaf = withsizeprice[productname+pizzastwo];
+
+                        regmt = Priceipizzaf;
+                        fullmt = presyomt;
+
+                    }
+                }else{
+                    fullmt=presyomt
+                    regmt=presyomt
+                }
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
-                    var sizeamountmt = fullpricemt;
+                    var sizeamountmt = fullmt;
                     if(sukatmt){
                         sukatall="Full";
                     }else if(sukatmtpizza){
@@ -1360,7 +1421,7 @@ font-weight:bold;
                     }
         
                 }else if(milkteasize.classList == "mtreg choicesize"){
-                    var sizeamountmt = regpricemt;
+                    var sizeamountmt = regmt;
                     if(sukatmt){
                         sukatall="Reg";
                     }else if(sukatmtpizza){
