@@ -1305,11 +1305,24 @@ font-weight:bold;
 
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
-                    var sizeamountmt = fullpricemt;
-                    sukatall="Full";
+                    var sizeamountmt = fullmt;
+                    if(sukatmt){
+                        sukatall="Full";
+                    }else if(sukatmtpizza){
+                        sukatall='Pamilya(12")'
+                    }else{
+                        sukatall=''
+                    }
+        
                 }else if(milkteasize.classList == "mtreg choicesize"){
-                    var sizeamountmt = regpricemt;
-                    sukatall="Reg";
+                    var sizeamountmt = regmt;
+                    if(sukatmt){
+                        sukatall="Reg";
+                    }else if(sukatmtpizza){
+                        sukatall='Barkada(10")'
+                    }else{
+                        sukatall=''
+                    }
                 }else{
                     var sizeamountmt = presyomt;
                     sukatall="";
@@ -1337,11 +1350,24 @@ font-weight:bold;
                 $('#qtynummt').val(plustwomt);
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
-                    var sizeamountmt = fullpricemt;
-                    sukatall="Full";
+                    var sizeamountmt = fullmt;
+                    if(sukatmt){
+                        sukatall="Full";
+                    }else if(sukatmtpizza){
+                        sukatall='Pamilya(12")'
+                    }else{
+                        sukatall=''
+                    }
+        
                 }else if(milkteasize.classList == "mtreg choicesize"){
-                    var sizeamountmt = regpricemt;
-                    sukatall="Reg";
+                    var sizeamountmt = regmt;
+                    if(sukatmt){
+                        sukatall="Reg";
+                    }else if(sukatmtpizza){
+                        sukatall='Barkada(10")'
+                    }else{
+                        sukatall=''
+                    }
                 }else{
                     var sizeamountmt = presyomt;
                     sukatall="";
@@ -1386,7 +1412,6 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     withsizeprice=itemwithsizepriceid;
     productname=itemnameid;
     if('{{itembuttons.Category}}' == 'Milktea'){
-        functionfocusfullmt();
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'MilkteaFull.png' %}";
         imgreg.src="{% static 'MilkteaReg.png' %}";
@@ -1394,8 +1419,9 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         itemimageid.src='/static/'+itemnameid+'MT.png';
         fullh3.innerHTML='Full(22oz)'
         regh3.innerHTML='Reg(16oz)'
-    }else if('{{itembuttons.Category}}' == 'Frappe'){
         functionfocusfullmt();
+    }else if('{{itembuttons.Category}}' == 'Frappe'){
+        
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'FrappeFull.png' %}";
         imgreg.src="{% static 'FrappeReg.png' %}";
@@ -1403,18 +1429,21 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         itemimageid.src='/static/'+itemnameid+'FR.png';
         fullh3.innerHTML='Full(22oz)'
         regh3.innerHTML='Reg(16oz)'
+        functionfocusfullmt();
     }else if('{{itembuttons.Category}}' == 'Freeze'){
-        functionplusmt();
-        functionminusmt();
+
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FRZ.png';
-    }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
         functionplusmt();
-        functionminusmt()
+        functionminusmt();
+    }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
+
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Shawarma.png';
+        functionplusmt();
+        functionminusmt()
     }else if('{{itembuttons.Subcategory}}' == 'Fries'){
         functionplusmt();
         functionminusmt()
@@ -1423,7 +1452,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
 
-        functionfocusfullmt();
+        
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'pamilyasize.png' %}";
         imgreg.src="{% static 'barkadasize.png' %}";
@@ -1432,18 +1461,21 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
 
         fullh3.innerHTML='Pamilya(12")'
         regh3.innerHTML='Barkada(10")'
+        functionfocusfullmt();
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
-        functionplusmt();
-        functionminusmt()
+
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'SPECIALPROMO.jpg';
-    }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
         functionplusmt();
         functionminusmt()
+    }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
+
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FREEFRIESPROMO.png';
+        functionplusmt();
+        functionminusmt()
     }
 
 
@@ -1506,26 +1538,26 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         
         if(milkteasize.classList == "mtfull choicesize"){
         var sizeamountmt = fullmt;
-        if(sukatmt){
-            sukatall="Full";
-        }else if(sukatmtpizza){
-            sukatall='Pamilya(12")'
-        }else{
-            sukatall=''
-        }
+            if(sukatmt){
+                sukatall="Full";
+            }else if(sukatmtpizza){
+                sukatall='Pamilya(12")'
+            }else{
+                sukatall=''
+            }
         
         }else if(milkteasize.classList == "mtreg choicesize"){
         var sizeamountmt = regmt;
-        if(sukatmt){
-            sukatall="Reg";
-        }else if(sukatmtpizza){
-            sukatall='Barkada(10")'
+            if(sukatmt){
+                sukatall="Reg";
+            }else if(sukatmtpizza){
+                sukatall='Barkada(10")'
+            }else{
+                sukatall=''
+            }
         }else{
-            sukatall=''
-        }
-        }else{
-        var sizeamountmt = presyomt;
-        sukatall="";
+            var sizeamountmt = presyomt;
+            sukatall="";
         }
         
         var qtycountmt = $('#qtynummt').val();
