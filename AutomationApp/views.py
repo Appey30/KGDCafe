@@ -260,10 +260,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+prombuttons.productname+'FREEFRIESPROMO.png',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -276,10 +275,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+prombuttonstwo.productname+'SPECIALPROMO.jpg',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttonstwo.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -340,10 +338,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+mtbuttons.productname+'MT.png',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(mtbuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -404,10 +401,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+frbuttons.productname+'FR.png',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(frbuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -461,11 +457,11 @@ def selectorder(fbid, received_postback):
                     "subtitle": "Reg: ₱"+str(frtwopricesss[frtwobuttons.productname+"Reg"])+"   Full: ₱"+str(frtwopricesss[frtwobuttons.productname+"Full"]),
                     "image_url": 'https://kgdcafe.com/static/'+frtwobuttons.productname+'FR.png',
                     "buttons": [
+                    "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(frtwobuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -523,10 +519,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+frzbuttons.productname+'FRZ.png',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(frzbuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -582,10 +577,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+shabuttons.productname+'Shawarma.png',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(shabuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -641,10 +635,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+friebuttons.productname+'Fries.png',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(friebuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -704,10 +697,9 @@ def selectorder(fbid, received_postback):
                     "image_url": 'https://kgdcafe.com/static/'+pizbuttons.productname+'Pizza.png',
                     "buttons": [
                         {
-                        "type": "postback",
+                        "type": "web_url",
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(pizbuttons.id),
                         "title": "Order",
-                        #"payload": f"ADD_TO_CART_{product.id}"
-                        "payload": "ORDER"
                         }
                     ]
                     }
@@ -749,7 +741,8 @@ def handlePostback(fbid, received_postback):
         selectplatform(fbid, received_postback)
     elif payload == 'Here_Messenger':
         selectorder(fbid, received_postback)
-    elif payload == 'ORDER':
+    elif payload[0] == 'O' and payload[1] == 'R' and payload[2] == 'D' and payload[3] == 'E' and payload[3] == 'R' and payload[4] == '_':
+        getitemid=payload.translate({ord('ORDER_'): None})
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
         "message":{"text": 'You have tapped "ORDER" Button.'}
