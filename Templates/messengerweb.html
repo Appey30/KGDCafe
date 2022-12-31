@@ -1305,11 +1305,14 @@ font-weight:bold;
 
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
-                var sizeamountmt = fullpricemt;
-                sukatall="Full";
+                    var sizeamountmt = fullpricemt;
+                    sukatall="Full";
+                }else if(milkteasize.classList == "mtreg choicesize"){
+                    var sizeamountmt = regpricemt;
+                    sukatall="Reg";
                 }else{
-                var sizeamountmt = regpricemt;
-                sukatall="Reg";
+                    var sizeamountmt = presyomt;
+                    sukatall="";
                 }
 
                 var qtycountmt = $('#qtynummt').val();
@@ -1334,11 +1337,14 @@ font-weight:bold;
                 $('#qtynummt').val(plustwomt);
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
-                var sizeamountmt = fullpricemt;
-                sukatall="Full";
+                    var sizeamountmt = fullpricemt;
+                    sukatall="Full";
+                }else if(milkteasize.classList == "mtreg choicesize"){
+                    var sizeamountmt = regpricemt;
+                    sukatall="Reg";
                 }else{
-                var sizeamountmt = regpricemt;
-                sukatall="Reg";
+                    var sizeamountmt = presyomt;
+                    sukatall="";
                 }
                 var totalmilktea = document.getElementById("totalmt");
 
