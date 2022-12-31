@@ -16,45 +16,58 @@ body {
 </head>
 <body>
 
-<div id="Daily" class="tabcontent" style="display:block;">
-  <div class="tablecontainer">
-  <table style="border:transparent;">
-  <tr style="position:absolute;position:sticky;top:0;background-color:;">
-    <th >Product Name</th>
-    <th >Size</th>
-    <th >Price</th>
-  </tr>
+<div id="wrapper" style="display:block;">
+  <div class="imagecontainer">
+  <img class="itemimageclass" src="" style="width:100%" id="itemimageid" >
 
-  <tr >
-    <td style="color:#A0A0A0;">{{itembuttons.productname}}</td>
-    <td style="color:#A0A0A0;">{{itembuttons.Size|default_if_none:""}}{{itembuttons.PSize|default_if_none:""}}</td>
-    <td style="color:#A0A0A0;">{{itembuttons.Price}}</td>
-  </tr>
-
-
-</table>
-</div>
-
-
+  </div>
+<input type="hidden" value="{{itembuttons.productname}}" id="itemnameid"></input>
+<input type="hidden" value="{{itembuttons.Size}}" id="itemsizeid"></input>
+<input type="hidden" value="{{itembuttons.PSize}}" id="itempsizeid"></input>
+<input type="hidden" value="{{itembuttons.Price}}" id="itempriceid"></input>
+<input type="hidden" value="{{itempricesss}}" id="itemwithsizepriceid"></input>
 
 
 
 <script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
+
+
+
+
+
+
+$(document).ready(function(){
+var itemnameid = document.getElementById("itemnameid").value;
+var itemsizeid = document.getElementById("itemsizeid").value;
+var itempsizeid = document.getElementById("itempsizeid").value;
+var itempriceid = document.getElementById("itempriceid").value;
+var itemwithsizepriceid = document.getElementById("itemwithsizepriceid").value;
+documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepriceid);
+
+
+});
+
+function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepriceid){
+    var itemimageid = document.getElementById("itemimageid");
+
+    if('{{itembuttons.Category}}' == 'Milktea'){
+        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'MT.png';
+    }else if('{{itembuttons.Category}}' == 'Frappe'){
+        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'FR.png';
+    }else if('{{itembuttons.Category}}' == 'Freeze'){
+        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'FRZ.png';
+    }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
+        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'Shawarma.png';
+    }else if('{{itembuttons.Subcategory}}' == 'Fries'){
+        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'Fries.png';
+    }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
+        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'SPECIALPROMO.jpg';
+    }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
+        itemimageid.src='https://kgdcafe.com/static/'+itemnameid+'FREEFRIESPROMO.png';
+    }
+
+
 }
-
-
 </script>
    
 </body>
