@@ -961,7 +961,7 @@ left:-10px;
 
   <div class="picksizewrapper" id="picksizewrapperid">
         <div class="choosesizetext" id="choosesizetextid"><h3>Choose Size</h3></div>
-    <div class="picksizecontainer" id="picksizecontainerid">
+    <div class="picksizecontainer" id="picksizecontainerid" style="display:flex;">
 
 
               <div class="fixsizeclass" style="display:flex;">
@@ -1008,43 +1008,44 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     var h3divconfigid = document.getElementById("h3divconfigid");
     var imgreg = document.getElementById("imgreg");
     var imgfull = document.getElementById("imgfull");
-    var picksizecontainerid = document.getElementById("picksizecontainerid");
+    var picksizewrapperid = document.getElementById("picksizecontainerid");
     if('{{itembuttons.Category}}' == 'Milktea'){
-        picksizecontainerid.style.display='flex';
+        
+        picksizewrapperid.style.display='block';
         imgfull.src="{% static 'MilkteaFull.png' %}";
         imgreg.src="{% static 'MilkteaReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'MT.png';
     }else if('{{itembuttons.Category}}' == 'Frappe'){
-        picksizecontainerid.style.display='flex';
+        picksizewrapperid.style.display='block';
         imgfull.src="{% static 'FrappeFull.png' %}";
         imgreg.src="{% static 'FrappeReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FR.png';
     }else if('{{itembuttons.Category}}' == 'Freeze'){
-        picksizecontainerid.style.display='none';
+        picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FRZ.png';
     }else if('{{itembuttons.Subcategory}}' == 'Shawarma'){
-        picksizecontainerid.style.display='none';
+        picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Shawarma.png';
     }else if('{{itembuttons.Subcategory}}' == 'Fries'){
-        picksizecontainerid.style.display='none';
+        picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
-        picksizecontainerid.style.display='flex';
+        picksizewrapperid.style.display='block';
         imgfull.src="{% static 'pamilyasize.png' %}";
         imgreg.src="{% static 'barkadasize.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Pizza.png';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
-        picksizecontainerid.style.display='none';
+        picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'SPECIALPROMO.jpg';
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'FreeFriesDay'){
-        picksizecontainerid.style.display='none';
+        picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FREEFRIESPROMO.png';
     }
