@@ -967,11 +967,11 @@ left:-10px;
               <div class="fixsizeclass" style="display:flex;">
                     <div id="mtfullid" onclick="functionfocusfullmt()" class="mtfull choicesize">
                     <img id="imgfull" src="{% static 'MilkteaFull.png' %}"  style="width:100%">
-                    <h3>Full(22oz)</h3>
+                    <h3 id="fullh3"></h3>
                     </div>
                     <div id="mtregid" onclick="functionfocusregmt()" class="mtreg">
                     <img id="imgreg" src="{% static 'MilkteaReg.png' %}"  style="width:100%">
-                    <h3>Reg(16oz)</h3>
+                    <h3 id="fullh3"></h3>
                     </div>
               </div>
         </div>
@@ -1009,6 +1009,8 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     var imgreg = document.getElementById("imgreg");
     var imgfull = document.getElementById("imgfull");
     var picksizewrapperid = document.getElementById("picksizecontainerid");
+    var fullh3= document.getElementById("picksizecontainerid");
+    var regh3= document.getElementById("picksizecontainerid");
     if('{{itembuttons.Category}}' == 'Milktea'){
         
         picksizewrapperid.style.display='block';
@@ -1016,12 +1018,16 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         imgreg.src="{% static 'MilkteaReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'MT.png';
+        fullh3.innerHTML='Full(22oz)'
+        regh3.innerHTML='Reg(16oz)'
     }else if('{{itembuttons.Category}}' == 'Frappe'){
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'FrappeFull.png' %}";
         imgreg.src="{% static 'FrappeReg.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'FR.png';
+        fullh3.innerHTML='Full(22oz)'
+        regh3.innerHTML='Reg(16oz)'
     }else if('{{itembuttons.Category}}' == 'Freeze'){
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Category}} '+itemnameid+'</h3>'
@@ -1040,6 +1046,8 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         imgreg.src="{% static 'barkadasize.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Pizza.png';
+        fullh3.innerHTML='Pamilya(12")'
+        regh3.innerHTML='Barkada(10")'
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
         picksizewrapperid.style.display='none';
         h3divconfigid.innerHTML = '<h3>'+itemnameid+'</h3>'
