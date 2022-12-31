@@ -262,7 +262,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -277,7 +278,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttonstwo.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -340,7 +342,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(mtbuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -403,7 +406,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(frbuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -460,7 +464,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(frtwobuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -520,7 +525,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(frzbuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -578,7 +584,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(shabuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -636,7 +643,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(friebuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
@@ -698,7 +706,8 @@ def selectorder(fbid, received_postback):
                         {
                         "type": "web_url",
                         "url":"https://kgdcafe.com/messengershop/item/"+str(pizbuttons.id),
-                        "title": "Order"
+                        "title": "Order",
+                        "webview_height_ratio": "full",
                         }
                     ]
                     }
