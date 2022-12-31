@@ -232,6 +232,8 @@ def selectorder(fbid, received_postback):
 
         prom += 1
     prompricesss=prompricess
+
+
     ### second promo ###
     prombuttonstwo = user1.objects.filter(Category__Categorychoices='Promo', user__id=4, Promo='Special Promo').distinct('productname')
         
@@ -252,23 +254,25 @@ def selectorder(fbid, received_postback):
     #######################
 
     elementsprom=[]
-    for prombuttons in prombuttons:
+    if datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A') == 'Friday':
+        for prombuttons in prombuttons:
 
-        elementprom =   {
-                    "title": prombuttons.productname,
-                    "subtitle": "Price: ₱"+str(prompricesss[prombuttons.productname]),
-                    "image_url": 'https://kgdcafe.com/static/'+prombuttons.productname+'FREEFRIESPROMO.png',
-                    "buttons": [
-                        {
-                        "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttons.id),
-                        "title": "Order",
-                        "webview_height_ratio": "tall",
+            elementprom =   {
+                        "title": prombuttons.productname,
+                        "subtitle": "Price: ₱"+str(prompricesss[prombuttons.productname]),
+                        "image_url": 'https://kgdcafe.com/static/'+prombuttons.productname+'FREEFRIESPROMO.png',
+                        "buttons": [
+                            {
+                            "type": "web_url",
+                            "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttons.id),
+                            "title": "Order",
+                            "webview_height_ratio": "tall",
+                            }
+                        ]
                         }
-                    ]
-                    }
 
-        elementsprom.append(elementprom)
+            elementsprom.append(elementprom)
+
     for prombuttonstwo in prombuttonstwo:
         elementpromtwo =   {
                     "title": prombuttonstwo.productname,
