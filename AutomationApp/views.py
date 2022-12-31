@@ -958,7 +958,8 @@ def redirecttoonlineorder(request):
         return HttpResponseRedirect('/index/onlineorder/4/')
 
 def messengercafe(request, product_id):
-    itembuttons = user1.objects.filter(id=product_id)
+    itembuttons = user1.objects.get(id=product_id)
+    
     item=0
     itempricess={}
     itempricesii = user1.objects.filter(productname=itembuttons.productname).values_list('Price',flat=True).order_by('-id')
