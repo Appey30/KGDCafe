@@ -1372,7 +1372,7 @@ documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepric
 });
 
 function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepriceid){
-    functionfocusfullmt()
+    
     var itemimageid = document.getElementById("itemimageid");
     var h3divconfigid = document.getElementById("h3divconfigid");
     var imgreg = document.getElementById("imgreg");
@@ -1386,7 +1386,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     withsizeprice=itemwithsizepriceid;
     productname=itemnameid;
     if('{{itembuttons.Category}}' == 'Milktea'){
-        
+        functionfocusfullmt();
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'MilkteaFull.png' %}";
         imgreg.src="{% static 'MilkteaReg.png' %}";
@@ -1395,6 +1395,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         fullh3.innerHTML='Full(22oz)'
         regh3.innerHTML='Reg(16oz)'
     }else if('{{itembuttons.Category}}' == 'Frappe'){
+        functionfocusfullmt();
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'FrappeFull.png' %}";
         imgreg.src="{% static 'FrappeReg.png' %}";
@@ -1415,11 +1416,13 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Fries.png';
     }else if('{{itembuttons.Subcategory}}' == 'Pizza'){
+        functionfocusfullmt();
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'pamilyasize.png' %}";
         imgreg.src="{% static 'barkadasize.png' %}";
         h3divconfigid.innerHTML = '<h3> {{itembuttons.Subcategory}} '+itemnameid+'</h3>'
         itemimageid.src='/static/'+itemnameid+'Pizza.png';
+
         fullh3.innerHTML='Pamilya(12")'
         regh3.innerHTML='Barkada(10")'
     }else if('{{itembuttons.Category}}' == 'Promo' && '{{itembuttons.Promo}}' == 'Special Promo'){
