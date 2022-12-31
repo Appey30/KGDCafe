@@ -26705,9 +26705,9 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
 
 
                         {% if promob.productname == promob.productname and "Promo.png" %}
-                        <img onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" class="cardimg" src="{% static promob.productname %}FREEFRIESPROMO.png" style="width:100%" id="{{promob.productname|cut:" " }}" >
+                        <img onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" class="cardimg" src="{% static promob.productname %}FREEFRIESPROMO.png" style="width:100%;border-radius: 10px;" id="{{promob.productname|cut:" " }}" >
                         {% else %}
-                        <img onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" class="cardimg" src="#" style="width:100%" id="{{promob.productname|cut:" " }}" >
+                        <img onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" class="cardimg" src="#" style="width:100%;border-radius: 10px;" id="{{promob.productname|cut:" " }}" >
                         {% endif %}
                   <div class="h3divpromo"><h3>{{promob.productname}}</h3>
                   </div>
