@@ -79,7 +79,7 @@ background-color:;
 
 <div id="wrapper" style="display:block;">
   <div class="imagecontainer" >
-  <div class="h3divconfig"><h3>{{pizzab.productname}}</h3></div>
+  <div class="h3divconfig" id="h3divconfigid"></div>
   <img class="itemimageclass" src="" style="width:100%" id="itemimageid" >
 
   </div>
@@ -111,7 +111,8 @@ documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepric
 
 function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepriceid){
     var itemimageid = document.getElementById("itemimageid");
-
+    var h3divconfigid = document.getElementById("h3divconfigid");
+    h3divconfigid.innerHtml = '<h3>'+itemnameid+'</h3>'
     if('{{itembuttons.Category}}' == 'Milktea'){
         itemimageid.src='/static/'+itemnameid+'MT.png';
     }else if('{{itembuttons.Category}}' == 'Frappe'){
