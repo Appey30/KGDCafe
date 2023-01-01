@@ -945,7 +945,7 @@ def messengercafe(request, product_id):
         categ=json.loads(request.POST.get("categ"))
         subcateg=json.loads(request.POST.get("subcateg"))
         addtomessengerbag=messengerbag.objects.create(
-            fbid = fbidi,
+            fbid = int(fbidi),
             productname = productname,
             categ = categ,
             subcateg = subcateg or None,
