@@ -803,10 +803,28 @@ def bagsender(fbid):
         gtotal+=Orders[i].subtotal
         i+=1
     orderintext=orderintext+'Grand Total: ₱'+str(gtotal)
+    messageattachment = {
+        "attachment": {
+        "type": "template",
+        "payload": {
+            "template_type": "button",
+            "text": 'Your bag has the ff. order/s: \n '+orderintext,
+            "buttons": [
+                {
+                "type":"web_url",
+                "url":"https://kgdcafe.com",
+                "title":"Checkout"
+                },
+            ],
+        }
+        }
+    }
     response_msg = json.dumps({
     "recipient":{"id":fbid}, 
-    "message":{"text": 'Your bag has the ff. order/s: \n '+orderintext}
+    "message":messageattachment
     })
+
+
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print(status.json())
 

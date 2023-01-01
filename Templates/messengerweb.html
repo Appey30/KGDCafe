@@ -1532,7 +1532,6 @@ function addtobag(){
             csrfmiddlewaretoken: '{{ csrf_token }}'
             },
             success: function(response){
-            alert('Response: '+response.respond)
             window.close();
             },
             error: function(){
