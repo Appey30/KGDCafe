@@ -824,6 +824,7 @@ def bagsender(fbid):
     }
     try:
         response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
         "message_id":previous_message_id[fbid], 
         "message":messageattachment
         })
