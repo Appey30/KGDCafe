@@ -776,7 +776,10 @@ def set_get_started_button():
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
     print(status.json())
 
+previous_message_id={}
+
 def bagsender(fbid):
+    global previous_message_id
     post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
     user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
@@ -786,6 +789,9 @@ def bagsender(fbid):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
     Orders = messengerbag.objects.filter(fbid=fbid)
+    if previous_message_id[fbid]:
+        request.delete("https://graph.facebook.com/v15.0/{}".format(previous_message_id[fbid]), params={"access_token":PAGE_ACCESS_TOKEN})
+        previous_message_id.pop(fbid, None)
     i=0
     orderintext='';
     gtotal=0;
@@ -826,6 +832,8 @@ def bagsender(fbid):
 
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print(status.json())
+    message_id = response.json()["message_id"]
+    previous_message_id[fbid]=message_id
 
 # Create your views here.
 class FacebookWebhookView(View):
