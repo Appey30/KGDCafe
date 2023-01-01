@@ -1521,7 +1521,7 @@ function addtobag(){
 
         $.ajax({
             type:'POST',
-            url:"/messengershop/item/{{itembuttons.id}}?id={{fbidi}}",
+            url:"/messengershop/item/{{itembuttons.id}}",
             data:{
             "productname":JSON.stringify(productname),
             "sukatall":JSON.stringify(sukatall),
