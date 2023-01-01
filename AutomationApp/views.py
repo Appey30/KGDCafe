@@ -264,7 +264,7 @@ def selectorder(fbid, received_postback):
                         "buttons": [
                             {
                             "type": "web_url",
-                            "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttons.id),
+                            "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttons.id)+"?id="+str(fbid),
                             "title": "Order",
                              
                             }
@@ -281,7 +281,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttonstwo.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(prombuttonstwo.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
@@ -345,7 +345,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(mtbuttons.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(mtbuttons.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
@@ -409,7 +409,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(frbuttons.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(frbuttons.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
@@ -467,7 +467,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(frtwobuttons.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(frtwobuttons.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
@@ -528,7 +528,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(frzbuttons.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(frzbuttons.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
@@ -587,7 +587,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(shabuttons.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(shabuttons.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
@@ -646,7 +646,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(friebuttons.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(friebuttons.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
@@ -709,7 +709,7 @@ def selectorder(fbid, received_postback):
                     "buttons": [
                         {
                         "type": "web_url",
-                        "url":"https://kgdcafe.com/messengershop/item/"+str(pizbuttons.id),
+                        "url":"https://kgdcafe.com/messengershop/item/"+str(pizbuttons.id)+"?id="+str(fbid),
                         "title": "Order",
                          
                         }
