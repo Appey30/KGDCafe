@@ -769,7 +769,7 @@ def handlePostback(fbid, received_postback):
         post_message_url = 'https://graph.facebook.com/v15.0/me/thread_settings?access_token=%s'%PAGE_ACCESS_TOKEN
         payload = {
             "setting_type":"call_to_actions",
-            "thread_state":"new_thread"
+            "thread_state":"new_thread",
             "call_to_actions": {
                 "payload": "GET_STARTED"
             }
