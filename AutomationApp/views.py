@@ -976,6 +976,7 @@ def messengercafe(request, product_id):
         itempricesss=itempricess
         itemprices=json.dumps(itempricesss)
         print('itempricesPIZZAelse: ',itemprices)
+    print('Category: '+itembuttons.Category+'   Subcategory: '+itembuttons.Subcategory )
     fbidi=request.GET.get('id')
     if request.POST.get("productname") and is_ajax(request=request):
         productname=json.loads(request.POST.get("productname"))
