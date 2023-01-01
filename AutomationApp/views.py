@@ -789,12 +789,6 @@ def bagsender(fbid):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
     Orders = messengerbag.objects.filter(fbid=fbid)
-    try:
-        if previous_message_id[fbid]:
-            requests.delete("https://graph.facebook.com/v15.0/{}".format(previous_message_id[fbid]), params={"access_token":PAGE_ACCESS_TOKEN})
-            previous_message_id.pop(fbid, None)
-    except KeyError:
-        pass
 
     i=0
     orderintext='';
@@ -828,10 +822,15 @@ def bagsender(fbid):
         }
         }
     }
-    response_msg = json.dumps({
-    "recipient":{"id":fbid}, 
-    "message":messageattachment
-    })
+    try:
+        response_msg = json.dumps({
+        "message_id":previous_message_id[fbid], 
+        "message":messageattachment
+    except KeyError:
+        response_msg = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":messageattachment
+        })
 
 
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
