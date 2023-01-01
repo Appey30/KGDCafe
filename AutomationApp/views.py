@@ -763,7 +763,19 @@ def handlePostback(fbid, received_postback):
         print(status.json())
     else:
         pass
-        
+
+
+    def set_get_started_button():
+        post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
+        payload = {
+            "get_started": {
+                "payload": "GET_STARTED"
+            }
+        }
+
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
+    
+        print(status.json())
 #    elif payload == 'Website':
 #        response_msg = json.dumps({
 #        "recipient":{"id":fbid}, 
@@ -898,10 +910,11 @@ class FacebookWebhookView(View):
                     # are sent as attachments and must be handled accordingly. 
 
                     handleMessage(message['sender']['id'], message['message'])
-                elif 'postback' in message:
+                elif message['postback']['payload']:
                     handlePostback(message['sender']['id'], message['postback'])
                     print('postback: ',message['postback'])
-
+                elif 'postback' in message:
+                    set_get_started_button()
         return HttpResponse()
                 #elif message.get('account_linking'):
                 #    account_linking_token=message['account_linking']['account_linking_token']
@@ -913,17 +926,7 @@ class FacebookWebhookView(View):
                     #handlePostback(message['sender']['id'], message['postback'])
                     #set_persistent_menu(message['sender']['id'], message['postback'])
 
-    #def set_get_started_button():
-    #    post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
-    #    payload = {
-    #        "get_started": {
-    #            "payload": "GET_STARTED"
-    #        }
-    #    }
 
-    #    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},json=payload)
-    
-    #    print(status.json())
                     
 
                 
