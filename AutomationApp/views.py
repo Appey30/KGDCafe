@@ -812,7 +812,7 @@ def bagsender(fbid):
             "buttons": [
                 {
                 "type":"web_url",
-                "url":"https://kgdcafe.com/checkout",
+                "url":"https://kgdcafe.com/checkout/?id="+str(fbid),
                 "title":"Checkout"
                 },
             ],
