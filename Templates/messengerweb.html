@@ -1517,6 +1517,21 @@ transition:box-shadow .2s;
 
 
 <script>
+function addtobag(){
+
+$.ajax({
+            type:'GET',
+            url:"{% url 'postwo.html' %}",
+            data:{"apini":"waapin"},
+            success: function(onlineorder){
+            },
+            error: function(){
+            
+            }
+        });
+    
+}
+
 
                 var qtynummt = document.getElementById('qtynummt').value;
 
