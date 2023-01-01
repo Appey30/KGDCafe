@@ -1513,17 +1513,27 @@ transition:box-shadow .2s;
 <input type="hidden" value="{{itembuttons.PSize}}" id="itempsizeid"></input>
 <input type="hidden" value="{{itembuttons.Price}}" id="itempriceid"></input>
 <input type="hidden" value="{{itempricesss}}" id="itemwithsizepriceid"></input>
-
-
+<input type="hidden" value="{{itembuttons.Category}}" id="categid"></input>
+<input type="hidden" value="{{itembuttons.Subcategory}}" id="subcategid"></input>
 
 <script>
 function addtobag(){
 
-$.ajax({
-            type:'GET',
+        $.ajax({
+            type:'POST',
             url:"{% url 'messengerweb.html' product_id %}",
-            data:{"apini":"waapin"},
-            success: function(onlineorder){
+            data:{
+            "productname":JSON.stringify(productname),
+            "sukatall":JSON.stringify(sukatall),
+            "chosenitemprice":JSON.stringify(chosenitemprice),
+            "allqty":JSON.stringify(allqty),
+            "totalmt":JSON.stringify(gtotalmt),
+            "categ":JSON.stringify(categ),
+            "subcateg":JSON.stringify(subcateg),
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+            },
+            success: function(response){
+            alert('Response: '+response.respond)
             },
             error: function(){
             
@@ -1599,7 +1609,7 @@ $.ajax({
                     var sizeamountmt = presyomt;
                     sukatall="";
                 }
-
+                chosenitemprice=sizeamountmt
                 var qtycountmt = $('#qtynummt').val();
 
                 var totalmt = (sizeamountmt)*qtycountmt;
@@ -1675,6 +1685,7 @@ $.ajax({
                     var sizeamountmt = presyomt;
                     sukatall="";
                 }
+                chosenitemprice=sizeamountmt
                 var totalmilktea = document.getElementById("totalmt");
 
                 var qtycountmt = $('#qtynummt').val();
@@ -1712,11 +1723,15 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
     var picksizewrapperid = document.getElementById("picksizewrapperid");
     var fullh3= document.getElementById("fullh3");
     var regh3= document.getElementById("regh3");
+    var categi = document.getElementById("categid");
+    var subcategi = document.getElementById("subcateg");
     presyomt=parseInt(itempriceid);
     sukatmt=itemsizeid;
     sukatmtpizza=itempsizeid;
     withsizeprice=itemwithsizepriceid;
     productname=itemnameid;
+    categ=categi.value;
+    subcateg=subcategi.value;
     if('{{itembuttons.Category}}' == 'Milktea'){
         picksizewrapperid.style.display='block';
         imgfull.src="{% static 'MilkteaFull.png' %}";
@@ -1788,18 +1803,22 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
 }
 
 
-
+        var chosenitemprice = 0;
+        var sukatall='';
+        var allqty = 0;
         var sukatmt = "";
+        var categ = "";
+        var subcateg = ""
         var sukatmtpizza = '';
         var presyomt = 0;
-        var categ = '';
         var gtotalmt = 0;
         var fullpricemt = 0;
         var regpricemt = 0;
         var withsizeprice;
         var productname='';
-        function functionfocusregmt(){
         
+        function functionfocusregmt(){
+
         var totalmilktea = document.getElementById("totalmt");
         var chosenmt = document.getElementById('mtregid');
         var unchosenmt = document.getElementById('mtfullid');
@@ -1865,7 +1884,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
             var sizeamountmt = presyomt;
             sukatall="";
         }
-        
+        chosenitemprice=sizeamountmt
         var qtycountmt = $('#qtynummt').val();
 
         var totalmt = (sizeamountmt)*qtycountmt;
@@ -1943,6 +1962,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
             var sizeamountmt = presyomt;
             sukatall="";
         }
+        chosenitemprice=sizeamountmt
         var qtycountmt = $('#qtynummt').val();
 
         var totalmt = (sizeamountmt)*qtycountmt;

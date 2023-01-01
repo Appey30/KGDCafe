@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import auth, User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import timesheet, Acceptorder, Rejectorder,Customer, acknowledgedstockorder,submitstockorder, user1, Categories, Sizes, Subcategories, PSizes, punchedprod,punchedprodso,queue1, queue2, queue3, Sales, Dailysales, couponlist
+from .models import messengerbag, timesheet, Acceptorder, Rejectorder,Customer, acknowledgedstockorder,submitstockorder, user1, Categories, Sizes, Subcategories, PSizes, punchedprod,punchedprodso,queue1, queue2, queue3, Sales, Dailysales, couponlist
 from .forms import editform, punched,punchedso, stocksandexpenses,stockorderform
 from django.db.models.functions import (TruncDate, TruncDay, TruncHour, TruncMinute, TruncSecond)
 from django.urls import reverse
@@ -765,104 +765,45 @@ def handlePostback(fbid, received_postback):
         pass
 
 
-    def set_get_started_button():
-        post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?get_started=%7B%93payload%94%3A%93GET_STARTED%94%7D&access_token=%s'%PAGE_ACCESS_TOKEN
-        payload = json.dumps({
-            "get_started": {
-                "payload": "GET_STARTED"
-            }
-        })
+def set_get_started_button():
+    post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?get_started=%7B%93payload%94%3A%93GET_STARTED%94%7D&access_token=%s'%PAGE_ACCESS_TOKEN
+    payload = json.dumps({
+        "get_started": {
+            "payload": "GET_STARTED"
+        }
+    })
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
+    print(status.json())
 
-        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
-    
-        print(status.json())
-#    elif payload == 'Website':
-#        response_msg = json.dumps({
-#        "recipient":{"id":fbid}, 
-#        "message":{"text": "Your answer is Website!"}
-#        })
-#        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-#        print(status.json())
-
-
-
-
-
-
-#def loginmessenger(fbid, received_postback):
-#    print('loginwithmessenger has been reached')
-#    print('fbid: ',fbid)
-#    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
-#    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
-#    user_details = requests.get(user_details_url, user_details_params).json() 
-#    print('1')
-#    try:
-#        userdetailsfirstname=user_details['first_name']
-#    except KeyError:
-#        userdetailsfirstname="Ma'am/Sir"
-    
-#    post_message_url='https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    
-#    messageattachment = {  
-#        "attachment": {
-#            "type": "template",
-#            "payload": {
-#                "template_type": "button",
-#                "text": "Welcome to the KGD E-Cafe "+userdetailsfirstname+"! Kindly, allow us to register your account by just clicking the button below.",
-#                "buttons": [
-#                {
-#                    "type": "account_link",
-#                    "url": "https://kgdcafe.com/",
-#                }
-#                ]
-#            }
-#        }
-#    }
-#    print('4')
-#    response_msg = json.dumps({
-#    "recipient":{"id":fbid}, 
-#    "message":messageattachment
-#    })
-#    print('5')
-#    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-#    print('6')
-#    print(status.json())
-#    print('7')
-
-
-#def link_account(account_linking_token, email, password):
-#  url = "https://graph.facebook.com/v15.0/me/account_linking"
-#  payload = {
-#    "account_linking_token": account_linking_token,
-#    "authorization_code": generate_authorization_code(email, password)
-#  }
-#  headers = {
-#    "Content-Type": "application/json"
-#  }
-#  params = {
-#    "access_token": ACCESS_TOKEN
-#  }
-#  requests.post(url, json=payload, headers=headers, params=params)
-
-#def generate_authorization_code(email, password):
-  # Verify the email and password provided
-#  user = authenticate(email=email, password=password)
-#  if user is not None:
-#    # Generate a unique authorization code for the customer's account
-#    authorization_code = generate_unique_code()
-#    # Save the authorization code to the database
-#    save_authorization_code(user, authorization_code)
-#    return authorization_code
-#  else:
-#    # Return an error if the email and password are invalid
-#    return "ERROR"
-
-#def generate_unique_code():
-#  # Generate a unique code using a random number generator or other method
-#  ...
-
-#def save_authorization_code(user, authorization_code):
-#  # Save the authorization code to the database for the user
+def bagsender(fbid):
+    post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+    print('handlepostback called received_postback value is: ',received_postback)
+    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+    user_details = requests.get(user_details_url, user_details_params).json() 
+    try:
+        userdetailsfirstname=user_details['first_name']
+    except KeyError:
+        userdetailsfirstname="Ma'am/Sir"
+    Orders = messengerbag.objects.filter(fbid=fbid)
+    i=0
+    orderintext='';
+    gtotal=0;
+    while i<Orders.count():
+        if Orders[i].categ == 'Snacks':
+            Category=Orders[i].subcateg
+        else:
+            Category=Orders[i].categ
+        orderintext=orderintext+str(Orders[i].qty)+' / '+str(Orders[i].productname)+' / '+str(Category)+' / '+str(Orders[i].size)+' / '+str(Orders[i].chosenitemprice)+' / '+str(Orders[i].subtotal)+' \n'
+        gtotal+=Orders[i].subtotal
+        i+=1
+    orderintext=orderintext+'Grand Total: ₱'+str(gtotal)
+    response_msg = json.dumps({
+    "recipient":{"id":fbid}, 
+    "message":{"text": 'Your bag has the ff. order/s: \n Qty / Item / Category / Size / Subtotal \n '+orderintext}
+    })
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    print(status.json())
 
 # Create your views here.
 class FacebookWebhookView(View):
@@ -994,9 +935,33 @@ def messengercafe(request, product_id):
             item += 1
         itempricesss=itempricess
         itemprices=json.dumps(itempricesss)
+    fbidi=request.GET.get('id')
+    if request.POST.get("productname") and is_ajax(request=request):
+        productname=json.loads(request.POST.get("productname"))
+        size=json.loads(request.POST.get("sukatall"))
+        chosenitemprice=json.loads(request.POST.get("chosenitemprice"))
+        qty=json.loads(request.POST.get("allqty"))
+        total=json.loads(request.POST.get("totalmt"))
+        categ=json.loads(request.POST.get("categ"))
+        subcateg=json.loads(request.POST.get("subcateg"))
+        addtomessengerbag=messengerbag.objects.create(
+            fbid = fbidi,
+            productname = productname,
+            categ = categ,
+            subcateg = subcateg or None,
+            size = size or None,
+            chosenitemprice = chosenitemprice,
+            qty = qty,
+            subtotal =   total,
+                    )
+        addtomessengerbag.save()
+        context={
+        'respond':"success",
+        }
+        bagsender(fbidi)
+        return JsonResponse(context)
     return render(request, 'messengerweb.html',{'itembuttons':itembuttons,'itempricesss':itempricesss})
 
-    
 @login_required
 def totalboughtappey(request):
     userr=request.user.id

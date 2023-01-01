@@ -278,7 +278,17 @@ class acknowledgedstockorder (models.Model):
     def __str__(self):
         return str(self.productname) +" "+ str(self.CusName)
 
-
+class messengerbag(models.Model):
+    fbid=models.IntegerField(blank = True, null = True, default=0)
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
+    categ = models.CharField(max_length = 50, blank = True, null = True, default='')
+    subcateg = models.CharField(max_length = 50, blank = True, null = True, default='')
+    size = models.CharField(max_length = 50, default = '',blank = True, null = True)
+    chosenitemprice = models.IntegerField(blank = True, null = True, default=0)
+    qty = models.IntegerField(blank = True, null = True, default=0)
+    subtotal = models.DecimalField(decimal_places=2,max_digits = 7,blank = True, null = True, default=0.00)
+    def __str__(self):
+        return str(self.productname) +" "+ str(self.fbid)
 
 class Customer(models.Model):
     Admin=models.IntegerField(blank = True, null = True, default='2')
