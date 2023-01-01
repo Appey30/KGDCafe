@@ -1686,10 +1686,12 @@ var itemwithsizepriceid = document.getElementById("itemwithsizepriceid").value;
           alert('mobile')
        }
        else{
-       alert('desktop with a title of :'+document.title)
-       if(window.matchMedia("(width: 500px)").matches && window.matchMedia("(height: 700px)").matches )
+       
+       if(window.innerWidth = '500px' && window.innerHeight = '700px')
+        alert('desktop with a width of '+window.innerWidth+'and a height of :'+window.innerHeight+'. Therefore, do not popup.')
        }else{
-       window.open('https://kgdcafe.com/messengershop/item/{{itembuttons.id}}',"KGD E-CAFE Popup","width=500,height=700")
+        window.open('https://kgdcafe.com/messengershop/item/{{itembuttons.id}}',"KGD E-CAFE Popup","width=500,height=700")
+        alert('desktop with a width of '+window.innerWidth+'and a height of :'+window.innerHeight+'. Therefore, popup.')
        }
 
 
