@@ -31,6 +31,7 @@ urlpatterns = [
       path('',views.redirecttoonlineorder,name='Onlineorder.html'),
 	  path('index/kgdlog', views.login_user,name='kgdlog'),
 	  path('index/products',views.products,name='Products.html'),
+      path('checkout/',views.checkout,name='checkout.html'),
       path('index/coupon',views.coupon,name='coupon.html'),
       path('index/posthree',views.posthree,name='posthree.html'),
       path('index/pos',views.postwo,name='postwo.html'),

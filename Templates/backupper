@@ -1,18 +1,2 @@
 ﻿git add . && git commit -m "refine" && git push origin main
 
-
-
-
-
-$.ajax({
-            type:'GET',
-            url:"{% url 'postwo.html' %}",
-            data:{"apini":"waapin"},
-            success: function(onlineorder){
-            },
-            error: function(){
-            
-            }
-        });
-    
-}

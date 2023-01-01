@@ -812,7 +812,7 @@ def bagsender(fbid):
             "buttons": [
                 {
                 "type":"web_url",
-                "url":"https://kgdcafe.com",
+                "url":"https://kgdcafe.com/checkout",
                 "title":"Checkout"
                 },
             ],
@@ -929,7 +929,9 @@ def redirecttoonlineorder(request):
         return HttpResponseRedirect('/index/onlineorder/4/?prmcd='+promocodegeti)
     else:
         return HttpResponseRedirect('/index/onlineorder/4/')
-
+def checkout(request):
+    pass
+    return render(request, 'checkout.html',{})
 def messengercafe(request, product_id):
     itembuttons = user1.objects.get(id=product_id)
     
