@@ -791,7 +791,7 @@ def bagsender(fbid):
     Orders = messengerbag.objects.filter(fbid=fbid)
     try:
         if previous_message_id[fbid]:
-            request.delete("https://graph.facebook.com/v15.0/{}".format(previous_message_id[fbid]), params={"access_token":PAGE_ACCESS_TOKEN})
+            requests.delete("https://graph.facebook.com/v15.0/{}".format(previous_message_id[fbid]), params={"access_token":PAGE_ACCESS_TOKEN})
             previous_message_id.pop(fbid, None)
     except KeyError:
         pass
