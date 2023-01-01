@@ -837,8 +837,9 @@ def bagsender(fbid):
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print(status.json())
     try:
-        message_id = status.json()["message_id"]
+        message_id = status.json()['message_id']
         previous_message_id[fbid]=message_id
+        print('message_id',message_id)
     except KeyError:
         pass
 
