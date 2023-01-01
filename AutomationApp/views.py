@@ -793,7 +793,11 @@ def bagsender(fbid):
             Category=Orders[i].subcateg
         else:
             Category=Orders[i].categ
-        orderintext=orderintext+'Qty: '+str(Orders[i].qty)+' \n Item: '+str(Orders[i].productname)+' \n Category: '+str(Category)+' \n Size: '+str(Orders[i].size)+' \n Price: '+str(Orders[i].chosenitemprice)+' \n Subtotal: '+str(Orders[i].subtotal)+' \n -------------------- \n'
+        if Orders[i].categ == 'Milktea' or Orders[i].categ == 'Frappe' or Orders[i].subcateg == 'Pizza':
+            ordersize=str(Orders[i].size)
+        else:
+            ordersize=''
+        orderintext=orderintext+'Qty: '+str(Orders[i].qty)+' \n Item: '+str(Orders[i].productname)+' \n Category: '+str(Category)+' \n Size: '+ordersize+' \n Price: '+str(Orders[i].chosenitemprice)+' \n Subtotal: '+str(Orders[i].subtotal)+' \n -------------------- \n'
         gtotal+=Orders[i].subtotal
         i+=1
     orderintext=orderintext+'Grand Total: ₱'+str(gtotal)
