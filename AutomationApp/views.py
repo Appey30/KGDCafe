@@ -950,9 +950,9 @@ def messengercafe(request, product_id):
             categ = categ,
             subcateg = subcateg or None,
             size = size or None,
-            chosenitemprice = chosenitemprice,
-            qty = qty,
-            subtotal =   total,
+            chosenitemprice = int(chosenitemprice),
+            qty = int(qty),
+            subtotal =   float(total),
                     )
         #addtomessengerbag.save()
         context={
