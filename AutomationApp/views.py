@@ -793,8 +793,10 @@ def bagsender(fbid):
             Category=Orders[i].subcateg
         else:
             Category=Orders[i].categ
-        if Orders[i].categ == 'Milktea' or Orders[i].categ == 'Frappe' or Orders[i].subcateg == 'Pizza':
+        if Orders[i].categ == 'Milktea' or Orders[i].categ == 'Frappe':
             ordersize=str(Orders[i].size)
+        elif Orders[i].subcateg == 'Pizza':
+            ordersize=str(Orders[i].psize)
         else:
             ordersize=''
         orderintext=orderintext+'Qty: '+str(Orders[i].qty)+' \n Item: '+str(Orders[i].productname)+' \n Category: '+str(Category)+' \n Size: '+ordersize+' \n Price: ₱'+str(Orders[i].chosenitemprice)+' \n Subtotal: ₱'+str(Orders[i].subtotal)+' \n -------------------- \n'

@@ -1554,7 +1554,7 @@ function addtobag(){
                 }else{
                 $('#qtynummt').val(minustwomt);
                 }
-                if(sukatmt){
+                if(categ=='Milktea' || categ == 'Frappe'){
                     if(sukatmt == "Reg"){
                         fullmt = presyomt+10;
                         regmt = presyomt;
@@ -1565,7 +1565,7 @@ function addtobag(){
                         fullmt = presyomt;
                         regmt = presyomt-10;
                     }
-                }else if(sukatmtpizza){
+                }else if(subcateg == 'Pizza'){
                     if(sukatmtpizza == 'Barkada(10")'){
                         var pizzastwo = 'Pamilya(12")';
                         var Priceipizzaf = withsizeprice[productname+pizzastwo];
@@ -1588,9 +1588,9 @@ function addtobag(){
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
                     var sizeamountmt = fullmt;
-                    if(sukatmt){
+                    if(categ=='Milktea' || categ == 'Frappe'){
                         sukatall="Full";
-                    }else if(sukatmtpizza){
+                    }else if(subcateg == 'Pizza'){
                         sukatall='Pamilya(12")'
                     }else{
                         sukatall=''
@@ -1598,9 +1598,9 @@ function addtobag(){
         
                 }else if(milkteasize.classList == "mtreg choicesize"){
                     var sizeamountmt = regmt;
-                    if(sukatmt){
+                    if(categ=='Milktea' || categ == 'Frappe'){
                         sukatall="Reg";
-                    }else if(sukatmtpizza){
+                    }else if(subcateg == 'Pizza'){
                         sukatall='Barkada(10")'
                     }else{
                         sukatall=''
@@ -1630,7 +1630,7 @@ function addtobag(){
                 var additionmt = parseInt($('#qtynummt').val());
                 var plustwomt =  additionmt + 1;
                 $('#qtynummt').val(plustwomt);
-                if(sukatmt){
+                if(categ=='Milktea' || categ == 'Frappe'){
                     if(sukatmt == "Reg"){
                         fullmt = presyomt+10;
                         regmt = presyomt;
@@ -1641,7 +1641,7 @@ function addtobag(){
                         fullmt = presyomt;
                         regmt = presyomt-10;
                     }
-                }else if(sukatmtpizza){
+                }else if(subcateg == 'Pizza'){
                     if(sukatmtpizza == 'Barkada(10")'){
                         var pizzastwo = 'Pamilya(12")';
                         var Priceipizzaf = withsizeprice[productname+pizzastwo];
@@ -1664,9 +1664,9 @@ function addtobag(){
                 var milkteasize = document.getElementsByClassName("choicesize")[0];
                 if(milkteasize.classList == "mtfull choicesize"){
                     var sizeamountmt = fullmt;
-                    if(sukatmt){
+                    if(categ=='Milktea' || categ == 'Frappe'){
                         sukatall="Full";
-                    }else if(sukatmtpizza){
+                    }else if(subcateg == 'Pizza'){
                         sukatall='Pamilya(12")'
                     }else{
                         sukatall=''
@@ -1674,9 +1674,9 @@ function addtobag(){
         
                 }else if(milkteasize.classList == "mtreg choicesize"){
                     var sizeamountmt = regmt;
-                    if(sukatmt){
+                    if(categ=='Milktea' || categ == 'Frappe'){
                         sukatall="Reg";
-                    }else if(sukatmtpizza){
+                    }else if(subcateg == 'Pizza'){
                         sukatall='Barkada(10")'
                     }else{
                         sukatall=''
@@ -1824,7 +1824,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         var unchosenmt = document.getElementById('mtfullid');
         var fullmt = 0;
         var regmt = 0;
-        if(sukatmt){
+        if(categ=='Milktea' || categ == 'Frappe'){
             if(sukatmt == "Reg"){
                 fullmt = presyomt+10;
                 regmt = presyomt;
@@ -1835,7 +1835,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
                 fullmt = presyomt;
                 regmt = presyomt-10;
             }
-        }else if(sukatmtpizza){
+        }else if(subcateg == 'Pizza'){
             if(sukatmtpizza == 'Barkada(10")'){
                 var pizzastwo = 'Pamilya(12")';
                 var Priceipizzaf = withsizeprice[productname+pizzastwo];
@@ -1863,9 +1863,9 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         
         if(milkteasize.classList == "mtfull choicesize"){
         var sizeamountmt = fullmt;
-            if(sukatmt){
+            if(categ=='Milktea' || categ == 'Frappe'){
                 sukatall="Full";
-            }else if(sukatmtpizza){
+            }else if(subcateg == 'Pizza'){
                 sukatall='Pamilya(12")'
             }else{
                 sukatall=''
@@ -1873,9 +1873,9 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         
         }else if(milkteasize.classList == "mtreg choicesize"){
         var sizeamountmt = regmt;
-            if(sukatmt){
+            if(categ=='Milktea' || categ == 'Frappe'){
                 sukatall="Reg";
-            }else if(sukatmtpizza){
+            }else if(subcateg == 'Pizza'){
                 sukatall='Barkada(10")'
             }else{
                 sukatall=''
@@ -1902,7 +1902,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         var totalmilktea = document.getElementById("totalmt");
         var fullmt = 0;
         var regmt = 0;
-        if(sukatmt){
+        if(categ=='Milktea' || categ == 'Frappe'){
             if(sukatmt == "Reg"){
                 fullmt = presyomt+10;
                 regmt = presyomt;
@@ -1913,7 +1913,7 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
                 fullmt = presyomt;
                 regmt = presyomt-10;
             }
-        }else if(sukatmtpizza){
+        }else if(subcateg == 'Pizza'){
             if(sukatmtpizza == 'Barkada(10")'){
                 var pizzastwo = 'Pamilya(12")';
                 var Priceipizzaf = withsizeprice[productname+pizzastwo];
@@ -1941,9 +1941,9 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         
         if(milkteasize.classList == "mtfull choicesize"){
         var sizeamountmt = fullmt;
-        if(sukatmt){
+        if(categ=='Milktea' || categ == 'Frappe'){
             sukatall="Full";
-        }else if(sukatmtpizza){
+        }else if(subcateg == 'Pizza'){
             sukatall='Pamilya(12")'
         }else{
             sukatall=''
@@ -1951,9 +1951,9 @@ function documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwit
         
         }else if(milkteasize.classList == "mtreg choicesize"){
         var sizeamountmt = regmt;
-        if(sukatmt){
+        if(categ=='Milktea' || categ == 'Frappe'){
             sukatall="Reg";
-        }else if(sukatmtpizza){
+        }else if(subcateg == 'Pizza'){
             sukatall='Barkada(10")'
         }else{
             sukatall=''
