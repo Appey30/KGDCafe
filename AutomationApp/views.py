@@ -954,7 +954,7 @@ def messengercafe(request, product_id):
             qty = qty,
             subtotal =   total,
                     )
-        addtomessengerbag.save()
+        #addtomessengerbag.save()
         context={
         'respond':"success",
         }
