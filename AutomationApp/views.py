@@ -958,7 +958,7 @@ def messengercafe(request, product_id):
         itempricesss=itempricess
         itemprices=json.dumps(itempricesss)
         print('itempricesPIZZAwrongcateg: ',itemprices)
-    elif itembuttons.Subcategory == ' Pizza':
+    elif itembuttons.Subcategory == 'Pizza':
         itemsizeii=itempricesii.values_list('PSize__PSizechoices',flat=True)
         while item<itempricesii.count():
             itempricess[itemproductnameii[item]+itemsizeii[item]]=itempricesii[item]
