@@ -789,9 +789,13 @@ def bagsender(fbid):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
     Orders = messengerbag.objects.filter(fbid=fbid)
-    if previous_message_id[fbid]:
-        request.delete("https://graph.facebook.com/v15.0/{}".format(previous_message_id[fbid]), params={"access_token":PAGE_ACCESS_TOKEN})
-        previous_message_id.pop(fbid, None)
+    try:
+        if previous_message_id[fbid]:
+            request.delete("https://graph.facebook.com/v15.0/{}".format(previous_message_id[fbid]), params={"access_token":PAGE_ACCESS_TOKEN})
+            previous_message_id.pop(fbid, None)
+    except KeyError:
+        pass
+
     i=0
     orderintext='';
     gtotal=0;
