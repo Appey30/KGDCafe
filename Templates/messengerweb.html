@@ -1686,9 +1686,11 @@ var itemwithsizepriceid = document.getElementById("itemwithsizepriceid").value;
           alert('mobile')
        }
        else{
-       alert('desktop')
-        window.open('https://kgdcafe.com/messengershop/item/{{itembuttons.id}}',"","width=500,height=700")
-        window.location.href = "";
+       alert('desktop with a title of :'+document.title)
+       if(document.title=="KGD E-Cafe")
+        window.open('https://kgdcafe.com/messengershop/item/{{itembuttons.id}}',"KGD E-CAFE Popup","width=500,height=700")
+        
+        //window.location.href = "";
             
        }
 
