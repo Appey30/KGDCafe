@@ -965,7 +965,8 @@ def messengercafe(request, product_id):
         itempricesss=itempricess
 
         itemprices=json.dumps(itempricesss)
-        print('itempricesPIZZA: ',itemprices)
+        
+        print('itempricesPIZZAsuccess: ',itemprices)
     else:
         itemproductnameii=itempricesii.values_list('productname',flat=True)
         while item<itempricesii.count():
@@ -973,6 +974,7 @@ def messengercafe(request, product_id):
             item += 1
         itempricesss=itempricess
         itemprices=json.dumps(itempricesss)
+        print('itempricesPIZZAelse: ',itemprices)
     fbidi=request.GET.get('id')
     if request.POST.get("productname") and is_ajax(request=request):
         productname=json.loads(request.POST.get("productname"))
