@@ -808,7 +808,7 @@ def bagsender(fbid):
         "type": "template",
         "payload": {
             "template_type": "button",
-            "text": 'Your bag has the ff. order/s: \n '+orderintext,
+            "text": 'Your bag has the ff. order/s: \n -------------------- \n'+orderintext,
             "buttons": [
                 {
                 "type":"web_url",
