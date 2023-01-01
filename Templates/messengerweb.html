@@ -1671,21 +1671,7 @@ transition:box-shadow .2s;
                 totalmilktea.innerHTML = "₱"+totalmt+".00";
                 }
 
-let tidee = setInterval(function(){
-if ( document.readyState !== 'loading' ) return;
-clearInterval( tidee ); 
 
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-          alert('mobile')  
-       }
-       else{
-       alert('desktop')
-       window.open('https://kgdcafe.com/messengershop/item/{{itembuttons.id}}',"_top","width=500,height=700")
-            window.location.href = "";
-            
-       }
-
-}, 100 );
 
 
 
@@ -1695,7 +1681,17 @@ var itemsizeid = document.getElementById("itemsizeid").value;
 var itempsizeid = document.getElementById("itempsizeid").value;
 var itempriceid = document.getElementById("itempriceid").value;
 var itemwithsizepriceid = document.getElementById("itemwithsizepriceid").value;
-documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepriceid);
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+          documentready(itemnameid, itemsizeid, itempsizeid, itempriceid, itemwithsizepriceid);
+          alert('mobile')
+       }
+       else{
+       alert('desktop')
+        window.open('https://kgdcafe.com/messengershop/item/{{itembuttons.id}}',"_top","width=500,height=700")
+        window.location.href = "";
+            
+       }
+
 
 
 });
