@@ -284,7 +284,7 @@ def selectorder(fbid, received_postback):
                     }
 
         elementsprom.append(elementpromtwo)
-    if elementsprom.count() > 0:
+    if len(elementsprom) > 0:
         response_msgcategprom = json.dumps({
         "recipient":{"id":fbid}, 
         "message":{"text": "PROMO"}
