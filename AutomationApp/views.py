@@ -960,7 +960,7 @@ def messengercafe(request, product_id):
         }
         bagsender(fbidi)
         return JsonResponse(context)
-    return render(request, 'messengerweb.html',{'itembuttons':itembuttons,'itempricesss':itempricesss})
+    return render(request, 'messengerweb.html',{'fbidi':fbidi,'itembuttons':itembuttons,'itempricesss':itempricesss})
 
 @login_required
 def totalboughtappey(request):
