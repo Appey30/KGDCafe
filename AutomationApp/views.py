@@ -826,6 +826,7 @@ def bagsender(fbid):
         response_msg = json.dumps({
         "message_id":previous_message_id[fbid], 
         "message":messageattachment
+        })
     except KeyError:
         response_msg = json.dumps({
         "recipient":{"id":fbid}, 
