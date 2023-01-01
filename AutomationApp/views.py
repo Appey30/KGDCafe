@@ -793,13 +793,13 @@ def bagsender(fbid):
             Category=Orders[i].subcateg
         else:
             Category=Orders[i].categ
-        orderintext=orderintext+str(Orders[i].qty)+' / '+str(Orders[i].productname)+' / '+str(Category)+' / '+str(Orders[i].size)+' / '+str(Orders[i].chosenitemprice)+' / '+str(Orders[i].subtotal)+' \n'
+        orderintext=orderintext+'Qty: '+str(Orders[i].qty)+' \n Item:'+str(Orders[i].productname)+' \n Category: '+str(Category)+' \n Size:'+str(Orders[i].size)+' \n Subtotal: '+str(Orders[i].chosenitemprice)+' \n '+str(Orders[i].subtotal)+' \n'
         gtotal+=Orders[i].subtotal
         i+=1
     orderintext=orderintext+'Grand Total: ₱'+str(gtotal)
     response_msg = json.dumps({
     "recipient":{"id":fbid}, 
-    "message":{"text": 'Your bag has the ff. order/s: \n Qty / Item / Category / Size / Subtotal \n '+orderintext}
+    "message":{"text": 'Your bag has the ff. order/s: \n '+orderintext}
     })
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     print(status.json())
