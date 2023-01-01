@@ -279,7 +279,7 @@ class acknowledgedstockorder (models.Model):
         return str(self.productname) +" "+ str(self.CusName)
 
 class messengerbag(models.Model):
-    fbid=models.IntegerField(blank = True, null = True, default=0)
+    fbid=models.BigIntegerField(blank = True, null = True, default=0)
     productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     categ = models.CharField(max_length = 50, blank = True, null = True, default='')
     subcateg = models.CharField(max_length = 50, blank = True, null = True, default='')
