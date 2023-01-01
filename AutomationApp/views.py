@@ -766,7 +766,7 @@ def handlePostback(fbid, received_postback):
 
 
     def set_get_started_button():
-        post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?access_token=%s'%PAGE_ACCESS_TOKEN
+        post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?get_started=%7B%93payload%94%3A%93GET_STARTED%94%7D&access_token=%s'%PAGE_ACCESS_TOKEN
         payload = {
             "get_started": {
                 "payload": "GET_STARTED"
