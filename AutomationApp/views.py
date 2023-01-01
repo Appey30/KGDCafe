@@ -963,7 +963,9 @@ def messengercafe(request, product_id):
             itempricess[itemproductnameii[item]+itemsizeii[item]]=itempricesii[item]
             item += 1
         itempricesss=itempricess
+
         itemprices=json.dumps(itempricesss)
+        print('itempricesPIZZA: ',itemprices)
     else:
         itemproductnameii=itempricesii.values_list('productname',flat=True)
         while item<itempricesii.count():
