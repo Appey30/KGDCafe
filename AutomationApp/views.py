@@ -210,12 +210,7 @@ def selectorder(fbid, received_postback):
     except KeyError:
         userdetailsfirstname="Ma'am/Sir"
     ####################
-    response_msgcategprom = json.dumps({
-    "recipient":{"id":fbid}, 
-    "message":{"text": "PROMO"}
-    })
-    statuscategmt = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategprom)
-    print(statuscategmt.json())
+
     ######  PROMO  #######
     prombuttons = user1.objects.filter(Category__Categorychoices='Promo', user__id=4, Promo='FreeFriesDay').distinct('productname')
         
@@ -289,7 +284,13 @@ def selectorder(fbid, received_postback):
                     }
 
         elementsprom.append(elementpromtwo)
-
+    if elementsprom.count() > 0:
+        response_msgcategprom = json.dumps({
+        "recipient":{"id":fbid}, 
+        "message":{"text": "PROMO"}
+        })
+        statuscategmt = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msgcategprom)
+        print(statuscategmt.json())
     messageattachmentprom = {
         "attachment": {
           "type": "template",
