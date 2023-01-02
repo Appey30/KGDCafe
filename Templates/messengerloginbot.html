@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0&appId=747675206784315&autoLogAppEvents=1" nonce="mOeUlnRJ"></script>
 </head>
 
 <style>
@@ -14,14 +15,10 @@ body {
 </head>
 <body>
 <h1>Messenger KGD E-Cafe</h1>
-
-<fb:login-button 
-  config_id="747675206784315"
-  onlogin="checkLoginState();">
-</fb:login-button>
-
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0&appId=322226503290078&autoLogAppEvents=1" nonce="oqgHx68x"></script>
+<div onlogin="checkLoginState();" class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<div id="status">
+</div>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -35,15 +32,30 @@ body {
       
   };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+ // (function(d, s, id){
+ //    var js, fjs = d.getElementsByTagName(s)[0];
+ //    if (d.getElementById(id)) {return;}
+  //   js = d.createElement(s); js.id = id;
+  //   js.src = "https://connect.facebook.net/en_US/sdk.js";
+ //    fjs.parentNode.insertBefore(js, fjs);
+ //  }(document, 'script', 'facebook-jssdk'));
 
-
+     function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
+    }
+  }
+FB.login(function(response) {
+// handle the response
+}, {
+scope: 'public_profile,email,user_messenger_contact',
+messenger_page_id: 12345
+});
 
 FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
@@ -54,6 +66,14 @@ function checkLoginState() {
     statusChangeCallback(response);
   });
 }
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
 FB.Event.subscribe("auth.login", function(response) {
   // Send the login response, including the access_token field, to your Django view using an AJAX request
 });
