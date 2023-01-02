@@ -15,10 +15,16 @@ body {
 </head>
 <body>
 <h1>Messenger KGD E-Cafe</h1>
+
 <div id="fb-root"></div>
 <div scope: 'public_profile,email,user_messenger_contact', onlogin="checkLoginState();" class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
 <div id="status">
 </div>
+
+
+
+<h3>FB used to KGD WEBSITE</h3>
+<a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
