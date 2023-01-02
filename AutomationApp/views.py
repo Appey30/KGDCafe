@@ -939,7 +939,7 @@ def TermsandConditions(request):
     userr=request.user.id
     return render(request, 'TermsandConditions.html')
 
-
+    
 def redirecttoonlineorder(request):
     userr=request.user.id
     promocodegeti=request.GET.get('prmcd', '')
@@ -948,6 +948,8 @@ def redirecttoonlineorder(request):
         return HttpResponseRedirect('/index/onlineorder/4/?prmcd='+promocodegeti)
     else:
         return HttpResponseRedirect('/index/onlineorder/4/')
+        
+
 def checkout(request):
     pass
     return render(request, 'checkout.html',{})
@@ -1017,8 +1019,8 @@ def messengercafe(request, product_id):
     return render(request, 'messengerweb.html',{'fbidi':fbidi,'itembuttons':itembuttons,'itempricesss':itempricesss})
 
 def messengerlogin(request):
-    settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('MESSENGERAPPID')  # App ID
-    settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('MESSENGERSECRET')  # App Secret
+    settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
+    settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
     settings.LOGIN_REDIRECT_URL='/messengersubscribe/'
     settings.LOGIN_URL='/messengersubscribe/'
     settings.LOGOUT_URL='/messengersubscribe/'
@@ -5474,9 +5476,15 @@ def Onlineordersystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
+
         settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
         settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
         promocodegeti=request.GET.get('prmcd', '')
+        messenger=request.GET.get('messenger', '')
+        messengerredirect=request.GET.get('messengerredirect', '')
+        if messengerredirect:
+            return HttpResponseRedirect('/messengersubscribe/')
+        
         if promocodegeti:
             settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
             settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
@@ -5904,7 +5912,7 @@ def Onlineordersystem(request, admin_id):
             settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-        return render(request, 'Onlineorder.html',{'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+        return render(request, 'Onlineorder.html',{'messenger':messenger,'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):
         promocodegeti=request.GET.get('prmcd', '')

@@ -30731,6 +30731,9 @@ fullmt.innerHTML = "₱"+mtp+".00";
 {% if prmcd == 'No coupon' %}
 <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
 
+{% elif messenger == 'messenger' %}
+<a href="{% url 'social:begin' 'facebook' %}?messengerredirect=True" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+
 {% else %}
     
 <a href="{% url 'social:begin' 'facebook' %}?prmcd={{prmcd}}" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
