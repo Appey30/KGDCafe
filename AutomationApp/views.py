@@ -1015,6 +1015,9 @@ def messengercafe(request, product_id):
         return JsonResponse(context)
     return render(request, 'messengerweb.html',{'fbidi':fbidi,'itembuttons':itembuttons,'itempricesss':itempricesss})
 
+def messengerlogin(request):
+    return render(request, 'messengerloginbot.html',{})
+
 @login_required
 def totalboughtappey(request):
     userr=request.user.id
