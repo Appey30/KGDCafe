@@ -34307,13 +34307,7 @@ function christmas(){
     let name = month[d.getMonth()];
     let day = d.getDate();
     if((name == "November" && day >= 10) || (name == "December" && day <= 26)){
-        
-        //var wrapper = document.getElementsByClassName('wrapper')[0];
-        //var menuproducts = document.getElementsByClassName('menuproducts')[0];
-        //wrapper.style.overflow = 'hidden';
-        //menuproducts.style.overflow = 'visible';
 
-        //document.getElementById('pyroid').remove();
         document.getElementById('canvas').remove();
         snow();
     }else if((name == "December" && day > 26) || (name == "January" && (day == 1 || day == 2 || day == 3))){
