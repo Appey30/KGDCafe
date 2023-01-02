@@ -8812,6 +8812,7 @@ def kgddashboard(request):
                         monthvalues=monthlysales.aggregate(Sum('Valuestocks')).get('Valuestocks__sum')
                         monthstarts=monthlysales.aggregate(Sum('Startstocks')).get('Startstocks__sum')
                         monthends=monthlysales.aggregate(Sum('Endstocks')).get('Endstocks__sum')
+                        
                         print('monthstarts: ',monthstarts,'monthvalues: ',monthvalues,'monthends: ',monthends)
                         month['monthdate']=finalmonth+", "+finalyear
                         month['monthtotalsales']='₱'+str(monthtotalsalesi)
