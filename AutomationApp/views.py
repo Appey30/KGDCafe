@@ -1019,6 +1019,9 @@ def messengercafe(request, product_id):
 def messengerlogin(request):
     settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('MESSENGERAPPID')  # App ID
     settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('MESSENGERSECRET')  # App Secret
+    settings.LOGIN_REDIRECT_URL='/messengersubscribe/'
+    settings.LOGIN_URL='/messengersubscribe/'
+    settings.LOGOUT_URL='/messengersubscribe/'
     return render(request, 'messengerloginbot.html',{})
 
 @login_required
