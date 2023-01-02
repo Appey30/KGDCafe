@@ -30293,7 +30293,9 @@ function reveal() {
     loadweb();
 }, 100 );
 function loadweb(){
-
+if('{{messengerredirect}}'== 'True'){
+window.close()
+}
 
 if (window.matchMedia("(max-width: 449px)").matches && window.matchMedia("(max-height: 1759px)").matches) { // If media query matches
 window.addEventListener("scroll", reveal);

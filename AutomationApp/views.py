@@ -5482,9 +5482,6 @@ def Onlineordersystem(request, admin_id):
         promocodegeti=request.GET.get('prmcd', '')
         messenger=request.GET.get('messenger', '')
         messengerredirect=request.GET.get('messengerredirect', '')
-        if messengerredirect:
-            return HttpResponseRedirect('/messengersubscribe/')
-        
         if promocodegeti:
             settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
             settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
