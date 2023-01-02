@@ -30293,9 +30293,7 @@ function reveal() {
     loadweb();
 }, 100 );
 function loadweb(){
-if('{{messengerredirect}}'== 'True'){
-window.close()
-}
+
 
 if (window.matchMedia("(max-width: 449px)").matches && window.matchMedia("(max-height: 1759px)").matches) { // If media query matches
 window.addEventListener("scroll", reveal);
@@ -30732,9 +30730,6 @@ fullmt.innerHTML = "₱"+mtp+".00";
 <div style="display:block;">
 {% if prmcd == 'No coupon' %}
 <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
-
-{% elif messenger == 'messenger' %}
-<a href="{% url 'social:begin' 'facebook' %}?messengerredirect=True" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
 
 {% else %}
     

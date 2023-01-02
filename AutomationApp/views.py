@@ -872,7 +872,7 @@ class FacebookWebhookView(View):
 
     # Post function to handle Facebook messages
     def post(self, request, *args, **kwargs):
-
+        
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
         
@@ -1018,13 +1018,13 @@ def messengercafe(request, product_id):
         return JsonResponse(context)
     return render(request, 'messengerweb.html',{'fbidi':fbidi,'itembuttons':itembuttons,'itempricesss':itempricesss})
 
-def messengerlogin(request):
-    settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
-    settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
-    settings.LOGIN_REDIRECT_URL='/messengersubscribe/'
-    settings.LOGIN_URL='/messengersubscribe/'
-    settings.LOGOUT_URL='/messengersubscribe/'
-    return render(request, 'messengerloginbot.html',{})
+#def messengerlogin(request):
+#    settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
+#    settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
+#    settings.LOGIN_REDIRECT_URL='/messengersubscribe/'
+#    settings.LOGIN_URL='/messengersubscribe/'
+#    settings.LOGOUT_URL='/messengersubscribe/'
+#    return render(request, 'messengerloginbot.html',{})
 
 @login_required
 def totalboughtappey(request):
@@ -5480,8 +5480,6 @@ def Onlineordersystem(request, admin_id):
         settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
         settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
         promocodegeti=request.GET.get('prmcd', '')
-        messenger=request.GET.get('messenger', '')
-        messengerredirect=request.GET.get('messengerredirect', '')
         if promocodegeti:
             settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
             settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
