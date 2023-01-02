@@ -4,7 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js" nonce="oqgHx68x"></script>
 <style>
 body {
   font-family: "Lato", sans-serif;
@@ -13,7 +13,29 @@ body {
 </style>
 </head>
 <body>
-<h1>Developing Checkout Page</h1>
+<h1>Messenger KGD E-Cafe</h1>
+
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<div id="fb-root"></div>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '747675206784315',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v15.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+FB.Event.subscribe("auth.login", function(response){
+
+
+
+})
 </script>
    
 </body>
