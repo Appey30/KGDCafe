@@ -54,6 +54,9 @@ function checkLoginState() {
     statusChangeCallback(response);
   });
 }
+FB.Event.subscribe("auth.login", function(response) {
+  // Send the login response, including the access_token field, to your Django view using an AJAX request
+});
 </script>
    
 </body>
