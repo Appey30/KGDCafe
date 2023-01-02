@@ -16,7 +16,7 @@ body {
 <body>
 <h1>Messenger KGD E-Cafe</h1>
 <div id="fb-root"></div>
-<div onlogin="checkLoginState();" class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<div scope: 'public_profile,email,user_messenger_contact', onlogin="checkLoginState();" class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
 <div id="status">
 </div>
 <script>
@@ -50,12 +50,12 @@ body {
         'into this webpage.';
     }
   }
-FB.login(function(response) {
+//FB.login(function(response) {
 // handle the response
-}, {
-scope: 'public_profile,email,user_messenger_contact',
-messenger_page_id: 12345
-});
+//}, {
+//scope: 'public_profile,email,user_messenger_contact',
+//messenger_page_id: 108263670554729
+//});
 
 FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
