@@ -768,12 +768,33 @@ def handlePostback(fbid, received_postback):
 
 def set_get_started_button():
     post_message_url = 'https://graph.facebook.com/v15.0/me/messenger_profile?get_started=%7B%93payload%94%3A%93GET_STARTED%94%7D&access_token=%s'%PAGE_ACCESS_TOKEN
-    payload = json.dumps({
-        "get_started": {
-            "payload": "GET_STARTED"
+    payload = {
+      "get_started": {
+        "payload": "GET_STARTED"
+      },
+      "call_to_actions": [
+        {
+          "type": "web_url",
+          "url": "https://kgdcafe.com/messengersubscribe/",
+          "title": "Connect with us"
         }
-    })
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=payload)
+      ]
+    }
+
+    # Set the headers for the Set Welcome Screen API request
+    headers = {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+PAGE_ACCESS_TOKEN
+    }
+    #payload = json.dumps({
+    #    "get_started": {
+    #        "payload": "GET_STARTED"
+    #    }
+    #})
+    # Send the Set Welcome Screen API request
+    status = requests.post(post_message_url, json=payload, headers=headers)
+
+    # Print the response from the Set Welcome Screen API request
     print(status.json())
 
 previous_message_id={}
