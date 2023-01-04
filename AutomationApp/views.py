@@ -5476,7 +5476,8 @@ def Onlineordersystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
-        messenger=messenger
+        messenger=request.GET.get('messenger', '')
+        messengerredirect=request.GET.get('messengerredirect', '')
         settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
         settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
         promocodegeti=request.GET.get('prmcd', '')
