@@ -30725,14 +30725,14 @@ fullmt.innerHTML = "₱"+mtp+".00";
 
 </div>
 
-<h3>Login with Social Media</h3>
+<h3 id="loginwithsocialmediaid">Login with Social Media</h3>
 <small style="color:red;text-align:center;display:none">Login with Social Media is Temporarily Unavailable. We suggest you to create KGD account instead. </small><br>
 <div style="display:block;">
 {% if prmcd == 'No coupon' %}
 <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
 
 {% elif messenger == 'messenger' %}
-<a href="{% url 'social:begin' 'facebook' %}?messengerredirect=True" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+<a href="{% url 'social:begin' 'facebook' %}?messengerredirect=True" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Continue with Facebook</a>
 
 {% else %}
     
@@ -31169,6 +31169,18 @@ if(!username.value && !password.value){
 
 
 $(document).ready(function(){
+
+if('{{messenger}}' == 'messenger'){
+var  showloginwithfacebookdivbg = document.getElementsByClassName('showloginwithfacebookdivbg')[0]:
+var  userlogindiv= document.getElementsByClassName('userlogindiv')[0]:
+var loginwithsocialmediaid = document.getElementById('loginwithsocialmediaid')
+loginwithsocialmediaid.style.display='none'
+showloginwithfacebookdivbg.style.backgroundColor = '#f6eeea';
+userlogindiv.style.display='none'
+
+}
+
+
 //window.fbAsyncInit = function () {
 if(freefries == 'True'){
 var freefriesid = document.getElementById('freefriesid')
