@@ -875,7 +875,8 @@ class FacebookWebhookView(View):
         
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
-        
+        set_get_started_button()
+        print('postbackwithoutpayload: ',message['postback'])
         # Facebook recommends going through every entry since they might send
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
@@ -894,8 +895,7 @@ class FacebookWebhookView(View):
 
                     handleMessage(message['sender']['id'], message['message'])
                 elif message['postback']['payload']:
-                    set_get_started_button()
-                    print('postbackwithoutpayload: ',message['postback'])
+
                     handlePostback(message['sender']['id'], message['postback'])
                     print('postback with payload: ',message['postback'])
 
