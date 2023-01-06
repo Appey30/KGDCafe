@@ -31167,9 +31167,10 @@ if(!username.value && !password.value){
 
 //});
 
-
-$(document).ready(function(){
-
+    let messengershop = setInterval(function(){
+    if ( document.readyState !== 'loading' ) return;
+    clearInterval( messengershop ); 
+    
 if('{{messenger}}' == 'messenger'){
 var  showloginwithfacebookdivbg = document.getElementsByClassName('showloginwithfacebookdivbg')[0];
 var  userlogindiv= document.getElementsByClassName('userlogindiv')[0];
@@ -31183,6 +31184,9 @@ showloginwithfacebookhead.style.display='none'
 }else if('{{messengerredirect}}' == 'True'){
 window.close();
 }
+}, 100 );
+$(document).ready(function(){
+
 
 
 //window.fbAsyncInit = function () {
