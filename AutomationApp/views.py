@@ -5481,7 +5481,8 @@ def Onlineordersystem(request, admin_id):
         settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
         settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
         promocodegeti=request.GET.get('prmcd', '')
-        
+        #if messenger or messengerredirect:
+        #    settings.SITE_URL = 'http://www.mydomain.com'
         if promocodegeti:
             settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
             settings.LOGIN_URL='/index/onlineorder/'+str(admin_id)+'?prmcd='+promocodegeti
