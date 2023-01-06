@@ -894,11 +894,12 @@ class FacebookWebhookView(View):
 
                     handleMessage(message['sender']['id'], message['message'])
                 elif message['postback']['payload']:
-                    handlePostback(message['sender']['id'], message['postback'])
-                    print('postback with payload: ',message['postback'])
-                elif 'postback' in message:
                     set_get_started_button()
                     print('postbackwithoutpayload: ',message['postback'])
+                    handlePostback(message['sender']['id'], message['postback'])
+                    print('postback with payload: ',message['postback'])
+
+
         return HttpResponse()
                 #elif message.get('account_linking'):
                 #    account_linking_token=message['account_linking']['account_linking_token']
