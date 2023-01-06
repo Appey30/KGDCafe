@@ -30732,7 +30732,7 @@ fullmt.innerHTML = "₱"+mtp+".00";
 <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
 
 {% elif messenger == 'messenger' %}
-<a href="{% url 'social:begin' 'facebook' %}?messengerredirect=True" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Continue with Facebook Messenger</a>
+<a href="{% url 'social:begin' 'facebook' %}?messengerredirect=True%26product_id={{product_id}}" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Continue with Facebook Messenger</a>
 
 {% else %}
     
@@ -31182,7 +31182,8 @@ userlogindiv.style.display='none'
 showloginwithfacebookhead.style.display='none'
 
 }else if('{{messengerredirect}}' == 'True'){
-window.close();
+window.location.href = "//{{product_id}}";
+
 }
 console.log('loading: detectedmessengershop')
 }, 100 );
