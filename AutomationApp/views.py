@@ -5509,7 +5509,7 @@ def Onlineordersystem(request, admin_id):
         messengerredirect=request.GET.get('messengerredirect', '')
         if messengerredirect:
             fbidi=User.objects.get(id=request.user.id).social_auth
-            print('social_auth: ',social_auth)
+            print('social_auth: ',fbidi)
             #fbidi=SocialAccount.objects.filter(user=request.user, provider='facebook')[0].uid
             return HttpResponseRedirect('/messengershop/item/'+str(product_id)+'/?id='+fbidi)
         settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
