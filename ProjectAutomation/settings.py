@@ -189,7 +189,7 @@ SITE_ID=2
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id,name,email,first_name,last_name'}
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {'fields': 'id,name,email,first_name,last_name', 'access_token':os.environ.get('USER_ACCESS_TOKEN')}
 #ACCOUNT_LOGOUT_REDIRECT_URL ='../../index/onlineorder/4'
 
 #SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
