@@ -847,6 +847,28 @@ def bagsender(fbid):
         pass
 
 
+#def reorderagain(fbid):
+#    global previous_message_id
+#    post_message_url = 'https://graph.facebook.com/v15.0/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
+#    user_details_url = "https://graph.facebook.com/v15.0/%s"%fbid+'?fields=first_name,last_name&access_token=%s'%PAGE_ACCESS_TOKEN
+#    user_details_params = {'fields':'first_name,last_name', 'access_token':PAGE_ACCESS_TOKEN} 
+#    user_details = requests.get(user_details_url, user_details_params).json() 
+#    try:
+#        userdetailsfirstname="Ma'am/Sir"+user_details['first_name']
+#    except KeyError:
+#        userdetailsfirstname="Ma'am/Sir"
+#    text={"text":'Kindly, select your order again, '+userdetailsfirstname+'.'}
+#    response_msg = json.dumps({
+#    "recipient":{"id":fbid}, 
+#    "message":text, 
+#    })
+
+
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+    print(status.json())
+
+
+
 # Create your views here.
 class FacebookWebhookView(View):
     def get(self, request, *args, **kwargs):
@@ -954,11 +976,12 @@ def redirecttoonlineorder(request):
 def checkout(request):
     pass
     return render(request, 'checkout.html',{})
+
 def messengercafe(request, product_id):
     if request.user.is_anonymous:
         print('AnonymousUser')
         return HttpResponseRedirect('/index/onlineorder/4/?messenger=messenger&product_id='+str(product_id))
-
+    
     itembuttons = user1.objects.get(id=product_id)
     
     item=0
@@ -5484,6 +5507,9 @@ def Onlineordersystem(request, admin_id):
         product_id=request.GET.get('product_id', '')
         messenger=request.GET.get('messenger', '')
         messengerredirect=request.GET.get('messengerredirect', '')
+        if messengerredirect:
+            fbidi=SocialAccount.objects.filter(user=request.user, provider='facebook')[0].uid
+            return HttpResponseRedirect('/messengershop/item/'+str(product_id)+'/?id='+fbidi)
         settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
         settings.SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')  # App Secret
         promocodegeti=request.GET.get('prmcd', '')
