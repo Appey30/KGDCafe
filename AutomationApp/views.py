@@ -43,7 +43,7 @@ from .logic import LOGIC_RESPONSES
 from pprint import pprint
 from django.utils.datastructures import MultiValueDictKeyError
 from django.db.models import Q
-from social_django.models import UserSocialAuth
+#from social_django.models import UserSocialAuth
 
 PAGE_ACCESS_TOKEN = os.environ.get('PAGE_ACCESS_TOKEN')
 VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
@@ -5512,14 +5512,14 @@ def Onlineordersystem(request, admin_id):
             user_details_params = {'fields':'first_name, last_name,id', 'access_token':os.environ.get('USER_ACCESS_TOKEN')} 
             user_details = requests.get(user_details_url, user_details_params).json() 
             fbidi=user_details['id']
-            useridone = UserSocialAuth.social_user.uid
-            print('useridone: ',useridone)
-            useridtwo = UserSocialAuth.social.uid
-            print('useridtwo: ',useridtwo)
-            useridthree = social.uid
-            print('useridthree: ',useridthree)
+            #useridone = UserSocialAuth.social_user.uid
+            #print('useridone: ',useridone)
+            #useridtwo = UserSocialAuth.social.uid
+            #print('useridtwo: ',useridtwo)
+            #useridthree = social.uid
+            #print('useridthree: ',useridthree)
 
-            print('social_auth: ',fbidi)
+            #print('social_auth: ',fbidi)
             #fbidi=SocialAccount.objects.filter(user=request.user, provider='facebook')[0].uid
             return HttpResponseRedirect('/messengershop/item/'+str(product_id)+'/?id='+fbidi)
         settings.SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')  # App ID
