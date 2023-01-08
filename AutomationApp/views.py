@@ -5508,7 +5508,7 @@ def Onlineordersystem(request, admin_id):
         messenger=request.GET.get('messenger', '')
         messengerredirect=request.GET.get('messengerredirect', '')
         if messengerredirect:
-            fbidi=user.social_auth.get(provider='facebook').uid
+            fbidi=request.user.social_auth.get(provider='facebook').uid
             print('social_auth: ',fbidi)
             #fbidi=SocialAccount.objects.filter(user=request.user, provider='facebook')[0].uid
             return HttpResponseRedirect('/messengershop/item/'+str(product_id)+'/?id='+fbidi)
