@@ -43,7 +43,7 @@ from .logic import LOGIC_RESPONSES
 from pprint import pprint
 from django.utils.datastructures import MultiValueDictKeyError
 from django.db.models import Q
-#from social_django.models import UserSocialAuth
+from social_django.models import UserSocialAuth
 
 PAGE_ACCESS_TOKEN = os.environ.get('PAGE_ACCESS_TOKEN')
 VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
