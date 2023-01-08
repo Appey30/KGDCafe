@@ -5508,8 +5508,11 @@ def Onlineordersystem(request, admin_id):
         messenger=request.GET.get('messenger', '')
         messengerredirect=request.GET.get('messengerredirect', '')
         if messengerredirect:
+            user_details_url = "https://graph.facebook.com/v15.0/me/?fields=first_name,last_name&access_token=%s"%PAGE_ACCESS_TOKEN
+            user_details_params = {'fields':'first_name, last_name,id', 'access_token':PAGE_ACCESS_TOKEN} 
+            user_details = requests.get(user_details_url, user_details_params).json() 
             user=User.objects.get(id=request.user.id)
-            fbidi=user.social_auth.get(provider='facebook').uid
+            fbidi=user_details['id']
             print('social_auth: ',fbidi)
             #fbidi=SocialAccount.objects.filter(user=request.user, provider='facebook')[0].uid
             return HttpResponseRedirect('/messengershop/item/'+str(product_id)+'/?id='+fbidi)
