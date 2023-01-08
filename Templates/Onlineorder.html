@@ -30730,13 +30730,17 @@ fullmt.innerHTML = "₱"+mtp+".00";
 <div style="display:block;">
 {% if prmcd == 'No coupon' %}
 <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-user btn-block"><i class="fab fa-facebook-f fa-fw"></i> Login with Facebook</a>
+<small>By logging-in or signing-up, you agree to our updated <a href="{% url 'TermsandConditions.html' %}">Terms & Conditions</a>  and <a href="{% url 'privacypolicy.html' %}">Privacy Policy</a>.</small>
 
 {% elif messenger == 'messenger' %}
-<a href="{% url 'social:begin' 'facebook' %}?messengerredirect=True%26product_id={{product_id}}" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Continue with Facebook Messenger</a>
+<a href="{% url 'social:begin' 'facebook' %}?next=/index/onlineorder/4/?messengerredirect=True%26product_id={{product_id}}" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Continue with Messenger</a>
+<small>By continuing-in, you agree to our updated <a href="{% url 'TermsandConditions.html' %}">Terms & Conditions</a>  and <a href="{% url 'privacypolicy.html' %}">Privacy Policy</a>.</small>
 
 {% else %}
     
 <a href="{% url 'social:begin' 'facebook' %}?prmcd={{prmcd}}" class="fb btn"><i class="fa fa-facebook fa-fw"></i> Login with Facebook</a>
+<small>By logging-in or signing-up, you agree to our updated <a href="{% url 'TermsandConditions.html' %}">Terms & Conditions</a>  and <a href="{% url 'privacypolicy.html' %}">Privacy Policy</a>.</small>
+
 {% endif %}
 <!--<div  id="fbloginid" class="fb btn">
 <i  id="fbloginidiii" class="fa fa-facebook fa-fw"></i><h8>Login with Facebook</h8>(for a tag)class='btn btn-facebook btn-user btn-block'
@@ -30744,7 +30748,6 @@ fullmt.innerHTML = "₱"+mtp+".00";
 <br>
 </div>
 
-<small>By logging-in or signing-up, you agree to our updated <a href="{% url 'TermsandConditions.html' %}">Terms & Conditions</a>  and <a href="{% url 'privacypolicy.html' %}">Privacy Policy</a>.</small>
 
 </div>
 
