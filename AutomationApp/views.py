@@ -5515,8 +5515,8 @@ def Onlineordersystem(request, admin_id):
             print('fbidi',fbidi)
             #useridone = UserSocialAuth.social_user.uid
             #print('useridone: ',useridone)
-            #useridtwo = UserSocialAuth.social.uid
-            #print('useridtwo: ',useridtwo)
+            useridtwo = UserSocialAuth.social.uid
+            print('useridtwo: ',useridtwo)
             #useridthree = social.uid
             #print('useridthree: ',useridthree)
 
