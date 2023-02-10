@@ -31,7 +31,7 @@ class PSizes(models.Model):
 
 class user1 (models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE,blank = False, null = False)
-    productname = models.CharField(max_length = 100, blank = False, null = False, default='')
+    productname = models.CharField(max_length = 250, blank = False, null = False, default='')
     Category = models.ForeignKey(Categories, on_delete=models.CASCADE, default='',blank = True, null = True)
     Subcategory = models.ForeignKey(Subcategories, on_delete=models.CASCADE, default='',blank = True, null = True)
     Size = models.ForeignKey(Sizes, on_delete = models.CASCADE, default = '',blank = True, null = True)
@@ -80,7 +80,7 @@ class couponlist (models.Model):
 
 class punchedprod (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Subcategory = models.CharField(max_length = 50, default='',blank = True, null = True)
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
@@ -96,7 +96,7 @@ class punchedprod (models.Model):
 
 class punchedprodso (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Subcategory = models.CharField(max_length = 50, default='',blank = True, null = True)
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
@@ -112,7 +112,7 @@ class punchedprodso (models.Model):
 
 class queue1 (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Subcategory = models.CharField(max_length = 50, default='',blank = True, null = True)
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
@@ -132,7 +132,7 @@ class queue1 (models.Model):
 
 class queue2 (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Subcategory = models.CharField(max_length = 50, default='',blank = True, null = True)
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
@@ -152,7 +152,7 @@ class queue2 (models.Model):
 
 class queue3 (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Subcategory = models.CharField(max_length = 50, default='',blank = True, null = True)
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
@@ -184,7 +184,7 @@ class saecat(models.Model):
         
 class Sales (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Subcategory = models.CharField(max_length = 50, default='',blank = True, null = True)
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
@@ -247,7 +247,7 @@ class Dailysales (models.Model):
 
 class submitstockorder (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 100, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Price = models.IntegerField(blank = True, null = True, default='0')
     Subtotal = models.IntegerField(blank = True, null = True, default='0')
@@ -264,7 +264,7 @@ class submitstockorder (models.Model):
 
 class acknowledgedstockorder (models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 100, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Price = models.IntegerField(blank = True, null = True, default='0')
     Subtotal = models.IntegerField(blank = True, null = True, default='0')
@@ -391,7 +391,7 @@ class Rejectorder(models.Model):
     contactnumber=models.BigIntegerField(blank = True, null = True, default='09000000000')
     Bill=models.IntegerField(blank = True, null = True, default='0')
     Change= models.IntegerField(blank = True, null = True, default='0')
-    productname = models.CharField(max_length = 50, blank = True, null = True, default='')
+    productname = models.CharField(max_length = 250, blank = True, null = True, default='')
     Category = models.CharField(max_length = 50, blank = True, null = True, default='')
     Subcategory = models.CharField(max_length = 50, blank = True, null = True, default='')
     Size = models.CharField(max_length = 50, default = '',blank = True, null = True)
