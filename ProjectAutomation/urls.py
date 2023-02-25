@@ -25,8 +25,6 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
-      path('enroll-fingerprints/<int:employee_id>/', views.enroll_fingerprints, name='enroll_fingerprints'),
-      path('verify-fingerprint/<int:employee_id>/', views.verify_fingerprint, name='verify_fingerprint'),
 
 
       path('admin/',admin.site.urls),

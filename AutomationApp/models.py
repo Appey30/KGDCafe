@@ -8,28 +8,8 @@ import pytz
 
 # Create your models here.
 
-class Employee(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    fingerprints = models.CharField(max_length=100, unique=True)
 
-    def __str__(self):
-        return self.user.username
 
-#class Attendance(models.Model):
-#    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-#    date = models.DateField(auto_now_add=True)
-#    time_in = models.TimeField(null=True, blank=True)
-#    time_out = models.TimeField(null=True, blank=True)
-
-#    def __str__(self):
-#        return str(self.date) + " - " + self.employee.user.username
-
-class Fingerprint(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    data = models.CharField(max_length=1000)
-    
-    def __str__(self):
-        return f"{self.employee}'s fingerprint"
 class Subcategories(models.Model):
     Subcategorychoices = models.CharField(max_length = 50, blank = False, null = False, default='')
     def __str__(self):
