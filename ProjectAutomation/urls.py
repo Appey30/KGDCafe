@@ -54,6 +54,7 @@ urlpatterns = [
       path('index/PrivacyPolicy',views.PrivacyPolicy,name='privacypolicy.html'),
       path('index/saletoday',views.saletoday,name='saletoday.html'),
       path('index/staff',views.staff,name='staff.html'),
+      path('index/stafftwo',views.stafftwo,name='stafftwo.html'),
       path('index/marketing',views.marketingaspect,name='Marketing.html'),
       path('index/appeybought',views.totalboughtappey,name='totalboughtappey.html'),
       path('oauth/', include('social_django.urls', namespace='social')),

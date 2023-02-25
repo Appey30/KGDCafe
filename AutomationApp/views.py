@@ -6998,6 +6998,160 @@ def staff(request):
             
     return render(request, 'staff.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
 
+
+@login_required
+def stafftwo(request):
+
+
+
+    userr=request.user.id
+    notifyorder=acknowledgedstockorder.objects.filter(CusName="Notify",user=userr).count()
+    if acknowledgedstockorder.objects.all().count()==0:
+        notifyadmin=submitstockorder.objects.all().count()
+    else:
+        notifyadmin=0
+    print('userr:',userr) 
+    if punchedprod.objects.filter(user=userr).count()==0:
+        punchedtotal=0
+    else:
+        punchedtotal=punchedprod.objects.filter(user=userr).aggregate(Sum('Subtotal')).get('Subtotal__sum')
+    if acknowledgedstockorder.objects.all().count()==0:
+        notifyadmin=submitstockorder.objects.all().count()
+    else:
+        notifyadmin=0
+    if is_ajax(request=request) and request.POST.get("timeinfirst"):
+            day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
+            datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
+            monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
+            yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
+            try:
+                getdailysales=Dailysales.objects.filter(user=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Sales', flat=True)[0]
+                timesheetupdate=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).update(Sales=getdailysales)
+            except IndexError:
+                timesheetupdate=timesheet.objects.none()
+                getdailysales=0
+            if getdailysales >= 2000 and timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
+                getinitialsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ISalary', flat=True)
+                getASLBALANCEtodayi=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('ASLbalance', flat=True)
+                addbonusornot=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Identifybonus', flat=True)
+                if addbonusornot[0] == 'Added bonus':
+                    pass
+                else:
+                    twokeysalebonus=getinitialsalarytoday[0]+30
+                    if getASLBALANCEtodayi[0] >= 30:
+                        getASLBALANCEtoday=getASLBALANCEtodayi[0]-30
+                        timesheetupdatetwo=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).update(ISalary=twokeysalebonus, ASLbalance=getASLBALANCEtoday,Identifybonus='Added bonus')
+                    else:
+                        getASLBALANCEtoday=0
+                        addtofinalsalaryi=30-getASLBALANCEtodayi[0]
+                        getfinalsalarytoday=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('FSalary', flat=True)
+                        addtofinalsalary=addtofinalsalaryi+getfinalsalarytoday
+                        timesheetupdatetwo=timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday).update(ISalary=twokeysalebonus, ASLbalance=getASLBALANCEtoday,Identifybonus='Added bonus',FSalary=addtofinalsalary)
+            timesheets = timesheet.objects.filter(Admin=userr, DateTime__month=monthtoday,DateTime__year=yeartoday).order_by('DateTime')
+            if timesheet.objects.filter(Admin=userr, DateTime__day=datetoday,DateTime__month=monthtoday,DateTime__year=yeartoday):
+                removeappearbutton='removebutton'
+            else:
+                removeappearbutton='appearbutton'
+            context={
+            'timesheets':serializers.serialize('json',timesheets, cls=JSONEncoder),
+            'removeappearbutton':json.dumps(removeappearbutton, cls=JSONEncoder)
+            }
+            return JsonResponse(context)
+
+    if is_ajax(request=request) and request.POST.get('usernameusername'):
+        day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
+        datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
+        monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
+        yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
+        usernamess=request.POST.get('usernameusername')
+        passwordss=request.POST.get('passwordusername')
+        #imagess=request.FILES.get('imagename')
+ 
+        
+        if usernamess == 'malouKGD01' and passwordss == 'KGDmalou01':
+        # Redirect to a success page.
+            if int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%H')) < 11 :
+                timeinhourstart='11:30AM'
+            elif int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%H')) == 11 and int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%M')) < 30:
+                timeinhourstart='11:30AM'
+            elif int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%H')) == 19 and int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%M')) > 30:
+                timeinhourstart='8:29PM'
+            elif int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%H')) > 19:
+                timeinhourstart='8:29PM'
+            else:
+                timeinhourstart=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%I:%M%p')
+            onehourtomini=int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%H'))*60
+            onehourtomin=onehourtomini
+            onetotalminutesi=onehourtomin+int(datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%M'))
+            if onetotalminutesi <690:
+                onetotalminutes = 690
+            elif onetotalminutesi>1230:
+                onetotalminutes = 1229
+            else:
+                onetotalminutes=onetotalminutesi
+            Totalminsi=((20*60)+30)-onetotalminutes
+            ISalaryi=(170/(9*60))*Totalminsi
+            print('Salary',ISalaryi)
+            if Dailysales.objects.filter(user=userr,DateTime__day=datetoday, DateTime__month=monthtoday,DateTime__year=yeartoday):
+                Salesii=Dailysales.objects.filter(user=userr,DateTime__day=datetoday, DateTime__month=monthtoday,DateTime__year=yeartoday).values_list('Sales', flat=True)
+                Salesi=int(Salesii[0])
+            else:
+                Salesi=0
+            #Productimgi=imagess
+            #with advance salary loan part
+            if timesheet.objects.filter(Admin=userr):
+                getlastobject=timesheet.objects.filter(Admin=userr).values_list('ASLbalance', flat=True).latest('DateTime')
+                if getlastobject == 0:
+                    FSalaryi=ISalaryi
+                    varASLbalance=0
+                elif getlastobject >= ISalaryi:
+                    FSalaryi=0
+                    varASLbalance=getlastobject-ISalaryi
+                elif getlastobject < ISalaryi:
+                    FSalaryi=ISalaryi-getlastobject
+                    varASLbalance=0
+            else:
+                FSalaryi=ISalaryi
+                varASLbalance=0
+            #end
+            
+            #timesheetsi = timesheet.objects.create(Admin=userr, Day=day,Timeout='8:30PM', Employeename='Ate Malou',Timein=timeinhourstart,Productimg=Productimgi,Totalmins=Totalminsi,Sales=Salesi,ASLbalance=varASLbalance,ISalary=ISalaryi, FSalary=FSalaryi)
+            timesheetsi = timesheet.objects.create(Admin=userr, Day=day,Timeout='8:30PM', Employeename='Ate Malou',Timein=timeinhourstart,Totalmins=Totalminsi,Sales=Salesi,ASLbalance=varASLbalance,ISalary=ISalaryi, FSalary=FSalaryi)
+            
+            print('timesheetsi',timesheetsi)
+            return JsonResponse({'reload':'success'})
+        else:
+            usernamechecki='usernamecheckfalse'
+            usernamecheck=json.dumps(usernamechecki)
+            # Return an 'invalid login' error message.
+            return JsonResponse({'reload':usernamechecki}) 
+            
+    if is_ajax(request=request) and request.POST.get('usernameadminname'):
+        day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
+        datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
+        monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
+        yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
+        usernamess=request.POST.get('usernameadminname')
+        passwordss=request.POST.get('passwordadminname')
+        if usernamess == 'monethKGD01!' and passwordss == 'monethKGD01!':
+        # Redirect to a success page.
+            return JsonResponse({'reload':'success'})
+        else:
+            usernamechecki='usernamecheckfalse'
+            usernamecheck=json.dumps(usernamechecki)
+            # Return an 'invalid login' error message.
+            return JsonResponse({'reload':usernamechecki})  
+    if is_ajax(request=request) and request.POST.get('inputASL'):
+        day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
+        datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
+        monthtoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%m')
+        yeartoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%Y')
+        inputASLamount=request.POST.get('inputASL')
+        getlatest=timesheet.objects.filter(Admin=userr,DateTime__day=datetoday, DateTime__month=monthtoday,DateTime__year=yeartoday).update(ASLbalance=inputASLamount)
+        return JsonResponse({'reload':'success'})  
+            
+    return render(request, 'stafftwo.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
+
 #FIREBASE AREA
 
 
