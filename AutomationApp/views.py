@@ -7023,6 +7023,7 @@ def stafftwo(request):
 
         
     if is_ajax(request=request) and request.POST.get("image"):
+        print("imageimageimageimageimageimageimageimage")
         try:
             data = json.loads(request.body)
             image_data = data['image'].split(',')[1] # Extract the base64-encoded image data from the request body
@@ -7046,6 +7047,7 @@ def stafftwo(request):
             return HttpResponseBadRequest('Invalid request body')
 
     if is_ajax(request=request) and request.POST.get("employeeId"):
+        print("employeeIdemployeeIdemployeeIdemployeeIdemployeeIdemployeeId")
         try:
             data = json.loads(request.body)
             employee_id = data['employeeId']
