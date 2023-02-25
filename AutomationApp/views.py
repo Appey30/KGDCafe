@@ -7022,10 +7022,34 @@ def stafftwo(request):
 
         
     if is_ajax(request=request) and request.POST.get("image"):
-            context={
-            'data':'Match',
-            }
-            return JsonResponse(context)
+        try:
+            data = json.loads(request.body)
+            image_data = data['image'].split(',')[1] # Extract the base64-encoded image data from the request body
+            image_bytes = base64.b64decode(image_data) # Convert the base64-encoded image data to bytes
+            image = face_recognition.load_image_file(io.BytesIO(image_bytes)) # Load the image as a numpy array
+            face_locations = face_recognition.face_locations(image) # Detect the location of any faces in the image
+            face_encodings = face_recognition.face_encodings(image, face_locations) # Encode the face(s) as vectors
+            # Perform face recognition by comparing the encoded face(s) to a database of known faces
+            # and return the unique identifier of the recognized employee
+            unique_id = perform_face_recognition(face_encodings)
+            return JsonResponse({'employeeId': unique_id})
+        except (KeyError, ValueError, TypeError):
+            return HttpResponseBadRequest('Invalid request body')
+
+    if is_ajax(request=request) and request.POST.get("employeeId"):
+        try:
+            data = json.loads(request.body)
+            employee_id = data['employeeId']
+            # Look up the employee record associated with the provided unique identifier
+            employee = Employee.objects.get(id=employee_id)
+            # Mark the employee as present in the attendance record
+            attendance_record = AttendanceRecord(employee=employee, date=datetime.date.today(), status=AttendanceStatus.PRESENT)
+            attendance_record.save()
+            return JsonResponse({'status': 'success'})
+        except (KeyError, ValueError, TypeError, Employee.DoesNotExist):
+            return HttpResponseBadRequest('Invalid request body or employee not found')
+
+
     if is_ajax(request=request) and request.POST.get("timeinfirst"):
             day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
             datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')

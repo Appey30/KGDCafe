@@ -55,7 +55,7 @@ function performRecognition(detections) {
       contentType: 'application/json',
       data: JSON.stringify({ image: base64Image }),
       success: function(data) {
-        //resolve(data.employeeId)
+        resolve(data.employeeId)
         alert("Match")
       },
       error: function(xhr, status, error) {
@@ -66,12 +66,12 @@ function performRecognition(detections) {
 }
 
 // Mark employee attendance using the unique identifier
-//function markAttendance(uniqueId) {
-  // Make an API call to mark attendance of the employee with the provided unique identifier
- // $.ajax({
-  //  url: '/api/mark-attendance',
-   // type: 'POST',
-    //contentType: 'application/json',
-    //data: JSON.stringify({ employeeId: uniqueId })
-  //})
-//}
+function markAttendance(uniqueId) {
+   //Make an API call to mark attendance of the employee with the provided unique identifier
+  $.ajax({
+    url: "{% url 'stafftwo.html' %}",
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({ employeeId: uniqueId })
+  })
+}
