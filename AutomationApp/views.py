@@ -34,6 +34,7 @@ from django.template import *
 from PIL import Image
 from io import BytesIO
 import base64
+
 import string
 from django.utils.encoding import smart_str
 from django.views.generic import View
@@ -7026,7 +7027,7 @@ def stafftwo(request):
             data = json.loads(request.body)
             image_data = data['image'].split(',')[1] # Extract the base64-encoded image data from the request body
             image_bytes = base64.b64decode(image_data) # Convert the base64-encoded image data to bytes
-            image = face_recognition.load_image_file(io.BytesIO(image_bytes)) # Load the image as a numpy array
+            image = face_recognition.load_image_file(BytesIO(image_bytes)) # Load the image as a numpy array
             face_locations = face_recognition.face_locations(image) # Detect the location of any faces in the image
             face_encodings = face_recognition.face_encodings(image, face_locations) # Encode the face(s) as vectors
             known_face_locations = face_recognition.load_image_file("https://kgdcafe.com/static/mj.jpg") # Detect the location of any faces in the image
