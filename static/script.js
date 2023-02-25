@@ -10,8 +10,7 @@ const loginbodyid = document.getElementById('loginbodyid')
     // Get video stream and start capturing images
     function startVideo() {
       navigator.mediaDevices.getUserMedia(
-        { video: true },
-        video.play();
+        { video: {} },
         stream => video.srcObject = stream,
         err => console.error(err)
       )
