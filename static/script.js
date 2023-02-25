@@ -1,4 +1,5 @@
 const video = document.getElementById('video') 
+const loginbodyid = document.getElementById('loginbodyid') 
     Promise.all([
       faceapi.nets.tinyFaceDetector.loadFromUri('../static/models'),
       faceapi.nets.faceLandmark68Net.loadFromUri('../static/models'),
@@ -14,12 +15,12 @@ const video = document.getElementById('video')
         err => console.error(err)
       )
     }
-
+    
     // Capture employee face image and perform recognition
     const captureBtn = document.getElementById('capture')
     captureBtn.addEventListener('click', () => {
       const canvas = faceapi.createCanvasFromMedia(video)
-      document.body.append(canvas)
+      loginbodyid.append(canvas)
       const displaySize = { width: video.width, height: video.height }
       faceapi.matchDimensions(canvas, displaySize)
       faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().then(detections => {

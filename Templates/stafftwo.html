@@ -1850,7 +1850,7 @@
             <span onclick="stafftimeinclose()" class="stafftimeincloseclass">&times;</span>
             <h4>Staff Time-in Account</h4>
         </div>
-        <div class="loginbody">
+        <div id="loginbodyid" class="loginbody">
             <form id="ajaxs" method="POST" action="">
                 {% csrf_token %}
                 <input type="text" oninput="usernamecorrected()" id="usernameid" class="usernameclass" name="usernameusername" placeholder="Username"></input><small id="errorusername"></small><br>
