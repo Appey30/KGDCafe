@@ -53,7 +53,7 @@ from pyfingerprint.pyfingerprint import PyFingerprint
 import time
 
 def enroll_fingerprints(request, employee_id):
-    employee = Employee.objects.get(pk=employee_id)
+    employee = User.objects.get(pk=employee_id)
     if request.method == 'POST':
         try:
             f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
