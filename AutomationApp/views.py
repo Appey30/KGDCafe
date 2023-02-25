@@ -45,8 +45,7 @@ from pprint import pprint
 from django.utils.datastructures import MultiValueDictKeyError
 from django.db.models import Q
 from social_django.models import UserSocialAuth
-
-
+import numpy as np
 
 
 
@@ -6844,9 +6843,7 @@ def saletoday(request):
     print('readylistcontact1:',readylistcontact)
     return render(request, 'saletoday.html',{'readylistcontact':readylistcontact,'onlineordercounter':onlineordercounter,'viewordersreject':viewordersreject,'rejectedorder':rejectedorder,'viewordersaccept':viewordersaccept,'acceptedorder':acceptedorder,'onlineorder':onlineorder,'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
 
-import face_recognition
-import numpy as np
-from datetime import datetime
+
 
 @login_required
 def staff(request):
@@ -6915,53 +6912,7 @@ def staff(request):
         usernamess=request.POST.get('usernameusername')
         passwordss=request.POST.get('passwordusername')
         #imagess=request.FILES.get('imagename')
-        video_capture = cv2.VideoCapture(0)
-
-        rehilda_image = face_recognition.load_image_file("static/mj.jpg")
-        rehilda_encoding = face_recognition.face_encodings(rehilda_image)[0]
-
-        known_face_encoding = [
-        rehilda_encoding,
-        ]
-
-        known_faces_names = [
-        "Rehilda",
-        ]
-
-        students = known_faces_names.copy()
  
-        face_locations = []
-        face_encodings = []
-        face_names = []
-        s=True
- 
- 
-        now = datetime.now()
-        current_date = now.strftime("%Y-%m-%d")
-        while True:
-            _,frame = video_capture.read()
-            small_frame = cv2.resize(frame,(0,0),fx=0.25,fy=0.25)
-            rgb_small_frame = small_frame[:,:,::-1]
-            if s:
-                face_locations = face_recognition.face_locations(rgb_small_frame)
-                face_encodings = face_recognition.face_encodings(rgb_small_frame,face_locations)
-                face_names = []
-                for face_encoding in face_encodings:
-                    matches = face_recognition.compare_faces(known_face_encoding,face_encoding)
-                    name=""
-                    face_distance = face_recognition.face_distance(known_face_encoding,face_encoding)
-                    best_match_index = np.argmin(face_distance)
-                    if matches[best_match_index]:
-                        name = known_faces_names[best_match_index]
- 
-                    face_names.append(name)
-                    print('Maaaaaaaaaaaaaaaaaaaaaaaatch')
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
- 
-        video_capture.release()
-        cv2.destroyAllWindows()
-        f.close()
         
         if usernamess == 'malouKGD01' and passwordss == 'KGDmalou01':
         # Redirect to a success page.
