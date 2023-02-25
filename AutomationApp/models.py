@@ -428,7 +428,7 @@ class timesheet(models.Model):
     Timein = models.CharField(max_length = 50, blank = True, null = True, default='')
     Timeout = models.CharField(max_length = 50, blank = True, null = True, default='')
     Totalmins = models.IntegerField(blank = True, null = True, default='0')
-    Productimg = models.ImageField(upload_to='Employeeattendance',blank = True, null = True)
+    #Productimg = models.ImageField(upload_to='Employeeattendance',blank = True, null = True)
     Sales = models.IntegerField(blank = True, null = True, default='0')
     Identifybonus = models.CharField(max_length = 50, blank = True, null = True, default='No Bonus')
     ASLbalance = models.IntegerField(blank = True, null = True, default='0')
