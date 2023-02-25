@@ -1943,7 +1943,7 @@ $(document).ready(function(){
 
         $.ajax({
         type:'POST',
-        url:"{% url 'staff.html' %}",
+        url:"{% url 'stafftwo.html' %}",
         data:{
         "timeinfirst":"timeinfirst",
         csrfmiddlewaretoken: '{{ csrf_token }}'
@@ -2112,7 +2112,7 @@ var datas = new FormData($('#ajaxs').get(0));
 
         $.ajax({
         type:'POST',
-        url:"{% url 'staff.html' %}",
+        url:"{% url 'stafftwo.html' %}",
         data:datas,
         csrfmiddlewaretoken: '{{ csrf_token }}',
         contentType: 'multipart/form-data',
@@ -2193,7 +2193,7 @@ var datass = new FormData($('#ajaxsadmin').get(0));
 
         $.ajax({
         type:'POST',
-        url:"{% url 'staff.html' %}",
+        url:"{% url 'stafftwo.html' %}",
         data:datass,
         csrfmiddlewaretoken: '{{ csrf_token }}',
         contentType: 'multipart/form-data',
@@ -2247,7 +2247,7 @@ var datass = new FormData($('#ajaxsadmin').get(0));
 function inputASLuser(ASLvalue){
         $.ajax({
         type:'POST',
-        url:"{% url 'staff.html' %}",
+        url:"{% url 'stafftwo.html' %}",
         data:{
         'inputASL':ASLvalue,
         csrfmiddlewaretoken: '{{ csrf_token }}',
