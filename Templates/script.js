@@ -16,20 +16,22 @@ function startVideo() {
 
 // Capture employee face image and perform recognition
 const captureBtn = document.getElementById('capture')
-captureBtn.addEventListener('click', async () => {
+captureBtn.addEventListener('click', () => {
   const canvas = faceapi.createCanvasFromMedia(video)
   const displaySize = { width: video.width, height: video.height }
   faceapi.matchDimensions(canvas, displaySize)
-  const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-  const resizedDetections = faceapi.resizeResults(detections, displaySize)
-  canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-  faceapi.draw.drawDetections(canvas, resizedDetections)
-  const uniqueId = await performRecognition(resizedDetections)
-  markAttendance(uniqueId)
+  faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().then(detections => {
+    const resizedDetections = faceapi.resizeResults(detections, displaySize)
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+    faceapi.draw.drawDetections(canvas, resizedDetections)
+    performRecognition(resizedDetections).then(uniqueId => {
+      markAttendance(uniqueId)
+    })
+  })
 })
 
 // Perform face recognition using unique identifier
-async function performRecognition(detections) {
+function performRecognition(detections) {
   // Convert the face image to a base64-encoded string
   const canvas = document.createElement('canvas')
   canvas.width = detections.inputSize.width
@@ -46,25 +48,30 @@ async function performRecognition(detections) {
   const base64Image = canvas.toDataURL()
 
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
-  const response = await $.ajax({
-    url: '/api/employee-recognition',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({ image: base64Image })
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: '/api/employee-recognition',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({ image: base64Image }),
+      success: function(data) {
+        //resolve(data.employeeId)
+        alert("Match")
+      },
+      error: function(xhr, status, error) {
+        reject(error)
+      }
+    })
   })
-  const data = response
-
-  // Return the unique identifier
-  return data.employeeId
 }
 
 // Mark employee attendance using the unique identifier
-function markAttendance(uniqueId) {
+//function markAttendance(uniqueId) {
   // Make an API call to mark attendance of the employee with the provided unique identifier
-  $.ajax({
-    url: '/api/mark-attendance',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({ employeeId: uniqueId })
-  })
-}
+ // $.ajax({
+  //  url: '/api/mark-attendance',
+   // type: 'POST',
+    //contentType: 'application/json',
+    //data: JSON.stringify({ employeeId: uniqueId })
+  //})
+//}

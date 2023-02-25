@@ -7019,6 +7019,13 @@ def stafftwo(request):
         notifyadmin=submitstockorder.objects.all().count()
     else:
         notifyadmin=0
+
+        
+    if is_ajax(request=request) and request.POST.get("image"):
+            context={
+            'data':'Match'),
+            }
+            return JsonResponse(context)
     if is_ajax(request=request) and request.POST.get("timeinfirst"):
             day=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%A')
             datetoday=datetime.datetime.now(pytz.timezone('Asia/Singapore')).strftime('%d')
