@@ -1,8 +1,8 @@
     Promise.all([
-      faceapi.nets.tinyFaceDetector.loadFromUri('kgdcafe.com/static/models'),
-      faceapi.nets.faceLandmark68Net.loadFromUri('kgdcafe.com/static/models'),
-      faceapi.nets.faceRecognitionNet.loadFromUri('kgdcafe.com/static/models'),
-      faceapi.nets.faceExpressionNet.loadFromUri('kgdcafe.com/static/models')
+      faceapi.nets.tinyFaceDetector.loadFromUri('./static/models'),
+      faceapi.nets.faceLandmark68Net.loadFromUri('./static/models'),
+      faceapi.nets.faceRecognitionNet.loadFromUri('./static/models'),
+      faceapi.nets.faceExpressionNet.loadFromUri('./static/models')
     ]).then(startVideo)
 
     // Get video stream and start capturing images
