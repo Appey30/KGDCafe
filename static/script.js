@@ -1,3 +1,4 @@
+const video = document.getElementById('video') 
     Promise.all([
       faceapi.nets.tinyFaceDetector.loadFromUri('../static/models'),
       faceapi.nets.faceLandmark68Net.loadFromUri('../static/models'),
