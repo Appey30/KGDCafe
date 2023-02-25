@@ -73,12 +73,6 @@
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ employeeId: uniqueId })
-        success: function(data) {
-        
-        alert("Match2")
-        },
-        error: function(error) {
-        alert("error2")
       })
     }
 
