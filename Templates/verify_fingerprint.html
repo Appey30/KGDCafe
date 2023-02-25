@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Verify Fingerprint</title>
+  </head>
+  <body>
+    <h1>Verify Fingerprint</h1>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="employee_id" value="{{ employee.id }}">
+      <div class="form-group">
+        <label for="fingerprint_data">Fingerprint Data:</label>
+        <textarea class="form-control" id="fingerprint_data" name="fingerprint_data" rows="10"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Verify Fingerprint</button>
+    </form>
+  </body>
+</html>

@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import auth, User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import messengerbag, timesheet, Acceptorder, Rejectorder,Customer, acknowledgedstockorder,submitstockorder, user1, Categories, Sizes, Subcategories, PSizes, punchedprod,punchedprodso,queue1, queue2, queue3, Sales, Dailysales, couponlist
+from .models import Employee, Fingerprint, messengerbag, timesheet, Acceptorder, Rejectorder,Customer, acknowledgedstockorder,submitstockorder, user1, Categories, Sizes, Subcategories, PSizes, punchedprod,punchedprodso,queue1, queue2, queue3, Sales, Dailysales, couponlist
 from .forms import editform, punched,punchedso, stocksandexpenses,stockorderform
 from django.db.models.functions import (TruncDate, TruncDay, TruncHour, TruncMinute, TruncSecond)
 from django.urls import reverse
@@ -37,6 +37,7 @@ import base64
 import string
 from django.utils.encoding import smart_str
 from django.views.generic import View
+from django.views import View as Views
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .logic import LOGIC_RESPONSES
@@ -44,6 +45,53 @@ from pprint import pprint
 from django.utils.datastructures import MultiValueDictKeyError
 from django.db.models import Q
 from social_django.models import UserSocialAuth
+
+#from pyzk.zkmodules.defs import *
+#from pyzk.zkmodules import ZK4000
+#from pyzk import const
+from pyfingerprint.pyfingerprint import PyFingerprint
+import time
+
+def enroll_fingerprints(request, employee_id):
+    employee = Employee.objects.get(pk=employee_id)
+    if request.method == 'POST':
+        try:
+            f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+            if not f.verifyPassword():
+                raise ValueError('The given fingerprint sensor password is wrong!')
+        except Exception as e:
+            print('Exception message: ' + str(e))
+            return render(request, 'enroll_fingerprints.html', {'employee': employee, 'error_message': 'Could not initialize fingerprint sensor.'})
+        if not f.readImage():
+            return render(request, 'enroll_fingerprints.html', {'employee': employee, 'error_message': 'Could not read image from fingerprint sensor.'})
+        f.convertImage(0x01)
+        fingerprint_data = f.downloadCharacteristics('char')
+        fingerprint = Fingerprint(employee=employee, data=fingerprint_data)
+        fingerprint.save()
+        return redirect('employee_detail', employee_id=employee_id)
+    return render(request, 'enroll_fingerprints.html', {'employee': employee})
+
+def verify_fingerprint(request, employee_id):
+    employee = Employee.objects.get(pk=employee_id)
+    fingerprints = Fingerprint.objects.filter(employee=employee)
+    if request.method == 'POST':
+        fingerprint_data = request.POST['fingerprint_data']
+        try:
+            f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+            if not f.verifyPassword():
+                raise ValueError('The given fingerprint sensor password is wrong!')
+        except Exception as e:
+            print('Exception message: ' + str(e))
+            return render(request, 'verify_fingerprint.html', {'employee': employee, 'error_message': 'Could not initialize fingerprint sensor.'})
+        f.loadTemplate(fingerprint_data, 'char')
+        for fingerprint in fingerprints:
+            if f.loadTemplate(fingerprint.data, 'char'):
+                if f.compareCharacteristics() == 0:
+                    return render(request, 'verify_fingerprint.html', {'employee': employee, 'success_message': 'Fingerprint verified.'})
+        return render(request, 'verify_fingerprint.html', {'employee': employee, 'error_message': 'Fingerprint not recognized.'})
+    return render(request, 'verify_fingerprint.html', {'employee': employee})
+
+
 
 PAGE_ACCESS_TOKEN = os.environ.get('PAGE_ACCESS_TOKEN')
 VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
