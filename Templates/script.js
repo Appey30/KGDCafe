@@ -7,7 +7,7 @@ Promise.all([
 
 // Get video stream and start capturing images
 function startVideo() {
-  navigator.getUserMedia(
+  navigator.mediaDevices.getUserMedia(
     { video: {} },
     stream => video.srcObject = stream,
     err => console.error(err)
