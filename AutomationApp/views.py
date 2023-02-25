@@ -7023,7 +7023,7 @@ def stafftwo(request):
         
     if is_ajax(request=request) and request.POST.get("image"):
             context={
-            'data':'Match'),
+            'data':'Match',
             }
             return JsonResponse(context)
     if is_ajax(request=request) and request.POST.get("timeinfirst"):
