@@ -14,4 +14,74 @@
       <button type="submit" class="btn btn-primary">Enroll Fingerprints</button>
     </form>
   </body>
+  <script>
+  // Load the face-api.js library
+Promise.all([
+  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+  faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('/models')
+]).then(startAttendance);
+
+// Start the attendance tracking
+function startAttendance() {
+  // Access the device camera
+  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+    .then(function(stream) {
+      // Create a video element to display the camera stream
+      var video = document.createElement('video');
+      video.srcObject = stream;
+      video.play();
+      
+      // Create a canvas element to draw the detected faces
+      var canvas = document.createElement('canvas');
+      document.body.appendChild(canvas);
+      var ctx = canvas.getContext('2d');
+      
+      // Add an event listener to the video element to detect faces
+      video.addEventListener('play', function() {
+        setInterval(function() {
+          // Detect faces in the video stream
+          var faces = faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+            .withFaceLandmarks()
+            .withFaceDescriptors();
+
+          // Draw the detected faces on the canvas
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          faces.forEach(function(face) {
+            var box = face.detection.box;
+            var x = box.x;
+            var y = box.y;
+            var width = box.width;
+            var height = box.height;
+            ctx.strokeStyle = '#00FF00';
+            ctx.strokeRect(x, y, width, height);
+          });
+
+          // Match the detected faces against a database of known faces
+          var faceMatcher = new faceapi.FaceMatcher(employeeDatabase);
+          var identifiedFaces = faces.map(function(face) {
+            return { face: face, match: faceMatcher.findBestMatch(face.descriptor) };
+          });
+
+          // Record the attendance of the identified employees
+          identifiedFaces.forEach(function(identifiedFace) {
+            var employeeName = identifiedFace.match.toString();
+            if (employeeName !== 'unknown') {
+              recordAttendance(employeeName);
+            }
+          });
+        }, 100);
+      });
+    });
+}
+
+// Record the attendance of an employee
+function recordAttendance(employeeName) {
+  // Send an HTTP request to record the attendance
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/record-attendance');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({ employeeName: employeeName }));
+}
+  </script>
 </html>
