@@ -57,6 +57,9 @@ function performRecognition(toDataURL) {
     success: function(data) {
       // Call the callback function with the unique identifier
       alert('Success')
+    },
+    error: function(error) {
+    alert('Errrooooooor')
     }
   });
 }
