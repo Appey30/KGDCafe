@@ -39,12 +39,12 @@ function startVideo() {
 function performRecognition(result) {
 alert('result:  '+JSON.stringify(result))
 alert('result.detection:  '+JSON.stringify(result[0].detection))
-alert('result.detection.length:  '+result.detection.length)
+
   const canvas = document.createElement('canvas')
   canvas.width = video.width
   canvas.height = video.height
   const ctx = canvas.getContext('2d')
-  if (result && result[0].detection && result[0].detection.length > 0) {
+  if (result && result[0].detection) {
   alert('detecteddetecteddetecteddetecteddetected')
     const faces = result.detection[0].detections
 alert('facesfacesfacesfaces:  '+JSON.stringify(faces))
