@@ -15,8 +15,8 @@ function startVideo() {
     err => console.error(err)
   )
 }
-
-video.addEventListener('play', () => {
+const captureBtn = document.getElementById('capture');
+captureBtn.addEventListener('click', () => {
   var resizedDetections = '';
   const canvas = faceapi.createCanvasFromMedia(video)
   document.body.append(canvas)
