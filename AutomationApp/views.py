@@ -7002,6 +7002,7 @@ def staff(request):
 @login_required
 def staffthree(request):
     if request.method == 'POST' and json.loads(request.body).get('image'):
+        print('imageimageimageimageimageimageimageimageimageimage')
         data = json.loads(request.body)
         image_data = data.get('image', '')
         if image_data:
@@ -7015,6 +7016,7 @@ def staffthree(request):
             return JsonResponse({'error': 'Image data is missing'}, status=400)
 
     if request.method == 'POST' and json.loads(request.body).get('employeeId'):
+        print('employeeIdemployeeIdemployeeIdemployeeIdemployeeIdemployeeId')
         data = json.loads(request.body)
         employee_id = data.get('employeeId', '')
         if employee_id:
