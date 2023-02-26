@@ -40,9 +40,9 @@ video.addEventListener('play', () => {
 
 function performRecognition(detections) {
   const canvas = document.createElement('canvas')
-  canvas.width = detections.inputSize.width
+  canvas.width = video.width
   alert('canvas.width: '+canvas.width)
-  canvas.height = detections.inputSize.height
+  canvas.height = video.height
   alert('canvas.height: '+canvas.height)
   const ctx = canvas.getContext('2d')
 
