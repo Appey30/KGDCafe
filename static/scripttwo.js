@@ -53,8 +53,8 @@ function performRecognition(toDataURL) {
     url: '/index/staffthree',
     type: 'POST',
     contentType: 'application/json',
-    data:  {
-    "image": JSON.stringify(base64Image) ,
+    data:{
+    'image':JSON.stringify(base64Image), 
     csrfmiddlewaretoken: '{{ csrf_token }}'
     },
     success: function(data) {
