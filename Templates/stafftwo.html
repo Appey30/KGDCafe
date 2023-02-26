@@ -1857,13 +1857,14 @@
                 <input type="password" oninput="passwordcorrected()" id="passwordid" class="passwordclass" name="passwordusername" placeholder="Password"></input><small id="errorpassword"></small><br>
                 <br>
                 <!--<input type="file" id="imageid" name="imagename" placeholder="Take Photo" accept="image/*" capture="user"></input>-->
-                
-                    <video id="video"  width="640" height="480" autoplay></video>
+
+                <video id="video" width="640" height="480" autoplay></video>
+                <button type="button" id="Face_Recognition">Face Regognition</button>
                 
                 <button type="button" id="capture">Capture</button>
                 <script defer type="text/javascript" src="{% static 'face-api.min.js' %}"></script>
                 <script defer type="text/javascript" src="{% static 'script.js' %}"></script>
-                
+
 
                 <button type="button" onclick="loginuser()" id="loginbuttonid" value="Loginvalue" name="loginbuttonusername">Start Duty Now</button>
             </form>
