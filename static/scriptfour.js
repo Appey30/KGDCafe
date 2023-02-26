@@ -46,8 +46,8 @@ alert('result.detection:  '+JSON.stringify(result[0].detection))
   const ctx = canvas.getContext('2d')
   if (result && result[0].detection) {
   alert('detecteddetecteddetecteddetecteddetected')
-    const faces = result.detection[0].detections
-alert('facesfacesfacesfaces:  '+JSON.stringify(faces))
+    const faces = result[0].detection
+
     faces.forEach(face => {
       const box = face.detection.box
       const x = box.x < 0 ? 0 : box.x
