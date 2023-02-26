@@ -25,11 +25,12 @@ function startVideo() {
       .withFaceLandmarks()
       .withFaceExpressions()
       .then(detections => {
+        alert('iiiiiidetections:  '+detections)
+        alert('iiiiiiidisplaySize:  '+displaySize)
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
+        alert('iiiiiiiresizedDetections:  '+resizedDetections)
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
         faceapi.draw.drawDetections(canvas, resizedDetections)
-        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-        faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
         performRecognition(resizedDetections)
       })
   })
@@ -39,7 +40,7 @@ function performRecognition(result) {
 alert('result:  '+JSON.stringify(result))
 alert('result.detection:  '+result[0].detection)
 alert('result.detection22222222:  '+result.detection[0])
-console.log('performRecognitionperformRecognitionperformRecognitionperformRecognitionperformRecognition')
+
   const canvas = document.createElement('canvas')
   canvas.width = video.width
   canvas.height = video.height
