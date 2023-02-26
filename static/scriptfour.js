@@ -36,8 +36,8 @@ function startVideo() {
 //})
 
 function performRecognition(result) {
-alert('result'+result)
-alert('result.detectionsList'+result.detectionsList)
+alert('result:  '+JSON.stringify(result))
+alert('result.detectionsList:  '+result.detectionsList)
 console.log('performRecognitionperformRecognitionperformRecognitionperformRecognitionperformRecognition')
   const canvas = document.createElement('canvas')
   canvas.width = video.width
