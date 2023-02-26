@@ -16,20 +16,18 @@ function startVideo() {
 }
 const captureBtn  = document.getElementById('capture');
 captureBtn.addEventListener('click', () => {
-  var resizedDetections = '';
   const canvas = faceapi.createCanvasFromMedia(video)
   document.body.append(canvas)
   const displaySize = { width: video.width, height: video.height }
   faceapi.matchDimensions(canvas, displaySize)
 
     const detections = faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-    resizedDetections = faceapi.resizeResults(detections, displaySize)
+    const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-    var itoDataURL = canvas.toDataURL()
-  performRecognition(itoDataURL);
+  performRecognition(resizedDetections);
   
 })
 
@@ -41,7 +39,7 @@ captureBtn.addEventListener('click', () => {
    
 
 // Perform face recognition using unique identifier
-function performRecognition(toDataURL) {
+function performRecognition(detections) {
   // Convert the face image to a base64-encoded string
   const canvas = document.createElement('canvas');
   canvas.width = video.width;
@@ -55,7 +53,7 @@ function performRecognition(toDataURL) {
     const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height;
     ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height);
   });
-  const base64Image =
+  const base64Image = canvas.toDataURL()
 
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   $.ajax({
