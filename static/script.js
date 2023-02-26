@@ -24,7 +24,7 @@ const loginbodyid = document.getElementById('loginbodyid')
     captureBtn.addEventListener('click', () => {
       
       const canvas = faceapi.createCanvasFromMedia(video)
-      loginbodyid.append(canvas)
+      document.body.append(canvas)
       const displaySize = { width: video.width, height: video.height }
       faceapi.matchDimensions(canvas, displaySize)
       faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().then(detections => {
