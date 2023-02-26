@@ -40,6 +40,7 @@ function performRecognition(detections) {
   const ctx = canvas.getContext('2d')
 
   if (detections.detections && detections.detections.length > 0) {
+    alert('face detected')
     detections.detections.forEach(detection => {
       const box = detection.detection.box
       const x = box.x < 0 ? 0 : box.x
