@@ -7004,7 +7004,9 @@ def staffthree(request):
     userr=request.user.id
     testdata = json.loads(request.body)
     testimage_data = data.get('image', '')
+    testemployee_id = data.get('employeeId', '')
     print('testimage_data',testimage_data)
+    print('testemployee_id',testemployee_id)
     if request.method == 'POST' and json.loads(request.body).get('image'):
         print('imageimageimageimageimageimageimageimageimageimage')
         data = json.loads(request.body)
