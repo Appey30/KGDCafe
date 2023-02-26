@@ -28,12 +28,12 @@ video.addEventListener('play', () => {
     faceapi.draw.drawDetections(canvas, resizedDetections)
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-    alert('resizedDetections1: '+JSON.stringify(resizedDetections))
+    alert('resizedDetections.length: '+resizedDetections.length)
     if (resizedDetections.length > 0) {
       performRecognition(resizedDetections)
       alert('resizedDetections2: '+JSON.stringify(resizedDetections))
     }
-    alert('resizedDetections3: '+JSON.stringify(resizedDetections))
+    
   }, 100)
 })
 
