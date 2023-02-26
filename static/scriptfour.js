@@ -34,6 +34,7 @@ video.addEventListener('loadedmetadata', () => {
 })
 
 function performRecognition(detections) {
+console.log('performRecognitionperformRecognitionperformRecognitionperformRecognitionperformRecognition')
   const canvas = document.createElement('canvas')
   canvas.width = video.width
   canvas.height = video.height
@@ -65,6 +66,7 @@ function performRecognition(detections) {
   }
 }
 function markAttendance(uniqueId) {
+console.log('markAttendancemarkAttendancemarkAttendancemarkAttendancemarkAttendance')
   fetch('/static/staffthree', {
     method: 'POST',
     headers: {
