@@ -15,7 +15,7 @@ function startVideo() {
   )
 }
 
-video.addEventListener('loadedmetadata', () => {
+//video.addEventListener('loadedmetadata', () => {
   const captureBtn = document.getElementById('capture')
   captureBtn.addEventListener('click', () => {
     const canvas = faceapi.createCanvasFromMedia(video)
@@ -31,7 +31,7 @@ video.addEventListener('loadedmetadata', () => {
         performRecognition(resizedDetections)
       })
   })
-})
+//})
 
 function performRecognition(detections) {
 console.log('performRecognitionperformRecognitionperformRecognitionperformRecognitionperformRecognition')
@@ -40,7 +40,7 @@ console.log('performRecognitionperformRecognitionperformRecognitionperformRecogn
   canvas.height = video.height
   const ctx = canvas.getContext('2d')
   if (detections && detections.detections) {
-  console.log('detectionsdetectionsdetectionsdetectionsdetections')
+  alert('detectionsdetectionsdetectionsdetectionsdetections')
     detections.detections.forEach(detection => {
       const box = detection.detection.box
       const x = box.x < 0 ? 0 : box.x
