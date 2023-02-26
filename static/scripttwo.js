@@ -55,7 +55,7 @@ function performRecognition(toDataURL) {
     contentType: 'application/json',
     data:{
     'image':JSON.stringify(base64Image), 
-    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+    csrfmiddlewaretoken: '{{ csrf_token }}'
     },
     success: function(data) {
       // Call the callback function with the unique identifier
