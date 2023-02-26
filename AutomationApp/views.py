@@ -7002,7 +7002,7 @@ def staff(request):
 @login_required
 def staffthree(request):
     userr=request.user.id
-    testdata = json.loads(request.body,'')
+    testdata = json.loads(request.body) or ''
     testimage_data = testdata.get('image', '')
     testemployee_id = testdata.get('employeeId', '')
     print('testimage_data',testimage_data)
