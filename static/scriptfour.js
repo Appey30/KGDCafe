@@ -31,34 +31,29 @@ function startVideo() {
         alert('iiiiiiiresizedDetections:  '+JSON.stringify(resizedDetections))
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
         faceapi.draw.drawDetections(canvas, resizedDetections)
-        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-        faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
         performRecognition(resizedDetections)
       })
   })
 //})
 
 function performRecognition(result) {
-
-
+  const detections = result.detections
   const canvas = document.createElement('canvas')
-  canvas.width = video.width
-  canvas.height = video.height
+  canvas.width = detections.inputSize.width
+  canvas.height = detections.inputSize.height
   const ctx = canvas.getContext('2d')
 
-
-    const faces = result[0].detection
-
-    faces.forEach(face => {
-      const box = face.detection.box
+  if (detections.detections && detections.detections.length > 0) {
+    detections.detections.forEach(detection => {
+      const box = detection.detection.box
       const x = box.x < 0 ? 0 : box.x
       const y = box.y < 0 ? 0 : box.y
       const width = box.x + box.width > canvas.width ? canvas.width - box.x : box.width
       const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
       ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
-
     const base64Image = canvas.toDataURL()
+
 
 
       fetch('/static/staffthree', {
@@ -72,7 +67,7 @@ function performRecognition(result) {
       .then(data => {
         markAttendance(data.employeeId)
       })
-  
+  }
   console.log('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
 }
 function markAttendance(uniqueId) {
