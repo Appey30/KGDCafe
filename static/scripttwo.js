@@ -43,8 +43,8 @@ video.addEventListener('play', () => {
 function performRecognition(detections) {
   // Convert the face image to a base64-encoded string
   const canvas = document.createElement('canvas');
-  canvas.width = detections.inputSize.width;
-  canvas.height = detections.inputSize.height;
+  canvas.width = video.width;
+  canvas.height = video.height;
   const ctx = canvas.getContext('2d');
   detections.detections.forEach(function(detection) {
     const box = detection.detection.box;
