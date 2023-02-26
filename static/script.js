@@ -18,6 +18,7 @@ const loginbodyid = document.getElementById('loginbodyid')
     }
     Face_Recognition.addEventListener('click', () => {
     video.play();
+    alert("it should play")
     })
     // Capture employee face image and perform recognition
     const captureBtn = document.getElementById('capture')
@@ -33,6 +34,7 @@ const loginbodyid = document.getElementById('loginbodyid')
         faceapi.draw.drawDetections(canvas, resizedDetections)
         performRecognition(resizedDetections).then(uniqueId => {
         //markAttendance(uniqueId)
+        alert('it should capture')
         })
       })
     })
