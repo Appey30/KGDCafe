@@ -25,10 +25,7 @@ function startVideo() {
       .withFaceLandmarks()
       .withFaceExpressions()
       .then(detections => {
-        alert('iiiiiidetections:  '+JSON.stringify(detections))
-        alert('iiiiiiidisplaySize:  '+JSON.stringify(displaySize))
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
-        alert('iiiiiiiresizedDetections:  '+JSON.stringify(resizedDetections))
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
         faceapi.draw.drawDetections(canvas, resizedDetections)
         performRecognition(resizedDetections)
@@ -36,15 +33,13 @@ function startVideo() {
   })
 //})
 
-function performRecognition(result) {
-  const detections = result.detections
+function performRecognition(detections) {
   const canvas = document.createElement('canvas')
-  canvas.width = video.width
-  canvas.height = video.height
+  canvas.width = detections.inputSize.width
+  canvas.height = detections.inputSize.height
   const ctx = canvas.getContext('2d')
 
   if (detections.detections && detections.detections.length > 0) {
-    alert('detecteddetecteddetecteddetecteddetected')
     detections.detections.forEach(detection => {
       const box = detection.detection.box
       const x = box.x < 0 ? 0 : box.x
@@ -53,25 +48,24 @@ function performRecognition(result) {
       const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
       ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
-  }
     const base64Image = canvas.toDataURL()
-    alert('base64Image:   '+base64Image)
 
-
-      fetch('/static/staffthree', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ image: base64Image })
-      })
-      .then(response => response.json())
-      .then(data => {
-        markAttendance(data.employeeId)
-      })
-  
-  
+    fetch('/static/staffthree', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ image: base64Image })
+    })
+    .then(response => response.json())
+    .then(data => {
+      markAttendance(data.employeeId)
+    })
+  } else {
+    alert('No faces detected')
+  }
 }
+
 function markAttendance(uniqueId) {
 console.log('markAttendancemarkAttendancemarkAttendancemarkAttendancemarkAttendance')
   fetch('/static/staffthree', {
