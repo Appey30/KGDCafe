@@ -1859,17 +1859,10 @@
                 <!--<input type="file" id="imageid" name="imagename" placeholder="Take Photo" accept="image/*" capture="user"></input>-->
 
                 <video id="video" width="640" height="480" autoplay muted></video>
-                <button type="button" id="Face_Recognition">Face Regognition</button>
+                <a src="{% url 'staffthree.html' %}"></a><button type="button" id="Face_Recognition">Face Regognition</button></a>
 
-                <button type="button" id="capture">Capture</button>
+                
                 <div id="success-msg" style="display: none;"></div>
-                <script defer type="text/javascript" src="{% static 'face-apithree.min.js' %}"></script>
-                <script defer type="text/javascript" src="{% static 'scripttwo.js' %}"></script>
-                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
-                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
-                <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
-                <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-expression-recognition"></script>
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
                 <button type="button" onclick="loginuser()" id="loginbuttonid" value="Loginvalue" name="loginbuttonusername">Start Duty Now</button>
             </form>

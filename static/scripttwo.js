@@ -4,37 +4,39 @@ Promise.all([
   faceapi.nets.faceLandmark68Net.loadFromUri('../static/models'),
   faceapi.nets.faceRecognitionNet.loadFromUri('../static/models'),
   faceapi.nets.faceExpressionNet.loadFromUri('../static/models')
-])
-// Attach loadedmetadata event handler to video element
-video.addEventListener('loadedmetadata', function() {
-  // Create canvas element and resize it to match video size
-  const canvas = document.createElement('canvas');
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
+]).then(startVideo)
 
-  // Attach click event handler to capture button
-  const captureBtn = document.getElementById('capture');
-  captureBtn.addEventListener('click', function() {
-    // Draw current video frame onto canvas
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Perform face detection on canvas
-    const detectionPromise = faceapi.detectAllFaces(canvas, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
-    detectionPromise.then(function(detections) {
-      // Process face detection results
-      const resizedDetections = faceapi.resizeResults(detections, { width: video.videoWidth, height: video.videoHeight });
-      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-      faceapi.draw.drawDetections(canvas, resizedDetections);
+function startVideo() {
+  navigator.getUserMedia(
+    { video: {} },
+    stream => video.srcObject = stream,
+    err => console.error(err)
+  )
+}
+
+video.addEventListener('play', () => {
+  const canvas = faceapi.createCanvasFromMedia(video)
+  document.body.append(canvas)
+  const displaySize = { width: video.width, height: video.height }
+  faceapi.matchDimensions(canvas, displaySize)
+  setInterval(async () => {
+    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+    const resizedDetections = faceapi.resizeResults(detections, displaySize)
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+    faceapi.draw.drawDetections(canvas, resizedDetections)
+    faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+    faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+  }, 100)
+  performRecognition(resizedDetections);
+})
 
       // Perform face recognition using unique identifier
-      performRecognition(resizedDetections);
+      
       //  markAttendance(uniqueId);
       
       
-    });
-  });
-});
+   
 
 // Perform face recognition using unique identifier
 function performRecognition(detections, callback) {
@@ -55,7 +57,7 @@ function performRecognition(detections, callback) {
 
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   $.ajax({
-    url: '/api/employee-recognition',
+    url: '{% url "stafftwo.html" %}',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({ image: base64Image }),
