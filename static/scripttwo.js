@@ -35,6 +35,7 @@ faceapi.detectAllFaces(canvas, options).withFaceLandmarks().withFaceExpressions(
   .catch(function(error) {
     console.error(error);
   });
+  });
       // Perform face recognition using unique identifier
       
       //  markAttendance(uniqueId);
