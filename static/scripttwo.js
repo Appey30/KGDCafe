@@ -51,11 +51,11 @@ function performRecognition(toDataURL) {
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   $.ajax({
     url: '/index/staffthree',
-    type: 'POST',
+    type: 'GET',
     contentType: 'application/json',
     data:{
     'image':JSON.stringify(base64Image), 
-    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+    
     },
     success: function(data) {
       // Call the callback function with the unique identifier

@@ -7001,7 +7001,7 @@ def staff(request):
 
 @login_required
 def staffthree(request):
-    if is_ajax(request=request) and request.POST.get("image"):
+    if is_ajax(request=request) and request.GET.get("image"):
         print("imageimageimageimageimageimageimageimage")
         try:
             data = json.loads(request.body)
@@ -7025,7 +7025,7 @@ def staffthree(request):
         except (KeyError, ValueError, TypeError):
             return HttpResponseBadRequest('Invalid request body')
 
-    if is_ajax(request=request) and request.POST.get("employeeId"):
+    if is_ajax(request=request) and request.GET.get("employeeId"):
         print("employeeIdemployeeIdemployeeIdemployeeIdemployeeIdemployeeId")
         try:
             data = json.loads(request.body)
