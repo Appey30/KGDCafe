@@ -1,5 +1,6 @@
 ﻿{% extends 'base.html' %}
 {% load static %}
+{% csrf_token %}
 <!DOCTYPE html>
 <html>
 
@@ -1858,63 +1859,63 @@
                 <br>
                 <!--<input type="file" id="imageid" name="imagename" placeholder="Take Photo" accept="image/*" capture="user"></input>-->
 
-                
+
                 <a href="{% url 'staffthree.html' %}"><button type="button" id="Face_Recognition">Face Regognition</button></a>
 
-                
+
                 <div id="success-msg" style="display: none;"></div>
 
                 <button type="button" onclick="loginuser()" id="loginbuttonid" value="Loginvalue" name="loginbuttonusername">Start Duty Now</button>
             </form>
 
-            </div>
-            <div class="loginfoot">
-            </div>
+        </div>
+        <div class="loginfoot">
         </div>
     </div>
+</div>
 
 
-    <div class="adminpermissionbg" id="adminpermissionbgid">
-        <div class="permissiondiv">
-            <div class="permissionhead">
-                <span onclick="admintimeinclose()" class="stafftimeincloseclass">&times;</span>
-                <h4>Admin Permission</h4>
-            </div>
-            <div class="permissionbody">
-                <form id="ajaxsadmin" method="POST" action="">
-                    {% csrf_token %}
-                    <input type="text" oninput="usernameadmincorrected()" id="usernameadminid" class="usernameadminclass" name="usernameadminname" placeholder="Username"></input><small id="erroradminusername"></small><br>
-                    <input type="password" oninput="passwordadmincorrected()" id="passwordadminid" class="passwordadminclass" name="passwordadminname" placeholder="Password"></input><small id="erroradminpassword"></small><br>
-                    <br>
-                    <button type="button" onclick="permissionuser()" id="permissionbuttonid" value="Permissionvalue" name="permissionbuttonname">Confirm</button>
-                </form>
-
-            </div>
-            <div class="permissionfoot">
-            </div>
+<div class="adminpermissionbg" id="adminpermissionbgid">
+    <div class="permissiondiv">
+        <div class="permissionhead">
+            <span onclick="admintimeinclose()" class="stafftimeincloseclass">&times;</span>
+            <h4>Admin Permission</h4>
         </div>
-    </div>
-
-    <div class="inputASLbg" id="inputASLbgid">
-        <div class="inputASLdiv">
-            <div class="inputASLbghead">
-                <span onclick="inputASLbgclose()" class="stafftimeincloseclass">&times;</span>
-                <h4>Input Advance Salary Loan Amount</h4>
-            </div>
-            <div class="inputASLbody">
-
-                <input type="Number" id="inputASLinputid" class="inputASLclass" name="inputASLname" placeholder="Input Advance Salary Loan Amount"></input><br>
+        <div class="permissionbody">
+            <form id="ajaxsadmin" method="POST" action="">
+                {% csrf_token %}
+                <input type="text" oninput="usernameadmincorrected()" id="usernameadminid" class="usernameadminclass" name="usernameadminname" placeholder="Username"></input><small id="erroradminusername"></small><br>
+                <input type="password" oninput="passwordadmincorrected()" id="passwordadminid" class="passwordadminclass" name="passwordadminname" placeholder="Password"></input><small id="erroradminpassword"></small><br>
                 <br>
-                <button type="button" onclick="inputASLuser(document.getElementById('inputASLinputid').value)" id="inputASLbuttonid" value="inputASLvalue" name="inputASLbuttonname">Confirm</button>
+                <button type="button" onclick="permissionuser()" id="permissionbuttonid" value="Permissionvalue" name="permissionbuttonname">Confirm</button>
+            </form>
 
-            </div>
-            <div class="inputASLfoot">
-            </div>
+        </div>
+        <div class="permissionfoot">
         </div>
     </div>
+</div>
+
+<div class="inputASLbg" id="inputASLbgid">
+    <div class="inputASLdiv">
+        <div class="inputASLbghead">
+            <span onclick="inputASLbgclose()" class="stafftimeincloseclass">&times;</span>
+            <h4>Input Advance Salary Loan Amount</h4>
+        </div>
+        <div class="inputASLbody">
+
+            <input type="Number" id="inputASLinputid" class="inputASLclass" name="inputASLname" placeholder="Input Advance Salary Loan Amount"></input><br>
+            <br>
+            <button type="button" onclick="inputASLuser(document.getElementById('inputASLinputid').value)" id="inputASLbuttonid" value="inputASLvalue" name="inputASLbuttonname">Confirm</button>
+
+        </div>
+        <div class="inputASLfoot">
+        </div>
+    </div>
+</div>
 
 
-    <script>
+<script>
     function openCity(evt, cityName) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -2281,10 +2282,10 @@
 
 
 
-  
-    </script>
+
+</script>
 
     </body>
 
     {% endblock head %}
-    </html>
+</html>
