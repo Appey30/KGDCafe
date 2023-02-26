@@ -4,8 +4,7 @@ Promise.all([
   faceapi.nets.faceLandmark68Net.loadFromUri('../static/models'),
   faceapi.nets.faceRecognitionNet.loadFromUri('../static/models'),
   faceapi.nets.faceExpressionNet.loadFromUri('../static/models')
-]).then(startVideo)
-function startVideo() {
+])
 // Attach loadedmetadata event handler to video element
 video.addEventListener('loadedmetadata', function() {
   // Create canvas element and resize it to match video size
@@ -79,5 +78,4 @@ function markAttendance(uniqueId) {
       console.log('Attendance marked successfully.');
     }
   });
-}
 }
