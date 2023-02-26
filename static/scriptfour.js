@@ -62,7 +62,7 @@ function performRecognition(detections) {
       markAttendance(data.employeeId)
     })
   } else {
-    alert('No faces detected')
+    console.log('No faces detected')
   }
 }
 
