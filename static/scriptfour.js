@@ -47,6 +47,7 @@ function performRecognition(detections) {
       const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
       ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
+    }
     const base64Image = canvas.toDataURL()
 
 
