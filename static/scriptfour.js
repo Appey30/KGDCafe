@@ -43,11 +43,11 @@ function performRecognition(detections) {
     alert('face detected')
     detections.detections.forEach(detection => {
       const box = detection.detection.box
-      const x = (box.x < 50) ? 0 : (box.x - 50)
+      const x = (box.x < 500) ? 0 : (box.x - 500)
       const y = box.y < 0 ? 0 : box.y
       const width = box.x + box.width > canvas.width ? canvas.width - box.x : box.width
       const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
-      ctx.drawImage(video, x, y, width, height,  box.x - 50, box.y, width, height)
+      ctx.drawImage(video, x, y, width, height,  box.x - 500, box.y, width, height)
     })
     const base64Image = canvas.toDataURL()
 
