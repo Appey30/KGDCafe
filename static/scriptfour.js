@@ -1,4 +1,5 @@
 const video = document.getElementById('video');
+const faceOffset = 50;
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('../static/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('../static/models'),
@@ -43,11 +44,11 @@ function performRecognition(detections) {
     alert('face detected')
     detections.detections.forEach(detection => {
       const box = detection.detection.box
-      const x = (box.x < 500) ? 0 : (box.x - 500)
-      const y = box.y < 0 ? 0 : box.y
-      const width = box.x + box.width > canvas.width ? canvas.width - box.x : box.width
-      const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
-      ctx.drawImage(video, x, y, width, height,  box.x - 500, box.y, width, height)
+    const x = box.x + faceOffset // add an offset to the right
+    const y = box.y
+    const width = box.width
+    const height = box.height
+    ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
     const base64Image = canvas.toDataURL()
 
