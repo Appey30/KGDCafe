@@ -6999,6 +6999,47 @@ def staff(request):
             
     return render(request, 'staff.html',{'notifyadmin':notifyadmin,'notifyorder':notifyorder,'punchedtotal':punchedtotal})
 
+@login_required
+def staffthree(request):
+    if is_ajax(request=request) and request.POST.get("image"):
+        print("imageimageimageimageimageimageimageimage")
+        try:
+            data = json.loads(request.body)
+            image_data = data['image'].split(',')[1] # Extract the base64-encoded image data from the request body
+            image_bytes = base64.b64decode(image_data) # Convert the base64-encoded image data to bytes
+            image = face_recognition.load_image_file(BytesIO(image_bytes)) # Load the image as a numpy array
+            face_locations = face_recognition.face_locations(image) # Detect the location of any faces in the image
+            face_encodings = face_recognition.face_encodings(image, face_locations) # Encode the face(s) as vectors
+            known_face_locations = face_recognition.load_image_file("https://kgdcafe.com/static/mj.jpg") # Detect the location of any faces in the image
+            known_face_encodings = face_recognition.face_encodings(known_face_locations)[0] # Encode the face(s) as vectors
+            # Perform face recognition by comparing the encoded face(s) to a database of known faces
+            unique_id = None
+            for face_encoding in face_encodings:
+                matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=0.6)
+                if True in matches:
+                    match_index = matches.index(True)
+                    unique_id = known_employee_ids[match_index]
+                    break
+            # Return the unique identifier of the recognized employee
+            return JsonResponse({'employeeId': unique_id})
+        except (KeyError, ValueError, TypeError):
+            return HttpResponseBadRequest('Invalid request body')
+
+    if is_ajax(request=request) and request.POST.get("employeeId"):
+        print("employeeIdemployeeIdemployeeIdemployeeIdemployeeIdemployeeId")
+        try:
+            data = json.loads(request.body)
+            employee_id = data['employeeId']
+            # Look up the employee record associated with the provided unique identifier
+            employee = Employee.objects.get(id=employee_id)
+            # Mark the employee as present in the attendance record
+            attendance_record = AttendanceRecord(employee=employee, date=datetime.date.today(), status=AttendanceStatus.PRESENT)
+            attendance_record.save()
+            return JsonResponse({'status': 'success'})
+        except (KeyError, ValueError, TypeError, Employee.DoesNotExist):
+            return HttpResponseBadRequest('Invalid request body or employee not found')
+    return render(request, 'staffthree.html',{})
+
 
 @login_required
 def stafftwo(request):
