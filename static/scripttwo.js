@@ -21,16 +21,20 @@ captureBtn.addEventListener('click', () => {
   const displaySize = { width: video.width, height: video.height }
   faceapi.matchDimensions(canvas, displaySize)
 
-    const detections = faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-    const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    faceapi.draw.drawDetections(canvas, resizedDetections)
+const options = new faceapi.TinyFaceDetectorOptions();
+faceapi.detectAllFaces(canvas, options).withFaceLandmarks().withFaceExpressions()
+  .then(function(results) {
+    // Process face detection results
+    const resizedResults = faceapi.resizeResults(results, { width: video.videoWidth, height: video.videoHeight });
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+    faceapi.draw.drawDetections(canvas, resizedResults);
 
-
-  performRecognition(resizedDetections);
-  
-})
-
+    // Perform face recognition using unique identifier
+    performRecognition(resizedDetections)
+  })
+  .catch(function(error) {
+    console.error(error);
+  });
       // Perform face recognition using unique identifier
       
       //  markAttendance(uniqueId);
