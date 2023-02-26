@@ -7017,7 +7017,7 @@ def staffthree(request):
     
     print('testimage_data',testimage_data)
     print('testemployee_id',testemployee_id)
-    if request.method == 'POST' and json.loads(request.body).get('image'):
+    if request.method == 'POST':
         print('imageimageimageimageimageimageimageimageimageimage')
         data = json.loads(request.body)
         image_data = data.get('image', '')
@@ -7031,16 +7031,7 @@ def staffthree(request):
         else:
             return JsonResponse({'error': 'Image data is missing'}, status=400)
 
-    if request.method == 'POST' and json.loads(request.body).get('employeeId'):
-        print('employeeIdemployeeIdemployeeIdemployeeIdemployeeIdemployeeId')
-        data = json.loads(request.body)
-        employee_id = data.get('employeeId', '')
-        if employee_id:
-            # TODO: Mark attendance for the employee with the provided ID
-            # For testing purposes, we'll just return a success message
-            return JsonResponse({'message': 'Attendance marked successfully'})
-        else:
-            return JsonResponse({'error': 'Employee ID is missing'}, status=400)
+
 
     return render(request, 'staffthree.html',{})
 
