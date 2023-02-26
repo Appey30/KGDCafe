@@ -18,7 +18,7 @@ const loginbodyid = document.getElementById('loginbodyid')
     }
     Face_Recognition.addEventListener('click', () => {
     video.play();
-    alert("it should play")
+    
     })
     // Capture employee face image and perform recognition
     const captureBtn = document.getElementById('capture')
@@ -34,13 +34,14 @@ const loginbodyid = document.getElementById('loginbodyid')
         faceapi.draw.drawDetections(canvas, resizedDetections)
         performRecognition(resizedDetections).then(uniqueId => {
         //markAttendance(uniqueId)
-        alert('it should capture')
+        
         })
       })
     })
 
     // Perform face recognition using unique identifier
     function performRecognition(detections) {
+    alert("I should perform recognition")
       // Convert the face image to a base64-encoded string
       const canvas = document.createElement('canvas')
       canvas.width = detections.inputSize.width
@@ -55,6 +56,7 @@ const loginbodyid = document.getElementById('loginbodyid')
         ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
       })
       const base64Image = canvas.toDataURL()
+      alert("I should perform recognition2")
 
       // Make an API call to retrieve the unique identifier of the employee associated with the detected face
       return new Promise((resolve, reject) => {
