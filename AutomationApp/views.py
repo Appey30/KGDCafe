@@ -7003,16 +7003,16 @@ def staff(request):
 def staffthree(request):
     userr=request.user.id
     try:
-        testdata = json.loads(request.body) or ''
+        testdata = json.loads(request.body)
     except JSONDecodeError:
         testdata=''
     try:
         testimage_data = testdata.get('image', '')
-    except JSONDecodeError:
+    except KeyError, ValueError, TypeError:
         testimage_data=''
     try:
         testemployee_id = testdata.get('employeeId', '')
-    except JSONDecodeError:
+    except KeyError, ValueError, TypeError:
         testemployee_id=''
     
     print('testimage_data',testimage_data)
