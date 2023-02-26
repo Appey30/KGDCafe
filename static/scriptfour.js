@@ -33,16 +33,18 @@ function startVideo() {
   })
 //})
 
-function performRecognition(detections) {
+function performRecognition(result) {
 console.log('performRecognitionperformRecognitionperformRecognitionperformRecognitionperformRecognition')
   const canvas = document.createElement('canvas')
   canvas.width = video.width
   canvas.height = video.height
   const ctx = canvas.getContext('2d')
-  if (detections && detections.detections) {
-  alert('detectionsdetectionsdetectionsdetectionsdetections')
-    detections.detections.forEach(detection => {
-      const box = detection.detection.box
+  if (result && result.detectionsList && result.detectionsList.length > 0) {
+  alert('detecteddetecteddetecteddetecteddetected')
+    const faces = result.detectionsList[0].detections
+
+    faces.forEach(face => {
+      const box = face.detection.box
       const x = box.x < 0 ? 0 : box.x
       const y = box.y < 0 ? 0 : box.y
       const width = box.x + box.width > canvas.width ? canvas.width - box.x : box.width
