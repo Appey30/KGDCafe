@@ -33,6 +33,7 @@ video.addEventListener('play', () => {
       performRecognition(resizedDetections)
       alert('resizedDetections2: '+JSON.stringify(resizedDetections))
     }
+    alert('resizedDetections2: '+JSON.stringify(resizedDetections))
   }, 100)
 })
 
