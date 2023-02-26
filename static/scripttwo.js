@@ -28,10 +28,10 @@ video.addEventListener('loadedmetadata', function() {
       faceapi.draw.drawDetections(canvas, resizedDetections);
 
       // Perform face recognition using unique identifier
-     // performRecognition(resizedDetections, function(uniqueId) {
+      performRecognition(resizedDetections);
       //  markAttendance(uniqueId);
-      alert('Reached perform recognition and mark attendance')
-      //});
+      
+      
     });
   });
 });
@@ -61,21 +61,8 @@ function performRecognition(detections, callback) {
     data: JSON.stringify({ image: base64Image }),
     success: function(data) {
       // Call the callback function with the unique identifier
-      callback(data.employeeId);
+      alert('Success')
     }
   });
 }
 
-// Mark employee attendance using the unique identifier
-function markAttendance(uniqueId) {
-  // Make an API call to mark attendance of the employee with the provided unique identifier
-  $.ajax({
-    url: '/api/mark-attendance',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({ employeeId: uniqueId }),
-    success: function(data) {
-      console.log('Attendance marked successfully.');
-    }
-  });
-}
