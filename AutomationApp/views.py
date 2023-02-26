@@ -7008,11 +7008,11 @@ def staffthree(request):
         testdata=''
     try:
         testimage_data = testdata.get('image', '')
-    except KeyError, ValueError, TypeError:
+    except (KeyError, ValueError, TypeError):
         testimage_data=''
     try:
         testemployee_id = testdata.get('employeeId', '')
-    except KeyError, ValueError, TypeError:
+    except (KeyError, ValueError, TypeError):
         testemployee_id=''
     
     print('testimage_data',testimage_data)
