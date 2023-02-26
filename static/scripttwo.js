@@ -68,4 +68,16 @@ function performRecognition(detections, callback) {
 function markAttendance(uniqueId) {
   // Make an API call to mark attendance of the employee with the provided unique identifier
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/mark-
+xhr.open('POST', '/api/mark-attendance', true);
+  xhr.setRequestHeader('Content-type', 'application/json');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const data = JSON.parse(xhr.responseText);
+
+      // Display success message
+      const successMsg = document.getElementById('success-msg');
+      successMsg.innerHTML = data.message;
+      successMsg.style.display = 'block';
+    }
+  };
+  xhr.send(JSON.stringify({ employeeId: uniqueId }));
