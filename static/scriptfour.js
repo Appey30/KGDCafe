@@ -55,7 +55,7 @@ function performRecognition(result) {
     })
   }
     const base64Image = canvas.toDataURL()
-
+    alert('base64Image:   '+base64Image)
 
 
       fetch('/static/staffthree', {
@@ -70,7 +70,7 @@ function performRecognition(result) {
         markAttendance(data.employeeId)
       })
   
-  alert('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
+  
 }
 function markAttendance(uniqueId) {
 console.log('markAttendancemarkAttendancemarkAttendancemarkAttendancemarkAttendance')
