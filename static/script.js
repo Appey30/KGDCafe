@@ -32,10 +32,10 @@ const loginbodyid = document.getElementById('loginbodyid')
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
         faceapi.draw.drawDetections(canvas, resizedDetections)
-        performRecognition(resizedDetections).then(uniqueId => {
+        //performRecognition(resizedDetections).then(uniqueId => {
         //markAttendance(uniqueId)
         
-        })
+        //})
       })
     })
 
