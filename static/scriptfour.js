@@ -35,18 +35,20 @@ video.addEventListener('loadedmetadata', () => {
 
 function performRecognition(detections) {
   const canvas = document.createElement('canvas')
-  canvas.width = video.width
-  canvas.height = video.height
+  canvas.width = detections.inputSize.width
+  canvas.height = detections.inputSize.height
   const ctx = canvas.getContext('2d')
-  detections.detections.forEach(detection => {
-    const box = detection.detection.box
-    const x = box.x < 0 ? 0 : box.x
-    const y = box.y < 0 ? 0 : box.y
-    const width = box.x + box.width > canvas.width ? canvas.width - box.x : box.width
-    const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
-    ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
-  })
-  const base64Image = canvas.toDataURL()
+  if (detections && detections.detections) {
+    detections.detections.forEach(detection => {
+      const box = detection.detection.box
+      const x = box.x < 0 ? 0 : box.x
+      const y = box.y < 0 ? 0 : box.y
+      const width = box.x + box.width > canvas.width ? canvas.width - box.x : box.width
+      const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
+      ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
+    })
+    const base64Image = canvas.toDataURL()
+
 
   fetch('/static/staffthree', {
     method: 'POST',
