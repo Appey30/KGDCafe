@@ -53,6 +53,7 @@ function performRecognition(result) {
       const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
       ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
+  }
     const base64Image = canvas.toDataURL()
 
 
@@ -68,7 +69,7 @@ function performRecognition(result) {
       .then(data => {
         markAttendance(data.employeeId)
       })
-  }
+  
   alert('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
 }
 function markAttendance(uniqueId) {
