@@ -26,7 +26,7 @@ video.addEventListener('loadedmetadata', function() {
      // performRecognition(resizedDetections, function(uniqueId) {
       //  markAttendance(uniqueId);
       alert('Reached perform recognition and mark attendance')
-      });
+      //});
     });
   });
 });
