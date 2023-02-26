@@ -22,16 +22,16 @@ captureBtn.addEventListener('click', () => {
   faceapi.matchDimensions(canvas, displaySize)
 
 const options = new faceapi.TinyFaceDetectorOptions();
-faceapi.detectAllFaces(canvas, options).withFaceLandmarks().withFaceExpressions()
-  .then(function(results) {
-    // Process face detection results
-    const resizedResults = faceapi.resizeResults(results, { width: video.videoWidth, height: video.videoHeight });
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-    faceapi.draw.drawDetections(canvas, resizedResults);
-    var itoDataURL = canvas.toDataURL()
-    // Perform face recognition using unique identifier
-    performRecognition(itoDataURL);
-  })
+    faceapi.detectAllFaces(canvas, options).withFaceLandmarks().withFaceExpressions()
+      .then(function(results) {
+        // Process face detection results
+        const resizedResults = faceapi.resizeResults(results, { width: video.videoWidth, height: video.videoHeight });
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+        faceapi.draw.drawDetections(canvas, resizedResults);
+        var itoDataURL = canvas.toDataURL()
+        // Perform face recognition using unique identifier
+        performRecognition(itoDataURL);
+      })
   .catch(function(error) {
     console.error(error);
   });
@@ -50,7 +50,7 @@ function performRecognition(toDataURL) {
 
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   $.ajax({
-    url: '{% url "staffthree.html" %}',
+    url: '/staffthree',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({ image: base64Image }),
