@@ -1,4 +1,3 @@
-
 const video = document.getElementById('video');
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('../static/models'),
@@ -15,23 +14,22 @@ function startVideo() {
     err => console.error(err)
   )
 }
-const captureBtn = document.getElementById('capture');
+const captureBtn  = document.getElementById('capture');
 captureBtn.addEventListener('click', () => {
   var resizedDetections = '';
   const canvas = faceapi.createCanvasFromMedia(video)
   document.body.append(canvas)
   const displaySize = { width: video.width, height: video.height }
   faceapi.matchDimensions(canvas, displaySize)
-//const faceDetectionPromise = faceapi.detectAllFaces(canvas, options).withFaceLandmarks().withFaceExpressions();
+
     const detections = faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
     resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-
-  var itoDataURL=canvas.toDataURL();
-  performRecognition(itoDataURL)
+    var itoDataURL = canvas.toDataURL()
+  performRecognition(itoDataURL);
   
 })
 
@@ -45,9 +43,19 @@ captureBtn.addEventListener('click', () => {
 // Perform face recognition using unique identifier
 function performRecognition(toDataURL) {
   // Convert the face image to a base64-encoded string
-  const base64Image = toDataURL;
-
-  
+  const canvas = document.createElement('canvas');
+  canvas.width = video.width;
+  canvas.height = video.height;
+  const ctx = canvas.getContext('2d');
+  detections.detections.forEach(function(detection) {
+    const box = detection.detection.box;
+    const x = box.x < 0 ? 0 : box.x;
+    const y = box.y < 0 ? 0 : box.y;
+    const width = box.x + box.width > canvas.width ? canvas.width - box.x : box.width;
+    const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height;
+    ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height);
+  });
+  const base64Image =
 
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   $.ajax({
