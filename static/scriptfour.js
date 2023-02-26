@@ -13,7 +13,7 @@ function startVideo() {
     stream => video.srcObject = stream,
     err => console.error(err)
   )
-
+}
 
 video.addEventListener('loadedmetadata', () => {
   const captureBtn = document.getElementById('capture')
