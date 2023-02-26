@@ -39,7 +39,7 @@ function startVideo() {
 function performRecognition(result) {
 alert('result:  '+JSON.stringify(result))
 alert('result.detection:  '+JSON.stringify(result[0].detection))
-alert('result.detection.length:  '+result[0].detection.length)
+alert('result.detection.length:  '+result.detection.length)
   const canvas = document.createElement('canvas')
   canvas.width = video.width
   canvas.height = video.height
