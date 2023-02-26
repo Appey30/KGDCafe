@@ -15,7 +15,6 @@ function startVideo() {
   )
 
 
-// Wait for video metadata to be loaded before performing face recognition
 video.addEventListener('loadedmetadata', () => {
   const captureBtn = document.getElementById('capture')
   captureBtn.addEventListener('click', () => {
@@ -34,9 +33,7 @@ video.addEventListener('loadedmetadata', () => {
   })
 })
 
-// Perform face recognition using unique identifier
 function performRecognition(detections) {
-  // Convert the face image to a base64-encoded string
   const canvas = document.createElement('canvas')
   canvas.width = detections.inputSize.width
   canvas.height = detections.inputSize.height
@@ -51,7 +48,6 @@ function performRecognition(detections) {
   })
   const base64Image = canvas.toDataURL()
 
-  // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   fetch('/static/staffthree', {
     method: 'POST',
     headers: {
@@ -61,14 +57,11 @@ function performRecognition(detections) {
   })
   .then(response => response.json())
   .then(data => {
-    // Mark employee attendance using the unique identifier
     markAttendance(data.employeeId)
   })
 }
 
-// Mark employee attendance using the unique identifier
 function markAttendance(uniqueId) {
-  // Make an API call to mark attendance of the employee with the provided unique identifier
   fetch('/static/staffthree', {
     method: 'POST',
     headers: {
