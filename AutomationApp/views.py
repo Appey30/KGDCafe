@@ -7002,9 +7002,19 @@ def staff(request):
 @login_required
 def staffthree(request):
     userr=request.user.id
-    testdata = json.loads(request.body) or ''
-    testimage_data = testdata.get('image', '')
-    testemployee_id = testdata.get('employeeId', '')
+    try:
+        testdata = json.loads(request.body) or ''
+    except JSONDecodeError:
+        testdata=''
+    try:
+        testimage_data = testdata.get('image', '')
+    except JSONDecodeError:
+        testimage_data=''
+    try:
+        testemployee_id = testdata.get('employeeId', '')
+    except JSONDecodeError:
+        testemployee_id=''
+    
     print('testimage_data',testimage_data)
     print('testemployee_id',testemployee_id)
     if request.method == 'POST' and json.loads(request.body).get('image'):
