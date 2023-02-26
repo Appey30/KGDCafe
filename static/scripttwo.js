@@ -39,7 +39,7 @@ video.addEventListener('play', () => {
    
 
 // Perform face recognition using unique identifier
-function performRecognition(detections, callback) {
+function performRecognition(detections) {
   // Convert the face image to a base64-encoded string
   const canvas = document.createElement('canvas');
   canvas.width = detections.inputSize.width;
