@@ -7001,6 +7001,10 @@ def staff(request):
 
 @login_required
 def staffthree(request):
+    userr=request.user.id
+    testdata = json.loads(request.body)
+    testimage_data = data.get('image', '')
+    print('testimage_data',testimage_data)
     if request.method == 'POST' and json.loads(request.body).get('image'):
         print('imageimageimageimageimageimageimageimageimageimage')
         data = json.loads(request.body)

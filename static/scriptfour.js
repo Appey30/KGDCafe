@@ -49,7 +49,7 @@ console.log('performRecognitionperformRecognitionperformRecognitionperformRecogn
       const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
       ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
-  console.log('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
+
     const base64Image = canvas.toDataURL()
 
 
@@ -65,6 +65,7 @@ console.log('performRecognitionperformRecognitionperformRecognitionperformRecogn
         markAttendance(data.employeeId)
       })
   }
+  console.log('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
 }
 function markAttendance(uniqueId) {
 console.log('markAttendancemarkAttendancemarkAttendancemarkAttendancemarkAttendance')
