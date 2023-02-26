@@ -51,18 +51,18 @@ function performRecognition(detections) {
     const base64Image = canvas.toDataURL()
 
 
-  fetch('/static/staffthree', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ image: base64Image })
-  })
-  .then(response => response.json())
-  .then(data => {
-    markAttendance(data.employeeId)
-  })
-}
+      fetch('/static/staffthree', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ image: base64Image })
+      })
+      .then(response => response.json())
+      .then(data => {
+        markAttendance(data.employeeId)
+      })
+  }
 }
 function markAttendance(uniqueId) {
   fetch('/static/staffthree', {
