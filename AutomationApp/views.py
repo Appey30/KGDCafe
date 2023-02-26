@@ -7013,9 +7013,6 @@ def staffthree(request):
             return JsonResponse({'employeeId': employee_id})
         else:
             return JsonResponse({'error': 'Image data is missing'}, status=400)
-    else:
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
-
 
     if request.method == 'POST' and json.loads(request.body).get('employeeId'):
         data = json.loads(request.body)
@@ -7026,8 +7023,7 @@ def staffthree(request):
             return JsonResponse({'message': 'Attendance marked successfully'})
         else:
             return JsonResponse({'error': 'Employee ID is missing'}, status=400)
-    else:
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
     return render(request, 'staffthree.html',{})
 
 
