@@ -30,6 +30,7 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
     if (resizedDetections.length > 0) {
       performRecognition(resizedDetections)
+      alert('resizedDetections: '+JSON.stringify(resizedDetections))
     }
   }, 100)
 })
@@ -42,7 +43,7 @@ function performRecognition(detections) {
   const ctx = canvas.getContext('2d')
 
   if (detections.detections && detections.detections.length > 0) {
-    alert('face detected')
+    
     detections.detections.forEach(detection => {
       const box = detection.detection.box
     const x = box.x + faceOffset // add an offset to the right
