@@ -69,7 +69,7 @@ function performRecognition(result) {
         markAttendance(data.employeeId)
       })
   }
-  console.log('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
+  alert('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
 }
 function markAttendance(uniqueId) {
 console.log('markAttendancemarkAttendancemarkAttendancemarkAttendancemarkAttendance')
