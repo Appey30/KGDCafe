@@ -80,4 +80,3 @@ xhr.open('POST', '/api/mark-attendance', true);
       successMsg.style.display = 'block';
     }
   };
-  //xhr.send(JSON.stringify({ employeeId: uniqueId }));
