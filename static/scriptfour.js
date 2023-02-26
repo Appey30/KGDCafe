@@ -40,6 +40,7 @@ console.log('performRecognitionperformRecognitionperformRecognitionperformRecogn
   canvas.height = video.height
   const ctx = canvas.getContext('2d')
   if (detections && detections.detections) {
+  console.log('detectionsdetectionsdetectionsdetectionsdetections')
     detections.detections.forEach(detection => {
       const box = detection.detection.box
       const x = box.x < 0 ? 0 : box.x
@@ -48,7 +49,7 @@ console.log('performRecognitionperformRecognitionperformRecognitionperformRecogn
       const height = box.y + box.height > canvas.height ? canvas.height - box.y : box.height
       ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
-    
+  console.log('passdetectionspassdetectionspassdetectionspassdetectionspassdetections')
     const base64Image = canvas.toDataURL()
 
 
