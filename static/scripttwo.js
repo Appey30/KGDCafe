@@ -57,7 +57,7 @@ function performRecognition(detections) {
 
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   $.ajax({
-    url: '{% url "stafftwo.html" %}',
+    url: '{% url "staffthree.html" %}',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({ image: base64Image }),
