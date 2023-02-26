@@ -50,8 +50,8 @@ function performRecognition(toDataURL) {
   console.log(base64Image)
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
   $.ajax({
-    url:{% url 'staffthree.html' %},
     type: 'POST'
+    url:"{% url 'staffthree.html' %}",
     data:{
     'image':JSON.stringify(base64Image),  
     csrfmiddlewaretoken: '{{ csrf_token }}'
