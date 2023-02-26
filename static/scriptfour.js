@@ -13,21 +13,25 @@ function startVideo() {
     stream => video.srcObject = stream,
     err => console.error(err)
   )
-}
-const captureBtn = document.getElementById('capture')
-captureBtn.addEventListener('click', () => {
-  const canvas = faceapi.createCanvasFromMedia(video)
-  const displaySize = { width: video.width, height: video.height }
-  faceapi.matchDimensions(canvas, displaySize)
-  faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
-    .withFaceLandmarks()
-    .withFaceExpressions()
-    .then(detections => {
-      const resizedDetections = faceapi.resizeResults(detections, displaySize)
-      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-      faceapi.draw.drawDetections(canvas, resizedDetections)
-      performRecognition(resizedDetections)
-    })
+
+
+// Wait for video metadata to be loaded before performing face recognition
+video.addEventListener('loadedmetadata', () => {
+  const captureBtn = document.getElementById('capture')
+  captureBtn.addEventListener('click', () => {
+    const canvas = faceapi.createCanvasFromMedia(video)
+    const displaySize = { width: video.width, height: video.height }
+    faceapi.matchDimensions(canvas, displaySize)
+    faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+      .withFaceLandmarks()
+      .withFaceExpressions()
+      .then(detections => {
+        const resizedDetections = faceapi.resizeResults(detections, displaySize)
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+        faceapi.draw.drawDetections(canvas, resizedDetections)
+        performRecognition(resizedDetections)
+      })
+  })
 })
 
 // Perform face recognition using unique identifier
