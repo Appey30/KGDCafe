@@ -1,4 +1,3 @@
-// Get video element
 const video = document.getElementById('video');
 
 // Attach loadedmetadata event handler to video element
@@ -24,10 +23,10 @@ video.addEventListener('loadedmetadata', function() {
       faceapi.draw.drawDetections(canvas, resizedDetections);
 
       // Perform face recognition using unique identifier
-      //performRecognition(resizedDetections, function(uniqueId) {
+     // performRecognition(resizedDetections, function(uniqueId) {
       //  markAttendance(uniqueId);
-      alert('reached performRecognition and markAttendance')
-      //});
+      alert('Reached perform recognition and mark attendance')
+      });
     });
   });
 });
@@ -50,33 +49,28 @@ function performRecognition(detections, callback) {
   const base64Image = canvas.toDataURL();
 
   // Make an API call to retrieve the unique identifier of the employee associated with the detected face
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/employee-recognition', true);
-  xhr.setRequestHeader('Content-type', 'application/json');
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      const data = JSON.parse(xhr.responseText);
-
+  $.ajax({
+    url: '/api/employee-recognition',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({ image: base64Image }),
+    success: function(data) {
       // Call the callback function with the unique identifier
       callback(data.employeeId);
     }
-  };
-  xhr.send(JSON.stringify({ image: base64Image }));
+  });
 }
 
 // Mark employee attendance using the unique identifier
 function markAttendance(uniqueId) {
   // Make an API call to mark attendance of the employee with the provided unique identifier
-  const xhr = new XMLHttpRequest();
-xhr.open('POST', '/api/mark-attendance', true);
-  xhr.setRequestHeader('Content-type', 'application/json');
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      const data = JSON.parse(xhr.responseText);
-
-      // Display success message
-      const successMsg = document.getElementById('success-msg');
-      successMsg.innerHTML = data.message;
-      successMsg.style.display = 'block';
+  $.ajax({
+    url: '/api/mark-attendance',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({ employeeId: uniqueId }),
+    success: function(data) {
+      console.log('Attendance marked successfully.');
     }
-  };
+  });
+}
