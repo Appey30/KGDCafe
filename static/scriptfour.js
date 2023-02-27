@@ -1,5 +1,5 @@
 const video = document.getElementById('video');
-const faceOffset = 50;
+const faceOffset = 0;
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('../static/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('../static/models'),
