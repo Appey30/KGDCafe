@@ -4,7 +4,7 @@ Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('../static/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('../static/models'),
   faceapi.nets.faceRecognitionNet.loadFromUri('../static/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('../static/models')
+  faceapi.nets.faceExpressionNet.loadFromUri('../static/models'),
   faceapi.nets.ssdMobilenetv1.loadFromUri('../static/models')
 ]).then(startVideo)
 .then(() => console.log('Models loaded successfully'))
