@@ -41,12 +41,6 @@ video.addEventListener('play', async () => {
     // Display captured image
     if (resizedDetections.length > 0) {
     
-      const faceCanvas = document.createElement('canvas')
-      const faceContext = faceCanvas.getContext('2d')
-      faceCanvas.width = resizedDetections[0].detection.box.width
-      faceCanvas.height = resizedDetections[0].detection.box.height
-      faceContext.drawImage(video, resizedDetections[0].detection.box.x, resizedDetections[0].detection.box.y, resizedDetections[0].detection.box.width, resizedDetections[0].detection.box.height, 0, 0, faceCanvas.width, faceCanvas.height)
-      document.body.append(faceCanvas)
       performRecognition(resizedDetections)
     }
   }, 100)
