@@ -6,9 +6,13 @@ Promise.all([
   faceapi.nets.faceRecognitionNet.loadFromUri('../static/models'),
   faceapi.nets.faceExpressionNet.loadFromUri('../static/models')
 ]).then(startVideo)
+.then(() => console.log('Models loaded successfully'))
+.catch(err => console.error(err))
+
 
 
 function startVideo() {
+console.log('startVideo() called')
   navigator.getUserMedia(
     { video: {} },
     stream => video.srcObject = stream,
@@ -23,18 +27,25 @@ video.addEventListener('play', () => {
   faceapi.matchDimensions(canvas, displaySize)
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors()
+    alert('detections:', detections)
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-    alert('resizedDetections.length: '+resizedDetections.length)
+    
     if (resizedDetections.length > 0) {
-    alert('resizedDetections.length2: '+resizedDetections.length)
-      //performRecognition(resizedDetections)
+    
+     performRecognition(resizedDetections)
       
     }
     
   }, 100)
 })
 
+
+
+  
+function performRecognition(detections) {
+alert('I am going to perform Recognition')
+};

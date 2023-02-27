@@ -1,4 +1,3 @@
-
 function performRecognition(detections) {
   const canvas = document.createElement('canvas')
   canvas.width = video.width
@@ -18,6 +17,10 @@ function performRecognition(detections) {
     ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
     const base64Image = canvas.toDataURL()
+
+ const img = document.createElement('img')
+  img.src = base64Image
+  document.body.append(img)
 
     fetch('/static/staffthree', {
       method: 'POST',
