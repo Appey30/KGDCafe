@@ -31,7 +31,7 @@ video.addEventListener('play', async () => {
 
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.SsdMobilenetv1Options()).withFaceLandmarks().withFaceDescriptors()
-    alert('detections:  '+detections)
+    
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
 
     // Clear canvas and draw detections
@@ -40,7 +40,7 @@ video.addEventListener('play', async () => {
 
     // Display captured image
     if (resizedDetections.length > 0) {
-    alert('resizedDetections.length:  '+resizedDetections.length)
+    
       const faceCanvas = document.createElement('canvas')
       const faceContext = faceCanvas.getContext('2d')
       faceCanvas.width = resizedDetections[0].detection.box.width
