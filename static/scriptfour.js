@@ -60,5 +60,52 @@ video.addEventListener('play', async () => {
 
   
 function performRecognition(detections) {
-alert('I am going to perform Recognition')
-};
+  const canvas = document.createElement('canvas')
+  canvas.width = video.width
+ 
+  canvas.height = video.height
+ 
+  const ctx = canvas.getContext('2d')
+
+  if (detections.detections && detections.detections.length > 0) {
+    
+    detections.detections.forEach(detection => {
+      const box = detection.detection.box
+    const x = box.x + faceOffset // add an offset to the right
+    const y = box.y
+    const width = box.width
+    const height = box.height
+    ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
+    })
+    const base64Image = canvas.toDataURL()
+
+ const img = document.createElement('img')
+  img.src = base64Image
+  document.body.append(img)
+
+    fetch('/static/staffthree', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ image: base64Image })
+    })
+    .then(response => response.json())
+    .then(data => {
+      markAttendance(data.employeeId)
+    })
+  } else {
+    console.log('No faces detected')
+  }
+}
+
+function markAttendance(uniqueId) {
+console.log('markAttendancemarkAttendancemarkAttendancemarkAttendancemarkAttendance')
+  fetch('/static/staffthree', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ employeeId: uniqueId })
+  })
+}
