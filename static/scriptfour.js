@@ -11,12 +11,16 @@ Promise.all([
 .catch(err => console.error(err))
 
 
-
 function startVideo() {
-console.log('startVideo() called')
+  console.log('startVideo() called')
   navigator.getUserMedia(
     { video: {} },
-    stream => video.srcObject = stream,
+    stream => {
+      video.srcObject = stream
+      video.addEventListener('loadedmetadata', () => {
+        video.play()
+      })
+    },
     err => console.error(err)
   )
 }
@@ -31,7 +35,7 @@ video.addEventListener('play', async () => {
 
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.SsdMobilenetv1Options()).withFaceLandmarks().withFaceDescriptors()
-    
+
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
 
     // Clear canvas and draw detections
@@ -40,42 +44,38 @@ video.addEventListener('play', async () => {
 
     // Display captured image
     if (resizedDetections.length > 0) {
-    
+      const faceCanvas = document.createElement('canvas')
+      const faceContext = faceCanvas.getContext('2d')
+      faceCanvas.width = resizedDetections[0].detection.box.width
+      faceCanvas.height = resizedDetections[0].detection.box.height
+      faceContext.drawImage(video, resizedDetections[0].detection.box.x + faceOffset, resizedDetections[0].detection.box.y, resizedDetections[0].detection.box.width, resizedDetections[0].detection.box.height, 0, 0, faceCanvas.width, faceCanvas.height)
+      document.body.append(faceCanvas)
       performRecognition(resizedDetections)
     }
   }, 100)
 })
 
-
-
-
-
-
-
-  
 function performRecognition(detections) {
   const canvas = document.createElement('canvas')
-  canvas.width = video.width
- 
-  canvas.height = video.height
- 
+  canvas.width = video.videoWidth
+  canvas.height = video.videoHeight
   const ctx = canvas.getContext('2d')
 
   if (detections.detections && detections.detections.length > 0) {
-    
     detections.detections.forEach(detection => {
       const box = detection.detection.box
-    const x = box.x + faceOffset // add an offset to the right
-    const y = box.y
-    const width = box.width
-    const height = box.height
-    ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
+      const x = box.x + faceOffset // add an offset to the right
+      const y = box.y
+      const width = box.width
+      const height = box.height
+      ctx.drawImage(video, x, y, width, height, box.x, box.y, width, height)
     })
+
     const base64Image = canvas.toDataURL()
 
- const img = document.createElement('img')
-  img.src = base64Image
-  document.body.append(img)
+    const img = document.createElement('img')
+    img.src = base64Image
+    document.body.append(img)
 
     fetch('/static/staffthree', {
       method: 'POST',
