@@ -1397,7 +1397,7 @@
         <div class="notifcontent">
             <h1 class="punchedtexttitle">Button Section</h1>
             <div class="customizearea">
-                <form action="{% url 'CustomizeWeb.html' %}" method="post" id="customizeid">
+                <form action="{% url 'CustomizeWeb.html' %}" method="post" name="customizename">
                     {% csrf_token %}
                     <input type="color" name="button_color" value="#000000" />
 

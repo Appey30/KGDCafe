@@ -5503,9 +5503,9 @@ def inventory(request):
 
 @login_required
 def customize(request):
-    if request.POST.get('customizeid'):
-        button_color = request.POST.get('button_color', '#000000')  # Retrieve the updated button color
-
+    if request.POST.get('customizename'):
+        button_color = request.POST.get('button_color', '#aa5c31')  # Retrieve the updated button color
+        print('customizeid: Detected')
         # Save the updated button color or create a new ButtonColor object
         button_color_obj, created = ButtonColor.objects.get_or_create(pk=1)
         button_color_obj.color = button_color
@@ -5974,7 +5974,7 @@ def Onlineordersystem(request, admin_id):
             settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-        return render(request, 'Onlineorder.html',{'button_color': button_color.color if button_color else '#000000','product_id':product_id,'messengerredirect':messengerredirect,'messenger':messenger,'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+        return render(request, 'Onlineorder.html',{'button_color': button_color.color if button_color else '#aa5c31','product_id':product_id,'messengerredirect':messengerredirect,'messenger':messenger,'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):
         promocodegeti=request.GET.get('prmcd', '')
