@@ -117,6 +117,7 @@
                 padding-bottom: 20px;
                 float: left;
                 display: inline;
+                align-content: center;
             }
             .previewarea {
                 border-radius: 15px;
@@ -464,6 +465,7 @@
                 padding-bottom: 20px;
                 float: left;
                 display: inline;
+                align-content: center;
             }
 
             .previewarea {
@@ -808,6 +810,7 @@
                 padding-bottom: 20px;
                 float: left;
                 display: inline;
+                align-content: center;
             }
 
             .previewarea {
@@ -1151,6 +1154,7 @@
                 padding-bottom: 20px;
                 float: left;
                 display: inline;
+                align-content:center;
             }
 
             .previewarea {
@@ -1440,7 +1444,7 @@
                 <form action="{% url 'CustomizeWeb.html' %}" method="post" name="customizename">
                     {% csrf_token %}
                     <label for="button_colorid" class="punchedtextsubtitle">Choose Button's Color:</label><br>
-                    <input style="width:50%;height:30px;" type="color" id="button_colorid" name="button_color" value="{{buttoncolordef}}" /><br>
+                    <input style="width:50%;height:30px;" type="color" id="button_colorid" name="button_color" value="{{buttoncolordef}}" /><br><br>
 
                     <input type="submit" value="Apply" class="prodbut"/>
                 </form>
