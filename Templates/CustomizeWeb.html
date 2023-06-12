@@ -145,7 +145,17 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
-
+            .punchedtextsubtitle {
+                font-size: 25px;
+                font-weight: bold;
+                background: rgb(252, 220, 109);
+                background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                
+            }
             .queuetable {
                 border-collapse: collapse;
                 position: relative;
@@ -483,7 +493,17 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
-
+            .punchedtextsubtitle {
+                font-size: 25px;
+                font-weight: bold;
+                background: rgb(252, 220, 109);
+                background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                
+            }
             .queuetable {
                 border-collapse: collapse;
                 position: relative;
@@ -816,6 +836,16 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 text-align: center;
+            }
+            .punchedtextsubtitle {
+                font-size: 25px;
+                font-weight: bold;
+                background: rgb(252, 220, 109);
+                background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
 
             .queuetable {
@@ -1150,6 +1180,16 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
+            .punchedtextsubtitle {
+                font-size: 25px;
+                font-weight: bold;
+                background: rgb(252, 220, 109);
+                background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
             .queuetable {
                 border-collapse: collapse;
@@ -1399,7 +1439,7 @@
             <div class="customizearea">
                 <form action="{% url 'CustomizeWeb.html' %}" method="post" name="customizename">
                     {% csrf_token %}
-                    <label for="button_colorid">Choose Button's Color:</label><br>
+                    <label for="button_colorid" class="punchedtextsubtitle">Choose Button's Color:</label><br>
                     <input style="width:50%;height:30px;" type="color" id="button_colorid" name="button_color" value="{{buttoncolordef}}" /><br>
 
                     <input type="submit" value="Apply" class="prodbut"/>
