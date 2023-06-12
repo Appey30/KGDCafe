@@ -5507,7 +5507,7 @@ def customize(request):
         button_color = request.POST.get('button_color', '#aa5c31')  # Retrieve the updated button color
         print('customizeid: Detected')
         # Save the updated button color or create a new ButtonColor object
-        button_color_obj, created = ButtonColor.objects.get_or_create(pk=1)
+        button_color_obj, created = ButtonColor.objects.get_or_create(user=request.user.id)
         button_color_obj.color = button_color
         button_color_obj.save()
 
