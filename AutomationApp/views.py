@@ -5513,10 +5513,11 @@ def customize(request):
 
         return redirect('Onlineorder.html')
     try:
-        buttoncolordef=ButtonColor.objects.get(user=request.user.id)
+        buttoncolordefi=ButtonColor.objects.get(user=request.user.id)
+        buttoncolordef=buttoncolordefi.color
     except ButtonColor.DoesNotExist:
         buttoncolordef='#aa5c31'
-    return render(request, 'CustomizeWeb.html', {'buttoncolordef':buttoncolordef.color})
+    return render(request, 'CustomizeWeb.html', {'buttoncolordef':buttoncolordef})
 
 
 def Onlineordersystem(request, admin_id):
