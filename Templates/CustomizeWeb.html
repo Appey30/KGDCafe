@@ -1399,7 +1399,7 @@
             <div class="customizearea">
                 <form action="{% url 'CustomizeWeb.html' %}" method="post" name="customizename">
                     {% csrf_token %}
-                    <input type="color" name="button_color" value="#000000" />
+                    <input type="color" name="button_color" value="{{buttoncolordef}}" />
 
                     <input type="submit" value="Save" />
                 </form>
