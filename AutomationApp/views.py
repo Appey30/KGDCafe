@@ -5522,7 +5522,7 @@ def Onlineordersystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
-        button_color = ButtonColor.objects.filter(user=admin_id)
+        button_color = ButtonColor.objects.get(user=admin_id)
         product_id=request.GET.get('product_id', '')
         messenger=request.GET.get('messenger', '')
         messengerredirect=request.GET.get('messengerredirect', '')
