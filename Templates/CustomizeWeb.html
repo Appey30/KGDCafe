@@ -1399,9 +1399,10 @@
             <div class="customizearea">
                 <form action="{% url 'CustomizeWeb.html' %}" method="post" name="customizename">
                     {% csrf_token %}
-                    <input type="color" name="button_color" value="{{buttoncolordef}}" />
+                    <label for="button_colorid">Choose Button's Color:</label><br>
+                    <input style="width:50%;height:30px;" type="color" id="button_colorid" name="button_color" value="{{buttoncolordef}}" /><br>
 
-                    <input type="submit" value="Save" />
+                    <input type="submit" value="Apply" class="prodbut"/>
                 </form>
             </div>
             <div class="previewarea">
