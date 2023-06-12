@@ -5501,6 +5501,10 @@ def inventory(request):
 
         return render(request, 'inventory.html')
 
+@login_required
+def customize(request):
+
+        return render(request, 'CustomizeWeb.html')
 
 
 def Onlineordersystem(request, admin_id):

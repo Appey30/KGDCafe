@@ -40,6 +40,7 @@ urlpatterns = [
       path('index/onlineordertesting/<int:admin_id>/',views.Onlineordertestingsystem,name='Onlineordertesting.html'),
       #path('index/postwo',views.postwo,name='postwo.html'),
       path('index/inventory',views.inventory,name='inventory.html'),
+      path('index/customize',views.customize,name='CustomizeWeb.html'),
       path('index/kgddashboard',views.kgddashboard,name='kgddashboard.html'),
       path('index/products/delete/', include ('AutomationApp.urls', namespace = 'modaldel')),
       path('index/products/', include ('AutomationApp.urls', namespace = 'modaledit')),
