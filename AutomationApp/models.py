@@ -8,7 +8,11 @@ import pytz
 
 # Create your models here.
 
-
+class ButtonColor(models.Model):
+    user=models.IntegerField(blank = True, null = True, default='2')
+    color = models.CharField(max_length=7)
+    def __str__(self):
+        return str(self.color) +" / "+ str(self.user)
 
 class Subcategories(models.Model):
     Subcategorychoices = models.CharField(max_length = 50, blank = False, null = False, default='')
