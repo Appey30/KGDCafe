@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 {% csrf_token %}
 
 <!DOCTYPE html>
@@ -1276,6 +1276,264 @@
 
 
 
+
+    <script>
+        var sound='';
+        function acknowledgerider(){
+        var audioid = document.getElementById('audioid')
+        audioid.pause();
+        sound='pause';
+        }
+
+        function excitshoworder(){
+        var exitshoworderdiv = document.getElementsByClassName('exitshoworderdiv')[0];
+        var exitshoworder = document.getElementsByClassName('exitshoworder')[0];
+        var showordersbg = document.getElementsByClassName('showordersbg')[0];
+
+        showordersbg.style.display='none';
+        var orderbut = document.getElementsByClassName('prodbut');
+        for(let i = 0;i<orderbut.length;i++){
+        orderbut[i].classList.remove("focusbutton");
+
+        }
+
+        }
+        function deliverthis(){
+
+        var todelivertbody = document.getElementById('deliverthis');
+
+        }
+
+
+
+
+
+        let tid = setInterval(function(){
+        var todelivertbodydata = document.getElementById('deliverthis');
+        if ( document.readyState !== 'complete' ) return;
+        clearInterval( tid );
+        $.ajax({
+        type:'GET',
+        url:"{% url 'Rider.html' %}",
+        data:{"riderni":"rengorder"},
+        success: function(todeliverorder){
+        $('#deliverthis').empty();
+        var dataHtml='';
+        var vieworders = document.getElementById('ridersviewordersid')
+        vieworders.value=todeliverorder.viewordersrider
+
+        var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
+        var length = todeliverorderffi.length;
+        if(length>0){
+        var audioid = document.getElementById('audioid')
+        if(sound=='pause'){
+        audioid.pause();
+        }else{
+        audioid.play();
+        }
+
+        }
+
+        for(var todeliverorders of todeliverorderffi){
+        var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
+        var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
+
+        var time = "";
+        var bargy="";
+        var MOPstringify = JSON.stringify(todeliverorders["fields"].MOP)
+        if(todeliverorders["fields"].Timetodeliver == "Now"){
+        time = "now";
+        }else{
+        time = todeliverorders["fields"].ScheduleTime;
+        }
+        if(todeliverorders["fields"].Barangay){
+        bargy = todeliverorders["fields"].Barangay;
+        }else{
+        bargy = "None";
+        }
+
+        dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbutacknowledge' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
+
+        }
+        $('#deliverthis').append(dataHtml);
+
+
+
+        },
+        error: function(){
+
+        }
+        });
+
+        }, 1000 );
+
+
+        $(document).ready(function () {
+
+        setInterval( function() {
+        $.ajax({
+        type:'GET',
+        url:"{% url 'Rider.html' %}",
+        data:{"riderni":"rengorder"},
+        success: function(todeliverorder){
+        $('#deliverthis').empty();
+        var dataHtml='';
+        var vieworders = document.getElementById('ridersviewordersid')
+        vieworders.value=todeliverorder.viewordersrider
+
+        var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
+        var length = todeliverorderffi.length;
+        if(length>0){
+        var audioid = document.getElementById('audioid')
+        if(sound=='pause'){
+        audioid.pause();
+        }else{
+        audioid.play();
+        }
+
+        }
+        for(var todeliverorders of todeliverorderffi){
+        var lagyu = JSON.stringify(todeliverorders["fields"].Customername);
+        var request = todeliverorders["fields"].contactnumber+", "+lagyu+", "+todeliverorders["fields"].GSubtotal+", "+todeliverorders["fields"].DeliveryFee;
+        var time = "";
+        var bargy="";
+        var MOPstringify = JSON.stringify(todeliverorders["fields"].MOP)
+        if(todeliverorders["fields"].Timetodeliver == "Now"){
+        time = "now";
+        }else{
+        time = todeliverorders["fields"].ScheduleTime;
+        }
+        if(todeliverorders["fields"].Barangay){
+        bargy = todeliverorders["fields"].Barangay;
+        }else{
+        bargy = "None";
+        }
+
+        dataHtml += "<tr class='trpunchedtable'><td class='tdqueue'>₱"+todeliverorders["fields"].GSubtotal+".00</td><td class='tdqueue'> ₱"+todeliverorders["fields"].Bill+".00 </td><td class='tdqueue'>₱"+todeliverorders["fields"].Change+".00</td><td class='tdqueue tdspecial'><button type='button' onclick='viewriderpov("+request+")' class='prodbut' id='orderbutid"+todeliverorders["fields"].contactnumber+"'>Orders</button></td><td class='tdqueue'><button class='prodbutacknowledge' id='acknowledgeriderbuttonid' onclick='acknowledgerider()'>Acknowledge</button></td></tr>";
+
+        }
+        $('#deliverthis').append(dataHtml);
+
+
+
+        },
+        error: function(){
+
+        }
+        });
+
+
+
+        }, 10000 );
+
+        });
+        var contactnumberr ="";
+        var contactmatch="";
+        function viewriderpov(contactnumber, names, gtotal, devfee){
+
+        contactnumberr = contactnumber;
+        var nameshoworder = document.getElementById('customnameorderid');
+        var contactnummmid = document.getElementById('contactnummmid');
+        var showordersdiv = document.getElementById('showordersid');
+
+        var vieworders = document.getElementById('ridersviewordersid').value;
+
+        var tablebody = document.getElementById('tablebodyshoworder')
+        var orderbut = document.getElementById('orderbutid'+contactnumber);
+
+        if(contactmatch){
+        var orderbuttwo = document.getElementById('orderbutid'+contactmatch);
+        }else{
+        var orderbuttwo = orderbut;
+        }
+
+        var showorderiii = JSON.parse(vieworders);
+
+        var showorderii = showorderiii;
+        var showorderi = showorderii[contactnumber];
+
+        var showorder = JSON.parse(showorderi)
+        var i=0;
+        var dataHtml = "";
+        if(showordersdiv.style.display == "none" || contactmatch !== contactnumber){
+        showordersdiv.style.display = "block";
+
+        if(orderbuttwo.classList == "prodbut focusbutton"){
+
+        orderbuttwo.classList.remove("focusbutton");
+        orderbut.classList.add("focusbutton");
+        }else{
+        orderbut.classList.add("focusbutton");
+        }
+        }else{
+        showordersdiv.style.display = "none";
+        orderbuttwo.classList.remove("focusbutton");
+        orderbut.classList.remove("focusbutton");
+        }
+        contactmatch = contactnumber;
+        var totalpunched = 0;
+        var showordercounter = showorder.length;
+
+        for(let i = 0;i<showordercounter;i++){
+
+        totalpunched = totalpunched+parseInt(showorder[i].Subtotal);
+        };
+
+        var grandtotal = 0;
+        if(gtotal){
+        grandtotal = gtotal;
+        }else{
+        grandtotal = totalpunched;
+        }
+        var gpslink;
+        var blank ='_blank' ;
+        var pinnedpoint;
+        for(var showorders of showorder){
+        if(showorders.Size){
+        var sizefinal = showorders.Size;
+        }else if(showorders.PSize){
+        var sizefinal = showorders.PSize;
+        }else{
+        var sizefinal = 'x'
+        }
+
+        if(showorders.Addons){
+        var addonsfinal=showorders.Addons+' x '+showorders.QtyAddons;
+        }else{
+        var addonsfinal='x';
+        }
+
+        dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">'+showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
+        if(showorders.gpslat){
+        urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
+        gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
+        }else{
+        urlgps=""
+        gpslink=""
+        }
+
+        if(showorders.pinnedlng){
+        urlpinned='https://www.google.com/maps/place/'+showorders.pinnedlat+','+showorders.pinnedlng+'/@'+showorders.pinnedlat+','+showorders.pinnedlng+',17z';
+        pinnedpoint='window.open('+JSON.stringify(urlpinned)+','+JSON.stringify(blank)+')';
+        }else{
+        urlpinned="";
+        pinnedpoint=""
+        };
+        }
+
+
+
+        dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Subtotal:</td><td class="tdqueue value"> ₱'+totalpunched+'.00</td></tr>';
+        dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="key">Delivery Fee:</td><td class="tdqueue value"> ₱'+devfee+'.00</td></tr>';
+        dataHtml = dataHtml + '<tr class=""><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue"></td><td class="tdqueue totalspecial">Total:</td><td class="tdqueue totalphp">₱'+grandtotal+'.00</td></tr>';
+        dataHtml = dataHtml + "<tr class=''><td class='tdqueue'></td><td class='tdqueue'></td><td class='tdqueue'><button class='prodbut' onclick='"+gpslink+"'>GPS</button></td><td class='tdqueue'><button class='prodbut' onclick='"+pinnedpoint+"'>Pinned</button></td><td class='tdqueue totalspecial'></td><td class='tdqueue totalphp'></td></tr>";
+        tablebody.innerHTML = dataHtml;
+        nameshoworder.innerHTML = names+"'s Order";
+
+        contactnummmid.innerHTML = '<small class="tdqueue">Contact Number: 0'+contactnumber+'</small>';
+        }
+
+    </script>
 
 
 
