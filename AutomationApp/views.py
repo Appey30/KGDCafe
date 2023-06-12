@@ -5511,7 +5511,7 @@ def customize(request):
         button_color_obj.color = button_color
         button_color_obj.save()
 
-        return redirect('Onlineorder.html')
+        
     try:
         buttoncolordefi=ButtonColor.objects.get(user=request.user.id)
         buttoncolordef=buttoncolordefi.color
