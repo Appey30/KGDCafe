@@ -71,6 +71,13 @@
                   background-color:{{ cardcolordef }};
                   border-radius: 10px;
                 }
+                .forflexcard {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    position: relative;
+                    text-align: center;
+                }
                 .card h3{
                 position:relative;
                 font-weight:550;
@@ -489,6 +496,13 @@
                   background-color:{{ cardcolordef }};
                   border-radius: 10px;
                 }
+        .forflexcard {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+            text-align: center;
+        }
                 .card h3{
                 position:relative;
                 font-weight:550;
@@ -902,6 +916,13 @@
                   background-color:{{ cardcolordef }};
                   border-radius: 10px;
                 }
+        .forflexcard {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+            text-align: center;
+        }
                 .card h3{
                 position:relative;
                 font-weight:550;
@@ -1315,6 +1336,13 @@
                   background-color:{{ cardcolordef }};
                   border-radius: 10px;
                 }
+        .forflexcard {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+            text-align: center;
+        }
                 .card h3{
                 position:relative;
                 font-weight:550;
@@ -1750,7 +1778,7 @@
             </div>
             <div class="previewarea">
                 <label for="samplecardid" class="punchedtextsubtitle">Preview Changes</label>
-                <div style="width:100%; height:100%;display:flex;position:relative;">
+                <div class="forflexcard">
                     <div class="card" id="samplecardid">
 
                         <img class="" src="{% static 'pamilyasize.png' %}" style="width:100%;border-radius:10px;">
