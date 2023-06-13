@@ -11,6 +11,8 @@ import pytz
 class ButtonColor(models.Model):
     user=models.IntegerField(blank = True, null = True, default='2')
     color = models.CharField(max_length=7)
+    cardcolor = models.CharField(max_length=7)
+    textcolor = models.CharField(max_length=7)
     def __str__(self):
         return str(self.color) +" / "+ str(self.user)
 
