@@ -182,22 +182,23 @@
                 text-align: center;
             }
 
-            .previewarea {
-                border-radius: 15px;
-                width: 50%;
-                height: 92.5%;
-                max-height: 555px;
-                position: relative;
-                -webkit-animation: fadeEffect 1s;
-                animation: fadeEffect 1s;
-                background-color: #2d2c29;
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                float: right;
-                display: inline;
-            }
+        .previewarea {
+            border-radius: 15px;
+            width: 50%;
+            height: 92.5%;
+            max-height: 555px;
+            position: relative;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color: #2d2c29;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            float: right;
+            display: inline;
+            text-align: center;
+        }
 
             .punchedtexttitle {
                 font-size: 25px;
@@ -594,22 +595,23 @@
                 text-align: center;
             }
 
-            .previewarea {
-                border-radius: 15px;
-                width: 50%;
-                height: 92.5%;
-                max-height: 555px;
-                position: relative;
-                -webkit-animation: fadeEffect 1s;
-                animation: fadeEffect 1s;
-                background-color: #2d2c29;
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                float: right;
-                display: inline;
-            }
+        .previewarea {
+            border-radius: 15px;
+            width: 50%;
+            height: 92.5%;
+            max-height: 555px;
+            position: relative;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color: #2d2c29;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            float: right;
+            display: inline;
+            text-align: center;
+        }
 
             .punchedtexttitle {
                 font-size: 25px;
@@ -1017,6 +1019,7 @@
                 padding-bottom: 20px;
                 float: right;
                 display: inline;
+                text-align: center;
             }
 
             .punchedtexttitle {
@@ -1410,22 +1413,24 @@
                 text-align: center;
             }
 
-            .previewarea {
-                border-radius: 15px;
-                width: 50%;
-                height: 92.5%;
-                max-height: 355px;
-                position: relative;
-                -webkit-animation: fadeEffect 1s;
-                animation: fadeEffect 1s;
-                background-color: #2d2c29;
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                float: right;
-                display: inline;
-            }
+        .previewarea {
+            border-radius: 15px;
+            width: 50%;
+            height: 92.5%;
+            max-height: 355px;
+            position: relative;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color: #2d2c29;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            float: right;
+            display: inline;
+            text-align: center;
+
+        }
 
             .punchedtexttitle {
                 font-size: 25px;
@@ -1723,33 +1728,34 @@
                             </div>
                         </div><br><br>
                     </div>
-                    <input type="submit" value="Apply" class="prodbut" />
-                    <button onclick="viewwebisite();" value="View Website" class="prodbut" >View Website</button>
-                </form>
+
 
             </div>
             <div class="previewarea">
-                <label for="samplecardid">Preview Changes</label>
-                    <div class="card" id="samplecardid">
+                <label for="samplecardid" class="punchedtextsubtitle">Preview Changes</label>
+                <div class="card" id="samplecardid" disabled="disabled">
 
-                        <img class="" src="{% static 'ChocomaltMT.png' %}" style="width:100%;border-radius:10px;">
+                    <img disabled="disabled" class="" src="{% static 'ChocomaltMT.png' %}" style="width:100%;border-radius:10px;">
 
-                        <div class="h3div">
-                            <h3>Sample Product Name</h3>
-                        </div>
-                        <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-                            <tr>
-                                <td id="" class="price">Php99</td>
-                            </tr>
-
-                        </table>
-
-                        <p><button style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
-
-
-
+                    <div disabled="disabled" class="h3div">
+                        <h3>Sample Product Name</h3>
                     </div>
+                    <table disabled="disabled" style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                        <tr>
+                            <td disabled="disabled" id="" class="price">Php99</td>
+                        </tr>
+
+                    </table>
+
+                    <p><button disabled="disabled" style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
+
+
+
                 </div>
+            </div>
+            <input type="submit" value="Apply" class="prodbut" />
+            <button onclick="viewwebisite();" value="View Website" class="prodbut">View Website</button>
+            </form>
         </div>
         <div class="notifcontent">
             <h1 class="punchedtexttitle">Header and Footer Section</h1>
