@@ -59,7 +59,28 @@
                     font-size: 70px;
                     font-weight: bold;
                 }
-
+              .card {
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                  width: 300px;
+                  height:360px;
+                  margin-top:20px;
+                  margin-left:20px;
+                  margin-right:20px;
+                  text-align: center;
+                  font-family: arial;
+                  background-color:{{ card_color }};
+                  border-radius: 10px;
+                }
+                .h3div {
+                    position: absolute;
+                    bottom: 110px;
+                    width: 100%;
+                    background-color:;
+                }
+                .price {
+                  color: {{ text_color }};
+                  font-size: 17px;
+                }
             .punchedtext {
                 font-size: 18px;
                 font-weight: bold;
@@ -362,8 +383,8 @@
                 display: inline-block;
                 border-radius: 30px;
                 border-color: rgb(249, 216, 105);
-                height: 30px;
-                width: 70px;
+                height: 60px;
+                width: 140px;
             }
 
                 .prodbut:hover {
@@ -430,7 +451,28 @@
                     font-size: 70px;
                     font-weight: bold;
                 }
-
+              .card {
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                  width: 300px;
+                  height:360px;
+                  margin-top:20px;
+                  margin-left:20px;
+                  margin-right:20px;
+                  text-align: center;
+                  font-family: arial;
+                  background-color:{{ card_color }};
+                  border-radius: 10px;
+                }
+        .h3div {
+            position: absolute;
+            bottom: 110px;
+            width: 100%;
+            background-color:;
+        }
+                .price {
+                  color: {{ text_color }};
+                  font-size: 17px;
+                }
             .punchedtext {
                 font-size: 18px;
                 font-weight: bold;
@@ -728,8 +770,8 @@
                 display: inline-block;
                 border-radius: 30px;
                 border-color: rgb(249, 216, 105);
-                height: 30px;
-                width: 70px;
+                height: 60px;
+                width: 140px;
             }
 
                 .prodbut:hover {
@@ -796,7 +838,28 @@
                     font-size: 70px;
                     font-weight: bold;
                 }
-
+              .card {
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                  width: 300px;
+                  height:360px;
+                  margin-top:20px;
+                  margin-left:20px;
+                  margin-right:20px;
+                  text-align: center;
+                  font-family: arial;
+                  background-color:{{ card_color }};
+                  border-radius: 10px;
+                }
+        .h3div {
+            position: absolute;
+            bottom: 110px;
+            width: 100%;
+            background-color:;
+        }
+                .price {
+                  color: {{ text_color }};
+                  font-size: 17px;
+                }
             .punchedtext {
                 font-size: 18px;
                 font-weight: bold;
@@ -1094,8 +1157,8 @@
                 display: inline-block;
                 border-radius: 30px;
                 border-color: rgb(249, 216, 105);
-                height: 30px;
-                width: 70px;
+                height: 60px;
+                width: 140px;
             }
 
                 .prodbut:hover {
@@ -1162,7 +1225,28 @@
                     font-size: 70px;
                     font-weight: bold;
                 }
-
+                .card {
+                  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                  width: 150px;
+                  height:180px;
+                  margin-top:5px;
+                  margin-left:5px;
+                  margin-right:5px;
+                  text-align: center;
+                  font-family: arial;
+                  background-color:{{ card_color }};
+                  border-radius: 10px;
+                }
+        .h3div {
+            position: absolute;
+            bottom: 150px;
+            width: 100%;
+            background-color:;
+        }
+                .price {
+                  color: {{ text_color }};
+                  font-size: 8px;
+                }
             .punchedtext {
                 font-size: 12px;
                 font-weight: bold;
@@ -1459,8 +1543,8 @@
                 display: inline-block;
                 border-radius: 30px;
                 border-color: rgb(249, 216, 105);
-                height: 30px;
-                width: 70px;
+                height: 60px;
+                width: 140px;
             }
 
                 .prodbut:hover {
@@ -1532,33 +1616,55 @@
 
                     <div id="brandcolorcontainerid">
                         <div class="threecontainers">
-                            
-                            <label for="button_colorid" class="punchedtextsubtitle">Buttons & etc:</label><br>
+
+                            <label for="button_colorid" class="punchedtextsubtitle">Buttons:</label><br>
                             <div class="colorcircle">
                                 <input style="width: 100%; height: 100%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
                             </div>
                         </div>
                         <br><br>
                         <div class="threecontainers">
-                            <label for="card_colorid" class="punchedtextsubtitle">Containers & etc:</label><br>
+                            <label for="card_colorid" class="punchedtextsubtitle">Containers:</label><br>
                             <div class="colorcircle">
 
                                 <input style="width: 100%; height: 100%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}" />
                             </div>
                         </div><br><br>
                         <div class="threecontainers">
-                            <label for="text_colorid" class="punchedtextsubtitle">Text & etc</label><br>
+                            <label for="text_colorid" class="punchedtextsubtitle">Text</label><br>
                             <div class="colorcircle">
 
-                                <input style="width: 100%; height: 100%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
+                                <input style="width: 100%; height: 100%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;top:-20px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
                             </div>
                         </div><br><br>
                     </div>
                     <input type="submit" value="Apply" class="prodbut" />
+                    <button onclick="viewwebisite();" value="View Website" class="prodbut" />
                 </form>
-                
-            </div>
 
+            </div>
+            <div class="previewarea">
+                <label for="samplecardid">Preview Changes</label>
+                    <div class="card" id="samplecardid">
+
+                        <img class="" src="{% static specialpromob.productname %}SPECIALPROMO.jpg" style="width:100%;border-radius:10px;">
+
+                        <div class="h3div">
+                            <h3>Sample Product Name</h3>
+                        </div>
+                        <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                            <tr>
+                                <td id="" class="price">Php99</td>
+                            </tr>
+
+                        </table>
+
+                        <p><button style="background-color:{{ button_color }};" id="">Order</button></p>
+
+
+
+                    </div>
+                </div>
         </div>
         <div class="notifcontent">
             <h1 class="punchedtexttitle">Header and Footer Section</h1>
@@ -1594,7 +1700,9 @@
 
 
     <script>
-
+        function viewwebisite(){
+        window.open("kgdcafe.com", "_blank");
+        }
         var sound='';
         function acknowledgerider(){
         var audioid = document.getElementById('audioid')
