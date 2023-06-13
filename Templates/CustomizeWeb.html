@@ -74,7 +74,7 @@
                 .card h3{
                 position:relative;
                 font-weight:550;
-                color:{{ text_color }};
+                color:{{ textcolordef }};
                 }
                 .h3div {
                     position: absolute;
@@ -94,7 +94,7 @@
                   border: 0px solid {{ button_color }};
                   border-radius:60px;
                   outline: 0;
-                  color: {{ text_color }};
+                  color: {{ textcolordef }};
                   box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
                   text-align: center;
                   cursor: pointer;
@@ -488,7 +488,7 @@
                 .card h3{
                 position:relative;
                 font-weight:550;
-                color:{{ text_color }};
+                color:{{ textcolordef }};
                 }
         .h3div {
             position: absolute;
@@ -508,7 +508,7 @@
                   border: 0px solid {{ button_color }};
                   border-radius:60px;
                   outline: 0;
-                  color: {{ text_color }};
+                  color: {{ textcolordef }};
                   box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
                   text-align: center;
                   cursor: pointer;
@@ -897,7 +897,7 @@
                 .card h3{
                 position:relative;
                 font-weight:550;
-                color:{{ text_color }};
+                color:{{ textcolordef }};
                 }
         .h3div {
             position: absolute;
@@ -917,7 +917,7 @@
                   border: 0px solid {{ button_color }};
                   border-radius:60px;
                   outline: 0;
-                  color: {{ text_color }};
+                  color: {{ textcolordef }};
                   box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
                   text-align: center;
                   cursor: pointer;
@@ -1307,7 +1307,7 @@
                 position:relative;
                 font-weight:550;
                 font-size:13px;
-                color:{{ text_color }};
+                color:{{ textcolordef }};
                 }
         .h3div {
             position: absolute;
@@ -1327,7 +1327,7 @@
                   border: 0px solid {{ button_color }};
                   border-radius:60px;
                   outline: 0;
-                  color: {{ text_color }};
+                  color: {{ textcolordef }};
                   box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
                   text-align: center;
                   cursor: pointer;
@@ -1733,24 +1733,26 @@
             </div>
             <div class="previewarea">
                 <label for="samplecardid" class="punchedtextsubtitle">Preview Changes</label>
-                <div class="card" id="samplecardid" disabled="disabled">
+                <div style="width:100%; height:100%;display:flex;">
+                    <div class="card" id="samplecardid">
 
-                    <img disabled="disabled" class="" src="{% static 'ChocomaltMT.png' %}" style="width:100%;border-radius:10px;">
+                        <img class="" src="{% static 'pamilyasize.png' %}" style="width:100%;border-radius:10px;">
 
-                    <div disabled="disabled" class="h3div">
-                        <h3>Sample Product Name</h3>
+                        <div class="h3div">
+                            <h3>Sample Product Name</h3>
+                        </div>
+                        <table style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                            <tr>
+                                <td id="" class="price">Php99</td>
+                            </tr>
+
+                        </table>
+
+                        <p><button style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
+
+
+
                     </div>
-                    <table disabled="disabled" style="margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-                        <tr>
-                            <td disabled="disabled" id="" class="price">Php99</td>
-                        </tr>
-
-                    </table>
-
-                    <p><button disabled="disabled" style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
-
-
-
                 </div>
             </div>
             <input type="submit" value="Apply" class="prodbut" />
