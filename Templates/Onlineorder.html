@@ -1880,7 +1880,7 @@ background-color:;
     font-weight:bold;
     cursor:pointer;
     color: #121212;
-    background: #aa5c31;
+    background: {{ button_color }};
     border:0px transparent;
 }
 .wraptabcontentprod{
@@ -6946,15 +6946,15 @@ background-color:;
     background: #aa5c31;
     border:0px transparent;
 }*/
-.aactive{
-    transform: scale(1.1);
-    transition:;
-    font-weight:bold;
-    cursor:pointer;
-    color: #121212;
-    background: #aa5c31;
-    border:0px transparent;
-}
+    .aactive {
+        transform: scale(1.1);
+        transition:;
+        font-weight: bold;
+        cursor: pointer;
+        color: #121212;
+        background: {{ button_color }};
+        border: 0px transparent;
+    }
 .wraptabcontentprod{
 margin-left:auto;
 margin-right:auto;
@@ -12006,15 +12006,15 @@ background-color:;
     background: #aa5c31;
     border:0px transparent;
 }*/
-.aactive{
-    transform: scale(1.1);
-    transition:;
-    font-weight:bold;
-    cursor:pointer;
-    color: #121212;
-    background: #aa5c31;
-    border:0px transparent;
-}
+    .aactive {
+        transform: scale(1.1);
+        transition:;
+        font-weight: bold;
+        cursor: pointer;
+        color: #121212;
+        background: {{ button_color }};
+        border: 0px transparent;
+    }
 .wraptabcontentprod{
 margin-left:auto;
 margin-right:auto;
@@ -17071,15 +17071,15 @@ background-color:;
     background: #aa5c31;
     border:0px transparent;
 }*/
-.aactive{
-    transform: scale(1.1);
-    transition:;
-    font-weight:bold;
-    cursor:pointer;
-    color: #121212;
-    background: #aa5c31;
-    border:0px transparent;
-}
+    .aactive {
+        transform: scale(1.1);
+        transition:;
+        font-weight: bold;
+        cursor: pointer;
+        color: #121212;
+        background: {{ button_color }};
+        border: 0px transparent;
+    }
 .wraptabcontentprod{
 margin-left:auto;
 margin-right:auto;
@@ -22341,15 +22341,15 @@ background-color:;
     background: #aa5c31;
     border:0px transparent;
 }*/
-.aactive{
-    transform: scale(1.1);
-    transition:;
-    font-weight:bold;
-    cursor:pointer;
-    color: #121212;
-    background: #aa5c31;
-    border:0px transparent;
-}
+    .aactive {
+        transform: scale(1.1);
+        transition:;
+        font-weight: bold;
+        cursor: pointer;
+        color: #121212;
+        background: {{ button_color }};
+        border: 0px transparent;
+    }
 .wraptabcontentprod{
 margin-left:auto;
 margin-right:auto;
@@ -26346,7 +26346,7 @@ Your browser does not support the audio element.
                                         </table>
                                         <input type="hidden" value="{{specialpromob.productname}}" id="specialpromoname{{specialpromob.id}}"></input>
                                         <input type="hidden" value="{{specialpromob.Price}}" id="specialpromoP{{specialpromob.id}}"></input>
-                                        <p><button onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','.jpg')" id="atbbutspecialpromo">Order</button></p>
+                                        <p><button style="background-color:{{ button_color }};" onclick="atbspecialpromo('{{specialpromob.productname}}',{{specialpromob.Price}},'{{specialpromob.Category}}','.jpg')" id="atbbutspecialpromo">Order</button></p>
 
                                         
 
@@ -26728,7 +26728,7 @@ totalpromo.innerHTML = "Total: ₱"+totalprom+".00";
                       <input type="hidden" value="{{promob.productname}}" id="promoname{{promob.id}}"></input>
                       <input type="hidden" value="{{promob.Price}}" id="promoP{{promob.id}}"></input>
 
-                      <p><button onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
+                      <p><button style="background-color:{{ button_color }};" onclick="atbpromo('{{promob.productname}}',{{promob.Price}},'{{promob.Size}}','{{promob.Category}}', '{% static 'FrappeFull.png' %}', '{% static 'FrappeReg.png' %}', '{% static 'MilkteaFull.png' %}', '{% static 'MilkteaReg.png' %}')" id="atbbutpromo">Order</button></p>
 
               </div>
                                             <script>
@@ -30637,7 +30637,7 @@ closebgwithcontentshowdescriptionPizza.style.display = "none";
   <input type="hidden" value="{{milkteab.Size}}" id="milkteaS{{milkteab.id}}"></input>
   <input type="hidden" value="{{milkteab.Price}}" id="milkteaP{{milkteab.id}}"></input>
 
-  <p><button style="background-color:{{ button_color }};"onclick="atbmilktea('{{milkteab.productname}}', {{milkteab.Price}},'{{milkteab.Size}}', '{{milkteab.Category}}')" id="atbbutmilktea">Order</button></p>
+  <p><button style="background-color:{{ button_color }};" onclick="atbmilktea('{{milkteab.productname}}', {{milkteab.Price}},'{{milkteab.Size}}', '{{milkteab.Category}}')" id="atbbutmilktea">Order</button></p>
 
 </div>
 
@@ -31870,7 +31870,7 @@ totalmilktea.innerHTML = "Total: ₱"+totalmt+".00";
   <input type="hidden" value="{{frappeb.Size}}" id="frappeS{{frappeb.id}}"></input>
   <input type="hidden" value="{{frappeb.Price}}" id="frappeP{{frappeb.id}}"></input>
 
-  <p><button  onclick="atbfrappe('{{frappeb.productname}}', {{frappeb.Price}},'{{frappeb.Size}}','{{frappeb.Category}}')" id="atbbutfrappe">Order</button></p>
+  <p><button style="background-color:{{ button_color }};" onclick="atbfrappe('{{frappeb.productname}}', {{frappeb.Price}},'{{frappeb.Size}}','{{frappeb.Category}}')" id="atbbutfrappe">Order</button></p>
 
 </div>
 
@@ -32465,7 +32465,7 @@ totalfrappe.innerHTML = "Total: ₱"+totalfr+".00";
     <input type="hidden" value="{{freezeb.productname}}" id="freezename{{freezeb.id}}"></input>
   <input type="hidden" value="{{freezeb.Price}}" id="freezeP{{freezeb.id}}"></input>
 
-  <p><button onclick="atbfreeze('{{freezeb.productname}}',{{freezeb.Price}},'{{freezeb.Category}}')" id="atbbutfreeze">Order</button></p>
+  <p><button style="background-color:{{ button_color }};" onclick="atbfreeze('{{freezeb.productname}}',{{freezeb.Price}},'{{freezeb.Category}}')" id="atbbutfreeze">Order</button></p>
 
 </div>
 
@@ -32688,7 +32688,7 @@ totalfreeze.innerHTML = "Total: ₱"+totalfrz+".00";
     <input type="hidden" value="{{cookiesb.productname}}" id="cookiesname{{cookiesb.id}}"></input>
   <input type="hidden" value="{{cookiesb.Price}}" id="cookiesP{{cookiesb.id}}"></input>
 
-  <p><button onclick="atbcookies('{{cookiesb.productname}}',{{cookiesb.Price}}, '{{cookiesb.Subcategory}}')" id="atbbutcookies">Order</button></p>
+  <p><button style="background-color:{{ button_color }};" onclick="atbcookies('{{cookiesb.productname}}',{{cookiesb.Price}}, '{{cookiesb.Subcategory}}')" id="atbbutcookies">Order</button></p>
 
 </div>
 
@@ -32910,7 +32910,7 @@ totalcookies.innerHTML = "Total: ₱"+totalcookiess+".00";
     <input type="hidden" value="{{shawarmab.productname}}" id="shawarmaname{{shawarmab.id}}"></input>
   <input type="hidden" value="{{shawarmab.Price}}" id="shawarmaP{{shawarmab.id}}"></input>
 
-  <p><button onclick="atbshawarma('{{shawarmab.productname}}', {{shawarmab.Price}}, '{{shawarmab.Subcategory}}')" id="atbbutshawarma">Order</button></p>
+  <p><button style="background-color:{{ button_color }};" onclick="atbshawarma('{{shawarmab.productname}}', {{shawarmab.Price}}, '{{shawarmab.Subcategory}}')" id="atbbutshawarma">Order</button></p>
 
 </div>
 
@@ -33135,10 +33135,10 @@ totalshawarma.innerHTML = "Total: ₱"+totalshawarma+".00";
   <input type="hidden" value="{{friesb.Price}}" id="friesP{{friesb.id}}"></input>
   {% if friesb.productname %}
   <input type="hidden" value="{% static friesb.productname %}Fries.png" id="friesI{{friesb.id}}"></input>
-    <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '{{friesb.productname }}', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
+    <p><button style="background-color:{{ button_color }};" onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '{{friesb.productname }}', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
   {% else %}
   <input type="hidden" value="#" id="friesI{{friesb.id}}"></input>
-    <p><button onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '#', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
+    <p><button style="background-color:{{ button_color }};" onclick="atbfries('{{friesb.productname}}', {{friesb.Price}}, '#', '{{friesb.Subcategory}}')" id="atbbutfries">Order</button></p>
   {% endif %}
 
 
@@ -33365,10 +33365,10 @@ totalfries.innerHTML = "Total: ₱"+totalfries+".00";
   <input type="hidden" value="{{bubwafb.Price}}" id="bubwafP{{bubwafb.id}}"></input>
   {% if bubwafb.Productimg %}
   <input type="hidden" value="{{bubwafb.Productimg.url}}" id="bubwafI{{bubwafb.id}}"></input>
-    <p><button onclick="atbbubwaf('{{bubwafb.productname}}', {{bubwafb.Price}}, '{{bubwafb.Productimg.url}}','{{bubwafb.Subcategory}}')" id="atbbutbubwaf">Order</button></p>
+    <p><button style="background-color:{{ button_color }};" onclick="atbbubwaf('{{bubwafb.productname}}', {{bubwafb.Price}}, '{{bubwafb.Productimg.url}}','{{bubwafb.Subcategory}}')" id="atbbutbubwaf">Order</button></p>
   {% else %}
   <input type="hidden" value="#" id="bubwafI{{bubwafb.id}}"></input>
-    <p><button onclick="atbbubwaf('{{bubwafb.productname}}', {{bubwafb.Price}}, '#','{{bubwafb.Subcategory}}')" id="atbbutbubwaf">Order</button></p>
+    <p><button style="background-color:{{ button_color }};" onclick="atbbubwaf('{{bubwafb.productname}}', {{bubwafb.Price}}, '#','{{bubwafb.Subcategory}}')" id="atbbutbubwaf">Order</button></p>
   {% endif %}
 
 
@@ -33611,7 +33611,7 @@ totalbubwaf.innerHTML = "Total: ₱"+totalbubwaf+".00";
   <input type="hidden" value="{{pizzab.PSize}}" id="pizzaS{{pizzab.id}}"></input>
   <input type="hidden" value="{{pizzab.Price}}" id="pizzaP{{pizzab.id}}"></input>
   <input type="hidden" value="{{pizzaall}}" id="pricepizza"></input>
-  <p><button onclick="atbpizza('{{pizzab.productname}}', {{pizzab.Price}},'{{pizzab.PSize}}','{{pizzab.Subcategory}}')" id="atbbutpizza">Order</button></p>
+  <p><button style="background-color:{{ button_color }};" onclick="atbpizza('{{pizzab.productname}}', {{pizzab.Price}},'{{pizzab.PSize}}','{{pizzab.Subcategory}}')" id="atbbutpizza">Order</button></p>
 
 </div>
 
