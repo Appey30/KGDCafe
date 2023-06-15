@@ -1825,7 +1825,7 @@
 
                             <label for="button_colorid" class="punchedtextsubtitle">Buttons</label><br>
                             <div class="colorcircle">
-                                <input onchange="button();" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
+                                <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
                             </div>
                         </div>
                         <br><br>
@@ -1847,7 +1847,7 @@
                             <label for="text_colorid" class="punchedtextsubtitle">Background</label><br>
                             <div class="colorcircle">
 
-                                <input onchange="background();" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="" />
+                                <input onchange="background();" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
                             </div>
                         </div><br><br>
                     </div>
@@ -1919,11 +1919,13 @@
 
 
     <script>
-        function button(){
+        $(document).ready(function(){
         var buttonnewcolor = document.getElementById('button_colorid').value;
-        var buttonid = document.getElementById('atbsample')
-        buttonid.style.backgroundColor = buttonnewcolor;
-        }
+          $("#atbsample").change(function(){
+            $(this).css("background-color", buttonnewcolor);
+          });
+        });
+
         function card(){
         var cardnewcolor = document.getElementById('card_colorid').value;
         var samplecardid = document.getElementById('samplecardid')
@@ -1986,8 +1988,7 @@
         var todelivertbodydata = document.getElementById('deliverthis');
         if ( document.readyState !== 'complete' ) return;
         clearInterval( tid );
-        var background_colorid = document.getElementById('background_colorid').value;
-        background_colorid='{{ backgroundcolordef }}';
+
 
         $.ajax({
         type:'GET',
