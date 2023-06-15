@@ -1912,8 +1912,9 @@
 
     <script>
 $(document).ready(function(){
-   
-   $('#content').load("kgdcafe.com/index/onlineorder/{{userr}}");
+   var userr = "{{userr}}";
+    var url = "https://kgdcafe.com/index/onlineorder/"+userr
+   $('#content').load(url);
 
 });
           $(document).ready(function() {
