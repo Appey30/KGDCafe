@@ -5507,12 +5507,14 @@ def customize(request):
         button_color = request.POST.get('button_color', '#aa5c31')  # Retrieve the updated button color
         card_color = request.POST.get('card_color', '#d4ad98')
         text_color = request.POST.get('text_color', '#2c170c')
+        background_color = request.POST.get('background_color', '#f6eeea')
         print('customizeid: Detected')
         # Save the updated button color or create a new ButtonColor object
         button_color_obj, created = ButtonColor.objects.get_or_create(user=request.user.id)
         button_color_obj.color = button_color
         button_color_obj.cardcolor = card_color
         button_color_obj.textcolor = text_color
+        button_color_obj.backgroundcolor = background_color
         button_color_obj.save()
 
         
@@ -5521,11 +5523,13 @@ def customize(request):
         buttoncolordef=buttoncolordefi.color
         cardcolordef=buttoncolordefi.cardcolor
         textcolordef=buttoncolordefi.textcolor
+        backgroundcolordef=buttoncolordefi.backgroundcolor
     except ButtonColor.DoesNotExist:
         buttoncolordef='#aa5c31'
         cardcolordef='#d4ad98'
         textcolordef='#2c170c'
-    return render(request, 'CustomizeWeb.html', {'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef})
+        backgroundcolordef='#f6eeea'
+    return render(request, 'CustomizeWeb.html', {'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef,'backgroundcolordef':backgroundcolordef})
 
 
 def Onlineordersystem(request, admin_id):
@@ -5534,8 +5538,17 @@ def Onlineordersystem(request, admin_id):
         #request.query_params['anykeyhere']
         #then the result will be ="anyvalue"
         #?prmcd=<code>
-        button_color = ButtonColor.objects.get(user=admin_id)
-
+        try:
+            button_colori = ButtonColor.objects.get(user=admin_id)
+            button_color=button_colori.color
+            card_color=button_colori.cardcolor
+            text_color=button_colori.textcolor
+            background_color=button_colori.backgroundcolor
+        except ButtonColor.DoesNotExist:
+            button_color = '#aa5c31'
+            card_color ='#d4ad98'
+            text_color ='#2c170c'
+            background_color = '#f6eeea'
         product_id=request.GET.get('product_id', '')
         messenger=request.GET.get('messenger', '')
         messengerredirect=request.GET.get('messengerredirect', '')
@@ -5987,7 +6000,7 @@ def Onlineordersystem(request, admin_id):
             settings.LOGIN_REDIRECT_URL='/index/onlineorder/'+str(admin_id)
         #vieworders=json.dumps(viewordersi)
         #print('vieworders: ',vieworders)
-        return render(request, 'Onlineorder.html',{'button_color': button_color.color if button_color.color else '#aa5c31','card_color': button_color.cardcolor if button_color.cardcolor else '#d4ad98','text_color': button_color.textcolor if button_color.textcolor else '#2c170c','product_id':product_id,'messengerredirect':messengerredirect,'messenger':messenger,'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
+        return render(request, 'Onlineorder.html',{'button_color': button_color,'card_color': card_color,'text_color': text_color,'background_color': background_color,'product_id':product_id,'messengerredirect':messengerredirect,'messenger':messenger,'prmcd':prmcd,'rqrd_minimumamnt':rqrd_minimumamnt,'discount':discount,'couponvaliditymessage':couponvaliditymessage,'couponvalidity':couponvalidity,'promoidentifier':promoidentifier,'FreeFriespromobuttons':FreeFriespromobuttons,'admin_id':admin_id,'onlineorder':onlineorder,'pizzaall':pizzaall,'snbuttons':snbuttons,'pizzabuttons':pizzabuttons,'bubwafbuttons':bubwafbuttons,'shawarmabuttons':shawarmabuttons,'friesbuttons':friesbuttons,'cookiesbuttons':cookiesbuttons,'addonsbuttons':addonsbuttons,'freezebuttons':freezebuttons,'specialpromobuttons':specialpromobuttons,'frsizes':frsizes,'frbuttons':frbuttons,'Subcategoriess':Subcategoriess,'Categoriess':Categoriess,'mtsizes':mtsizes,'mtbuttons':mtbuttons})
 
 def orderprogress(request, admin_id):
         promocodegeti=request.GET.get('prmcd', '')

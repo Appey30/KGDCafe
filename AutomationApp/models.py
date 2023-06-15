@@ -13,6 +13,7 @@ class ButtonColor(models.Model):
     color = models.CharField(max_length=7, default='#aa5c31')
     cardcolor = models.CharField(max_length=7, default='#d4ad98')
     textcolor = models.CharField(max_length=7, default='#2c170c')
+    backgroundcolor = models.CharField(max_length=7, default='#f6eeea')
     def __str__(self):
         return str(self.color) +" / "+ str(self.user)
 
