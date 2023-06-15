@@ -1904,7 +1904,7 @@
                 </div>
             </div>
             <div class="previewarea" id="previewareaidfour">
-                <iframe src="kgdcafe.com" height="500" width="800"></iframe>
+                <div id="content"></div>
             </div>
         </div>
 
@@ -1914,7 +1914,11 @@
 
 
     <script>
+$(document).ready(function(){
+   
+   $('#content').load("{% url 'Onlineorder.html' %}");
 
+});
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
