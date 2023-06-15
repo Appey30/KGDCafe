@@ -1847,7 +1847,7 @@
                             <label for="text_colorid" class="punchedtextsubtitle">Background</label><br>
                             <div class="colorcircle">
 
-                                <input onchange="background();" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
+                                <input onchange="background();" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="" />
                             </div>
                         </div><br><br>
                     </div>
@@ -1986,6 +1986,9 @@
         var todelivertbodydata = document.getElementById('deliverthis');
         if ( document.readyState !== 'complete' ) return;
         clearInterval( tid );
+        var background_colorid = document.getElementById('background_colorid').value;
+        background_colorid='{{ backgroundcolordef }}';
+
         $.ajax({
         type:'GET',
         url:"{% url 'Rider.html' %}",
