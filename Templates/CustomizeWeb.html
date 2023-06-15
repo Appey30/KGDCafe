@@ -1902,7 +1902,7 @@
                 
             </div>
             <div class="previewarea" id="previewareaidfour">
-                <embed id="content" style="overflow:auto;"></embed>
+                <iframe id="content" style="overflow:auto;"></iframe>
             </div>
         </div>
 
@@ -1912,12 +1912,11 @@
 
 
     <script>
-$(document).ready(function(){
-   var userr = "{{userr}}";
-    var url = "https://kgdcafe.com/index/onlineorder/"+userr;
-   $('#content').load(url);
-
-});
+  $(document).ready(function() {
+    var userr = "{{ userr }}";  // Assuming the value is passed from the Django view
+    var url = "https://kgdcafe.com/index/onlineorder/" + userr;
+    $('#content').load(url);
+  });
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
