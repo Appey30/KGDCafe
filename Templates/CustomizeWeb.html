@@ -1903,7 +1903,7 @@
             </div>
             <div class="previewarea" id="previewareaidfour">
                 <div id="content" style="overflow: auto;">
-                    <iframe id="webpage-frame" src=""></iframe>
+                    <object id="webpage-object" data=""></object>
                 </div>
             </div>
         </div>
@@ -1917,24 +1917,24 @@
 $(document).ready(function() {
   var userr = "{{userr}}";
   var url = "https://kgdcafe.com/index/onlineorder/"+userr;
-  var iframe = $("#webpage-frame");
-  
-  iframe.on("load", function() {
-    var iframeDocument = iframe.contents()[0];
-    var iframeBody = iframeDocument.body;
-    
-    // Zoom out the iframe content
-    iframeBody.style.zoom = "80%"; // Adjust the zoom level as per your needs
-    
+  var object = $("#webpage-object");
+
+  object.on("load", function() {
+    var objectDocument = object[0].contentDocument;
+    var objectBody = objectDocument.body;
+
+    // Zoom out the object content
+    objectBody.style.zoom = "80%"; // Adjust the zoom level as per your needs
+
     // Keep sticky elements inside the div
-    var stickyElements = iframeDocument.querySelectorAll(".your-sticky-class");
+    var stickyElements = objectDocument.querySelectorAll(".your-sticky-class");
     stickyElements.forEach(function(element) {
       element.style.position = "sticky";
       element.style.top = "0";
     });
   });
-  
-  iframe.attr("src", url);
+
+  object.attr("data", url);
 });
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
