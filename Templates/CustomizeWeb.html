@@ -1898,12 +1898,9 @@
         <div class="notifcontent">
             <h1 class="punchedtexttitle">Pictures Section</h1>
             <div class="customizearea">
-                <div id="contenttwo">
-
-                </div>
             </div>
             <div class="previewarea" id="previewareaidfour">
-                <div id="content"></div>
+                <div id="content" style="overflow:auto;"></div>
             </div>
         </div>
 
@@ -1915,8 +1912,8 @@
     <script>
 $(document).ready(function(){
    
-   $('#content').load("{% url 'Onlineorder.html' %}");
-    $('#contenttwo').load("kgdcafe.com");
+   $('#content').load("kgdcafe.com/onlineorder/{{userr}}");
+
 });
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
