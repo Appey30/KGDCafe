@@ -1958,7 +1958,7 @@
  
           $(document).ready(function() {
             var backgroundColorDef = "{{ backgroundcolordef }}";
-            $("#background_colorid").val(baclgroundColorDef);
+            $("#background_colorid").val(backgroundColorDef);
             $("#previewareaidone").css("background-color", backgroundColorDef);
             $("#previewareaidtwo").css("background-color", backgroundColorDef);
             $("#previewareaidthree").css("background-color", backgroundColorDef);
@@ -1967,7 +1967,7 @@
 
             $("#background_colorid").change(function() {
               var backgroundNewColor = $(this).val();
-            $("#background_colorid").val(baclgroundColorDef);
+            $("#background_colorid").val(backgroundNewColor);
             $("#previewareaidone").css("background-color", backgroundNewColor);
             $("#previewareaidtwo").css("background-color", backgroundNewColor);
             $("#previewareaidthree").css("background-color", backgroundNewColor);
