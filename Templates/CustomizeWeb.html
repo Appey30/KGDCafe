@@ -1920,28 +1920,30 @@
 
     <script>
         $(document).ready(function(){
-        
-        var buttonnewcolor = document.getElementById('button_colorid').value;
+        $("#button_colorid").val('{{ buttoncolordef }}');
+
           $("#button_colorid").change(function(){
+            var buttonnewcolor = $("#button_colorid").val();
             $("#atbsample").css("background-color", buttonnewcolor);
           });
         });
 
         $(document).ready(function(){
-                 
-        var cardnewcolor = document.getElementById('card_colorid').value;
+        $("#card_colorid").val('{{ cardcolordef }}');
 
           $("#card_colorid").change(function(){
+            var cardnewcolor = $("#card_colorid").val();
             $("#samplecardid").css("background-color", cardnewcolor);
           });
         });
 
         $(document).ready(function(){
-       
-        var textnewcolor = document.getElementById('text_colorid').value;
+       $("#text_colorid").val('{{ textcolordef }}');
+
 
 
           $("#text_colorid").change(function(){
+            var textnewcolor = $("#text_colorid").val();
             $("#sampleproductnameid").css("color", textnewcolor);
             $("#priceid").css("color", textnewcolor);
             $("#atbsample").css("color", textnewcolor);
@@ -1949,9 +1951,11 @@
         });
 
         $(document).ready(function(){
-        var backgroundnewcolor = document.getElementById('background_colorid').value;
-       
+        $("#background_colorid").val('{{ backgroundcolordef }}');
+        
+        
           $("#background_colorid").change(function(){
+            var backgroundnewcolor = $("#background_colorid").val();
             $("#previewareaidone").css("background-color", backgroundnewcolor);
             $("#previewareaidtwo").css("background-color", backgroundnewcolor);
             $("#previewareaidthree").css("background-color", backgroundnewcolor);
