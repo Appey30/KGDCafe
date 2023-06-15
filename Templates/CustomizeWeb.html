@@ -1825,7 +1825,7 @@
 
                             <label for="button_colorid" class="punchedtextsubtitle">Buttons</label><br>
                             <div class="colorcircle">
-                                <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="" />
+                                <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
                             </div>
                         </div>
                         <br><br>
@@ -1833,21 +1833,21 @@
                             <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
                             <div class="colorcircle">
 
-                                <input  style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="" />
+                                <input  style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value={{ cardcolordef }}"" />
                             </div>
                         </div><br><br>
                         <div class="threecontainers">
                             <label for="text_colorid" class="punchedtextsubtitle">Text</label><br>
                             <div class="colorcircle">
 
-                                <input  style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="" />
+                                <input  style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
                             </div>
                         </div><br><br>
                         <div class="threecontainers">
                             <label for="text_colorid" class="punchedtextsubtitle">Background</label><br>
                             <div class="colorcircle">
 
-                                <input  style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="" />
+                                <input  style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
                             </div>
                         </div><br><br>
                     </div>
@@ -1919,50 +1919,62 @@
 
 
     <script>
-        $(document).ready(function(){
-        $("#button_colorid").val({{ buttoncolordef }});
+          $(document).ready(function() {
+            var buttonColorDef = "{{ buttoncolordef }}";
+            $("#button_colorid").val(buttonColorDef);
+            $("#atbsample").css("background-color", buttonColorDef);
 
-          $("#button_colorid").change(function(){
-            var buttonnewcolor = $("#button_colorid").val();
-            $("#atbsample").css("background-color", buttonnewcolor);
-          });
-        });
-
-        $(document).ready(function(){
-        $("#card_colorid").val('{{ cardcolordef }}');
-
-          $("#card_colorid").change(function(){
-            var cardnewcolor = $("#card_colorid").val();
-            $("#samplecardid").css("background-color", cardnewcolor);
-          });
-        });
-
-        $(document).ready(function(){
-       $("#text_colorid").val('{{ textcolordef }}');
-
-
-
-          $("#text_colorid").change(function(){
-            var textnewcolor = $("#text_colorid").val();
-            $("#sampleproductnameid").css("color", textnewcolor);
-            $("#priceid").css("color", textnewcolor);
-            $("#atbsample").css("color", textnewcolor);
-
-        });
-
-        $(document).ready(function(){
-        $("#background_colorid").val('{{ backgroundcolordef }}');
-        
-        
-          $("#background_colorid").change(function(){
-            var backgroundnewcolor = $("#background_colorid").val();
-            $("#previewareaidone").css("background-color", backgroundnewcolor);
-            $("#previewareaidtwo").css("background-color", backgroundnewcolor);
-            $("#previewareaidthree").css("background-color", backgroundnewcolor);
-            $("#previewareaidfour").css("background-color", backgroundnewcolor);
+            $("#button_colorid").change(function() {
+              var buttonNewColor = $(this).val();
+              $("#atbsample").css("background-color", buttonNewColor);
+            });
           });
 
-        });
+          $(document).ready(function() {
+            var cardColorDef = "{{ cardcolordef }}";
+            $("#card_colorid").val(cardColorDef);
+            $("#samplecardid").css("background-color", cardColorDef);
+
+            $("#card_colorid").change(function() {
+              var cardNewColor = $(this).val();
+              $("#samplecardid").css("background-color", cardNewColor);
+            });
+          });
+
+          $(document).ready(function() {
+            var textColorDef = "{{ textcolordef }}";
+            $("#text_colorid").val(textColorDef);
+            $("#sampleproductnameid").css("color", textColorDef);
+            $("#priceid").css("color", textColorDef);
+            $("#atbsample").css("color", textColorDef);
+
+            $("#text_colorid").change(function() {
+              var textNewColor = $(this).val();
+            $("#sampleproductnameid").css("color", textNewColor);
+            $("#priceid").css("color", textNewColor);
+            $("#atbsample").css("color", textNewColor);
+            });
+          });
+ 
+          $(document).ready(function() {
+            var backgroundColorDef = "{{ backgroundcolordef }}";
+            $("#background_colorid").val(baclgroundColorDef);
+            $("#previewareaidone").css("background-color", backgroundColorDef);
+            $("#previewareaidtwo").css("background-color", backgroundColorDef);
+            $("#previewareaidthree").css("background-color", backgroundColorDef);
+            $("#previewareaidfour").css("background-color", backgroundColorDef);
+
+
+            $("#background_colorid").change(function() {
+              var backgroundNewColor = $(this).val();
+            $("#background_colorid").val(baclgroundColorDef);
+            $("#previewareaidone").css("background-color", backgroundNewColor);
+            $("#previewareaidtwo").css("background-color", backgroundNewColor);
+            $("#previewareaidthree").css("background-color", backgroundNewColor);
+            $("#previewareaidfour").css("background-color", backgroundNewColor);
+            });
+          });
+
 
         function viewwebisite(){
         window.open("../index/onlineorder/{{userr}}", "_blank");
