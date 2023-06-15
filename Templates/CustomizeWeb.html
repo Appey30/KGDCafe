@@ -1903,7 +1903,7 @@
             </div>
             <div class="previewarea" id="previewareaidfour">
                 <div id="content" style="overflow: auto;">
-                    <object id="webpage-object" data=""></object>
+                    
                 </div>
             </div>
         </div>
@@ -1915,26 +1915,16 @@
 
     <script>
 $(document).ready(function() {
-  var userr = "{{userr}}";
-  var url = "https://kgdcafe.com/index/onlineorder/"+userr;
-  var object = $("#webpage-object");
-
-  object.on("load", function() {
-    var objectDocument = object[0].contentDocument;
-    var objectBody = objectDocument.body;
-
-    // Zoom out the object content
-    objectBody.style.zoom = "80%"; // Adjust the zoom level as per your needs
-
-    // Keep sticky elements inside the div
-    var stickyElements = objectDocument.querySelectorAll(".your-sticky-class");
-    stickyElements.forEach(function(element) {
-      element.style.position = "sticky";
-      element.style.top = "0";
-    });
+  var userr = "{{ userr }}";
+  var url = "/index/onlineorder/" + userr;
+  
+  $.ajax({
+    url: url,
+    type: 'GET',
+    success: function(data) {
+      $('#content').html(data);
+    }
   });
-
-  object.attr("data", url);
 });
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
