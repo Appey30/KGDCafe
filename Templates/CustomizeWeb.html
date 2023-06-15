@@ -1891,9 +1891,8 @@
 
             </div>
             <div class="previewarea" id="previewareaidthree">
-                <div>
-                    <object type="text/html" data="https://kgdcafe.com/index/onlineorder/4" width="800px" height="600px" style="overflow:auto;border:5px ridge blue">
-                    </object>
+                <div id="previewwebsiteid">
+
                 </div>
             </div>
         </div>
@@ -1913,6 +1912,9 @@
 
 
     <script>
+        $(document).ready(function() {
+        $("#previewwebsiteid").html('<object data="https://kgdcafe.com/index/onlineorder/4/"/>');
+        });
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
