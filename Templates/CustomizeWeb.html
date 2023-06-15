@@ -1825,7 +1825,7 @@
 
                             <label for="button_colorid" class="punchedtextsubtitle">Buttons</label><br>
                             <div class="colorcircle">
-                                <input onchange="button(document.getElementById('button_colorid'));" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
+                                <input onchange="button(document.getElementById('button_colorid').value);" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
                             </div>
                         </div>
                         <br><br>
@@ -1833,21 +1833,21 @@
                             <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
                             <div class="colorcircle">
 
-                                <input onchange="card(document.getElementById('card_colorid'));" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}" />
+                                <input onchange="card(document.getElementById('card_colorid').value);" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}" />
                             </div>
                         </div><br><br>
                         <div class="threecontainers">
                             <label for="text_colorid" class="punchedtextsubtitle">Text</label><br>
                             <div class="colorcircle">
 
-                                <input onchange="text(document.getElementById('text_colorid'));" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
+                                <input onchange="text(document.getElementById('text_colorid').value);" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
                             </div>
                         </div><br><br>
                         <div class="threecontainers">
                             <label for="text_colorid" class="punchedtextsubtitle">Background</label><br>
                             <div class="colorcircle">
 
-                                <input onchange="background(document.getElementById('background_colorid'));" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
+                                <input onchange="background(document.getElementById('background_colorid').value);" style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
                             </div>
                         </div><br><br>
                     </div>
@@ -1855,7 +1855,7 @@
 
             </div>
             <div class="previewarea" id="previewareaidone">
-                <label for="samplecardid" class="punchedtextsubtitle">Preview Changes</label>
+                <label for="samplecardid" class="punchedtextsubtitle" style="box-shadow: 0 2px 10px rgb(0 0 0 / 20%)">Preview Changes</label>
                 <div class="forflexcard">
                     <div class="card" id="samplecardid">
 
