@@ -1922,8 +1922,8 @@
         $(document).ready(function(){
         
         var buttonnewcolor = document.getElementById('button_colorid').value;
-          $("#atbsample").change(function(){
-            $(this).css("background-color", buttonnewcolor);
+          $("#button_colorid").change(function(){
+            $("#atbsample").css("background-color", buttonnewcolor);
           });
         });
 
@@ -1931,8 +1931,8 @@
                  
         var cardnewcolor = document.getElementById('card_colorid').value;
 
-          $("#samplecardid").change(function(){
-            $(this).css("background-color", cardnewcolor);
+          $("#card_colorid").change(function(){
+            $("#samplecardid").css("background-color", cardnewcolor);
           });
         });
 
@@ -1941,32 +1941,23 @@
         var textnewcolor = document.getElementById('text_colorid').value;
 
 
-          $("#sampleproductnameid").change(function(){
-            $(this).css("color", textnewcolor);
-          });
-          $("#priceid").change(function(){
-            $(this).css("color", textnewcolor);
-          });
-          $("#atbsample").change(function(){
-            $(this).css("color", textnewcolor);
-          });
+          $("#text_colorid").change(function(){
+            $("#sampleproductnameid").css("color", textnewcolor);
+            $("#priceid").css("color", textnewcolor);
+            $("#atbsample").css("color", textnewcolor);
+
         });
 
         $(document).ready(function(){
         var backgroundnewcolor = document.getElementById('background_colorid').value;
        
-          $("#previewareaidone").change(function(){
-            $(this).css("background-color", backgroundnewcolor);
+          $("#background_colorid").change(function(){
+            $("#previewareaidone").css("background-color", backgroundnewcolor);
+            $("#previewareaidtwo").css("background-color", backgroundnewcolor);
+            $("#previewareaidthree").css("background-color", backgroundnewcolor);
+            $("#previewareaidfour").css("background-color", backgroundnewcolor);
           });
-          $("#previewareaidtwo").change(function(){
-            $(this).css("background-color", backgroundnewcolor);
-          });
-          $("#previewareaidthree").change(function(){
-            $(this).css("background-color", backgroundnewcolor);
-          });
-          $("#previewareaidfour").change(function(){
-            $(this).css("background-color", backgroundnewcolor);
-          });
+
         });
 
         function viewwebisite(){
