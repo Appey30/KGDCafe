@@ -5503,6 +5503,7 @@ def inventory(request):
 
 @login_required
 def customize(request):
+    userr=request.user.id
     if request.POST.get('button_color'):
         button_color = request.POST.get('button_color', '#aa5c31')  # Retrieve the updated button color
         card_color = request.POST.get('card_color', '#d4ad98')
@@ -5529,7 +5530,7 @@ def customize(request):
         cardcolordef='#d4ad98'
         textcolordef='#2c170c'
         backgroundcolordef='#f6eeea'
-    return render(request, 'CustomizeWeb.html', {'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef,'backgroundcolordef':backgroundcolordef})
+    return render(request, 'CustomizeWeb.html', {'userr':userr,'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef,'backgroundcolordef':backgroundcolordef})
 
 
 def Onlineordersystem(request, admin_id):
