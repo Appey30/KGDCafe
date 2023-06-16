@@ -274,7 +274,14 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
-
+       .maintitleclass {
+            text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+            position: relative;
+            font-weight: bold;
+            font-size: 70px;
+            font-family: beyond_the_mountains;
+            color: {{ text_color }};
+        }
             .punchedtextsubtitle {
                 font-size: 25px;
                 font-weight: bold;
@@ -760,7 +767,14 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
-
+       .maintitleclass {
+            text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+            position: relative;
+            font-weight: bold;
+            font-size: 70px;
+            font-family: beyond_the_mountains;
+            color: {{ text_color }};
+        }
             .punchedtextsubtitle {
                 font-size: 25px;
                 font-weight: bold;
@@ -1208,7 +1222,7 @@
         border-weight:2px;
         border-bottom: 0px;
         border-radius: 10px 10px 0px 0px;
-        padding: 10px 20px;
+        padding: 10px 20px;`
         }
         .producttab:hover {
         transform: scale(1.1);
@@ -1231,7 +1245,14 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
-
+        .maintitleclass {
+            text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+            position: relative;
+            font-weight: bold;
+            font-size: 70px;
+            font-family: beyond_the_mountains;
+            color: {{ text_color }};
+        }
             .punchedtextsubtitle {
                 font-size: 25px;
                 font-weight: bold;
@@ -1704,17 +1725,25 @@
             -webkit-text-fill-color: transparent;
             text-align: center;
         }
-
-            .punchedtextsubtitle {
-                font-size: 25px;
-                font-weight: bold;
-                background: rgb(252, 220, 109);
-                background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
-                background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
-                background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
+        .maintitleclass {
+            text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+            position: relative;
+            font-weight: bold;
+            font-size: 30px;
+            font-family: beyond_the_mountains;
+            color: {{ text_color }};
+        }
+        
+        .punchedtextsubtitle {
+            font-size: 25px;
+            font-weight: bold;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
             .queuetable {
                 border-collapse: collapse;
@@ -2011,7 +2040,7 @@
             <h1 class="punchedtexttitle">Preview Section</h1>
             <div class="previewarea" id="previewareaidone">
 
-                <label for="" class="punchedtextsubtitle" style="text-shadow: 0 2px 10px rgb(0 0 0 / 20%)">Our Products</label>
+                <label for="" class="maintitleclass">Our Products</label>
                 <div style="background-color:transparent;text-align: center; width: 100%; height: 60px; border-bottom: 2px solid {{ buttoncolordef }};display: flex;justify-content: center;flex-wrap: nowrap;flex-direction: row;position: relative;text-align: center;">
                     <button class="producttabchoice">Pizza</button>
                     <button class="producttab">Fries</button>
