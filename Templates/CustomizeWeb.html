@@ -247,7 +247,7 @@
         .producttabchoice {
         background-color:{{ buttoncolordef }};
         color:{{ textcolordef }};
-        font-size:18px;
+        font-size:16px;
         font-weight:bold;
         padding: 10px 20px;
         border-radius:10px 10px 0px 0px;
@@ -265,7 +265,7 @@
         .producttab {
         background-color:transparent;
         color:{{ textcolordef }};
-        font-size: 18px;
+        font-size: 16px;
         border-color:{{ buttoncolordef }};
         border-weight:2px;
         border-bottom: 0px;
@@ -763,7 +763,7 @@
         .producttabchoice {
         background-color:{{ buttoncolordef }};
         color:{{ textcolordef }};
-        font-size:18px;
+        font-size:16px;
         font-weight:bold;
         padding: 10px 20px;
         border-radius:10px 10px 0px 0px;
@@ -781,7 +781,7 @@
         .producttab {
         background-color:transparent;
         color:{{ textcolordef }};
-        font-size: 18px;
+        font-size: 16px;
         border-color:{{ buttoncolordef }};
         border-weight:2px;
         border-bottom: 0px;
@@ -1261,7 +1261,7 @@
         .producttabchoice {
         background-color:{{ buttoncolordef }};
         color:{{ textcolordef }};
-        font-size:18px;
+        font-size:10px;
         font-weight:bold;
         padding: 10px 20px;
         border-radius:10px 10px 0px 0px;
@@ -1279,7 +1279,7 @@
         .producttab {
         background-color:transparent;
         color:{{ textcolordef }};
-        font-size: 18px;
+        font-size: 10px;
         border-color:{{ buttoncolordef }};
         border-weight:2px;
         border-bottom: 0px;
@@ -1555,7 +1555,7 @@
             }
         }
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 767px) and (min-width: 450px){
             .background {
                 position: absolute;
                 width: 99.5%;
@@ -1761,7 +1761,7 @@
         .producttabchoice {
         background-color:{{ buttoncolordef }};
         color:{{ textcolordef }};        
-        font-size:8px;
+        font-size:6px;
         font-weight:bold;
         padding: 10px 20px;
         border-radius:10px 10px 0px 0px;
@@ -1779,7 +1779,7 @@
         .producttab {
         background-color:transparent;
         color:{{ textcolordef }};
-        font-size: 8px;
+        font-size: 6px;
         border-color:{{ buttoncolordef }};
         border-weight:2px;
         border-bottom: 0px;
@@ -2054,6 +2054,650 @@
             * {
                 box-sizing: border-box;
             }
+        }
+
+        @media screen and (max-width: 449px) {
+            .background {
+                position: absolute;
+                width: 99.5%;
+                height: 94%;
+                z-index: -1;
+            }
+
+            .pagetitle {
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 3vh;
+            }
+
+                .pagetitle h1 {
+                    font-size: 70px;
+                    font-weight: bold;
+                }
+
+            .card {
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                width: 150px;
+                height: 180px;
+                margin-top: 5px;
+                margin-left: 5px;
+                margin-right: 5px;
+                text-align: center;
+                font-family: arial;
+                background-color:
+
+        {
+
+        {
+            cardcolordef
+        }
+
+        }
+        ;
+        border-radius: 10px;
+        }
+
+        .forflexcard {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            position: relative;
+            text-align: center;
+            padding: 5px 5px 5px 5px;
+        }
+
+        .card h3 {
+            position: relative;
+            font-weight: 550;
+            font-size: 13px;
+            color:
+
+        {
+
+        {
+            textcolordef
+        }
+
+        }
+        ;
+        }
+
+        .buttoncontainer {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            position: relative;
+            text-align: center;
+            padding: 5px 5px 5px 5px;
+        }
+
+        .h3div {
+            position: relative;
+            width: 100%;
+            background-color:;
+        }
+
+        .price {
+            color:
+
+        {
+
+        {
+            textcolordef
+        }
+
+        }
+        ;
+        font-size: 8px;
+        position:relative;
+        }
+
+        #atbsample {
+            position: relative;
+            margin-top: 10px;
+            border: 0px solid
+
+        {
+
+        {
+            buttoncolordef
+        }
+
+        }
+
+        ;
+        border-radius:60px;
+        outline: 0;
+        color: {
+
+        {
+            textcolordef
+        }
+
+        }
+        ;
+        box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+        text-align: center;
+        cursor: pointer;
+        width: 140px;
+        height:20px;
+        font-size: 8px;
+        }
+
+        #atbsample:hover {
+            box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
+            transition: box-shadow .2s;
+        }
+
+        .punchedtext {
+            font-size: 12px;
+            font-weight: bold;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        .notifcontentbg {
+            width: 100%;
+            height: 100%;
+            padding: 0 2vw 20vh;
+        }
+
+        .notifcontentfirst {
+            border: 2px solid #615632;
+            border-radius: 15px;
+            width: 100%;
+            position: relative;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color: #2d2c29;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .notifcontent {
+            border: 2px solid #615632;
+            border-radius: 15px;
+            width: 100%;
+            position: relative;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color: #2d2c29;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        #brandcolorcontainerid {
+            display: flex; /* establish flex container */
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px;
+            height: 200px;
+        }
+
+        .threecontainers {
+            width: 300px;
+            height: 300px;
+        }
+
+        .colorcircle {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .customizearea {
+            border-radius: 15px;
+            width: 50%;
+            height: 92.5%;
+            max-height: 355px;
+            position: relative;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color: #2d2c29;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            display: inline;
+            text-align: center;
+        }
+
+        .previewarea {
+            border-radius: 15px;
+            width: 100%;
+            position: relative;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color:
+
+        {
+
+        {
+            backgroundcolordef
+        }
+
+        }
+        ;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+
+        text-align: center;
+        }
+
+        .producttabchoice {
+            background-color:
+
+        {
+
+        {
+            buttoncolordef
+        }
+
+        }
+
+        ;
+        color: {
+
+        {
+            textcolordef
+        }
+
+        }
+        ;
+        font-size:6px;
+        font-weight:bold;
+        padding: 10px 20px;
+        border-radius:10px 10px 0px 0px;
+        }
+
+        .producttabchoice:hover {
+            transform: scale(1.1);
+            transition: transform .2s;
+            font-weight: bold;
+            cursor: pointer;
+            color:
+
+        {
+
+        {
+            textcolordef
+        }
+
+        }
+
+        ;
+        background-color: {
+
+        {
+            buttoncolordef
+        }
+
+        }
+        ;
+        border:0px transparent;
+        padding: 10px 20px;
+        }
+
+        .producttab {
+            background-color: transparent;
+            color:
+
+        {
+
+        {
+            textcolordef
+        }
+
+        }
+
+        ;
+        font-size: 6px;
+        border-color: {
+
+        {
+            buttoncolordef
+        }
+
+        }
+        ;
+        border-weight:2px;
+        border-bottom: 0px;
+        border-radius: 10px 10px 0px 0px;
+        padding: 10px 20px;
+        }
+
+        .producttab:hover {
+            transform: scale(1.1);
+            transition: transform .2s;
+            font-weight: bold;
+            cursor: pointer;
+            color:
+
+        {
+
+        {
+            textcolordef
+        }
+
+        }
+
+        ;
+        background-color: {
+
+        {
+            buttoncolordef
+        }
+
+        }
+        ;
+        border:0px transparent;
+        padding: 10px 20px;
+        }
+
+        .punchedtexttitle {
+            font-size: 25px;
+            font-weight: bold;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .maintitleclass {
+            text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
+            position: relative;
+            font-weight: bold;
+            font-size: 30px;
+            font-family: beyond_the_mountains;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            color:
+
+        {
+
+        {
+            textcolordef
+        }
+
+        }
+        ;
+        }
+
+        .punchedtextsubtitle {
+            font-size: 25px;
+            font-weight: bold;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .queuetable {
+            border-collapse: collapse;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        .showorders {
+            border: 2px solid #615632;
+            border-radius: 15px;
+            position: absolute;
+            width: 96%;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+            background-color: #2d2c29;
+            z-index: 6;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 50px;
+            overflow: auto;
+        }
+
+        .showordersbg {
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            padding: 30vh 2vw 2vh 2vw;
+        }
+
+        .exitshoworderdiv {
+            position: fixed;
+            border-radius: 100%;
+            background: red;
+            right: 10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .exitshoworderdiv:hover {
+                background: #B1473C;
+            }
+
+        .exitshoworder {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            top: -3px;
+        }
+
+            .exitshoworder:hover {
+                color: #D4CECE;
+            }
+
+        .showordertitlename {
+            font-size: 15px;
+            font-weight: bold;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .contactnummmclass {
+            position: relative;
+            font-size: 15px;
+            color: #A0A0A0;
+        }
+
+        .trpunchedtable {
+            border-bottom: 2px solid #615632;
+        }
+
+        .punchedtable {
+            border-collapse: collapse;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        .tdqueue {
+            position: relative;
+            font-size: 9px;
+            color: #A0A0A0;
+        }
+
+        .trbutton {
+            background-color: transparent;
+            border-bottom: 2px solid #615632;
+        }
+
+        .totalspecial {
+            font-size: 13px;
+            font-weight: bold;
+            background: rgb(252, 220, 109);
+            background: -moz-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: -webkit-linear-gradient(left, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            text-align: justify;
+        }
+
+        .totalphp {
+            font-size: 15px;
+            font-weight: bold;
+            text-align: justify;
+        }
+
+        .value {
+            position: relative;
+            width: 120.8px;
+            font-size: 13px;
+            color: #A0A0A0;
+            text-align: justify;
+        }
+
+        .key {
+            position: relative;
+            width: 120.8px;
+            font-size: 13px;
+            color: #A0A0A0;
+            font-weight: bold;
+            text-align: justify;
+        }
+
+        .prodbutacknowledge {
+            background-color: rgba(249, 216, 105,0);
+            font-size: 16px;
+            color: rgb(252, 220, 109);
+            position: relative;
+            top: 0px;
+            display: inline-block;
+            border-radius: 30px;
+            border-color: rgb(249, 216, 105);
+            height: 30px;
+            width: auto;
+        }
+
+            .prodbutacknowledge:hover {
+                transform: scale(1.1);
+                transition: transform .2s;
+                font-weight: bold;
+                cursor: pointer;
+                color: #121212;
+                background: rgb(249, 216, 105);
+                background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+                background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+                background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+            }
+
+        .prodbut {
+            background-color: rgba(249, 216, 105,0);
+            font-size: 16px;
+            color: rgb(252, 220, 109);
+            position: relative;
+            top: 0px;
+            display: inline-block;
+            border-radius: 30px;
+            border-color: rgb(249, 216, 105);
+            height: 60px;
+            width: 140px;
+        }
+
+            .prodbut:hover {
+                transform: scale(1.1);
+                transition: transform .2s;
+                font-weight: bold;
+                cursor: pointer;
+                color: #121212;
+                background: rgb(249, 216, 105);
+                background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+                background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+                background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+            }
+
+        .focusbutton {
+            color: black;
+            font-weight: bold;
+            background: rgb(249, 216, 105);
+            background: -moz-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+            background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+            background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
+        }
+
+        .custom-select {
+            background-color: transparent;
+        }
+
+            .custom-select select {
+                background-color: #2d2c29;
+                color: #A0A0A0;
+                width: 200px;
+                height: 30px;
+                font-size: 15px;
+                position: relative;
+            }
+
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         }
     </style>
 </head>
