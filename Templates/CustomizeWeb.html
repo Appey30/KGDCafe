@@ -203,7 +203,7 @@
             padding-right: 20px;
             padding-top: 20px;
             padding-bottom: 20px;
-            float: left;
+            
             display: inline;
             text-align: center;
         }
@@ -653,7 +653,7 @@
             padding-right: 20px;
             padding-top: 20px;
             padding-bottom: 20px;
-            float: left;
+           
             display: inline;
             text-align: center;
         }
@@ -1088,7 +1088,7 @@
                 padding-right: 20px;
                 padding-top: 20px;
                 padding-bottom: 20px;
-                float: left;
+                
                 display: inline;
                 text-align: center;
             }
@@ -1524,7 +1524,7 @@
                 padding-right: 20px;
                 padding-top: 20px;
                 padding-bottom: 20px;
-                float: left;
+                
                 display: inline;
                 text-align: center;
             }
@@ -1896,9 +1896,7 @@
                 
             </div>
             <div class="previewarea" id="previewareaidfour">
-                <div id="content" style="overflow: auto;">
-                    
-                </div>
+
             </div>
         </div>
 
@@ -1908,18 +1906,7 @@
 
 
     <script>
-$(document).ready(function() {
-  var userr = "{{ userr }}";
-  var url = "/index/onlineorder/" + userr;
-  
-  $.ajax({
-    url: url,
-    type: 'GET',
-    success: function(data) {
-      $('#content').html(data);
-    }
-  });
-});
+
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
