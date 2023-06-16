@@ -31,13 +31,15 @@
     <style>
         body {
             font-family: "Lato", sans-serif;
-            background-image: url({% static 'bas.jpg'%
-        }
+            background-image: url({% static 'bas.jpg'% }
 
         );
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        }
+        @font-face { 
+        font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond_the_mountains.otf' %});
         }
         /*large*/
         @media screen and (min-width: 1200px) {
