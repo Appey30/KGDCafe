@@ -273,7 +273,7 @@
                 background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
                 background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
             }
-        .activeaccordion {
+        .accordion-header.active {
             font-family: Oswald-regular;
             transform: scale(1.01);
             transition: transform .2s;
@@ -899,7 +899,7 @@
                 background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
                 background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
             }
-        .activeaccordion {
+        .accordion-header.active {
             font-family: Oswald-regular;
             transform: scale(1.01);
             transition: transform .2s;
@@ -1507,7 +1507,7 @@
                 background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
                 background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
             }
-        .activeaccordion {
+        .accordion-header.active {
             font-family: Oswald-regular;
             transform: scale(1.01);
             transition: transform .2s;
@@ -2117,7 +2117,7 @@
                 background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
                 background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
             }
-        .activeaccordion {
+        .accordion-header.active {
             font-family: Oswald-regular;
             transform: scale(1.01);
             transition: transform .2s;
@@ -2738,7 +2738,7 @@
                 background: -webkit-linear-gradient(top, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
                 background: linear-gradient(to bottom, rgb(249, 216, 105) 0%, rgb(170, 129, 13) 50%);
             }
-        .activeaccordion {
+        .accordion-header.active {
             font-family: Oswald-regular;
             transform: scale(1.01);
             transition: transform .2s;
@@ -3343,14 +3343,14 @@
     <script>
 function toggleAccordion(header) {
   var accordionItem = header.parentNode;
-  var accordionHeader = accordionItem.querySelector('.accordion-header');
   var accordionContent = accordionItem.querySelector('.accordion-content');
   var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
 
-
-
   // Toggle the open class on the accordion item
   accordionItem.classList.toggle('open');
+
+  // Toggle the active class on the accordion header
+  header.classList.toggle('active');
 
   // Toggle the rotate class on the dropdown icon
   dropdownIcon.classList.toggle('rotate');
@@ -3360,16 +3360,10 @@ function toggleAccordion(header) {
     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
     accordionContent.style.opacity = 1;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-    var accordionText = accordionItem.querySelector('punchedtexttitle');
-    accordionText.classList.add(' punchedtexttitleselected').remove('punchedtexttitle')
-    accordionHeader.classList.add(' activeaccordion')
   } else {
     accordionContent.style.maxHeight = 0;
     accordionContent.style.opacity = 0;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-    var accordionText = accordionItem.querySelector('punchedtexttitleselected');
-    accordionText.classList.add(' punchedtexttitle').remove(' punchedtexttitleselected')
-    accordionHeader.classList.remove(' activeaccordion')
   }
 }
           $(document).ready(function() {
