@@ -3345,6 +3345,8 @@ function toggleAccordion(header) {
   var accordionItem = header.parentNode;
   var accordionContent = accordionItem.querySelector('.accordion-content');
   var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
+  var accordionText = accordionItem.querySelector('punchedtexttitle');
+
 
   // Toggle the open class on the accordion item
   accordionItem.classList.toggle('open');
@@ -3357,10 +3359,12 @@ function toggleAccordion(header) {
     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
     accordionContent.style.opacity = 1;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+        accordionText.classList.add(' punchedtexttitleselected').remove('punchedtexttitle')
   } else {
     accordionContent.style.maxHeight = 0;
     accordionContent.style.opacity = 0;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+        accordionText.classList.add('punchedtexttitle').remove(' punchedtexttitleselected')
   }
 }
           $(document).ready(function() {
