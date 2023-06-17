@@ -250,7 +250,7 @@
             background-color: #2d2c29;
             height: 50px;
             border-radius: 30px 30px 30px 30px;
-            border-color: rgb(249, 216, 105);
+            border: 2px solid rgb(249, 216, 105);
             display: flex;
             text-align: center;
             flex-wrap: nowrap;
@@ -286,6 +286,7 @@
         }
         .accordion-items.open .accordion-content {
             display: block;
+            border: 2px solid rgb(249, 216, 105);
         }
         .dropdown-icon {
             display: inline-block;
@@ -866,7 +867,7 @@
             background-color: #2d2c29;
             height: 50px;
             border-radius: 30px 30px 30px 30px;
-            border-color: rgb(249, 216, 105);
+            border: 2px solid rgb(249, 216, 105);
             display: flex;
             text-align: center;
             flex-wrap: nowrap;
@@ -902,6 +903,7 @@
         }
         .accordion-items.open .accordion-content {
             display: block;
+            border: 2px solid rgb(249, 216, 105);
         }
         .dropdown-icon {
             display: inline-block;
@@ -1464,7 +1466,7 @@
             background-color: #2d2c29;
             height: 50px;
             border-radius: 30px 30px 30px 30px;
-            border-color: rgb(249, 216, 105);
+            border: 2px solid rgb(249, 216, 105);
             display: flex;
             text-align: center;
             flex-wrap: nowrap;
@@ -1500,6 +1502,7 @@
         }
         .accordion-items.open .accordion-content {
             display: block;
+            border: 2px solid rgb(249, 216, 105);
         }
         .dropdown-icon {
             display: inline-block;
@@ -2064,7 +2067,7 @@
             background-color: #2d2c29;
             height: 50px;
             border-radius: 30px 30px 30px 30px;
-            border-color: rgb(249, 216, 105);
+            border: 2px solid rgb(249, 216, 105);
             display: flex;
             text-align: center;
             flex-wrap: nowrap;
@@ -2100,6 +2103,7 @@
         }
         .accordion-items.open .accordion-content {
             display: block;
+            border: 2px solid rgb(249, 216, 105);
         }
         .dropdown-icon {
             display: inline-block;
@@ -2669,12 +2673,13 @@
             overflow: hidden;
             transition: height 0.3s ease;
             background-color: #2d2c29;
+            
         }
         .accordion-header {
             background-color: #2d2c29;
             height: 50px;
             border-radius: 30px 30px 30px 30px;
-            border-color: rgb(249, 216, 105);
+            border: 2px solid rgb(249, 216, 105);
             display: flex;
             text-align: center;
             flex-wrap: nowrap;
@@ -2710,6 +2715,7 @@
         }
         .accordion-items.open .accordion-content {
             display: block;
+            border: 2px solid rgb(249, 216, 105);
         }
         .dropdown-icon {
             display: inline-block;
@@ -3300,10 +3306,10 @@ $(document).ready(function() {
     // Slide the accordion content
     if (accordionItem.hasClass('open')) {
       accordionContent.slideDown(1000).fadeIn(1000);
-      $("this").addClass("activeaccordion");
+      $("this").addClass(" activeaccordion");
     } else {
       accordionContent.fadeOut(1000).slideUp(1000);
-      $("this").removeClass("activeaccordion");
+      $("this").removeClass(" activeaccordion");
     }
   });
 });
