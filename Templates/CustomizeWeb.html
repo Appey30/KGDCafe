@@ -3362,10 +3362,11 @@ function toggleAccordion(header) {
     accordionContent.style.opacity = 1;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
 
-    // Remove the punchedtexttitle class from all accordion headers except the clicked one
+    // Remove the punchedtexttitle class from other accordion headers
     var accordionHeaders = document.querySelectorAll('.accordion-header');
     accordionHeaders.forEach(function (headerItem) {
       if (headerItem !== header) {
+        headerItem.classList.remove('active');
         headerItem.querySelector('h3').classList.remove('punchedtexttitle');
       }
     });
@@ -3374,10 +3375,15 @@ function toggleAccordion(header) {
     accordionContent.style.opacity = 0;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
 
-    // Add the punchedtexttitle class to the clicked accordion header
+    // Add the punchedtexttitle class back to the clicked accordion header
     header.querySelector('h3').classList.add('punchedtexttitle');
   }
 }
+
+
+
+
+
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
