@@ -3337,8 +3337,9 @@
     <script>
 $(document).ready(function() {
   $('.accordion-header').click(function() {
-    var accordionItem = $(this).parent('.accordion-items');
-    var accordionContent = accordionItem.next();
+   var accordionItem = $(this).parent('.accordion-items');
+    var accordionContent = accordionItem.find('.accordion-content');
+
     var dropdownIcon = accordionItem.find('.dropdown-icon');
 
     // Toggle the open class on the accordion item
@@ -3347,16 +3348,13 @@ $(document).ready(function() {
     // Toggle the rotate class on the dropdown icon
     dropdownIcon.toggleClass('rotate');
 
-    // Slide the accordion content
+    // Slide and fade the accordion content
     if (accordionItem.hasClass('open')) {
       accordionContent.slideDown(3000).fadeIn(3000);
+      $(this).removeClass("punchedtexttitle");
     } else {
       accordionContent.fadeOut(3000).slideUp(3000);
-    }
-
-    // Remove the punchedtexttitle class from the first accordion header
-    if (accordionItem.hasClass('open') && $(this).is(':first-child')) {
-      $(this).find('.punchedtexttitle').removeClass('punchedtexttitle');
+      $(this).addClass("punchedtexttitle");
     }
   });
 });
