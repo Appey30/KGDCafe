@@ -248,9 +248,7 @@
         }
         .accordion-header {
             background-color: #2d2c29;
-            font-size: 20px;
             height: 50px;
-            color: rgb(252, 220, 109);
             border-radius: 30px 30px 30px 30px;
             border-color: rgb(249, 216, 105);
             display: flex;
@@ -853,9 +851,7 @@
         }
         .accordion-header {
             background-color: #2d2c29;
-            font-size: 20px;
             height: 50px;
-            color: rgb(252, 220, 109);
             border-radius: 30px 30px 30px 30px;
             border-color: rgb(249, 216, 105);
             display: flex;
@@ -1440,9 +1436,7 @@
         }
         .accordion-header {
             background-color: #2d2c29;
-            font-size: 20px;
             height: 50px;
-            color: rgb(252, 220, 109);
             border-radius: 30px 30px 30px 30px;
             border-color: rgb(249, 216, 105);
             display: flex;
@@ -2029,9 +2023,7 @@
         }
         .accordion-header {
             background-color: #2d2c29;
-            font-size: 20px;
             height: 50px;
-            color: rgb(252, 220, 109);
             border-radius: 30px 30px 30px 30px;
             border-color: rgb(249, 216, 105);
             display: flex;
@@ -2628,9 +2620,7 @@
         }
         .accordion-header {
             background-color: #2d2c29;
-            font-size: 20px;
             height: 50px;
-            color: rgb(252, 220, 109);
             border-radius: 30px 30px 30px 30px;
             border-color: rgb(249, 216, 105);
             display: flex;
@@ -3047,72 +3037,76 @@
                     {% csrf_token %}
                     <div class="accordion">
                         <div class="accordion-item open">
-                            <h3 class="accordion-header punchedtexttitle">Your Products <span class="dropdown-icon">&#9660;</span></h3>
+                            <div class="accordion-header">
+                                <h3 class="punchedtexttitle">Your Products <span class="dropdown-icon">&#9660;</span></h3>
+                            </div>
                             <div class="accordion-content">
                                 <p>Content for section 3</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <h3 class="accordion-header punchedtexttitle">Your Brand <span class="dropdown-icon">&#9660;</span></h3>
-                            <div class="accordion-content">
-                                <div id="brandcolorcontainerid">
-                                    <label for="threecontainersid" class="punchedtextsubtitle">Brand Colors</label><br>
-                                    <div class="threecontainers" id="threecontainersid">
+                            <div class="accordion-header">
+                                <h3 class="punchedtexttitle">Your Brand <span class="dropdown-icon">&#9660;</span></h3>
+                            </div>
+                                <div class="accordion-content">
+                                    <div id="brandcolorcontainerid">
+                                        <label for="threecontainersid" class="punchedtextsubtitle">Brand Colors</label><br>
+                                        <div class="threecontainers" id="threecontainersid">
 
-                                        <label for="button_colorid" class="punchedtextsubtitle">Buttons</label><br>
-                                        <div class="colorcircle">
-                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
+                                            <label for="button_colorid" class="punchedtextsubtitle">Buttons</label><br>
+                                            <div class="colorcircle">
+                                                <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
+                                            </div>
                                         </div>
+                                        <br><br>
+                                        <div class="threecontainers">
+                                            <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
+                                            <div class="colorcircle">
+
+                                                <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value={{ cardcolordef }}" "        />
+                                            </div>
+                                        </div><br><br>
+                                        <div class="threecontainers">
+                                            <label for="text_colorid" class="punchedtextsubtitle">Text</label><br>
+                                            <div class="colorcircle">
+
+                                                <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
+                                            </div>
+                                        </div><br><br>
+                                        <div class="threecontainers">
+                                            <label for="text_colorid" class="punchedtextsubtitle">Background</label><br>
+                                            <div class="colorcircle">
+
+                                                <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
+                                            </div>
+                                        </div><br><br>
                                     </div>
-                                    <br><br>
-                                    <div class="threecontainers">
-                                        <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
-                                        <div class="colorcircle">
+                                    <div id="brandnamecontainerid">
+                                        <label for="brandnamecontainersid" class="punchedtextsubtitle">Brand Colors</label><br>
+                                        <div class="brandnamecontainers" id="brandnamecontainersid">
 
-                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value={{ cardcolordef }}" "       />
+                                            <label for="brand_nameid" class="punchedtextsubtitle">Brand Name: </label><br>
+
+                                            <input class="brandnameinputclass" style="" type="text" id="brand_nameid" name="brand_name" value="" />
+
                                         </div>
-                                    </div><br><br>
-                                    <div class="threecontainers">
-                                        <label for="text_colorid" class="punchedtextsubtitle">Text</label><br>
-                                        <div class="colorcircle">
-
-                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
-                                        </div>
-                                    </div><br><br>
-                                    <div class="threecontainers">
-                                        <label for="text_colorid" class="punchedtextsubtitle">Background</label><br>
-                                        <div class="colorcircle">
-
-                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
-                                        </div>
-                                    </div><br><br>
-                                </div>
-                                <div id="brandnamecontainerid">
-                                    <label for="brandnamecontainersid" class="punchedtextsubtitle">Brand Colors</label><br>
-                                    <div class="brandnamecontainers" id="brandnamecontainersid">
-                                        
-                                        <label for="brand_nameid" class="punchedtextsubtitle">Brand Name: </label><br>
-
-                                        <input class="brandnameinputclass" style="" type="text" id="brand_nameid" name="brand_name" value="" />
-
+                                        <br><br>
                                     </div>
-                                    <br><br>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header punchedtexttitle">Text Font Style <span class="dropdown-icon">&#9660;</span></h3>
+                                <div class="accordion-content">
+                                    <p>Content for section 3</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header punchedtexttitle">Carousel's Photos <span class="dropdown-icon">&#9660;</span></h3>
+                                <div class="accordion-content">
+                                    <p>Content for section 3</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header punchedtexttitle">Text Font Style <span class="dropdown-icon">&#9660;</span></h3>
-                            <div class="accordion-content">
-                                <p>Content for section 3</p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header punchedtexttitle">Carousel's Photos <span class="dropdown-icon">&#9660;</span></h3>
-                            <div class="accordion-content">
-                                <p>Content for section 3</p>
-                            </div>
-                        </div>
-                    </div>
 
 
 
