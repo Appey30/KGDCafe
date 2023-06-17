@@ -3219,7 +3219,7 @@
                                     <div class="accordion-content">
                                         <p>Content for section 3</p>
                                     </div>
-                                </div>
+                            </div>
                             <div class="accordion-items">
                                 <div class="accordion-header" onclick="toggleAccordion(this)">
                                     <h3 class="punchedtexttitle">Carousel's Photos <span class="dropdown-icon">&#9660;</span></h3>
@@ -3227,8 +3227,8 @@
                                     <div class="accordion-content">
                                         <p>Content for section 3</p>
                                     </div>
-                                </div>
-                        </div>
+                            </div>
+                    </div>
 
 
 
@@ -3345,7 +3345,7 @@
 function toggleAccordion(header) {
   var accordionItem = header.parentNode;
   var accordionContent = accordionItem.querySelector('.accordion-content');
-  var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
+  var dropdownIcon = header.querySelector('.dropdown-icon');
 
   // Toggle the open class on the accordion item
   accordionItem.classList.toggle('open');
@@ -3367,6 +3367,7 @@ function toggleAccordion(header) {
     accordionHeaders.forEach(function (headerItem) {
       if (headerItem !== header) {
         headerItem.classList.remove('active');
+        headerItem.querySelector('.dropdown-icon').classList.remove('rotate');
         headerItem.querySelector('h3').classList.remove('punchedtexttitle');
       }
     });
