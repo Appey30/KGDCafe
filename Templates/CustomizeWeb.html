@@ -256,6 +256,15 @@
         .accordion-item.open .accordion-content {
             display: block;
         }
+        .dropdown-icon {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.open .dropdown-icon {
+            transform: rotate(180deg);
+        }
         .customizearea {
             border-radius: 15px;
             width: 50%;
@@ -831,6 +840,15 @@
         .accordion-item.open .accordion-content {
             display: block;
         }
+        .dropdown-icon {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.open .dropdown-icon {
+            transform: rotate(180deg);
+        }
         .customizearea {
             border-radius: 15px;
             width: 50%;
@@ -1387,6 +1405,15 @@
         }
         .accordion-item.open .accordion-content {
             display: block;
+        }
+        .dropdown-icon {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.open .dropdown-icon {
+            transform: rotate(180deg);
         }
             .customizearea {
                 border-radius: 15px;
@@ -1946,6 +1973,15 @@
         }
         .accordion-item.open .accordion-content {
             display: block;
+        }
+        .dropdown-icon {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.open .dropdown-icon {
+            transform: rotate(180deg);
         }
             .customizearea {
                 border-radius: 15px;
@@ -2517,6 +2553,15 @@
         .accordion-item.open .accordion-content {
             display: block;
         }
+        .dropdown-icon {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.open .dropdown-icon {
+            transform: rotate(180deg);
+        }
         .customizearea {
             border-radius: 15px;
             width: 50%;
@@ -2898,13 +2943,13 @@
                     {% csrf_token %}
                     <div class="accordion">
                         <div class="accordion-item open">
-                            <h3 class="accordion-header punchedtexttitle">Your Products</h3>
+                            <h3 class="accordion-header punchedtexttitle">Your Products <span class="dropdown-icon">&#9660;</span></h3>
                             <div class="accordion-content">
                                 <p>Content for section 3</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <h3 class="accordion-header punchedtexttitle">Your Brand</h3>
+                            <h3 class="accordion-header punchedtexttitle">Your Brand <span class="dropdown-icon">&#9660;</span></h3>
                             <div class="accordion-content">
                                 <div id="brandcolorcontainerid">
                                     <label for="threecontainersid" class="punchedtextsubtitle">Brand Colors</label><br>
@@ -2952,13 +2997,13 @@
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <h3 class="accordion-header punchedtexttitle">Text Font Style</h3>
+                            <h3 class="accordion-header punchedtexttitle">Text Font Style <span class="dropdown-icon">&#9660;</span></h3>
                             <div class="accordion-content">
                                 <p>Content for section 3</p>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <h3 class="accordion-header punchedtexttitle">Carousel's Photos'</h3>
+                            <h3 class="accordion-header punchedtexttitle">Carousel's Photos <span class="dropdown-icon">&#9660;</span></h3>
                             <div class="accordion-content">
                                 <p>Content for section 3</p>
                             </div>
