@@ -3338,9 +3338,7 @@
 $(document).ready(function() {
   $('.accordion-header').click(function() {
     var accordionItem = $(this).parent('.accordion-items');
-    var accordionText = $(this).children('.punchedtexttitle');
-    var accordionContent = $(this).next('.accordion-content');
-
+    var accordionContent = accordionItem.next();
     var dropdownIcon = accordionItem.find('.dropdown-icon');
 
     // Toggle the open class on the accordion item
@@ -3352,14 +3350,13 @@ $(document).ready(function() {
     // Slide the accordion content
     if (accordionItem.hasClass('open')) {
       accordionContent.slideDown(3000).fadeIn(3000);
-      $(this).addClass(" activeaccordion");
-        accordionText.removeClass("punchedtexttitle");
-        
     } else {
       accordionContent.fadeOut(3000).slideUp(3000);
-      $(this).removeClass(" activeaccordion");
-        accordionText.addClass("punchedtexttitle");
-        
+    }
+
+    // Remove the punchedtexttitle class from the first accordion header
+    if (accordionItem.hasClass('open') && $(this).is(':first-child')) {
+      $(this).find('.punchedtexttitle').removeClass('punchedtexttitle');
     }
   });
 });
