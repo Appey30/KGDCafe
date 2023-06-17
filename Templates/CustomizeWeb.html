@@ -383,6 +383,12 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
+        .punchedtexttitleselected {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
         .maintitleclass {
             text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
             position: relative;
@@ -1002,6 +1008,12 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
+        .punchedtexttitleselected {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
         .maintitleclass {
             text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
             position: relative;
@@ -1604,6 +1616,12 @@
                 -webkit-text-fill-color: transparent;
                 text-align: center;
             }
+        .punchedtexttitleselected {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
         .maintitleclass {
             text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
             position: relative;
@@ -2206,6 +2224,12 @@
             background: linear-gradient(to right, rgb(252, 220, 109) 0%, rgb(168, 127, 11) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        .punchedtexttitleselected {
+            font-size: 25px;
+            font-weight: bold;
+            color: black;
             text-align: center;
         }
         .maintitleclass {
@@ -2833,7 +2857,12 @@
             -webkit-text-fill-color: transparent;
             text-align: center;
         }
-
+        .punchedtexttitleselected {
+            font-size: 25px;
+            font-weight: bold;
+            color:black;
+            text-align: center;
+        }
         .maintitleclass {
             text-shadow: 0 2px 10px rgb(0 0 0 / 20%);
             position: relative;
@@ -3309,7 +3338,9 @@
 $(document).ready(function() {
   $('.accordion-header').click(function() {
     var accordionItem = $(this).parent('.accordion-items');
-    var accordionContent = accordionItem.children('.accordion-content');
+    var accordionText = accordionItem.children('.punchedtexttitle');
+    var accordionContent = $('.accordion-content');
+
     var dropdownIcon = accordionItem.find('.dropdown-icon');
 
     // Toggle the open class on the accordion item
@@ -3322,9 +3353,13 @@ $(document).ready(function() {
     if (accordionItem.hasClass('open')) {
       accordionContent.slideDown(1000).fadeIn(1000);
       $(this).addClass(" activeaccordion");
+        accordionText.removeClass("punchedtexttitle");
+        accordionText.addClass("punchedtexttitleselected");
     } else {
       accordionContent.fadeOut(1000).slideUp(1000);
       $(this).removeClass(" activeaccordion");
+        accordionText.addClass("punchedtexttitle");
+        accordionText.removeClass("punchedtexttitleselected");
     }
   });
 });
