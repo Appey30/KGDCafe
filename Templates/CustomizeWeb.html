@@ -3338,7 +3338,7 @@
 $(document).ready(function() {
   $('.accordion-header').click(function() {
     var accordionItem = $(this).parent('.accordion-items');
-    var accordionText = accordionItem.children('.punchedtexttitle');
+    var accordionText = $(this).children('.punchedtexttitle');
     var accordionContent = $(this).next('.accordion-content');
 
     var dropdownIcon = accordionItem.find('.dropdown-icon');
