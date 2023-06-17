@@ -283,6 +283,7 @@
 
         .accordion-item.open .dropdown-icon {
             transform: rotate(180deg);
+           
         }
         .customizearea {
             border-radius: 15px;
@@ -886,6 +887,7 @@
 
         .accordion-item.open .dropdown-icon {
             transform: rotate(180deg);
+            
         }
         .customizearea {
             border-radius: 15px;
@@ -1471,6 +1473,7 @@
 
         .accordion-item.open .dropdown-icon {
             transform: rotate(180deg);
+            
         }
             .customizearea {
                 border-radius: 15px;
@@ -2058,6 +2061,7 @@
 
         .accordion-item.open .dropdown-icon {
             transform: rotate(180deg);
+           
         }
             .customizearea {
                 border-radius: 15px;
@@ -2655,6 +2659,7 @@
 
         .accordion-item.open .dropdown-icon {
             transform: rotate(180deg);
+           
         }
         .customizearea {
             border-radius: 15px;
@@ -3095,17 +3100,21 @@
                                 </div>
                             </div>
                             <div class="accordion-item">
-                                <h3 class="accordion-header punchedtexttitle">Text Font Style <span class="dropdown-icon">&#9660;</span></h3>
-                                <div class="accordion-content">
-                                    <p>Content for section 3</p>
+                                <div class="accordion-header">
+                                    <h3 class="punchedtexttitle">Text Font Style <span class="dropdown-icon">&#9660;</span></h3>
                                 </div>
-                            </div>
+                                    <div class="accordion-content">
+                                        <p>Content for section 3</p>
+                                    </div>
+                                </div>
                             <div class="accordion-item">
-                                <h3 class="accordion-header punchedtexttitle">Carousel's Photos <span class="dropdown-icon">&#9660;</span></h3>
-                                <div class="accordion-content">
-                                    <p>Content for section 3</p>
+                                <div class="accordion-header">
+                                    <h3 class="punchedtexttitle">Carousel's Photos <span class="dropdown-icon">&#9660;</span></h3>
                                 </div>
-                            </div>
+                                    <div class="accordion-content">
+                                        <p>Content for section 3</p>
+                                    </div>
+                                </div>
                         </div>
 
 
@@ -3230,9 +3239,11 @@ $(document).ready(function() {
 
     // Slide the accordion content
     if (accordionItem.hasClass('open')) {
-      accordionContent.slideDown(1000).fadeIn(1000);;
+      accordionContent.slideDown(1000).fadeIn(1000);
+      $("this").addClass("activeaccordion");
     } else {
       accordionContent.fadeOut(1000).slideUp(1000);
+      $("this").removeClass("activeaccordion");
     }
   });
 });
