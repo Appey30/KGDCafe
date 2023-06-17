@@ -235,6 +235,15 @@
             margin-top: 50px;
             height: 200px;
         }
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
+        }
         .customizearea {
             border-radius: 15px;
             width: 50%;
@@ -789,6 +798,15 @@
             margin-top: 50px;
             height: 200px;
         }
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
+        }
         .customizearea {
             border-radius: 15px;
             width: 50%;
@@ -1324,6 +1342,15 @@
             width: 100%;
             margin-top: 50px;
             height: 200px;
+        }
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
         }
             .customizearea {
                 border-radius: 15px;
@@ -1862,6 +1889,15 @@
             width: 100%;
             margin-top: 50px;
             height: 200px;
+        }
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
         }
             .customizearea {
                 border-radius: 15px;
@@ -2410,6 +2446,15 @@
             width: 100%;
             margin-top: 50px;
             height: 200px;
+        }
+        .accordion-content {
+            display: none;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-content {
+            display: block;
         }
         .customizearea {
             border-radius: 15px;
@@ -2971,7 +3016,22 @@
 
 
     <script>
+$(document).ready(function() {
+  $('.accordion-header').click(function() {
+    var accordionItem = $(this).parent('.accordion-item');
+    var accordionContent = accordionItem.children('.accordion-content');
 
+    // Toggle the open class on the accordion item
+    accordionItem.toggleClass('open');
+
+    // Slide the accordion content
+    if (accordionItem.hasClass('open')) {
+      accordionContent.slideDown(300);
+    } else {
+      accordionContent.slideUp(300);
+    }
+  });
+});
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
