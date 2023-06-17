@@ -3339,7 +3339,7 @@ $(document).ready(function() {
   $('.accordion-header').click(function() {
     var accordionItem = $(this).parent('.accordion-items');
     var accordionText = accordionItem.children('.punchedtexttitle');
-    var accordionContent = $('.accordion-content');
+    var accordionContent = $(this).next('.accordion-content');
 
     var dropdownIcon = accordionItem.find('.dropdown-icon');
 
@@ -3354,12 +3354,12 @@ $(document).ready(function() {
       accordionContent.slideDown(1000).fadeIn(1000);
       $(this).addClass(" activeaccordion");
         accordionText.removeClass("punchedtexttitle");
-        accordionText.addClass("punchedtexttitleselected");
+        
     } else {
       accordionContent.fadeOut(1000).slideUp(1000);
       $(this).removeClass(" activeaccordion");
         accordionText.addClass("punchedtexttitle");
-        accordionText.removeClass("punchedtexttitleselected");
+        
     }
   });
 });
