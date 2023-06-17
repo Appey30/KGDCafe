@@ -296,7 +296,7 @@
             transition: transform 0.3s ease;
         }
 
-        .accordion-items.open .dropdown-icon {
+        .rotate {
             transform: rotate(180deg);
            
         }
@@ -915,7 +915,7 @@
             transition: transform 0.3s ease;
         }
 
-        .accordion-items.open .dropdown-icon {
+        .rotate {
             transform: rotate(180deg);
             
         }
@@ -1516,7 +1516,7 @@
             transition: transform 0.3s ease;
         }
 
-        .accordion-items.open .dropdown-icon {
+        .rotate {
             transform: rotate(180deg);
             
         }
@@ -2119,7 +2119,7 @@
             transition: transform 0.3s ease;
         }
 
-        .accordion-items.open .dropdown-icon {
+        .rotate {
             transform: rotate(180deg);
            
         }
@@ -2733,10 +2733,11 @@
             transition: transform 0.3s ease;
         }
 
-        .accordion-items.open .dropdown-icon {
+        .rotate {
             transform: rotate(180deg);
            
         }
+
         .customizearea {
             border-radius: 15px;
             width: 50%;
@@ -3309,9 +3310,13 @@ $(document).ready(function() {
   $('.accordion-header').click(function() {
     var accordionItem = $(this).parent('.accordion-items');
     var accordionContent = accordionItem.children('.accordion-content');
+    var dropdownIcon = accordionItem.find('.dropdown-icon');
 
     // Toggle the open class on the accordion item
     accordionItem.toggleClass('open');
+
+    // Toggle the rotate class on the dropdown icon
+    dropdownIcon.toggleClass('rotate');
 
     // Slide the accordion content
     if (accordionItem.hasClass('open')) {
