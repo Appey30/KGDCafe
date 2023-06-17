@@ -3369,15 +3369,14 @@ function toggleAccordion(header) {
     });
 
     // Add the punchedtexttitle class to the active accordion header
-    header.querySelector('h3').classList.remove('punchedtexttitle');
-    
+    header.querySelector('h3').classList.add('punchedtexttitle');
   } else {
     accordionContent.style.maxHeight = 0;
     accordionContent.style.opacity = 0;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-        
+
     // Remove the punchedtexttitle class from the active accordion header
-    header.querySelector('h3').classList.add('punchedtexttitle');
+    header.querySelector('h3').classList.remove('punchedtexttitle');
   }
 }
           $(document).ready(function() {
