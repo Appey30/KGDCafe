@@ -3346,7 +3346,7 @@ function toggleAccordion(header) {
   var accordionHeader = accordionItem.querySelector('.accordion-header');
   var accordionContent = accordionItem.querySelector('.accordion-content');
   var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
-  var accordionText = accordionItem.querySelector('punchedtexttitle');
+
 
 
   // Toggle the open class on the accordion item
@@ -3360,13 +3360,15 @@ function toggleAccordion(header) {
     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
     accordionContent.style.opacity = 1;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+    var accordionText = accordionItem.querySelector('punchedtexttitle');
     accordionText.classList.add(' punchedtexttitleselected').remove('punchedtexttitle')
     accordionHeader.classList.add(' activeaccordion')
   } else {
     accordionContent.style.maxHeight = 0;
     accordionContent.style.opacity = 0;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-        accordionText.classList.add(' punchedtexttitle').remove(' punchedtexttitleselected')
+    var accordionText = accordionItem.querySelector('punchedtexttitleselected');
+    accordionText.classList.add(' punchedtexttitle').remove(' punchedtexttitleselected')
     accordionHeader.classList.remove(' activeaccordion')
   }
 }
