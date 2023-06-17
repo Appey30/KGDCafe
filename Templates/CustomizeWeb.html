@@ -3359,12 +3359,14 @@ function toggleAccordion(header) {
     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
     accordionContent.style.opacity = 1;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-        accordionText.classList.add(' punchedtexttitleselected').remove('punchedtexttitle')
+    accordionText.classList.add(' punchedtexttitleselected').remove('punchedtexttitle')
+    accordionContent.classList.add(' activeaccordion')
   } else {
     accordionContent.style.maxHeight = 0;
     accordionContent.style.opacity = 0;
     accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
         accordionText.classList.add('punchedtexttitle').remove(' punchedtexttitleselected')
+    accordionContent.classList.remove(' activeaccordion')
   }
 }
           $(document).ready(function() {
