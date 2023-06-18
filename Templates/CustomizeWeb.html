@@ -3431,106 +3431,33 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-   
+
     <script>
-         $(document).ready(function() {
+        $(document).ready(function() {
             // Fetch available font styles from Google Fonts API
-            WebFont.load({
-                google: {
-                    families: [
-                        'Arial',
-                        'Helvetica',
-                        'Times New Roman',
-                        'Courier New',
-                        'Verdana',
-                        'Georgia',
-                        'Trebuchet MS',
-                        'Arial Black',
-                        'Impact',
-                        'Comic Sans MS',
-                        'Garamond',
-                        'Palatino',
-                        'Lucida Sans Unicode',
-                        'Tahoma',
-                        'Courier',
-                        'Lucida Console',
-                        'Arial Narrow',
-                        'Century Gothic',
-                        'Bookman Old Style',
-                        'Franklin Gothic Medium',
-                        'Candara',
-                        'Rockwell',
-                        'Baskerville',
-                        'Consolas',
-                        'Copperplate',
-                        'Futura',
-                        'Arial Rounded MT Bold',
-                        'Century Schoolbook',
-                        'Segoe UI',
-                        'MS Sans Serif',
-                        'Open Sans',
-                        'Roboto',
-                        'Montserrat',
-                        'Lato',
-                        'Raleway',
-                        'Poppins',
-                        'Oswald',
-                        'Nunito',
-                        'Roboto Condensed',
-                        'Source Sans Pro',
-                        'Ubuntu',
-                        'Playfair Display',
-                        'Merriweather',
-                        'Roboto Slab',
-                        'Ubuntu Condensed',
-                        'PT Sans',
-                        'Cabin',
-                        'Noto Sans',
-                        'Droid Sans',
-                        'Bebas Neue',
-                        'Exo',
-                        'Josefin Sans',
-                        'Muli',
-                        'Quicksand',
-                        'Fira Sans',
-                        'Varela Round',
-                        'Noto Serif',
-                        'PT Serif',
-                        'Archivo Narrow',
-                        'Karla',
-                        'Titillium Web'
-                    ]
-                },
-                custom: {
-                    families: [],
-                    urls: ['https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyASebThiJ1j6DoydW-bvA0tlVMEkDcw19k']
-                },
-                active: function() {
-                    // Font selector change event handlers
-                    $('#title-font').empty(); // Clear previous options
-                    $('#subtitle-font').empty(); // Clear previous options
-                    $('#body-font').empty(); // Clear previous options
+            fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyASebThiJ1j6DoydW-bvA0tlVMEkDcw19k')
+                .then(response => response.json())
+                .then(data => {
+                    var fontFamilies = data.items.map(item => item.family);
 
                     // Add font options for title font selector
-                    var titleFonts = this.config.google.families;
-                    $.each(titleFonts, function(index, font) {
+                    $.each(fontFamilies, function(index, font) {
                         $('#title-font').append('<option value="' + font + '">' + font + '</option>');
                     });
 
                     // Add font options for subtitle font selector
-                    var subtitleFonts = this.config.google.families;
-                    $.each(subtitleFonts, function(index, font) {
+                    $.each(fontFamilies, function(index, font) {
                         $('#subtitle-font').append('<option value="' + font + '">' + font + '</option>');
                     });
 
                     // Add font options for body font selector
-                    var bodyFonts = this.config.google.families;
-                    $.each(bodyFonts, function(index, font) {
+                    $.each(fontFamilies, function(index, font) {
                         $('#body-font').append('<option value="' + font + '">' + font + '</option>');
                     });
-                }
-            });
+                })
+                .catch(error => {
+                    console.log('Error fetching font families:', error);
+                });
 
             // Font selector change event handlers (same as before)
             $('#title-font').on('change', function() {
