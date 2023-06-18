@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
@@ -3262,7 +3264,7 @@
                                         <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
                                         <div class="colorcircle">
 
-                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value={{ cardcolordef }}" "          />
+                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}"          />
                                         </div>
                                     </div><br><br>
                                     <div class="threecontainers">
@@ -3296,13 +3298,13 @@
                                     <div class="brandnamecontainers" id="brandnamecontainersid">
 
                                         <label for="title-font" class="punchedtextsubtitle">Title Font:</label>
-                                        <select id="title-font" class="selectfontclass"></select>
+                                        <select id="title-font" class="selectfontclass"></select><br><br>
 
                                         <label for="subtitle-font" class="punchedtextsubtitle">Subtitle Font:</label>
-                                        <select id="subtitle-font" class="selectfontclass"></select>
+                                        <select id="subtitle-font" class="selectfontclass"></select><br><br>
 
                                         <label for="body-font" class="punchedtextsubtitle">Body Font:</label>
-                                        <select id="body-font" class="selectfontclass"></select>
+                                        <select id="body-font" class="selectfontclass"></select><br><br>
                                     </div>
                                     <br><br>
                                 </div>
@@ -3431,41 +3433,46 @@
 
 
     <script>
-  $(document).ready(function() {
-    // Retrieve font list from Google Fonts API
-    $.ajax({
-      url: "https://www.googleapis.com/webfonts/v1/webfonts",
-      dataType: "json",
-      success: function(data) {
-        var fonts = data.items;
-        populateFontOptions(fonts);
-      }
-    });
+$(document).ready(function() {
+  // Fetch the font list from Google Fonts API
+  $.ajax({
+    url: 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyASebThiJ1j6DoydW-bvA0tlVMEkDcw19k',
+    success: function(data) {
+      var fonts = data.items;
+      var fontOptions = '';
 
-    function populateFontOptions(fonts) {
-      var selectOptions = "";
-      for (var i = 0; i < fonts.length; i++) {
-        selectOptions += '<option value="' + fonts[i].family + '">' + fonts[i].family + '</option>';
-      }
-      $('#title-font, #subtitle-font, #body-font').append(selectOptions);
+      // Generate the options for title-font, subtitle-font, and body-font
+      fonts.forEach(function(font) {
+        fontOptions += '<option value="' + font.family + '">' + font.family + '</option>';
+      });
+
+      // Add the font options to the select elements
+      $('#title-font, #subtitle-font, #body-font').html(fontOptions);
     }
-
-    // Font selector change event handlers
-    $('#title-font').on('change', function() {
-      var selectedFont = $(this).val();
-      $('.maintitleclass').css('font-family', selectedFont);
-    });
-
-    $('#subtitle-font').on('change', function() {
-      var selectedFont = $(this).val();
-      $('.producttabchoice, .producttab, #sampleproductnameid').css('font-family', selectedFont);
-    });
-
-    $('#body-font').on('change', function() {
-      var selectedFont = $(this).val();
-      $('.price, #atbsample').css('font-family', selectedFont);
-    });
   });
+
+  // Font selector change event handlers
+  $('#title-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.maintitleclass').css('font-family', selectedFont);
+  });
+
+  $('#subtitle-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.producttabchoice').css('font-family', selectedFont);
+    $('.producttab').css('font-family', selectedFont);
+    $('#sampleproductnameid').css('font-family', selectedFont);
+  });
+
+  $('#body-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.price').css('font-family', selectedFont);
+    $('#atbsample').css('font-family', selectedFont);
+  });
+});
+
+
+
 function toggleAccordion(header) {
   var accordionItem = header.parentNode;
   var accordionContent = accordionItem.querySelector('.accordion-content');
