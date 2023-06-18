@@ -3434,20 +3434,35 @@
 
     <script>
 $(document).ready(function() {
-  // Fetch the font list from Google Fonts API
+  // Fetch available Google Fonts
   $.ajax({
-    url: 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyASebThiJ1j6DoydW-bvA0tlVMEkDcw19k',
-    success: function(data) {
-      var fonts = data.items;
-      var fontOptions = '';
-
-      // Generate the options for title-font, subtitle-font, and body-font
-      fonts.forEach(function(font) {
-        fontOptions += '<option value="' + font.family + '">' + font.family + '</option>';
+    url: 'https://www.googleapis.com/webfonts/v1/webfonts',
+    dataType: 'json',
+    success: function(response) {
+      var fontFamilies = response.items.map(function(font) {
+        return font.family;
       });
 
-      // Add the font options to the select elements
-      $('#title-font, #subtitle-font, #body-font').html(fontOptions);
+      // Populate font options for title-font
+      var titleFontSelect = $('#title-font');
+      fontFamilies.forEach(function(fontFamily) {
+        titleFontSelect.append($('<option></option>').text(fontFamily).val(fontFamily));
+      });
+
+      // Populate font options for subtitle-font
+      var subtitleFontSelect = $('#subtitle-font');
+      fontFamilies.forEach(function(fontFamily) {
+        subtitleFontSelect.append($('<option></option>').text(fontFamily).val(fontFamily));
+      });
+
+      // Populate font options for body-font
+      var bodyFontSelect = $('#body-font');
+      fontFamilies.forEach(function(fontFamily) {
+        bodyFontSelect.append($('<option></option>').text(fontFamily).val(fontFamily));
+      });
+    },
+    error: function() {
+      console.log('Failed to fetch Google Fonts.');
     }
   });
 
@@ -3461,7 +3476,7 @@ $(document).ready(function() {
     var selectedFont = $(this).val();
     $('.producttabchoice').css('font-family', selectedFont);
     $('.producttab').css('font-family', selectedFont);
-    $('#sampleproductnameid').css('font-family', selectedFont);
+    $('#sampleproductnameid').css('font-family', selectedFont);    
   });
 
   $('#body-font').on('change', function() {
@@ -3470,7 +3485,6 @@ $(document).ready(function() {
     $('#atbsample').css('font-family', selectedFont);
   });
 });
-
 
 
 function toggleAccordion(header) {
