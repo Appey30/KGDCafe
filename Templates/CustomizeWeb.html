@@ -3433,8 +3433,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
-
-
         $(document).ready(function() {
             // Fetch available font styles from Google Fonts API
             WebFont.load({
@@ -3510,19 +3508,19 @@
                     $('#body-font').empty(); // Clear previous options
 
                     // Add font options for title font selector
-                    var titleFonts = WebFont.getFamilies();
+                    var titleFonts = this.config.google.families;
                     $.each(titleFonts, function(index, font) {
                         $('#title-font').append('<option value="' + font + '">' + font + '</option>');
                     });
 
                     // Add font options for subtitle font selector
-                    var subtitleFonts = WebFont.getFamilies();
+                    var subtitleFonts = this.config.google.families;
                     $.each(subtitleFonts, function(index, font) {
                         $('#subtitle-font').append('<option value="' + font + '">' + font + '</option>');
                     });
 
                     // Add font options for body font selector
-                    var bodyFonts = WebFont.getFamilies();
+                    var bodyFonts = this.config.google.families;
                     $.each(bodyFonts, function(index, font) {
                         $('#body-font').append('<option value="' + font + '">' + font + '</option>');
                     });
