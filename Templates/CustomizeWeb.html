@@ -9,9 +9,7 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?key=AIzaSyASebThiJ1j6DoydW-bvA0tlVMEkDcw19k" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -3434,39 +3432,39 @@
 
     <script>
 $(document).ready(function() {
-  // Fetch available Google Fonts
-  $.ajax({
-    url: 'https://www.googleapis.com/webfonts/v1/webfonts',
-    dataType: 'json',
-    success: function(response) {
-      var fontFamilies = response.items.map(function(font) {
-        return font.family;
+  // Fetch available font styles from Google Fonts API
+  WebFont.load({
+  custom: {
+    families: ['Your-Font-Family'],
+    urls: ['https://fonts.yourfontservice.com/api?key=AIzaSyASebThiJ1j6DoydW-bvA0tlVMEkDcw19k'],
+  },
+  active: function() {
+      // Font selector change event handlers
+      $('#title-font').empty(); // Clear previous options
+      $('#subtitle-font').empty(); // Clear previous options
+      $('#body-font').empty(); // Clear previous options
+
+      // Add font options for title font selector
+      var titleFonts = WebFont.getFamilies();
+      $.each(titleFonts, function(index, font) {
+        $('#title-font').append('<option value="' + font + '">' + font + '</option>');
       });
 
-      // Populate font options for title-font
-      var titleFontSelect = $('#title-font');
-      fontFamilies.forEach(function(fontFamily) {
-        titleFontSelect.append($('<option></option>').text(fontFamily).val(fontFamily));
+      // Add font options for subtitle font selector
+      var subtitleFonts = WebFont.getFamilies();
+      $.each(subtitleFonts, function(index, font) {
+        $('#subtitle-font').append('<option value="' + font + '">' + font + '</option>');
       });
 
-      // Populate font options for subtitle-font
-      var subtitleFontSelect = $('#subtitle-font');
-      fontFamilies.forEach(function(fontFamily) {
-        subtitleFontSelect.append($('<option></option>').text(fontFamily).val(fontFamily));
+      // Add font options for body font selector
+      var bodyFonts = WebFont.getFamilies();
+      $.each(bodyFonts, function(index, font) {
+        $('#body-font').append('<option value="' + font + '">' + font + '</option>');
       });
-
-      // Populate font options for body-font
-      var bodyFontSelect = $('#body-font');
-      fontFamilies.forEach(function(fontFamily) {
-        bodyFontSelect.append($('<option></option>').text(fontFamily).val(fontFamily));
-      });
-    },
-    error: function() {
-      console.log('Failed to fetch Google Fonts.');
     }
   });
 
-  // Font selector change event handlers
+  // Font selector change event handlers (same as before)
   $('#title-font').on('change', function() {
     var selectedFont = $(this).val();
     $('.maintitleclass').css('font-family', selectedFont);
@@ -3476,7 +3474,7 @@ $(document).ready(function() {
     var selectedFont = $(this).val();
     $('.producttabchoice').css('font-family', selectedFont);
     $('.producttab').css('font-family', selectedFont);
-    $('#sampleproductnameid').css('font-family', selectedFont);    
+    $('#sampleproductnameid').css('font-family', selectedFont);
   });
 
   $('#body-font').on('change', function() {
