@@ -3177,7 +3177,7 @@
                                         <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
                                         <div class="colorcircle">
 
-                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value={{ cardcolordef }}" "         />
+                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value={{ cardcolordef }}" "          />
                                         </div>
                                     </div><br><br>
                                     <div class="threecontainers">
@@ -3206,19 +3206,51 @@
                                     </div>
                                     <br><br>
                                 </div>
-                            </div>
-                            </div>
-                            <div class="accordion-items">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <h3 class="punchedtexttitle">Text Font Style <span class="dropdown-icon">&#9660;</span></h3>
-                                </div>
-                                    <div class="accordion-content">
-                                        <p>Content for section 3</p>
+                                <div id="brandnamecontainerid">
+
+                                    <div class="brandnamecontainers" id="brandnamecontainersid">
+
+                                        <label for="brand_nameid" class="punchedtextsubtitle">Brand Font Styles: </label><br>
+                                            <div class="font-selector">
+                                                <div class="font-option">
+                                                <label for="title-font">Title Font:</label>
+                                                <select id="title-font">
+                                                    <option value="Arial">Arial</option>
+                                                    <option value="Helvetica">Helvetica</option>
+                                                    <option value="Times New Roman">Times New Roman</option>
+                                                    <!-- Add more font options here -->
+                                                </select>
+                                                </div>
+
+                                                <div class="font-option">
+                                                <label for="subtitle-font">Subtitle Font:</label>
+                                                <select id="subtitle-font">
+                                                    <option value="Arial">Arial</option>
+                                                    <option value="Helvetica">Helvetica</option>
+                                                    <option value="Times New Roman">Times New Roman</option>
+                                                    <!-- Add more font options here -->
+                                                </select>
+                                                </div>
+
+                                                <div class="font-option">
+                                                <label for="body-font">Body Font:</label>
+                                                <select id="body-font">
+                                                    <option value="Arial">Arial</option>
+                                                    <option value="Helvetica">Helvetica</option>
+                                                    <option value="Times New Roman">Times New Roman</option>
+                                                    <!-- Add more font options here -->
+                                                </select>
+                                                </div>
+                                            </div>
                                     </div>
+                                    <br><br>
+                                </div>
                             </div>
+                            </div>
+
                             <div class="accordion-items">
                                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <h3 class="punchedtexttitle">Carousel's Photos <span class="dropdown-icon">&#9660;</span></h3>
+                                    <h3 class="punchedtexttitle">Logo/Photos <span class="dropdown-icon">&#9660;</span></h3>
                                 </div>
                                     <div class="accordion-content">
                                         <p>Content for section 3</p>
@@ -3338,6 +3370,27 @@
 
 
     <script>
+$(document).ready(function() {
+  // Font selector change event handlers
+  $('#title-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.maintitleclass').css('font-family', selectedFont);
+  });
+
+  $('#subtitle-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.producttabchoice').css('font-family', selectedFont);
+    $('.producttab').css('font-family', selectedFont);
+    $('#sampleproductnameid').css('font-family', selectedFont);    
+  });
+
+  $('#body-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.price').css('font-family', selectedFont);
+    $('#atbsample').css('font-family', selectedFont);
+  });
+});
+
 function toggleAccordion(header) {
   var accordionItem = header.parentNode;
   var accordionContent = accordionItem.querySelector('.accordion-content');
