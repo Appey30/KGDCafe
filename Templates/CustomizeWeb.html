@@ -3431,43 +3431,43 @@
 
 
     <script>
-  WebFontConfig = {
-    google: { families: [] }, // Array to store the available fonts
-    
-    // Callback function to populate font options
-    active: function() {
-      // Retrieve the available fonts
-      var availableFonts = WebFontConfig.google.families;
-
-      // Populate the font options for title-font
-      var titleFontOptions = '';
-      availableFonts.forEach(function(font) {
-        titleFontOptions += '<option value="' + font + '">' + font + '</option>';
+$(document).ready(function() {
+  // Fetch available fonts from Google Fonts API
+  fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=YOUR_API_KEY')
+    .then(response => response.json())
+    .then(data => {
+      const fonts = data.items.map(item => item.family);
+      
+      // Add font options to the select tags
+      const selectTags = $('.selectfontclass');
+      fonts.forEach(font => {
+        const option = $('<option>').attr('value', font).text(font);
+        selectTags.append(option);
       });
-      $('#title-font').html(titleFontOptions);
+    })
+    .catch(error => {
+      console.error('Failed to fetch fonts:', error);
+    });
 
-      // Populate the font options for subtitle-font
-      var subtitleFontOptions = '';
-      availableFonts.forEach(function(font) {
-        subtitleFontOptions += '<option value="' + font + '">' + font + '</option>';
-      });
-      $('#subtitle-font').html(subtitleFontOptions);
+  // Font change event handlers
+  $('#title-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.maintitleclass').css('font-family', selectedFont);
+  });
 
-      // Populate the font options for body-font
-      var bodyFontOptions = '';
-      availableFonts.forEach(function(font) {
-        bodyFontOptions += '<option value="' + font + '">' + font + '</option>';
-      });
-      $('#body-font').html(bodyFontOptions);
-    }
-  };
+  $('#subtitle-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.producttabchoice').css('font-family', selectedFont);
+    $('.producttab').css('font-family', selectedFont);
+    $('#sampleproductnameid').css('font-family', selectedFont);
+  });
 
-  // Load the Google Fonts API
-  (function(d) {
-    var wf = d.createElement('script'), s = d.scripts[0];
-    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-    s.parentNode.insertBefore(wf, s);
-  })(document);
+  $('#body-font').on('change', function() {
+    var selectedFont = $(this).val();
+    $('.price').css('font-family', selectedFont);
+    $('#atbsample').css('font-family', selectedFont);
+  });
+});
 
 function toggleAccordion(header) {
   var accordionItem = header.parentNode;
