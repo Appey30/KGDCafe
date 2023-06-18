@@ -3432,8 +3432,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+   
     <script>
-        $(document).ready(function() {
+         $(document).ready(function() {
             // Fetch available font styles from Google Fonts API
             WebFont.load({
                 google: {
@@ -3500,6 +3501,10 @@
                         'Karla',
                         'Titillium Web'
                     ]
+                },
+                custom: {
+                    families: [],
+                    urls: ['https://www.googleapis.com/webfonts/v1/webfonts?key=YOUR_API_KEY']
                 },
                 active: function() {
                     // Font selector change event handlers
