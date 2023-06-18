@@ -3347,7 +3347,7 @@
 
                         <div class="h3div">
 
-                            <h3 id="sampleproductnameid">Sample Product 1</h3>
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 1</h3>
                         </div>
                         <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
                             <tr>
@@ -3367,7 +3367,7 @@
 
                         <div class="h3div">
 
-                            <h3 id="sampleproductnameid">Sample Product 2</h3>
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 2</h3>
                         </div>
                         <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
                             <tr>
@@ -3387,7 +3387,7 @@
 
                         <div class="h3div">
 
-                            <h3 id="sampleproductnameid">Sample Product 3</h3>
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 3</h3>
                         </div>
                         <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
                             <tr>
@@ -3407,7 +3407,7 @@
 
                         <div class="h3div">
 
-                            <h3 id="sampleproductnameid">Sample Product 4</h3>
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 4</h3>
                         </div>
                         <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
                             <tr>
@@ -3607,7 +3607,7 @@
                 var selectedFont = $(this).val();
                 $('.producttabchoice').css('font-family', selectedFont);
                 $('.producttab').css('font-family', selectedFont);
-                $('#sampleproductnameid').css('font-family', selectedFont);
+                $('.sampleproductnameclass').css('font-family', selectedFont);
             });
 
             $('#body-font').on('change', function() {
@@ -3686,13 +3686,13 @@ function toggleAccordion(header) {
           $(document).ready(function() {
             var textColorDef = "{{ textcolordef }}";
             $("#text_colorid").val(textColorDef);
-            $("#sampleproductnameid").css("color", textColorDef);
+            $(".sampleproductnameclass").css("color", textColorDef);
             $("#priceid").css("color", textColorDef);
             $("#atbsample").css("color", textColorDef);
 
             $("#text_colorid").change(function() {
               var textNewColor = $(this).val();
-            $("#sampleproductnameid").css("color", textNewColor);
+            $(".sampleproductnameclass").css("color", textNewColor);
             $("#priceid").css("color", textNewColor);
             $("#atbsample").css("color", textNewColor);
             });
