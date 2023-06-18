@@ -3263,7 +3263,7 @@
                                         <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
                                         <div class="colorcircle">
 
-                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}"          />
+                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}" />
                                         </div>
                                     </div><br><br>
                                     <div class="threecontainers">
@@ -3308,22 +3308,22 @@
                                     <br><br>
                                 </div>
                             </div>
-                            </div>
+                        </div>
 
-                            <div class="accordion-items">
-                                <div class="accordion-header" onclick="toggleAccordion(this)">
-                                    <h3 class="punchedtexttitle">Logo/Photos <span class="dropdown-icon">&#9660;</span></h3>
-                                </div>
-                                    <div class="accordion-content">
-                                        <p>Content for section 3</p>
-                                    </div>
+                        <div class="accordion-items">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <h3 class="punchedtexttitle">Logo/Photos <span class="dropdown-icon">&#9660;</span></h3>
                             </div>
+                            <div class="accordion-content">
+                                <p>Content for section 3</p>
+                            </div>
+                        </div>
                     </div>
 
 
 
                 </div>
- 
+
                 <div class="buttoncontainer">
                     <input type="submit" value="Apply" class="prodbut" />
                     <button onclick="viewwebisite();" value="View Website" class="prodbut">View Website</button>
@@ -3430,60 +3430,124 @@
 
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script>
-$(document).ready(function() {
-  // Fetch available font styles from Google Fonts API
-  WebFont.load({
-  custom: {
-    families: ['Arial', 'Helvetica', 'Times New Roman', 'Courier New', 'Verdana', 'Georgia', 'Trebuchet MS', 'Arial Black', 'Impact', 'Comic Sans MS', 'Garamond', 'Palatino', 'Lucida Sans Unicode', 'Tahoma', 'Courier', 'Lucida Console', 'Arial Narrow', 'Century Gothic', 'Bookman Old Style', 'Franklin Gothic Medium', 'Candara', 'Rockwell', 'Baskerville', 'Consolas', 'Copperplate', 'Futura', 'Arial Rounded MT Bold', 'Century Schoolbook', 'Segoe UI', 'MS Sans Serif', 'Open Sans', 'Roboto', 'Montserrat', 'Lato', 'Raleway', 'Poppins', 'Oswald', 'Nunito', 'Roboto Condensed', 'Source Sans Pro', 'Ubuntu', 'Playfair Display', 'Merriweather', 'Roboto Slab', 'Ubuntu Condensed', 'PT Sans', 'Cabin', 'Noto Sans', 'Droid Sans', 'Bebas Neue', 'Exo', 'Josefin Sans', 'Muli', 'Quicksand', 'Fira Sans', 'Varela Round', 'Noto Serif', 'PT Serif', 'Archivo Narrow', 'Karla', 'Titillium Web'],
-    urls: ['https://fonts.yourfontservice.com/api?key=AIzaSyASebThiJ1j6DoydW-bvA0tlVMEkDcw19k'],
-  },
-  active: function() {
-      // Font selector change event handlers
-      $('#title-font').empty(); // Clear previous options
-      $('#subtitle-font').empty(); // Clear previous options
-      $('#body-font').empty(); // Clear previous options
 
-      // Add font options for title font selector
-      var titleFonts = WebFont.getFamilies();
-      $.each(titleFonts, function(index, font) {
-        $('#title-font').append('<option value="' + font + '">' + font + '</option>');
-      });
 
-      // Add font options for subtitle font selector
-      var subtitleFonts = WebFont.getFamilies();
-      $.each(subtitleFonts, function(index, font) {
-        $('#subtitle-font').append('<option value="' + font + '">' + font + '</option>');
-      });
+        $(document).ready(function() {
+            // Fetch available font styles from Google Fonts API
+            WebFont.load({
+                google: {
+                    families: [
+                        'Arial',
+                        'Helvetica',
+                        'Times New Roman',
+                        'Courier New',
+                        'Verdana',
+                        'Georgia',
+                        'Trebuchet MS',
+                        'Arial Black',
+                        'Impact',
+                        'Comic Sans MS',
+                        'Garamond',
+                        'Palatino',
+                        'Lucida Sans Unicode',
+                        'Tahoma',
+                        'Courier',
+                        'Lucida Console',
+                        'Arial Narrow',
+                        'Century Gothic',
+                        'Bookman Old Style',
+                        'Franklin Gothic Medium',
+                        'Candara',
+                        'Rockwell',
+                        'Baskerville',
+                        'Consolas',
+                        'Copperplate',
+                        'Futura',
+                        'Arial Rounded MT Bold',
+                        'Century Schoolbook',
+                        'Segoe UI',
+                        'MS Sans Serif',
+                        'Open Sans',
+                        'Roboto',
+                        'Montserrat',
+                        'Lato',
+                        'Raleway',
+                        'Poppins',
+                        'Oswald',
+                        'Nunito',
+                        'Roboto Condensed',
+                        'Source Sans Pro',
+                        'Ubuntu',
+                        'Playfair Display',
+                        'Merriweather',
+                        'Roboto Slab',
+                        'Ubuntu Condensed',
+                        'PT Sans',
+                        'Cabin',
+                        'Noto Sans',
+                        'Droid Sans',
+                        'Bebas Neue',
+                        'Exo',
+                        'Josefin Sans',
+                        'Muli',
+                        'Quicksand',
+                        'Fira Sans',
+                        'Varela Round',
+                        'Noto Serif',
+                        'PT Serif',
+                        'Archivo Narrow',
+                        'Karla',
+                        'Titillium Web'
+                    ]
+                },
+                active: function() {
+                    // Font selector change event handlers
+                    $('#title-font').empty(); // Clear previous options
+                    $('#subtitle-font').empty(); // Clear previous options
+                    $('#body-font').empty(); // Clear previous options
 
-      // Add font options for body font selector
-      var bodyFonts = WebFont.getFamilies();
-      $.each(bodyFonts, function(index, font) {
-        $('#body-font').append('<option value="' + font + '">' + font + '</option>');
-      });
-    }
-  });
+                    // Add font options for title font selector
+                    var titleFonts = WebFont.getFamilies();
+                    $.each(titleFonts, function(index, font) {
+                        $('#title-font').append('<option value="' + font + '">' + font + '</option>');
+                    });
 
-  // Font selector change event handlers (same as before)
-  $('#title-font').on('change', function() {
-    var selectedFont = $(this).val();
-    $('.maintitleclass').css('font-family', selectedFont);
-  });
+                    // Add font options for subtitle font selector
+                    var subtitleFonts = WebFont.getFamilies();
+                    $.each(subtitleFonts, function(index, font) {
+                        $('#subtitle-font').append('<option value="' + font + '">' + font + '</option>');
+                    });
 
-  $('#subtitle-font').on('change', function() {
-    var selectedFont = $(this).val();
-    $('.producttabchoice').css('font-family', selectedFont);
-    $('.producttab').css('font-family', selectedFont);
-    $('#sampleproductnameid').css('font-family', selectedFont);
-  });
+                    // Add font options for body font selector
+                    var bodyFonts = WebFont.getFamilies();
+                    $.each(bodyFonts, function(index, font) {
+                        $('#body-font').append('<option value="' + font + '">' + font + '</option>');
+                    });
+                }
+            });
 
-  $('#body-font').on('change', function() {
-    var selectedFont = $(this).val();
-    $('.price').css('font-family', selectedFont);
-    $('#atbsample').css('font-family', selectedFont);
-  });
-});
+            // Font selector change event handlers (same as before)
+            $('#title-font').on('change', function() {
+                var selectedFont = $(this).val();
+                $('.maintitleclass').css('font-family', selectedFont);
+            });
+
+            $('#subtitle-font').on('change', function() {
+                var selectedFont = $(this).val();
+                $('.producttabchoice').css('font-family', selectedFont);
+                $('.producttab').css('font-family', selectedFont);
+                $('#sampleproductnameid').css('font-family', selectedFont);
+            });
+
+            $('#body-font').on('change', function() {
+                var selectedFont = $(this).val();
+                $('.price').css('font-family', selectedFont);
+                $('#atbsample').css('font-family', selectedFont);
+            });
+        });
 
 
 function toggleAccordion(header) {
@@ -3566,7 +3630,7 @@ function toggleAccordion(header) {
             $("#atbsample").css("color", textNewColor);
             });
           });
- 
+
           $(document).ready(function() {
             var backgroundColorDef = "{{ backgroundcolordef }}";
             $("#background_colorid").val(backgroundColorDef);
