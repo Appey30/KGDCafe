@@ -3450,60 +3450,28 @@ body {
         ];
 
 
-            // Add font options for title font selector
-            $.each(fontFamilies, function(index, font) {
-                $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-            });
+   $.each(fontFamilies, function(index, font) {
+    $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+    $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+    $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+  });
 
-            // Add font options for subtitle font selector
-            $.each(fontFamilies, function(index, font) {
-                $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-            });
+  $('#title-font').change(function() {
+    var selectedFont = $(this).val();
+    $('.maintitleclass').css('font-family', selectedFont);
+  });
 
-            // Add font options for body font selector
-            $.each(fontFamilies, function(index, font) {
-                $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-            });
+  $('#subtitle-font').change(function() {
+    var selectedFont = $(this).val();
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
+  });
 
-            // Font selector change event handlers (same as before)
-document.getElementById('title-font').addEventListener('change', function() {
-    var selectedFont = this.value;
-    
-    var elements = document.getElementsByClassName('maintitleclass');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].style.fontFamily = selectedFont;
-    }
+  $('#body-font').change(function() {
+    var selectedFont = $(this).val();
+    $('.price').css('font-family', selectedFont);
+    $('#atbsample').css('font-family', selectedFont);
+  });
 });
-
-document.getElementById('subtitle-font').addEventListener('change', function() {
-    var selectedFont = this.value;
-    var elements = document.getElementsByClassName('producttabchoice');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].style.fontFamily = selectedFont;
-    }
-
-    elements = document.getElementsByClassName('producttab');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].style.fontFamily = selectedFont;
-    }
-
-    elements = document.getElementsByClassName('sampleproductnameclass');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].style.fontFamily = selectedFont;
-    }
-});
-
-document.getElementById('body-font').addEventListener('change', function() {
-    var selectedFont = this.value;
-    var elements = document.getElementsByClassName('price');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].style.fontFamily = selectedFont;
-    }
-
-    var element = document.getElementById('atbsample');
-    element.style.fontFamily = selectedFont;
-});
-        });
 
 function toggleAccordion(header) {
   var accordionItem = header.parentNode;
