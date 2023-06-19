@@ -1,0 +1,912 @@
+@font-face {
+font-family: AGENCYB;src=url({% static 'AGENCYB.TTF' %});
+};
+@font-face {
+font-family: AGENCYR;src=url({% static 'AGENCYR.TTF' %});
+};
+@font-face {
+font-family: ALGER;src=url({% static 'ALGER.TTF' %});
+};
+@font-face {
+font-family: ANTQUAB;src=url({% static 'ANTQUAB.TTF' %});
+};
+@font-face {
+font-family: ANTQUABI;src=url({% static 'ANTQUABI.TTF' %});
+};
+@font-face {
+font-family: ANTQUAI;src=url({% static 'ANTQUAI.TTF' %});
+};
+@font-face {
+font-family: arial;src=url({% static 'arial.ttf' %});
+};
+@font-face {
+font-family: arialbd;src=url({% static 'arialbd.ttf' %});
+};
+@font-face {
+font-family: arialbi;src=url({% static 'arialbi.ttf' %});
+};
+@font-face {
+font-family: ariali;src=url({% static 'ariali.ttf' %});
+};
+@font-face {
+font-family: ARIALN;src=url({% static 'ARIALN.TTF' %});
+};
+@font-face {
+font-family: ARIALNB;src=url({% static 'ARIALNB.TTF' %});
+};
+@font-face {
+font-family: ARIALNBI;src=url({% static 'ARIALNBI.TTF' %});
+};
+@font-face {
+font-family: ARIALNI;src=url({% static 'ARIALNI.TTF' %});
+};
+@font-face {
+font-family: ariblk;src=url({% static 'ariblk.ttf' %});
+};
+@font-face {
+font-family: ARLRDBD;src=url({% static 'ARLRDBD.TTF' %});
+};
+@font-face {
+font-family: bahnschrift;src=url({% static 'bahnschrift.ttf' %});
+};
+@font-face {
+font-family: BASKVILL;src=url({% static 'BASKVILL.TTF' %});
+};
+@font-face {
+font-family: BAUHS93;src=url({% static 'BAUHS93.TTF' %});
+};
+@font-face {
+font-family: BELL;src=url({% static 'BELL.TTF' %});
+};
+@font-face {
+font-family: BELLB;src=url({% static 'BELLB.TTF' %});
+};
+@font-face {
+font-family: BELLI;src=url({% static 'BELLI.TTF' %});
+};
+@font-face {
+font-family: BERNHC;src=url({% static 'BERNHC.TTF' %});
+};
+@font-face {
+font-family: beyond_the_mountains;src=url({% static 'beyond_the_mountains.otf' %});
+};
+@font-face {
+font-family: beyond_the_mountains;src=url({% static 'beyond_the_mountains.ttf' %});
+};
+@font-face {
+font-family: BKANT;src=url({% static 'BKANT.TTF' %});
+};
+@font-face {
+font-family: Black Jack Script;src=url({% static 'Black Jack Script.ttf' %});
+};
+@font-face {
+font-family: BLACKJAR;src=url({% static 'BLACKJAR.TTF' %});
+};
+@font-face {
+font-family: BOD_B;src=url({% static 'BOD_B.TTF' %});
+};
+@font-face {
+font-family: BOD_BI;src=url({% static 'BOD_BI.TTF' %});
+};
+@font-face {
+font-family: BOD_BLAI;src=url({% static 'BOD_BLAI.TTF' %});
+};
+@font-face {
+font-family: BOD_BLAR;src=url({% static 'BOD_BLAR.TTF' %});
+};
+@font-face {
+font-family: BOD_CB;src=url({% static 'BOD_CB.TTF' %});
+};
+@font-face {
+font-family: BOD_CBI;src=url({% static 'BOD_CBI.TTF' %});
+};
+@font-face {
+font-family: BOD_CI;src=url({% static 'BOD_CI.TTF' %});
+};
+@font-face {
+font-family: BOD_CR;src=url({% static 'BOD_CR.TTF' %});
+};
+@font-face {
+font-family: BOD_I;src=url({% static 'BOD_I.TTF' %});
+};
+@font-face {
+font-family: BOD_PSTC;src=url({% static 'BOD_PSTC.TTF' %});
+};
+@font-face {
+font-family: BOD_R;src=url({% static 'BOD_R.TTF' %});
+};
+@font-face {
+font-family: BOOKOS;src=url({% static 'BOOKOS.TTF' %});
+};
+@font-face {
+font-family: BOOKOSB;src=url({% static 'BOOKOSB.TTF' %});
+};
+@font-face {
+font-family: BOOKOSBI;src=url({% static 'BOOKOSBI.TTF' %});
+};
+@font-face {
+font-family: BOOKOSI;src=url({% static 'BOOKOSI.TTF' %});
+};
+@font-face {
+font-family: BRADHITC;src=url({% static 'BRADHITC.TTF' %});
+};
+@font-face {
+font-family: BRITANIC;src=url({% static 'BRITANIC.TTF' %});
+};
+@font-face {
+font-family: BRLNSB;src=url({% static 'BRLNSB.TTF' %});
+};
+@font-face {
+font-family: BRLNSDB;src=url({% static 'BRLNSDB.TTF' %});
+};
+@font-face {
+font-family: BRLNSR;src=url({% static 'BRLNSR.TTF' %});
+};
+@font-face {
+font-family: BROADW;src=url({% static 'BROADW.TTF' %});
+};
+@font-face {
+font-family: BRUSHSCI;src=url({% static 'BRUSHSCI.TTF' %});
+};
+@font-face {
+font-family: Bs Signature Demo;src=url({% static 'Bs Signature Demo.ttf' %});
+};
+@font-face {
+font-family: calibri;src=url({% static 'calibri.ttf' %});
+};
+@font-face {
+font-family: calibrib;src=url({% static 'calibrib.ttf' %});
+};
+@font-face {
+font-family: calibrii;src=url({% static 'calibrii.ttf' %});
+};
+@font-face {
+font-family: calibril;src=url({% static 'calibril.ttf' %});
+};
+@font-face {
+font-family: calibrili;src=url({% static 'calibrili.ttf' %});
+};
+@font-face {
+font-family: calibriz;src=url({% static 'calibriz.ttf' %});
+};
+@font-face {
+font-family: CALIFB;src=url({% static 'CALIFB.TTF' %});
+};
+@font-face {
+font-family: CALIFI;src=url({% static 'CALIFI.TTF' %});
+};
+@font-face {
+font-family: CALIFR;src=url({% static 'CALIFR.TTF' %});
+};
+@font-face {
+font-family: CALIST;src=url({% static 'CALIST.TTF' %});
+};
+@font-face {
+font-family: CALISTB;src=url({% static 'CALISTB.TTF' %});
+};
+@font-face {
+font-family: CALISTBI;src=url({% static 'CALISTBI.TTF' %});
+};
+@font-face {
+font-family: CALISTI;src=url({% static 'CALISTI.TTF' %});
+};
+@font-face {
+font-family: cambria;src=url({% static 'cambria.ttc' %});
+};
+@font-face {
+font-family: cambriab;src=url({% static 'cambriab.ttf' %});
+};
+@font-face {
+font-family: cambriai;src=url({% static 'cambriai.ttf' %});
+};
+@font-face {
+font-family: cambriaz;src=url({% static 'cambriaz.ttf' %});
+};
+@font-face {
+font-family: Candara;src=url({% static 'Candara.ttf' %});
+};
+@font-face {
+font-family: Candarab;src=url({% static 'Candarab.ttf' %});
+};
+@font-face {
+font-family: Candarai;src=url({% static 'Candarai.ttf' %});
+};
+@font-face {
+font-family: Candaral;src=url({% static 'Candaral.ttf' %});
+};
+@font-face {
+font-family: Candarali;src=url({% static 'Candarali.ttf' %});
+};
+@font-face {
+font-family: Candaraz;src=url({% static 'Candaraz.ttf' %});
+};
+@font-face {
+font-family: CASTELAR;src=url({% static 'CASTELAR.TTF' %});
+};
+@font-face {
+font-family: CENSCBK;src=url({% static 'CENSCBK.TTF' %});
+};
+@font-face {
+font-family: CENTAUR;src=url({% static 'CENTAUR.TTF' %});
+};
+@font-face {
+font-family: CENTURY;src=url({% static 'CENTURY.TTF' %});
+};
+@font-face {
+font-family: CHILLER;src=url({% static 'CHILLER.TTF' %});
+};
+@font-face {
+font-family: COLONNA;src=url({% static 'COLONNA.TTF' %});
+};
+@font-face {
+font-family: comic;src=url({% static 'comic.ttf' %});
+};
+@font-face {
+font-family: comicbd;src=url({% static 'comicbd.ttf' %});
+};
+@font-face {
+font-family: comici;src=url({% static 'comici.ttf' %});
+};
+@font-face {
+font-family: comicz;src=url({% static 'comicz.ttf' %});
+};
+@font-face {
+font-family: consola;src=url({% static 'consola.ttf' %});
+};
+@font-face {
+font-family: consolab;src=url({% static 'consolab.ttf' %});
+};
+@font-face {
+font-family: consolai;src=url({% static 'consolai.ttf' %});
+};
+@font-face {
+font-family: consolaz;src=url({% static 'consolaz.ttf' %});
+};
+@font-face {
+font-family: constan;src=url({% static 'constan.ttf' %});
+};
+@font-face {
+font-family: constanb;src=url({% static 'constanb.ttf' %});
+};
+@font-face {
+font-family: constani;src=url({% static 'constani.ttf' %});
+};
+@font-face {
+font-family: constanz;src=url({% static 'constanz.ttf' %});
+};
+@font-face {
+font-family: COOPBL;src=url({% static 'COOPBL.TTF' %});
+};
+@font-face {
+font-family: COPRGTB;src=url({% static 'COPRGTB.TTF' %});
+};
+@font-face {
+font-family: COPRGTL;src=url({% static 'COPRGTL.TTF' %});
+};
+@font-face {
+font-family: corbel;src=url({% static 'corbel.ttf' %});
+};
+@font-face {
+font-family: corbelb;src=url({% static 'corbelb.ttf' %});
+};
+@font-face {
+font-family: corbeli;src=url({% static 'corbeli.ttf' %});
+};
+@font-face {
+font-family: corbell;src=url({% static 'corbell.ttf' %});
+};
+@font-face {
+font-family: corbelli;src=url({% static 'corbelli.ttf' %});
+};
+@font-face {
+font-family: corbelz;src=url({% static 'corbelz.ttf' %});
+};
+@font-face {
+font-family: cour;src=url({% static 'cour.ttf' %});
+};
+@font-face {
+font-family: courbd;src=url({% static 'courbd.ttf' %});
+};
+@font-face {
+font-family: courbi;src=url({% static 'courbi.ttf' %});
+};
+@font-face {
+font-family: coure;src=url({% static 'coure.fon' %});
+};
+@font-face {
+font-family: couri;src=url({% static 'couri.ttf' %});
+};
+@font-face {
+font-family: Creamy Chocolate;src=url({% static 'Creamy Chocolate.otf' %});
+};
+@font-face {
+font-family: CURLZ___;src=url({% static 'CURLZ___.TTF' %});
+};
+@font-face {
+font-family: dosapp;src=url({% static 'dosapp.fon' %});
+};
+@font-face {
+font-family: ebrima;src=url({% static 'ebrima.ttf' %});
+};
+@font-face {
+font-family: ebrimabd;src=url({% static 'ebrimabd.ttf' %});
+};
+@font-face {
+font-family: ELEPHNT;src=url({% static 'ELEPHNT.TTF' %});
+};
+@font-face {
+font-family: ELEPHNTI;src=url({% static 'ELEPHNTI.TTF' %});
+};
+@font-face {
+font-family: ENGR;src=url({% static 'ENGR.TTF' %});
+};
+@font-face {
+font-family: ERASBD;src=url({% static 'ERASBD.TTF' %});
+};
+@font-face {
+font-family: ERASDEMI;src=url({% static 'ERASDEMI.TTF' %});
+};
+@font-face {
+font-family: ERASLGHT;src=url({% static 'ERASLGHT.TTF' %});
+};
+@font-face {
+font-family: ERASMD;src=url({% static 'ERASMD.TTF' %});
+};
+@font-face {
+font-family: FELIXTI;src=url({% static 'FELIXTI.TTF' %});
+};
+@font-face {
+font-family: FORTE;src=url({% static 'FORTE.TTF' %});
+};
+@font-face {
+font-family: FRABK;src=url({% static 'FRABK.TTF' %});
+};
+@font-face {
+font-family: FRABKIT;src=url({% static 'FRABKIT.TTF' %});
+};
+@font-face {
+font-family: FRADM;src=url({% static 'FRADM.TTF' %});
+};
+@font-face {
+font-family: FRADMCN;src=url({% static 'FRADMCN.TTF' %});
+};
+@font-face {
+font-family: FRADMIT;src=url({% static 'FRADMIT.TTF' %});
+};
+@font-face {
+font-family: FRAHV;src=url({% static 'FRAHV.TTF' %});
+};
+@font-face {
+font-family: FRAHVIT;src=url({% static 'FRAHVIT.TTF' %});
+};
+@font-face {
+font-family: framd;src=url({% static 'framd.ttf' %});
+};
+@font-face {
+font-family: FRAMDCN;src=url({% static 'FRAMDCN.TTF' %});
+};
+@font-face {
+font-family: framdit;src=url({% static 'framdit.ttf' %});
+};
+@font-face {
+font-family: FREESCPT;src=url({% static 'FREESCPT.TTF' %});
+};
+@font-face {
+font-family: FRSCRIPT;src=url({% static 'FRSCRIPT.TTF' %});
+};
+@font-face {
+font-family: FTLTLT;src=url({% static 'FTLTLT.TTF' %});
+};
+@font-face {
+font-family: Gabriola;src=url({% static 'Gabriola.ttf' %});
+};
+@font-face {
+font-family: GARA;src=url({% static 'GARA.TTF' %});
+};
+@font-face {
+font-family: GARABD;src=url({% static 'GARABD.TTF' %});
+};
+@font-face {
+font-family: GARAIT;src=url({% static 'GARAIT.TTF' %});
+};
+@font-face {
+font-family: georgia;src=url({% static 'georgia.ttf' %});
+};
+@font-face {
+font-family: georgiab;src=url({% static 'georgiab.ttf' %});
+};
+@font-face {
+font-family: georgiai;src=url({% static 'georgiai.ttf' %});
+};
+@font-face {
+font-family: georgiaz;src=url({% static 'georgiaz.ttf' %});
+};
+@font-face {
+font-family: GIGI;src=url({% static 'GIGI.TTF' %});
+};
+@font-face {
+font-family: GILBI___;src=url({% static 'GILBI___.TTF' %});
+};
+@font-face {
+font-family: GILB____;src=url({% static 'GILB____.TTF' %});
+};
+@font-face {
+font-family: GILC____;src=url({% static 'GILC____.TTF' %});
+};
+@font-face {
+font-family: GILI____;src=url({% static 'GILI____.TTF' %});
+};
+@font-face {
+font-family: GILLUBCD;src=url({% static 'GILLUBCD.TTF' %});
+};
+@font-face {
+font-family: GILSANUB;src=url({% static 'GILSANUB.TTF' %});
+};
+@font-face {
+font-family: GIL_____;src=url({% static 'GIL_____.TTF' %});
+};
+@font-face {
+font-family: GLECB;src=url({% static 'GLECB.TTF' %});
+};
+@font-face {
+font-family: GLSNECB;src=url({% static 'GLSNECB.TTF' %});
+};
+@font-face {
+font-family: GOTHIC;src=url({% static 'GOTHIC.TTF' %});
+};
+@font-face {
+font-family: GOTHICB;src=url({% static 'GOTHICB.TTF' %});
+};
+@font-face {
+font-family: GOTHICBI;src=url({% static 'GOTHICBI.TTF' %});
+};
+@font-face {
+font-family: GOTHICI;src=url({% static 'GOTHICI.TTF' %});
+};
+@font-face {
+font-family: GOUDOS;src=url({% static 'GOUDOS.TTF' %});
+};
+@font-face {
+font-family: GOUDOSB;src=url({% static 'GOUDOSB.TTF' %});
+};
+@font-face {
+font-family: GOUDOSI;src=url({% static 'GOUDOSI.TTF' %});
+};
+@font-face {
+font-family: GOUDYSTO;src=url({% static 'GOUDYSTO.TTF' %});
+};
+@font-face {
+font-family: HARLOWSI;src=url({% static 'HARLOWSI.TTF' %});
+};
+@font-face {
+font-family: HARNGTON;src=url({% static 'HARNGTON.TTF' %});
+};
+@font-face {
+font-family: HATTEN;src=url({% static 'HATTEN.TTF' %});
+};
+@font-face {
+font-family: himalaya;src=url({% static 'himalaya.ttf' %});
+};
+@font-face {
+font-family: HTOWERT;src=url({% static 'HTOWERT.TTF' %});
+};
+@font-face {
+font-family: HTOWERTI;src=url({% static 'HTOWERTI.TTF' %});
+};
+@font-face {
+font-family: impact;src=url({% static 'impact.ttf' %});
+};
+@font-face {
+font-family: IMPRISHA;src=url({% static 'IMPRISHA.TTF' %});
+};
+@font-face {
+font-family: INFROMAN;src=url({% static 'INFROMAN.TTF' %});
+};
+@font-face {
+font-family: Inkfree;src=url({% static 'Inkfree.ttf' %});
+};
+@font-face {
+font-family: ITCBLKAD;src=url({% static 'ITCBLKAD.TTF' %});
+};
+@font-face {
+font-family: ITCEDSCR;src=url({% static 'ITCEDSCR.TTF' %});
+};
+@font-face {
+font-family: ITCKRIST;src=url({% static 'ITCKRIST.TTF' %});
+};
+@font-face {
+font-family: javatext;src=url({% static 'javatext.ttf' %});
+};
+@font-face {
+font-family: JOKERMAN;src=url({% static 'JOKERMAN.TTF' %});
+};
+@font-face {
+font-family: JUICE___;src=url({% static 'JUICE___.TTF' %});
+};
+@font-face {
+font-family: KGSkinnyLatte;src=url({% static 'KGSkinnyLatte.ttf' %});
+};
+@font-face {
+font-family: KUNSTLER;src=url({% static 'KUNSTLER.TTF' %});
+};
+@font-face {
+font-family: LATINWD;src=url({% static 'LATINWD.TTF' %});
+};
+@font-face {
+font-family: LBRITE;src=url({% static 'LBRITE.TTF' %});
+};
+@font-face {
+font-family: LBRITED;src=url({% static 'LBRITED.TTF' %});
+};
+@font-face {
+font-family: LBRITEDI;src=url({% static 'LBRITEDI.TTF' %});
+};
+@font-face {
+font-family: LBRITEI;src=url({% static 'LBRITEI.TTF' %});
+};
+@font-face {
+font-family: LCALLIG;src=url({% static 'LCALLIG.TTF' %});
+};
+@font-face {
+font-family: LFAX;src=url({% static 'LFAX.TTF' %});
+};
+@font-face {
+font-family: LFAXD;src=url({% static 'LFAXD.TTF' %});
+};
+@font-face {
+font-family: LFAXDI;src=url({% static 'LFAXDI.TTF' %});
+};
+@font-face {
+font-family: LFAXI;src=url({% static 'LFAXI.TTF' %});
+};
+@font-face {
+font-family: LHANDW;src=url({% static 'LHANDW.TTF' %});
+};
+@font-face {
+font-family: LSANS;src=url({% static 'LSANS.TTF' %});
+};
+@font-face {
+font-family: LSANSD;src=url({% static 'LSANSD.TTF' %});
+};
+@font-face {
+font-family: LSANSDI;src=url({% static 'LSANSDI.TTF' %});
+};
+@font-face {
+font-family: LSANSI;src=url({% static 'LSANSI.TTF' %});
+};
+@font-face {
+font-family: LTYPE;src=url({% static 'LTYPE.TTF' %});
+};
+@font-face {
+font-family: LTYPEB;src=url({% static 'LTYPEB.TTF' %});
+};
+@font-face {
+font-family: LTYPEBO;src=url({% static 'LTYPEBO.TTF' %});
+};
+@font-face {
+font-family: LTYPEO;src=url({% static 'LTYPEO.TTF' %});
+};
+@font-face {
+font-family: lucon;src=url({% static 'lucon.ttf' %});
+};
+@font-face {
+font-family: l_10646;src=url({% static 'l_10646.ttf' %});
+};
+@font-face {
+font-family: MAGNETOB;src=url({% static 'MAGNETOB.TTF' %});
+};
+@font-face {
+font-family: MAIAN;src=url({% static 'MAIAN.TTF' %});
+};
+@font-face {
+font-family: MATURASC;src=url({% static 'MATURASC.TTF' %});
+};
+@font-face {
+font-family: MerryChristmasFlake;src=url({% static 'MerryChristmasFlake.ttf' %});
+};
+@font-face {
+font-family: MerryChristmasStar;src=url({% static 'MerryChristmasStar.ttf' %});
+};
+@font-face {
+font-family: micross;src=url({% static 'micross.ttf' %});
+};
+@font-face {
+font-family: MISTRAL;src=url({% static 'MISTRAL.TTF' %});
+};
+@font-face {
+font-family: MOD20;src=url({% static 'MOD20.TTF' %});
+};
+@font-face {
+font-family: modern;src=url({% static 'modern.fon' %});
+};
+@font-face {
+font-family: MTCORSVA;src=url({% static 'MTCORSVA.TTF' %});
+};
+@font-face {
+font-family: mvboli;src=url({% static 'mvboli.ttf' %});
+};
+@font-face {
+font-family: NIAGENG;src=url({% static 'NIAGENG.TTF' %});
+};
+@font-face {
+font-family: NIAGSOL;src=url({% static 'NIAGSOL.TTF' %});
+};
+@font-face {
+font-family: OCRAEXT;src=url({% static 'OCRAEXT.TTF' %});
+};
+@font-face {
+font-family: OLDENGL;src=url({% static 'OLDENGL.TTF' %});
+};
+@font-face {
+font-family: ONYX;src=url({% static 'ONYX.TTF' %});
+};
+@font-face {
+font-family: pala;src=url({% static 'pala.ttf' %});
+};
+@font-face {
+font-family: palab;src=url({% static 'palab.ttf' %});
+};
+@font-face {
+font-family: palabi;src=url({% static 'palabi.ttf' %});
+};
+@font-face {
+font-family: palai;src=url({% static 'palai.ttf' %});
+};
+@font-face {
+font-family: PALSCRI;src=url({% static 'PALSCRI.TTF' %});
+};
+@font-face {
+font-family: PAPYRUS;src=url({% static 'PAPYRUS.TTF' %});
+};
+@font-face {
+font-family: PARCHM;src=url({% static 'PARCHM.TTF' %});
+};
+@font-face {
+font-family: PERBI___;src=url({% static 'PERBI___.TTF' %});
+};
+@font-face {
+font-family: PERB____;src=url({% static 'PERB____.TTF' %});
+};
+@font-face {
+font-family: PERI____;src=url({% static 'PERI____.TTF' %});
+};
+@font-face {
+font-family: PERTIBD;src=url({% static 'PERTIBD.TTF' %});
+};
+@font-face {
+font-family: PERTILI;src=url({% static 'PERTILI.TTF' %});
+};
+@font-face {
+font-family: PER_____;src=url({% static 'PER_____.TTF' %});
+};
+@font-face {
+font-family: PLAYBILL;src=url({% static 'PLAYBILL.TTF' %});
+};
+@font-face {
+font-family: POORICH;src=url({% static 'POORICH.TTF' %});
+};
+@font-face {
+font-family: PRISTINA;src=url({% static 'PRISTINA.TTF' %});
+};
+@font-face {
+font-family: RAGE;src=url({% static 'RAGE.TTF' %});
+};
+@font-face {
+font-family: RAVIE;src=url({% static 'RAVIE.TTF' %});
+};
+@font-face {
+font-family: REFSAN;src=url({% static 'REFSAN.TTF' %});
+};
+@font-face {
+font-family: ROCCB___;src=url({% static 'ROCCB___.TTF' %});
+};
+@font-face {
+font-family: ROCC____;src=url({% static 'ROCC____.TTF' %});
+};
+@font-face {
+font-family: ROCK;src=url({% static 'ROCK.TTF' %});
+};
+@font-face {
+font-family: ROCKB;src=url({% static 'ROCKB.TTF' %});
+};
+@font-face {
+font-family: ROCKBI;src=url({% static 'ROCKBI.TTF' %});
+};
+@font-face {
+font-family: ROCKEB;src=url({% static 'ROCKEB.TTF' %});
+};
+@font-face {
+font-family: ROCKI;src=url({% static 'ROCKI.TTF' %});
+};
+@font-face {
+font-family: roman;src=url({% static 'roman.fon' %});
+};
+@font-face {
+font-family: SCHLBKB;src=url({% static 'SCHLBKB.TTF' %});
+};
+@font-face {
+font-family: SCHLBKBI;src=url({% static 'SCHLBKBI.TTF' %});
+};
+@font-face {
+font-family: SCHLBKI;src=url({% static 'SCHLBKI.TTF' %});
+};
+@font-face {
+font-family: script;src=url({% static 'script.fon' %});
+};
+@font-face {
+font-family: SCRIPTBL;src=url({% static 'SCRIPTBL.TTF' %});
+};
+@font-face {
+font-family: segoepr;src=url({% static 'segoepr.ttf' %});
+};
+@font-face {
+font-family: segoeprb;src=url({% static 'segoeprb.ttf' %});
+};
+@font-face {
+font-family: segoesc;src=url({% static 'segoesc.ttf' %});
+};
+@font-face {
+font-family: segoescb;src=url({% static 'segoescb.ttf' %});
+};
+@font-face {
+font-family: segoeui;src=url({% static 'segoeui.ttf' %});
+};
+@font-face {
+font-family: segoeuib;src=url({% static 'segoeuib.ttf' %});
+};
+@font-face {
+font-family: segoeuii;src=url({% static 'segoeuii.ttf' %});
+};
+@font-face {
+font-family: segoeuil;src=url({% static 'segoeuil.ttf' %});
+};
+@font-face {
+font-family: segoeuisl;src=url({% static 'segoeuisl.ttf' %});
+};
+@font-face {
+font-family: segoeuiz;src=url({% static 'segoeuiz.ttf' %});
+};
+@font-face {
+font-family: seguibl;src=url({% static 'seguibl.ttf' %});
+};
+@font-face {
+font-family: seguibli;src=url({% static 'seguibli.ttf' %});
+};
+@font-face {
+font-family: seguihis;src=url({% static 'seguihis.ttf' %});
+};
+@font-face {
+font-family: seguili;src=url({% static 'seguili.ttf' %});
+};
+@font-face {
+font-family: seguisb;src=url({% static 'seguisb.ttf' %});
+};
+@font-face {
+font-family: seguisbi;src=url({% static 'seguisbi.ttf' %});
+};
+@font-face {
+font-family: seguisli;src=url({% static 'seguisli.ttf' %});
+};
+@font-face {
+font-family: seguisym;src=url({% static 'seguisym.ttf' %});
+};
+@font-face {
+font-family: serife;src=url({% static 'serife.fon' %});
+};
+@font-face {
+font-family: SHOWG;src=url({% static 'SHOWG.TTF' %});
+};
+@font-face {
+font-family: Sitka;src=url({% static 'Sitka.ttc' %});
+};
+@font-face {
+font-family: SitkaB;src=url({% static 'SitkaB.ttc' %});
+};
+@font-face {
+font-family: SitkaI;src=url({% static 'SitkaI.ttc' %});
+};
+@font-face {
+font-family: SitkaZ;src=url({% static 'SitkaZ.ttc' %});
+};
+@font-face {
+font-family: smalle;src=url({% static 'smalle.fon' %});
+};
+@font-face {
+font-family: SNAP____;src=url({% static 'SNAP____.TTF' %});
+};
+@font-face {
+font-family: sserife;src=url({% static 'sserife.fon' %});
+};
+@font-face {
+font-family: STENCIL;src=url({% static 'STENCIL.TTF' %});
+};
+@font-face {
+font-family: Sweet Cookie;src=url({% static 'Sweet Cookie.ttf' %});
+};
+@font-face {
+font-family: sylfaen;src=url({% static 'sylfaen.ttf' %});
+};
+@font-face {
+font-family: tahoma;src=url({% static 'tahoma.ttf' %});
+};
+@font-face {
+font-family: tahomabd;src=url({% static 'tahomabd.ttf' %});
+};
+@font-face {
+font-family: TCBI____;src=url({% static 'TCBI____.TTF' %});
+};
+@font-face {
+font-family: TCB_____;src=url({% static 'TCB_____.TTF' %});
+};
+@font-face {
+font-family: TCCB____;src=url({% static 'TCCB____.TTF' %});
+};
+@font-face {
+font-family: TCCEB;src=url({% static 'TCCEB.TTF' %});
+};
+@font-face {
+font-family: TCCM____;src=url({% static 'TCCM____.TTF' %});
+};
+@font-face {
+font-family: TCMI____;src=url({% static 'TCMI____.TTF' %});
+};
+@font-face {
+font-family: TCM_____;src=url({% static 'TCM_____.TTF' %});
+};
+@font-face {
+font-family: TEMPSITC;src=url({% static 'TEMPSITC.TTF' %});
+};
+@font-face {
+font-family: times;src=url({% static 'times.ttf' %});
+};
+@font-face {
+font-family: timesbd;src=url({% static 'timesbd.ttf' %});
+};
+@font-face {
+font-family: timesbi;src=url({% static 'timesbi.ttf' %});
+};
+@font-face {
+font-family: timesi;src=url({% static 'timesi.ttf' %});
+};
+@font-face {
+font-family: trebuc;src=url({% static 'trebuc.ttf' %});
+};
+@font-face {
+font-family: trebucbd;src=url({% static 'trebucbd.ttf' %});
+};
+@font-face {
+font-family: trebucbi;src=url({% static 'trebucbi.ttf' %});
+};
+@font-face {
+font-family: trebucit;src=url({% static 'trebucit.ttf' %});
+};
+@font-face {
+font-family: verdana;src=url({% static 'verdana.ttf' %});
+};
+@font-face {
+font-family: verdanab;src=url({% static 'verdanab.ttf' %});
+};
+@font-face {
+font-family: verdanai;src=url({% static 'verdanai.ttf' %});
+};
+@font-face {
+font-family: verdanaz;src=url({% static 'verdanaz.ttf' %});
+};
+@font-face {
+font-family: vgafix;src=url({% static 'vgafix.fon' %});
+};
+@font-face {
+font-family: vgaoem;src=url({% static 'vgaoem.fon' %});
+};
+@font-face {
+font-family: vgasys;src=url({% static 'vgasys.fon' %});
+};
+@font-face {
+font-family: VINERITC;src=url({% static 'VINERITC.TTF' %});
+};
+@font-face {
+font-family: VIVALDII;src=url({% static 'VIVALDII.TTF' %});
+};
+@font-face {
+font-family: VLADIMIR;src=url({% static 'VLADIMIR.TTF' %});
+};
