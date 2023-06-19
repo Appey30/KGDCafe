@@ -33,23 +33,25 @@
 
 
     <style>
-        body {
-            font-family: "Lato", sans-serif;
-            background-image: url({% static 'bas.jpg' %});
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        );
+body {
+    font-family: "Lato", sans-serif;
+    background-image: url({% static 'bas.jpg' %});
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 
-        
-        @font-face {
-        font-family: beyond_the_mountains; font-weight: bold; src: url({% static 'beyond_the_mountains.otf' %});
-        };
-        
-        @font-face {
-        font-family: Vladimir Script Regular; font-weight: bold; src: url({% static 'VLADIMIR.TTF' %});                                                                                            
-        
-        };
+@font-face {
+    font-family: "beyond_the_mountains";
+    font-weight: bold;
+    src: url({% static 'beyond_the_mountains.otf' %});
+}
+
+@font-face {
+    font-family: "Vladimir Script Regular";
+    font-weight: bold;
+    src: url({% static 'VLADIMIR.TTF' %});
+}
 
         /*large*/
         @media screen and (min-width: 1200px) {
