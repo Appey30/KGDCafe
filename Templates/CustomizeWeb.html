@@ -3468,7 +3468,7 @@ body {
             // Font selector change event handlers (same as before)
 document.getElementById('title-font').addEventListener('change', function() {
     var selectedFont = this.value;
-    alert(selectedFont);
+    
     var elements = document.getElementsByClassName('maintitleclass');
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.fontFamily = selectedFont;
