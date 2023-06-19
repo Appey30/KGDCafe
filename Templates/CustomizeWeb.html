@@ -3459,17 +3459,17 @@
 
             // Add font options for title font selector
             $.each(fontFamilies, function(index, font) {
-                $('#title-font').append('<option style="' + font + '" value="' + font + '">' + font + '</option>');
+                $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
             });
 
             // Add font options for subtitle font selector
             $.each(fontFamilies, function(index, font) {
-                $('#subtitle-font').append('<option style="' + font + '" value="' + font + '">' + font + '</option>');
+                $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
             });
 
             // Add font options for body font selector
             $.each(fontFamilies, function(index, font) {
-                $('#body-font').append('<option style="' + font + '" value="' + font + '">' + font + '</option>');
+                $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
             });
 
             // Font selector change event handlers (same as before)
