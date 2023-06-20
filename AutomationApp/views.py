@@ -5520,6 +5520,8 @@ def customize(request):
         button_color_obj.cardcolor = card_color
         button_color_obj.textcolor = text_color
         button_color_obj.backgroundcolor = background_color
+        if brandname and brandname != button_color_obj.brandname:
+            button_color_obj.brandname = brandname
         button_color_obj.brand_name = brandname
         if title and title != button_color_obj.title_name:
             button_color_obj.title = title
