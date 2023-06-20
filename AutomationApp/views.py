@@ -5523,7 +5523,7 @@ def customize(request):
         if brandname and brandname != button_color_obj.brandname:
             button_color_obj.brandname = brandname
         button_color_obj.brand_name = brandname
-        if title and title != button_color_obj.title_name:
+        if title and title != button_color_obj.title:
             button_color_obj.title = title
         if subtitle and subtitle != button_color_obj.subtitle:
             button_color_obj.subtitle = subtitle
