@@ -3620,6 +3620,13 @@ $(document).ready(function() {
     }
   }
 
+
+var brandnameColorDef = "{{ brandnamecolordef }}";
+$("#brand_nameid").val(brandnameColorDef);
+
+
+
+
   $('#title-font').change(function() {
     var selectedFont = $(this).val();
     $('.maintitleclass').css('font-family', selectedFont);
@@ -3647,13 +3654,8 @@ $(document).ready(function() {
 
 
 
-          $(document).ready(function() {
-            var brandnameColorDef = "{{ brandnamecolordef }}";
-            $("#brand_nameid").val(brandnameColorDef);
 
-          });
 
-$(document).ready(function() {
   var bodyColorDef = "{{ bodycolordef }}";
   var subtitleColorDef = "{{ subtitlecolordef }}";
   var titleColorDef = "{{ titlecolordef }}";
@@ -3727,9 +3729,9 @@ $(document).ready(function() {
     var selectedFont = $(this).val();
     $('.maintitleclass').css('font-family', selectedFont);
   });
-});
+
         
-          $(document).ready(function() {
+
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
             $("#atbsample").css("background-color", buttonColorDef);
@@ -3738,8 +3740,8 @@ $(document).ready(function() {
               var buttonNewColor = $(this).val();
               $("#atbsample").css("background-color", buttonNewColor);
             });
-          });
-          $(document).ready(function() {
+         
+          
             var cardColorDef = "{{ cardcolordef }}";
             $("#card_colorid").val(cardColorDef);
             $("#samplecardid").css("background-color", cardColorDef);
@@ -3748,9 +3750,9 @@ $(document).ready(function() {
               var cardNewColor = $(this).val();
               $("#samplecardid").css("background-color", cardNewColor);
             });
-          });
+          
 
-          $(document).ready(function() {
+          
             var textColorDef = "{{ textcolordef }}";
             $("#text_colorid").val(textColorDef);
             $(".sampleproductnameclass").css("color", textColorDef);
@@ -3763,9 +3765,9 @@ $(document).ready(function() {
             $("#priceid").css("color", textNewColor);
             $("#atbsample").css("color", textNewColor);
             });
-          });
+          
 
-          $(document).ready(function() {
+         
             var backgroundColorDef = "{{ backgroundcolordef }}";
             $("#background_colorid").val(backgroundColorDef);
             $("#previewareaidone").css("background-color", backgroundColorDef);
@@ -3782,7 +3784,7 @@ $(document).ready(function() {
             $("#previewareaidthree").css("background-color", backgroundNewColor);
             $("#previewareaidfour").css("background-color", backgroundNewColor);
             });
-          });
+          
 function submitcustomizeinitial() {
   var brand_nameid = document.getElementById('brand_nameid');
   if (brand_nameid) {
