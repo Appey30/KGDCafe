@@ -5509,6 +5509,10 @@ def customize(request):
         card_color = request.POST.get('card_color', '#d4ad98')
         text_color = request.POST.get('text_color', '#2c170c')
         background_color = request.POST.get('background_color', '#f6eeea')
+        brandname = request.POST.get('brand_name', '')
+        title = request.POST.get('title_name', 'Black Jack Script')
+        subtitle = request.POST.get('subtitle_name', 'sans-serif')
+        body = request.POST.get('body_name', 'sans-serif')
         print('customizeid: Detected')
         # Save the updated button color or create a new ButtonColor object
         button_color_obj, created = ButtonColor.objects.get_or_create(user=request.user.id)
@@ -5516,21 +5520,34 @@ def customize(request):
         button_color_obj.cardcolor = card_color
         button_color_obj.textcolor = text_color
         button_color_obj.backgroundcolor = background_color
+        button_color_obj.brand_name = brandname
+        if title and title != button_color_obj.title_name:
+            button_color_obj.title = title
+        if subtitle and subtitle != button_color_obj.subtitle:
+            button_color_obj.subtitle = subtitle
+        if body and body != button_color_obj.body:
+            button_color_obj.body = body
         button_color_obj.save()
-
-        
     try:
         buttoncolordefi=ButtonColor.objects.get(user=request.user.id)
         buttoncolordef=buttoncolordefi.color
         cardcolordef=buttoncolordefi.cardcolor
         textcolordef=buttoncolordefi.textcolor
         backgroundcolordef=buttoncolordefi.backgroundcolor
+        brandnamecolordef=buttoncolordefi.brand_name
+        titlecolordef=buttoncolordefi.title
+        subtitlecolordef=buttoncolordefi.subtitle
+        bodycolordef=buttoncolordefi.body
     except ButtonColor.DoesNotExist:
         buttoncolordef='#aa5c31'
         cardcolordef='#d4ad98'
         textcolordef='#2c170c'
         backgroundcolordef='#f6eeea'
-    return render(request, 'CustomizeWeb.html', {'userr':userr,'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef,'backgroundcolordef':backgroundcolordef})
+        brandnamecolordef=''
+        titlecolordef='Black Jack Script'
+        subtitlecolordef='sans-serif'
+        bodycolordef='sans-serif'
+    return render(request, 'CustomizeWeb.html', {'userr':userr,'brandnamecolordef':brandnamecolordef,'bodycolordef':bodycolordef,'subtitlecolordef':subtitlecolordef,'titlecolordef':titlecolordef,'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef,'backgroundcolordef':backgroundcolordef})
 
 
 def Onlineordersystem(request, admin_id):
