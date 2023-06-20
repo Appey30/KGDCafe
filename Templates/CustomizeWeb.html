@@ -3635,13 +3635,13 @@ $(document).ready(function() {
     $('.price, #atbsample').css('font-family', selectedFont);
   });
 
-  // Event listeners for font style buttons
   $('.font-style-button').click(function() {
     var fontClass = $(this).data('font');
     var fontStyle = $(this).data('style');
     applyFontStyle(fontClass, fontStyle);
+
+    $(this).toggleClass('active');
   });
-});
 
 
 
@@ -3783,21 +3783,27 @@ $(document).ready(function() {
             $("#previewareaidfour").css("background-color", backgroundNewColor);
             });
           });
-        function submitcustomizeinitial(){
-        var brand_nameid = document.getElementById('brand_nameid');
-        if(brand_nameid){
-            submitcustomizefinal('pass');
-        }else{
-            alert('Please provide your brandname!')
-            brand_nameid.focus()
-        };
-        }
+function submitcustomizeinitial() {
+  var brand_nameid = document.getElementById('brand_nameid');
+  if (brand_nameid) {
+    submitcustomizefinal('pass', fontStyles);
+  } else {
+    alert('Please provide your brand name!');
+    brand_nameid.focus();
+  }
+}
 
+function submitcustomizefinal(brandnamepass, fontStyles) {
+  // Check for null or blank values in fontStyles object
+  for (var fontClass in fontStyles) {
+    if (!fontStyles[fontClass]) {
+    fontStyles[fontClass] = '';
+    }
+  }
 
-        function submitcustomizefinal(brandnamepass){
-        var formcustomize = document.getElementById('customizeformid');
-        formcustomize.submit();
-        }
+  var formcustomize = document.getElementById('customizeformid');
+  formcustomize.submit();
+}
 
         function viewwebisite(){
         window.open("../index/onlineorder/{{userr}}", "_blank");
