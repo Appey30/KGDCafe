@@ -3328,27 +3328,30 @@ body {
                                 </div>
                                 <div id="brandnamecontainerid">
                                     <div class="brandnamecontainers" id="brandnamecontainersid">
-                                        <label for="title-font" class="punchedtextsubtitle">Title Font:</label>
-                                        <select id="title-font" class="selectfontclass" name="title_name"></select>
-                                        <button id="title-bold" class="font-style-button" data-font="maintitleclass" data-style="bold">Bold</button>
-                                        <button id="title-italic" class="font-style-button" data-font="maintitleclass" data-style="italic">Italic</button>
-                                        <button id="title-underline" class="font-style-button" data-font="maintitleclass" data-style="underline">Underline</button>
-                                        <br><br>
-
-                                        <label for="subtitle-font" class="punchedtextsubtitle">Subtitle Font:</label>
-                                        <select id="subtitle-font" class="selectfontclass" name="subtitle_name"></select>
-                                        <button id="subtitle-bold" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="bold">Bold</button>
-                                        <button id="subtitle-italic" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="italic">Italic</button>
-                                        <button id="subtitle-underline" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="underline">Underline</button>
-                                        <br><br>
-
-                                        <label for="body-font" class="punchedtextsubtitle">Body Font:</label>
-                                        <select id="body-font" class="selectfontclass" name="body_name"></select>
-                                        <button id="body-bold" class="font-style-button" data-font="price,atbsample" data-style="bold">Bold</button>
-                                        <button id="body-italic" class="font-style-button" data-font="price,atbsample" data-style="italic">Italic</button>
-                                        <button id="body-underline" class="font-style-button" data-font="price,atbsample" data-style="underline">Underline</button>
-                                        <br><br>
-                                    </div>
+                                        <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
+                                            <label for="title-font" class="punchedtextsubtitle">Title Font:</label>
+                                            <select id="title-font" class="selectfontclass" name="title_name"></select>
+                                            <button id="title-bold" class="font-style-button" data-font="maintitleclass" data-style="bold">Bold</button>
+                                            <button id="title-italic" class="font-style-button" data-font="maintitleclass" data-style="italic">Italic</button>
+                                            <button id="title-underline" class="font-style-button" data-font="maintitleclass" data-style="underline">Underline</button>
+                                            <br><br>
+                                        </div>
+                                        <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
+                                            <label for="subtitle-font" class="punchedtextsubtitle">Subtitle Font:</label>
+                                            <select id="subtitle-font" class="selectfontclass" name="subtitle_name"></select>
+                                            <button id="subtitle-bold" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="bold">Bold</button>
+                                            <button id="subtitle-italic" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="italic">Italic</button>
+                                            <button id="subtitle-underline" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="underline">Underline</button>
+                                            <br><br>
+                                        </div>
+                                        <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
+                                            <label for="body-font" class="punchedtextsubtitle">Body Font:</label>
+                                            <select id="body-font" class="selectfontclass" name="body_name"></select>
+                                            <button id="body-bold" class="font-style-button" data-font="price,atbsample" data-style="bold">Bold</button>
+                                            <button id="body-italic" class="font-style-button" data-font="price,atbsample" data-style="italic">Italic</button>
+                                            <button id="body-underline" class="font-style-button" data-font="price,atbsample" data-style="underline">Underline</button>
+                                            <br><br>
+                                        </div>
                                     <br><br>
                                 </div>
                             </div>
@@ -3529,45 +3532,7 @@ $(document).ready(function() {
   });
 });
 
-function toggleAccordion(header) {
-  var accordionItem = header.parentNode;
-  var accordionContent = accordionItem.querySelector('.accordion-content');
-  var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
 
-  // Toggle the open class on the accordion item
-  accordionItem.classList.toggle('open');
-
-  // Toggle the active class on the accordion header
-  header.classList.toggle('active');
-
-  // Toggle the rotate class on the dropdown icon
-  dropdownIcon.classList.toggle('rotate');
-
-  // Slide and fade the accordion content
-  if (accordionItem.classList.contains('open')) {
-    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-    accordionContent.style.opacity = 1;
-    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-
-    // Remove the punchedtexttitle class from the clicked accordion header
-    var headerTitle = header.querySelector('.punchedtexttitle');
-    if (headerTitle) {
-      headerTitle.classList.add('punchedtexttitleselected');
-      headerTitle.classList.remove('punchedtexttitle');
-    }
-  } else {
-    accordionContent.style.maxHeight = 0;
-    accordionContent.style.opacity = 0;
-    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-
-    // Add the punchedtexttitle class back to the clicked accordion header
-    var headerTitleSelected = header.querySelector('.punchedtexttitleselected');
-    if (headerTitleSelected) {
-      headerTitleSelected.classList.add('punchedtexttitle');
-      headerTitleSelected.classList.remove('punchedtexttitleselected');
-    }
-  }
-}
 
 
 
@@ -3717,6 +3682,47 @@ $(document).ready(function() {
         function viewwebisite(){
         window.open("../index/onlineorder/{{userr}}", "_blank");
         }
+
+function toggleAccordion(header) {
+  var accordionItem = header.parentNode;
+  var accordionContent = accordionItem.querySelector('.accordion-content');
+  var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
+
+  // Toggle the open class on the accordion item
+  accordionItem.classList.toggle('open');
+
+  // Toggle the active class on the accordion header
+  header.classList.toggle('active');
+
+  // Toggle the rotate class on the dropdown icon
+  dropdownIcon.classList.toggle('rotate');
+
+  // Slide and fade the accordion content
+  if (accordionItem.classList.contains('open')) {
+    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+    accordionContent.style.opacity = 1;
+    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+
+    // Remove the punchedtexttitle class from the clicked accordion header
+    var headerTitle = header.querySelector('.punchedtexttitle');
+    if (headerTitle) {
+      headerTitle.classList.add('punchedtexttitleselected');
+      headerTitle.classList.remove('punchedtexttitle');
+    }
+  } else {
+    accordionContent.style.maxHeight = 0;
+    accordionContent.style.opacity = 0;
+    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+
+    // Add the punchedtexttitle class back to the clicked accordion header
+    var headerTitleSelected = header.querySelector('.punchedtexttitleselected');
+    if (headerTitleSelected) {
+      headerTitleSelected.classList.add('punchedtexttitle');
+      headerTitleSelected.classList.remove('punchedtexttitleselected');
+    }
+  }
+}
+
         var sound='';
         function acknowledgerider(){
         var audioid = document.getElementById('audioid')
