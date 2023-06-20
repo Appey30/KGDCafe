@@ -5534,7 +5534,7 @@ def customize(request):
         cardcolordef=buttoncolordefi.cardcolor
         textcolordef=buttoncolordefi.textcolor
         backgroundcolordef=buttoncolordefi.backgroundcolor
-        brandnamecolordef=buttoncolordefi.brand_name
+        brandnamecolordef=buttoncolordefi.brandname
         titlecolordef=buttoncolordefi.title
         subtitlecolordef=buttoncolordefi.subtitle
         bodycolordef=buttoncolordefi.body
