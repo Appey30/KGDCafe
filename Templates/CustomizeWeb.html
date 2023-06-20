@@ -9,6 +9,7 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Arial&family=Helvetica&family=Times+New+Roman&family=Courier+New&family=Verdana&family=Georgia&family=Trebuchet+MS&family=Arial+Black&family=Impact&family=Comic+Sans+MS&family=Garamond&family=Palatino&family=Lucida+Sans+Unicode&family=Tahoma&family=Courier&family=Lucida+Console&family=Arial+Narrow&family=Century+Gothic&family=Bookman+Old+Style&family=Franklin+Gothic+Medium&family=Candara&family=Rockwell&family=Baskerville&family=Consolas&family=Copperplate&family=Futura&family=Arial+Rounded+MT+Bold&family=Century+Schoolbook&family=Segoe+UI&family=MS+Sans+Serif&family=Open+Sans&family=Roboto&family=Montserrat&family=Lato&family=Raleway&family=Poppins&family=Oswald&family=Nunito&family=Roboto+Condensed&family=Source+Sans+Pro&family=Ubuntu&family=Playfair+Display&family=Merriweather&family=Roboto+Slab&family=Ubuntu+Condensed&family=PT+Sans&family=Cabin&family=Noto+Sans&family=Droid+Sans&family=Bebas+Neue&family=Exo&family=Josefin+Sans&family=Muli&family=Quicksand&family=Fira+Sans&family=Varela+Round&family=Noto+Serif&family=PT+Serif&family=Archivo+Narrow&family=Karla&family=Titillium+Web&family=Font1&family=Font2&display=swap" rel="stylesheet">
 
@@ -3601,257 +3602,258 @@ body {
 
 
 $(document).ready(function() {
-  var fontFamilies = ["","Sans-Serif", "AGENCYB", "AGENCYR", "ALGER", "ANTQUAB", "ANTQUABI", "ANTQUAI", "arial", "arialbd", "arialbi", "ariali", "ARIALN", "ARIALNB", "ARIALNBI", "ARIALNI", "ariblk", "ARLRDBD", "bahnschrift", "BASKVILL", "BAUHS93", "BELL", "BELLB", "BELLI", "BERNHC", "beyond_the_mountains", "beyond_the_mountains", "BKANT", "Black Jack Script", "BLACKJAR", "BOD_B", "BOD_BI", "BOD_BLAI", "BOD_BLAR", "BOD_CB", "BOD_CBI", "BOD_CI", "BOD_CR", "BOD_I", "BOD_PSTC", "BOD_R", "BOOKOS", "BOOKOSB", "BOOKOSBI", "BOOKOSI", "BRADHITC", "BRITANIC", "BRLNSB", "BRLNSDB", "BRLNSR", "BROADW", "BRUSHSCI", "Bs Signature Demo", "calibri", "calibrib", "calibrii", "calibril", "calibrili", "calibriz", "CALIFB", "CALIFI", "CALIFR", "CALIST", "CALISTB", "CALISTBI", "CALISTI", "cambria", "cambriab", "cambriai", "cambriaz", "Candara", "Candarab", "Candarai", "Candaral", "Candarali", "Candaraz", "CASTELAR", "CENSCBK", "CENTAUR", "CENTURY", "CHILLER", "COLONNA", "comic", "comicbd", "comici", "comicz", "consola", "consolab", "consolai", "consolaz", "constan", "constanb", "constani", "constanz", "COOPBL", "COPRGTB", "COPRGTL", "corbel", "corbelb", "corbeli", "corbell", "corbelli", "corbelz", "cour", "courbd", "courbi", "coure", "couri", "Creamy Chocolate", "CURLZ___", "dosapp", "ebrima", "ebrimabd", "ELEPHNT", "ELEPHNTI", "ENGR", "ERASBD", "ERASDEMI", "ERASLGHT", "ERASMD", "FELIXTI", "FORTE", "FRABK", "FRABKIT", "FRADM", "FRADMCN", "FRADMIT", "FRAHV", "FRAHVIT", "framd", "FRAMDCN", "framdit", "FREESCPT", "FRSCRIPT", "FTLTLT", "Gabriola", "GARA", "GARABD", "GARAIT", "georgia", "georgiab", "georgiai", "georgiaz", "GIGI", "GILBI___", "GILB____", "GILC____", "GILI____", "GILLUBCD", "GILSANUB", "GIL_____", "GLECB", "GLSNECB", "GOTHIC", "GOTHICB", "GOTHICBI", "GOTHICI", "GOUDOS", "GOUDOSB", "GOUDOSI", "GOUDYSTO", "HARLOWSI", "HARNGTON", "HATTEN", "himalaya", "HTOWERT", "HTOWERTI", "impact", "IMPRISHA", "INFROMAN", "Inkfree", "ITCBLKAD", "ITCEDSCR", "ITCKRIST", "javatext", "JOKERMAN", "JUICE___", "KGSkinnyLatte", "KUNSTLER", "LATINWD", "LBRITE", "LBRITED", "LBRITEDI", "LBRITEI", "LCALLIG", "LFAX", "LFAXD", "LFAXDI", "LFAXI", "LHANDW", "LSANS", "LSANSD", "LSANSDI", "LSANSI", "LTYPE", "LTYPEB", "LTYPEBO", "LTYPEO", "lucon", "l_10646", "MAGNETOB", "MAIAN", "MATURASC", "MerryChristmasFlake", "MerryChristmasStar", "micross", "MISTRAL", "MOD20", "modern", "MTCORSVA", "mvboli", "NIAGENG", "NIAGSOL", "OCRAEXT", "OLDENGL", "ONYX", "pala", "palab", "palabi", "palai", "PALSCRI", "PAPYRUS", "PARCHM", "PERBI___", "PERB____", "PERI____", "PERTIBD", "PERTILI", "PER_____", "PLAYBILL", "POORICH", "PRISTINA", "RAGE", "RAVIE", "REFSAN", "ROCCB___", "ROCC____", "ROCK", "ROCKB", "ROCKBI", "ROCKEB", "ROCKI", "roman", "SCHLBKB", "SCHLBKBI", "SCHLBKI", "script", "SCRIPTBL", "segoepr", "segoeprb", "segoesc", "segoescb", "segoeui", "segoeuib", "segoeuii", "segoeuil", "segoeuisl", "segoeuiz", "seguibl", "seguibli", "seguihis", "seguili", "seguisb", "seguisbi", "seguisli", "seguisym", "serife", "SHOWG", "Sitka", "SitkaB", "SitkaI", "SitkaZ", "smalle", "SNAP____", "sserife", "STENCIL", "Sweet Cookie", "sylfaen", "tahoma", "tahomabd", "TCBI____", "TCB_____", "TCCB____", "TCCEB", "TCCM____", "TCMI____", "TCM_____", "TEMPSITC", "times", "timesbd", "timesbi", "timesi", "trebuc", "trebucbd", "trebucbi", "trebucit", "verdana", "verdanab", "verdanai", "verdanaz", "vgafix", "vgaoem", "vgasys", "VINERITC", "VIVALDII", "VLADIMIR", "Arial", "Helvetica", "Times New Roman", "Courier New", "Verdana", "Georgia", "Trebuchet MS", "Arial Black", "Impact", "Comic Sans MS", "Garamond", "Palatino", "Lucida Sans Unicode", "Tahoma", "Courier", "Lucida Console", "Arial Narrow", "Century Gothic", "Bookman Old Style", "Franklin Gothic Medium", "Candara", "Rockwell", "Baskerville", "Consolas", "Copperplate", "Futura", "Arial Rounded MT Bold", "Century Schoolbook", "Segoe UI", "MS Sans Serif", "Open Sans", "Roboto", "Montserrat", "Lato", "Raleway", "Poppins", "Oswald", "Nunito", "Roboto Condensed", "Source Sans Pro", "Ubuntu", "Playfair Display", "Merriweather", "Roboto Slab", "Ubuntu Condensed", "PT Sans", "Cabin", "Noto Sans", "Droid Sans", "Bebas Neue", "Exo", "Josefin Sans", "Muli", "Quicksand", "Fira Sans", "Varela Round", "Noto Serif", "PT Serif", "Titillium Web", "Karla", "Archivo Narrow", "Cabin", "Exo", "Fira Sans", "Josefin Sans", "Lato", "Noto Sans", "Noto Serif", "Nunito", "Open Sans", "Oswald", "Poppins",
+var fontStyles = {};
+    var fontFamilies = ["","Sans-Serif", "AGENCYB", "AGENCYR", "ALGER", "ANTQUAB", "ANTQUABI", "ANTQUAI", "arial", "arialbd", "arialbi", "ariali", "ARIALN", "ARIALNB", "ARIALNBI", "ARIALNI", "ariblk", "ARLRDBD", "bahnschrift", "BASKVILL", "BAUHS93", "BELL", "BELLB", "BELLI", "BERNHC", "beyond_the_mountains", "beyond_the_mountains", "BKANT", "Black Jack Script", "BLACKJAR", "BOD_B", "BOD_BI", "BOD_BLAI", "BOD_BLAR", "BOD_CB", "BOD_CBI", "BOD_CI", "BOD_CR", "BOD_I", "BOD_PSTC", "BOD_R", "BOOKOS", "BOOKOSB", "BOOKOSBI", "BOOKOSI", "BRADHITC", "BRITANIC", "BRLNSB", "BRLNSDB", "BRLNSR", "BROADW", "BRUSHSCI", "Bs Signature Demo", "calibri", "calibrib", "calibrii", "calibril", "calibrili", "calibriz", "CALIFB", "CALIFI", "CALIFR", "CALIST", "CALISTB", "CALISTBI", "CALISTI", "cambria", "cambriab", "cambriai", "cambriaz", "Candara", "Candarab", "Candarai", "Candaral", "Candarali", "Candaraz", "CASTELAR", "CENSCBK", "CENTAUR", "CENTURY", "CHILLER", "COLONNA", "comic", "comicbd", "comici", "comicz", "consola", "consolab", "consolai", "consolaz", "constan", "constanb", "constani", "constanz", "COOPBL", "COPRGTB", "COPRGTL", "corbel", "corbelb", "corbeli", "corbell", "corbelli", "corbelz", "cour", "courbd", "courbi", "coure", "couri", "Creamy Chocolate", "CURLZ___", "dosapp", "ebrima", "ebrimabd", "ELEPHNT", "ELEPHNTI", "ENGR", "ERASBD", "ERASDEMI", "ERASLGHT", "ERASMD", "FELIXTI", "FORTE", "FRABK", "FRABKIT", "FRADM", "FRADMCN", "FRADMIT", "FRAHV", "FRAHVIT", "framd", "FRAMDCN", "framdit", "FREESCPT", "FRSCRIPT", "FTLTLT", "Gabriola", "GARA", "GARABD", "GARAIT", "georgia", "georgiab", "georgiai", "georgiaz", "GIGI", "GILBI___", "GILB____", "GILC____", "GILI____", "GILLUBCD", "GILSANUB", "GIL_____", "GLECB", "GLSNECB", "GOTHIC", "GOTHICB", "GOTHICBI", "GOTHICI", "GOUDOS", "GOUDOSB", "GOUDOSI", "GOUDYSTO", "HARLOWSI", "HARNGTON", "HATTEN", "himalaya", "HTOWERT", "HTOWERTI", "impact", "IMPRISHA", "INFROMAN", "Inkfree", "ITCBLKAD", "ITCEDSCR", "ITCKRIST", "javatext", "JOKERMAN", "JUICE___", "KGSkinnyLatte", "KUNSTLER", "LATINWD", "LBRITE", "LBRITED", "LBRITEDI", "LBRITEI", "LCALLIG", "LFAX", "LFAXD", "LFAXDI", "LFAXI", "LHANDW", "LSANS", "LSANSD", "LSANSDI", "LSANSI", "LTYPE", "LTYPEB", "LTYPEBO", "LTYPEO", "lucon", "l_10646", "MAGNETOB", "MAIAN", "MATURASC", "MerryChristmasFlake", "MerryChristmasStar", "micross", "MISTRAL", "MOD20", "modern", "MTCORSVA", "mvboli", "NIAGENG", "NIAGSOL", "OCRAEXT", "OLDENGL", "ONYX", "pala", "palab", "palabi", "palai", "PALSCRI", "PAPYRUS", "PARCHM", "PERBI___", "PERB____", "PERI____", "PERTIBD", "PERTILI", "PER_____", "PLAYBILL", "POORICH", "PRISTINA", "RAGE", "RAVIE", "REFSAN", "ROCCB___", "ROCC____", "ROCK", "ROCKB", "ROCKBI", "ROCKEB", "ROCKI", "roman", "SCHLBKB", "SCHLBKBI", "SCHLBKI", "script", "SCRIPTBL", "segoepr", "segoeprb", "segoesc", "segoescb", "segoeui", "segoeuib", "segoeuii", "segoeuil", "segoeuisl", "segoeuiz", "seguibl", "seguibli", "seguihis", "seguili", "seguisb", "seguisbi", "seguisli", "seguisym", "serife", "SHOWG", "Sitka", "SitkaB", "SitkaI", "SitkaZ", "smalle", "SNAP____", "sserife", "STENCIL", "Sweet Cookie", "sylfaen", "tahoma", "tahomabd", "TCBI____", "TCB_____", "TCCB____", "TCCEB", "TCCM____", "TCMI____", "TCM_____", "TEMPSITC", "times", "timesbd", "timesbi", "timesi", "trebuc", "trebucbd", "trebucbi", "trebucit", "verdana", "verdanab", "verdanai", "verdanaz", "vgafix", "vgaoem", "vgasys", "VINERITC", "VIVALDII", "VLADIMIR", "Arial", "Helvetica", "Times New Roman", "Courier New", "Verdana", "Georgia", "Trebuchet MS", "Arial Black", "Impact", "Comic Sans MS", "Garamond", "Palatino", "Lucida Sans Unicode", "Tahoma", "Courier", "Lucida Console", "Arial Narrow", "Century Gothic", "Bookman Old Style", "Franklin Gothic Medium", "Candara", "Rockwell", "Baskerville", "Consolas", "Copperplate", "Futura", "Arial Rounded MT Bold", "Century Schoolbook", "Segoe UI", "MS Sans Serif", "Open Sans", "Roboto", "Montserrat", "Lato", "Raleway", "Poppins", "Oswald", "Nunito", "Roboto Condensed", "Source Sans Pro", "Ubuntu", "Playfair Display", "Merriweather", "Roboto Slab", "Ubuntu Condensed", "PT Sans", "Cabin", "Noto Sans", "Droid Sans", "Bebas Neue", "Exo", "Josefin Sans", "Muli", "Quicksand", "Fira Sans", "Varela Round", "Noto Serif", "PT Serif", "Titillium Web", "Karla", "Archivo Narrow", "Cabin", "Exo", "Fira Sans", "Josefin Sans", "Lato", "Noto Sans", "Noto Serif", "Nunito", "Open Sans", "Oswald", "Poppins",
                     "Quicksand", "Raleway", "Roboto", "Roboto Slab", "Source Sans Pro", "Titillium Web", "Ubuntu", "Ubuntu Condensed", "Varela Round"
                      ];
 
-  $.each(fontFamilies, function(index, font) {
-    $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-    $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-    $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-  });
+    $.each(fontFamilies, function(index, font) {
+        $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+        $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+        $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+    });
 
-  // Function to apply font styles
-  function applyFontStyle(fontClass, fontStyle) {
-    var elements = document.getElementsByClassName(fontClass);
-    for (var i = 0; i < elements.length; i++) {
-      elements[i].style.fontWeight = fontStyle === 'bold' ? 'bold' : 'normal';
-      elements[i].style.fontStyle = fontStyle === 'italic' ? 'italic' : 'normal';
-      elements[i].style.textDecoration = fontStyle === 'underline' ? 'underline' : 'none';
+    // Function to apply font styles
+    function applyFontStyle(fontClass, fontStyle) {
+        var elements = document.getElementsByClassName(fontClass);
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].style.fontWeight = fontStyle === 'bold' ? 'bold' : 'normal';
+            elements[i].style.fontStyle = fontStyle === 'italic' ? 'italic' : 'normal';
+            elements[i].style.textDecoration = fontStyle === 'underline' ? 'underline' : 'none';
+        }
     }
-  }
 
 
-var brandnameColorDef = "{{ brandnamecolordef }}";
-$("#brand_nameid").val(brandnameColorDef);
+    var brandnameColorDef = "{{ brandnamecolordef }}";
+    $("#brand_nameid").val(brandnameColorDef);
 
 
 
 
-  $('#title-font').change(function() {
-    var selectedFont = $(this).val();
-    $('.maintitleclass').css('font-family', selectedFont);
-  });
+    $('#title-font').change(function() {
+        var selectedFont = $(this).val();
+        $('.maintitleclass').css('font-family', selectedFont);
+    });
 
-  $('#subtitle-font').change(function() {
-    var selectedFont = $(this).val();
-    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
-  });
+    $('#subtitle-font').change(function() {
+        var selectedFont = $(this).val();
+        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
+    });
 
-  $('#body-font').change(function() {
-    var selectedFont = $(this).val();
-    $('.price, #atbsample').css('font-family', selectedFont);
-  });
+    $('#body-font').change(function() {
+        var selectedFont = $(this).val();
+        $('.price, #atbsample').css('font-family', selectedFont);
+    });
 
-  $('.font-style-button').click(function() {
-    var fontClass = $(this).data('font');
-    var fontStyle = $(this).data('style');
-    applyFontStyle(fontClass, fontStyle);
+    $('.font-style-button').click(function() {
+        var fontClass = $(this).data('font');
+        var fontStyle = $(this).data('style');
+        applyFontStyle(fontClass, fontStyle);
 
-    $(this).toggleClass('active');
-  });
-
-
+        $(this).toggleClass('active');
+    });
 
 
 
 
 
-  var bodyColorDef = "{{ bodycolordef }}";
-  var subtitleColorDef = "{{ subtitlecolordef }}";
-  var titleColorDef = "{{ titlecolordef }}";
-  var bodyBoldDef = "{{ body_bold_def }}";
-  var bodyItalicDef = "{{ body_italic_def }}";
-  var bodyUnderlineDef = "{{ body_underline_def }}";
-  var subtitleBoldDef = "{{ subtitle_bold_def }}";
-  var subtitleItalicDef = "{{ subtitle_italic_def }}";
-  var subtitleUnderlineDef = "{{ subtitle_underline_def }}";
-  var titleBoldDef = "{{ title_bold_def }}";
-  var titleItalicDef = "{{ title_italic_def }}";
-  var titleUnderlineDef = "{{ title_underline_def }}";
 
-  // Set default font-family values
-  $("#body-font").val(bodyColorDef);
-  $("#subtitle-font").val(subtitleColorDef);
-  $("#title-font").val(titleColorDef);
 
-  // Set default font styles (bold, italic, underline)
-  if (bodyBoldDef) {
-    $('.price, #atbsample').css('font-weight', 'bold');
-    $('#body-bold').classList.toggle('active');
-  }
-  if (bodyItalicDef) {
-    $('.price, #atbsample').css('font-style', 'italic');
-    $('#body-italic').classList.toggle('active');
-  }
-  if (bodyUnderlineDef) {
-    $('.price, #atbsample').css('text-decoration', 'underline');
-    $('#body-underline').classList.toggle('active');
-  }
+    var bodyColorDef = "{{ bodycolordef }}";
+    var subtitleColorDef = "{{ subtitlecolordef }}";
+    var titleColorDef = "{{ titlecolordef }}";
+    var bodyBoldDef = "{{ body_bold_def }}";
+    var bodyItalicDef = "{{ body_italic_def }}";
+    var bodyUnderlineDef = "{{ body_underline_def }}";
+    var subtitleBoldDef = "{{ subtitle_bold_def }}";
+    var subtitleItalicDef = "{{ subtitle_italic_def }}";
+    var subtitleUnderlineDef = "{{ subtitle_underline_def }}";
+    var titleBoldDef = "{{ title_bold_def }}";
+    var titleItalicDef = "{{ title_italic_def }}";
+    var titleUnderlineDef = "{{ title_underline_def }}";
 
-  if (subtitleBoldDef) {
-    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
-    $('#subtitle-bold').classList.toggle('active');
-  }
-  if (subtitleItalicDef) {
-    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
-    $('#subtitle-italic').classList.toggle('active');
-  }
-  if (subtitleUnderlineDef) {
-    $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
-    $('#subtitle-underline').classList.toggle('active');
-  }
+    // Set default font-family values
+    $("#body-font").val(bodyColorDef);
+    $("#subtitle-font").val(subtitleColorDef);
+    $("#title-font").val(titleColorDef);
 
-  if (titleBoldDef) {
-    $('.maintitleclass').css('font-weight', 'bold');
-    $('#title-bold').classList.toggle('active');
-  }
-  if (titleItalicDef) {
-    $('.maintitleclass').css('font-style', 'italic');
-    $('#title-italic').classList.toggle('active');
-  }
-  if (titleUnderlineDef) {
-    $('.maintitleclass').css('text-decoration', 'underline');
-    $('#title-underline').classList.toggle('active');
-  }
+    // Set default font styles (bold, italic, underline)
+    if (bodyBoldDef) {
+        $('.price, #atbsample').css('font-weight', 'bold');
+        $('#body-bold').classList.toggle('active');
+    }
+    if (bodyItalicDef) {
+        $('.price, #atbsample').css('font-style', 'italic');
+        $('#body-italic').classList.toggle('active');
+    }
+    if (bodyUnderlineDef) {
+        $('.price, #atbsample').css('text-decoration', 'underline');
+        $('#body-underline').classList.toggle('active');
+    }
 
-  // Font-family change event handlers (same as before)
-  $('#body-font').change(function() {
-    var selectedFont = $(this).val();
-    $('.price, #atbsample').css('font-family', selectedFont);
-  });
+    if (subtitleBoldDef) {
+        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
+        $('#subtitle-bold').classList.toggle('active');
+    }
+    if (subtitleItalicDef) {
+        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
+        $('#subtitle-italic').classList.toggle('active');
+    }
+    if (subtitleUnderlineDef) {
+        $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
+        $('#subtitle-underline').classList.toggle('active');
+    }
 
-  $('#subtitle-font').change(function() {
-    var selectedFont = $(this).val();
-    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
-  });
+    if (titleBoldDef) {
+        $('.maintitleclass').css('font-weight', 'bold');
+        $('#title-bold').classList.toggle('active');
+    }
+    if (titleItalicDef) {
+        $('.maintitleclass').css('font-style', 'italic');
+        $('#title-italic').classList.toggle('active');
+    }
+    if (titleUnderlineDef) {
+        $('.maintitleclass').css('text-decoration', 'underline');
+        $('#title-underline').classList.toggle('active');
+    }
 
-  $('#title-font').change(function() {
-    var selectedFont = $(this).val();
-    $('.maintitleclass').css('font-family', selectedFont);
-  });
+    // Font-family change event handlers (same as before)
+    $('#body-font').change(function() {
+        var selectedFont = $(this).val();
+        $('.price, #atbsample').css('font-family', selectedFont);
+    });
+
+    $('#subtitle-font').change(function() {
+        var selectedFont = $(this).val();
+        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
+    });
+
+    $('#title-font').change(function() {
+        var selectedFont = $(this).val();
+        $('.maintitleclass').css('font-family', selectedFont);
+    });
 
         
 
-            var buttonColorDef = "{{ buttoncolordef }}";
-            $("#button_colorid").val(buttonColorDef);
-            $("#atbsample").css("background-color", buttonColorDef);
+    var buttonColorDef = "{{ buttoncolordef }}";
+    $("#button_colorid").val(buttonColorDef);
+    $("#atbsample").css("background-color", buttonColorDef);
 
-            $("#button_colorid").change(function() {
-              var buttonNewColor = $(this).val();
-              $("#atbsample").css("background-color", buttonNewColor);
-            });
+    $("#button_colorid").change(function() {
+        var buttonNewColor = $(this).val();
+        $("#atbsample").css("background-color", buttonNewColor);
+    });
          
           
-            var cardColorDef = "{{ cardcolordef }}";
-            $("#card_colorid").val(cardColorDef);
-            $("#samplecardid").css("background-color", cardColorDef);
+    var cardColorDef = "{{ cardcolordef }}";
+    $("#card_colorid").val(cardColorDef);
+    $("#samplecardid").css("background-color", cardColorDef);
 
-            $("#card_colorid").change(function() {
-              var cardNewColor = $(this).val();
-              $("#samplecardid").css("background-color", cardNewColor);
-            });
+    $("#card_colorid").change(function() {
+        var cardNewColor = $(this).val();
+        $("#samplecardid").css("background-color", cardNewColor);
+    });
           
 
           
-            var textColorDef = "{{ textcolordef }}";
-            $("#text_colorid").val(textColorDef);
-            $(".sampleproductnameclass").css("color", textColorDef);
-            $("#priceid").css("color", textColorDef);
-            $("#atbsample").css("color", textColorDef);
+    var textColorDef = "{{ textcolordef }}";
+    $("#text_colorid").val(textColorDef);
+    $(".sampleproductnameclass").css("color", textColorDef);
+    $("#priceid").css("color", textColorDef);
+    $("#atbsample").css("color", textColorDef);
 
-            $("#text_colorid").change(function() {
-              var textNewColor = $(this).val();
-            $(".sampleproductnameclass").css("color", textNewColor);
-            $("#priceid").css("color", textNewColor);
-            $("#atbsample").css("color", textNewColor);
-            });
+    $("#text_colorid").change(function() {
+        var textNewColor = $(this).val();
+        $(".sampleproductnameclass").css("color", textNewColor);
+        $("#priceid").css("color", textNewColor);
+        $("#atbsample").css("color", textNewColor);
+    });
           
 
          
-            var backgroundColorDef = "{{ backgroundcolordef }}";
-            $("#background_colorid").val(backgroundColorDef);
-            $("#previewareaidone").css("background-color", backgroundColorDef);
-            $("#previewareaidtwo").css("background-color", backgroundColorDef);
-            $("#previewareaidthree").css("background-color", backgroundColorDef);
-            $("#previewareaidfour").css("background-color", backgroundColorDef);
+    var backgroundColorDef = "{{ backgroundcolordef }}";
+    $("#background_colorid").val(backgroundColorDef);
+    $("#previewareaidone").css("background-color", backgroundColorDef);
+    $("#previewareaidtwo").css("background-color", backgroundColorDef);
+    $("#previewareaidthree").css("background-color", backgroundColorDef);
+    $("#previewareaidfour").css("background-color", backgroundColorDef);
 
 
-            $("#background_colorid").change(function() {
-              var backgroundNewColor = $(this).val();
-            $("#background_colorid").val(backgroundNewColor);
-            $("#previewareaidone").css("background-color", backgroundNewColor);
-            $("#previewareaidtwo").css("background-color", backgroundNewColor);
-            $("#previewareaidthree").css("background-color", backgroundNewColor);
-            $("#previewareaidfour").css("background-color", backgroundNewColor);
-            });
+    $("#background_colorid").change(function() {
+        var backgroundNewColor = $(this).val();
+        $("#background_colorid").val(backgroundNewColor);
+        $("#previewareaidone").css("background-color", backgroundNewColor);
+        $("#previewareaidtwo").css("background-color", backgroundNewColor);
+        $("#previewareaidthree").css("background-color", backgroundNewColor);
+        $("#previewareaidfour").css("background-color", backgroundNewColor);
+    });
           
-function submitcustomizeinitial() {
-  var brand_nameid = document.getElementById('brand_nameid');
-  if (brand_nameid) {
-    submitcustomizefinal('pass', fontStyles);
-  } else {
-    alert('Please provide your brand name!');
-    brand_nameid.focus();
-  }
-}
-
-function submitcustomizefinal(brandnamepass, fontStyles) {
-  // Check for null or blank values in fontStyles object
-  for (var fontClass in fontStyles) {
-    if (!fontStyles[fontClass]) {
-    fontStyles[fontClass] = '';
-    }
-  }
-
-  var formcustomize = document.getElementById('customizeformid');
-  formcustomize.submit();
-}
-
-        function viewwebisite(){
-        window.open("../index/onlineorder/{{userr}}", "_blank");
+    function submitcustomizeinitial() {
+        var brand_nameid = document.getElementById('brand_nameid');
+        if (brand_nameid) {
+            submitcustomizefinal('pass', fontStyles);
+        } else {
+            alert('Please provide your brand name!');
+            brand_nameid.focus();
         }
-
-
-function toggleAccordion(header) {
-  var accordionItem = header.parentNode;
-  var accordionContent = accordionItem.querySelector('.accordion-content');
-  var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
-
-  // Toggle the open class on the accordion item
-  accordionItem.classList.toggle('open');
-
-  // Toggle the active class on the accordion header
-  header.classList.toggle('active');
-
-  // Toggle the rotate class on the dropdown icon
-  dropdownIcon.classList.toggle('rotate');
-
-  // Slide and fade the accordion content
-  if (accordionItem.classList.contains('open')) {
-    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-    accordionContent.style.opacity = 1;
-    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
-
-    // Remove the punchedtexttitle class from the clicked accordion header
-    var headerTitle = header.querySelector('.punchedtexttitle');
-    if (headerTitle) {
-      headerTitle.classList.add('punchedtexttitleselected');
-      headerTitle.classList.remove('punchedtexttitle');
     }
-  } else {
-    accordionContent.style.maxHeight = 0;
-    accordionContent.style.opacity = 0;
-    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
 
-    // Add the punchedtexttitle class back to the clicked accordion header
-    var headerTitleSelected = header.querySelector('.punchedtexttitleselected');
-    if (headerTitleSelected) {
-      headerTitleSelected.classList.add('punchedtexttitle');
-      headerTitleSelected.classList.remove('punchedtexttitleselected');
+    function submitcustomizefinal(brandnamepass, fontStyles) {
+      // Check for null or blank values in fontStyles object
+      for (var fontClass in fontStyles) {
+            if (!fontStyles[fontClass]) {
+                fontStyles[fontClass] = '';
+            }
+      }
+
+      var formcustomize = document.getElementById('customizeformid');
+      formcustomize.submit();
     }
-  }
-}
+
+    function viewwebisite(){
+        window.open("../index/onlineorder/{{userr}}", "_blank");
+    }
+
+
+    function toggleAccordion(header) {
+      var accordionItem = header.parentNode;
+      var accordionContent = accordionItem.querySelector('.accordion-content');
+      var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
+
+      // Toggle the open class on the accordion item
+      accordionItem.classList.toggle('open');
+
+      // Toggle the active class on the accordion header
+      header.classList.toggle('active');
+
+      // Toggle the rotate class on the dropdown icon
+      dropdownIcon.classList.toggle('rotate');
+
+      // Slide and fade the accordion content
+      if (accordionItem.classList.contains('open')) {
+        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+        accordionContent.style.opacity = 1;
+        accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+
+        // Remove the punchedtexttitle class from the clicked accordion header
+        var headerTitle = header.querySelector('.punchedtexttitle');
+        if (headerTitle) {
+          headerTitle.classList.add('punchedtexttitleselected');
+          headerTitle.classList.remove('punchedtexttitle');
+        }
+      } else {
+        accordionContent.style.maxHeight = 0;
+        accordionContent.style.opacity = 0;
+        accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+
+        // Add the punchedtexttitle class back to the clicked accordion header
+        var headerTitleSelected = header.querySelector('.punchedtexttitleselected');
+        if (headerTitleSelected) {
+          headerTitleSelected.classList.add('punchedtexttitle');
+          headerTitleSelected.classList.remove('punchedtexttitleselected');
+        }
+      }
+    }
 });
         var sound='';
         function acknowledgerider(){
