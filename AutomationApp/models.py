@@ -9,17 +9,27 @@ import pytz
 # Create your models here.
 
 class ButtonColor(models.Model):
-    user=models.IntegerField(blank = True, null = True, default='2')
+    user = models.IntegerField(blank=True, null=True, default='2')
     color = models.CharField(max_length=7, default='#aa5c31')
     cardcolor = models.CharField(max_length=7, default='#d4ad98')
     textcolor = models.CharField(max_length=7, default='#2c170c')
     backgroundcolor = models.CharField(max_length=7, default='#f6eeea')
-    brandname = models.CharField(max_length = 50, blank = True, null = True, default='')
-    title = models.CharField(max_length = 50, blank = True, null = True, default='Black Jack Script')
-    subtitle = models.CharField(max_length = 50, blank = True, null = True, default='Black Jack Script')
-    body = models.CharField(max_length = 50, blank = True, null = True, default='sans-serif')
+    brandname = models.CharField(max_length=50, blank=True, null=True, default='')
+    title = models.CharField(max_length=50, blank=True, null=True, default='Black Jack Script')
+    subtitle = models.CharField(max_length=50, blank=True, null=True, default='Black Jack Script')
+    body = models.CharField(max_length=50, blank=True, null=True, default='sans-serif')
+    title_bold = models.CharField(max_length=10, blank=True, null=True, default='')
+    title_italic = models.CharField(max_length=10, blank=True, null=True, default='')
+    title_underline = models.CharField(max_length=10, blank=True, null=True, default='')
+    subtitle_bold = models.CharField(max_length=10, blank=True, null=True, default='')
+    subtitle_italic = models.CharField(max_length=10, blank=True, null=True, default='')
+    subtitle_underline = models.CharField(max_length=10, blank=True, null=True, default='')
+    body_bold = models.CharField(max_length=10, blank=True, null=True, default='')
+    body_italic = models.CharField(max_length=10, blank=True, null=True, default='')
+    body_underline = models.CharField(max_length=10, blank=True, null=True, default='')
+
     def __str__(self):
-        return str(self.color) +" / "+ str(self.user)
+        return str(self.color) + " / " + str(self.user)
 
 class Subcategories(models.Model):
     Subcategorychoices = models.CharField(max_length = 50, blank = False, null = False, default='')

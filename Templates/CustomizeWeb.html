@@ -3327,17 +3327,27 @@ body {
                                     <br><br>
                                 </div>
                                 <div id="brandnamecontainerid">
-
                                     <div class="brandnamecontainers" id="brandnamecontainersid">
-
                                         <label for="title-font" class="punchedtextsubtitle">Title Font:</label>
-                                        <select id="title-font" class="selectfontclass" name="title_name"></select><br><br>
-                                        
+                                        <select id="title-font" class="selectfontclass" name="title_name"></select>
+                                        <button id="title-bold" class="font-style-button" data-font="maintitleclass" data-style="bold">Bold</button>
+                                        <button id="title-italic" class="font-style-button" data-font="maintitleclass" data-style="italic">Italic</button>
+                                        <button id="title-underline" class="font-style-button" data-font="maintitleclass" data-style="underline">Underline</button>
+                                        <br><br>
+
                                         <label for="subtitle-font" class="punchedtextsubtitle">Subtitle Font:</label>
-                                        <select id="subtitle-font" class="selectfontclass" name="subtitle_name"></select><br><br>
+                                        <select id="subtitle-font" class="selectfontclass" name="subtitle_name"></select>
+                                        <button id="subtitle-bold" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="bold">Bold</button>
+                                        <button id="subtitle-italic" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="italic">Italic</button>
+                                        <button id="subtitle-underline" class="font-style-button" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="underline">Underline</button>
+                                        <br><br>
 
                                         <label for="body-font" class="punchedtextsubtitle">Body Font:</label>
-                                        <select id="body-font" class="selectfontclass" name="body_name"></select><br><br>
+                                        <select id="body-font" class="selectfontclass" name="body_name"></select>
+                                        <button id="body-bold" class="font-style-button" data-font="price,atbsample" data-style="bold">Bold</button>
+                                        <button id="body-italic" class="font-style-button" data-font="price,atbsample" data-style="italic">Italic</button>
+                                        <button id="body-underline" class="font-style-button" data-font="price,atbsample" data-style="underline">Underline</button>
+                                        <br><br>
                                     </div>
                                     <br><br>
                                 </div>
@@ -3475,18 +3485,26 @@ body {
 
 
 
-
-        $(document).ready(function() {
-        var fontFamilies = ["","Sans-Serif", "AGENCYB", "AGENCYR", "ALGER", "ANTQUAB", "ANTQUABI", "ANTQUAI", "arial", "arialbd", "arialbi", "ariali", "ARIALN", "ARIALNB", "ARIALNBI", "ARIALNI", "ariblk", "ARLRDBD", "bahnschrift", "BASKVILL", "BAUHS93", "BELL", "BELLB", "BELLI", "BERNHC", "beyond_the_mountains", "beyond_the_mountains", "BKANT", "Black Jack Script", "BLACKJAR", "BOD_B", "BOD_BI", "BOD_BLAI", "BOD_BLAR", "BOD_CB", "BOD_CBI", "BOD_CI", "BOD_CR", "BOD_I", "BOD_PSTC", "BOD_R", "BOOKOS", "BOOKOSB", "BOOKOSBI", "BOOKOSI", "BRADHITC", "BRITANIC", "BRLNSB", "BRLNSDB", "BRLNSR", "BROADW", "BRUSHSCI", "Bs Signature Demo", "calibri", "calibrib", "calibrii", "calibril", "calibrili", "calibriz", "CALIFB", "CALIFI", "CALIFR", "CALIST", "CALISTB", "CALISTBI", "CALISTI", "cambria", "cambriab", "cambriai", "cambriaz", "Candara", "Candarab", "Candarai", "Candaral", "Candarali", "Candaraz", "CASTELAR", "CENSCBK", "CENTAUR", "CENTURY", "CHILLER", "COLONNA", "comic", "comicbd", "comici", "comicz", "consola", "consolab", "consolai", "consolaz", "constan", "constanb", "constani", "constanz", "COOPBL", "COPRGTB", "COPRGTL", "corbel", "corbelb", "corbeli", "corbell", "corbelli", "corbelz", "cour", "courbd", "courbi", "coure", "couri", "Creamy Chocolate", "CURLZ___", "dosapp", "ebrima", "ebrimabd", "ELEPHNT", "ELEPHNTI", "ENGR", "ERASBD", "ERASDEMI", "ERASLGHT", "ERASMD", "FELIXTI", "FORTE", "FRABK", "FRABKIT", "FRADM", "FRADMCN", "FRADMIT", "FRAHV", "FRAHVIT", "framd", "FRAMDCN", "framdit", "FREESCPT", "FRSCRIPT", "FTLTLT", "Gabriola", "GARA", "GARABD", "GARAIT", "georgia", "georgiab", "georgiai", "georgiaz", "GIGI", "GILBI___", "GILB____", "GILC____", "GILI____", "GILLUBCD", "GILSANUB", "GIL_____", "GLECB", "GLSNECB", "GOTHIC", "GOTHICB", "GOTHICBI", "GOTHICI", "GOUDOS", "GOUDOSB", "GOUDOSI", "GOUDYSTO", "HARLOWSI", "HARNGTON", "HATTEN", "himalaya", "HTOWERT", "HTOWERTI", "impact", "IMPRISHA", "INFROMAN", "Inkfree", "ITCBLKAD", "ITCEDSCR", "ITCKRIST", "javatext", "JOKERMAN", "JUICE___", "KGSkinnyLatte", "KUNSTLER", "LATINWD", "LBRITE", "LBRITED", "LBRITEDI", "LBRITEI", "LCALLIG", "LFAX", "LFAXD", "LFAXDI", "LFAXI", "LHANDW", "LSANS", "LSANSD", "LSANSDI", "LSANSI", "LTYPE", "LTYPEB", "LTYPEBO", "LTYPEO", "lucon", "l_10646", "MAGNETOB", "MAIAN", "MATURASC", "MerryChristmasFlake", "MerryChristmasStar", "micross", "MISTRAL", "MOD20", "modern", "MTCORSVA", "mvboli", "NIAGENG", "NIAGSOL", "OCRAEXT", "OLDENGL", "ONYX", "pala", "palab", "palabi", "palai", "PALSCRI", "PAPYRUS", "PARCHM", "PERBI___", "PERB____", "PERI____", "PERTIBD", "PERTILI", "PER_____", "PLAYBILL", "POORICH", "PRISTINA", "RAGE", "RAVIE", "REFSAN", "ROCCB___", "ROCC____", "ROCK", "ROCKB", "ROCKBI", "ROCKEB", "ROCKI", "roman", "SCHLBKB", "SCHLBKBI", "SCHLBKI", "script", "SCRIPTBL", "segoepr", "segoeprb", "segoesc", "segoescb", "segoeui", "segoeuib", "segoeuii", "segoeuil", "segoeuisl", "segoeuiz", "seguibl", "seguibli", "seguihis", "seguili", "seguisb", "seguisbi", "seguisli", "seguisym", "serife", "SHOWG", "Sitka", "SitkaB", "SitkaI", "SitkaZ", "smalle", "SNAP____", "sserife", "STENCIL", "Sweet Cookie", "sylfaen", "tahoma", "tahomabd", "TCBI____", "TCB_____", "TCCB____", "TCCEB", "TCCM____", "TCMI____", "TCM_____", "TEMPSITC", "times", "timesbd", "timesbi", "timesi", "trebuc", "trebucbd", "trebucbi", "trebucit", "verdana", "verdanab", "verdanai", "verdanaz", "vgafix", "vgaoem", "vgasys", "VINERITC", "VIVALDII", "VLADIMIR", "Arial", "Helvetica", "Times New Roman", "Courier New", "Verdana", "Georgia", "Trebuchet MS", "Arial Black", "Impact", "Comic Sans MS", "Garamond", "Palatino", "Lucida Sans Unicode", "Tahoma", "Courier", "Lucida Console", "Arial Narrow", "Century Gothic", "Bookman Old Style", "Franklin Gothic Medium", "Candara", "Rockwell", "Baskerville", "Consolas", "Copperplate", "Futura", "Arial Rounded MT Bold", "Century Schoolbook", "Segoe UI", "MS Sans Serif", "Open Sans", "Roboto", "Montserrat", "Lato", "Raleway", "Poppins", "Oswald", "Nunito", "Roboto Condensed", "Source Sans Pro", "Ubuntu", "Playfair Display", "Merriweather", "Roboto Slab", "Ubuntu Condensed", "PT Sans", "Cabin", "Noto Sans", "Droid Sans", "Bebas Neue", "Exo", "Josefin Sans", "Muli", "Quicksand", "Fira Sans", "Varela Round", "Noto Serif", "PT Serif", "Titillium Web", "Karla", "Archivo Narrow", "Cabin", "Exo", "Fira Sans", "Josefin Sans", "Lato", "Noto Sans", "Noto Serif", "Nunito", "Open Sans", "Oswald", "Poppins",
+$(document).ready(function() {
+  var fontFamilies = ["","Sans-Serif", "AGENCYB", "AGENCYR", "ALGER", "ANTQUAB", "ANTQUABI", "ANTQUAI", "arial", "arialbd", "arialbi", "ariali", "ARIALN", "ARIALNB", "ARIALNBI", "ARIALNI", "ariblk", "ARLRDBD", "bahnschrift", "BASKVILL", "BAUHS93", "BELL", "BELLB", "BELLI", "BERNHC", "beyond_the_mountains", "beyond_the_mountains", "BKANT", "Black Jack Script", "BLACKJAR", "BOD_B", "BOD_BI", "BOD_BLAI", "BOD_BLAR", "BOD_CB", "BOD_CBI", "BOD_CI", "BOD_CR", "BOD_I", "BOD_PSTC", "BOD_R", "BOOKOS", "BOOKOSB", "BOOKOSBI", "BOOKOSI", "BRADHITC", "BRITANIC", "BRLNSB", "BRLNSDB", "BRLNSR", "BROADW", "BRUSHSCI", "Bs Signature Demo", "calibri", "calibrib", "calibrii", "calibril", "calibrili", "calibriz", "CALIFB", "CALIFI", "CALIFR", "CALIST", "CALISTB", "CALISTBI", "CALISTI", "cambria", "cambriab", "cambriai", "cambriaz", "Candara", "Candarab", "Candarai", "Candaral", "Candarali", "Candaraz", "CASTELAR", "CENSCBK", "CENTAUR", "CENTURY", "CHILLER", "COLONNA", "comic", "comicbd", "comici", "comicz", "consola", "consolab", "consolai", "consolaz", "constan", "constanb", "constani", "constanz", "COOPBL", "COPRGTB", "COPRGTL", "corbel", "corbelb", "corbeli", "corbell", "corbelli", "corbelz", "cour", "courbd", "courbi", "coure", "couri", "Creamy Chocolate", "CURLZ___", "dosapp", "ebrima", "ebrimabd", "ELEPHNT", "ELEPHNTI", "ENGR", "ERASBD", "ERASDEMI", "ERASLGHT", "ERASMD", "FELIXTI", "FORTE", "FRABK", "FRABKIT", "FRADM", "FRADMCN", "FRADMIT", "FRAHV", "FRAHVIT", "framd", "FRAMDCN", "framdit", "FREESCPT", "FRSCRIPT", "FTLTLT", "Gabriola", "GARA", "GARABD", "GARAIT", "georgia", "georgiab", "georgiai", "georgiaz", "GIGI", "GILBI___", "GILB____", "GILC____", "GILI____", "GILLUBCD", "GILSANUB", "GIL_____", "GLECB", "GLSNECB", "GOTHIC", "GOTHICB", "GOTHICBI", "GOTHICI", "GOUDOS", "GOUDOSB", "GOUDOSI", "GOUDYSTO", "HARLOWSI", "HARNGTON", "HATTEN", "himalaya", "HTOWERT", "HTOWERTI", "impact", "IMPRISHA", "INFROMAN", "Inkfree", "ITCBLKAD", "ITCEDSCR", "ITCKRIST", "javatext", "JOKERMAN", "JUICE___", "KGSkinnyLatte", "KUNSTLER", "LATINWD", "LBRITE", "LBRITED", "LBRITEDI", "LBRITEI", "LCALLIG", "LFAX", "LFAXD", "LFAXDI", "LFAXI", "LHANDW", "LSANS", "LSANSD", "LSANSDI", "LSANSI", "LTYPE", "LTYPEB", "LTYPEBO", "LTYPEO", "lucon", "l_10646", "MAGNETOB", "MAIAN", "MATURASC", "MerryChristmasFlake", "MerryChristmasStar", "micross", "MISTRAL", "MOD20", "modern", "MTCORSVA", "mvboli", "NIAGENG", "NIAGSOL", "OCRAEXT", "OLDENGL", "ONYX", "pala", "palab", "palabi", "palai", "PALSCRI", "PAPYRUS", "PARCHM", "PERBI___", "PERB____", "PERI____", "PERTIBD", "PERTILI", "PER_____", "PLAYBILL", "POORICH", "PRISTINA", "RAGE", "RAVIE", "REFSAN", "ROCCB___", "ROCC____", "ROCK", "ROCKB", "ROCKBI", "ROCKEB", "ROCKI", "roman", "SCHLBKB", "SCHLBKBI", "SCHLBKI", "script", "SCRIPTBL", "segoepr", "segoeprb", "segoesc", "segoescb", "segoeui", "segoeuib", "segoeuii", "segoeuil", "segoeuisl", "segoeuiz", "seguibl", "seguibli", "seguihis", "seguili", "seguisb", "seguisbi", "seguisli", "seguisym", "serife", "SHOWG", "Sitka", "SitkaB", "SitkaI", "SitkaZ", "smalle", "SNAP____", "sserife", "STENCIL", "Sweet Cookie", "sylfaen", "tahoma", "tahomabd", "TCBI____", "TCB_____", "TCCB____", "TCCEB", "TCCM____", "TCMI____", "TCM_____", "TEMPSITC", "times", "timesbd", "timesbi", "timesi", "trebuc", "trebucbd", "trebucbi", "trebucit", "verdana", "verdanab", "verdanai", "verdanaz", "vgafix", "vgaoem", "vgasys", "VINERITC", "VIVALDII", "VLADIMIR", "Arial", "Helvetica", "Times New Roman", "Courier New", "Verdana", "Georgia", "Trebuchet MS", "Arial Black", "Impact", "Comic Sans MS", "Garamond", "Palatino", "Lucida Sans Unicode", "Tahoma", "Courier", "Lucida Console", "Arial Narrow", "Century Gothic", "Bookman Old Style", "Franklin Gothic Medium", "Candara", "Rockwell", "Baskerville", "Consolas", "Copperplate", "Futura", "Arial Rounded MT Bold", "Century Schoolbook", "Segoe UI", "MS Sans Serif", "Open Sans", "Roboto", "Montserrat", "Lato", "Raleway", "Poppins", "Oswald", "Nunito", "Roboto Condensed", "Source Sans Pro", "Ubuntu", "Playfair Display", "Merriweather", "Roboto Slab", "Ubuntu Condensed", "PT Sans", "Cabin", "Noto Sans", "Droid Sans", "Bebas Neue", "Exo", "Josefin Sans", "Muli", "Quicksand", "Fira Sans", "Varela Round", "Noto Serif", "PT Serif", "Titillium Web", "Karla", "Archivo Narrow", "Cabin", "Exo", "Fira Sans", "Josefin Sans", "Lato", "Noto Sans", "Noto Serif", "Nunito", "Open Sans", "Oswald", "Poppins",
 "Quicksand", "Raleway", "Roboto", "Roboto Slab", "Source Sans Pro", "Titillium Web", "Ubuntu", "Ubuntu Condensed", "Varela Round"
         ];
 
-
-   $.each(fontFamilies, function(index, font) {
+  $.each(fontFamilies, function(index, font) {
     $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
     $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
     $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
   });
+
+  // Function to apply font styles
+  function applyFontStyle(fontClass, fontStyle) {
+    var elements = document.getElementsByClassName(fontClass);
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.fontWeight = fontStyle === 'bold' ? 'bold' : 'normal';
+      elements[i].style.fontStyle = fontStyle === 'italic' ? 'italic' : 'normal';
+      elements[i].style.textDecoration = fontStyle === 'underline' ? 'underline' : 'none';
+    }
+  }
 
   $('#title-font').change(function() {
     var selectedFont = $(this).val();
@@ -3500,8 +3518,14 @@ body {
 
   $('#body-font').change(function() {
     var selectedFont = $(this).val();
-    $('.price').css('font-family', selectedFont);
-    $('#atbsample').css('font-family', selectedFont);
+    $('.price, #atbsample').css('font-family', selectedFont);
+  });
+
+  // Event listeners for font style buttons
+  $('.font-style-button').click(function() {
+    var fontClass = $(this).data('font');
+    var fontStyle = $(this).data('style');
+    applyFontStyle(fontClass, fontStyle);
   });
 });
 
@@ -3553,26 +3577,72 @@ function toggleAccordion(header) {
 
           });
 
+$(document).ready(function() {
+  var bodyColorDef = "{{ bodycolordef }}";
+  var subtitleColorDef = "{{ subtitlecolordef }}";
+  var titleColorDef = "{{ titlecolordef }}";
+  var bodyBoldDef = "{{ body_bold_def }}";
+  var bodyItalicDef = "{{ body_italic_def }}";
+  var bodyUnderlineDef = "{{ body_underline_def }}";
+  var subtitleBoldDef = "{{ subtitle_bold_def }}";
+  var subtitleItalicDef = "{{ subtitle_italic_def }}";
+  var subtitleUnderlineDef = "{{ subtitle_underline_def }}";
+  var titleBoldDef = "{{ title_bold_def }}";
+  var titleItalicDef = "{{ title_italic_def }}";
+  var titleUnderlineDef = "{{ title_underline_def }}";
 
-          $(document).ready(function() {
-            var bodyColorDef = "{{ bodycolordef }}";
-            $("#body-font").val(bodyColorDef);
-            $('.price, #atbsample').css('font-family', bodyColorDef);
-          });
+  // Set default font-family values
+  $("#body-font").val(bodyColorDef);
+  $("#subtitle-font").val(subtitleColorDef);
+  $("#title-font").val(titleColorDef);
 
+  // Set default font styles (bold, italic, underline)
+  if (bodyBoldDef) {
+    $('.price, #atbsample').css('font-weight', 'bold');
+  }
+  if (bodyItalicDef) {
+    $('.price, #atbsample').css('font-style', 'italic');
+  }
+  if (bodyUnderlineDef) {
+    $('.price, #atbsample').css('text-decoration', 'underline');
+  }
 
+  if (subtitleBoldDef) {
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
+  }
+  if (subtitleItalicDef) {
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
+  }
+  if (subtitleUnderlineDef) {
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
+  }
 
-          $(document).ready(function() {
-            var subtitleColorDef = "{{ subtitlecolordef }}";
-            $("#subtitle-font").val(subtitleColorDef);
-            $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', subtitleColorDef);
-          });
-          $(document).ready(function() {
-            var titleColorDef = "{{ titlecolordef }}";
-            $("#title-font").val(titleColorDef);
-            $('.maintitleclass').css('font-family', titleColorDef);
+  if (titleBoldDef) {
+    $('.maintitleclass').css('font-weight', 'bold');
+  }
+  if (titleItalicDef) {
+    $('.maintitleclass').css('font-style', 'italic');
+  }
+  if (titleUnderlineDef) {
+    $('.maintitleclass').css('text-decoration', 'underline');
+  }
 
-          });
+  // Font-family change event handlers (same as before)
+  $('#body-font').change(function() {
+    var selectedFont = $(this).val();
+    $('.price, #atbsample').css('font-family', selectedFont);
+  });
+
+  $('#subtitle-font').change(function() {
+    var selectedFont = $(this).val();
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
+  });
+
+  $('#title-font').change(function() {
+    var selectedFont = $(this).val();
+    $('.maintitleclass').css('font-family', selectedFont);
+  });
+});
         
           $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";

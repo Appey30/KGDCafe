@@ -5503,9 +5503,10 @@ def inventory(request):
 
 @login_required
 def customize(request):
-    userr=request.user.id
-    if request.POST.get('button_color'):
-        button_color = request.POST.get('button_color', '#aa5c31')  # Retrieve the updated button color
+    userr = request.user.id
+
+    if request.method == 'POST':
+        button_color = request.POST.get('button_color', '#aa5c31')
         card_color = request.POST.get('card_color', '#d4ad98')
         text_color = request.POST.get('text_color', '#2c170c')
         background_color = request.POST.get('background_color', '#f6eeea')
@@ -5513,43 +5514,76 @@ def customize(request):
         title = request.POST.get('title_name', 'Black Jack Script')
         subtitle = request.POST.get('subtitle_name', 'Black Jack Script')
         body = request.POST.get('body_name', 'sans-serif')
-        print('customizeid: Detected')
-        # Save the updated button color or create a new ButtonColor object
+        title_bold = 'bold' if request.POST.get('title_bold') == 'on' else ''
+        title_italic = 'italic' if request.POST.get('title_italic') == 'on' else ''
+        title_underline = 'underline' if request.POST.get('title_underline') == 'on' else ''
+        subtitle_bold = 'bold' if request.POST.get('subtitle_bold') == 'on' else ''
+        subtitle_italic = 'italic' if request.POST.get('subtitle_italic') == 'on' else ''
+        subtitle_underline = 'underline' if request.POST.get('subtitle_underline') == 'on' else ''
+        body_bold = 'bold' if request.POST.get('body_bold') == 'on' else ''
+        body_italic = 'italic' if request.POST.get('body_italic') == 'on' else ''
+        body_underline = 'underline' if request.POST.get('body_underline') == 'on' else ''
+
+        # Save or update the ButtonColor object
         button_color_obj, created = ButtonColor.objects.get_or_create(user=request.user.id)
         button_color_obj.color = button_color
         button_color_obj.cardcolor = card_color
         button_color_obj.textcolor = text_color
         button_color_obj.backgroundcolor = background_color
-        if brandname and brandname != button_color_obj.brandname:
-            button_color_obj.brandname = brandname
-        button_color_obj.brand_name = brandname
-        if title and title != button_color_obj.title:
-            button_color_obj.title = title
-        if subtitle and subtitle != button_color_obj.subtitle:
-            button_color_obj.subtitle = subtitle
-        if body and body != button_color_obj.body:
-            button_color_obj.body = body
+        button_color_obj.brandname = brandname
+        button_color_obj.title = title
+        button_color_obj.subtitle = subtitle
+        button_color_obj.body = body
+        button_color_obj.title_bold = title_bold
+        button_color_obj.title_italic = title_italic
+        button_color_obj.title_underline = title_underline
+        button_color_obj.subtitle_bold = subtitle_bold
+        button_color_obj.subtitle_italic = subtitle_italic
+        button_color_obj.subtitle_underline = subtitle_underline
+        button_color_obj.body_bold = body_bold
+        button_color_obj.body_italic = body_italic
+        button_color_obj.body_underline = body_underline
         button_color_obj.save()
+
     try:
-        buttoncolordefi=ButtonColor.objects.get(user=request.user.id)
-        buttoncolordef=buttoncolordefi.color
-        cardcolordef=buttoncolordefi.cardcolor
-        textcolordef=buttoncolordefi.textcolor
-        backgroundcolordef=buttoncolordefi.backgroundcolor
-        brandnamecolordef=buttoncolordefi.brandname
-        titlecolordef=buttoncolordefi.title
-        subtitlecolordef=buttoncolordefi.subtitle
-        bodycolordef=buttoncolordefi.body
+        buttoncolordefi = ButtonColor.objects.get(user=request.user.id)
+        buttoncolordef = buttoncolordefi.color
+        cardcolordef = buttoncolordefi.cardcolor
+        textcolordef = buttoncolordefi.textcolor
+        backgroundcolordef = buttoncolordefi.backgroundcolor
+        brandnamecolordef = buttoncolordefi.brandname
+        titlecolordef = buttoncolordefi.title
+        subtitlecolordef = buttoncolordefi.subtitle
+        bodycolordef = buttoncolordefi.body
+        title_bold_def = buttoncolordefi.title_bold
+        title_italic_def = buttoncolordefi.title_italic
+        title_underline_def = buttoncolordefi.title_underline
+        subtitle_bold_def = buttoncolordefi.subtitle_bold
+        subtitle_italic_def = buttoncolordefi.subtitle_italic
+        subtitle_underline_def = buttoncolordefi.subtitle_underline
+        body_bold_def = buttoncolordefi.body_bold
+        body_italic_def = buttoncolordefi.body_italic
+        body_underline_def = buttoncolordefi.body_underline
     except ButtonColor.DoesNotExist:
-        buttoncolordef='#aa5c31'
-        cardcolordef='#d4ad98'
-        textcolordef='#2c170c'
-        backgroundcolordef='#f6eeea'
-        brandnamecolordef=''
-        titlecolordef='Black Jack Script'
-        subtitlecolordef='Black Jack Script'
-        bodycolordef='sans-serif'
-    return render(request, 'CustomizeWeb.html', {'userr':userr,'brandnamecolordef':brandnamecolordef,'bodycolordef':bodycolordef,'subtitlecolordef':subtitlecolordef,'titlecolordef':titlecolordef,'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef,'backgroundcolordef':backgroundcolordef})
+        buttoncolordef = '#aa5c31'
+        cardcolordef = '#d4ad98'
+        textcolordef = '#2c170c'
+        backgroundcolordef = '#f6eeea'
+        brandnamecolordef = ''
+        titlecolordef = 'Black Jack Script'
+        subtitlecolordef = 'Black Jack Script'
+        bodycolordef = 'sans-serif'
+        title_bold_def = ''
+        title_italic_def = ''
+        title_underline_def = ''
+        subtitle_bold_def = ''
+        subtitle_italic_def = ''
+        subtitle_underline_def = ''
+        body_bold_def = ''
+        body_italic_def = ''
+        body_underline_def = ''
+
+    return render(request, 'CustomizeWeb.html', {'userr': userr, 'brandnamecolordef': brandnamecolordef, 'bodycolordef': bodycolordef, 'subtitlecolordef': subtitlecolordef, 'titlecolordef': titlecolordef, 'buttoncolordef': buttoncolordef, 'cardcolordef': cardcolordef, 'textcolordef': textcolordef, 'backgroundcolordef': backgroundcolordef, 'title_bold_def': title_bold_def, 'title_italic_def': title_italic_def, 'title_underline_def': title_underline_def, 'subtitle_bold_def': subtitle_bold_def, 'subtitle_italic_def': subtitle_italic_def, 'subtitle_underline_def': subtitle_underline_def, 'body_bold_def': body_bold_def, 'body_italic_def': body_italic_def, 'body_underline_def': body_underline_def})
 
 
 def Onlineordersystem(request, admin_id):
