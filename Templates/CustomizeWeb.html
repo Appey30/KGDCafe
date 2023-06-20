@@ -3332,7 +3332,7 @@ body {
 
                                         <label for="title-font" class="punchedtextsubtitle">Title Font:</label>
                                         <select id="title-font" class="selectfontclass" name="title_name"></select><br><br>
-
+                                        
                                         <label for="subtitle-font" class="punchedtextsubtitle">Subtitle Font:</label>
                                         <select id="subtitle-font" class="selectfontclass" name="subtitle_name"></select><br><br>
 
@@ -3553,6 +3553,26 @@ function toggleAccordion(header) {
 
 
           $(document).ready(function() {
+            var bodyColorDef = "{{ bodycolordef }}";
+            $("#body-font").val(bodyColorDef);
+            $('.price, #atbsample').css('font-family', bodyColorDef);
+          });
+
+
+
+          $(document).ready(function() {
+            var subtitleColorDef = "{{ subtitlecolordef }}";
+            $("#subtitle-font").val(subtitleColorDef);
+            $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', subtitleColorDef);
+          });
+          $(document).ready(function() {
+            var titleColorDef = "{{ titlecolordef }}";
+            $("#title-font").val(titleColorDef);
+            $('.maintitleclass').css('font-family', titleColorDef);
+
+          });
+        
+          $(document).ready(function() {
             var buttonColorDef = "{{ buttoncolordef }}";
             $("#button_colorid").val(buttonColorDef);
             $("#atbsample").css("background-color", buttonColorDef);
@@ -3562,7 +3582,6 @@ function toggleAccordion(header) {
               $("#atbsample").css("background-color", buttonNewColor);
             });
           });
-
           $(document).ready(function() {
             var cardColorDef = "{{ cardcolordef }}";
             $("#card_colorid").val(cardColorDef);
