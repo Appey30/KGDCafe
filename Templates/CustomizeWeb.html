@@ -3675,32 +3675,41 @@ $(document).ready(function() {
   // Set default font styles (bold, italic, underline)
   if (bodyBoldDef) {
     $('.price, #atbsample').css('font-weight', 'bold');
+    $('#body-bold').classList.toggle('active');
   }
   if (bodyItalicDef) {
     $('.price, #atbsample').css('font-style', 'italic');
+    $('#body-italic').classList.toggle('active');
   }
   if (bodyUnderlineDef) {
     $('.price, #atbsample').css('text-decoration', 'underline');
+    $('#body-underline').classList.toggle('active');
   }
 
   if (subtitleBoldDef) {
     $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
+    $('#subtitle-bold').classList.toggle('active');
   }
   if (subtitleItalicDef) {
     $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
+    $('#subtitle-italic').classList.toggle('active');
   }
   if (subtitleUnderlineDef) {
     $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
+    $('#subtitle-underline').classList.toggle('active');
   }
 
   if (titleBoldDef) {
     $('.maintitleclass').css('font-weight', 'bold');
+    $('#title-bold').classList.toggle('active');
   }
   if (titleItalicDef) {
     $('.maintitleclass').css('font-style', 'italic');
+    $('#title-italic').classList.toggle('active');
   }
   if (titleUnderlineDef) {
     $('.maintitleclass').css('text-decoration', 'underline');
+    $('#title-underline').classList.toggle('active');
   }
 
   // Font-family change event handlers (same as before)
