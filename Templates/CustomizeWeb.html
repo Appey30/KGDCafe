@@ -3807,8 +3807,9 @@ var fontStyles = {};
             }
       }
 
-      var formcustomize = document.getElementById('customizeformid');
-      formcustomize.submit();
+var formcustomize = document.getElementById('customizeformid');
+var submitEvent = new Event('submit');
+formcustomize.dispatchEvent(submitEvent);
     }
 
     function viewwebisite(){
