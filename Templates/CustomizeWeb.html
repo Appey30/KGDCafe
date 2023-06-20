@@ -3631,7 +3631,7 @@ function toggleAccordion(header) {
         function submitcustomizeinitial(){
         var brand_nameid = document.getElementbyId('brand_nameid');
         if(brand_nameid){
-            submitcustomizefinal(pass);
+            submitcustomizefinal('pass');
         }else{
             alert('Please provide your brandname!')
             brand_nameid.focus()
@@ -3639,7 +3639,7 @@ function toggleAccordion(header) {
         }
 
 
-        function submitcustomizefinal(){
+        function submitcustomizefinal(brandnamepass){
         var formcustomize = document.getElementbyId('customizeformid');
         formcustomize.submit();
         }
