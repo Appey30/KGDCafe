@@ -5511,7 +5511,7 @@ def customize(request):
         background_color = request.POST.get('background_color', '#f6eeea')
         brandname = request.POST.get('brand_name', '')
         title = request.POST.get('title_name', 'Black Jack Script')
-        subtitle = request.POST.get('subtitle_name', 'sans-serif')
+        subtitle = request.POST.get('subtitle_name', 'Black Jack Script')
         body = request.POST.get('body_name', 'sans-serif')
         print('customizeid: Detected')
         # Save the updated button color or create a new ButtonColor object
@@ -5547,7 +5547,7 @@ def customize(request):
         backgroundcolordef='#f6eeea'
         brandnamecolordef=''
         titlecolordef='Black Jack Script'
-        subtitlecolordef='sans-serif'
+        subtitlecolordef='Black Jack Script'
         bodycolordef='sans-serif'
     return render(request, 'CustomizeWeb.html', {'userr':userr,'brandnamecolordef':brandnamecolordef,'bodycolordef':bodycolordef,'subtitlecolordef':subtitlecolordef,'titlecolordef':titlecolordef,'buttoncolordef':buttoncolordef,'cardcolordef':cardcolordef,'textcolordef':textcolordef,'backgroundcolordef':backgroundcolordef})
 

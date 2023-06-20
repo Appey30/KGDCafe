@@ -16,7 +16,7 @@ class ButtonColor(models.Model):
     backgroundcolor = models.CharField(max_length=7, default='#f6eeea')
     brandname = models.CharField(max_length = 50, blank = True, null = True, default='')
     title = models.CharField(max_length = 50, blank = True, null = True, default='Black Jack Script')
-    subtitle = models.CharField(max_length = 50, blank = True, null = True, default='sans-serif')
+    subtitle = models.CharField(max_length = 50, blank = True, null = True, default='Black Jack Script')
     body = models.CharField(max_length = 50, blank = True, null = True, default='sans-serif')
     def __str__(self):
         return str(self.color) +" / "+ str(self.user)
