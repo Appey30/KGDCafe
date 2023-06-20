@@ -3651,6 +3651,7 @@ var fontStyles = {};
         applyFontStyle(fontClass, fontStyle);
 
         $(this).toggleClass('active');
+        fontStyles[fontClass] = $(this).hasClass('active') ? fontStyle : null;
     });
 
 
