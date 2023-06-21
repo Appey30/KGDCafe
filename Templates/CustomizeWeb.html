@@ -3676,19 +3676,23 @@ var fontStyles = {};
 
     // Function to apply font styles
 function applyFontStyle(fontClass, fontStyle) {
-  var elements = document.getElementsByClassName(fontClass);
+  var classes = fontClass.split(',');
 
-  for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
+  for (var j = 0; j < classes.length; j++) {
+    var elements = document.getElementsByClassName(classes[j]);
 
-    // Apply font weight
-    element.style.fontWeight = fontStyle.includes('bold') ? 'bold' : 'normal';
+    for (var i = 0; i < elements.length; i++) {
+      var element = elements[i];
 
-    // Apply font style
-    element.style.fontStyle = fontStyle.includes('italic') ? 'italic' : 'normal';
+      // Apply font weight
+      element.style.fontWeight = fontStyle.includes('bold') ? 'bold' : 'normal';
 
-    // Apply text decoration
-    element.style.textDecoration = fontStyle.includes('underline') ? 'underline' : 'none';
+      // Apply font style
+      element.style.fontStyle = fontStyle.includes('italic') ? 'italic' : 'normal';
+
+      // Apply text decoration
+      element.style.textDecoration = fontStyle.includes('underline') ? 'underline' : 'none';
+    }
   }
 }
 
