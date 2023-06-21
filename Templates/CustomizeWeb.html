@@ -3944,18 +3944,18 @@ function bodyunderline(){
     if(bodyunderline.hasClass('active')){
         bodyunderlineinput.val('on')
         for (let j = 0; j < priceunderline.length; j++) {
-           priceitalic[j].style.textDecoration = 'Underline';
+           priceunderline[j].style.textDecoration = 'Underline';
         }
         for (let i = 0; i < atbsampleunderline.length; i++) {
-           atbsampleitalic[i].style.textDecoration = 'Underline';
+           atbsampleunderline[i].style.textDecoration = 'Underline';
         }
     }else{
         bodyunderlineinput.val('')
         for (let j = 0; j < priceunderline.length; j++) {
-           priceitalic[j].style.textDecoration = '';
+           priceunderline[j].style.textDecoration = '';
         }
         for (let i = 0; i < atbsampleunderline.length; i++) {
-           atbsampleitalic[i].style.textDecoration = '';
+           atbsampleunderline[i].style.textDecoration = '';
         }
     }
 
