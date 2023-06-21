@@ -3887,19 +3887,19 @@ var bodyboldinput = $('#body_bold_input_id')
     var pricebold = document.getElementsByClassName('price');
     var atbsamplebold = document.getElementsByClassName('atbsampleclass');
 
-        for (var j = 0; j < pricebold.length; j++) {
+        for (let j = 0; j < pricebold.length; j++) {
            pricebold[j].style.fontWeight = 'Bold';
         }
-        for (var i = 0; i < atbsamplebold.length; i++) {
+        for (let i = 0; i < atbsamplebold.length; i++) {
            atbsamplebold[i].style.fontWeight = 'Bold';
         }
         bodyboldinput.val('on')
     }else{
         bodyboldinput.val('')
-        for (var j = 0; j < pricebold.length; j++) {
+        for (let j = 0; j < pricebold.length; j++) {
            pricebold[j].style.fontWeight = '';
         }
-        for (var i = 0; i < atbsamplebold.length; i++) {
+        for (let i = 0; i < atbsamplebold.length; i++) {
            atbsamplebold[i].style.fontWeight = '';
         }
     }  
@@ -3916,18 +3916,18 @@ function bodyitalic(){
 
     if(bodyitalic.hasClass('active')){
         bodyitalicinput.val('on')
-        for (var j = 0; j < priceitalic.length; j++) {
+        for (let j = 0; j < priceitalic.length; j++) {
            priceitalic[j].style.fontStyle = 'Italic';
         }
-        for (var i = 0; i < atbsampleitalic.length; i++) {
+        for (let i = 0; i < atbsampleitalic.length; i++) {
            atbsampleitalic[i].style.fontStyle = 'Italic';
         }
     }else{
         bodyitalicinput.val('')
-        for (var j = 0; j < priceitalic.length; j++) {
+        for (let j = 0; j < priceitalic.length; j++) {
            priceitalic[j].style.fontStyle = '';
         }
-        for (var i = 0; i < atbsampleitalic.length; i++) {
+        for (let i = 0; i < atbsampleitalic.length; i++) {
            atbsampleitalic[i].style.fontStyle = '';
         }
     }
@@ -3943,18 +3943,18 @@ function bodyunderline(){
     bodyunderline.toggleClass('active');
     if(bodyunderline.hasClass('active')){
         bodyunderlineinput.val('on')
-        for (var j = 0; j < priceunderline.length; j++) {
+        for (let j = 0; j < priceunderline.length; j++) {
            priceitalic[j].style.textDecoration = 'Underline';
         }
-        for (var i = 0; i < atbsampleunderline.length; i++) {
+        for (let i = 0; i < atbsampleunderline.length; i++) {
            atbsampleitalic[i].style.textDecoration = 'Underline';
         }
     }else{
         bodyunderlineinput.val('')
-        for (var j = 0; j < priceunderline.length; j++) {
+        for (let j = 0; j < priceunderline.length; j++) {
            priceitalic[j].style.textDecoration = '';
         }
-        for (var i = 0; i < atbsampleunderline.length; i++) {
+        for (let i = 0; i < atbsampleunderline.length; i++) {
            atbsampleitalic[i].style.textDecoration = '';
         }
     }
