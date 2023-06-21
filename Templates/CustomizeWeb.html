@@ -3825,7 +3825,7 @@ $('.font-style-button').click(function() {
   var combinedStyle = activeStyles.join(' ');
 
   fontStyles[fontClass] = activeButtons.length > 0 ? combinedStyle : null;
-  $('#fontStylesid').val(fontStyles);
+  $('#fontStylesid').val(JSON.stringify(fontStyles));
 
   applyFontStyle(fontClass, combinedStyle);
 });
