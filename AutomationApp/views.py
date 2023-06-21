@@ -5520,7 +5520,10 @@ def customize(request):
         print('body: ',body)
         title_bold = 'bold' if request.POST.get('title_bold') == 'on' else ''
         print('title_bold: ',title_bold)
-        fontStyles = 'bold' if request.POST.get('fontStylesname')
+        if request.POST.get('fontStylesname'):
+            fontStyles = request.POST.get('fontStylesname') 
+        else:
+            fontStyles = ''
         print('fontStyles: ',fontStyles)
         title_italic = 'italic' if request.POST.get('title_italic') == 'on' else ''
         print('title_italic: ',title_italic)
