@@ -5530,8 +5530,8 @@ def customize(request):
                 fontStyles = {}
         else:
             fontStyles = {}
-
-        print('fontStyles: ',fontStyles)
+            
+        print('fontStylesname: ',fontStylesname)
         title_italic = 'italic' if request.POST.get('title_italic') == 'on' else ''
         print('title_italic: ',title_italic)
         title_underline = 'underline' if request.POST.get('title_underline') == 'on' else ''
