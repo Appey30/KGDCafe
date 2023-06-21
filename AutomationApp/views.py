@@ -5520,10 +5520,17 @@ def customize(request):
         print('body: ',body)
         title_bold = 'bold' if request.POST.get('title_bold') == 'on' else ''
         print('title_bold: ',title_bold)
-        if request.POST.get('fontStylesname'):
-            fontStyles = str(request.POST.get('fontStylesname'))
+        fontStylesname = request.POST.get('fontStylesname')
+        if fontStylesname:
+            try:
+                fontStyles = json.loads(fontStylesname)
+            except json.decoder.JSONDecodeError as e:
+                # Handle the JSONDecodeError
+                print(f"Error decoding JSON: {e}")
+                fontStyles = {}
         else:
-            fontStyles = ''
+            fontStyles = {}
+
         print('fontStyles: ',fontStyles)
         title_italic = 'italic' if request.POST.get('title_italic') == 'on' else ''
         print('title_italic: ',title_italic)
