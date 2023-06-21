@@ -5521,7 +5521,7 @@ def customize(request):
         title_bold = 'bold' if request.POST.get('title_bold') == 'on' else ''
         print('title_bold: ',title_bold)
         if request.POST.get('fontStylesname'):
-            fontStyles = request.POST.get('fontStylesname') 
+            fontStyles = json.loads(request.POST.get('fontStylesname'))
         else:
             fontStyles = ''
         print('fontStyles: ',fontStyles)
