@@ -3824,7 +3824,7 @@ $('.font-style-button').click(function() {
 
   var combinedStyle = activeStyles.join(' ');
 
-  fontStyles[fontClass] = activeButtons.length > 0 ? combinedStyle : null;
+  fontStyles[fontClass] = activeButtons.length > 0 ? combinedStyle : 'normal';
   $('#fontStylesid').val(fontStyles);
 
   applyFontStyle(fontClass, combinedStyle);
