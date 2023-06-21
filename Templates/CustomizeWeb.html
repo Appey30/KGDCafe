@@ -3776,11 +3776,7 @@ var titleitalicinput = $('#title_italic_input_id')
         titleitalicinput.val('')
     }
     var maintitleitalic = document.getElementsByClassName('maintitleclass');
-    for (var j = 0; j < maintitleitalic.length; j++) {
-        
-        maintitleitalic[j].css('font-style', 'Italic')
-
-    }
+    maintitleitalic[0].css('font-style', 'Italic')
 }
 function titleunderline(){
 var titleunderline = $('#title-underline')
@@ -3792,11 +3788,7 @@ var titleunderlineinput = $('#title_underline_input_id')
         titleunderlineinput.val('')
     }
     var maintitleunderline = document.getElementsByClassName('maintitleclass');
-    for (var j = 0; j < maintitleunderline.length; j++) {
-        
-        maintitleitalic[j].css('text-decoration', 'Underline')
-
-    }
+    maintitleitalic[0].css('text-decoration', 'Underline')
 }
 function subtitlebold(){
 var subtitlebold = $('#subtitle-bold')
