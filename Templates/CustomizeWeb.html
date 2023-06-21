@@ -130,7 +130,7 @@ body {
                   font-size: 30px;
                   position:relative;
                 }
-        #atbsample {
+        .atbsampleclass {
             position: relative;
             margin-top: 10px;
             border: 0px solid {{ buttoncolordef }};
@@ -144,7 +144,7 @@ body {
                   height:50px;
                   font-size: 30px;
                 }
-        #atbsample:hover {
+        .atbsampleclass:hover {
             box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
             transition: box-shadow .2s;
         }
@@ -805,7 +805,7 @@ body {
                   font-size: 25px;
                   position:relative;
                 }
-        #atbsample {
+        .atbsampleclass {
             position: relative;
             margin-top: 10px;
             border: 0px solid {{ buttoncolordef }};
@@ -819,7 +819,7 @@ body {
                   height:50px;
                   font-size: 25px;
                 }
-        #atbsample:hover {
+        .atbsampleclass:hover {
             box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
             transition: box-shadow .2s;
         }
@@ -1466,7 +1466,7 @@ body {
                   font-size: 15px;
                   position:relative;
                 }
-        #atbsample {
+        .atbsampleclass {
             position: relative;
             margin-top: 10px;
             border: 0px solid {{ buttoncolordef }};
@@ -1480,7 +1480,7 @@ body {
                   height:50px;
                   font-size: 15px;
                 }
-        #atbsample:hover {
+        .atbsampleclass:hover {
             box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
             transition: box-shadow .2s;
         }
@@ -2129,7 +2129,7 @@ body {
                   font-size: 13px;
                   position:relative;
                 }
-        #atbsample {
+        .atbsampleclass {
             position: relative;
             margin-top:10px;
             border: 0px solid {{ buttoncolordef }};
@@ -2143,7 +2143,7 @@ body {
                   height:20px;
                   font-size: 13px;
                 }
-                #atbsample:hover {
+                .atbsampleclass:hover {
                     box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
                     transition: box-shadow .2s;
                 }
@@ -2799,7 +2799,7 @@ body {
         position:relative;
         }
 
-        #atbsample {
+        .atbsampleclass {
             position: relative;
             margin-top: 10px;
             border: 0px solid {{  buttoncolordef }};
@@ -2814,7 +2814,7 @@ body {
         font-size: 10px;
         }
 
-        #atbsample:hover {
+        .atbsampleclass:hover {
             box-shadow: 0 2px 10px rgb(0 0 0 / 50%);
             transition: box-shadow .2s;
         }
@@ -3576,7 +3576,7 @@ body {
 
                         </table>
 
-                        <p><button style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
 
 
 
@@ -3596,7 +3596,7 @@ body {
 
                         </table>
 
-                        <p><button style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
 
 
 
@@ -3616,7 +3616,7 @@ body {
 
                         </table>
 
-                        <p><button style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
 
 
 
@@ -3636,7 +3636,7 @@ body {
 
                         </table>
 
-                        <p><button style="background-color:{{ buttoncolordef }};" id="atbsample">Order</button></p>
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
 
 
 
@@ -3715,7 +3715,7 @@ function applyFontStyle(fontClass, fontStyle) {
 
     $('#body-font').change(function() {
         var selectedFont = $(this).val();
-        $('.price, #atbsample').css('font-family', selectedFont);
+        $('.price, .atbsampleclass').css('font-family', selectedFont);
     });
 
 $('.font-style-button').click(function() {
@@ -3765,17 +3765,17 @@ $('.font-style-button').click(function() {
     // Set default font styles (bold, italic, underline)
     if (bodyBoldDef) {
         $('.price').css('font-weight', 'bold');
-        $('#atbsample').css('font-weight', 'bold');
+        $('.atbsampleclass').css('font-weight', 'bold');
         $('#body-bold').classList.toggle('active');
     }
     if (bodyItalicDef) {
         $('.price').css('font-style', 'italic');
-        $('#atbsample').css('font-style', 'italic');
+        $('.atbsampleclass').css('font-style', 'italic');
         $('#body-italic').classList.toggle('active');
     }
     if (bodyUnderlineDef) {
         $('.price').css('text-decoration', 'underline');
-        $('#atbsample').css('text-decoration', 'underline');
+        $('.atbsampleclass').css('text-decoration', 'underline');
         $('#body-underline').classList.toggle('active');
     }
 
@@ -3808,7 +3808,7 @@ $('.font-style-button').click(function() {
     // Font-family change event handlers (same as before)
     $('#body-font').change(function() {
         var selectedFont = $(this).val();
-        $('.price, #atbsample').css('font-family', selectedFont);
+        $('.price, .atbsampleclass').css('font-family', selectedFont);
     });
 
     $('#subtitle-font').change(function() {
@@ -3825,11 +3825,11 @@ $('.font-style-button').click(function() {
 
     var buttonColorDef = "{{ buttoncolordef }}";
     $("#button_colorid").val(buttonColorDef);
-    $("#atbsample").css("background-color", buttonColorDef);
+    $(".atbsampleclass").css("background-color", buttonColorDef);
 
     $("#button_colorid").change(function() {
         var buttonNewColor = $(this).val();
-        $("#atbsample").css("background-color", buttonNewColor);
+        $(".atbsampleclass").css("background-color", buttonNewColor);
     });
          
           
@@ -3848,13 +3848,13 @@ $('.font-style-button').click(function() {
     $("#text_colorid").val(textColorDef);
     $(".sampleproductnameclass").css("color", textColorDef);
     $("#priceid").css("color", textColorDef);
-    $("#atbsample").css("color", textColorDef);
+    $(".atbsampleclass").css("color", textColorDef);
 
     $("#text_colorid").change(function() {
         var textNewColor = $(this).val();
         $(".sampleproductnameclass").css("color", textNewColor);
         $("#priceid").css("color", textNewColor);
-        $("#atbsample").css("color", textNewColor);
+        $(".atbsampleclass").css("color", textNewColor);
     });
           
 
