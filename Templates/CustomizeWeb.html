@@ -3675,14 +3675,22 @@ var fontStyles = {};
     });
 
     // Function to apply font styles
-    function applyFontStyle(fontClass, fontStyle) {
-        var elements = document.getElementsByClassName(fontClass);
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].style.fontWeight = fontStyle === 'bold' ? 'bold' : 'normal';
-            elements[i].style.fontStyle = fontStyle === 'italic' ? 'italic' : 'normal';
-            elements[i].style.textDecoration = fontStyle === 'underline' ? 'underline' : 'none';
-        }
-    }
+function applyFontStyle(fontClass, fontStyle) {
+  var elements = document.getElementsByClassName(fontClass);
+
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+
+    // Apply font weight
+    element.style.fontWeight = fontStyle.includes('bold') ? 'bold' : 'normal';
+
+    // Apply font style
+    element.style.fontStyle = fontStyle.includes('italic') ? 'italic' : 'normal';
+
+    // Apply text decoration
+    element.style.textDecoration = fontStyle.includes('underline') ? 'underline' : 'none';
+  }
+}
 
 
     var brandnameColorDef = "{{ brandnamecolordef }}";
@@ -3706,14 +3714,25 @@ var fontStyles = {};
         $('.price, #atbsample').css('font-family', selectedFont);
     });
 
-    $('.font-style-button').click(function() {
-        var fontClass = $(this).data('font');
-        var fontStyle = $(this).data('style');
-        applyFontStyle(fontClass, fontStyle);
+$('.font-style-button').click(function() {
+  var fontClass = $(this).data('font');
+  var fontStyle = $(this).data('style');
 
-        $(this).toggleClass('active');
-        fontStyles[fontClass] = $(this).hasClass('active') ? fontStyle : null;
-    });
+  $(this).toggleClass('active');
+
+  var activeButtons = $('.font-style-button.active');
+  var activeStyles = [];
+
+  activeButtons.each(function() {
+    activeStyles.push($(this).data('style'));
+  });
+
+  var combinedStyle = activeStyles.join(' ');
+
+  fontStyles[fontClass] = activeButtons.length > 0 ? combinedStyle : null;
+
+  applyFontStyle(fontClass, combinedStyle);
+});
 
 
 
