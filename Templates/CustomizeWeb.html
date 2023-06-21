@@ -3763,7 +3763,7 @@ function titlebold(){
             titleboldinput.val('')
         }
     var maintitlebold = document.getElementsByClassName('maintitleclass');
-    maintitlebold[0].css('font-weight', 'Bold')
+    maintitlebold[0].style.fontWeight = 'bold';
 }
         
 function titleitalic(){
@@ -3776,7 +3776,7 @@ var titleitalicinput = $('#title_italic_input_id')
         titleitalicinput.val('')
     }
     var maintitleitalic = document.getElementsByClassName('maintitleclass');
-    maintitleitalic[0].css('font-style', 'Italic')
+    maintitleitalic[0].style.fontStyle = 'italic';
 }
 function titleunderline(){
 var titleunderline = $('#title-underline')
@@ -3788,7 +3788,7 @@ var titleunderlineinput = $('#title_underline_input_id')
         titleunderlineinput.val('')
     }
     var maintitleunderline = document.getElementsByClassName('maintitleclass');
-    maintitleitalic[0].css('text-decoration', 'Underline')
+    maintitleunderline[0].style.textDecoration = 'underline';
 }
 function subtitlebold(){
 var subtitlebold = $('#subtitle-bold')
@@ -3803,10 +3803,10 @@ var subtitleboldinput = $('#subtitle_bold_input_id')
     var producttabbold = document.getElementsByClassName('producttab');
     var producttabchoicebold = document.getElementsByClassName('producttabchoice');
     for (var j = 0; j < producttabchoicebold.length; j++) {
-       producttabchoicebold[j].css('font-weight', 'Bold')
+       producttabchoicebold[j].style.fontWeight = 'Bold';
     }
     for (var j = 0; j < producttabbold.length; j++) {
-       producttabchoicebold[j].css('font-weight', 'Bold')
+       producttabchoicebold[j].style.fontWeight = 'Bold';
     }
 
 }
@@ -3824,10 +3824,10 @@ var subtitleitalicinput = $('#subtitle_italic_input_id')
     var producttabitalic = document.getElementsByClassName('producttab');
     var producttabchoiceitalic = document.getElementsByClassName('producttabchoice');
     for (var j = 0; j < producttabchoiceitalic.length; j++) {
-       producttabchoiceitalic[j].css('font-style', 'Italic')
+       producttabchoiceitalic[j].style.fontStyle = 'Italic';
     }
     for (var j = 0; j < producttabitalic.length; j++) {
-       producttabchoiceitalic[j].css('font-style', 'Italic')
+       producttabchoiceitalic[j].style.fontStyle = 'Italic';
     }
 
 }
@@ -3844,10 +3844,10 @@ var subtitleunderlineinput = $('#subtitle_underline_input_id')
     var producttabunderline = document.getElementsByClassName('producttab');
     var producttabchoiceunderline = document.getElementsByClassName('producttabchoice');
     for (var j = 0; j < producttabchoiceunderline.length; j++) {
-       producttabchoiceunderline[j].css('text-decoration', 'Underline')
+       producttabchoiceunderline[j].style.textDecoration = 'Underline';
     }
     for (var j = 0; j < producttabunderline.length; j++) {
-       producttabchoiceunderline[j].css('text-decoration', 'Underline')
+       producttabchoiceunderline[j].style.textDecoration = 'Underline';
     }
 
 }
@@ -3865,10 +3865,10 @@ var bodyboldinput = $('#body_bold_input_id')
     var atbsamplebold = document.getElementsByClassName('atbsampleclass');
 
     for (var j = 0; j < pricebold.length; j++) {
-       pricebold[j].css('font-weight', 'Bold')
+       pricebold[j].style.fontWeight = 'Bold';
     }
     for (var j = 0; j < atbsamplebold.length; j++) {
-       atbsamplebold[j].css('font-weight', 'Bold')
+       atbsamplebold[j].style.fontWeight = 'Bold';
     }
 }
 
@@ -3885,10 +3885,10 @@ var bodyitalicinput = $('#body_italic_input_id')
     var atbsampleitalic = document.getElementsByClassName('atbsampleclass');
 
     for (var j = 0; j < priceitalic.length; j++) {
-       priceitalic[j].css('font-style', 'Italic')
+       priceitalic[j].style.fontStyle = 'Italic';
     }
     for (var j = 0; j < atbsampleitalic.length; j++) {
-       atbsampleitalic[j].css('font-style', 'Italic')
+       atbsampleitalic[j].style.fontStyle = 'Italic';
     }
 }
 function bodyunderline(){
@@ -3904,10 +3904,10 @@ var bodyunderlineinput = $('#body_underline_input_id')
     var atbsampleunderline = document.getElementsByClassName('atbsampleclass');
 
     for (var j = 0; j < priceunderline.length; j++) {
-       priceitalic[j].css('text-decoration', 'Underline')
+       priceitalic[j].style.textDecoration = 'Underline';
     }
     for (var j = 0; j < atbsampleunderline.length; j++) {
-       atbsampleitalic[j].css('text-decoration', 'Underline')
+       atbsampleitalic[j].style.textDecoration = 'Underline';
     }
 }
 
