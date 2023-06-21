@@ -5519,14 +5519,23 @@ def customize(request):
         body = request.POST.get('body_name', 'sans-serif')
         print('body: ',body)
         title_bold = 'bold' if request.POST.get('title_bold') == 'on' else ''
+        print('title_bold: ',title_bold)
         title_italic = 'italic' if request.POST.get('title_italic') == 'on' else ''
+        print('title_italic: ',title_italic)
         title_underline = 'underline' if request.POST.get('title_underline') == 'on' else ''
+        print('title_underline: ',title_underline)
         subtitle_bold = 'bold' if request.POST.get('subtitle_bold') == 'on' else ''
+        print('subtitle_bold: ',subtitle_bold)
         subtitle_italic = 'italic' if request.POST.get('subtitle_italic') == 'on' else ''
+        print('subtitle_italic: ',subtitle_italic)
         subtitle_underline = 'underline' if request.POST.get('subtitle_underline') == 'on' else ''
+        print('subtitle_underline: ',subtitle_underline)
         body_bold = 'bold' if request.POST.get('body_bold') == 'on' else ''
+        print('body_bold: ',body_bold)
         body_italic = 'italic' if request.POST.get('body_italic') == 'on' else ''
+        print('body_italic: ',body_italic)
         body_underline = 'underline' if request.POST.get('body_underline') == 'on' else ''
+        print('body_underline: ',body_underline)
 
         # Save or update the ButtonColor object
         button_color_obj, created = ButtonColor.objects.get_or_create(user=request.user.id)
