@@ -3806,20 +3806,17 @@ function subtitlebold(){
     subtitlebold.toggleClass('active');
     if(subtitlebold.hasClass('active')){
         subtitleboldinput.val('on')
-        for (var j = 0; j < producttabchoicebold.length; j++) {
-           producttabchoicebold[j].style.fontWeight = 'bold';
-        }
-        for (var i = 0; i < producttabbold.length; i++) {
-           producttabchoicebold[i].style.fontWeight = 'bold';
-        }
+
+           producttabchoicebold[0].style.fontWeight = 'bold';
+
+           producttabchoicebold[0].style.fontWeight = 'bold';
+
     }else{
         subtitleboldinput.val('')
-        for (var j = 0; j < producttabchoicebold.length; j++) {
-           producttabchoicebold[j].style.fontWeight = '';
-        }
-        for (var i = 0; i < producttabbold.length; i++) {
-           producttabchoicebold[i].style.fontWeight = '';
-        }
+
+           producttabchoicebold[0].style.fontWeight = '';
+           producttabchoicebold[0].style.fontWeight = '';
+
     }  
 
 
@@ -3835,20 +3832,18 @@ function subtitleitalic(){
     subtitleitalic.toggleClass('active');
     if(subtitleitalic.hasClass('active')){
         subtitleitalicinput.val('on')
-        for (var j = 0; j < producttabchoiceitalic.length; j++) {
-           producttabchoiceitalic[j].style.fontStyle = 'italic';
-        }
-        for (var i = 0; i < producttabitalic.length; i++) {
-           producttabchoiceitalic[i].style.fontStyle = 'italic';
-        }
+
+           producttabchoiceitalic[0].style.fontStyle = 'italic';
+
+           producttabchoiceitalic[0].style.fontStyle = 'italic';
+
     }else{
         subtitleitalicinput.val('')
-        for (var j = 0; j < producttabchoiceitalic.length; j++) {
-           producttabchoiceitalic[j].style.fontStyle = '';
-        }
-        for (var i = 0; i < producttabitalic.length; i++) {
-           producttabchoiceitalic[i].style.fontStyle = '';
-        }
+
+           producttabchoiceitalic[0].style.fontStyle = '';
+
+           producttabchoiceitalic[0].style.fontStyle = '';
+
     }
 
 
@@ -3864,20 +3859,20 @@ var producttabchoiceunderline = document.getElementsByClassName('producttabchoic
     subtitleunderline.toggleClass('active');
     if(subtitleunderline.hasClass('active')){
         subtitleunderlineinput.val('on')
-        for (var j = 0; j < producttabchoiceunderline.length; j++) {
-           producttabchoiceunderline[j].style.textDecoration = 'Underline';
-        }
-        for (var i = 0; i < producttabunderline.length; i++) {
-           producttabchoiceunderline[i].style.textDecoration = 'Underline';
-        }
+
+           producttabchoiceunderline[0].style.textDecoration = 'Underline';
+
+
+           producttabchoiceunderline[0].style.textDecoration = 'Underline';
+
     }else{
         subtitleunderlineinput.val('')
-        for (var j = 0; j < producttabchoiceunderline.length; j++) {
-           producttabchoiceunderline[j].style.textDecoration = '';
-        }
-        for (var i = 0; i < producttabunderline.length; i++) {
-           producttabchoiceunderline[i].style.textDecoration = '';
-        }
+
+           producttabchoiceunderline[0].style.textDecoration = '';
+
+
+           producttabchoiceunderline[0].style.textDecoration = '';
+
     }
 
 
