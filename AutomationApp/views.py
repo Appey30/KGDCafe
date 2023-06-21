@@ -5512,6 +5512,7 @@ def customize(request):
         text_color = request.POST.get('text_color', '#2c170c')
         background_color = request.POST.get('background_color', '#f6eeea')
         brandname = request.POST.get('brand_name', '')
+        title = request.POST.get('title_name', 'Black Jack Script')
         subtitle = request.POST.get('subtitle_name', 'Black Jack Script')
         body = request.POST.get('body_name', 'sans-serif')
         title_bold = 'bold' if request.POST.get('title_bold') == 'on' else ''
