@@ -3753,102 +3753,134 @@ body {
                                                                   
 
 function titlebold(){
-    var titlebold = $('#title-bold')
-    var titleboldinput = $('#title_bold_input_id')
-
+        var titlebold = $('#title-bold')
+        var titleboldinput = $('#title_bold_input_id')
+        var maintitlebold = document.getElementsByClassName('maintitleclass');
         titlebold.toggleClass('active');
         if(titlebold.hasClass('active')){
             titleboldinput.val('on')
+            maintitlebold[0].style.fontWeight = 'bold';
         }else{
             titleboldinput.val('')
+            maintitlebold[0].style.fontWeight = '';
         }
-    var maintitlebold = document.getElementsByClassName('maintitleclass');
-    maintitlebold[0].style.fontWeight = 'bold';
+    
+    
 }
         
 function titleitalic(){
-var titleitalic = $('#title-italic')
-var titleitalicinput = $('#title_italic_input_id')
+    var titleitalic = $('#title-italic')
+    var titleitalicinput = $('#title_italic_input_id')
+    var maintitleitalic = document.getElementsByClassName('maintitleclass');
     titleitalic.toggleClass('active');
     if(titleitalic.hasClass('active')){
         titleitalicinput.val('on')
+        maintitleitalic[0].style.fontStyle = 'italic';
     }else{
         titleitalicinput.val('')
+        maintitleitalic[0].style.fontStyle = '';
     }
-    var maintitleitalic = document.getElementsByClassName('maintitleclass');
-    maintitleitalic[0].style.fontStyle = 'italic';
+    
+   
 }
 function titleunderline(){
-var titleunderline = $('#title-underline')
-var titleunderlineinput = $('#title_underline_input_id')
+    var titleunderline = $('#title-underline')
+    var titleunderlineinput = $('#title_underline_input_id')
+    var maintitleunderline = document.getElementsByClassName('maintitleclass');
     titleunderline.toggleClass('active');
     if(titleunderline.hasClass('active')){
         titleunderlineinput.val('on')
+        maintitleunderline[0].style.textDecoration = 'underline';
     }else{
         titleunderlineinput.val('')
+        maintitleunderline[0].style.textDecoration = '';
     }
-    var maintitleunderline = document.getElementsByClassName('maintitleclass');
-    maintitleunderline[0].style.textDecoration = 'underline';
+    
+    
 }
 function subtitlebold(){
-var subtitlebold = $('#subtitle-bold')
-var subtitleboldinput = $('#subtitle_bold_input_id')
+    var subtitlebold = $('#subtitle-bold')
+    var subtitleboldinput = $('#subtitle_bold_input_id')
+    var producttabbold = document.getElementsByClassName('producttab');
+    var producttabchoicebold = document.getElementsByClassName('producttabchoice');
     subtitlebold.toggleClass('active');
     if(subtitlebold.hasClass('active')){
         subtitleboldinput.val('on')
+        for (var j = 0; j < producttabchoicebold.length; j++) {
+           producttabchoicebold[j].style.fontWeight = 'Bold';
+        }
+        for (var j = 0; j < producttabbold.length; j++) {
+           producttabchoicebold[j].style.fontWeight = 'Bold';
+        }
     }else{
         subtitleboldinput.val('')
+        for (var j = 0; j < producttabchoicebold.length; j++) {
+           producttabchoicebold[j].style.fontWeight = '';
+        }
+        for (var j = 0; j < producttabbold.length; j++) {
+           producttabchoicebold[j].style.fontWeight = '';
+        }
     }  
 
-    var producttabbold = document.getElementsByClassName('producttab');
-    var producttabchoicebold = document.getElementsByClassName('producttabchoice');
-    for (var j = 0; j < producttabchoicebold.length; j++) {
-       producttabchoicebold[j].style.fontWeight = 'Bold';
-    }
-    for (var j = 0; j < producttabbold.length; j++) {
-       producttabchoicebold[j].style.fontWeight = 'Bold';
-    }
+
+
 
 }
 
 function subtitleitalic(){
-var subtitleitalic = $('#subtitle-italic')
-var subtitleitalicinput = $('#subtitle_italic_input_id')
+    var subtitleitalic = $('#subtitle-italic')
+    var subtitleitalicinput = $('#subtitle_italic_input_id')
+    var producttabitalic = document.getElementsByClassName('producttab');
+    var producttabchoiceitalic = document.getElementsByClassName('producttabchoice');
     subtitleitalic.toggleClass('active');
     if(subtitleitalic.hasClass('active')){
         subtitleitalicinput.val('on')
+        for (var j = 0; j < producttabchoiceitalic.length; j++) {
+           producttabchoiceitalic[j].style.fontStyle = 'Italic';
+        }
+        for (var j = 0; j < producttabitalic.length; j++) {
+           producttabchoiceitalic[j].style.fontStyle = 'Italic';
+        }
     }else{
         subtitleitalicinput.val('')
+        for (var j = 0; j < producttabchoiceitalic.length; j++) {
+           producttabchoiceitalic[j].style.fontStyle = '';
+        }
+        for (var j = 0; j < producttabitalic.length; j++) {
+           producttabchoiceitalic[j].style.fontStyle = '';
+        }
     }
 
-    var producttabitalic = document.getElementsByClassName('producttab');
-    var producttabchoiceitalic = document.getElementsByClassName('producttabchoice');
-    for (var j = 0; j < producttabchoiceitalic.length; j++) {
-       producttabchoiceitalic[j].style.fontStyle = 'Italic';
-    }
-    for (var j = 0; j < producttabitalic.length; j++) {
-       producttabchoiceitalic[j].style.fontStyle = 'Italic';
-    }
+
+
 
 }
 function subtitleunderline(){
 var subtitleunderline = $('#subtitle-underline')
 var subtitleunderlineinput = $('#subtitle_underline_input_id')
+var producttabunderline = document.getElementsByClassName('producttab');
+var producttabchoiceunderline = document.getElementsByClassName('producttabchoice');
+
     subtitleunderline.toggleClass('active');
     if(subtitleunderline.hasClass('active')){
         subtitleunderlineinput.val('on')
+        for (var j = 0; j < producttabchoiceunderline.length; j++) {
+           producttabchoiceunderline[j].style.textDecoration = 'Underline';
+        }
+        for (var j = 0; j < producttabunderline.length; j++) {
+           producttabchoiceunderline[j].style.textDecoration = 'Underline';
+        }
     }else{
         subtitleunderlineinput.val('')
+        for (var j = 0; j < producttabchoiceunderline.length; j++) {
+           producttabchoiceunderline[j].style.textDecoration = '';
+        }
+        for (var j = 0; j < producttabunderline.length; j++) {
+           producttabchoiceunderline[j].style.textDecoration = '';
+        }
     }
 
-    var producttabunderline = document.getElementsByClassName('producttab');
-    var producttabchoiceunderline = document.getElementsByClassName('producttabchoice');
-    for (var j = 0; j < producttabchoiceunderline.length; j++) {
-       producttabchoiceunderline[j].style.textDecoration = 'Underline';
-    }
-    for (var j = 0; j < producttabunderline.length; j++) {
-       producttabchoiceunderline[j].style.textDecoration = 'Underline';
-    }
+
 
 }
 function bodybold(){
@@ -3857,58 +3889,83 @@ var bodybold = $('#body-bold')
 var bodyboldinput = $('#body_bold_input_id')
     bodybold.toggleClass('active');
     if(bodybold.hasClass('active')){
-        bodyboldinput.val('on')
-    }else{
-        bodyboldinput.val('')
-    }  
     var pricebold = document.getElementsByClassName('price');
     var atbsamplebold = document.getElementsByClassName('atbsampleclass');
 
-    for (var j = 0; j < pricebold.length; j++) {
-       pricebold[j].style.fontWeight = 'Bold';
-    }
-    for (var j = 0; j < atbsamplebold.length; j++) {
-       atbsamplebold[j].style.fontWeight = 'Bold';
-    }
+        for (var j = 0; j < pricebold.length; j++) {
+           pricebold[j].style.fontWeight = 'Bold';
+        }
+        for (var j = 0; j < atbsamplebold.length; j++) {
+           atbsamplebold[j].style.fontWeight = 'Bold';
+        }
+        bodyboldinput.val('on')
+    }else{
+        bodyboldinput.val('')
+        for (var j = 0; j < pricebold.length; j++) {
+           pricebold[j].style.fontWeight = '';
+        }
+        for (var j = 0; j < atbsamplebold.length; j++) {
+           atbsamplebold[j].style.fontWeight = '';
+        }
+    }  
+
 }
 
 function bodyitalic(){
-var bodyitalic = $('#body-italic')
-var bodyitalicinput = $('#body_italic_input_id')
-    bodyitalic.toggleClass('active');
-    if(bodyitalic.hasClass('active')){
-        bodyitalicinput.val('on')
-    }else{
-        bodyitalicinput.val('')
-    }
     var priceitalic = document.getElementsByClassName('price');
     var atbsampleitalic = document.getElementsByClassName('atbsampleclass');
+    var bodyitalic = $('#body-italic')
+    var bodyitalicinput = $('#body_italic_input_id')
 
-    for (var j = 0; j < priceitalic.length; j++) {
-       priceitalic[j].style.fontStyle = 'Italic';
+    bodyitalic.toggleClass('active');
+
+    if(bodyitalic.hasClass('active')){
+        bodyitalicinput.val('on')
+        for (var j = 0; j < priceitalic.length; j++) {
+           priceitalic[j].style.fontStyle = 'Italic';
+        }
+        for (var j = 0; j < atbsampleitalic.length; j++) {
+           atbsampleitalic[j].style.fontStyle = 'Italic';
+        }
+    }else{
+        bodyitalicinput.val('')
+        for (var j = 0; j < priceitalic.length; j++) {
+           priceitalic[j].style.fontStyle = '';
+        }
+        for (var j = 0; j < atbsampleitalic.length; j++) {
+           atbsampleitalic[j].style.fontStyle = '';
+        }
     }
-    for (var j = 0; j < atbsampleitalic.length; j++) {
-       atbsampleitalic[j].style.fontStyle = 'Italic';
-    }
+
+
+
 }
 function bodyunderline(){
-var bodyunderline = $('#bodye-underline')
-var bodyunderlineinput = $('#body_underline_input_id')
+    var bodyunderline = $('#bodye-underline')
+    var bodyunderlineinput = $('#body_underline_input_id')
+    var priceunderline = document.getElementsByClassName('price');
+    var atbsampleunderline = document.getElementsByClassName('atbsampleclass');
     bodyunderline.toggleClass('active');
     if(bodyunderline.hasClass('active')){
         bodyunderlineinput.val('on')
+        for (var j = 0; j < priceunderline.length; j++) {
+           priceitalic[j].style.textDecoration = 'Underline';
+        }
+        for (var j = 0; j < atbsampleunderline.length; j++) {
+           atbsampleitalic[j].style.textDecoration = 'Underline';
+        }
     }else{
         bodyunderlineinput.val('')
+        for (var j = 0; j < priceunderline.length; j++) {
+           priceitalic[j].style.textDecoration = '';
+        }
+        for (var j = 0; j < atbsampleunderline.length; j++) {
+           atbsampleitalic[j].style.textDecoration = '';
+        }
     }
-    var priceunderline = document.getElementsByClassName('price');
-    var atbsampleunderline = document.getElementsByClassName('atbsampleclass');
 
-    for (var j = 0; j < priceunderline.length; j++) {
-       priceitalic[j].style.textDecoration = 'Underline';
-    }
-    for (var j = 0; j < atbsampleunderline.length; j++) {
-       atbsampleitalic[j].style.textDecoration = 'Underline';
-    }
+
+
 }
 
 
