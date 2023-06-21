@@ -3765,17 +3765,17 @@ $('.font-style-button').click(function() {
     // Set default font styles (bold, italic, underline)
     if (bodyBoldDef) {
         $('.price').css('font-weight', 'bold');
-        $('.atbsampleclass').css('font-weight', 'bold');
+        $('.atbsampleclass').css('font-weight', 'bold !important');
         $('#body-bold').classList.toggle('active');
     }
     if (bodyItalicDef) {
         $('.price').css('font-style', 'italic');
-        $('.atbsampleclass').css('font-style', 'italic');
+        $('.atbsampleclass').css('font-style', 'italic !important');
         $('#body-italic').classList.toggle('active');
     }
     if (bodyUnderlineDef) {
         $('.price').css('text-decoration', 'underline');
-        $('.atbsampleclass').css('text-decoration', 'underline');
+        $('.atbsampleclass').css('text-decoration', 'underline !important');
         $('#body-underline').classList.toggle('active');
     }
 
