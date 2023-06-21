@@ -3756,7 +3756,7 @@ function titlebold(){
     var titlebold = $('#title-bold')
     var titleboldinput = $('#title_bold_input_id')
 
-        titlebold.classList.toggle('active');
+        titlebold.toggleClass('active');
         if(titlebold.classList.contains('active')){
             titleboldinput.val('on')
         }else{
@@ -3769,11 +3769,11 @@ function titlebold(){
 
     }
 }
-
+        
 function titleitalic(){
 var titleitalic = $('#title-italic')
 var titleitalicinput = $('#title_italic_input_id')
-    titleitalic.classList.toggle('active');
+    titleitalic.toggleClass('active');
     if(titleitalic.classList.contains('active')){
         titleitalicinput.val('on')
     }else{
@@ -3789,7 +3789,7 @@ var titleitalicinput = $('#title_italic_input_id')
 function titleunderline(){
 var titleunderline = $('#title-underline')
 var titleunderlineinput = $('#title_underline_input_id')
-    titleunderline.classList.toggle('active');
+    titleunderline.toggleClass('active');
     if(titleunderline.classList.contains('active')){
         titleunderlineinput.val('on')
     }else{
@@ -3805,7 +3805,7 @@ var titleunderlineinput = $('#title_underline_input_id')
 function subtitlebold(){
 var subtitlebold = $('#subtitle-bold')
 var subtitleboldinput = $('#subtitle_bold_input_id')
-    subtitlebold.classList.toggle('active');
+    subtitlebold.toggleClass('active');
     if(subtitlebold.classList.contains('active')){
         subtitleboldinput.val('on')
     }else{
@@ -3826,7 +3826,7 @@ var subtitleboldinput = $('#subtitle_bold_input_id')
 function subtitleitalic(){
 var subtitleitalic = $('#subtitle-italic')
 var subtitleitalicinput = $('#subtitle_italic_input_id')
-    subtitleitalic.classList.toggle('active');
+    subtitleitalic.toggleClass('active');
     if(subtitleitalic.classList.contains('active')){
         subtitleitalicinput.val('on')
     }else{
@@ -3846,7 +3846,7 @@ var subtitleitalicinput = $('#subtitle_italic_input_id')
 function subtitleunderline(){
 var subtitleunderline = $('#subtitle-underline')
 var subtitleunderlineinput = $('#subtitle_underline_input_id')
-    subtitleunderline.classList.toggle('active');
+    subtitleunderline.toggleClass('active');
     if(subtitleunderline.classList.contains('active')){
         subtitleunderlineinput.val('on')
     }else{
@@ -3867,7 +3867,7 @@ function bodybold(){
 
 var bodybold = $('#body-bold')
 var bodyboldinput = $('#body_bold_input_id')
-    bodybold.classList.toggle('active');
+    bodybold.toggleClass('active');
     if(bodybold.classList.contains('active')){
         bodyboldinput.val('on')
     }else{
@@ -3887,7 +3887,7 @@ var bodyboldinput = $('#body_bold_input_id')
 function bodyitalic(){
 var bodyitalic = $('#body-italic')
 var bodyitalicinput = $('#body_italic_input_id')
-    bodyitalic.classList.toggle('active');
+    bodyitalic.toggleClass('active');
     if(bodyitalic.classList.contains('active')){
         bodyitalicinput.val('on')
     }else{
@@ -3906,7 +3906,7 @@ var bodyitalicinput = $('#body_italic_input_id')
 function bodyunderline(){
 var bodyunderline = $('#bodye-underline')
 var bodyunderlineinput = $('#body_underline_input_id')
-    bodyunderline.classList.toggle('active');
+    bodyunderline.toggleClass('active');
     if(bodyunderline.classList.contains('active')){
         bodyunderlineinput.val('on')
     }else{
@@ -3990,43 +3990,43 @@ $(document).ready(function() {
     if (bodyBoldDef == 'bold') {
         $('.price').css('font-weight', 'bold');
         $('.atbsampleclass').css('font-weight', 'bold !important');
-        $('#body-bold').classList.toggle('active');
+        $('#body-bold').toggleClass('active');
     }
     if (bodyItalicDef == 'italic') {
         $('.price').css('font-style', 'italic');
         $('.atbsampleclass').css('font-style', 'italic !important');
-        $('#body-italic').classList.toggle('active');
+        $('#body-italic').toggleClass('active');
     }
     if (bodyUnderlineDef == 'underline') {
         $('.price').css('text-decoration', 'underline');
         $('.atbsampleclass').css('text-decoration', 'underline !important');
-        $('#body-underline').classList.toggle('active');
+        $('#body-underline').toggleClass('active');
     }
 
     if (subtitleBoldDef == 'bold') {
         $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
-        $('#subtitle-bold').classList.toggle('active');
+        $('#subtitle-bold').toggleClass('active');
     }
     if (subtitleItalicDef == 'italic') {
         $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
-        $('#subtitle-italic').classList.toggle('active');
+        $('#subtitle-italic').toggleClass('active');
     }
     if (subtitleUnderlineDef == 'underline') {
         $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
-        $('#subtitle-underline').classList.toggle('active');
+        $('#subtitle-underline').toggleClass('active');
     }
 
     if (titleBoldDef == 'bold') {
         $('.maintitleclass').css('font-weight', 'bold');
-        $('#title-bold').classList.toggle('active');
+        $('#title-bold').toggleClass('active');
     }
     if (titleItalicDef == 'italic') {
         $('.maintitleclass').css('font-style', 'italic');
-        $('#title-italic').classList.toggle('active');
+        $('#title-italic').toggleClass('active');
     }
     if (titleUnderlineDef == 'underline') {
         $('.maintitleclass').css('text-decoration', 'underline');
-        $('#title-underline').classList.toggle('active');
+        $('#title-underline').toggleClass('active');
     }
 
     // Font-family change event handlers (same as before)
