@@ -3587,37 +3587,37 @@ body {
                                         <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
                                             <label for="title-font" class="punchedtextsubtitle">Title Font:</label>
                                             <select id="title-font" class="selectfontclass" name="title_name"></select>
-                                            <button id="title-bold" class="font-style-button" type="button" style="font-weight:Bold;" data-font="maintitleclass" data-style="bold">B</button>
-                                            <button id="title-italic" class="font-style-button" type="button" style="font-style: italic;" data-font="maintitleclass" data-style="italic">I</button>
-                                            <button id="title-underline" class="font-style-button" type="button" style="text-decoration: underline;" data-font="maintitleclass" data-style="underline">U</button>
+                                            <button id="title-bold" onclick="titlebold();" class="font-style-button" type="button" style="font-weight:Bold;" data-style="bold">B</button>
+                                            <button id="title-italic" onclick="titleitalic();" class="font-style-button" type="button" style="font-style: italic;" data-style="italic">I</button>
+                                            <button id="title-underline" onclick="titleunderline();" class="font-style-button" type="button" style="text-decoration: underline;" data-style="underline">U</button>
                                             <br><br>
                                         </div>
                                         <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
                                             <label for="subtitle-font" class="punchedtextsubtitle">Subtitle Font:</label>
                                             <select id="subtitle-font" class="selectfontclass" name="subtitle_name"></select>
-                                            <button id="subtitle-bold" class="font-style-button" type="button" style="font-weight:Bold;" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="bold">B</button>
-                                            <button id="subtitle-italic" class="font-style-button" type="button" style="font-style: italic;" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="italic">I</button>
-                                            <button id="subtitle-underline" class="font-style-button" type="button" style="text-decoration: underline;" data-font="producttabchoice,producttab,sampleproductnameclass" data-style="underline">U</button>
+                                            <button id="subtitle-bold" onclick="subtitlebold();"  class="font-style-button" type="button" style="font-weight:Bold;" data-style="bold">B</button>
+                                            <button id="subtitle-italic" onclick="subtitleitalic();"  class="font-style-button" type="button" style="font-style: italic;"  data-style="italic">I</button>
+                                            <button id="subtitle-underline" onclick="subtitleunderline();"  class="font-style-button" type="button" style="text-decoration: underline;"  data-style="underline">U</button>
                                             <br><br>
                                         </div>
                                         <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
                                             <label for="body-font" class="punchedtextsubtitle">Body Font:</label>
                                             <select id="body-font" class="selectfontclass" name="body_name"></select>
-                                            <button id="body-bold" class="font-style-button" type="button" style="font-weight:Bold;" data-font="price,atbsample" data-style="bold">B</button>
-                                            <button id="body-italic" class="font-style-button" type="button" style="font-style: italic;" data-font="price,atbsample" data-style="italic">I</button>
-                                            <button id="body-underline" class="font-style-button" type="button" style="text-decoration: underline;" data-font="price,atbsample" data-style="underline">U</button>
+                                            <button id="body-bold" onclick="bodybold();" class="font-style-button" type="button" style="font-weight:Bold;"  data-style="bold">B</button>
+                                            <button id="body-italic" onclick="bodyitalic();" class="font-style-button" type="button" style="font-style: italic;"  data-style="italic">I</button>
+                                            <button id="body-underline" onclick="bodyunderline();" class="font-style-button" type="button" style="text-decoration: underline;"  data-style="underline">U</button>
                                             <br><br>
                                         </div>
-                                        <!--<input type="hidden" value="" name="body_bold" id="body_bold_input_id"></input>
-    <input type="hidden" value="" name="body_italic" id="body_italic_input_id"></input>
-    <input type="hidden" value="" name="body_underline" id="body_underline_input_id"></input>
-    <input type="hidden" value="" name="subtitle_bold" id="subtitle_bold_input_id"></input>
-    <input type="hidden" value="" name="subtitle_italic" id="subtitle_italic_input_id"></input>
-    <input type="hidden" value="" name="subtitle_underline" id="subtitle_underline_input_id"></input>
-    <input type="hidden" value="" name="title_bold" id="title_bold_input_id"></input>
-    <input type="hidden" value="" name="title_italic" id="title_italic_input_id"></input>
-    <input type="hidden" value="" name="title_underline" id="title_underline_input_id"></input>-->
-                                        <input type="hidden" value="" name="fontStylesname" id="fontStylesid"></input>
+                                        <input type="hidden" value="" name="body_bold" id="body_bold_input_id"></input>
+                                        <input type="hidden" value="" name="body_italic" id="body_italic_input_id"></input>
+                                        <input type="hidden" value="" name="body_underline" id="body_underline_input_id"></input>
+                                        <input type="hidden" value="" name="subtitle_bold" id="subtitle_bold_input_id"></input>
+                                        <input type="hidden" value="" name="subtitle_italic" id="subtitle_italic_input_id"></input>
+                                        <input type="hidden" value="" name="subtitle_underline" id="subtitle_underline_input_id"></input>
+                                        <input type="hidden" value="" name="title_bold" id="title_bold_input_id"></input>
+                                        <input type="hidden" value="" name="title_italic" id="title_italic_input_id"></input>
+                                        <input type="hidden" value="" name="title_underline" id="title_underline_input_id"></input>
+                                       
                                         <br>
                                     </div>
                                 </div>
@@ -3749,7 +3749,185 @@ body {
     <link href="https://fonts.googleapis.com/css2?family=Arial&family=Helvetica&family=Times+New+Roman&family=Courier+New&family=Verdana&family=Georgia&family=Trebuchet+MS&family=Arial+Black&family=Impact&family=Comic+Sans+MS&family=Garamond&family=Palatino&family=Lucida+Sans+Unicode&family=Tahoma&family=Courier&family=Lucida+Console&family=Arial+Narrow&family=Century+Gothic&family=Bookman+Old+Style&family=Franklin+Gothic+Medium&family=Candara&family=Rockwell&family=Baskerville&family=Consolas&family=Copperplate&family=Futura&family=Arial+Rounded+MT+Bold&family=Century+Schoolbook&family=Segoe+UI&family=MS+Sans+Serif&family=Open+Sans&family=Roboto&family=Montserrat&family=Lato&family=Raleway&family=Poppins&family=Oswald&family=Nunito&family=Roboto+Condensed&family=Source+Sans+Pro&family=Ubuntu&family=Playfair+Display&family=Merriweather&family=Roboto+Slab&family=Ubuntu+Condensed&family=PT+Sans&family=Cabin&family=Noto+Sans&family=Droid+Sans&family=Bebas+Neue&family=Exo&family=Josefin+Sans&family=Muli&family=Quicksand&family=Fira+Sans&family=Varela+Round&family=Noto+Serif&family=PT+Serif&family=Titillium+Web&family=Karla&family=Archivo+Narrow&family=Cabin&family=Exo&family=Fira+Sans&family=Josefin+Sans&family=Lato&family=Noto+Sans&family=Noto+Serif&family=Nunito&family=Open+Sans&family=Oswald&family=Poppins&family=Quicksand&family=Raleway&family=Roboto&family=Roboto+Slab&family=Source+Sans+Pro&family=Titillium+Web&family=Ubuntu&family=Ubuntu+Condensed&family=Varela+Round&display=swap" rel="stylesheet">
 
     <script>
+<button id="title-bold" onclick="titlebold();" class="font-style-button" type="button" style="font-weight:Bold;" data-style="bold">B</button>
+<button id="title-italic" onclick="titleitalic();" class="font-style-button" type="button" style="font-style: italic;" data-style="italic">I</button>
+<button id="title-underline" onclick="titleunderline();" class="font-style-button" type="button" style="text-decoration: underline;" data-style="underline">U</button>
 
+<input type="hidden" value="" name="title_bold" id="title_bold_input_id"></input>
+<input type="hidden" value="" name="title_italic" id="title_italic_input_id"></input>
+<input type="hidden" value="" name="title_underline" id="title_underline_input_id"></input>
+                                                                  
+
+function titlebold(){
+    var titlebold = $('#title-bold')
+    var titleboldinput = $('#title_bold_input_id')
+
+        titlebold.classList.toggle('active');
+        if(titlebold.classList.contains('active')){
+            titleboldinput.val('')
+        }else{
+            titleboldinput.val('')
+        }
+    var maintitlebold = document.getElementsByClassName('maintitleclass');
+    for (var j = 0; j < maintitlebold.length; j++) {
+        
+        maintitlebold[j].css('font-weight', 'Bold')
+
+    }
+}
+
+function titleitalic(){
+var titleitalic = $('#title-italic')
+var titleitalicinput = $('#title_italic_input_id')
+    titleitalic.classList.toggle('active');
+    if(titleitalic.classList.contains('active')){
+        titleitalicinput.val('on')
+    }else{
+        titleitalicinput.val('')
+    }
+    var maintitleitalic = document.getElementsByClassName('maintitleclass');
+    for (var j = 0; j < maintitleitalic.length; j++) {
+        
+        maintitleitalic[j].css('font-style', 'Italic')
+
+    }
+}
+function titleunderline(){
+var titleunderline = $('#title-underline')
+var titleunderlineinput = $('#title_underline_input_id')
+    titleunderline.classList.toggle('active');
+    if(titleunderline.classList.contains('active')){
+        titleunderlineinput.val('on')
+    }else{
+        titleunderlineinput.val('')
+    }
+    var maintitleunderline = document.getElementsByClassName('maintitleclass');
+    for (var j = 0; j < maintitleunderline.length; j++) {
+        
+        maintitleitalic[j].css('text-decoration', 'Underline')
+
+    }
+}
+function subtitlebold(){
+var subtitlebold = $('#subtitle-bold')
+var subtitleboldinput = $('#subtitle_bold_input_id')
+    subtitlebold.classList.toggle('active');
+    if(subtitlebold.classList.contains('active')){
+        subtitleboldinput.val('on')
+    }else{
+        subtitleboldinput.val('')
+    }  
+
+    var producttabbold = document.getElementsByClassName('producttab');
+    var producttabchoicebold = document.getElementsByClassName('producttabchoice');
+    for (var j = 0; j < producttabchoicebold.length; j++) {
+       producttabchoicebold[j].css('font-weight', 'Bold')
+    }
+    for (var j = 0; j < producttabbold.length; j++) {
+       producttabchoicebold[j].css('font-weight', 'Bold')
+    }
+
+}
+
+function subtitleitalic(){
+var subtitleitalic = $('#subtitle-italic')
+var subtitleitalicinput = $('#subtitle_italic_input_id')
+    subtitleitalic.classList.toggle('active');
+    if(subtitleitalic.classList.contains('active')){
+        subtitleitalicinput.val('on')
+    }else{
+        subtitleitalicinput.val('')
+    }
+
+    var producttabitalic = document.getElementsByClassName('producttab');
+    var producttabchoiceitalic = document.getElementsByClassName('producttabchoice');
+    for (var j = 0; j < producttabchoiceitalic.length; j++) {
+       producttabchoiceitalic[j].css('font-style', 'Italic')
+    }
+    for (var j = 0; j < producttabitalic.length; j++) {
+       producttabchoiceitalic[j].css('font-style', 'Italic')
+    }
+
+}
+function subtitleunderline(){
+var subtitleunderline = $('#subtitle-underline')
+var subtitleunderlineinput = $('#subtitle_underline_input_id')
+    subtitleunderline.classList.toggle('active');
+    if(subtitleunderline.classList.contains('active')){
+        subtitleunderlineinput.val('on')
+    }else{
+        subtitleunderlineinput.val('')
+    }
+
+    var producttabunderline = document.getElementsByClassName('producttab');
+    var producttabchoiceunderline = document.getElementsByClassName('producttabchoice');
+    for (var j = 0; j < producttabchoiceunderline.length; j++) {
+       producttabchoiceunderline[j].css('text-decoration', 'Underline')
+    }
+    for (var j = 0; j < producttabunderline.length; j++) {
+       producttabchoiceunderline[j].css('text-decoration', 'Underline')
+    }
+
+}
+function bodybold(){
+
+var bodybold = $('#body-bold')
+var bodyboldinput = $('#body_bold_input_id')
+    bodybold.classList.toggle('active');
+    if(bodybold.classList.contains('active')){
+        bodyboldinput.val('on')
+    }else{
+        bodyboldinput.val('')
+    }  
+    var pricebold = document.getElementsByClassName('price');
+    var atbsamplebold = document.getElementsByClassName('atbsampleclass');
+
+    for (var j = 0; j < pricebold.length; j++) {
+       pricebold[j].css('font-weight', 'Bold')
+    }
+    for (var j = 0; j < atbsamplebold.length; j++) {
+       atbsamplebold[j].css('font-weight', 'Bold')
+    }
+}
+
+function bodyitalic(){
+var bodyitalic = $('#body-italic')
+var bodyitalicinput = $('#body_italic_input_id')
+    bodyitalic.classList.toggle('active');
+    if(bodyitalic.classList.contains('active')){
+        bodyitalicinput.val('on')
+    }else{
+        bodyitalicinput.val('')
+    }
+    var priceitalic = document.getElementsByClassName('price');
+    var atbsampleitalic = document.getElementsByClassName('atbsampleclass');
+
+    for (var j = 0; j < priceitalic.length; j++) {
+       priceitalic[j].css('font-style', 'Italic')
+    }
+    for (var j = 0; j < atbsampleitalic.length; j++) {
+       atbsampleitalic[j].css('font-style', 'Italic')
+    }
+}
+function bodyunderline(){
+var bodyunderline = $('#bodye-underline')
+var bodyunderlineinput = $('#body_underline_input_id')
+    bodyunderline.classList.toggle('active');
+    if(bodyunderline.classList.contains('active')){
+        bodyunderlineinput.val('on')
+    }else{
+        bodyunderlineinput.val('')
+    }
+    var priceunderline = document.getElementsByClassName('price');
+    var atbsampleunderline = document.getElementsByClassName('atbsampleclass');
+
+    for (var j = 0; j < priceunderline.length; j++) {
+       priceitalic[j].css('text-decoration', 'Underline')
+    }
+    for (var j = 0; j < atbsampleunderline.length; j++) {
+       atbsampleitalic[j].css('text-decoration', 'Underline')
+    }
+}
 
 
 var fontStyles = {};
@@ -3765,27 +3943,7 @@ $(document).ready(function() {
         $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
     });
 
-    // Function to apply font styles
-function applyFontStyle(fontClass, fontStyle) {
-  var classes = fontClass.split(',');
 
-  for (var j = 0; j < classes.length; j++) {
-    var elements = document.getElementsByClassName(classes[j]);
-
-    for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-
-      // Apply font weight
-      element.style.fontWeight = fontStyle.includes('bold') ? 'bold' : 'normal';
-
-      // Apply font style
-      element.style.fontStyle = fontStyle.includes('italic') ? 'italic' : 'normal';
-
-      // Apply text decoration
-      element.style.textDecoration = fontStyle.includes('underline') ? 'underline' : 'none';
-    }
-  }
-}
 
 
     var brandnameColorDef = "{{ brandnamecolordef }}";
@@ -3809,26 +3967,6 @@ function applyFontStyle(fontClass, fontStyle) {
         $('.price, .atbsampleclass').css('font-family', selectedFont);
     });
 
-$('.font-style-button').click(function() {
-  var fontClass = $(this).data('font');
-  var fontStyle = $(this).data('style');
-
-  $(this).toggleClass('active');
-
-  var activeButtons = $('.font-style-button.active');
-  var activeStyles = [];
-
-  activeButtons.each(function() {
-    activeStyles.push($(this).data('style'));
-  });
-
-  var combinedStyle = activeStyles.join(' ');
-
-  fontStyles[fontClass] = activeButtons.length > 0 ? combinedStyle : null;
-  $('#fontStylesid').val(JSON.stringify(fontStyles));
-
-  applyFontStyle(fontClass, combinedStyle);
-});
 
 
 
@@ -3855,44 +3993,44 @@ $('.font-style-button').click(function() {
     $("#title-font").val(titleColorDef);
 
     // Set default font styles (bold, italic, underline)
-    if (bodyBoldDef) {
+    if (bodyBoldDef == 'bold') {
         $('.price').css('font-weight', 'bold');
         $('.atbsampleclass').css('font-weight', 'bold !important');
         $('#body-bold').classList.toggle('active');
     }
-    if (bodyItalicDef) {
+    if (bodyItalicDef == 'italic') {
         $('.price').css('font-style', 'italic');
         $('.atbsampleclass').css('font-style', 'italic !important');
         $('#body-italic').classList.toggle('active');
     }
-    if (bodyUnderlineDef) {
+    if (bodyUnderlineDef == 'underline') {
         $('.price').css('text-decoration', 'underline');
         $('.atbsampleclass').css('text-decoration', 'underline !important');
         $('#body-underline').classList.toggle('active');
     }
 
-    if (subtitleBoldDef) {
+    if (subtitleBoldDef == 'bold') {
         $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
         $('#subtitle-bold').classList.toggle('active');
     }
-    if (subtitleItalicDef) {
+    if (subtitleItalicDef == 'italic') {
         $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
         $('#subtitle-italic').classList.toggle('active');
     }
-    if (subtitleUnderlineDef) {
+    if (subtitleUnderlineDef == 'underline') {
         $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
         $('#subtitle-underline').classList.toggle('active');
     }
 
-    if (titleBoldDef) {
+    if (titleBoldDef == 'bold') {
         $('.maintitleclass').css('font-weight', 'bold');
         $('#title-bold').classList.toggle('active');
     }
-    if (titleItalicDef) {
+    if (titleItalicDef == 'italic') {
         $('.maintitleclass').css('font-style', 'italic');
         $('#title-italic').classList.toggle('active');
     }
-    if (titleUnderlineDef) {
+    if (titleUnderlineDef == 'underline') {
         $('.maintitleclass').css('text-decoration', 'underline');
         $('#title-underline').classList.toggle('active');
     }
@@ -3973,23 +4111,16 @@ $('.font-style-button').click(function() {
     function submitcustomizeinitial() {
         var brand_nameid = document.getElementById('brand_nameid');
         if (brand_nameid) {
-            submitcustomizefinal('pass', fontStyles);
+            submitcustomizefinal('pass');
         } else {
             alert('Please provide your brand name!');
             brand_nameid.focus();
         }
     }
 
-    function submitcustomizefinal(brandnamepass, fontStyles) {
-      // Check for null or blank values in fontStyles object
-      for (var fontClass in fontStyles) {
-            if (!fontStyles[fontClass]) {
-                fontStyles[fontClass] = '';
-            }
-      }
-
-var formcustomize = document.getElementById('customizeformid');
-formcustomize.submit();
+    function submitcustomizefinal(brandnamepass) {
+        var formcustomize = document.getElementById('customizeformid');
+        formcustomize.submit();
     }
 
     function viewwebisite(){
