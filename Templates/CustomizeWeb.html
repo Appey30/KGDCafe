@@ -3764,15 +3764,18 @@ $('.font-style-button').click(function() {
 
     // Set default font styles (bold, italic, underline)
     if (bodyBoldDef) {
-        $('.price, #atbsample').css('font-weight', 'bold');
+        $('.price').css('font-weight', 'bold');
+        $('#atbsample').css('font-weight', 'bold');
         $('#body-bold').classList.toggle('active');
     }
     if (bodyItalicDef) {
-        $('.price, #atbsample').css('font-style', 'italic');
+        $('.price').css('font-style', 'italic');
+        $('#atbsample').css('font-style', 'italic');
         $('#body-italic').classList.toggle('active');
     }
     if (bodyUnderlineDef) {
-        $('.price, #atbsample').css('text-decoration', 'underline');
+        $('.price').css('text-decoration', 'underline');
+        $('#atbsample').css('text-decoration', 'underline');
         $('#body-underline').classList.toggle('active');
     }
 
