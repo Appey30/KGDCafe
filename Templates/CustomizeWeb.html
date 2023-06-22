@@ -3759,7 +3759,7 @@ function titlebold(){
         titlebold.toggleClass('active');
         if(titlebold.hasClass('active')){
             titleboldinput.val('on')
-            maintitlebold[0].style.fontWeight = 'bold';
+            maintitlebold[0] .style.fontWeight = 'Bold !important';
         }else{
             titleboldinput.val('')
             maintitlebold[0].style.fontWeight = '';
@@ -3775,7 +3775,7 @@ function titleitalic(){
     titleitalic.toggleClass('active');
     if(titleitalic.hasClass('active')){
         titleitalicinput.val('on')
-        maintitleitalic[0].style.fontStyle = 'italic';
+        maintitleitalic[0] .style.fontStyle = 'italic !important';
     }else{
         titleitalicinput.val('')
         maintitleitalic[0].style.fontStyle = '';
@@ -3790,7 +3790,7 @@ function titleunderline(){
     titleunderline.toggleClass('active');
     if(titleunderline.hasClass('active')){
         titleunderlineinput.val('on')
-        maintitleunderline[0].style.textDecoration = 'underline';
+        maintitleunderline[0].style.textDecoration = 'underline !important';
     }else{
         titleunderlineinput.val('')
         maintitleunderline[0].style.textDecoration = '';
@@ -3806,10 +3806,10 @@ function subtitlebold(){
     subtitlebold.toggleClass('active');
     if(subtitlebold.hasClass('active')){
         subtitleboldinput.val('on')
-        producttabchoicebold[0].style.fontWeight = 'bold';
-        producttabchoicebold[0].style.fontWeight = 'bold';
+        producttabchoicebold[0] .style.fontWeight = 'Bold !important';
+        producttabchoicebold[0] .style.fontWeight = 'Bold !important';
         for (let j = 0; j < producttabbold.length; j++) {
-           producttabbold[j].style.fontWeight = 'Bold';
+           producttabbold[j] .style.fontWeight = 'Bold !important';
         }
 
 
@@ -3835,10 +3835,10 @@ function subtitleitalic(){
     subtitleitalic.toggleClass('active');
     if(subtitleitalic.hasClass('active')){
         subtitleitalicinput.val('on')
-        producttabchoiceitalic[0].style.fontStyle = 'italic';
-        producttabchoiceitalic[0].style.fontStyle = 'italic';
+        producttabchoiceitalic[0] .style.fontStyle = 'italic !important';
+        producttabchoiceitalic[0] .style.fontStyle = 'italic !important';
         for (let j = 0; j < producttabitalic.length; j++) {
-           producttabitalic[j].style.fontStyle = 'italic';
+           producttabitalic[j] .style.fontStyle = 'italic !important';
         }
 
     }else{
@@ -3863,10 +3863,10 @@ var producttabchoiceunderline = document.getElementsByClassName('producttabchoic
     subtitleunderline.toggleClass('active');
     if(subtitleunderline.hasClass('active')){
         subtitleunderlineinput.val('on')
-        producttabchoiceunderline[0].style.textDecoration = 'Underline';
-        producttabchoiceunderline[0].style.textDecoration = 'Underline';
+        producttabchoiceunderline[0].style.textDecoration = 'underline !important';
+        producttabchoiceunderline[0].style.textDecoration = 'underline !important';
         for (let j = 0; j < producttabunderline.length; j++) {
-           producttabunderline[j].style.textDecoration = 'underline';
+           producttabunderline[j].style.textDecoration = 'underline !important';
         }
 
     }else{
@@ -3891,10 +3891,10 @@ var bodyboldinput = $('#body_bold_input_id')
     var atbsamplebold = document.getElementsByClassName('atbsampleclass');
 
         for (let j = 0; j < pricebold.length; j++) {
-           pricebold[j].style.fontWeight = 'Bold';
+           pricebold[j] .style.fontWeight = 'Bold !important';
         }
         for (let i = 0; i < atbsamplebold.length; i++) {
-           atbsamplebold[i].style.fontWeight = 'Bold';
+           atbsamplebold[i] .style.fontWeight = 'Bold !important';
         }
         bodyboldinput.val('on')
     }else{
@@ -3920,10 +3920,10 @@ function bodyitalic(){
     if(bodyitalic.hasClass('active')){
         bodyitalicinput.val('on')
         for (let j = 0; j < priceitalic.length; j++) {
-           priceitalic[j].style.fontStyle = 'Italic';
+           priceitalic[j] .style.fontStyle = 'italic !important';
         }
         for (let i = 0; i < atbsampleitalic.length; i++) {
-           atbsampleitalic[i].style.fontStyle = 'Italic';
+           atbsampleitalic[i] .style.fontStyle = 'italic !important';
         }
     }else{
         bodyitalicinput.val('')
@@ -3947,10 +3947,10 @@ function bodyunderline(){
     if(bodyunderline.hasClass('active')){
         bodyunderlineinput.val('on')
         for (let j = 0; j < priceunderline.length; j++) {
-           priceunderline[j].style.textDecoration = 'Underline';
+           priceunderline[j].style.textDecoration = 'underline !important';
         }
         for (let i = 0; i < atbsampleunderline.length; i++) {
-           atbsampleunderline[i].style.textDecoration = 'Underline';
+           atbsampleunderline[i].style.textDecoration = 'underline !important';
         }
     }else{
         bodyunderlineinput.val('')
