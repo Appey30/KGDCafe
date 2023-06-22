@@ -3809,7 +3809,7 @@ function subtitlebold(){
         producttabchoicebold[0] .style.fontWeight = 'bold';
 
         for (let j = 0; j < producttabbold.length; j++) {
-           producttabbold[j] .style.fontWeight = 'bold';
+           producttabbold[j].style.fontWeight = 'bold';
         }
 
 
@@ -3838,7 +3838,7 @@ function subtitleitalic(){
         producttabchoiceitalic[0] .style.fontStyle = 'italic';
 
         for (let j = 0; j < producttabitalic.length; j++) {
-           producttabitalic[j] .style.fontStyle = 'italic';
+           producttabitalic[j].style.fontStyle = 'italic';
         }
 
     }else{
@@ -3889,10 +3889,10 @@ var bodyboldinput = $('#body_bold_input_id')
     var atbsamplebold= document.getElementsByClassName('atbsampleclass');
 
         for (let j = 0; j < pricebold.length; j++) {
-           pricebold[j] .style.fontWeight = 'bold';
+           pricebold[j].style.fontWeight = 'bold';
         }
         for (let i = 0; i < atbsamplebold.length; i++) {
-           atbsamplebold[i] .style.fontWeight = 'bold';
+           atbsamplebold[i].style.fontWeight = 'bold';
         }
         bodyboldinput.val('on')
     }else{
@@ -3918,10 +3918,10 @@ function bodyitalic(){
     if(bodyitalic.hasClass('active')){
         bodyitalicinput.val('on')
         for (let j = 0; j < priceitalic.length; j++) {
-           priceitalic[j] .style.fontStyle = 'italic';
+           priceitalic[j].style.fontStyle = 'italic';
         }
         for (let i = 0; i < atbsampleitalic.length; i++) {
-           atbsampleitalic[i] .style.fontStyle = 'italic';
+           atbsampleitalic[i].style.fontStyle = 'italic';
         }
     }else{
         bodyitalicinput.val('')
