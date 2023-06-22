@@ -3803,6 +3803,7 @@ function subtitlebold(){
     var subtitleboldinput = $('#subtitle_bold_input_id')
     var producttabbold= document.getElementsByClassName('producttab');
     var producttabchoicebold= document.getElementsByClassName('producttabchoice');
+    var sampleproductnameclassbold = = document.getElementsByClassName('sampleproductnameclass');
     subtitlebold.toggleClass('active');
     if(subtitlebold.hasClass('active')){
         subtitleboldinput.val('on')
@@ -3811,7 +3812,9 @@ function subtitlebold(){
         for (let j = 0; j < producttabbold.length; j++) {
            producttabbold[j].style.fontWeight = 'bold';
         }
-
+        for (let j = 0; j < sampleproductnameclassbold.length; j++) {
+           sampleproductnameclassbold[j].style.fontWeight = 'bold';
+        }
 
     }else{
         subtitleboldinput.val('')
@@ -3819,6 +3822,9 @@ function subtitlebold(){
 
         for (let j = 0; j < producttabbold.length; j++) {
            producttabbold[j].style.fontWeight = 'normal';
+        }
+        for (let i = 0; i < sampleproductnameclassbold.length; i++) {
+           sampleproductnameclassbold[i].style.fontWeight = 'normal';
         }
     }  
 
@@ -3832,6 +3838,7 @@ function subtitleitalic(){
     var subtitleitalicinput = $('#subtitle_italic_input_id')
     var producttabitalic= document.getElementsByClassName('producttab');
     var producttabchoiceitalic= document.getElementsByClassName('producttabchoice');
+    var sampleproductnameclassitalic = = document.getElementsByClassName('sampleproductnameclass');
     subtitleitalic.toggleClass('active');
     if(subtitleitalic.hasClass('active')){
         subtitleitalicinput.val('on')
@@ -3841,12 +3848,18 @@ function subtitleitalic(){
            producttabitalic[j].style.fontStyle = 'italic';
         }
 
+        for (let i = 0; i < sampleproductnameclassitalic.length; i++) {
+           sampleproductnameclassitalic[i].style.fontStyle = 'italic';
+        }
     }else{
         subtitleitalicinput.val('')
         producttabchoiceitalic[0].style.fontStyle = 'normal';
 
         for (let j = 0; j < producttabitalic.length; j++) {
            producttabitalic[j].style.fontStyle = 'normal';
+        }
+        for (let i = 0; i < sampleproductnameclassitalic.length; i++) {
+           sampleproductnameclassitalic[i].style.fontStyle = 'normal';
         }
     }
 
@@ -3855,11 +3868,11 @@ function subtitleitalic(){
 
 }
 function subtitleunderline(){
-var subtitleunderline= $('#subtitle-underline')
-var subtitleunderlineinput = $('#subtitle_underline_input_id')
-var producttabunderline= document.getElementsByClassName('producttab');
-var producttabchoiceunderline= document.getElementsByClassName('producttabchoice');
-
+    var subtitleunderline= $('#subtitle-underline')
+    var subtitleunderlineinput = $('#subtitle_underline_input_id')
+    var producttabunderline= document.getElementsByClassName('producttab');
+    var producttabchoiceunderline= document.getElementsByClassName('producttabchoice');
+    var sampleproductnameclassunderline = document.getElementsByClassName('sampleproductnameclass');
     subtitleunderline.toggleClass('active');
     if(subtitleunderline.hasClass('active')){
         subtitleunderlineinput.val('on')
@@ -3867,12 +3880,18 @@ var producttabchoiceunderline= document.getElementsByClassName('producttabchoice
         for (let j = 0; j < producttabunderline.length; j++) {
            producttabunderline[j].style.textDecoration = 'underline';
         }
+        for (let i = 0; i < sampleproductnameclassunderline.length; i++) {
+           sampleproductnameclassunderline[j].style.textDecoration = 'underline';
+        }
 
     }else{
         subtitleunderlineinput.val('')
         producttabchoiceunderline[0].style.textDecoration = 'none';
         for (let j = 0; j < producttabunderline.length; j++) {
            producttabunderline[j].style.textDecoration = 'none';
+        }
+        for (let i = 0; i < sampleproductnameclassunderline.length; i++) {
+           sampleproductnameclassunderline[j].style.textDecoration = 'none';
         }
     }
 
