@@ -3762,7 +3762,7 @@ function titlebold(){
             maintitlebold[0] .style.fontWeight = 'Bold !important';
         }else{
             titleboldinput.val('')
-            maintitlebold[0].style.fontWeight = '';
+            maintitlebold[0].style.fontWeight = '!important';
         }
     
     
@@ -3778,7 +3778,7 @@ function titleitalic(){
         maintitleitalic[0] .style.fontStyle = 'italic !important';
     }else{
         titleitalicinput.val('')
-        maintitleitalic[0].style.fontStyle = '';
+        maintitleitalic[0].style.fontStyle = '!important';
     }
     
    
@@ -3793,7 +3793,7 @@ function titleunderline(){
         maintitleunderline[0].style.textDecoration = 'underline !important';
     }else{
         titleunderlineinput.val('')
-        maintitleunderline[0].style.textDecoration = '';
+        maintitleunderline[0].style.textDecoration = '!important';
     }
     
     
@@ -3807,7 +3807,7 @@ function subtitlebold(){
     if(subtitlebold.hasClass('active')){
         subtitleboldinput.val('on')
         producttabchoicebold[0] .style.fontWeight = 'Bold !important';
-        producttabchoicebold[0] .style.fontWeight = 'Bold !important';
+
         for (let j = 0; j < producttabbold.length; j++) {
            producttabbold[j] .style.fontWeight = 'Bold !important';
         }
@@ -3815,10 +3815,10 @@ function subtitlebold(){
 
     }else{
         subtitleboldinput.val('')
-        producttabchoicebold[0].style.fontWeight = '';
-        producttabchoicebold[0].style.fontWeight = '';
+        producttabchoicebold[0].style.fontWeight = '!important';
+
         for (let j = 0; j < producttabbold.length; j++) {
-           producttabbold[j].style.fontWeight = '';
+           producttabbold[j].style.fontWeight = '!important';
         }
     }  
 
@@ -3836,17 +3836,17 @@ function subtitleitalic(){
     if(subtitleitalic.hasClass('active')){
         subtitleitalicinput.val('on')
         producttabchoiceitalic[0] .style.fontStyle = 'italic !important';
-        producttabchoiceitalic[0] .style.fontStyle = 'italic !important';
+
         for (let j = 0; j < producttabitalic.length; j++) {
            producttabitalic[j] .style.fontStyle = 'italic !important';
         }
 
     }else{
         subtitleitalicinput.val('')
-        producttabchoiceitalic[0].style.fontStyle = '';
-        producttabchoiceitalic[0].style.fontStyle = '';
+        producttabchoiceitalic[0].style.fontStyle = '!important';
+
         for (let j = 0; j < producttabitalic.length; j++) {
-           producttabitalic[j].style.fontStyle = '';
+           producttabitalic[j].style.fontStyle = '!important';
         }
     }
 
@@ -3864,17 +3864,15 @@ var producttabchoiceunderline = document.getElementsByClassName('producttabchoic
     if(subtitleunderline.hasClass('active')){
         subtitleunderlineinput.val('on')
         producttabchoiceunderline[0].style.textDecoration = 'underline !important';
-        producttabchoiceunderline[0].style.textDecoration = 'underline !important';
         for (let j = 0; j < producttabunderline.length; j++) {
            producttabunderline[j].style.textDecoration = 'underline !important';
         }
 
     }else{
         subtitleunderlineinput.val('')
-        producttabchoiceunderline[0].style.textDecoration = '';
-        producttabchoiceunderline[0].style.textDecoration = '';
+        producttabchoiceunderline[0].style.textDecoration = '!important';
         for (let j = 0; j < producttabunderline.length; j++) {
-           producttabunderline[j].style.textDecoration = '';
+           producttabunderline[j].style.textDecoration = '!important';
         }
     }
 
@@ -3900,10 +3898,10 @@ var bodyboldinput = $('#body_bold_input_id')
     }else{
         bodyboldinput.val('')
         for (let j = 0; j < pricebold.length; j++) {
-           pricebold[j].style.fontWeight = '';
+           pricebold[j].style.fontWeight = '!important';
         }
         for (let i = 0; i < atbsamplebold.length; i++) {
-           atbsamplebold[i].style.fontWeight = '';
+           atbsamplebold[i].style.fontWeight = '!important';
         }
     }  
 
@@ -3928,10 +3926,10 @@ function bodyitalic(){
     }else{
         bodyitalicinput.val('')
         for (let j = 0; j < priceitalic.length; j++) {
-           priceitalic[j].style.fontStyle = '';
+           priceitalic[j].style.fontStyle = '!important';
         }
         for (let i = 0; i < atbsampleitalic.length; i++) {
-           atbsampleitalic[i].style.fontStyle = '';
+           atbsampleitalic[i].style.fontStyle = '!important';
         }
     }
 
@@ -3955,10 +3953,10 @@ function bodyunderline(){
     }else{
         bodyunderlineinput.val('')
         for (let j = 0; j < priceunderline.length; j++) {
-           priceunderline[j].style.textDecoration = '';
+           priceunderline[j].style.textDecoration = '!important';
         }
         for (let i = 0; i < atbsampleunderline.length; i++) {
-           atbsampleunderline[i].style.textDecoration = '';
+           atbsampleunderline[i].style.textDecoration = '!important';
         }
     }
 
@@ -4032,17 +4030,17 @@ $(document).ready(function() {
     // Set default font styles (bold, italic, underline)
     if (bodyBoldDef == 'bold') {
         $('.price').css('font-weight', 'bold');
-        $('.atbsampleclass').css('font-weight', 'bold !important');
+        $('.atbsampleclass').css('font-weight', 'bold');
         $('#body-bold').toggleClass('active');
     }
     if (bodyItalicDef == 'italic') {
         $('.price').css('font-style', 'italic');
-        $('.atbsampleclass').css('font-style', 'italic !important');
+        $('.atbsampleclass').css('font-style', 'italic');
         $('#body-italic').toggleClass('active');
     }
     if (bodyUnderlineDef == 'underline') {
         $('.price').css('text-decoration', 'underline');
-        $('.atbsampleclass').css('text-decoration', 'underline !important');
+        $('.atbsampleclass').css('text-decoration', 'underline');
         $('#body-underline').toggleClass('active');
     }
 
