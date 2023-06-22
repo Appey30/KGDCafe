@@ -5545,7 +5545,8 @@ def customize(request):
         button_color_obj.body_italic = body_italic
         button_color_obj.body_underline = body_underline
         button_color_obj.save()
-
+        print('button_color_obj.subtitle_underline: ',button_color_obj.subtitle_underline)
+        print('button_color_obj.body_underline: ',button_color_obj.body_underline)
     try:
         buttoncolordefi = ButtonColor.objects.get(user=request.user.id)
         buttoncolordef = buttoncolordefi.color
@@ -5583,7 +5584,8 @@ def customize(request):
         body_bold_def = ''
         body_italic_def = ''
         body_underline_def = ''
-
+    print('subtitle_underline_def: ',subtitle_underline_def)
+    print('body_underline_def: ',body_underline_def)
     return render(request, 'CustomizeWeb.html', {'userr': userr, 'brandnamecolordef': brandnamecolordef, 'bodycolordef': bodycolordef, 'subtitlecolordef': subtitlecolordef, 'titlecolordef': titlecolordef, 'buttoncolordef': buttoncolordef, 'cardcolordef': cardcolordef, 'textcolordef': textcolordef, 'backgroundcolordef': backgroundcolordef, 'title_bold_def': title_bold_def, 'title_italic_def': title_italic_def, 'title_underline_def': title_underline_def, 'subtitle_bold_def': subtitle_bold_def, 'subtitle_italic_def': subtitle_italic_def, 'subtitle_underline_def': subtitle_underline_def, 'body_bold_def': body_bold_def, 'body_italic_def': body_italic_def, 'body_underline_def': body_underline_def})
 
 
