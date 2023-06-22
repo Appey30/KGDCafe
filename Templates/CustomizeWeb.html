@@ -3762,7 +3762,7 @@ function titlebold(){
             maintitlebold[0] .style.fontWeight = 'bold';
         }else{
             titleboldinput.val('')
-            maintitlebold[0].style.fontWeight = '';
+            maintitlebold[0].style.fontWeight = 'normal';
         }
     
     
@@ -3778,7 +3778,7 @@ function titleitalic(){
         maintitleitalic[0] .style.fontStyle = 'italic';
     }else{
         titleitalicinput.val('')
-        maintitleitalic[0].style.fontStyle = '';
+        maintitleitalic[0].style.fontStyle = 'normal';
     }
     
    
@@ -3793,7 +3793,7 @@ function titleunderline(){
         maintitleunderline[0].style.textDecoration = 'underline';
     }else{
         titleunderlineinput.val('')
-        maintitleunderline[0].style.textDecoration = '';
+        maintitleunderline[0].style.textDecoration = 'none';
     }
     
     
@@ -3815,10 +3815,10 @@ function subtitlebold(){
 
     }else{
         subtitleboldinput.val('')
-        producttabchoicebold[0].style.fontWeight = '';
+        producttabchoicebold[0].style.fontWeight = 'normal';
 
         for (let j = 0; j < producttabbold.length; j++) {
-           producttabbold[j].style.fontWeight = '';
+           producttabbold[j].style.fontWeight = 'normal';
         }
     }  
 
@@ -3843,10 +3843,10 @@ function subtitleitalic(){
 
     }else{
         subtitleitalicinput.val('')
-        producttabchoiceitalic[0].style.fontStyle = '';
+        producttabchoiceitalic[0].style.fontStyle = 'normal';
 
         for (let j = 0; j < producttabitalic.length; j++) {
-           producttabitalic[j].style.fontStyle = '';
+           producttabitalic[j].style.fontStyle = 'normal';
         }
     }
 
@@ -3870,9 +3870,9 @@ var producttabchoiceunderline= document.getElementsByClassName('producttabchoice
 
     }else{
         subtitleunderlineinput.val('')
-        producttabchoiceunderline[0].style.textDecoration = '';
+        producttabchoiceunderline[0].style.textDecoration = 'none';
         for (let j = 0; j < producttabunderline.length; j++) {
-           producttabunderline[j].style.textDecoration = '';
+           producttabunderline[j].style.textDecoration = 'none';
         }
     }
 
@@ -3898,10 +3898,10 @@ var bodyboldinput = $('#body_bold_input_id')
     }else{
         bodyboldinput.val('')
         for (let j = 0; j < pricebold.length; j++) {
-           pricebold[j].style.fontWeight = '';
+           pricebold[j].style.fontWeight = 'normal';
         }
         for (let i = 0; i < atbsamplebold.length; i++) {
-           atbsamplebold[i].style.fontWeight = '';
+           atbsamplebold[i].style.fontWeight = 'normal';
         }
     }  
 
@@ -3926,10 +3926,10 @@ function bodyitalic(){
     }else{
         bodyitalicinput.val('')
         for (let j = 0; j < priceitalic.length; j++) {
-           priceitalic[j].style.fontStyle = '';
+           priceitalic[j].style.fontStyle = 'normal';
         }
         for (let i = 0; i < atbsampleitalic.length; i++) {
-           atbsampleitalic[i].style.fontStyle = '';
+           atbsampleitalic[i].style.fontStyle = 'normal';
         }
     }
 
@@ -3953,10 +3953,10 @@ function bodyunderline(){
     }else{
         bodyunderlineinput.val('')
         for (let j = 0; j < priceunderline.length; j++) {
-           priceunderline[j].style.textDecoration = '';
+           priceunderline[j].style.textDecoration = 'none';
         }
         for (let i = 0; i < atbsampleunderline.length; i++) {
-           atbsampleunderline[i].style.textDecoration = '';
+           atbsampleunderline[i].style.textDecoration = 'none';
         }
     }
 
