@@ -3806,17 +3806,20 @@ function subtitlebold(){
     subtitlebold.toggleClass('active');
     if(subtitlebold.hasClass('active')){
         subtitleboldinput.val('on')
+        producttabchoicebold[0].style.fontWeight = 'bold';
+        producttabchoicebold[0].style.fontWeight = 'bold';
+        for (let j = 0; j < producttabbold.length; j++) {
+           producttabbold[j].style.fontWeight = 'Bold';
+        }
 
-           producttabchoicebold[0].style.fontWeight = 'bold';
-
-           producttabchoicebold[0].style.fontWeight = 'bold';
 
     }else{
         subtitleboldinput.val('')
-
-           producttabchoicebold[0].style.fontWeight = '';
-           producttabchoicebold[0].style.fontWeight = '';
-
+        producttabchoicebold[0].style.fontWeight = '';
+        producttabchoicebold[0].style.fontWeight = '';
+        for (let j = 0; j < producttabbold.length; j++) {
+           producttabbold[j].style.fontWeight = '';
+        }
     }  
 
 
@@ -3832,18 +3835,19 @@ function subtitleitalic(){
     subtitleitalic.toggleClass('active');
     if(subtitleitalic.hasClass('active')){
         subtitleitalicinput.val('on')
-
-           producttabchoiceitalic[0].style.fontStyle = 'italic';
-
-           producttabchoiceitalic[0].style.fontStyle = 'italic';
+        producttabchoiceitalic[0].style.fontStyle = 'italic';
+        producttabchoiceitalic[0].style.fontStyle = 'italic';
+        for (let j = 0; j < producttabitalic.length; j++) {
+           producttabitalic[j].style.fontStyle = 'italic';
+        }
 
     }else{
         subtitleitalicinput.val('')
-
-           producttabchoiceitalic[0].style.fontStyle = '';
-
-           producttabchoiceitalic[0].style.fontStyle = '';
-
+        producttabchoiceitalic[0].style.fontStyle = '';
+        producttabchoiceitalic[0].style.fontStyle = '';
+        for (let j = 0; j < producttabitalic.length; j++) {
+           producttabitalic[j].style.fontStyle = '';
+        }
     }
 
 
@@ -3859,20 +3863,19 @@ var producttabchoiceunderline = document.getElementsByClassName('producttabchoic
     subtitleunderline.toggleClass('active');
     if(subtitleunderline.hasClass('active')){
         subtitleunderlineinput.val('on')
-
-           producttabchoiceunderline[0].style.textDecoration = 'Underline';
-
-
-           producttabchoiceunderline[0].style.textDecoration = 'Underline';
+        producttabchoiceunderline[0].style.textDecoration = 'Underline';
+        producttabchoiceunderline[0].style.textDecoration = 'Underline';
+        for (let j = 0; j < producttabunderline.length; j++) {
+           producttabunderline[j].style.textDecoration = 'underline';
+        }
 
     }else{
         subtitleunderlineinput.val('')
-
-           producttabchoiceunderline[0].style.textDecoration = '';
-
-
-           producttabchoiceunderline[0].style.textDecoration = '';
-
+        producttabchoiceunderline[0].style.textDecoration = '';
+        producttabchoiceunderline[0].style.textDecoration = '';
+        for (let j = 0; j < producttabunderline.length; j++) {
+           producttabunderline[j].style.textDecoration = '';
+        }
     }
 
 
