@@ -3730,7 +3730,7 @@ body {
                                         {% if messages %}
                                         {% for message in messages %}
                                         <script>
-                alert('{{message}}')
+                                        alert('{{message}}')
                                         </script>
                                         {% endfor %}
                                         {% endif %}
@@ -3755,7 +3755,10 @@ body {
                                                 <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>
                                             </td>
 
-                                            {% endfor %}
+
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
                                 </div>
                             </div>
                         </div>
