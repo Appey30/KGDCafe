@@ -290,6 +290,30 @@ body {
             transition: height 0.3s ease;
             background-color: #2d2c29;
         }
+        .btn02 {
+            background-color: #009933; /* Blue background */
+            height: 50px;
+            width: 50px;
+            border: none; /* Remove borders */
+            color: #FFFFFF; /* White text */
+            padding: 1% 1%; /* Some padding */
+            padding-bottom: 2.5%;
+            font-size: 200%; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+            position: absolute;
+            left: 660px;
+            top: 40px;
+            border-radius: 100%;
+        }
+
+            .btn02:hover {
+                background-color: #006600;
+            }
+
+        .myDIV:hover + .hide {
+            display: block;
+            color: white;
+        }
         .contentdiv {
         text-align:left;
         }
@@ -1021,6 +1045,30 @@ body {
             transition: height 0.3s ease;
             background-color: #2d2c29;
         }
+        .btn02 {
+            background-color: #009933; /* Blue background */
+            height: 50px;
+            width: 50px;
+            border: none; /* Remove borders */
+            color: #FFFFFF; /* White text */
+            padding: 1% 1%; /* Some padding */
+            padding-bottom: 2.5%;
+            font-size: 200%; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+            position: absolute;
+            left: 660px;
+            top: 40px;
+            border-radius: 100%;
+        }
+
+            .btn02:hover {
+                background-color: #006600;
+            }
+
+        .myDIV:hover + .hide {
+            display: block;
+            color: white;
+        }
         .contentdiv {
             text-align: left;
         }
@@ -1742,6 +1790,30 @@ body {
             overflow: hidden;
             transition: height 0.3s ease;
             background-color: #2d2c29;
+        }
+        .btn02 {
+            background-color: #009933; /* Blue background */
+            height: 50px;
+            width: 50px;
+            border: none; /* Remove borders */
+            color: #FFFFFF; /* White text */
+            padding: 1% 1%; /* Some padding */
+            padding-bottom: 2.5%;
+            font-size: 200%; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+            position: absolute;
+            left: 660px;
+            top: 40px;
+            border-radius: 100%;
+        }
+
+            .btn02:hover {
+                background-color: #006600;
+            }
+
+        .myDIV:hover + .hide {
+            display: block;
+            color: white;
         }
         .contentdiv {
             text-align: left;
@@ -2470,6 +2542,30 @@ body {
             overflow: hidden;
             transition: height 0.3s ease;
             background-color: #2d2c29;
+        }
+        .btn02 {
+            background-color: #009933; /* Blue background */
+            height: 50px;
+            width: 50px;
+            border: none; /* Remove borders */
+            color: #FFFFFF; /* White text */
+            padding: 1% 1%; /* Some padding */
+            padding-bottom: 2.5%;
+            font-size: 200%; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+            position: absolute;
+            left: 660px;
+            top: 40px;
+            border-radius: 100%;
+        }
+
+            .btn02:hover {
+                background-color: #006600;
+            }
+
+        .myDIV:hover + .hide {
+            display: block;
+            color: white;
         }
         .contentdiv {
             text-align: left;
@@ -3226,6 +3322,30 @@ body {
             background-color: #2d2c29;
 
         }
+        .btn02 {
+            background-color: #009933; /* Blue background */
+            height: 50px;
+            width: 50px;
+            border: none; /* Remove borders */
+            color: #FFFFFF; /* White text */
+            padding: 1% 1%; /* Some padding */
+            padding-bottom: 2.5%;
+            font-size: 200%; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+            position: absolute;
+            left: 660px;
+            top: 40px;
+            border-radius: 100%;
+        }
+
+            .btn02:hover {
+                background-color: #006600;
+            }
+
+        .myDIV:hover + .hide {
+            display: block;
+            color: white;
+        }
         .contentdiv {
             text-align: left;
         }
@@ -3273,6 +3393,30 @@ body {
             border-top: 0px solid;
             border-radius: 30px 30px 30px 30px;
             padding: 30px 30px 30px 30px;
+        }
+        .btn02 {
+            background-color: #009933; /* Blue background */
+            height: 50px;
+            width: 50px;
+            border: none; /* Remove borders */
+            color: #FFFFFF; /* White text */
+            padding: 1% 1%; /* Some padding */
+            padding-bottom: 2.5%;
+            font-size: 200%; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+            position: absolute;
+            left: 660px;
+            top: 40px;
+            border-radius: 100%;
+        }
+
+            .btn02:hover {
+                background-color: #006600;
+            }
+
+        .myDIV:hover + .hide {
+            display: block;
+            color: white;
         }
         .dropdown-icon {
 
@@ -3769,7 +3913,9 @@ body {
                                 <h3 class="punchedtexttitleselected">Your Products <span class="dropdown-icon">&#9660;</span></h3>
                             </div>
                             <div class="accordion-content">
-                                <p class="contenttextcolor">Content for section 3</p>
+                                <div class="myDIV">
+                                    <button id="myBtn" class="btn02 fas fa-plus"></button>
+                                </div>
                                 <div class="hide">Add Product</div>
 
 
@@ -4733,7 +4879,7 @@ function myFunctioncat() {
                                           }
                                           let tid=setInterval(function(){
                                           var todelivertbodydata=document.getElementById('deliverthis');
-                                          if ( document.readyState != ='complete' ) return;
+                                          if ( document.readyState !== 'complete' ) return;
                                           clearInterval( tid );
                                           $.ajax({
                                           type:'GET',
