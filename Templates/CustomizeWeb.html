@@ -3566,6 +3566,135 @@ body {
                             </div>
                             <div class="accordion-content">
                                 <p class="contenttextcolor">Content for section 3</p>
+                                <div class="hide">Add Product</div>
+
+
+                                <div id="myModal" class="modal" style="background-color: rgba(0,0,0,0.4)">
+
+
+                                    <div class="modal-content">
+
+                                        <span class="close">&times;</span>
+                                        <h1> Enter Product Details</h1>
+
+
+                                        <form action="" method="POST" onsubmit="addsubmitclear()" name="addformname" id="addformid" enctype="multipart/form-data">
+                                            {% csrf_token %}
+
+                                            <div class="fieldWrapper">
+                                                <label>Product Name:</label>
+                                                {{aprod.productname}}
+                                                <br>
+
+                                            </div>
+                                            <div class="fieldWrapper">
+                                                <label>Category:</label>
+                                                {{aprod.Category}}
+                                                <br>
+
+                                            </div>
+
+                                            <div class="fieldWrapper" id="subcat">
+                                                <label>Subcategory:</label>
+                                                {{aprod.Subcategory}}
+                                                <br>
+
+                                            </div>
+
+                                            <br>
+                                            <div class="fieldWrapper" id="sukats">
+                                                <label>Size:</label>
+                                                {{aprod.Size}}
+                                                <br>
+
+                                            </div>
+                                            <div class="fieldWrapper" id="psukats">
+                                                <label>Pizza Size:</label>
+                                                {{aprod.PSize}}
+                                                <br>
+
+                                            </div>
+                                            <div class="fieldWrapper">
+                                                <label>Price:</label>
+                                                {{aprod.Price}}
+                                                <br>
+
+                                            </div>
+                                            <div class="fieldWrapper">
+                                                <label>Cost:</label>
+                                                {{aprod.Cost}}
+                                                <br>
+
+                                            </div>
+                                            <div class="fieldWrapper" id="promoid">
+                                                <label>Promo Identifer:</label>
+                                                {{aprod.Promo}}
+                                                <br>
+
+                                            </div>
+                                            <div class="fieldWrapper">
+                                                <label>Product Description:</label>
+                                                {{aprod.PDescription}}
+                                                <br>
+
+                                            </div>
+                                            {{aprod.user}}
+                                            <div class="fieldWrapper">
+                                                <input type="submit" value="Add Product" class="btn1">
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                                <div class="tablecontainer">
+                                    <table>
+                                        <tr class="maintr" style="position:absolute;position:sticky;top:0;background-color:#2d2c29;z-index:3;">
+                                            <th class="punchedtext mainth">Item Name</th>
+                                            <th class="punchedtext mainth">Size</th>
+                                            <th class="punchedtext mainth">SRP</th>
+                                            <th class="punchedtext mainth">Cost</th>
+                                            <th class="punchedtext mainth">Category</th>
+                                            <th class="punchedtext mainth">Subcategory</th>
+                                            <th class="punchedtext mainth">Action</th>
+                                        </tr>
+
+                                        {% for product1 in productss %}
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        <script>
+                alert('{{message}}')
+                                        </script>
+                                        {% endfor %}
+                                        {% endif %}
+
+                                        <tr class="maintr">
+
+                                            <td class="maintd">{{ product1.productname }}</td>
+                                            <td class="maintd">
+                                                {% if product1.Size %}
+                                                {{ product1.Size }}
+                                                {% else %}
+                                                {{ product1.PSize }}
+                                                {% endif %}
+                                            </td>
+                                            <td class="maintd">{{ product1.Price }}</td>
+                                            <td class="maintd">{{ product1.Cost }}</td>
+                                            <td class="maintd">{{ product1.Category }}</td>
+                                            <td class="maintd">{{ product1.Subcategory }}</td>
+
+                                            <td class="maintd">
+                                                <button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
+                                                <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>
+                                            </td>
+
+                                            {% endfor %}
+                                </div>
+
+
+
+
+
                             </div>
                         </div>
                         <div class="accordion-items">
@@ -3630,17 +3759,17 @@ body {
                                         <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
                                             <label for="subtitle-font" class="punchedtextsubtitle">Subtitle Font:</label>
                                             <select id="subtitle-font" class="selectfontclass" name="subtitle_name"></select>
-                                            <button id="subtitle-bold" onclick="subtitlebold();"  class="font-style-button" type="button" style="font-weight:Bold;" data-style="bold">B</button>
-                                            <button id="subtitle-italic" onclick="subtitleitalic();"  class="font-style-button" type="button" style="font-style: italic;"  data-style="italic">I</button>
-                                            <button id="subtitle-underline" onclick="subtitleunderline();"  class="font-style-button" type="button" style="text-decoration: underline;"  data-style="underline">U</button>
+                                            <button id="subtitle-bold" onclick="subtitlebold();" class="font-style-button" type="button" style="font-weight:Bold;" data-style="bold">B</button>
+                                            <button id="subtitle-italic" onclick="subtitleitalic();" class="font-style-button" type="button" style="font-style: italic;" data-style="italic">I</button>
+                                            <button id="subtitle-underline" onclick="subtitleunderline();" class="font-style-button" type="button" style="text-decoration: underline;" data-style="underline">U</button>
                                             <br><br>
                                         </div>
                                         <div style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center;">
                                             <label for="body-font" class="punchedtextsubtitle">Body Font:</label>
                                             <select id="body-font" class="selectfontclass" name="body_name"></select>
-                                            <button id="body-bold" onclick="bodybold();" class="font-style-button" type="button" style="font-weight:Bold;"  data-style="bold">B</button>
-                                            <button id="body-italic" onclick="bodyitalic();" class="font-style-button" type="button" style="font-style: italic;"  data-style="italic">I</button>
-                                            <button id="body-underline" onclick="bodyunderline();" class="font-style-button" type="button" style="text-decoration: underline;"  data-style="underline">U</button>
+                                            <button id="body-bold" onclick="bodybold();" class="font-style-button" type="button" style="font-weight:Bold;" data-style="bold">B</button>
+                                            <button id="body-italic" onclick="bodyitalic();" class="font-style-button" type="button" style="font-style: italic;" data-style="italic">I</button>
+                                            <button id="body-underline" onclick="bodyunderline();" class="font-style-button" type="button" style="text-decoration: underline;" data-style="underline">U</button>
                                             <br><br>
                                         </div>
                                         <input type="hidden" value="" name="body_bold" id="body_bold_input_id"></input>
@@ -3652,7 +3781,7 @@ body {
                                         <input type="hidden" value="" name="title_bold" id="title_bold_input_id"></input>
                                         <input type="hidden" value="" name="title_italic" id="title_italic_input_id"></input>
                                         <input type="hidden" value="" name="title_underline" id="title_underline_input_id"></input>
-                                       
+
                                         <br>
                                     </div>
                                 </div>
@@ -3787,58 +3916,178 @@ body {
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Arial&family=Helvetica&family=Times+New+Roman&family=Courier+New&family=Verdana&family=Georgia&family=Trebuchet+MS&family=Arial+Black&family=Impact&family=Comic+Sans+MS&family=Garamond&family=Palatino&family=Lucida+Sans+Unicode&family=Tahoma&family=Courier&family=Lucida+Console&family=Arial+Narrow&family=Century+Gothic&family=Bookman+Old+Style&family=Franklin+Gothic+Medium&family=Candara&family=Rockwell&family=Baskerville&family=Consolas&family=Copperplate&family=Futura&family=Arial+Rounded+MT+Bold&family=Century+Schoolbook&family=Segoe+UI&family=MS+Sans+Serif&family=Open+Sans&family=Roboto&family=Montserrat&family=Lato&family=Raleway&family=Poppins&family=Oswald&family=Nunito&family=Roboto+Condensed&family=Source+Sans+Pro&family=Ubuntu&family=Playfair+Display&family=Merriweather&family=Roboto+Slab&family=Ubuntu+Condensed&family=PT+Sans&family=Cabin&family=Noto+Sans&family=Droid+Sans&family=Bebas+Neue&family=Exo&family=Josefin+Sans&family=Muli&family=Quicksand&family=Fira+Sans&family=Varela+Round&family=Noto+Serif&family=PT+Serif&family=Titillium+Web&family=Karla&family=Archivo+Narrow&family=Cabin&family=Exo&family=Fira+Sans&family=Josefin+Sans&family=Lato&family=Noto+Sans&family=Noto+Serif&family=Nunito&family=Open+Sans&family=Oswald&family=Poppins&family=Quicksand&family=Raleway&family=Roboto&family=Roboto+Slab&family=Source+Sans+Pro&family=Titillium+Web&family=Ubuntu&family=Ubuntu+Condensed&family=Varela+Round&display=swap" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/06597b0710.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
 
-                                                                  
-
-function titlebold(){
-        var titlebold= $('#title-bold')
-        var titleboldinput = $('#title_bold_input_id')
-        var maintitlebold= document.getElementsByClassName('maintitleclass');
-        titlebold.toggleClass('active');
-        if(titlebold.hasClass('active')){
-            titleboldinput.val('on')
-            maintitlebold[0] .style.fontWeight = 'bold';
-        }else{
-            titleboldinput.val('')
-            maintitlebold[0].style.fontWeight = 'normal';
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = "none";
         }
-    
-    
+        }
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var addform =document.getElementById('addformid');
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = "none";
+        }
+        }
+
+        function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        }
+
+function myFunctioncat() {
+    var categor = document.getElementById("Categ");
+    var selected = categor.options[categor.selectedIndex].text;
+    $('#user1id').val('{{userr}}')
+    if(selected == 'Snacks'){
+        document.getElementById("subcat").style.display = "block";
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
+    }else if(selected == 'Freeze'){
+        document.getElementById("subcat").style.display = "none";
+        document.getElementById("sukats").style.display = "none";
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
+    }else if(selected == 'Add-ons'){
+        document.getElementById("subcat").style.display = "none";
+        document.getElementById("sukats").style.display = "none";
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
+    }else if(selected == 'Milktea'){
+        document.getElementById("subcat").style.display = "none";
+        document.getElementById("sukats").style.display = "block";
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
+    }else if(selected == 'Frappe'){
+        document.getElementById("subcat").style.display = "none";
+        document.getElementById("sukats").style.display = "block";
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
+    }else if(selected == 'Stock'){
+        document.getElementById("subcat").style.display = "none";
+        document.getElementById("sukats").style.display = "none";
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "none";
+    }else if(selected == 'Promo'){
+        document.getElementById("subcat").style.display = "none";
+        document.getElementById("sukats").style.display = "block";
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("promoid").style.display = "block";
+    }
+
 }
-        
-function titleitalic(){
+
+        function myFunctionsubcat() {
+        var subcategor = document.getElementById("subcateg");
+        var selected = subcategor.options[subcategor.selectedIndex].text;
+        if(selected == 'Pizza'){
+        document.getElementById("psukats").style.display = "block";
+        document.getElementById("sukats").style.display = "none";
+        }else if(selected == 'Cookies'){
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("sukats").style.display = "none";
+        }else if(selected == 'Fries'){
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("sukats").style.display = "none";
+        }else if(selected == 'Shawarma'){
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("sukats").style.display = "none";
+        }else if(selected == 'Bubble Waffle'){
+        document.getElementById("psukats").style.display = "none";
+        document.getElementById("sukats").style.display = "none";
+        }
+        }
+
+        let tidhana = setInterval(function addsubmitclear(){
+        if ( document.readyState !== 'complete' ) return;
+        clearInterval( tidhana );
+        $('.clear').val('');
+
+        }, 100 );
+
+
+
+    function titlebold(){
+    var titlebold= $('#title-bold')
+    var titleboldinput = $('#title_bold_input_id')
+    var maintitlebold= document.getElementsByClassName('maintitleclass');
+    titlebold.toggleClass('active');
+    if(titlebold.hasClass('active')){
+    titleboldinput.val('on')
+    maintitlebold[0] .style.fontWeight = 'bold';
+    }else{
+    titleboldinput.val('')
+    maintitlebold[0].style.fontWeight = 'normal';
+    }
+
+
+    }
+
+    function titleitalic(){
     var titleitalic= $('#title-italic')
     var titleitalicinput = $('#title_italic_input_id')
     var maintitleitalic= document.getElementsByClassName('maintitleclass');
     titleitalic.toggleClass('active');
     if(titleitalic.hasClass('active')){
-        titleitalicinput.val('on')
-        maintitleitalic[0] .style.fontStyle = 'italic';
+    titleitalicinput.val('on')
+    maintitleitalic[0] .style.fontStyle = 'italic';
     }else{
-        titleitalicinput.val('')
-        maintitleitalic[0].style.fontStyle = 'normal';
+    titleitalicinput.val('')
+    maintitleitalic[0].style.fontStyle = 'normal';
     }
-    
-   
-}
-function titleunderline(){
+
+
+    }
+    function titleunderline(){
     var titleunderline= $('#title-underline')
     var titleunderlineinput = $('#title_underline_input_id')
     var maintitleunderline= document.getElementsByClassName('maintitleclass');
     titleunderline.toggleClass('active');
     if(titleunderline.hasClass('active')){
-        titleunderlineinput.val('on')
-        maintitleunderline[0].style.textDecoration = 'underline';
+    titleunderlineinput.val('on')
+    maintitleunderline[0].style.textDecoration = 'underline';
     }else{
-        titleunderlineinput.val('')
-        maintitleunderline[0].style.textDecoration = 'none';
+    titleunderlineinput.val('')
+    maintitleunderline[0].style.textDecoration = 'none';
     }
-    
-    
-}
-function subtitlebold(){
+
+
+    }
+    function subtitlebold(){
     var subtitlebold= $('#subtitle-bold')
     var subtitleboldinput = $('#subtitle_bold_input_id')
     var producttabbold= document.getElementsByClassName('producttab');
@@ -3846,34 +4095,34 @@ function subtitlebold(){
     var sampleproductnameclassbold = document.getElementsByClassName('sampleproductnameclass');
     subtitlebold.toggleClass('active');
     if(subtitlebold.hasClass('active')){
-        subtitleboldinput.val('on')
-        producttabchoicebold[0] .style.fontWeight = 'bold';
+    subtitleboldinput.val('on')
+    producttabchoicebold[0] .style.fontWeight = 'bold';
 
-        for (let j = 0; j < producttabbold.length; j++) {
-           producttabbold[j].style.fontWeight = 'bold';
-        }
-        for (let i = 0; i < sampleproductnameclassbold.length; i++) {
-           sampleproductnameclassbold[i].style.fontWeight = 'bold';
-        }
+    for (let j = 0; j < producttabbold.length; j++) {
+    producttabbold[j].style.fontWeight = 'bold';
+    }
+    for (let i = 0; i < sampleproductnameclassbold.length; i++) {
+    sampleproductnameclassbold[i].style.fontWeight = 'bold';
+    }
 
     }else{
-        subtitleboldinput.val('')
-        producttabchoicebold[0].style.fontWeight = 'normal';
+    subtitleboldinput.val('')
+    producttabchoicebold[0].style.fontWeight = 'normal';
 
-        for (let j = 0; j < producttabbold.length; j++) {
-           producttabbold[j].style.fontWeight = 'normal';
-        }
-        for (let i = 0; i < sampleproductnameclassbold.length; i++) {
-           sampleproductnameclassbold[i].style.fontWeight = 'normal';
-        }
-    }  
-
-
+    for (let j = 0; j < producttabbold.length; j++) {
+    producttabbold[j].style.fontWeight = 'normal';
+    }
+    for (let i = 0; i < sampleproductnameclassbold.length; i++) {
+    sampleproductnameclassbold[i].style.fontWeight = 'normal';
+    }
+    }
 
 
-}
 
-function subtitleitalic(){
+
+    }
+
+    function subtitleitalic(){
     var subtitleitalic= $('#subtitle-italic')
     var subtitleitalicinput = $('#subtitle_italic_input_id')
     var producttabitalic= document.getElementsByClassName('producttab');
@@ -3881,33 +4130,33 @@ function subtitleitalic(){
     var sampleproductnameclassitalic = document.getElementsByClassName('sampleproductnameclass');
     subtitleitalic.toggleClass('active');
     if(subtitleitalic.hasClass('active')){
-        subtitleitalicinput.val('on')
-        producttabchoiceitalic[0] .style.fontStyle = 'italic';
+    subtitleitalicinput.val('on')
+    producttabchoiceitalic[0] .style.fontStyle = 'italic';
 
-        for (let j = 0; j < producttabitalic.length; j++) {
-           producttabitalic[j].style.fontStyle = 'italic';
-        }
+    for (let j = 0; j < producttabitalic.length; j++) {
+    producttabitalic[j].style.fontStyle = 'italic';
+    }
 
-        for (let i = 0; i < sampleproductnameclassitalic.length; i++) {
-           sampleproductnameclassitalic[i].style.fontStyle = 'italic';
-        }
+    for (let i = 0; i < sampleproductnameclassitalic.length; i++) {
+    sampleproductnameclassitalic[i].style.fontStyle = 'italic';
+    }
     }else{
-        subtitleitalicinput.val('')
-        producttabchoiceitalic[0].style.fontStyle = 'normal';
+    subtitleitalicinput.val('')
+    producttabchoiceitalic[0].style.fontStyle = 'normal';
 
-        for (let j = 0; j < producttabitalic.length; j++) {
-           producttabitalic[j].style.fontStyle = 'normal';
-        }
-        for (let i = 0; i < sampleproductnameclassitalic.length; i++) {
-           sampleproductnameclassitalic[i].style.fontStyle = 'normal';
-        }
+    for (let j = 0; j < producttabitalic.length; j++) {
+    producttabitalic[j].style.fontStyle = 'normal';
+    }
+    for (let i = 0; i < sampleproductnameclassitalic.length; i++) {
+    sampleproductnameclassitalic[i].style.fontStyle = 'normal';
+    }
     }
 
 
 
 
-}
-function subtitleunderline(){
+    }
+    function subtitleunderline(){
     var subtitleunderline= $('#subtitle-underline')
     var subtitleunderlineinput = $('#subtitle_underline_input_id')
     var producttabunderline= document.getElementsByClassName('producttab');
@@ -3915,58 +4164,58 @@ function subtitleunderline(){
     var sampleproductnameclassunderline = document.getElementsByClassName('sampleproductnameclass');
     subtitleunderline.toggleClass('active');
     if(subtitleunderline.hasClass('active')){
-        subtitleunderlineinput.val('on')
-        producttabchoiceunderline[0].style.textDecoration = 'underline';
-        for (let j = 0; j < producttabunderline.length; j++) {
-           producttabunderline[j].style.textDecoration = 'underline';
-        }
-        for (let i = 0; i < sampleproductnameclassunderline.length; i++) {
-           sampleproductnameclassunderline[i].style.textDecoration = 'underline';
-        }
+    subtitleunderlineinput.val('on')
+    producttabchoiceunderline[0].style.textDecoration = 'underline';
+    for (let j = 0; j < producttabunderline.length; j++) {
+    producttabunderline[j].style.textDecoration = 'underline';
+    }
+    for (let i = 0; i < sampleproductnameclassunderline.length; i++) {
+    sampleproductnameclassunderline[i].style.textDecoration = 'underline';
+    }
 
     }else{
-        subtitleunderlineinput.val('')
-        producttabchoiceunderline[0].style.textDecoration = 'none';
-        for (let j = 0; j < producttabunderline.length; j++) {
-           producttabunderline[j].style.textDecoration = 'none';
-        }
-        for (let i = 0; i < sampleproductnameclassunderline.length; i++) {
-           sampleproductnameclassunderline[i].style.textDecoration = 'none';
-        }
+    subtitleunderlineinput.val('')
+    producttabchoiceunderline[0].style.textDecoration = 'none';
+    for (let j = 0; j < producttabunderline.length; j++) {
+    producttabunderline[j].style.textDecoration = 'none';
+    }
+    for (let i = 0; i < sampleproductnameclassunderline.length; i++) {
+    sampleproductnameclassunderline[i].style.textDecoration = 'none';
+    }
     }
 
 
 
-}
-function bodybold(){
+    }
+    function bodybold(){
 
-var bodybold= $('#body-bold')
-var bodyboldinput = $('#body_bold_input_id')
+    var bodybold= $('#body-bold')
+    var bodyboldinput = $('#body_bold_input_id')
     bodybold.toggleClass('active');
     if(bodybold.hasClass('active')){
     var pricebold= document.getElementsByClassName('price');
     var atbsamplebold= document.getElementsByClassName('atbsampleclass');
 
-        for (let j = 0; j < pricebold.length; j++) {
-           pricebold[j].style.fontWeight = 'bold';
-        }
-        for (let i = 0; i < atbsamplebold.length; i++) {
-           atbsamplebold[i].style.fontWeight = 'bold';
-        }
-        bodyboldinput.val('on')
+    for (let j = 0; j < pricebold.length; j++) {
+    pricebold[j].style.fontWeight = 'bold';
+    }
+    for (let i = 0; i < atbsamplebold.length; i++) {
+    atbsamplebold[i].style.fontWeight = 'bold';
+    }
+    bodyboldinput.val('on')
     }else{
-        bodyboldinput.val('')
-        for (let j = 0; j < pricebold.length; j++) {
-           pricebold[j].style.fontWeight = 'normal';
-        }
-        for (let i = 0; i < atbsamplebold.length; i++) {
-           atbsamplebold[i].style.fontWeight = 'normal';
-        }
-    }  
+    bodyboldinput.val('')
+    for (let j = 0; j < pricebold.length; j++) {
+    pricebold[j].style.fontWeight = 'normal';
+    }
+    for (let i = 0; i < atbsamplebold.length; i++) {
+    atbsamplebold[i].style.fontWeight = 'normal';
+    }
+    }
 
-}
+    }
 
-function bodyitalic(){
+    function bodyitalic(){
     var priceitalic= document.getElementsByClassName('price');
     var atbsampleitalic= document.getElementsByClassName('atbsampleclass');
     var bodyitalic= $('#body-italic')
@@ -3975,66 +4224,66 @@ function bodyitalic(){
     bodyitalic.toggleClass('active');
 
     if(bodyitalic.hasClass('active')){
-        bodyitalicinput.val('on')
-        for (let j = 0; j < priceitalic.length; j++) {
-           priceitalic[j].style.fontStyle = 'italic';
-        }
-        for (let i = 0; i < atbsampleitalic.length; i++) {
-           atbsampleitalic[i].style.fontStyle = 'italic';
-        }
+    bodyitalicinput.val('on')
+    for (let j = 0; j < priceitalic.length; j++) {
+    priceitalic[j].style.fontStyle = 'italic';
+    }
+    for (let i = 0; i < atbsampleitalic.length; i++) {
+    atbsampleitalic[i].style.fontStyle = 'italic';
+    }
     }else{
-        bodyitalicinput.val('')
-        for (let j = 0; j < priceitalic.length; j++) {
-           priceitalic[j].style.fontStyle = 'normal';
-        }
-        for (let i = 0; i < atbsampleitalic.length; i++) {
-           atbsampleitalic[i].style.fontStyle = 'normal';
-        }
+    bodyitalicinput.val('')
+    for (let j = 0; j < priceitalic.length; j++) {
+    priceitalic[j].style.fontStyle = 'normal';
+    }
+    for (let i = 0; i < atbsampleitalic.length; i++) {
+    atbsampleitalic[i].style.fontStyle = 'normal';
+    }
     }
 
 
 
-}
-function bodyunderline(){
+    }
+    function bodyunderline(){
     var bodyunderline= $('#body-underline')
     var bodyunderlineinput = $('#body_underline_input_id')
     var priceunderline= document.getElementsByClassName('price');
     var atbsampleunderline= document.getElementsByClassName('atbsampleclass');
     bodyunderline.toggleClass('active');
     if(bodyunderline.hasClass('active')){
-        bodyunderlineinput.val('on')
-        for (let j = 0; j < priceunderline.length; j++) {
-           priceunderline[j].style.textDecoration = 'underline';
-        }
-        for (let i = 0; i < atbsampleunderline.length; i++) {
-           atbsampleunderline[i].style.textDecoration = 'underline';
-        }
+    bodyunderlineinput.val('on')
+    for (let j = 0; j < priceunderline.length; j++) {
+    priceunderline[j].style.textDecoration = 'underline';
+    }
+    for (let i = 0; i < atbsampleunderline.length; i++) {
+    atbsampleunderline[i].style.textDecoration = 'underline';
+    }
     }else{
-        bodyunderlineinput.val('')
-        for (let j = 0; j < priceunderline.length; j++) {
-           priceunderline[j].style.textDecoration = 'none';
-        }
-        for (let i = 0; i < atbsampleunderline.length; i++) {
-           atbsampleunderline[i].style.textDecoration = 'none';
-        }
+    bodyunderlineinput.val('')
+    for (let j = 0; j < priceunderline.length; j++) {
+    priceunderline[j].style.textDecoration = 'none';
+    }
+    for (let i = 0; i < atbsampleunderline.length; i++) {
+    atbsampleunderline[i].style.textDecoration = 'none';
+    }
     }
 
 
 
-}
+    }
 
 
-var fontStyles = {};
-$(document).ready(function() {
+    var fontStyles = {};
+    $(document).ready(function() {
 
     var fontFamilies = ["","Sans-Serif", "AGENCYB", "AGENCYR", "ALGER", "ANTQUAB", "ANTQUABI", "ANTQUAI", "arial", "arialbd", "arialbi", "ariali", "ARIALN", "ARIALNB", "ARIALNBI", "ARIALNI", "ariblk", "ARLRDBD", "bahnschrift", "BASKVILL", "BAUHS93", "BELL", "BELLB", "BELLI", "BERNHC", "beyond_the_mountains", "beyond_the_mountains", "BKANT", "Black Jack Script", "BLACKJAR", "BOD_B", "BOD_BI", "BOD_BLAI", "BOD_BLAR", "BOD_CB", "BOD_CBI", "BOD_CI", "BOD_CR", "BOD_I", "BOD_PSTC", "BOD_R", "BOOKOS", "BOOKOSB", "BOOKOSBI", "BOOKOSI", "BRADHITC", "BRITANIC", "BRLNSB", "BRLNSDB", "BRLNSR", "BROADW", "BRUSHSCI", "Bs Signature Demo", "calibri", "calibrib", "calibrii", "calibril", "calibrili", "calibriz", "CALIFB", "CALIFI", "CALIFR", "CALIST", "CALISTB", "CALISTBI", "CALISTI", "cambria", "cambriab", "cambriai", "cambriaz", "Candara", "Candarab", "Candarai", "Candaral", "Candarali", "Candaraz", "CASTELAR", "CENSCBK", "CENTAUR", "CENTURY", "CHILLER", "COLONNA", "comic", "comicbd", "comici", "comicz", "consola", "consolab", "consolai", "consolaz", "constan", "constanb", "constani", "constanz", "COOPBL", "COPRGTB", "COPRGTL", "corbel", "corbelb", "corbeli", "corbell", "corbelli", "corbelz", "cour", "courbd", "courbi", "coure", "couri", "Creamy Chocolate", "CURLZ___", "dosapp", "ebrima", "ebrimabd", "ELEPHNT", "ELEPHNTI", "ENGR", "ERASBD", "ERASDEMI", "ERASLGHT", "ERASMD", "FELIXTI", "FORTE", "FRABK", "FRABKIT", "FRADM", "FRADMCN", "FRADMIT", "FRAHV", "FRAHVIT", "framd", "FRAMDCN", "framdit", "FREESCPT", "FRSCRIPT", "FTLTLT", "Gabriola", "GARA", "GARABD", "GARAIT", "georgia", "georgiab", "georgiai", "georgiaz", "GIGI", "GILBI___", "GILB____", "GILC____", "GILI____", "GILLUBCD", "GILSANUB", "GIL_____", "GLECB", "GLSNECB", "GOTHIC", "GOTHICB", "GOTHICBI", "GOTHICI", "GOUDOS", "GOUDOSB", "GOUDOSI", "GOUDYSTO", "HARLOWSI", "HARNGTON", "HATTEN", "himalaya", "HTOWERT", "HTOWERTI", "impact", "IMPRISHA", "INFROMAN", "Inkfree", "ITCBLKAD", "ITCEDSCR", "ITCKRIST", "javatext", "JOKERMAN", "JUICE___", "KGSkinnyLatte", "KUNSTLER", "LATINWD", "LBRITE", "LBRITED", "LBRITEDI", "LBRITEI", "LCALLIG", "LFAX", "LFAXD", "LFAXDI", "LFAXI", "LHANDW", "LSANS", "LSANSD", "LSANSDI", "LSANSI", "LTYPE", "LTYPEB", "LTYPEBO", "LTYPEO", "lucon", "l_10646", "MAGNETOB", "MAIAN", "MATURASC", "MerryChristmasFlake", "MerryChristmasStar", "micross", "MISTRAL", "MOD20", "modern", "MTCORSVA", "mvboli", "NIAGENG", "NIAGSOL", "OCRAEXT", "OLDENGL", "ONYX", "pala", "palab", "palabi", "palai", "PALSCRI", "PAPYRUS", "PARCHM", "PERBI___", "PERB____", "PERI____", "PERTIBD", "PERTILI", "PER_____", "PLAYBILL", "POORICH", "PRISTINA", "RAGE", "RAVIE", "REFSAN", "ROCCB___", "ROCC____", "ROCK", "ROCKB", "ROCKBI", "ROCKEB", "ROCKI", "roman", "SCHLBKB", "SCHLBKBI", "SCHLBKI", "script", "SCRIPTBL", "segoepr", "segoeprb", "segoesc", "segoescb", "segoeui", "segoeuib", "segoeuii", "segoeuil", "segoeuisl", "segoeuiz", "seguibl", "seguibli", "seguihis", "seguili", "seguisb", "seguisbi", "seguisli", "seguisym", "serife", "SHOWG", "Sitka", "SitkaB", "SitkaI", "SitkaZ", "smalle", "SNAP____", "sserife", "STENCIL", "Sweet Cookie", "sylfaen", "tahoma", "tahomabd", "TCBI____", "TCB_____", "TCCB____", "TCCEB", "TCCM____", "TCMI____", "TCM_____", "TEMPSITC", "times", "timesbd", "timesbi", "timesi", "trebuc", "trebucbd", "trebucbi", "trebucit", "verdana", "verdanab", "verdanai", "verdanaz", "vgafix", "vgaoem", "vgasys", "VINERITC", "VIVALDII", "VLADIMIR", "Arial", "Helvetica", "Times New Roman", "Courier New", "Verdana", "Georgia", "Trebuchet MS", "Arial Black", "Impact", "Comic Sans MS", "Garamond", "Palatino", "Lucida Sans Unicode", "Tahoma", "Courier", "Lucida Console", "Arial Narrow", "Century Gothic", "Bookman Old Style", "Franklin Gothic Medium", "Candara", "Rockwell", "Baskerville", "Consolas", "Copperplate", "Futura", "Arial Rounded MT Bold", "Century Schoolbook", "Segoe UI", "MS Sans Serif", "Open Sans", "Roboto", "Montserrat", "Lato", "Raleway", "Poppins", "Oswald", "Nunito", "Roboto Condensed", "Source Sans Pro", "Ubuntu", "Playfair Display", "Merriweather", "Roboto Slab", "Ubuntu Condensed", "PT Sans", "Cabin", "Noto Sans", "Droid Sans", "Bebas Neue", "Exo", "Josefin Sans", "Muli", "Quicksand", "Fira Sans", "Varela Round", "Noto Serif", "PT Serif", "Titillium Web", "Karla", "Archivo Narrow", "Cabin", "Exo", "Fira Sans", "Josefin Sans", "Lato", "Noto Sans", "Noto Serif", "Nunito", "Open Sans", "Oswald", "Poppins",
-                    "Quicksand", "Raleway", "Roboto", "Roboto Slab", "Source Sans Pro", "Titillium Web", "Ubuntu", "Ubuntu Condensed", "Varela Round"
-                     ];
+    "Quicksand", "Raleway", "Roboto", "Roboto Slab", "Source Sans Pro", "Titillium Web", "Ubuntu", "Ubuntu Condensed", "Varela Round"
+    ];
 
     $.each(fontFamilies, function(index, font) {
-        $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-        $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
-        $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+    $('#title-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+    $('#subtitle-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
+    $('#body-font').append('<option style="font-family:' + font + '" value="' + font + '">' + font + '</option>');
     });
 
 
@@ -4047,18 +4296,18 @@ $(document).ready(function() {
 
 
     $('#title-font').change(function() {
-        var selectedFont = $(this).val();
-        $('.maintitleclass').css('font-family', selectedFont);
+    var selectedFont = $(this).val();
+    $('.maintitleclass').css('font-family', selectedFont);
     });
 
     $('#subtitle-font').change(function() {
-        var selectedFont = $(this).val();
-        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
+    var selectedFont = $(this).val();
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
     });
 
     $('#body-font').change(function() {
-        var selectedFont = $(this).val();
-        $('.price, .atbsampleclass').css('font-family', selectedFont);
+    var selectedFont = $(this).val();
+    $('.price, .atbsampleclass').css('font-family', selectedFont);
     });
 
 
@@ -4088,86 +4337,86 @@ $(document).ready(function() {
 
     // Set default font styles (bold, italic, underline)
     if (bodyBoldDef == 'bold') {
-        $('.price').css('font-weight', 'bold');
-        $('.atbsampleclass').css('font-weight', 'bold');
-        $('#body-bold').toggleClass('active');
+    $('.price').css('font-weight', 'bold');
+    $('.atbsampleclass').css('font-weight', 'bold');
+    $('#body-bold').toggleClass('active');
     }
     if (bodyItalicDef == 'italic') {
-        $('.price').css('font-style', 'italic');
-        $('.atbsampleclass').css('font-style', 'italic');
-        $('#body-italic').toggleClass('active');
+    $('.price').css('font-style', 'italic');
+    $('.atbsampleclass').css('font-style', 'italic');
+    $('#body-italic').toggleClass('active');
     }
     if (bodyUnderlineDef == 'underline') {
-        $('.price').css('text-decoration', 'underline');
-        $('.atbsampleclass').css('text-decoration', 'underline');
-        $('#body-underline').toggleClass('active');
+    $('.price').css('text-decoration', 'underline');
+    $('.atbsampleclass').css('text-decoration', 'underline');
+    $('#body-underline').toggleClass('active');
     }
 
     if (subtitleBoldDef == 'bold') {
-        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
-        $('#subtitle-bold').toggleClass('active');
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-weight', 'bold');
+    $('#subtitle-bold').toggleClass('active');
     }
     if (subtitleItalicDef == 'italic') {
-        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
-        $('#subtitle-italic').toggleClass('active');
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-style', 'italic');
+    $('#subtitle-italic').toggleClass('active');
     }
     if (subtitleUnderlineDef == 'underline') {
-        $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
-        $('#subtitle-underline').toggleClass('active');
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('text-decoration', 'underline');
+    $('#subtitle-underline').toggleClass('active');
     }
 
     if (titleBoldDef == 'bold') {
-        $('.maintitleclass').css('font-weight', 'bold');
-        $('#title-bold').toggleClass('active');
+    $('.maintitleclass').css('font-weight', 'bold');
+    $('#title-bold').toggleClass('active');
     }
     if (titleItalicDef == 'italic') {
-        $('.maintitleclass').css('font-style', 'italic');
-        $('#title-italic').toggleClass('active');
+    $('.maintitleclass').css('font-style', 'italic');
+    $('#title-italic').toggleClass('active');
     }
     if (titleUnderlineDef == 'underline') {
-        $('.maintitleclass').css('text-decoration', 'underline');
-        $('#title-underline').toggleClass('active');
+    $('.maintitleclass').css('text-decoration', 'underline');
+    $('#title-underline').toggleClass('active');
     }
 
     // Font-family change event handlers (same as before)
     $('#body-font').change(function() {
-        var selectedFont = $(this).val();
-        $('.price, .atbsampleclass').css('font-family', selectedFont);
+    var selectedFont = $(this).val();
+    $('.price, .atbsampleclass').css('font-family', selectedFont);
     });
 
     $('#subtitle-font').change(function() {
-        var selectedFont = $(this).val();
-        $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
+    var selectedFont = $(this).val();
+    $('.producttabchoice, .producttab, .sampleproductnameclass').css('font-family', selectedFont);
     });
 
     $('#title-font').change(function() {
-        var selectedFont = $(this).val();
-        $('.maintitleclass').css('font-family', selectedFont);
+    var selectedFont = $(this).val();
+    $('.maintitleclass').css('font-family', selectedFont);
     });
 
-        
+
 
     var buttonColorDef = "{{ buttoncolordef }}";
     $("#button_colorid").val(buttonColorDef);
     $(".atbsampleclass").css("background-color", buttonColorDef);
 
     $("#button_colorid").change(function() {
-        var buttonNewColor = $(this).val();
-        $(".atbsampleclass").css("background-color", buttonNewColor);
+    var buttonNewColor = $(this).val();
+    $(".atbsampleclass").css("background-color", buttonNewColor);
     });
-         
-          
+
+
     var cardColorDef = "{{ cardcolordef }}";
     $("#card_colorid").val(cardColorDef);
     $("#samplecardid").css("background-color", cardColorDef);
 
     $("#card_colorid").change(function() {
-        var cardNewColor = $(this).val();
-        $("#samplecardid").css("background-color", cardNewColor);
+    var cardNewColor = $(this).val();
+    $("#samplecardid").css("background-color", cardNewColor);
     });
-          
 
-          
+
+
     var textColorDef = "{{ textcolordef }}";
     $("#text_colorid").val(textColorDef);
     $(".sampleproductnameclass").css("color", textColorDef);
@@ -4175,14 +4424,14 @@ $(document).ready(function() {
     $(".atbsampleclass").css("color", textColorDef);
 
     $("#text_colorid").change(function() {
-        var textNewColor = $(this).val();
-        $(".sampleproductnameclass").css("color", textNewColor);
-        $("#priceid").css("color", textNewColor);
-        $(".atbsampleclass").css("color", textNewColor);
+    var textNewColor = $(this).val();
+    $(".sampleproductnameclass").css("color", textNewColor);
+    $("#priceid").css("color", textNewColor);
+    $(".atbsampleclass").css("color", textNewColor);
     });
-          
 
-         
+
+
     var backgroundColorDef = "{{ backgroundcolordef }}";
     $("#background_colorid").val(backgroundColorDef);
     $("#previewareaidone").css("background-color", backgroundColorDef);
@@ -4192,123 +4441,111 @@ $(document).ready(function() {
 
 
     $("#background_colorid").change(function() {
-        var backgroundNewColor = $(this).val();
-        $("#background_colorid").val(backgroundNewColor);
-        $("#previewareaidone").css("background-color", backgroundNewColor);
-        $("#previewareaidtwo").css("background-color", backgroundNewColor);
-        $("#previewareaidthree").css("background-color", backgroundNewColor);
-        $("#previewareaidfour").css("background-color", backgroundNewColor);
+    var backgroundNewColor = $(this).val();
+    $("#background_colorid").val(backgroundNewColor);
+    $("#previewareaidone").css("background-color", backgroundNewColor);
+    $("#previewareaidtwo").css("background-color", backgroundNewColor);
+    $("#previewareaidthree").css("background-color", backgroundNewColor);
+    $("#previewareaidfour").css("background-color", backgroundNewColor);
     });
-          
 
-});
+
+    });
     function submitcustomizeinitial() {
-        var brand_nameid = document.getElementById('brand_nameid');
-        if (brand_nameid) {
-            submitcustomizefinal('pass');
-        } else {
-            alert('Please provide your brand name!');
-            brand_nameid.focus();
-        }
+    var brand_nameid = document.getElementById('brand_nameid');
+    if (brand_nameid) {
+    submitcustomizefinal('pass');
+    } else {
+    alert('Please provide your brand name!');
+    brand_nameid.focus();
+    }
     }
 
     function submitcustomizefinal(brandnamepass) {
-        var formcustomize = document.getElementById('customizeformid');
-        formcustomize.submit();
+    var formcustomize = document.getElementById('customizeformid');
+    formcustomize.submit();
     }
 
     function viewwebisite(){
-        window.open("../index/onlineorder/{{userr}}", "_blank");
+    window.open("../index/onlineorder/{{userr}}", "_blank");
     }
     function toggleAccordion(header) {
-      var accordionItem = header.parentNode;
-      var accordionContent = accordionItem.querySelector('.accordion-content');
-      var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
+    var accordionItem = header.parentNode;
+    var accordionContent = accordionItem.querySelector('.accordion-content');
+    var dropdownIcon = accordionItem.querySelector('.dropdown-icon');
 
-      // Toggle the open class on the accordion item
-      accordionItem.classList.toggle('open');
+    // Toggle the open class on the accordion item
+    accordionItem.classList.toggle('open');
 
-      // Toggle the active class on the accordion header
-      header.classList.toggle('active');
+    // Toggle the active class on the accordion header
+    header.classList.toggle('active');
 
-      // Toggle the rotate class on the dropdown icon
-      dropdownIcon.classList.toggle('rotate');
+    // Toggle the rotate class on the dropdown icon
+    dropdownIcon.classList.toggle('rotate');
 
-      // Slide and fade the accordion content
-      if (accordionItem.classList.contains('open')) {
-        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-        accordionContent.style.opacity = 1;
-        accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+    // Slide and fade the accordion content
+    if (accordionItem.classList.contains('open')) {
+    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+    accordionContent.style.opacity = 1;
+    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
 
-        // Remove the punchedtexttitle class from the clicked accordion header
-        var headerTitle = header.querySelector('.punchedtexttitle');
-        if (headerTitle) {
-          headerTitle.classList.add('punchedtexttitleselected');
-          headerTitle.classList.remove('punchedtexttitle');
-        }
-      } else {
-        accordionContent.style.maxHeight = 0;
-        accordionContent.style.opacity = 0;
-        accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
+    // Remove the punchedtexttitle class from the clicked accordion header
+    var headerTitle = header.querySelector('.punchedtexttitle');
+    if (headerTitle) {
+    headerTitle.classList.add('punchedtexttitleselected');
+    headerTitle.classList.remove('punchedtexttitle');
+    }
+    } else {
+    accordionContent.style.maxHeight = 0;
+    accordionContent.style.opacity = 0;
+    accordionContent.style.transition = 'max-height 0.5s, opacity 0.5s';
 
-        // Add the punchedtexttitle class back to the clicked accordion header
-        var headerTitleSelected = header.querySelector('.punchedtexttitleselected');
-        if (headerTitleSelected) {
-          headerTitleSelected.classList.add('punchedtexttitle');
-          headerTitleSelected.classList.remove('punchedtexttitleselected');
-        }
-      }
+    // Add the punchedtexttitle class back to the clicked accordion header
+    var headerTitleSelected = header.querySelector('.punchedtexttitleselected');
+    if (headerTitleSelected) {
+    headerTitleSelected.classList.add('punchedtexttitle');
+    headerTitleSelected.classList.remove('punchedtexttitleselected');
+    }
+    }
     }
 
-        var sound='';
-        function acknowledgerider(){
-        var audioid = document.getElementById('audioid')
-        audioid.pause();
-        sound='pause';
-        }
+    var sound='';
+    function acknowledgerider(){
+    var audioid = document.getElementById('audioid')
+    audioid.pause();
+    sound='pause';
+    }
 
-        function excitshoworder(){
-        var exitshoworderdiv = document.getElementsByClassName('exitshoworderdiv')[0];
-        var exitshoworder = document.getElementsByClassName('exitshoworder')[0];
-        var showordersbg = document.getElementsByClassName('showordersbg')[0];
+    function excitshoworder(){
+    var exitshoworderdiv = document.getElementsByClassName('exitshoworderdiv')[0];
+    var exitshoworder = document.getElementsByClassName('exitshoworder')[0];
+    var showordersbg = document.getElementsByClassName('showordersbg')[0];
 
-        showordersbg.style.display='none';
-        var orderbut = document.getElementsByClassName('prodbut');
-        for(let i = 0;i<orderbut.length;i++){
-        orderbut[i].classList.remove("focusbutton");
-
-        }
-
-        }
-        function deliverthis(){
-
-        var todelivertbody = document.getElementById('deliverthis');
-
-        }
-
-
-
-
-
-        let tid = setInterval(function(){
-        var todelivertbodydata = document.getElementById('deliverthis');
-        if ( document.readyState !== 'complete' ) return;
-        clearInterval( tid );
-
-
-        $.ajax({
-        type:'GET',
-        url:"{% url 'Rider.html' %}",
-        data:{"riderni":"rengorder"},
-        success: function(todeliverorder){
-        $('#deliverthis').empty();
-        var dataHtml='';
-        var vieworders = document.getElementById('ridersviewordersid')
-        vieworders.value=todeliverorder.viewordersrider
-
-        var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
-        var length = todeliverorderffi.length;
-        if(length>0){
+    showordersbg.style.display='none';
+    var orderbut = document.getElementsByClassName('prodbut');
+    for(let i = 0;i<orderbut.length;i++){ orderbut[i].classList.remove("focusbutton");
+                                          }
+                                          }
+                                          function deliverthis(){
+                                          var todelivertbody=document.getElementById('deliverthis');
+                                          }
+                                          let tid=setInterval(function(){
+                                          var todelivertbodydata=document.getElementById('deliverthis');
+                                          if ( document.readyState != ='complete' ) return;
+                                          clearInterval( tid );
+                                          $.ajax({
+                                          type:'GET',
+                                          url:"{% url 'Rider.html' %}",
+                                          data:{"riderni":"rengorder"},
+                                          success: function(todeliverorder){
+                                          $('#deliverthis').empty();
+                                          var dataHtml='' ;
+                                          var vieworders=document.getElementById('ridersviewordersid')
+                                          vieworders.value=todeliverorder.viewordersrider
+                                          var todeliverorderffi=JSON.parse(todeliverorder.rengkakungideliver);
+                                          var length=todeliverorderffi.length;
+                                          if(length>
+        0){
         var audioid = document.getElementById('audioid')
         if(sound=='pause'){
         audioid.pause();
@@ -4458,36 +4695,31 @@ $(document).ready(function() {
         var totalpunched = 0;
         var showordercounter = showorder.length;
 
-        for(let i = 0;i<showordercounter;i++){
-
-        totalpunched = totalpunched+parseInt(showorder[i].Subtotal);
-        };
-
-        var grandtotal = 0;
-        if(gtotal){
-        grandtotal = gtotal;
-        }else{
-        grandtotal = totalpunched;
-        }
-        var gpslink;
-        var blank ='_blank' ;
-        var pinnedpoint;
-        for(var showorders of showorder){
-        if(showorders.Size){
-        var sizefinal = showorders.Size;
-        }else if(showorders.PSize){
-        var sizefinal = showorders.PSize;
-        }else{
-        var sizefinal = 'x'
-        }
-
-        if(showorders.Addons){
-        var addonsfinal=showorders.Addons+' x '+showorders.QtyAddons;
-        }else{
-        var addonsfinal='x';
-        }
-
-        dataHtml = dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">'+showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
+        for(let i = 0;i<showordercounter;i++){ totalpunched=totalpunched+parseInt(showorder[i].Subtotal);
+                                               };
+                                               var grandtotal=0;
+                                               if(gtotal){
+                                               grandtotal=gtotal;
+                                               }else{
+                                               grandtotal=totalpunched;
+                                               }
+                                               var gpslink;
+                                               var blank='_blank' ;
+                                               var pinnedpoint;
+                                               for(var showorders of showorder){
+                                               if(showorders.Size){
+                                               var sizefinal=showorders.Size;
+                                               }else if(showorders.PSize){
+                                               var sizefinal=showorders.PSize;
+                                               }else{
+                                               var sizefinal='x'
+                                               }
+                                               if(showorders.Addons){
+                                               var addonsfinal=showorders.Addons+' x '+showorders.QtyAddons;
+                                               }else{
+                                               var addonsfinal='x' ;
+                                               }
+                                               dataHtml=dataHtml + '<tr class="trpunchedtable"><td class="tdqueue">' +showorders.Qty+'</td><td class="tdqueue">'+showorders.productname+'</td><td class="tdqueue">'+showorders.Category+'</td><td class="tdqueue">'+sizefinal+'</td><td class="tdqueue">'+addonsfinal+'</td><td class="tdqueue">'+showorders.Subtotal+'</td></tr>';
         if(showorders.gpslat){
         urlgps='https://www.google.com/maps/place/'+showorders.gpslat+','+showorders.gpslng+'/@'+showorders.gpslat+','+showorders.gpslng+',17z';
         gpslink='window.open('+JSON.stringify(urlgps)+','+JSON.stringify(blank)+')';
