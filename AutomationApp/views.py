@@ -5504,18 +5504,6 @@ def inventory(request):
 @login_required
 def customize(request):
     userr = request.user.id
-    productss = user1.objects.all().filter(user__id=userr).order_by('-id')
-    submitted = False
-    if request.POST.get("addformname"):
-        aprod = editform(request.POST)
-        if aprod.is_valid():
-            aprod.save()
-                
-            return render(request, 'CustomizeWeb.html',{'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
-        else:
-            return render(request, 'CustomizeWeb.html',{'productss':productss,'aprod':aprod,'submitted':submitted,'userr':userr})
-    else:
-        aprod = editform
     if request.POST.get("body_name"):
         
         button_color = request.POST.get('button_color', '#aa5c31')
@@ -5599,13 +5587,19 @@ def customize(request):
         body_bold_def = ''
         body_italic_def = ''
         body_underline_def = ''
-    print('subtitle_underline_def: ',subtitle_underline_def)
-    print('subtitle_bold_def: ',subtitle_bold_def)
-    print('subtitle_italic_def: ',subtitle_italic_def)
-    print('body_italic_def: ',body_italic_def)
-    print('body_underline_def: ',body_underline_def)
-    print('body_bold_def: ',body_bold_def)
-    return render(request, 'CustomizeWeb.html', {'aprod':,aprod,'userr': userr, 'brandnamecolordef': brandnamecolordef, 'bodycolordef': bodycolordef, 'subtitlecolordef': subtitlecolordef, 'titlecolordef': titlecolordef, 'buttoncolordef': buttoncolordef, 'cardcolordef': cardcolordef, 'textcolordef': textcolordef, 'backgroundcolordef': backgroundcolordef, 'title_bold_def': title_bold_def, 'title_italic_def': title_italic_def, 'title_underline_def': title_underline_def, 'subtitle_bold_def': subtitle_bold_def, 'subtitle_italic_def': subtitle_italic_def, 'subtitle_underline_def': subtitle_underline_def, 'body_bold_def': body_bold_def, 'body_italic_def': body_italic_def, 'body_underline_def': body_underline_def})
+    productss = user1.objects.all().filter(user__id=userr).order_by('-id')
+    submitted = False
+    if request.POST.get("addformname"):
+        aprod = editform(request.POST)
+        if aprod.is_valid():
+            aprod.save()
+                
+            return render(request, 'CustomizeWeb.html',{'productss':productss,'aprod':aprod,'submitted':submitted,'userr': userr, 'brandnamecolordef': brandnamecolordef, 'bodycolordef': bodycolordef, 'subtitlecolordef': subtitlecolordef, 'titlecolordef': titlecolordef, 'buttoncolordef': buttoncolordef, 'cardcolordef': cardcolordef, 'textcolordef': textcolordef, 'backgroundcolordef': backgroundcolordef, 'title_bold_def': title_bold_def, 'title_italic_def': title_italic_def, 'title_underline_def': title_underline_def, 'subtitle_bold_def': subtitle_bold_def, 'subtitle_italic_def': subtitle_italic_def, 'subtitle_underline_def': subtitle_underline_def, 'body_bold_def': body_bold_def, 'body_italic_def': body_italic_def, 'body_underline_def': body_underline_def})
+        else:
+            return render(request, 'CustomizeWeb.html',{'productss':productss,'aprod':aprod,'submitted':submitted,'userr': userr, 'brandnamecolordef': brandnamecolordef, 'bodycolordef': bodycolordef, 'subtitlecolordef': subtitlecolordef, 'titlecolordef': titlecolordef, 'buttoncolordef': buttoncolordef, 'cardcolordef': cardcolordef, 'textcolordef': textcolordef, 'backgroundcolordef': backgroundcolordef, 'title_bold_def': title_bold_def, 'title_italic_def': title_italic_def, 'title_underline_def': title_underline_def, 'subtitle_bold_def': subtitle_bold_def, 'subtitle_italic_def': subtitle_italic_def, 'subtitle_underline_def': subtitle_underline_def, 'body_bold_def': body_bold_def, 'body_italic_def': body_italic_def, 'body_underline_def': body_underline_def})
+    else:
+        aprod = editform
+    return render(request, 'CustomizeWeb.html', {'productss':productss,'aprod':aprod,'submitted':submitted,'userr': userr, 'brandnamecolordef': brandnamecolordef, 'bodycolordef': bodycolordef, 'subtitlecolordef': subtitlecolordef, 'titlecolordef': titlecolordef, 'buttoncolordef': buttoncolordef, 'cardcolordef': cardcolordef, 'textcolordef': textcolordef, 'backgroundcolordef': backgroundcolordef, 'title_bold_def': title_bold_def, 'title_italic_def': title_italic_def, 'title_underline_def': title_underline_def, 'subtitle_bold_def': subtitle_bold_def, 'subtitle_italic_def': subtitle_italic_def, 'subtitle_underline_def': subtitle_underline_def, 'body_bold_def': body_bold_def, 'body_italic_def': body_italic_def, 'body_underline_def': body_underline_def})
 
 
 def Onlineordersystem(request, admin_id):
