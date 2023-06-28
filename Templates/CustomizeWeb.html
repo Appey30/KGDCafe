@@ -367,6 +367,10 @@ body {
             width: 100%;
             text-align: center;
         }
+        .maintd {
+            text-align: left;
+            padding-left: 10px;
+        }
         .contenttextcolor {
             color: #A0A0A0;
             text-indent: 20px;
@@ -1074,6 +1078,10 @@ body {
             width: 100%;
             text-align: center;
         }
+        .maintd {
+            text-align: left;
+            padding-left: 10px;
+        }
         .contenttextcolor {
             color: #A0A0A0;
             text-indent: 20px;
@@ -1772,6 +1780,10 @@ body {
             margin-right: auto;
             width: 100%;
             text-align: center;
+        }
+        .maintd {
+            text-align: left;
+            padding-left: 10px;
         }
         .contenttextcolor {
             color: #A0A0A0;
@@ -2477,6 +2489,10 @@ body {
             margin-right: auto;
             width: 100%;
             text-align: center;
+        }
+        .maintd {
+            text-align: left;
+            padding-left: 10px;
         }
         .contenttextcolor {
             color: #A0A0A0;
@@ -3209,6 +3225,10 @@ body {
             width: 100%;
             text-align: center;
         }
+        .maintd {
+            text-align: left;
+            padding-left: 10px;
+        }
         .contenttextcolor {
             color: #A0A0A0;
             text-indent: 20px;
@@ -3759,20 +3779,20 @@ body {
 
                                         <tr class="maintr">
 
-                                            <td class="maintd">{{ product1.productname }}</td>
-                                            <td class="maintd">
+                                            <td class="maintd" style="">{{ product1.productname }}</td>
+                                            <td class="">
                                                 {% if product1.Size %}
                                                 {{ product1.Size }}
                                                 {% else %}
                                                 {{ product1.PSize }}
                                                 {% endif %}
                                             </td>
-                                            <td class="maintd">{{ product1.Price }}</td>
-                                            <td class="maintd">{{ product1.Cost }}</td>
-                                            <td class="maintd">{{ product1.Category }}</td>
-                                            <td class="maintd">{{ product1.Subcategory }}</td>
+                                            <td class="">{{ product1.Price }}</td>
+                                            <td class="">{{ product1.Cost }}</td>
+                                            <td class="">{{ product1.Category }}</td>
+                                            <td class="">{{ product1.Subcategory }}</td>
 
-                                            <td class="maintd">
+                                            <td class="">
                                                 <button onclick="location.href='{% url 'modaledit:editprod' product1.id %}'" class="edit">Edit</button>
                                                 <button onclick="location.href='{% url 'modaldel:delprod' product1.id %}'" class="delete">Delete</button>
                                             </td>
