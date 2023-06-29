@@ -4617,6 +4617,26 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
+  const slidingCards = document.querySelectorAll('.sliding-card');
+    const slidingCardContainer = document.querySelector('.sliding-card-container');
+    const slidingCardButton = document.querySelectorAll('.sliding-card-button');
+
+    let activeCard = 0;
+
+    function showCard(cardIndex) {
+      slidingCardContainer.style.transform = `translateX(-${cardIndex * 100}%)`;
+
+      slidingCardButton[activeCard].classList.remove('active');
+      slidingCardButton[cardIndex].classList.add('active');
+
+      activeCard = cardIndex;
+    }
+
+    slidingCardButton.forEach((button, index) => {
+      button.addEventListener('click', () => showCard(index));
+    });
+
+
         // Get the modal
         var modal = document.getElementById('id01');
 
