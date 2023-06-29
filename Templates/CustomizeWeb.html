@@ -13,7 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Arial&family=Helvetica&family=Times+New+Roman&family=Courier+New&family=Verdana&family=Georgia&family=Trebuchet+MS&family=Arial+Black&family=Impact&family=Comic+Sans+MS&family=Garamond&family=Palatino&family=Lucida+Sans+Unicode&family=Tahoma&family=Courier&family=Lucida+Console&family=Arial+Narrow&family=Century+Gothic&family=Bookman+Old+Style&family=Franklin+Gothic+Medium&family=Candara&family=Rockwell&family=Baskerville&family=Consolas&family=Copperplate&family=Futura&family=Arial+Rounded+MT+Bold&family=Century+Schoolbook&family=Segoe+UI&family=MS+Sans+Serif&family=Open+Sans&family=Roboto&family=Montserrat&family=Lato&family=Raleway&family=Poppins&family=Oswald&family=Nunito&family=Roboto+Condensed&family=Source+Sans+Pro&family=Ubuntu&family=Playfair+Display&family=Merriweather&family=Roboto+Slab&family=Ubuntu+Condensed&family=PT+Sans&family=Cabin&family=Noto+Sans&family=Droid+Sans&family=Bebas+Neue&family=Exo&family=Josefin+Sans&family=Muli&family=Quicksand&family=Fira+Sans&family=Varela+Round&family=Noto+Serif&family=PT+Serif&family=Archivo+Narrow&family=Karla&family=Titillium+Web&family=Font1&family=Font2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'FontList.css' %}">
@@ -4284,25 +4286,49 @@ body {
                                     </div><br><br>
                                 </div>
                                 <div id="brandcolorcontainerreadyid">
-                                    <div class="sliding-card-container">
-                                        <div class="sliding-card">
-                                            <div class="sliding-card-content">
-                                                <h3>Card 1</h3>
-                                                <p>This is the content of card 1.</p>
+                                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                                        </ol>
+
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="card">
+                                                    <img class="card-img-top" src="image1.jpg" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Card 1</h5>
+                                                        <p class="card-text">Some example text for Card 1.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="card">
+                                                    <img class="card-img-top" src="image2.jpg" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Card 2</h5>
+                                                        <p class="card-text">Some example text for Card 2.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="card">
+                                                    <img class="card-img-top" src="image3.jpg" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Card 3</h5>
+                                                        <p class="card-text">Some example text for Card 3.</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="sliding-card">
-                                            <div class="sliding-card-content">
-                                                <h3>Card 2</h3>
-                                                <p>This is the content of card 2.</p>
-                                            </div>
-                                        </div>
-                                        <div class="sliding-card">
-                                            <div class="sliding-card-content">
-                                                <h3>Card 3</h3>
-                                                <p>This is the content of card 3.</p>
-                                            </div>
-                                        </div>
+
+                                        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </a>
                                     </div>
                                     <br><br>
                                 </div>
