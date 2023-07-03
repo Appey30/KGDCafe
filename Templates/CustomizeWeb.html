@@ -252,7 +252,7 @@ body {
             height: 300px;
             border-radius: 50px;
         }
-        .card-colorscustom {
+        .card-colorscustomcircle {
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
@@ -264,7 +264,7 @@ body {
             background-color: rgba(255,255,255,25%);
         }
 
-            .card-colorscustom:hover {
+            .card-colorscustomcircle:hover {
                 background-color: rgba(255,255,255,50%);
             }
 
@@ -293,11 +293,15 @@ body {
                 cursor: pointer;
             }
 
-        .card-bodycustom {
+        .card-colorscustombox {
             flex: 1 1 auto;
             padding: 0.5rem 0.5rem;
         }
-
+            .card-colorscustombox:hover card-colorscustomcircle {
+                transform: scale(1.3);
+                transition: transform .2s;
+                cursor: pointer;
+            }
         .card-title {
             border-radius: 10px 10px 10px 10px;
             display: none;
@@ -1203,7 +1207,7 @@ body {
             height: 300px;
             border-radius: 50px;
         }
-        .card-colorscustom {
+        .card-colorscustomcircle {
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
@@ -1215,7 +1219,7 @@ body {
             background-color: rgba(255,255,255,25%);
         }
 
-            .card-colorscustom:hover {
+            .card-colorscustomcircle:hover {
                 background-color: rgba(255,255,255,50%);
             }
 
@@ -1245,10 +1249,15 @@ body {
                 cursor: pointer;
             }
 
-        .card-bodycustom {
+        .card-colorscustombox {
             flex: 1 1 auto;
             padding: 0.5rem 0.5rem;
         }
+            .card-colorscustombox:hover card-colorscustomcircle {
+                transform: scale(1.3);
+                transition: transform .2s;
+                cursor: pointer;
+            }
         .card-title {
             border-radius: 10px 10px 10px 10px;
             display: none;
@@ -2148,7 +2157,7 @@ body {
             height: 300px;
             border-radius: 50px;
         }
-        .card-colorscustom {
+        .card-colorscustomcircle {
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
@@ -2160,7 +2169,7 @@ body {
             background-color: rgba(255,255,255,25%);
         }
 
-            .card-colorscustom:hover {
+            .card-colorscustomcircle:hover {
                 background-color: rgba(255,255,255,50%);
             }
 
@@ -2190,10 +2199,15 @@ body {
                 cursor: pointer;
             }
 
-        .card-bodycustom {
+        .card-colorscustombox {
             flex: 1 1 auto;
             padding: 0.5rem 0.5rem;
         }
+            .card-colorscustombox:hover card-colorscustomcircle {
+                transform: scale(1.3);
+                transition: transform .2s;
+                cursor: pointer;
+            }
         .card-title {
             border-radius: 10px 10px 10px 10px;
             display:none;
@@ -3097,7 +3111,7 @@ body {
             height: 300px;
             border-radius: 50px;
         }
-        .card-colorscustom {
+        .card-colorscustomcircle {
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
@@ -3109,7 +3123,7 @@ body {
             background-color: rgba(255,255,255,25%);
         }
 
-            .card-colorscustom:hover {
+            .card-colorscustomcircle:hover {
                 background-color: rgba(255,255,255,50%);
             }
 
@@ -3138,10 +3152,15 @@ body {
                 cursor: pointer;
             }
 
-        .card-bodycustom {
+        .card-colorscustombox {
             flex: 1 1 auto;
             padding: 0.5rem 0.5rem;
         }
+            .card-colorscustombox:hover card-colorscustomcircle {
+                transform: scale(1.3);
+                transition: transform .2s;
+                cursor: pointer;
+            }
         .card-title {
             border-radius: 10px 10px 10px 10px;
             display: none;
@@ -4069,27 +4088,28 @@ body {
                 cursor: pointer;
             }
 
-        .card-bodycustom {
+        .card-colorscustombox {
             flex: 1 1 auto;
             padding: 0.5rem 0.5rem;
         }
 
-            .card-bodycustom:hover {
-                transform: scale(1.2);
-                transition: transform .2s;
-                cursor: pointer;
-            }
-        .card-colors {
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            flex-wrap: nowrap;
-            height:300px;
-            border-radius:50px;
-        }
-        .card-colorscustom {
+
+                .card-colorscustombox:hover card-colorscustomcircle {
+                    transform: scale(1.3);
+                    transition: transform .2s;
+                    cursor: pointer;
+                }
+                .card-colors {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    flex-wrap: nowrap;
+                    height: 300px;
+                    border-radius: 50px;
+                }
+        .card-colorscustomcircle {
             display: flex;
             flex-direction: column-reverse;
             align-items: center;
@@ -4100,7 +4120,7 @@ body {
             border-radius: 30px;
             background-color: rgba(255,255,255,25%);
         }
-            .card-colorscustom:hover {
+            .card-colorscustomcircle:hover {
                 background-color: rgba(255,255,255,50%);
                 transform: scale(1.2);
                 transition: transform .2s;
@@ -5306,9 +5326,9 @@ body {
                                         </div>
                                     </div>
                                     <div class="cards">
-                                        <div class="card-bodycustom">
+                                        <div class="card-colorscustombox">
                                             <h5 class="card-title">Custom Colors</h5>
-                                            <div class="card-colorscustom">
+                                            <div class="card-colorscustomcircle">
                                                 <div class="custompallete">+</div>
                                             </div>
                                         </div>
