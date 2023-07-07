@@ -7,6 +7,17 @@ import pytz
 #from django.db.models.manager import Manager as GeoManager
 
 # Create your models here.
+class Brandcolor(models.Model):
+    user = models.IntegerField(blank=True, null=True, default='2')
+    text = models.CharField(max_length=7, blank=True, null=True, default='#2c170c')
+    button = models.CharField(max_length=7, blank=True, null=True, default='#aa5c31')
+    container = models.CharField(max_length=7, blank=True, null=True, default='#d4ad98')
+    background = models.CharField(max_length=7, blank=True, null=True, default='#f6eeea')
+    identifier = models.CharField(max_length=50, blank=True, null=True, default='#2c170c#aa5c31#d4ad98#f6eeea')
+
+    def __str__(self):
+        return str(self.identifier) + " / " + str(self.user)
+
 
 class ButtonColor(models.Model):
     user = models.IntegerField(blank=True, null=True, default='2')
