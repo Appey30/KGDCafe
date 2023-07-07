@@ -5212,7 +5212,7 @@ body {
                                     </div><br><br>
 
                                     <div class="threecontainers">
-                                        <label for="text_colorid" class="punchedtextsubtitle">Background</label><br>
+                                        <label for="background_colorid" class="punchedtextsubtitle">Background</label><br>
                                         <div class="colorcircle">
 
                                             <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
@@ -5233,17 +5233,17 @@ body {
                                               <div class="card-body">
 
                                                   <div class="card-colors">
-                                                      <div class="color4" style="background-color: {{ brandcolorpallete.text }};">
-                                                          <span class="color4span">{{ brandcolorpallete.text }}</span>
+                                                      <div class="color4" style="background-color: {{ brandcolorpallete.background }};">
+                                                          <span class="color4span">{{ brandcolorpallete.background }}</span>
                                                       </div>
-                                                      <div class="color3" style="background-color:{{ brandcolorpallete.button }};">
-                                                          <span class="color3span">{{ brandcolorpallete.button }}</span>
+                                                      <div class="color3" style="background-color:{{ brandcolorpallete.container }};">
+                                                          <span class="color3span">{{ brandcolorpallete.container }}</span>
                                                       </div>
-                                                      <div class="color2" style="background-color: {{ brandcolorpallete.container }};">
-                                                          <span class="color2span">{{ brandcolorpallete.container }}</span>
+                                                      <div class="color2" style="background-color: {{ brandcolorpallete.button }};">
+                                                          <span class="color2span">{{ brandcolorpallete.button }}</span>
                                                       </div>
-                                                      <div class="color1" style="background-color: {{ brandcolorpallete.background }};">
-                                                          <span class="color1span">{{ brandcolorpallete.background }}</span>
+                                                      <div class="color1" style="background-color: {{ brandcolorpallete.text }};">
+                                                          <span class="color1span">{{ brandcolorpallete.text }}</span>
                                                       </div>
                                                   </div>
                                               </div>
@@ -5343,9 +5343,10 @@ body {
 
 
     $(".atbsampleclass").css("background-color", button);
-    $(".producttabchoice").css("border-color", button);
+    $(".producttabchoice").css("background-color", button);
     $(".producttab").css("border-color", button);
     $(".tabmenu").css("border-bottom", "2px solid "+button);
+
     $(".card").css("background-color", container);
 
 
