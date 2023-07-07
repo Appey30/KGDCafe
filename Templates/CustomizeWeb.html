@@ -5841,23 +5841,33 @@ function myFunctioncat() {
 
 
 
+
+
     var buttonColorDef = "{{ buttoncolordef }}";
     $("#button_colorid").val(buttonColorDef);
     $(".atbsampleclass").css("background-color", buttonColorDef);
+    $(".producttabchoice").css("background-color", buttonColorDef);
+    $(".producttab").css("border-color", buttonColorDef);
+    $(".tabmenu").css("border-bottom", "2px solid "+buttonColorDef);
 
     $("#button_colorid").change(function() {
     var buttonNewColor = $(this).val();
     $(".atbsampleclass").css("background-color", buttonNewColor);
+    $(".producttabchoice").css("background-color", buttonNewColor);
+    $(".producttab").css("border-color", buttonNewColor);
+    $(".tabmenu").css("border-bottom", "2px solid "+buttonNewColor)
     });
 
 
     var cardColorDef = "{{ cardcolordef }}";
     $("#card_colorid").val(cardColorDef);
     $("#samplecardid").css("background-color", cardColorDef);
+    $(".card").css("background-color", cardColorDef);
 
     $("#card_colorid").change(function() {
     var cardNewColor = $(this).val();
     $("#samplecardid").css("background-color", cardNewColor);
+        $(".card").css("background-color", cardNewColor);
     });
 
 
@@ -5865,14 +5875,22 @@ function myFunctioncat() {
     var textColorDef = "{{ textcolordef }}";
     $("#text_colorid").val(textColorDef);
     $(".sampleproductnameclass").css("color", textColorDef);
-    $("#priceid").css("color", textColorDef);
-    $(".atbsampleclass").css("color", textColorDef);
+    $(".class").css("color", textColorDef);
+    $(".maintitleclass").css("color", textColorDef);
+    $(".atbsampleclass").css("color",textColorDef);
+    $(".producttabchoice").css("color", textColorDef);
+    $(".producttab").css("color", textColorDef);
+    $(".price").css("color", textColorDef);
 
     $("#text_colorid").change(function() {
     var textNewColor = $(this).val();
-    $(".sampleproductnameclass").css("color", textNewColor);
-    $("#priceid").css("color", textNewColor);
-    $(".atbsampleclass").css("color", textNewColor);
+
+    $(".class").css("color", textColorDef);
+    $(".maintitleclass").css("color", textColorDef);
+    $(".atbsampleclass").css("color",textColorDef);
+    $(".producttabchoice").css("color", textColorDef);
+    $(".producttab").css("color", textColorDef);
+    $(".price").css("color", textColorDef);
     });
 
 
