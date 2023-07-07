@@ -5229,7 +5229,7 @@ body {
                                               </div>
                                           </div>
                                           {% for brandcolorpallete in brandcolorpallete %}
-                                          <div class="cards">
+                                          <div class="cards" onclick="brandcolor('{{ brandcolorpallete.text }}', '{{ brandcolorpallete.button }}', '{{ brandcolorpallete.container }}', '{{ brandcolorpallete.background }}');">
                                               <div class="card-body">
 
                                                   <div class="card-colors">
@@ -5330,7 +5330,16 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
- 
+ function brandcolor(text, button, container, background){
+        var text_color = document.getElementById('text_colorid')
+        var button_color = document.getElementById('button_colorid')
+        var card_color = document.getElementById('card_colorid')
+        var background_color = document.getElementById('background_colorid')
+        text_color.value = text;
+        button_color.value = button;
+        card_color.value = container;
+        background_color.value = background;
+        }
 
         // Get the modal
         var modal = document.getElementById('id01');
