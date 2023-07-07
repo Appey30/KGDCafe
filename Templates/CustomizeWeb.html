@@ -4930,6 +4930,104 @@ body {
         <div class="pagetitle">
             <h1 class="punchedtext" style="font-weight:bold;">Customize Website</h1>
         </div>
+        <div class="notifcontent">
+            <h1 class="punchedtexttitle">Your Online Store Preview</h1>
+            <div class="previewarea" id="previewareaidone">
+
+                <h2 class="maintitleclass">Our Products</h2>
+                <div class="tabmenu">
+                    <button class="producttabchoice">Pizza</button>
+                    <button class="producttab">Fries</button>
+                    <button class="producttab">Burger</button>
+                </div>
+                <div class="forflexcard">
+                    <div class="card" id="samplecardid">
+
+                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
+
+                        <div class="h3div">
+
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 1</h3>
+                        </div>
+                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                            <tr>
+                                <td id="priceid" class="price">Php79</td>
+                            </tr>
+
+                        </table>
+
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
+
+
+
+                    </div>
+                    <div class="card" id="samplecardid">
+
+                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
+
+                        <div class="h3div">
+
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 2</h3>
+                        </div>
+                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                            <tr>
+                                <td id="priceid" class="price">Php89</td>
+                            </tr>
+
+                        </table>
+
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
+
+
+
+                    </div>
+                    <div class="card" id="samplecardid">
+
+                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
+
+                        <div class="h3div">
+
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 3</h3>
+                        </div>
+                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                            <tr>
+                                <td id="priceid" class="price">Php99</td>
+                            </tr>
+
+                        </table>
+
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
+
+
+
+                    </div>
+                    <div class="card" id="samplecardid">
+
+                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
+
+                        <div class="h3div">
+
+                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 4</h3>
+                        </div>
+                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
+                            <tr>
+                                <td id="priceid" class="price">Php69</td>
+                            </tr>
+
+                        </table>
+
+                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center ">
+                <button onclick="submitcustomizeinitial();" class="prodbut">Apply</button>
+                <button onclick="viewwebisite();" value="View Website" class="prodbut">View Website</button>
+            </div>
+        </div>
         <div class="notifcontentfirst">
             <form action="{% url 'CustomizeWeb.html' %}" method="post" name="customizename" id="customizeformid">
                 <div class="customizearea">
@@ -5434,104 +5532,7 @@ body {
 
             </form>
         </div>
-        <div class="notifcontent">
-            <h1 class="punchedtexttitle">Your Online Store Preview</h1>
-            <div class="previewarea" id="previewareaidone">
-
-                <h2 class="maintitleclass">Our Products</h2>
-                <div class="tabmenu">
-                    <button class="producttabchoice">Pizza</button>
-                    <button class="producttab">Fries</button>
-                    <button class="producttab">Burger</button>
-                </div>
-                <div class="forflexcard">
-                    <div class="card" id="samplecardid">
-
-                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
-
-                        <div class="h3div">
-
-                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 1</h3>
-                        </div>
-                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-                            <tr>
-                                <td id="priceid" class="price">Php79</td>
-                            </tr>
-
-                        </table>
-
-                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
-
-
-
-                    </div>
-                    <div class="card" id="samplecardid">
-
-                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
-
-                        <div class="h3div">
-
-                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 2</h3>
-                        </div>
-                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-                            <tr>
-                                <td id="priceid" class="price">Php89</td>
-                            </tr>
-
-                        </table>
-
-                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
-
-
-
-                    </div>
-                    <div class="card" id="samplecardid">
-
-                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
-
-                        <div class="h3div">
-
-                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 3</h3>
-                        </div>
-                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-                            <tr>
-                                <td id="priceid" class="price">Php99</td>
-                            </tr>
-
-                        </table>
-
-                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
-
-
-
-                    </div>
-                    <div class="card" id="samplecardid">
-
-                        <img class="" src="{% static 'pamilyasize.png' %}" style="position:relative;width:100%;border-radius:10px;">
-
-                        <div class="h3div">
-
-                            <h3 id="sampleproductnameid" class="sampleproductnameclass">Sample Product 4</h3>
-                        </div>
-                        <table style="position:relative;margin-left:auto;margin-right:auto;width:100%;text-align:center;">
-                            <tr>
-                                <td id="priceid" class="price">Php69</td>
-                            </tr>
-
-                        </table>
-
-                        <p><button style="background-color:{{ buttoncolordef }};" class="atbsampleclass" id="atbsample">Order</button></p>
-
-
-
-                    </div>
-                </div>
-            </div>
-            <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center ">
-                <button onclick="submitcustomizeinitial();" class="prodbut">Apply</button>
-                <button onclick="viewwebisite();" value="View Website" class="prodbut">View Website</button>
-            </div>
-        </div>
+        
 
 
     </div>
