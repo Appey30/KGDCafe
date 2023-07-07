@@ -5219,253 +5219,37 @@ body {
                                         </div>
                                     </div><br><br>
                                 </div><label for="brandcolorcontainerreadyid" class="punchedtextsubtitle" style="margin-top:30px;">Choose Brand Palette</label>
-                                <div id="brandcolorcontainerreadyid">
-                                    <div class="cards">
-                                        <div class="card-colorscustombox">
-                                            <h5 class="card-title">Custom Colors</h5>
-                                            <div class="">
-                                                <div class="custompallete">+</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Pastel Dream</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #FEC8D8;">
-                                                    <span class="color4span">#FEC8D8</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #FEB2D9;">
-                                                    <span class="color3span">#FEB2D9</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #FD99D9;">
-                                                    <span class="color2span">#FD99D9</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #FD7ED9;">
-                                                    <span class="color1span">#FD7ED9</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Ocean Breeze</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #90C3D4;">
-                                                    <span class="color4span">#90C3D4</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #5DA6C8;">
-                                                    <span class="color3span">#5DA6C8</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #2889BC;">
-                                                    <span class="color2span">#2889BC</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #006CB0;">
-                                                    <span class="color1span">#006CB0</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Earthy Tones</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #D9B99B;">
-                                                    <span class="color4span">#D9B99B</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #C49C7E;">
-                                                    <span class="color3span">#C49C7E</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #AD8162;">
-                                                    <span class="color2span">#AD8162</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #965546;">
-                                                    <span class="color1span">#965546</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                      <div id="brandcolorcontainerreadyid">
+                                          <div class="cards">
+                                              <div class="card-colorscustombox">
+                                                  <h5 class="card-title">Custom Colors</h5>
+                                                  <div class="">
+                                                      <div class="custompallete">+</div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          {% for brandcolorpallete in brandcolorpallete %}
+                                          <div class="cards">
+                                              <div class="card-body">
 
-
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Fresh Greens</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #D0F2C0;">
-                                                    <span class="color4span">#D0F2C0</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #9FE69F;">
-                                                    <span class="color3span">#9FE69F</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #6FD46D;">
-                                                    <span class="color2span">#6FD46D</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #3FB93F;">
-                                                    <span class="color1span">#3FB93F</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Vibrant Sunset</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #FFC857;">
-                                                    <span class="color4span">#FFC857</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #FF7B3E;">
-                                                    <span class="color3span">#FF7B3E</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #DB3A34;">
-                                                    <span class="color2span">#DB3A34</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #651B24;">
-                                                    <span class="color1span">#651B24</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Mellow Yellow</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #FFF275;">
-                                                    <span class="color4span">#FFF275</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #FFEA5E;">
-                                                    <span class="color3span">#FFEA5E</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #FFD845;">
-                                                    <span class="color2span">#FFD845</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #FFC72C;">
-                                                    <span class="color1span">#FFC72C</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Serene Blue</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #A0E7E5;">
-                                                    <span class="color4span">#A0E7E5</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #72D5DB;">
-                                                    <span class="color3span">#72D5DB</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #43C3D3;">
-                                                    <span class="color2span">#43C3D3</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #15B1C9;">
-                                                    <span class="color1span">#15B1C9</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Cozy Autumn</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #F5E5D9;">
-                                                    <span class="color4span">#F5E5D9</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #E7CBAF;">
-                                                    <span class="color3span">#E7CBAF</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #DAAE86;">
-                                                    <span class="color2span">#DAAE86</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #CD9160;">
-                                                    <span class="color1span">#CD9160</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Playful Pastels</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #F1B0C8;">
-                                                    <span class="color4span">#F1B0C8</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #F3A1AC;">
-                                                    <span class="color3span">#F3A1AC</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #F49391;">
-                                                    <span class="color2span">#F49391</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #F58475;">
-                                                    <span class="color1span">#F58475</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bold and Beautiful</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #FF4E50;">
-                                                    <span class="color4span">#FF4E50</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #FC913A;">
-                                                    <span class="color3span">#FC913A</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #F9D423;">
-                                                    <span class="color2span">#F9D423</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #EDE574;">
-                                                    <span class="color1span">#EDE574</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Royal Elegance</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #967ADC;">
-                                                    <span class="color4span">#967ADC</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #8D6BBE;">
-                                                    <span class="color3span">#8D6BBE</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #8456A8;">
-                                                    <span class="color2span">#8456A8</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #7B4392;">
-                                                    <span class="color1span">#7B4392</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cards">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Tranquil Teal</h5>
-                                            <div class="card-colors">
-                                                <div class="color4" style="background-color: #ACEAD7;">
-                                                    <span class="color4span">#ACEAD7</span>
-                                                </div>
-                                                <div class="color3" style="background-color: #87D8B7;">
-                                                    <span class="color3span">#87D8B7</span>
-                                                </div>
-                                                <div class="color2" style="background-color: #62CDA0;">
-                                                    <span class="color2span">#62CDA0</span>
-                                                </div>
-                                                <div class="color1" style="background-color: #3DC285;">
-                                                    <span class="color1span">#3DC285</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <br><br>
-                                </div>
+                                                  <div class="card-colors">
+                                                      <div class="color4" style="background-color: {{ brandcolorpallete.text }};">
+                                                          <span class="color4span">{{ brandcolorpallete.text }}</span>
+                                                      </div>
+                                                      <div class="color3" style="background-color:{{ brandcolorpallete.button }};">
+                                                          <span class="color3span">{{ brandcolorpallete.button }}</span>
+                                                      </div>
+                                                      <div class="color2" style="background-color: {{ brandcolorpallete.container }};">
+                                                          <span class="color2span">{{ brandcolorpallete.container }}</span>
+                                                      </div>
+                                                      <div class="color1" style="background-color: {{ brandcolorpallete.background }};">
+                                                          <span class="color1span">{{ brandcolorpallete.background }}</span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          {% endfor %}
+                                      </div>
                                 <div id="brandnamecontainerid">
                                     <div class="brandfontcontainers" id="brandfontcontainersid">
                                         <label for="brandfontdivid" class="punchedtextsubtitle">Brand Fonts: </label><br>
