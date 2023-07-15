@@ -5505,6 +5505,17 @@ def inventory(request):
 def customize(request):
     userr = request.user.id
     brandcolorpallete = Brandcolor.objects.filter(user=4)
+    if request.POST.get("brandpalettename"):
+        button_coloradd = request.POST.get('button_color', '#aa5c31')
+        card_coloradd = request.POST.get('card_color', '#d4ad98')
+        text_coloradd = request.POST.get('text_color', '#2c170c')
+        background_coloradd = request.POST.get('background_color', '#f6eeea')
+        button_color_objadd, created = ButtonColor.objects.get_or_create(user=request.user.id)
+        button_color_objadd.color = button_coloradd
+        button_color_objadd.cardcolor = card_coloradd
+        button_color_objadd.textcolor = text_coloradd
+        button_color_objadd.backgroundcolor = background_coloradd
+        
     if request.POST.get("body_name"):
         
         button_color = request.POST.get('button_color', '#aa5c31')
@@ -5545,12 +5556,7 @@ def customize(request):
         button_color_obj.body_italic = body_italic
         button_color_obj.body_underline = body_underline
         button_color_obj.save()
-        print('button_color_obj.subtitle_underline: ',button_color_obj.subtitle_underline)
-        print('button_color_obj.subtitle_italic: ',button_color_obj.subtitle_italic)
-        print('button_color_obj.subtitle_bold: ',button_color_obj.subtitle_bold)
-        print('button_color_obj.body_underline: ',button_color_obj.body_underline)
-        print('button_color_obj.body_italic: ',button_color_obj.body_italic)
-        print('button_color_obj.body_underline: ',button_color_obj.body_underline)
+
     try:
         buttoncolordefi = ButtonColor.objects.get(user=request.user.id)
         buttoncolordef = buttoncolordefi.color
