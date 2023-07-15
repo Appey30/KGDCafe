@@ -5186,8 +5186,10 @@ body {
 
                                 </div>
                                 <br><br>
-                                <label for="brandcolorcontainercustomizeid" class="punchedtextsubtitle">Add Custom Brand Palette</label><br>
                                 <form action="" method="POST" name="brandpalettename" id="brandpaletteid">
+                                    {% csrf_token %}
+                                    <label for="brandcolorcontainercustomizeid" class="punchedtextsubtitle">Add Custom Brand Palette</label><br>
+
                                     <div id="brandcolorcontainercustomizeid">
 
                                         <div class="threecontainers">
