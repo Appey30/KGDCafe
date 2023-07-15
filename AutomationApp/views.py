@@ -5510,12 +5510,7 @@ def customize(request):
         card_coloradd = request.POST.get('card_color', '#d4ad98')
         text_coloradd = request.POST.get('text_color', '#2c170c')
         background_coloradd = request.POST.get('background_color', '#f6eeea')
-        button_color_objadd, created = ButtonColor.objects.get_or_create(user=request.user.id)
-        button_color_objadd.color = button_coloradd
-        button_color_objadd.cardcolor = card_coloradd
-        button_color_objadd.textcolor = text_coloradd
-        button_color_objadd.backgroundcolor = background_coloradd
-        button_color_objadd.save()
+        button_color_objadd = ButtonColor.objects.create(user=request.user.idl, color = button_coloradd, cardcolor = card_coloradd, textcolor = text_coloradd, backgroundcolor = background_coloradd)
         print("custompalettesaved")
     if request.POST.get("body_name"):
         
