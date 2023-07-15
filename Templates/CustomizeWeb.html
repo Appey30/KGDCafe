@@ -5186,51 +5186,49 @@ body {
 
                                 </div>
                                 <br><br>
-                                    <form action="" method="POST" name="brandpalettename" id="brandpaletteid">
-                                        {% csrf_token %}
-                                        <label for="brandcolorcontainercustomizeid" class="punchedtextsubtitle">Add Custom Brand Palette</label><br>
+                                <label for="brandcolorcontainercustomizeid" class="punchedtextsubtitle">Add Custom Brand Palette</label><br>
 
-                                        <div id="brandcolorcontainercustomizeid">
+                                <div id="brandcolorcontainercustomizeid">
 
-                                            <div class="threecontainers">
-                                                <label for="text_colorid" class="punchedtextsubtitle">Text</label><br>
-                                                <div class="colorcircle">
+                                    <div class="threecontainers">
+                                        <label for="text_colorid" class="punchedtextsubtitle">Text</label><br>
+                                        <div class="colorcircle">
 
-                                                    <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
-                                                </div>
-                                            </div><br><br>
-
-                                            <div class="threecontainers" id="threecontainersid">
-
-                                                <label for="button_colorid" class="punchedtextsubtitle">Buttons</label><br>
-                                                <div class="colorcircle">
-                                                    <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
-                                                </div>
-                                            </div>
-                                            <br><br>
-                                            <div class="threecontainers">
-                                                <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
-                                                <div class="colorcircle">
-
-                                                    <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}" />
-                                                </div>
-                                            </div><br><br>
-
-                                            <div class="threecontainers">
-                                                <label for="background_colorid" class="punchedtextsubtitle">Background</label><br>
-                                                <div class="colorcircle">
-
-                                                    <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
-                                                </div>
-                                            </div>
-
-
-                                            <br><br>
+                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="text_colorid" name="text_color" value="{{ textcolordef }}" />
                                         </div>
-                                        <div style="position:relative;width:100%;display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center ">
-                                            <input type="submit" value="Add and Apply" class="prodbut"></input>
+                                    </div><br><br>
+
+                                    <div class="threecontainers" id="threecontainersid">
+
+                                        <label for="button_colorid" class="punchedtextsubtitle">Buttons</label><br>
+                                        <div class="colorcircle">
+                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="button_colorid" name="button_color" value="{{ buttoncolordef }}" />
                                         </div>
-                                    </form>
+                                    </div>
+                                    <br><br>
+                                    <div class="threecontainers">
+                                        <label for="card_colorid" class="punchedtextsubtitle">Containers</label><br>
+                                        <div class="colorcircle">
+
+                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer; position: relative; top: -30px;" type="color" id="card_colorid" name="card_color" value="{{ cardcolordef }}" />
+                                        </div>
+                                    </div><br><br>
+
+                                    <div class="threecontainers">
+                                        <label for="background_colorid" class="punchedtextsubtitle">Background</label><br>
+                                        <div class="colorcircle">
+
+                                            <input style="width: 150%; height: 150%; border: none; outline: none; padding: 0; margin: 0; cursor: pointer;position:relative;top:-30px;" type="color" id="background_colorid" name="background_color" value="{{ backgroundcolordef }}" />
+                                        </div>
+                                    </div>
+
+
+                                    <br><br>
+                                </div>
+                                <div style="position:relative;width:100%;display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center ">
+                                    <button onclick="customcolorpaletteadd();" type="button" class="prodbut">Add and Apply</button>
+                                </div>
+                                   
                                 <label for="brandcolorcontainerreadyid" class="punchedtextsubtitle" style="margin-top:30px;">Choose Brand Palette</label>
                                 <div id="brandcolorcontainerreadyid">
                                     <div class="cards">
@@ -5343,7 +5341,29 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
+function customcolorpaletteadd(){
+        
+    $.ajax({
+        type:'POST',
+        url:"{% url 'Onlineorder.html' admin_id %}",
+        data:{
+        'button_colorcustom' = JSON.stringify(document.getElementById('button_color').value),
+        'card_colorcustom' = JSON.stringify(document.getElementById('card_color').value),
+        'text_colorcustom' = JSON.stringify(document.getElementById('text_color').value),
+        'background_colorcustom' = JSON.stringify(document.getElementById('background_color').value),
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function(passornot){
+        
+        },
+        error: function(){
 
+        alert('Error')
+
+        
+        }
+    });
+        }
  function brandcolor(text, button, container, background){
         var text_color = document.getElementById('text_colorid')
         var button_color = document.getElementById('button_colorid')

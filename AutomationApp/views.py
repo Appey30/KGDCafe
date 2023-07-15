@@ -5505,11 +5505,11 @@ def inventory(request):
 def customize(request):
     userr = request.user.id
     brandcolorpallete = Brandcolor.objects.filter(user=4)
-    if request.POST.get("brandpalettename"):
-        button_coloradd = request.POST.get('button_color', '#aa5c31')
-        card_coloradd = request.POST.get('card_color', '#d4ad98')
-        text_coloradd = request.POST.get('text_color', '#2c170c')
-        background_coloradd = request.POST.get('background_color', '#f6eeea')
+    if is_ajax(request=request) and request.POST.get('button_colorcustom'):
+        button_coloradd = json.loads('button_colorcustom')
+        card_coloradd = json.loads('card_colorcustom')
+        text_coloradd = json.loads('text_colorcustom')
+        background_coloradd = json.loads('background_colorcustom')
         button_color_objadd = ButtonColor.objects.create(user=request.user.idl, color = button_coloradd, cardcolor = card_coloradd, textcolor = text_coloradd, backgroundcolor = background_coloradd)
         print("custompalettesaved")
     if request.POST.get("body_name"):
@@ -5552,7 +5552,7 @@ def customize(request):
         button_color_obj.body_italic = body_italic
         button_color_obj.body_underline = body_underline
         button_color_obj.save()
-
+        print("overallsaved")
     try:
         buttoncolordefi = ButtonColor.objects.get(user=request.user.id)
         buttoncolordef = buttoncolordefi.color
@@ -5572,6 +5572,7 @@ def customize(request):
         body_bold_def = buttoncolordefi.body_bold
         body_italic_def = buttoncolordefi.body_italic
         body_underline_def = buttoncolordefi.body_underline
+        print("notdefault")
     except ButtonColor.DoesNotExist:
         buttoncolordef = '#aa5c31'
         cardcolordef = '#d4ad98'
@@ -5590,6 +5591,7 @@ def customize(request):
         body_bold_def = ''
         body_italic_def = ''
         body_underline_def = ''
+        print("default")
     productss = user1.objects.all().filter(user__id=userr).order_by('-id')
     submitted = False
     if request.POST.get("addformname"):
