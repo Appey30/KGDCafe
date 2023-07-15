@@ -5353,8 +5353,13 @@ function customcolorpaletteadd(){
         'background_colorcustom' = JSON.stringify(document.getElementById('background_color').value),
         csrfmiddlewaretoken: '{{ csrf_token }}'
         },
-        success: function(passornot){
+        success: function(result){
+        if(result.custompalettesaveed){
         window.location.reload()
+        }else{
+        alert('There is an error')
+        }
+        
         },
         error: function(){
 
