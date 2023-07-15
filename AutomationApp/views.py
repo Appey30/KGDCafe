@@ -5512,9 +5512,9 @@ def customize(request):
         background_coloradd = json.loads(request.POST.get('background_colorcustom'))
         button_color_objadd = ButtonColor.objects.create(user=request.user.idl, color = button_coloradd, cardcolor = card_coloradd, textcolor = text_coloradd, backgroundcolor = background_coloradd)
         print("custompalettesaved")
-            context={
-            'custompalettesaveed':'true',
-            }
+        context={
+        'custompalettesaveed':'true',
+        }
         return JsonResponse(context)
     if request.POST.get("body_name"):
         
