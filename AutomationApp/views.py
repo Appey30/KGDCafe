@@ -5515,7 +5515,8 @@ def customize(request):
         button_color_objadd.cardcolor = card_coloradd
         button_color_objadd.textcolor = text_coloradd
         button_color_objadd.backgroundcolor = background_coloradd
-        
+        button_color_objadd.save()
+        print("custompalettesaved")
     if request.POST.get("body_name"):
         
         button_color = request.POST.get('button_color', '#aa5c31')
