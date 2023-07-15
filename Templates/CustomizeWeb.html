@@ -5345,7 +5345,7 @@ function customcolorpaletteadd(){
         
     $.ajax({
         type:'POST',
-        url:"{% url 'Onlineorder.html' admin_id %}",
+        url:"{% url 'CustomizeWeb.html' %}",
         data:{
         'button_colorcustom' = JSON.stringify(document.getElementById('button_color').value),
         'card_colorcustom' = JSON.stringify(document.getElementById('card_color').value),
@@ -5354,7 +5354,7 @@ function customcolorpaletteadd(){
         csrfmiddlewaretoken: '{{ csrf_token }}'
         },
         success: function(passornot){
-        
+        window.location.reload()
         },
         error: function(){
 
