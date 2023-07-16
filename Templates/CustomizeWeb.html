@@ -234,7 +234,7 @@ body {
         }
         .card-slider {
             width: 100%;
-            height: 300px;
+            height: 100%;
             overflow: hidden;
             position: relative;
         }
@@ -244,15 +244,14 @@ body {
             position: absolute;
             transition: transform 0.3s ease-in-out;
             touch-action: pan-y;
-            left: 0;
         }
 
         .cards {
             width: 15rem;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0);
-            margin-right: 1rem;
-            position: relative;
+            margin-right: 10%;
+            transition: transform 0.3s ease-in-out;
         }
 
             .cards.activecards {
@@ -272,26 +271,9 @@ body {
             justify-content: center;
             text-align: center;
             flex-wrap: nowrap;
-            height: 300px;
+            height: 100%;
             border-radius: 50px;
         }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3,
-            .card-colors .color4 {
-                margin-bottom: 1rem;
-            }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3 {
-                height: calc(20% - 0.75rem);
-            }
-
-            .card-colors .color4 {
-                height: calc(40% - 1.5rem);
-            }
 
         .card-colorscustombox {
             display: flex;
@@ -303,25 +285,19 @@ body {
             height: 260px;
             width: 100%;
             border-radius: 30px;
-            background-color: rgba(255,255,255,25%);
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
             .card-colorscustombox:hover {
-                background-color: rgba(255,255,255,50%);
+                background-color: rgba(255, 255, 255, 0.5);
                 transform: scale(1.05);
-                transition: transform .2s;
+                transition: transform 0.2s;
                 cursor: pointer;
             }
 
-        .card-body:hover {
-            transform: scale(1.1);
-            transition: transform .2s;
-            cursor: pointer;
-        }
-
         .custompallete {
             border-radius: 50%;
-            background-color: rgba(255,255,255,50%);
+            background-color: rgba(255, 255, 255, 0.5);
             width: 100px;
             height: 100px;
             color: grey;
@@ -334,14 +310,25 @@ body {
             flex-wrap: wrap;
         }
 
-
             .custompallete:hover {
                 box-shadow: 0 8px 4px 0 rgba(0, 0, 0, 0.2);
                 cursor: pointer;
             }
 
+        .card-colorscustombox:hover .custompallete {
+            transform: scale(1.2);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card-body:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
         .card-title {
-            border-radius: 10px 10px 10px 10px;
+            border-radius: 10px;
             display: none;
         }
 
@@ -446,8 +433,8 @@ body {
             text-align: center;
             align-content: flex-start;
             flex-wrap: wrap;
-            overflow: auto;
-            padding: 0px 50px 0px 50px;
+            overflow: hidden;
+            padding: 0px 50px;
         }
         .threecontainers {
             width: 300px;
@@ -1271,7 +1258,7 @@ body {
         }
         .card-slider {
             width: 100%;
-            height: 300px;
+            height: 100%;
             overflow: hidden;
             position: relative;
         }
@@ -1281,15 +1268,14 @@ body {
             position: absolute;
             transition: transform 0.3s ease-in-out;
             touch-action: pan-y;
-            left: 0;
         }
 
         .cards {
             width: 15rem;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0);
-            margin-right: 1rem;
-            position: relative;
+            margin-right: 10%;
+            transition: transform 0.3s ease-in-out;
         }
 
             .cards.activecards {
@@ -1309,26 +1295,9 @@ body {
             justify-content: center;
             text-align: center;
             flex-wrap: nowrap;
-            height: 300px;
+            height: 100%;
             border-radius: 50px;
         }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3,
-            .card-colors .color4 {
-                margin-bottom: 1rem;
-            }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3 {
-                height: calc(20% - 0.75rem);
-            }
-
-            .card-colors .color4 {
-                height: calc(40% - 1.5rem);
-            }
 
         .card-colorscustombox {
             display: flex;
@@ -1340,25 +1309,19 @@ body {
             height: 260px;
             width: 100%;
             border-radius: 30px;
-            background-color: rgba(255,255,255,25%);
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
             .card-colorscustombox:hover {
-                background-color: rgba(255,255,255,50%);
+                background-color: rgba(255, 255, 255, 0.5);
                 transform: scale(1.05);
-                transition: transform .2s;
+                transition: transform 0.2s;
                 cursor: pointer;
             }
 
-        .card-body:hover {
-            transform: scale(1.1);
-            transition: transform .2s;
-            cursor: pointer;
-        }
-
         .custompallete {
             border-radius: 50%;
-            background-color: rgba(255,255,255,50%);
+            background-color: rgba(255, 255, 255, 0.5);
             width: 100px;
             height: 100px;
             color: grey;
@@ -1371,14 +1334,25 @@ body {
             flex-wrap: wrap;
         }
 
-
             .custompallete:hover {
                 box-shadow: 0 8px 4px 0 rgba(0, 0, 0, 0.2);
                 cursor: pointer;
             }
 
+        .card-colorscustombox:hover .custompallete {
+            transform: scale(1.2);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card-body:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
         .card-title {
-            border-radius: 10px 10px 10px 10px;
+            border-radius: 10px;
             display: none;
         }
 
@@ -1485,8 +1459,8 @@ body {
             text-align: center;
             align-content: flex-start;
             flex-wrap: wrap;
-            overflow: auto;
-            padding: 0px 50px 0px 50px;
+            overflow: hidden;
+            padding: 0px 50px;
         }
             .threecontainers {
                 width: 300px;
@@ -2303,7 +2277,7 @@ body {
         }
         .card-slider {
             width: 100%;
-            height: 300px;
+            height: 100%;
             overflow: hidden;
             position: relative;
         }
@@ -2313,15 +2287,14 @@ body {
             position: absolute;
             transition: transform 0.3s ease-in-out;
             touch-action: pan-y;
-            left: 0;
         }
 
         .cards {
             width: 15rem;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0);
-            margin-right: 1rem;
-            position: relative;
+            margin-right: 10%;
+            transition: transform 0.3s ease-in-out;
         }
 
             .cards.activecards {
@@ -2341,26 +2314,9 @@ body {
             justify-content: center;
             text-align: center;
             flex-wrap: nowrap;
-            height: 300px;
+            height: 100%;
             border-radius: 50px;
         }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3,
-            .card-colors .color4 {
-                margin-bottom: 1rem;
-            }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3 {
-                height: calc(20% - 0.75rem);
-            }
-
-            .card-colors .color4 {
-                height: calc(40% - 1.5rem);
-            }
 
         .card-colorscustombox {
             display: flex;
@@ -2372,25 +2328,19 @@ body {
             height: 260px;
             width: 100%;
             border-radius: 30px;
-            background-color: rgba(255,255,255,25%);
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
             .card-colorscustombox:hover {
-                background-color: rgba(255,255,255,50%);
+                background-color: rgba(255, 255, 255, 0.5);
                 transform: scale(1.05);
-                transition: transform .2s;
+                transition: transform 0.2s;
                 cursor: pointer;
             }
 
-        .card-body:hover {
-            transform: scale(1.1);
-            transition: transform .2s;
-            cursor: pointer;
-        }
-
         .custompallete {
             border-radius: 50%;
-            background-color: rgba(255,255,255,50%);
+            background-color: rgba(255, 255, 255, 0.5);
             width: 100px;
             height: 100px;
             color: grey;
@@ -2403,14 +2353,25 @@ body {
             flex-wrap: wrap;
         }
 
-
             .custompallete:hover {
                 box-shadow: 0 8px 4px 0 rgba(0, 0, 0, 0.2);
                 cursor: pointer;
             }
 
+        .card-colorscustombox:hover .custompallete {
+            transform: scale(1.2);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card-body:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
         .card-title {
-            border-radius: 10px 10px 10px 10px;
+            border-radius: 10px;
             display: none;
         }
         .color1 {
@@ -2513,8 +2474,8 @@ body {
             text-align: center;
             align-content: flex-start;
             flex-wrap: wrap;
-            overflow: auto;
-            padding: 0px 50px 0px 50px;
+            overflow: hidden;
+            padding: 0px 50px;
         }
             .threecontainers {
                 width: 300px;
@@ -3338,10 +3299,9 @@ body {
             height: 200px;
         }
 
-
         .card-slider {
             width: 100%;
-            height: 300px;
+            height: 100%;
             overflow: hidden;
             position: relative;
         }
@@ -3351,15 +3311,14 @@ body {
             position: absolute;
             transition: transform 0.3s ease-in-out;
             touch-action: pan-y;
-            left: 0;
         }
 
         .cards {
             width: 15rem;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0);
-            margin-right: 1rem;
-            position: relative;
+            margin-right: 10%;
+            transition: transform 0.3s ease-in-out;
         }
 
             .cards.activecards {
@@ -3379,26 +3338,9 @@ body {
             justify-content: center;
             text-align: center;
             flex-wrap: nowrap;
-            height: 300px;
+            height: 100%;
             border-radius: 50px;
         }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3,
-            .card-colors .color4 {
-                margin-bottom: 1rem;
-            }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3 {
-                height: calc(20% - 0.75rem);
-            }
-
-            .card-colors .color4 {
-                height: calc(40% - 1.5rem);
-            }
 
         .card-colorscustombox {
             display: flex;
@@ -3410,25 +3352,19 @@ body {
             height: 260px;
             width: 100%;
             border-radius: 30px;
-            background-color: rgba(255,255,255,25%);
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
             .card-colorscustombox:hover {
-                background-color: rgba(255,255,255,50%);
+                background-color: rgba(255, 255, 255, 0.5);
                 transform: scale(1.05);
-                transition: transform .2s;
+                transition: transform 0.2s;
                 cursor: pointer;
             }
 
-        .card-body:hover {
-            transform: scale(1.1);
-            transition: transform .2s;
-            cursor: pointer;
-        }
-
         .custompallete {
             border-radius: 50%;
-            background-color: rgba(255,255,255,50%);
+            background-color: rgba(255, 255, 255, 0.5);
             width: 100px;
             height: 100px;
             color: grey;
@@ -3441,14 +3377,25 @@ body {
             flex-wrap: wrap;
         }
 
-
             .custompallete:hover {
                 box-shadow: 0 8px 4px 0 rgba(0, 0, 0, 0.2);
                 cursor: pointer;
             }
 
+        .card-colorscustombox:hover .custompallete {
+            transform: scale(1.2);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card-body:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
         .card-title {
-            border-radius: 10px 10px 10px 10px;
+            border-radius: 10px;
             display: none;
         }
         .color1 {
@@ -3540,6 +3487,11 @@ body {
             cursor: pointer;
             display: block;
         }
+
+        Certainly! Here's the revised CSS code incorporating your requirements:
+
+        css
+        Copy code
         #brandcolorcontainerreadyid {
             background-color:;
             width: 100%;
@@ -3552,8 +3504,8 @@ body {
             text-align: center;
             align-content: flex-start;
             flex-wrap: wrap;
-            overflow: auto;
-            padding: 0px 50px 0px 50px;
+            overflow: hidden;
+            padding: 0px 50px;
         }
             .threecontainers {
                 width: 300px;
@@ -4386,7 +4338,7 @@ body {
         }
         .card-slider {
             width: 100%;
-            height: 300px;
+            height: 100%;
             overflow: hidden;
             position: relative;
         }
@@ -4396,15 +4348,14 @@ body {
             position: absolute;
             transition: transform 0.3s ease-in-out;
             touch-action: pan-y;
-            left: 0;
         }
 
         .cards {
             width: 15rem;
             cursor: pointer;
             background-color: rgba(0, 0, 0, 0);
-            margin-right: 1rem;
-            position: relative;
+            margin-right: 10%;
+            transition: transform 0.3s ease-in-out;
         }
 
             .cards.activecards {
@@ -4424,26 +4375,9 @@ body {
             justify-content: center;
             text-align: center;
             flex-wrap: nowrap;
-            height: 300px;
+            height: 100%;
             border-radius: 50px;
         }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3,
-            .card-colors .color4 {
-                margin-bottom: 1rem;
-            }
-
-            .card-colors .color1,
-            .card-colors .color2,
-            .card-colors .color3 {
-                height: calc(20% - 0.75rem);
-            }
-
-            .card-colors .color4 {
-                height: calc(40% - 1.5rem);
-            }
 
         .card-colorscustombox {
             display: flex;
@@ -4455,25 +4389,19 @@ body {
             height: 260px;
             width: 100%;
             border-radius: 30px;
-            background-color: rgba(255,255,255,25%);
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
             .card-colorscustombox:hover {
-                background-color: rgba(255,255,255,50%);
+                background-color: rgba(255, 255, 255, 0.5);
                 transform: scale(1.05);
-                transition: transform .2s;
+                transition: transform 0.2s;
                 cursor: pointer;
             }
 
-        .card-body:hover {
-            transform: scale(1.1);
-            transition: transform .2s;
-            cursor: pointer;
-        }
-
         .custompallete {
             border-radius: 50%;
-            background-color: rgba(255,255,255,50%);
+            background-color: rgba(255, 255, 255, 0.5);
             width: 100px;
             height: 100px;
             color: grey;
@@ -4486,14 +4414,25 @@ body {
             flex-wrap: wrap;
         }
 
-
             .custompallete:hover {
                 box-shadow: 0 8px 4px 0 rgba(0, 0, 0, 0.2);
                 cursor: pointer;
             }
 
+        .card-colorscustombox:hover .custompallete {
+            transform: scale(1.2);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card-body:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
         .card-title {
-            border-radius: 10px 10px 10px 10px;
+            border-radius: 10px;
             display: none;
         }
 
@@ -4589,7 +4528,7 @@ body {
         #brandcolorcontainerreadyid {
             background-color:;
             width: 100%;
-            height:300px;
+            height: 300px;
             margin-bottom: 30px;
             display: flex;
             flex-direction: row;
@@ -4598,9 +4537,8 @@ body {
             text-align: center;
             align-content: flex-start;
             flex-wrap: wrap;
-            overflow: auto;
-            padding: 0px 50px 0px 50px;
-
+            overflow: hidden;
+            padding: 0px 50px;
         }
         .threecontainers {
             width: 300px;
