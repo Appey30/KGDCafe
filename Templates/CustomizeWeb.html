@@ -5548,26 +5548,8 @@ body {
                                 <div id="brandcolorcontainerreadyid">
                                     <div class="card-slider">
                                         <div class="cardscontainer">
-                                            <div class="cards inactivecards">
-                                                <div class="card-body">
-                                                    <div class="card-colors">
-                                                        <div class="color4">
-                                                            <span class="color4span"></span>
-                                                        </div>
-                                                        <div class="color3">
-                                                            <span class="color3span"></span>
-                                                        </div>
-                                                        <div class="color2">
-                                                            <span class="color2span"></span>
-                                                        </div>
-                                                        <div class="color1">
-                                                            <span class="color1span"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             {% for brandcolorpallete in brandcolorpallete %}
-                                            <div class="cards inactivecards">
+                                            <div class="cards">
                                                 <div class="card-body">
                                                     <div class="card-colors">
                                                         <div class="color4" style="background-color: {{ brandcolorpallete.background }};">
@@ -5586,7 +5568,7 @@ body {
                                                 </div>
                                             </div>
                                             {% endfor %}
-                                            <div class="cards activecards">
+                                            <div class="cards">
                                                 <div class="card-colorscustombox">
                                                     <h5 class="card-title">Custom Colors</h5>
                                                     <div class="">
