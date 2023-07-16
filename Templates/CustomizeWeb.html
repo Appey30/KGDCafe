@@ -5705,9 +5705,11 @@ function setActiveCard(index) {
   cards[index].classList.add('activecards');
 
   // Calculate the offset to center the active card
-  const cardWidth = cards[index].offsetWidth;
-  const containerWidth = (parseInt(cardWidth)*parseInt(cards.length))+2.5%;
-  const marginLeft = (containerWidth - cardWidth) / 2;
+const cardWidth = cards[index].offsetWidth;
+const spacingPercentage = 2.5; // Adjust this value as per your spacing requirements
+const spacing = (cardWidth * spacingPercentage) / 100;
+const containerWidth = (cardWidth + spacing) * cards.length - spacing;
+const marginLeft = (containerWidth - cardWidth) / 2;
 
   // Set the transform value to center the active card
   cardsContainer.style.transform = `translateX(calc(-${cards[index].offsetLeft}px - 33.33% + ${marginLeft}px))`;
