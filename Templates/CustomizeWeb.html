@@ -5632,6 +5632,20 @@ const cardsContainer = document.querySelector('.cardscontainer');
 const cards = document.querySelectorAll('.cards');
 let activeCardIndex = 0;
 
+cards.forEach((card, index) => {
+  card.addEventListener('click', () => {
+    setActiveCard(index);
+  });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft') {
+    setActiveCard(activeCardIndex - 1);
+  } else if (event.key === 'ArrowRight') {
+    setActiveCard(activeCardIndex + 1);
+  }
+});
+
 cardsContainer.addEventListener('touchstart', (event) => {
   const touchStartX = event.touches[0].clientX;
 
@@ -5668,6 +5682,7 @@ function setActiveCard(index) {
   cardsContainer.style.transform = `translateX(-${cards[index].offsetLeft}px)`;
   activeCardIndex = index;
 }
+
 function customPaletteClicked() {
   alert('card clicked')
 }
