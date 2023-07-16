@@ -5540,34 +5540,30 @@ body {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
 
-window.addEventListener('DOMContentLoaded', (event) => {
-  const cardsContainer = document.querySelector('.cardscontainer');
-  const cards = document.querySelectorAll('.cards');
-  let activeCardIndex = 1;
+// Get the necessary elements
+const cardsContainer = document.querySelector('.cardscontainer');
+const cards = Array.from(document.querySelectorAll('.cards'));
 
-  setActiveCard(activeCardIndex);
+let activeCardIndex = 1; // Set the second card as active by default
 
-  cardsContainer.addEventListener('touchstart', (event) => {
-    const touchStartX = event.touches[0].clientX;
+// Set the initial position of the cards container
+cardsContainer.style.transform = `translateX(-${cards[activeCardIndex].offsetLeft}px)`;
 
-    cardsContainer.addEventListener('touchmove', handleTouchMove);
+// Event listener for arrow keys
+document.addEventListener('keydown', handleKeyPress);
 
-    cardsContainer.addEventListener('touchend', (event) => {
-      const touchEndX = event.changedTouches[0].clientX;
+// Event listener for touch gestures
+cardsContainer.addEventListener('touchstart', handleTouchStart);
+cardsContainer.addEventListener('touchmove', handleTouchMove);
+cardsContainer.addEventListener('touchend', handleTouchEnd);
 
-      if (touchStartX - touchEndX > 50) {
-        setActiveCard(activeCardIndex + 1);
-      } else if (touchStartX - touchEndX < -50) {
-        setActiveCard(activeCardIndex - 1);
-      }
+// Event listener for card clicks
+cards.forEach((card, index) => {
+  card.addEventListener('click', () => setActiveCard(index));
+});
 
-      cardsContainer.removeEventListener('touchmove', handleTouchMove);
-    });
-  });
-
-  function handleTouchMove(event) {
-    event.preventDefault();
-  }
+// Set the initial active card
+setActiveCard(activeCardIndex);
 
 function setActiveCard(index) {
   const lastIndex = cards.length - 1;
@@ -5580,19 +5576,46 @@ function setActiveCard(index) {
 
   cards.forEach((card) => card.classList.remove('activecards'));
   cards[index].classList.add('activecards');
-  
+
   // Calculate the offset to center the active card
   const cardWidth = cards[index].offsetWidth;
   const containerWidth = cardsContainer.offsetWidth;
   const marginLeft = (containerWidth - cardWidth) / 2;
-  
+
   // Set the transform value to center the active card
   cardsContainer.style.transform = `translateX(calc(-${cards[index].offsetLeft}px - 15% + ${marginLeft}px))`;
-  
+
   activeCardIndex = index;
 }
-});
 
+function handleKeyPress(event) {
+  if (event.key === 'ArrowLeft') {
+    setActiveCard(activeCardIndex - 1);
+  } else if (event.key === 'ArrowRight') {
+    setActiveCard(activeCardIndex + 1);
+  }
+}
+
+let touchStartX = 0;
+let touchMoveX = 0;
+
+function handleTouchStart(event) {
+  touchStartX = event.touches[0].clientX;
+}
+
+function handleTouchMove(event) {
+  touchMoveX = event.touches[0].clientX;
+}
+
+function handleTouchEnd() {
+  const touchThreshold = 50;
+
+  if (touchStartX - touchMoveX > touchThreshold) {
+    setActiveCard(activeCardIndex + 1);
+  } else if (touchMoveX - touchStartX > touchThreshold) {
+    setActiveCard(activeCardIndex - 1);
+  }
+}
 
 function customPaletteClicked() {
   alert('card clicked')
