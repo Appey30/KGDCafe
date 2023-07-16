@@ -5710,7 +5710,7 @@ function setActiveCard(index) {
   const marginLeft = (containerWidth - cardWidth) / 2;
 
   // Set the transform value to center the active card
-  cardsContainer.style.transform = `translateX(calc(-${cards[index].offsetLeft}px - 50% + ${marginLeft}px))`;
+  cardsContainer.style.transform = `translateX(calc(-${cards[index].offsetLeft}px - 33.33% + ${marginLeft}px))`;
 
   activeCardIndex = index;
 }
