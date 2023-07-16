@@ -5341,36 +5341,32 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
-function customcolorpaletteadd(){
-     var buttoncolorvalue = document.getElementById('button_color').value;
-     var textcolorvalue = document.getElementById('text_color').value;
-        var cardcolorvalue = document.getElementById('card_color').value;
-        var backgroundcolorvalue = document.getElementById('background_color').value;
-            $.ajax({
-                type:'POST',
-                url:"{% url 'CustomizeWeb.html' %}",
-                data:{
-                'button_colorcustom':JSON.stringify(buttoncolorvalue),
-                'card_colorcustom':JSON.stringify(textcolorvalue),
-                'text_colorcustom':JSON.stringify(cardcolorvalue),
-                'background_colorcustom':JSON.stringify(backgroundcolorvalue),
-                csrfmiddlewaretoken: '{{ csrf_token }}'
-                },
-                success: function(result){
-                    if(result[0]){
-                        window.location.reload()
-                    }else{
-                        alert('There is an error')
-                    }
-        
-                },
-                error: function(){
-
-                alert('Error')
-
-        
-                }
-            });
+function customcolorpaletteadd() {
+    var buttoncolorvalue = document.getElementById('button_color').value;
+    var textcolorvalue = document.getElementById('text_color').value;
+    var cardcolorvalue = document.getElementById('card_color').value;
+    var backgroundcolorvalue = document.getElementById('background_color').value;
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'CustomizeWeb.html' %}",
+        data: {
+            'button_colorcustom': JSON.stringify(buttoncolorvalue),
+            'card_colorcustom': JSON.stringify(textcolorvalue),
+            'text_colorcustom': JSON.stringify(cardcolorvalue),
+            'background_colorcustom': JSON.stringify(backgroundcolorvalue),
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        success: function (result) {
+            if (result[0]) {
+                window.location.reload();
+            } else {
+                alert('There is an error');
+            }
+        },
+        error: function () {
+            alert('Error');
+        }
+    });
 }
  function brandcolor(text, button, container, background){
         var text_color = document.getElementById('text_colorid')
