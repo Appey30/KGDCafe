@@ -5350,10 +5350,10 @@ function customcolorpaletteadd(){
                 type:'POST',
                 url:"{% url 'CustomizeWeb.html' %}",
                 data:{
-                'button_colorcustom' = JSON.stringify(buttoncolorvalue),
-                'card_colorcustom' = JSON.stringify(textcolorvalue),
-                'text_colorcustom' = JSON.stringify(cardcolorvalue),
-                'background_colorcustom' = JSON.stringify(backgroundcolorvalue),
+                'button_colorcustom':JSON.stringify(buttoncolorvalue),
+                'card_colorcustom':JSON.stringify(textcolorvalue),
+                'text_colorcustom':JSON.stringify(cardcolorvalue),
+                'background_colorcustom':JSON.stringify(backgroundcolorvalue),
                 csrfmiddlewaretoken: '{{ csrf_token }}'
                 },
                 success: function(result){
