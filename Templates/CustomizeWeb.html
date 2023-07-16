@@ -5545,48 +5545,41 @@ body {
                                 <div style="position:relative;width:100%;display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center ">
                                     <button onclick="customcolorpaletteadd();" type="button" class="prodbut">Add and Apply</button>
                                 </div>
-                                   
+
                                 <label for="brandcolorcontainerreadyid" class="punchedtextsubtitle" style="margin-top:30px;">Choose Brand Palette</label>
                                 <div id="brandcolorcontainerreadyid">
-
                                     <div class="card-slider">
-
-                                        {% for brandcolorpallete in brandcolorpallete %}
-
-
-
-                                        <div class="cards" onclick="brandcolor('{{ brandcolorpallete.text }}', '{{ brandcolorpallete.button }}', '{{ brandcolorpallete.container }}', '{{ brandcolorpallete.background }}');">
-                                            <div class="card-body">
-
-                                                <div class="card-colors">
-                                                    <div class="color4" style="background-color: {{ brandcolorpallete.background }};">
-                                                        <span class="color4span">{{ brandcolorpallete.background }}</span>
+                                        <div class="cardscontainer">
+                                            {% for brandcolorpallete in brandcolorpallete %}
+                                            <div class="cards">
+                                                <div class="card-body" onclick="brandcolor('{{ brandcolorpallete.text }}', '{{ brandcolorpallete.button }}', '{{ brandcolorpallete.container }}', '{{ brandcolorpallete.background }}');">
+                                                    <div class="card-colors">
+                                                        <div class="color4" style="background-color: {{ brandcolorpallete.background }};">
+                                                            <span class="color4span">{{ brandcolorpallete.background }}</span>
+                                                        </div>
+                                                        <div class="color3" style="background-color: {{ brandcolorpallete.container }};">
+                                                            <span class="color3span">{{ brandcolorpallete.container }}</span>
+                                                        </div>
+                                                        <div class="color2" style="background-color: {{ brandcolorpallete.button }};">
+                                                            <span class="color2span">{{ brandcolorpallete.button }}</span>
+                                                        </div>
+                                                        <div class="color1" style="background-color: {{ brandcolorpallete.text }};">
+                                                            <span class="color1span">{{ brandcolorpallete.text }}</span>
+                                                        </div>
                                                     </div>
-                                                    <div class="color3" style="background-color:{{ brandcolorpallete.container }};">
-                                                        <span class="color3span">{{ brandcolorpallete.container }}</span>
-                                                    </div>
-                                                    <div class="color2" style="background-color: {{ brandcolorpallete.button }};">
-                                                        <span class="color2span">{{ brandcolorpallete.button }}</span>
-                                                    </div>
-                                                    <div class="color1" style="background-color: {{ brandcolorpallete.text }};">
-                                                        <span class="color1span">{{ brandcolorpallete.text }}</span>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                            <div class="cards activecards">
+                                                <div class="card-colorscustombox">
+                                                    <h5 class="card-title">Custom Colors</h5>
+                                                    <div class="">
+                                                        <div class="custompallete">+</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {% endfor %}
                                     </div>
-                                    <div class="cardscontainer">
-                                        <div class="cards">
-                                            <div class="card-colorscustombox">
-                                                <h5 class="card-title">Custom Colors</h5>
-                                                <div class="">
-                                                    <div class="custompallete">+</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                                 <div id="brandnamecontainerid">
                                     <div class="brandfontcontainers" id="brandfontcontainersid">
