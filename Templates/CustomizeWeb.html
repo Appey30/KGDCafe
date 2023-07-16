@@ -5357,7 +5357,7 @@ function customcolorpaletteadd() {
             csrfmiddlewaretoken: '{{ csrf_token }}'
         },
         success: function (result) {
-            if (result[0]) {
+            if (result.custompalettesaveed === 'true') {
                 window.location.reload();
             } else {
                 alert('There is an error');
