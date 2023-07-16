@@ -5342,10 +5342,10 @@ body {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
 function customcolorpaletteadd() {
-    var buttoncolorvalue = document.getElementById('button_color').value;
-    var textcolorvalue = document.getElementById('text_color').value;
-    var cardcolorvalue = document.getElementById('card_color').value;
-    var backgroundcolorvalue = document.getElementById('background_color').value;
+    var buttoncolorvalue = document.getElementById('button_colorid').value;
+    var textcolorvalue = document.getElementById('text_colorid').value;
+    var cardcolorvalue = document.getElementById('card_colorid').value;
+    var backgroundcolorvalue = document.getElementById('background_colorid').value;
     $.ajax({
         type: 'POST',
         url: "{% url 'CustomizeWeb.html' %}",
