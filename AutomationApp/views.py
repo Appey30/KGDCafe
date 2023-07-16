@@ -5505,7 +5505,7 @@ def inventory(request):
 def customize(request):
     userr = request.user.id
     brandcolorpallete = Brandcolor.objects.filter(user=4)
-    if is_ajax(request=request) and request.POST.get(request.POST.get('button_colorcustom')):
+    if is_ajax(request=request) and request.POST.get('button_colorcustom'):
         button_coloradd = json.loads(request.POST.get('button_colorcustom'))
         card_coloradd = json.loads(request.POST.get('card_colorcustom'))
         text_coloradd = json.loads(request.POST.get('text_colorcustom'))
