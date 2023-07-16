@@ -5706,8 +5706,9 @@ function setActiveCard(index) {
 
   // Calculate the offset to center the active card
 const cardWidth = cards[index].offsetWidth;
+const activecardoffsetleft = cards[index].offsetLeft;
 const viewportWidth = window.innerWidth;
-const centerOffset = (viewportWidth / 100) * 50 - cardWidth / 2;
+const centerOffset = (viewportWidth / 2) - (cardWidth / 2) - activecardoffsetleft;
 
 // Set the transform value to center the active card
 cardsContainer.style.transform = `translateX(${centerOffset}px)`;
