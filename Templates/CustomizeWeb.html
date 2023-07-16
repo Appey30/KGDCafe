@@ -5559,7 +5559,7 @@ body {
                                         <div class="cardscontainer">
                                             {% for brandcolorpallete in brandcolorpallete %}
                                             <div class="cards">
-                                                <div class="card-body">
+                                                <div class="card-body" onclick="brandcolor('{{ brandcolorpallete.text }}', '{{ brandcolorpallete.button }}', '{{ brandcolorpallete.container }}', '{{ brandcolorpallete.background }}');">
                                                     <div class="card-colors">
                                                         <div class="color4" style="background-color: {{ brandcolorpallete.background }};">
                                                             <span class="color4span">{{ brandcolorpallete.background }}</span>
@@ -5577,7 +5577,7 @@ body {
                                                 </div>
                                             </div>
                                             {% endfor %}
-                                            <div class="cards">
+                                            <div class="cards activecards">
                                                 <div class="card-colorscustombox">
                                                     <h5 class="card-title">Custom Colors</h5>
                                                     <div class="">
