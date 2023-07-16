@@ -5343,32 +5343,32 @@ body {
     <script>
 function customcolorpaletteadd(){
         
-    $.ajax({
-        type:'POST',
-        url:"{% url 'CustomizeWeb.html' %}",
-        data:{
-        'button_colorcustom' = JSON.stringify(document.getElementById('button_color').value),
-        'card_colorcustom' = JSON.stringify(document.getElementById('card_color').value),
-        'text_colorcustom' = JSON.stringify(document.getElementById('text_color').value),
-        'background_colorcustom' = JSON.stringify(document.getElementById('background_color').value),
-        csrfmiddlewaretoken: '{{ csrf_token }}'
-        },
-        success: function(result){
-        if(result.custompalettesaveed){
-        window.location.reload()
-        }else{
-        alert('There is an error')
-        }
+            $.ajax({
+                type:'POST',
+                url:"{% url 'CustomizeWeb.html' %}",
+                data:{
+                'button_colorcustom' = JSON.stringify(document.getElementById('button_color').value),
+                'card_colorcustom' = JSON.stringify(document.getElementById('card_color').value),
+                'text_colorcustom' = JSON.stringify(document.getElementById('text_color').value),
+                'background_colorcustom' = JSON.stringify(document.getElementById('background_color').value),
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(result){
+                    if(result[0]){
+                        window.location.reload()
+                    }else{
+                        alert('There is an error')
+                    }
         
-        },
-        error: function(){
+                },
+                error: function(){
 
-        alert('Error')
+                alert('Error')
 
         
-        }
-    });
-        }
+                }
+            });
+}
  function brandcolor(text, button, container, background){
         var text_color = document.getElementById('text_colorid')
         var button_color = document.getElementById('button_colorid')
