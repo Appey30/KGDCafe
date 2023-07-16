@@ -5342,15 +5342,18 @@ body {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script>
 function customcolorpaletteadd(){
-        
+     var buttoncolorvalue = document.getElementById('button_color').value;
+     var textcolorvalue = document.getElementById('text_color').value;
+        var cardcolorvalue = document.getElementById('card_color').value;
+        var backgroundcolorvalue = document.getElementById('background_color').value;
             $.ajax({
                 type:'POST',
                 url:"{% url 'CustomizeWeb.html' %}",
                 data:{
-                'button_colorcustom' = JSON.stringify(document.getElementById('button_color').value),
-                'card_colorcustom' = JSON.stringify(document.getElementById('card_color').value),
-                'text_colorcustom' = JSON.stringify(document.getElementById('text_color').value),
-                'background_colorcustom' = JSON.stringify(document.getElementById('background_color').value),
+                'button_colorcustom' = JSON.stringify(buttoncolorvalue),
+                'card_colorcustom' = JSON.stringify(textcolorvalue),
+                'text_colorcustom' = JSON.stringify(cardcolorvalue),
+                'background_colorcustom' = JSON.stringify(backgroundcolorvalue),
                 csrfmiddlewaretoken: '{{ csrf_token }}'
                 },
                 success: function(result){
