@@ -1,0 +1,54 @@
+const cardsContainer = document.querySelector('.cardscontainer');
+const cards = document.querySelectorAll('.cards');
+let activeCardIndex = 0;
+
+cards.forEach((cards, index) => {
+  cards.addEventListener('click', () => {
+    setActiveCard(index);
+  });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft') {
+    setActiveCard(activeCardIndex - 1);
+  } else if (event.key === 'ArrowRight') {
+    setActiveCard(activeCardIndex + 1);
+  }
+});
+
+cardsContainer.addEventListener('touchstart', (event) => {
+  const touchStartX = event.touches[0].clientX;
+
+  cardsContainer.addEventListener('touchmove', handleTouchMove);
+
+  cardsContainer.addEventListener('touchend', (event) => {
+    const touchEndX = event.changedTouches[0].clientX;
+
+    if (touchStartX - touchEndX > 50) {
+      setActiveCard(activeCardIndex + 1);
+    } else if (touchStartX - touchEndX < -50) {
+      setActiveCard(activeCardIndex - 1);
+    }
+
+    cardsContainer.removeEventListener('touchmove', handleTouchMove);
+  });
+});
+
+function handleTouchMove(event) {
+  event.preventDefault();
+}
+
+function setActiveCard(index) {
+  const lastIndex = cards.length - 1;
+
+  if (index < 0) {
+    index = lastIndex;
+  } else if (index > lastIndex) {
+    index = 0;
+  }
+
+ cards.forEach((cards) => cards.classList.remove('activecards'));
+  cards[index].classList.add('activecards');
+  cardsContainer.style.transform = `translateX(-${cards[index].offsetLeft}px)`;
+  activeCardIndex = index;
+}
