@@ -5569,20 +5569,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
     event.preventDefault();
   }
 
-  function setActiveCard(index) {
-    const lastIndex = cards.length - 1;
+function setActiveCard(index) {
+  const lastIndex = cards.length - 1;
 
-    if (index < 0) {
-      index = lastIndex;
-    } else if (index > lastIndex) {
-      index = 0;
-    }
-
-    cards.forEach((card) => card.classList.remove('activecards'));
-    cards[index].classList.add('activecards');
-    cardsContainer.style.transform = `translateX(calc(-${cards[index].offsetLeft}px - 15%))`;
-    activeCardIndex = index;
+  if (index < 0) {
+    index = lastIndex;
+  } else if (index > lastIndex) {
+    index = 0;
   }
+
+  cards.forEach((card) => card.classList.remove('activecards'));
+  cards[index].classList.add('activecards');
+  
+  // Calculate the offset to center the active card
+  const cardWidth = cards[index].offsetWidth;
+  const containerWidth = cardsContainer.offsetWidth;
+  const marginLeft = (containerWidth - cardWidth) / 2;
+  
+  // Set the transform value to center the active card
+  cardsContainer.style.transform = `translateX(calc(-${cards[index].offsetLeft}px - 15% + ${marginLeft}px))`;
+  
+  activeCardIndex = index;
+}
 });
 
 
