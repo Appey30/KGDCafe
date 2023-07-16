@@ -426,7 +426,53 @@ body {
                 border-radius: 50%;
                 overflow: hidden;
             }
+        .colorcircle {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
 
+            .colorcircle::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background-color: gold;
+                opacity: 0;
+                border-radius: 50%;
+                z-index: -1;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .colorcircle:hover::before {
+                opacity: 0.8;
+                animation: rotate 2s linear infinite, shine 2s linear infinite;
+            }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
         .brandnameinputclass {
             background: rgb(29, 28, 26);
             background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
@@ -1392,6 +1438,53 @@ body {
                 border-radius: 50%;
                 overflow: hidden;
             }
+        .colorcircle {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .colorcircle::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background-color: gold;
+                opacity: 0;
+                border-radius: 50%;
+                z-index: -1;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .colorcircle:hover::before {
+                opacity: 0.8;
+                animation: rotate 2s linear infinite, shine 2s linear infinite;
+            }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
         .brandnameinputclass {
             background: rgb(29, 28, 26);
             background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
@@ -2346,6 +2439,53 @@ body {
                 border-radius: 50%;
                 overflow: hidden;
             }
+        .colorcircle {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .colorcircle::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background-color: gold;
+                opacity: 0;
+                border-radius: 50%;
+                z-index: -1;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .colorcircle:hover::before {
+                opacity: 0.8;
+                animation: rotate 2s linear infinite, shine 2s linear infinite;
+            }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
         .brandnameinputclass {
             background: rgb(29, 28, 26);
             background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
@@ -3301,6 +3441,53 @@ body {
                 border-radius: 50%;
                 overflow: hidden;
             }
+        .colorcircle {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .colorcircle::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background-color: gold;
+                opacity: 0;
+                border-radius: 50%;
+                z-index: -1;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .colorcircle:hover::before {
+                opacity: 0.8;
+                animation: rotate 2s linear infinite, shine 2s linear infinite;
+            }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
         .brandnameinputclass {
             background: rgb(29, 28, 26);
             background: -moz-linear-gradient(left, rgb(29, 28, 26) 0%, rgb(65, 58, 34) 100%);
@@ -4274,6 +4461,53 @@ body {
             height: 70px;
             border-radius: 50%;
             overflow: hidden;
+        }
+        .colorcircle {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .colorcircle::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background-color: gold;
+                opacity: 0;
+                border-radius: 50%;
+                z-index: -1;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .colorcircle:hover::before {
+                opacity: 0.8;
+                animation: rotate 2s linear infinite, shine 2s linear infinite;
+            }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
         }
         .brandnameinputclass {
             background: rgb(29, 28, 26);
